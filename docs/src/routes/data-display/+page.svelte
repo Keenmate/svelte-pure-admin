@@ -9,6 +9,7 @@
 		Badge,
 		Button,
 		Table,
+		TableCard,
 		FormGroup,
 		FormLabel,
 		Input,
@@ -753,10 +754,10 @@
      Row 10: Detail Panel Integration (100%)
      ============================================================ -->
 
-<Card>
+<Card bodyClass="p-0">
 	{#snippet header()}
 		<h3>Detail Panel Integration</h3>
-		<Paragraph>Headerless detail panel with floating close button. Click a isRow to view order data using <code>Fields</code> components.</Paragraph>
+		<Paragraph>Headerless detail panel with floating close button. Click a row to view order data using <code>Fields</code> components.</Paragraph>
 	{/snippet}
 
 	<div class="pa-detail-view" class:pa-detail-view--panel-open={detailPanelOpen}>
@@ -828,7 +829,7 @@
 							</Fields>
 						</FieldGroup>
 					{:else}
-						<Paragraph class="text-secondary">Click a isTable isRow to view order details here.</Paragraph>
+						<Paragraph class="text-secondary">Click a table row to view order details here.</Paragraph>
 					{/if}
 				</div>
 				<div class="pa-detail-panel__footer">
@@ -849,12 +850,11 @@
      Row 11: Full-Screen Overlay Panel (100%)
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<h3>Full-Screen Overlay Panel</h3>
-		<Paragraph>Click a isRow to open a full-screen overlay panel (slides in from right, like profile panel).</Paragraph>
-	{/snippet}
-
+<TableCard
+	titleText="Full-Screen Overlay Panel"
+	descriptionText="Click a row to open a full-screen overlay panel (slides in from right, like profile panel)."
+	isScrollable
+>
 	<Table isStriped>
 		<thead>
 			<tr>
@@ -881,7 +881,7 @@
 			{/each}
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Full-Screen Overlay Panel (outside card, fixed position) -->
 <div class="pa-detail-panel--overlay" class:pa-detail-panel--open={overlayPanelOpen}>
@@ -936,7 +936,7 @@
 					</Fields>
 				</FieldGroup>
 			{:else}
-				<Paragraph class="text-secondary">Click a isTable isRow to view product details.</Paragraph>
+				<Paragraph class="text-secondary">Click a table row to view product details.</Paragraph>
 			{/if}
 		</div>
 		<div class="pa-detail-panel__footer">
