@@ -10,7 +10,8 @@
 		BasicList,
 		Grid,
 		Column,
-		Spinner
+		Spinner,
+		CodeBlock
 	} from '@keenmate/svelte-pure-admin';
 
 	type BlockItem = { date: string; iconText: string; title: string; content: string };
@@ -321,25 +322,25 @@
 <!-- Usage Examples -->
 <Card titleText="Usage Examples" class="mt-12">
 	<Heading level={4}>Basic Alternating Timeline</Heading>
-	<pre class="mb-4"><code>&lt;Timeline variant="alternating"&gt;
-  &lt;TimelineItem date="15 Dec" iconText="🏠"&gt;
-    &lt;Heading level=&#123;4&#125;&gt;Project Started&lt;/Heading&gt;
-    &lt;Paragraph&gt;Description here&lt;/Paragraph&gt;
-  &lt;/TimelineItem&gt;
-&lt;/Timeline&gt;</code></pre>
+	<CodeBlock class="mb-4">{`<Timeline variant="alternating">
+  <TimelineItem date="15 Dec" iconText="🏠">
+    <Heading level={4}>Project Started</Heading>
+    <Paragraph>Description here</Paragraph>
+  </TimelineItem>
+</Timeline>`}</CodeBlock>
 
 	<Heading level={4}>Layout Modifiers</Heading>
-	<pre class="mb-4"><code>&lt;!-- Force all items to start side --&gt;
-&lt;Timeline variant="alternating" alignment="start"&gt;...&lt;/Timeline&gt;
+	<CodeBlock class="mb-4">{`<!-- Force all items to start side -->
+<Timeline variant="alternating" alignment="start">...</Timeline>
 
-&lt;!-- Force all items to end side --&gt;
-&lt;Timeline variant="alternating" alignment="end"&gt;...&lt;/Timeline&gt;
+<!-- Force all items to end side -->
+<Timeline variant="alternating" alignment="end">...</Timeline>
 
-&lt;!-- Preserve zig-zag layout on mobile --&gt;
-&lt;Timeline variant="alternating" shouldKeepLayout&gt;...&lt;/Timeline&gt;
+<!-- Preserve zig-zag layout on mobile -->
+<Timeline variant="alternating" shouldKeepLayout>...</Timeline>
 
-&lt;!-- Combination --&gt;
-&lt;Timeline variant="alternating" alignment="start" shouldKeepLayout&gt;...&lt;/Timeline&gt;</code></pre>
+<!-- Combination -->
+<Timeline variant="alternating" alignment="start" shouldKeepLayout>...</Timeline>`}</CodeBlock>
 
 	<Heading level={4}>Best Practices</Heading>
 	<BasicList>
