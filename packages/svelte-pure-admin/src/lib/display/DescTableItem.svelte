@@ -61,7 +61,7 @@
 	});
 
 	// Bridge the svelte-i18n hint strings into core's copy ::after via the
-	// inherited --pc-copy-hint-text / --pc-copied-text vars it reads, so the
+	// inherited --pa-copy-hint-text / --pa-copied-text vars it reads, so the
 	// visible hint matches the (already-translated) aria-label. English fallback
 	// on older core. See Field.svelte for the same pattern.
 	function cssString(s: string): string {
@@ -69,7 +69,7 @@
 	}
 	const copyVarStyle = $derived(
 		copyMode && canCopy
-			? `--pc-copy-hint-text: ${cssString($_('pureAdmin.field.clickToCopy'))}; --pc-copied-text: ${cssString($_('pureAdmin.field.copied'))}`
+			? `--pa-copy-hint-text: ${cssString($_('pureAdmin.field.clickToCopy'))}; --pa-copied-text: ${cssString($_('pureAdmin.field.copied'))}`
 			: undefined
 	);
 

@@ -95,6 +95,7 @@ export type {
 export { default as Form } from './forms/Form.svelte';
 export { default as FormGroup } from './forms/FormGroup.svelte';
 export { default as FormLabel } from './forms/FormLabel.svelte';
+export { default as FormActions } from './forms/FormActions.svelte';
 export { default as FormField } from './forms/FormField.svelte';
 export { default as Input } from './forms/Input.svelte';
 export { default as NumberInput } from './forms/NumberInput.svelte';

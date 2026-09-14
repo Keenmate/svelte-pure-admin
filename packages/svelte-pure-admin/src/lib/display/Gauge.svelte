@@ -20,7 +20,7 @@
 		variant?: DataVizVariant;
 		/** Multi-zone gauge (green/yellow/red bands) — overrides variant */
 		isZones?: boolean;
-		/** Override `--pc-gauge-size` (default `12rem`). Height auto-derives 2:1. Since core v2.7.0. */
+		/** Override `--pa-gauge-size` (default `12rem`). Height auto-derives 2:1. Since core v2.7.0. */
 		gaugeSize?: string;
 		/** Additional CSS classes */
 		class?: string;
@@ -42,7 +42,7 @@
 	}: Props = $props();
 
 	const styleAttr = $derived(
-		gaugeSize ? `--value: ${value}; --pc-gauge-size: ${gaugeSize}` : `--value: ${value}`
+		gaugeSize ? `--value: ${value}; --pa-gauge-size: ${gaugeSize}` : `--value: ${value}`
 	);
 
 	const classes = $derived(() => {

@@ -58,7 +58,7 @@
 		{ key: 'guests', label: 'Guests', min: 1, max: 12, step: 1, mode: 'single', bound: 'gte', value: 4, handleShape: 'bar' }
 	];
 	const themedPanelStyle =
-		'--pc-range-fill: #8b5cf6; --pc-range-thumb-border: #8b5cf6; --pc-range-thumb-border-hover: #7c3aed; --pc-range-focus-ring: rgba(139, 92, 246, 0.35); --pc-range-track-height: 0.8rem; --pc-range-thumb-size: 2rem;';
+		'--pa-range-fill: #8b5cf6; --pa-range-thumb-border: #8b5cf6; --pa-range-thumb-border-hover: #7c3aed; --pa-range-focus-ring: rgba(139, 92, 246, 0.35); --pa-range-track-height: 0.8rem; --pa-range-thumb-size: 2rem;';
 
 	// Per-group live bound values (debug readout under each range group)
 	let thresholdValues = $state<RangeGroupValues>(seedValues(thresholdRows));
@@ -110,10 +110,10 @@
      data-min="0" data-max="80"
      data-ticks="20" data-ticks-minor="10" data-tick-labels>`;
 	const codeThemed = `<div class="pa-range-group__panel" data-range-group-panel
-     style="--pc-range-fill: #8b5cf6;
-            --pc-range-thumb-border: #8b5cf6;
-            --pc-range-track-height: 0.8rem;
-            --pc-range-thumb-size: 2rem;">`;
+     style="--pa-range-fill: #8b5cf6;
+            --pa-range-thumb-border: #8b5cf6;
+            --pa-range-track-height: 0.8rem;
+            --pa-range-thumb-size: 2rem;">`;
 	const codeMarkup = `<div class="pa-range-group" data-range-group>
   <button class="pa-range-group__toggle" data-range-group-toggle aria-expanded="false">
     <!-- range-group.js fills this with "LABEL value / …" segments -->
@@ -313,7 +313,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 <!-- ============ Custom tokens ============ -->
 <Card class="mt-4">
-	{#snippet title()}Theming with <code>--pc-range-*</code> tokens{/snippet}
+	{#snippet title()}Theming with <code>--pa-range-*</code> tokens{/snippet}
 	{#snippet description()}
 		Every colour and key dimension is a runtime token that falls back to the shared cascade, so a theme
 		or a per-instance <code>panelStyle</code> can retint/resize a slider with no recompile. This group
@@ -477,11 +477,11 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 	<h4 class="mt-4">Theming tokens (CSS variables)</h4>
 	<ul class="pa-list-basic pa-list-basic--compact">
-		<li><code>--pc-range-track</code> / <code>-fill</code> - Track / fill colour</li>
-		<li><code>--pc-range-thumb-bg</code> / <code>-thumb-border</code> / <code>-thumb-border-hover</code> - Handle colours</li>
-		<li><code>--pc-range-focus-ring</code> - Thumb focus / active ring</li>
-		<li><code>--pc-range-tick</code> / <code>-tick-major</code> - Minor / major tick colour</li>
-		<li><code>--pc-range-track-height</code> / <code>-thumb-size</code> - Structural sizes</li>
-		<li><code>--pc-range-group-panel-min-width</code> - Floating panel width</li>
+		<li><code>--pa-range-track</code> / <code>-fill</code> - Track / fill colour</li>
+		<li><code>--pa-range-thumb-bg</code> / <code>-thumb-border</code> / <code>-thumb-border-hover</code> - Handle colours</li>
+		<li><code>--pa-range-focus-ring</code> - Thumb focus / active ring</li>
+		<li><code>--pa-range-tick</code> / <code>-tick-major</code> - Minor / major tick colour</li>
+		<li><code>--pa-range-track-height</code> / <code>-thumb-size</code> - Structural sizes</li>
+		<li><code>--pa-range-group-panel-min-width</code> - Floating panel width</li>
 	</ul>
 </Card>

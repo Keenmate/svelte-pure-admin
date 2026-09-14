@@ -272,7 +272,7 @@
 	<h4 class="mt-4">Sentiment cascade</h4>
 	<Paragraph>
 		Both <Code>KpiHeroMain</Code> and <Code>KpiHeroSide</Code> accept a <Code>variant</Code> prop that drives a
-		<Code>--pc-kpi-accent</Code> cascade var. Hero variants: <Code>positive</Code> / <Code>negative</Code> /
+		<Code>--pa-kpi-accent</Code> cascade var. Hero variants: <Code>positive</Code> / <Code>negative</Code> /
 		<Code>neutral</Code> / <Code>up-strong</Code>. The delta cell and the hero chart line both pick the colour up
 		via <Code>currentColor</Code>.
 	</Paragraph>

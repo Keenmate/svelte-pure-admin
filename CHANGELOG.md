@@ -7,8 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed — dependencies
+
+- **Sync with `@keenmate/pure-admin-core` v2.9.0-rc20 → v3.0.0** (stable; transitively pulling `@keenmate/pure-css` rc09 → `^1.0.0` stable). 3.0.0 is the stable cut of the `2.9.0-rc` foundation series — bumped to **major** only because that series carried the breaking renames already tracked here (the `--pc-*` → `--pa-*` component-token rename and the `.pa-*` → `.pc-*` shell-class rename), with no back-compat aliases. **The changes since rc20 are all CSS/theme-level — no wrapper markup changes were required:**
+  - **rc21** — depends on `@keenmate/pure-css` `^1.0.0` (first stable foundation); custom-checkbox check/indeterminate glyphs now render from the shared `--base-icon-check` / `--base-icon-indeterminate` masks; a batch of component colours (composite badges behind new `--pa-composite-badge-*` tokens, live-neutral cards, logic tree, code syntax, accent-drift) now route through the runtime token cascade for theme + dark-mode correctness; long tooltips now wrap within `max-width` instead of overflowing.
+  - **3.0.0 final** — input-surface text now uses `--pa-input-text` (was the global `--pc-text-color-1`; coincident on shipped themes); native date/time picker icons no longer double-flip to black on dark themes (removed a pre-`color-scheme` invert hack).
+  - `svelte-check` passes clean against 3.0.0 (library: 0 errors).
+- **Sync with `@keenmate/pure-admin-core` v2.9.0-rc18 → v2.9.0-rc20** (transitively pulling `@keenmate/pure-css` rc06 → rc09). rc20 renames every *component*-layer CSS custom property `--pc-*` → `--pa-*` so the property prefix matches the class prefix (`--pa-*`/`.pa-*` = pure-admin components; `--pc-*`/`.pc-*` = the pure-css foundation + app shell). Values are unchanged — only names — and there are **no back-compat aliases**, so every inline var a component writes was renamed to match:
+  - `CommandPalette` — `--pa-command-palette-{width,offset-top,results-max-height}`
+  - `Gauge` — `--pa-gauge-size`
+  - KPI (`KpiEditorial` / `KpiGauge` / `KpiGaugeList` / `KpiBentoTile` / `KpiHeroMain` / `KpiHeroSide`) — `--pa-kpi-{edit-cell-min,gauge-cell-min,gauge-tick-pos,gauge-tick-color,accent}`
+  - `DetailPanel` — `--pa-local-detail-panel-width`
+  - `Field` / `DescTableItem` / `BandedRow` / `AccentGridItem` — the copy-to-clipboard i18n vars `--pa-copy-hint-text` / `--pa-copied-text`
+  - `RangeGroup` / `Toast` doc comments (`--pa-range-*`, `--pa-icon-x`)
+  - Docs demos updated to match (`colors`, `detail-panel`, `kpi-*`, `range-group`, `responsivity`, `splitter`, Sparkline `--pa-chart-trendline-height`).
+
+  Foundation/shell tokens are untouched (`--pc-text-color-*`, `--pc-accent*`, `--pc-border-*`, `--pc-color-1..9`, the role identities `--pc-danger`/`--pc-success`/`--pc-warning`, `--pc-navbar-*`/`--pc-sidebar-*`). `svelte-check` passes clean against rc20 (library: 0 errors).
+
 ### Added — library
 
+- **Forms choice-control markup parity with core 3.0.0** (snippet re-baseline `d423d05..HEAD`; `forms.html` + `checkbox-lists.html` reworked in core `10cd55c`). The 3.0.0 contract added markup these wrappers didn't emit yet:
+  - **`Radio`** now wraps its label text in the canonical **`<span class="pa-radio__label">`** (bare text was legacy-tolerated, but the span is required for label positioning *and* for the `:has(input:required) .pa-radio__label::after` asterisk), and gains a **`labelPosition`** prop (`end` default / `start` / `top` → `pa-radio--label-{start,top}`).
+  - **`Checkbox`** gains the same **`labelPosition`** prop (`pa-checkbox--label-{start,top}`; it already emitted `__box` + `__label`).
+  - **`RadioGroup` / `CheckboxGroup`** gain a **`layout`** prop (`horizontal` / `grid` / `2col` / `3col` → `pa-{radio,checkbox}-group--*`) — core `_checkboxes-radios.scss` defines all four on both group blocks.
+  - **`FormGroup`** now emits **`pa-form-group--required`** from a wired-up `isRequired` prop. This class was blessed again in core (`_form-layout.scss` — the escape hatch for *non-native* widgets that lack a `:required` descendant for the auto-asterisk); the 2026-08-25 audit had removed it as a phantom, which is now stale. Native controls should still carry `required` on the input.
+  - *Deferred:* checkbox tri-state (`data-pa-tristate` / `data-pa-tristate-order`) is `checkbox.js`-driven — a thin-JS-wrapper follow-up; the wrapper's `$effect` already covers static `indeterminate`. The `icon.html` masked-glyph expansion (`pa-icon--clear/--remove/--chevron/--caret/…`) is its own cross-component sweep. See `MARKUP_FIDELITY_AUDIT.md` → *Status (2026-09-14)*.
+- **`Select` gains `multiple`** — renders a native `<select multiple>` (bind an array to `value`); surfaced while reconciling the docs Inputs page, which previously fell back to raw `<select class="pa-select" multiple>` because the component couldn't express multi-select. Single-value usage is unchanged.
+- **`FormActions`** (`forms/FormActions.svelte`) — the form footer button row (`<div class="pa-form-actions">`, core-scoped under `.pa-form`). Surfaced reconciling the docs Validations page, which used `<ButtonGroup class="pa-form-actions">` — layering `pa-btn-group`'s flex/gap on top of the form-actions row (pure-admin uses a plain `pa-form-actions` div).
 - **Manifest-driven Theme Mode + Color Variant selectors in `SettingsPanel`.** The panel now derives its theme controls from each theme's `theme.json` instead of hardcoding a light/dark/auto list — closing the gap with pure-admin's demo panel (`demo/js/settings-panel.js`, which gets the same data from `GET /api/themes/manifests`).
   - **New Color Variant selector** — rendered only when the theme declares more than one variant, and applies the manifest's `variantCssClass` (default `pa-color-{variant}`) to `<body>`; persisted as `color-variant`. Variants share one CSS file, so the class *is* the switch: `dark` (blue / green / red), `ayu`, `gruvbox` and `tokyo-night` gain a control that was previously unreachable.
   - **Theme Mode options come from the manifest** — a single-mode theme (`dracula`, `cobalt2`, `darkmatter`, `night-owl`, `one-dark`) hides the section and pins that mode instead of offering a Light option that does nothing, and **"Auto (System)" appears only when the theme has both light and dark**. With nothing stored, the theme's own default mode wins (`audi` is dark-first; the panel used to force it to light).

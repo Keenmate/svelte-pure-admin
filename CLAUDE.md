@@ -2,7 +2,7 @@
 
 Svelte 5 component library wrapping the Pure Admin CSS framework (`@keenmate/pure-admin-core`) into reusable, type-safe components. Every component must mirror the HTML structure from the core framework's snippet library.
 
-**Stack:** Svelte 5 (runes) · SvelteKit 2.x library mode · TypeScript · Vite · `@keenmate/pure-admin-core` v2.9.0-rc15
+**Stack:** Svelte 5 (runes) · SvelteKit 2.x library mode · TypeScript · Vite · `@keenmate/pure-admin-core` v3.0.0
 
 ## Core rules
 
@@ -107,6 +107,8 @@ Since core 2.9.0-rc04 the framework ships interactive behaviours as IIFEs under 
 
 Version-by-version breaking-change history lives in `CHANGELOG.md` (this repo) and `../pure-admin/packages/core/CHANGELOG.md` (upstream). Notable currently-load-bearing items already captured in the rules above (logical directions, runes-only, lowercase event handlers).
 
+**Component-token namespace `--pc-*` → `--pa-*` (core rc20).** Every *component*-layer custom property was renamed `--pc-*` → `--pa-*` so the property prefix matches the class prefix: `--pa-*`/`.pa-*` = pure-admin components, `--pc-*`/`.pc-*` = the pure-css **foundation** + app **shell**. Values are identical — only names change, **no back-compat aliases**. The **foundation keeps `--pc-*`** (surfaces, text `--pc-text-color-*`, `--pc-accent*`, links, `--pc-border-*`, `--pc-hover-bg`/`--pc-subtle-bg`, the role *identities* `--pc-danger`/`--pc-success`/`--pc-warning`/…, the `--pc-color-1..9` palette + `-text`), and the **shell keeps `--pc-navbar-*`/`--pc-sidebar-*`/`--pc-footer-*`/`--pc-local-sidebar-*`**. Renamed to `--pa-*`: role *fills/tints* (`--pa-danger-bg`/`--pa-success-bg`/…), sentiment (`--pa-positive`/`--pa-neutral`), icons (`--pa-icon-x`), and per-component vars any wrapper sets inline — **`--pa-command-palette-{width,offset-top,results-max-height}`** (CommandPalette), **`--pa-gauge-size`** (Gauge), **`--pa-kpi-*`** (`-accent`/`-edit-cell-min`/`-gauge-cell-min`/`-gauge-tick-pos`/`-gauge-tick-color`/`-bar-color`), **`--pa-local-detail-panel-width`** (DetailPanel), **`--pa-copy-hint-text`/`--pa-copied-text`** (Field/DescTable/Banded/AccentGrid copy-to-clipboard i18n), **`--pa-range-*`** (RangeGroup), **`--pa-chart-trendline-height`** (docs Sparkline), **`--pa-splitter-gutter-size`** (Splitter). All wrappers + docs demos synced. Because a theme's CSS bundles a baked-in core version, themes built at older core still emit `--pc-*` component tokens — mixing an old theme with rc20 components is the usual version-coupling gotcha.
+
 ---
 
-**Pure Admin Core:** 2.9.0-rc15 (synced) · **Svelte:** 5.x · **SvelteKit:** 2.x
+**Pure Admin Core:** 3.0.0 (synced) · **Svelte:** 5.x · **SvelteKit:** 2.x

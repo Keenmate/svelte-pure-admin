@@ -184,13 +184,13 @@ console.log(greet('Pure Admin'));`;
 	<p class="mb-3">
 		Use native <code>gap</code> on the splitter root to add space between the panes and the gutter —
 		the JS subtracts it from the available space so percent constraints stay accurate. A thicker
-		gutter is opt-in via <code>--pc-splitter-gutter-size</code>.
+		gutter is opt-in via <code>--pa-splitter-gutter-size</code>.
 	</p>
 
 	<Splitter
 		orientation="horizontal"
 		splitterId="demo-spaced"
-		style="height: 280px; gap: 1.6rem; --pc-splitter-gutter-size: 1rem;"
+		style="height: 280px; gap: 1.6rem; --pa-splitter-gutter-size: 1rem;"
 	>
 		<SplitterPane size="40%" min="25%" max="75%" style="padding: 0;">
 			<Card titleText="Left card" style="height: 100%; margin: 0;">
@@ -205,7 +205,7 @@ console.log(greet('Pure Admin'));`;
 			<Card titleText="Right card" style="height: 100%; margin: 0;">
 				<p class="mb-0">
 					Drag the gutter — both cards reflow. The 10px gutter is set inline via
-					<code>--pc-splitter-gutter-size</code>; the default is 6px.
+					<code>--pa-splitter-gutter-size</code>; the default is 6px.
 				</p>
 			</Card>
 		</SplitterPane>

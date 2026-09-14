@@ -19,7 +19,7 @@
 	 * remounts (tab switches in KpiTerminal, etc.).
 	 *
 	 * Layout: renders a positioned wrapper div with an explicit `height`
-	 * prop (default `var(--pc-chart-trendline-height, 4rem)`) so the canvas
+	 * prop (default `var(--pa-chart-trendline-height, 4rem)`) so the canvas
 	 * has dimensions to fill. The previous SVG-based sparklines relied on
 	 * `svg { height: ... }` CSS rules that don't apply to `<canvas>`.
 	 */
@@ -45,7 +45,7 @@
 		tension?: number;
 		/**
 		 * CSS height for the chart wrapper. Default uses
-		 * `var(--pc-chart-trendline-height, 4rem)`. Pass `"100%"` to fill
+		 * `var(--pa-chart-trendline-height, 4rem)`. Pass `"100%"` to fill
 		 * a parent with explicit dimensions (e.g. the bento background slot).
 		 */
 		height?: string;
@@ -58,7 +58,7 @@
 		type = 'area',
 		showEndDot = false,
 		tension = 0,
-		height = 'var(--pc-chart-trendline-height, 4rem)',
+		height = 'var(--pa-chart-trendline-height, 4rem)',
 		class: className = ''
 	}: Props = $props();
 

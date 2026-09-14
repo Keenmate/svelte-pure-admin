@@ -10,8 +10,13 @@
 	type SelectState = 'success' | 'warning' | 'error';
 
 	interface Props {
-		/** Select value */
-		value?: string;
+		/**
+		 * Select value. Scalar for a single select; bind an array when `multiple`
+		 * is set (Svelte binds the list of selected option values).
+		 */
+		value?: string | number | Array<string | number>;
+		/** Allow multiple selections — renders a native `<select multiple>`. */
+		multiple?: boolean;
 		/** Select size */
 		size?: SelectSize;
 		/** Validation state - auto-derived from errors if not set */
@@ -40,6 +45,7 @@
 
 	let {
 		value = $bindable(),
+		multiple = false,
 		size,
 		state,
 		errors,
@@ -84,6 +90,14 @@
 	});
 </script>
 
-<select bind:value {id} {name} {disabled} {required} class={classes()} aria-invalid={ariaInvalid()} {onchange}>
-	{@render children?.()}
-</select>
+<!-- Svelte requires `multiple` to be a static attribute alongside `bind:value`,
+     so the two modes are separate branches rather than a dynamic attribute. -->
+{#if multiple}
+	<select multiple bind:value {id} {name} {disabled} {required} class={classes()} aria-invalid={ariaInvalid()} {onchange}>
+		{@render children?.()}
+	</select>
+{:else}
+	<select bind:value {id} {name} {disabled} {required} class={classes()} aria-invalid={ariaInvalid()} {onchange}>
+		{@render children?.()}
+	</select>
+{/if}

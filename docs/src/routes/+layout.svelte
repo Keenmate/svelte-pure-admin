@@ -644,11 +644,6 @@
 					{#snippet icon()}🌈{/snippet}
 				</SidebarItem>
 
-				<!-- Forms -->
-				<SidebarItem href="/forms" labelText="Forms" active={$page.url.pathname === '/forms'}>
-					{#snippet icon()}📝{/snippet}
-				</SidebarItem>
-
 				<!-- Svelte Integration -->
 				<SidebarItem labelText="Svelte" hasSubmenu={true}>
 					{#snippet icon()}🔥{/snippet}
@@ -690,6 +685,9 @@
 						<SidebarItem href="/validations" labelText="Validations" active={$page.url.pathname === '/validations'}>
 							{#snippet icon()}✓{/snippet}
 						</SidebarItem>
+						<SidebarItem href="/forms" labelText="Forms" active={$page.url.pathname === '/forms'}>
+							{#snippet icon()}📝{/snippet}
+						</SidebarItem>
 						<SidebarItem href="/cards" labelText="Cards" active={$page.url.pathname === '/cards'}>
 							{#snippet icon()}🃏{/snippet}
 						</SidebarItem>
@@ -723,6 +721,9 @@
 						<SidebarItem href="/loaders" labelText="Loaders" active={$page.url.pathname === '/loaders'}>
 							{#snippet icon()}⏳{/snippet}
 						</SidebarItem>
+						<SidebarItem href="/pagers" labelText="Pagers" active={$page.url.pathname === '/pagers'}>
+							{#snippet icon()}📄{/snippet}
+						</SidebarItem>
 						<SidebarItem href="/tooltips" labelText="Tooltips" active={$page.url.pathname === '/tooltips'}>
 							{#snippet icon()}💬{/snippet}
 						</SidebarItem>
@@ -741,6 +742,12 @@
 						<SidebarItem href="/detail-panel" labelText="Detail Panel" active={$page.url.pathname === '/detail-panel'}>
 							{#snippet icon()}📋{/snippet}
 						</SidebarItem>
+						<SidebarItem href="/splitter" labelText="Splitter" active={$page.url.pathname === '/splitter'}>
+							{#snippet icon()}↔️{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/range-group" labelText="Range Group" active={$page.url.pathname === '/range-group'}>
+							{#snippet icon()}🎚️{/snippet}
+						</SidebarItem>
 						<SidebarItem href="/data-display" labelText="Data Display" active={$page.url.pathname === '/data-display'}>
 							{#snippet icon()}👁️{/snippet}
 						</SidebarItem>
@@ -749,9 +756,6 @@
 						</SidebarItem>
 						<SidebarItem href="/data-visualization" labelText="Data Visualization" active={$page.url.pathname === '/data-visualization'}>
 							{#snippet icon()}📈{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/range-group" labelText="Range Group" active={$page.url.pathname === '/range-group'}>
-							{#snippet icon()}🎚️{/snippet}
 						</SidebarItem>
 					{/snippet}
 				</SidebarItem>
@@ -778,9 +782,6 @@
 						<SidebarItem href="/comparison" labelText="Comparison" active={$page.url.pathname === '/comparison'}>
 							{#snippet icon()}⚖️{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/pagers" labelText="Pagers" active={$page.url.pathname === '/pagers'}>
-							{#snippet icon()}📄{/snippet}
-						</SidebarItem>
 					{/snippet}
 				</SidebarItem>
 
@@ -805,9 +806,6 @@
 					{#snippet icon()}📐{/snippet}
 					{#snippet submenu()}
 						<SidebarItem href="/layouts" labelText="Page Layouts" active={$page.url.pathname === '/layouts'}>
-							{#snippet icon()}•{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/splitter" labelText="Splitter" active={$page.url.pathname === '/splitter'}>
 							{#snippet icon()}•{/snippet}
 						</SidebarItem>
 					{/snippet}

@@ -132,7 +132,7 @@
 	</div>
 
 	<!-- Canonical close: the masked pa-icon--x primitive (same lucide X as
-	     --pc-icon-x), sized/tinted via CSS to match every other core close glyph
+	     --pa-icon-x), sized/tinted via CSS to match every other core close glyph
 	     — not a hardcoded inline SVG at a fixed 24px. -->
 	<button class="pa-toast__close" onclick={handleClose} aria-label={$_('pureAdmin.buttons.close')}><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 

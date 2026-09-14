@@ -17,6 +17,14 @@
 		isHorizontal?: boolean;
 		/** Horizontal layout - alias for isHorizontal */
 		horizontal?: boolean;
+		/**
+		 * Mark the group required — emits `pa-form-group--required`, the escape
+		 * hatch for NON-native widgets (custom selects, etc.) that have no
+		 * `:required` descendant for core's auto-asterisk. For a native control,
+		 * prefer putting `required` on the input (Input/Select/Textarea forward
+		 * it) and let `:has(:required) > label::after` draw the marker for free.
+		 */
+		isRequired?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Children content */
@@ -29,6 +37,7 @@
 		isSuccess = false,
 		isHorizontal = false,
 		horizontal = false,
+		isRequired = false,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -47,9 +56,10 @@
 			if (isSuccess) base.push('pa-form-group--success');
 			if (isError) base.push('pa-form-group--error');
 		}
-		// Core has no `.pa-form-group--required` — required is the native
-		// `required` attribute on the control, which core's
-		// `:has(:required) > label::after` turns into the label asterisk.
+		// `pa-form-group--required` is the escape hatch for non-native widgets
+		// (core `_form-layout.scss`); native controls should instead carry the
+		// `required` attribute so `:has(:required) > label::after` fires.
+		if (isRequired) base.push('pa-form-group--required');
 		if (effectiveHorizontal) base.push('pa-form-group--horizontal');
 		if (className) base.push(className);
 		return base.join(' ');

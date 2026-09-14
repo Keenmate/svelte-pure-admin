@@ -18,7 +18,7 @@
 	 * Magazine-cover restraint — N×M grid of tiles with hairline rules between
 	 * cells, light-weight numerals, no charts. Wrap tiles in this card and
 	 * use KpiEditorialTile for each cell. Default layout is a cell-min-driven
-	 * `auto-fit` grid — cells stay at least `--pc-kpi-edit-cell-min` wide
+	 * `auto-fit` grid — cells stay at least `--pa-kpi-edit-cell-min` wide
 	 * (default `14rem`); the grid fits as many columns as the container allows.
 	 */
 
@@ -36,7 +36,7 @@
 		 */
 		gridLayout?: KpiEditorialGridLayout;
 		/**
-		 * CSS length applied as `--pc-kpi-edit-cell-min` on the grid element (default
+		 * CSS length applied as `--pa-kpi-edit-cell-min` on the grid element (default
 		 * upstream is `14rem`). Smaller → more columns at the same container width;
 		 * larger → fewer.
 		 */
@@ -73,7 +73,7 @@
 	});
 
 	const gridStyle = $derived(
-		cellMinWidth ? `--pc-kpi-edit-cell-min: ${cellMinWidth};` : undefined
+		cellMinWidth ? `--pa-kpi-edit-cell-min: ${cellMinWidth};` : undefined
 	);
 </script>
 

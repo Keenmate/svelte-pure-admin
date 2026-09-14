@@ -393,7 +393,7 @@
 		min-width: 20rem;
 		max-width: 32rem;
 		padding: 0.5rem;
-		background: var(--pc-card-bg);
+		background: var(--pa-card-bg);
 		border: 1px solid var(--pc-border-color);
 		border-radius: var(--pc-border-radius);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);

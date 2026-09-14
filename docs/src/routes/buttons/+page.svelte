@@ -371,7 +371,7 @@
 <!-- 7. Split Buttons -->
 <Card titleText="Split Buttons" subtitleText="Primary action + dropdown toggle combined into a single control.">
 	<!-- Primary examples (Save, Delete, Export) -->
-	<div class="pa-btn-group gap-lg">
+	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => alert('Save clicked')}>
 			Save
 			{#snippet menu()}
@@ -416,11 +416,11 @@
 				</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
-	</div>
+	</ButtonGroup>
 
 	<!-- Sizes -->
 	<Heading level={4} class="mt-4">Sizes</Heading>
-	<div class="pa-btn-group gap-lg">
+	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" size="xs" onclick={() => {}}>
 			XS Action
 			{#snippet menu()}
@@ -449,12 +449,12 @@
 				<SplitButtonItem>Option B</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
-	</div>
+	</ButtonGroup>
 
 	<!-- Upward Placement -->
 	<Heading level={4} class="mt-4">Upward Placement</Heading>
 	<Paragraph class="text-muted mb-2">Use <code>data-placement="top-end"</code> to open the menu upward. Floating UI will auto-flip if there's not enough space.</Paragraph>
-	<div class="pa-btn-group gap-lg">
+	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" placement="top-end" onclick={() => {}}>
 			Upload
 			{#snippet menu()}
@@ -472,12 +472,12 @@
 				<SplitButtonItem>New Presentation</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
-	</div>
+	</ButtonGroup>
 
 	<!-- Custom Icons -->
 	<Heading level={4} class="mt-4">Custom Icons (no rotation)</Heading>
 	<Paragraph class="text-muted mb-2">Omit <code>pa-btn-split__chevron</code> from the icon for static icons that don't rotate on open.</Paragraph>
-	<div class="pa-btn-group gap-lg">
+	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => alert('Share')}>
 			Share
 			{#snippet toggleIcon()}<i class="fas fa-share-nodes text-2xs"></i>{/snippet}
@@ -504,12 +504,12 @@
 				<SplitButtonItem>Move to Trash</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
-	</div>
+	</ButtonGroup>
 
 	<!-- Items with Actions -->
 	<Heading level={4} class="mt-4">Items with Actions</Heading>
 	<Paragraph class="text-muted mb-2">Two patterns. <strong>Bookmarks</strong> and <strong>Recent</strong> use an inline action button (a <code>.pa-btn-split__item-row</code> delete) — a row-action isn't the item itself, so clicking it removes the row and the menu stays open on its own. <strong>Members</strong> instead confirms on the item: the item carries <code>data-pa-keep-open</code> so clicking it (a real menu item, which would otherwise close the menu) keeps it open while the popconfirm is anchored — and the primary button adds a new member.</Paragraph>
-	<div class="pa-btn-group gap-lg">
+	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => {}}>
 			{#snippet icon()}<i class="fas fa-bookmark"></i>{/snippet}
 			Bookmarks
@@ -558,7 +558,7 @@
 				{/each}
 			{/snippet}
 		</SplitButton>
-	</div>
+	</ButtonGroup>
 
 	<Popconfirm
 		bind:show={removeShow}

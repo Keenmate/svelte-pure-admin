@@ -21,7 +21,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@keenmate/pure-admin-core": "^2.9.0-rc18",
+    "@keenmate/pure-admin-core": "^3.0.0",
     "@sveltejs/adapter-node": "^5.5.4",
     "@sveltejs/adapter-static": "^3.0.0",
     "@sveltejs/kit": "^2.50.0",

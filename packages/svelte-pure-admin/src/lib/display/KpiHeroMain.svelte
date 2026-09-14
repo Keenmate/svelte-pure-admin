@@ -21,7 +21,7 @@
 	export type KpiHeroVariant = 'positive' | 'negative' | 'neutral' | 'up-strong';
 
 	interface Props {
-		/** Sentiment colour (cascades to delta + chart via `--pc-kpi-accent`). */
+		/** Sentiment colour (cascades to delta + chart via `--pa-kpi-accent`). */
 		variant?: KpiHeroVariant;
 		/** Uppercase mono label. */
 		labelText?: string;

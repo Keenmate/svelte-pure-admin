@@ -119,8 +119,8 @@
 
 	const barStyle = $derived(() => {
 		const parts: string[] = [];
-		if (tickPosition) parts.push(`--pc-kpi-gauge-tick-pos: ${tickPosition}`);
-		if (tickColor) parts.push(`--pc-kpi-gauge-tick-color: ${tickColor}`);
+		if (tickPosition) parts.push(`--pa-kpi-gauge-tick-pos: ${tickPosition}`);
+		if (tickColor) parts.push(`--pa-kpi-gauge-tick-color: ${tickColor}`);
 		return parts.join('; ');
 	});
 

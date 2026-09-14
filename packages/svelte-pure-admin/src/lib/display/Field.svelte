@@ -93,8 +93,8 @@
 	});
 
 	// Feed the hint / feedback strings into core's copy `::after` via the
-	// inherited CSS vars it reads (`var(--pc-copy-hint-text, 'Click to copy')`
-	// / `var(--pc-copied-text, 'Copied!')`, core >= the copy-hint-i18n release).
+	// inherited CSS vars it reads (`var(--pa-copy-hint-text, 'Click to copy')`
+	// / `var(--pa-copied-text, 'Copied!')`, core >= the copy-hint-i18n release).
 	// Set inline only when copy is active, so non-copy fields stay clean and a
 	// per-field `copyHintText` / `copiedText` prop overrides the app-wide value
 	// through the normal cascade. On older core the literal `::after` ignores
@@ -104,7 +104,7 @@
 	}
 	const copyVarStyle = $derived(
 		copyMode && canCopy
-			? `--pc-copy-hint-text: ${cssString(resolvedHintText)}; --pc-copied-text: ${cssString(resolvedCopiedText)}`
+			? `--pa-copy-hint-text: ${cssString(resolvedHintText)}; --pa-copied-text: ${cssString(resolvedCopiedText)}`
 			: undefined
 	);
 
@@ -192,7 +192,7 @@
 <!--
 	No scoped <style> and no invented classes: the copy hint / "Copied!"
 	feedback is core's own `.pa-field__value::after`, and its text is fed
-	through the inherited `--pc-copy-hint-text` / `--pc-copied-text` vars set
+	through the inherited `--pa-copy-hint-text` / `--pa-copied-text` vars set
 	inline above (core copy-hint-i18n release). Previously this component
 	suppressed core's ::after and re-implemented the hint with a scoped
 	stylesheet + `pa-field--copy-click-custom` / `--copied-custom` /

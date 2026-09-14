@@ -23,7 +23,7 @@
 	import KpiDetailPopover from './KpiDetailPopover.svelte';
 
 	interface Props {
-		/** Sentiment colour (cascades to delta + chart via `--pc-kpi-accent`). */
+		/** Sentiment colour (cascades to delta + chart via `--pa-kpi-accent`). */
 		variant?: KpiDeltaVariant;
 		/** Apply `pa-kpi-bento-tile--hero` (larger value, taller chart). Set on the first tile. */
 		isHero?: boolean;

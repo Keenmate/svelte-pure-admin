@@ -18,6 +18,65 @@ fixed) · 🔧 fixed in this pass · ⚠️ needs follow-up / discussion.
 
 ---
 
+## ✅ Status (2026-09-14) — 3.0.0 re-baseline (snippet-delta triage)
+
+The lib was synced to core **3.0.0** (the stable cut of the `2.9.0-rc` series;
+`--pc-*`→`--pa-*` component-token + `.pa-*`→`.pc-*` shell-class renames). To avoid
+re-dumping all ~250 wrappers, refreshed the audit baseline by diffing the snippet
+contract from the last full audit (`d423d05`, 2026-08-25) to `HEAD` (3.0.0) and
+classifying each changed snippet as **structural** (markup shape moved → re-audit)
+vs **mechanical** (token/shell-class rename or comment/hash refresh → already
+absorbed by the sync).
+
+**Result: 24 of 27 component snippets are mechanical-only** (verified the wrappers
+emit the renamed names) — no re-audit: cards, data-display, statistics, kpi, tables,
+lists, badges, command-palette, layout, grid, profile, callouts, toasts, tooltips,
+notifications, loaders, typography, buttons, filter-card, range-group, utilities,
+customization (`manifest.json` is catalog metadata; `web-*` aren't our wrappers).
+
+**Three snippets changed structurally** (landed post-baseline in `10cd55c` forms
+rework + the `icon.html` glyph-catalog expansion):
+
+- **forms.html → Radio / RadioGroup / FormGroup:**
+  - Radio must wrap label text in **`<span class="pa-radio__label">`** (bare text is
+    legacy-tolerated but the span is *required* for label positioning **and** for the
+    `:has(input:required) .pa-radio__label::after` asterisk). New position modifiers
+    `--label-end`(default)/`--label-start`/`--label-top`.
+  - `.pa-radio-group` / `.pa-checkbox-group` share (SCSS `_checkboxes-radios.scss:8-9`)
+    the layout modifiers **`--horizontal` / `--grid` / `--2col` / `--3col`** (the
+    snippet prose under-reported radio; SCSS confirms all four on both).
+  - **`.pa-form-group--required` is blessed again** (`_form-layout.scss:86` — escape
+    hatch for *non-native* widgets with no `:required` descendant). The 2026-08-25
+    audit removed it as "phantom"; that removal is now **stale** — FormGroup should
+    emit it from its (currently inert) `isRequired` prop.
+- **checkbox-lists.html → Checkbox / CheckboxGroup:**
+  - Checkbox already emits `__box` + `__label` ✅. New markup: `--label-start` /
+    `--label-top` position modifiers; group layout modifiers (above).
+  - New **tri-state** (`data-pa-tristate` + `data-pa-tristate-order`) and static
+    `data-pa-indeterminate` are **`checkbox.js`-driven** (core JS) — a thin-JS-wrapper
+    decision, deferred to a follow-up (the wrapper's `$effect` already sets the
+    `indeterminate` DOM property for the static case).
+- **icon.html → the `pa-icon` primitive (broad, lower priority):** new masked glyph
+  modifiers `--clear` / `--remove` / `--chevron` / `--caret`(`-down`/`-up`) /
+  `--expand` / `--collapse` / `--add` / `--edit` / `--delete` / `--search` (joining
+  `--x`). Opportunity to replace inline FA/`<svg>` glyphs (clear/remove/chevron/
+  expander) with masked icons — a cross-component sweep, its own pass.
+
+**This pass (2026-09-14) — 🔧 forms choice-control cluster fixed** (svelte-check
+clean, 356 files, 0 errors; see *Added — library* in `CHANGELOG.md`):
+- `Radio` — label text wrapped in `pa-radio__label`; new `labelPosition`
+  (`end`/`start`/`top` → `pa-radio--label-{start,top}`).
+- `Checkbox` — new `labelPosition` (`pa-checkbox--label-{start,top}`); already
+  emitted `__box` + `__label`.
+- `RadioGroup` / `CheckboxGroup` — new `layout` prop
+  (`horizontal`/`grid`/`2col`/`3col`).
+- `FormGroup` — wired `isRequired` → `pa-form-group--required` (re-blessed escape
+  hatch for non-native widgets; reverses the stale 2026-08-25 removal).
+- Deferred: checkbox tri-state (`checkbox.js`-driven, JS-wrapper decision) and the
+  `pa-icon--*` glyph-catalog sweep (its own cross-component pass).
+
+---
+
 ## ✅ Status (2026-08-25) — full 39-snippet re-validation complete
 
 Triggered by core `d423d05` (all 39 `snippets/*.html` brought to the badges.html

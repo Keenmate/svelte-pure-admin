@@ -658,7 +658,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>--pc-local-detail-panel-width</code></td><td>Runtime panel width (set by resize handle, persisted to localStorage)</td></tr>
+			<tr><td><code>--pa-local-detail-panel-width</code></td><td>Runtime panel width (set by resize handle, persisted to localStorage)</td></tr>
 			<tr><td><code>--pc-detail-panel-bg</code></td><td>Panel background color (defaults to card background)</td></tr>
 			<tr><td><code>--pc-detail-panel-border-color</code></td><td>Panel border color</td></tr>
 			<tr><td><code>--pc-detail-panel-header-bg</code></td><td>Header background color</td></tr>

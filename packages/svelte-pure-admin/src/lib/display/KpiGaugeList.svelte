@@ -16,7 +16,7 @@
 	 * + demo/views/kpi-comparison-gauges.mustache
 	 *
 	 * Goal-oriented progress bars. Default layout is a cell-min-driven
-	 * `auto-fit` grid — cells stay at least `--pc-kpi-gauge-cell-min`
+	 * `auto-fit` grid — cells stay at least `--pa-kpi-gauge-cell-min`
 	 * wide (default `20rem`), the grid fits as many columns as the
 	 * container allows. Pass `gridLayout` for `--2col` (deterministic) or
 	 * one of `--max-N` cap modifiers. Pass `cellMinWidth` to override the
@@ -37,7 +37,7 @@
 		 */
 		gridLayout?: KpiGaugeListGridLayout;
 		/**
-		 * CSS length applied as `--pc-kpi-gauge-cell-min` on the grid element (default
+		 * CSS length applied as `--pa-kpi-gauge-cell-min` on the grid element (default
 		 * upstream is `20rem`). Smaller → more columns at the same container width;
 		 * larger → fewer.
 		 */
@@ -74,7 +74,7 @@
 	});
 
 	const gridStyle = $derived(
-		cellMinWidth ? `--pc-kpi-gauge-cell-min: ${cellMinWidth};` : undefined
+		cellMinWidth ? `--pa-kpi-gauge-cell-min: ${cellMinWidth};` : undefined
 	);
 </script>
 

@@ -13,6 +13,7 @@
 	 */
 
 	type CheckboxSize = 'xs' | 'sm' | 'lg' | 'xl';
+	type CheckboxLabelPosition = 'end' | 'start' | 'top';
 
 	interface Props {
 		/** Checkbox checked state */
@@ -27,6 +28,11 @@
 		isXMark?: boolean;
 		/** Checkbox size */
 		size?: CheckboxSize;
+		/**
+		 * Label position relative to the box. `end` (default) needs no class;
+		 * `start` / `top` emit `pa-checkbox--label-{position}`.
+		 */
+		labelPosition?: CheckboxLabelPosition;
 		/** Checkbox ID (required for label association) */
 		id: string;
 		/** Checkbox name */
@@ -50,6 +56,7 @@
 		required = false,
 		isXMark = false,
 		size,
+		labelPosition,
 		id,
 		name,
 		value,
@@ -73,6 +80,8 @@
 		const base = ['pa-checkbox'];
 		if (size) base.push(`pa-checkbox--${size}`);
 		if (isXMark) base.push('pa-checkbox--x');
+		// `end` is the default (no class); only start/top emit a modifier.
+		if (labelPosition && labelPosition !== 'end') base.push(`pa-checkbox--label-${labelPosition}`);
 		if (disabled) base.push('pa-checkbox--disabled');
 		if (className) base.push(className);
 		return base.join(' ');

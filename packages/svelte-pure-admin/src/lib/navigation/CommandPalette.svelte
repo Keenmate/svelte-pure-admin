@@ -46,11 +46,11 @@
 		 * (60.8 / 38.4rem). Composes with the individual overrides below.
 		 */
 		size?: 'sm' | 'lg' | 'xl';
-		/** Override the container max-width (`--pc-command-palette-width`, e.g. `'72rem'`). */
+		/** Override the container max-width (`--pa-command-palette-width`, e.g. `'72rem'`). */
 		width?: string;
-		/** Override the gap above the palette (`--pc-command-palette-offset-top`). */
+		/** Override the gap above the palette (`--pa-command-palette-offset-top`). */
 		offsetTop?: string;
-		/** Override the results scroll height (`--pc-command-palette-results-max-height`). */
+		/** Override the results scroll height (`--pa-command-palette-results-max-height`). */
 		resultsMaxHeight?: string;
 		/** Additional CSS classes */
 		class?: string;
@@ -113,9 +113,9 @@
 	// so they fall back to the SCSS defaults / the `size` preset otherwise.
 	const paletteStyle = $derived(() => {
 		const vars: string[] = [];
-		if (width) vars.push(`--pc-command-palette-width: ${width}`);
-		if (offsetTop) vars.push(`--pc-command-palette-offset-top: ${offsetTop}`);
-		if (resultsMaxHeight) vars.push(`--pc-command-palette-results-max-height: ${resultsMaxHeight}`);
+		if (width) vars.push(`--pa-command-palette-width: ${width}`);
+		if (offsetTop) vars.push(`--pa-command-palette-offset-top: ${offsetTop}`);
+		if (resultsMaxHeight) vars.push(`--pa-command-palette-results-max-height: ${resultsMaxHeight}`);
 		return vars.join('; ') || undefined;
 	});
 

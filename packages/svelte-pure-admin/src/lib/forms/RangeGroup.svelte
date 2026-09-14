@@ -70,7 +70,7 @@
 		onreset?: (values: RangeGroupValues) => void;
 		/** Accessible label for the floating panel dialog. */
 		ariaLabel?: string;
-		/** Inline style on the `__panel` (where per-instance `--pc-range-*` overrides belong). */
+		/** Inline style on the `__panel` (where per-instance `--pa-range-*` overrides belong). */
 		panelStyle?: string;
 		/** Additional CSS classes on the group root. */
 		class?: string;

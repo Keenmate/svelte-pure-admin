@@ -3,14 +3,17 @@
 	 * Pure Admin Radio Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/forms.html
 	 *
-	 * Uses the pa-radio label pattern from pure-admin-visual:
+	 * Canonical pa-radio label pattern (snippets/forms.html) — the text is
+	 * wrapped in a `pa-radio__label` span (required for label positioning and the
+	 * `:has(input:required) .pa-radio__label::after` asterisk):
 	 * <label class="pa-radio">
 	 *   <input type="radio" ...>
-	 *   Label text
+	 *   <span class="pa-radio__label">Label text</span>
 	 * </label>
 	 */
 
 	type RadioSize = 'xs' | 'sm' | 'lg' | 'xl';
+	type RadioLabelPosition = 'end' | 'start' | 'top';
 
 	interface Props {
 		/** Radio group value (bindable) */
@@ -25,6 +28,11 @@
 		name: string;
 		/** Radio size */
 		size?: RadioSize;
+		/**
+		 * Label position relative to the input. `end` (default) needs no class;
+		 * `start` / `top` emit `pa-radio--label-{position}`.
+		 */
+		labelPosition?: RadioLabelPosition;
 		/** Label text */
 		labelText?: string;
 		/** Additional CSS classes for wrapper */
@@ -42,6 +50,7 @@
 		required = false,
 		name,
 		size,
+		labelPosition,
 		labelText,
 		class: className = '',
 		labelSnippet,
@@ -52,6 +61,8 @@
 	const wrapperClasses = $derived(() => {
 		const base = ['pa-radio'];
 		if (size) base.push(`pa-radio--${size}`);
+		// `end` is the default (no class); only start/top emit a modifier.
+		if (labelPosition && labelPosition !== 'end') base.push(`pa-radio--label-${labelPosition}`);
 		// Core has no `.pa-radio--disabled` (only size modifiers) — the native
 		// `disabled` attribute on the <input> is the disabled contract
 		// (snippets/forms.html). Checkbox has --disabled; radio does not.
@@ -71,8 +82,8 @@
 		{onchange}
 	/>
 	{#if labelSnippet}
-		{@render labelSnippet()}
+		<span class="pa-radio__label">{@render labelSnippet()}</span>
 	{:else if labelText}
-		{labelText}
+		<span class="pa-radio__label">{labelText}</span>
 	{/if}
 </label>

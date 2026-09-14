@@ -196,7 +196,7 @@
 	<h4 class="mt-4">Hairline rules</h4>
 	<Paragraph>
 		Dividers between cells are painted by <Code>gap: 1px</Code> on <Code>pa-kpi-edit__grid</Code> over a
-		<Code>background: var(--pc-border-color)</Code>; each tile paints <Code>--pc-card-bg</Code> over its
+		<Code>background: var(--pc-border-color)</Code>; each tile paints <Code>--pa-card-bg</Code> over its
 		own area. Only the gap shows through, giving single-pixel hairlines on every interior boundary.
 	</Paragraph>
 
@@ -221,7 +221,7 @@
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
 		<li><Code>gridLayout</Code> — <Code>2col</Code> or <Code>max-2</Code>…<Code>max-6</Code> grid modifier (default: cell-min <Code>auto-fit</Code>).</li>
-		<li><Code>cellMinWidth</Code> — CSS length for <Code>--pc-kpi-edit-cell-min</Code> (default <Code>14rem</Code>).</li>
+		<li><Code>cellMinWidth</Code> — CSS length for <Code>--pa-kpi-edit-cell-min</Code> (default <Code>14rem</Code>).</li>
 	</BasicList>
 
 	<h4 class="mt-4">KpiEditorialTile props</h4>

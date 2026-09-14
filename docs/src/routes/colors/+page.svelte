@@ -3,10 +3,10 @@
 
 	// Color swatch data for semantic colors
 	const semanticColors = [
-		{ name: 'Success', variable: '--pc-success-bg', light: false },
-		{ name: 'Warning', variable: '--pc-warning-bg', light: false },
-		{ name: 'Danger', variable: '--pc-danger-bg', light: false },
-		{ name: 'Info', variable: '--pc-info-bg', light: false },
+		{ name: 'Success', variable: '--pa-success-bg', light: false },
+		{ name: 'Warning', variable: '--pa-warning-bg', light: false },
+		{ name: 'Danger', variable: '--pa-danger-bg', light: false },
+		{ name: 'Info', variable: '--pa-info-bg', light: false },
 		{ name: 'Accent', variable: '--pc-accent', light: false },
 		{ name: 'Primary BG', variable: '--pc-primary-bg', light: true },
 		{ name: 'Secondary BG', variable: '--pc-secondary-bg', light: true }
@@ -24,7 +24,7 @@
 		`background-color: var(${variable}); height: 6rem; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: var(--pc-border-radius) var(--pc-border-radius) 0 0; ${light ? 'color: var(--pc-text-primary);' : 'color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.3);'}`;
 
 	const swatchInfoStyle =
-		'padding: 0.75rem; background: var(--pc-card-bg); font-size: 1.2rem; border: 1px solid var(--pc-border-color); border-top: none; border-radius: 0 0 var(--pc-border-radius) var(--pc-border-radius);';
+		'padding: 0.75rem; background: var(--pa-card-bg); font-size: 1.2rem; border: 1px solid var(--pc-border-color); border-top: none; border-radius: 0 0 var(--pc-border-radius) var(--pc-border-radius);';
 </script>
 
 <!-- Semantic Colors -->

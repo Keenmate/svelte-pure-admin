@@ -19,7 +19,7 @@
 	import KpiDetailPopover from './KpiDetailPopover.svelte';
 
 	interface Props {
-		/** Sentiment colour (cascades to delta via `--pc-kpi-accent`). */
+		/** Sentiment colour (cascades to delta via `--pa-kpi-accent`). */
 		variant?: KpiHeroVariant;
 		/** Uppercase mono label. */
 		labelText?: string;

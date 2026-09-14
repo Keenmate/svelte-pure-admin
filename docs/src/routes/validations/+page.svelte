@@ -11,7 +11,7 @@
 		Select,
 		Checkbox,
 		Button,
-		ButtonGroup,
+		FormActions,
 		Grid,
 		Column,
 		Heading,
@@ -78,7 +78,7 @@
 <Card titleText="1. Inline Field Errors">
 	<Paragraph class="mb-3">The most common pattern. Error messages appear directly below each field. Best for forms where users need immediate field-level feedback.</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<Grid>
 			<Column size="100" md="50">
 				<FormGroup state="error">
@@ -120,7 +120,7 @@
 <Card titleText="2. Summary Block (Top of Form)">
 	<Paragraph class="mb-3">All errors collected in a single alert at the top. Good for accessibility and giving users a quick overview of all issues.</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<Alert variant="danger" class="mb-4">
 			<Strong>Please fix the following errors:</Strong>
 			<BasicList class="mt-0 mb-0">
@@ -175,7 +175,7 @@
 <Card titleText="3. Combined: Summary + Inline (Recommended)">
 	<Paragraph class="mb-3">The best of both worlds. Summary for overview, isInline for specific guidance. Most accessible approach.</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<Alert variant="danger" class="mb-4">
 			<Strong>2 errors found:</Strong>
 			<BasicList class="mt-0 mb-0">
@@ -218,7 +218,7 @@
 <Card titleText="4. Border + Icon Only (Minimal)">
 	<Paragraph class="mb-3">Space-efficient but less informative. Red border and icon indicate error without text message. User must infer the issue or hover/click for details.</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<Grid>
 			<Column size="100" md="1-3">
 				<FormGroup>
@@ -265,7 +265,7 @@
 <Card titleText="5. Right-side Indicators">
 	<Paragraph class="mb-3">Error text positioned to the right of the input. Works well in horizontal form layouts with more screen real estate.</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<FormGroup horizontal class="align-items-center">
 			<FormLabel class="pc-col-md-25" for="company-name">Company Name</FormLabel>
 			<Column class="pc-col-md-40">
@@ -302,7 +302,7 @@
 <Card titleText="6. Helper Text Transforms to Error">
 	<Paragraph class="mb-3">Helper text below the field transforms into error text when validation fails. Maintains consistent spacing.</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<Grid>
 			<Column size="100" md="50">
 				<FormGroup>
@@ -326,7 +326,7 @@
 <Card titleText="7. Toast Notifications">
 	<Paragraph class="mb-3">Validation errors shown as toast notifications. Best for submit-level errors or async validation (e.g., server-side checks).</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<Grid>
 			<Column size="100" md="50">
 				<FormGroup>
@@ -363,7 +363,7 @@
 
 	<Grid>
 		<Column size="100" md="1-3">
-			<Card class="pa-card--bordered h-100" variant="warning" titleText="On Input (Real-time)">
+			<Card variant="warning" titleText="On Input (Real-time)">
 				<FormGroup state={onInputError() ? 'error' : onInputEmail ? 'success' : undefined}>
 					<FormLabel>Email</FormLabel>
 					<Input
@@ -382,7 +382,7 @@
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
-			<Card class="pa-card--bordered h-100" variant="success" titleText="On Blur (Recommended)">
+			<Card variant="success" titleText="On Blur (Recommended)">
 				<FormGroup state={onBlurError() ? 'error' : (onBlurTouched && onBlurEmail) ? 'success' : undefined}>
 					<FormLabel>Email</FormLabel>
 					<Input
@@ -402,7 +402,7 @@
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
-			<Card class="pa-card--bordered h-100" titleText="On Submit">
+			<Card titleText="On Submit">
 				<FormGroup state={onSubmitError ? 'error' : onSubmitSuccess ? 'success' : undefined}>
 					<FormLabel>Email</FormLabel>
 					<Input
@@ -429,7 +429,7 @@
 <Card titleText="9. Multi-field / Cross-field Validation">
 	<Paragraph class="mb-3">When validation depends on multiple fields (e.g., password confirmation, date ranges).</Paragraph>
 
-	<Form class="pa-form">
+	<Form>
 		<Grid>
 			<Column size="100" md="50">
 				<FormGroup state="success">
@@ -495,7 +495,7 @@
 		Please complete all required fields in Step 2 before proceeding.
 	</Alert>
 
-	<Form class="pa-form">
+	<Form>
 		<Grid>
 			<Column size="100" md="50">
 				<FormGroup state="error">
@@ -512,10 +512,10 @@
 				</FormGroup>
 			</Column>
 		</Grid>
-		<ButtonGroup class="pa-form-actions">
+		<FormActions>
 			<Button variant="secondary">Back</Button>
 			<Button variant="primary" disabled>Next Step</Button>
-		</ButtonGroup>
+		</FormActions>
 	</Form>
 </Card>
 

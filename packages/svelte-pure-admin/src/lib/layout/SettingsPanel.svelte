@@ -483,7 +483,7 @@
 	}
 
 	// Command-palette width — swap the size preset modifier on the palette shell
-	// (`#commandPalette`). Each preset just sets `--pc-command-palette-width`; no
+	// (`#commandPalette`). Each preset just sets `--pa-command-palette-width`; no
 	// modifier = the 608px default. Inert until a palette with that id is mounted.
 	function applyCommandPaletteSize(size: string) {
 		if (typeof document === 'undefined') return;

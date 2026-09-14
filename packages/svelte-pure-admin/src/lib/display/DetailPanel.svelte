@@ -70,12 +70,12 @@
 		const minPx = MIN_WIDTH_REM * rem;
 		const maxPx = MAX_WIDTH_REM * rem;
 		const clamped = Math.min(maxPx, Math.max(minPx, widthPx));
-		document.documentElement.style.setProperty('--pc-local-detail-panel-width', `${clamped}px`);
+		document.documentElement.style.setProperty('--pa-local-detail-panel-width', `${clamped}px`);
 	}
 
 	function saveWidth() {
 		const width = document.documentElement.style.getPropertyValue(
-			'--pc-local-detail-panel-width'
+			'--pa-local-detail-panel-width'
 		);
 		if (width) {
 			try {
@@ -88,7 +88,7 @@
 
 	function resetWidth() {
 		document.documentElement.style.setProperty(
-			'--pc-local-detail-panel-width',
+			'--pa-local-detail-panel-width',
 			`${DEFAULT_WIDTH_REM}rem`
 		);
 		try {
@@ -139,7 +139,7 @@
 		try {
 			const saved = localStorage.getItem(STORAGE_KEY);
 			if (saved) {
-				document.documentElement.style.setProperty('--pc-local-detail-panel-width', saved);
+				document.documentElement.style.setProperty('--pa-local-detail-panel-width', saved);
 			}
 		} catch {
 			// localStorage may be unavailable
