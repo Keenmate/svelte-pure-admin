@@ -118,7 +118,7 @@
 
 <!-- 1. The basics -->
 <Card titleText="Quick start">
-	<CodeBlock language="typescript">{`import { toastService, ToastContainer } from '@keenmate/svelte-pure-admin';
+	<CodeBlock>{`import { toastService, ToastContainer } from '@keenmate/svelte-pure-admin';
 
 // Mount once in your root layout:
 //   <ToastContainer position="top-end" />
@@ -274,7 +274,7 @@ toastService.dismissAll();`}</CodeBlock>
 		<Button variant="success" onclick={fireFilledActionToast}>Filled + Actions</Button>
 	</ButtonGroup>
 
-	<CodeBlock language="typescript" class="mt-4">{`toastService.show({
+	<CodeBlock class="mt-4">{`toastService.show({
 	variant: 'danger',
 	titleText: 'Item Deleted',
 	messageText: '3 items moved to trash.',
@@ -365,7 +365,7 @@ pa-toast--filled-color-1 through --filled-color-9`}</CodeBlock>
 
 <!-- 12. Service API -->
 <Card titleText="Service API">
-	<CodeBlock language="typescript">{`type ToastVariant  = 'primary' | 'success' | 'danger' | 'warning' | 'info';
+	<CodeBlock>{`type ToastVariant  = 'primary' | 'success' | 'danger' | 'warning' | 'info';
 type ToastPosition = 'top-end' | 'top-center' | 'top-start'
                    | 'bottom-end' | 'bottom-center' | 'bottom-start';
 

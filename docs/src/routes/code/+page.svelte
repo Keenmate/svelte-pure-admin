@@ -42,7 +42,7 @@ console.log(result);`}</Code>
 			<Heading level={4}>HTML</Heading>
 			<Code language="html">{`<div class="pa-card">
     <div class="pa-card__header">
-        <Heading level={3}>Card Title</Heading>
+        <h3>Card Title</h3>
     </div>
     <div class="pa-card__body">
         Content here

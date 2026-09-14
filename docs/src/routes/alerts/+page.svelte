@@ -349,7 +349,7 @@ pa-alert__close         — Close button (absolutely positioned, inline-end)`}</
 	</Paragraph>
 
 	<Heading level={4} class="mt-4">Component props</Heading>
-	<CodeBlock language="typescript">{`interface AlertProps {
+	<CodeBlock>{`interface AlertProps {
 	variant?: 'primary' | 'secondary' | 'success' | 'danger'
 	         | 'warning' | 'info' | 'light' | 'dark';   // default 'primary'
 	size?: 'sm' | 'lg';                                  // default = no modifier
