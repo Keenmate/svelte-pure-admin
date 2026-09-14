@@ -365,7 +365,7 @@
 		/>
 	{:else}
 		<Alert variant="success" size="sm">
-			All {allProducts.length} products loaded. <button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={resetProducts}>Reset</button>
+			All {allProducts.length} products loaded. <Button variant="secondary" size="sm" onclick={resetProducts}>Reset</Button>
 		</Alert>
 	{/if}
 </Card>

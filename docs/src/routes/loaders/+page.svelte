@@ -115,26 +115,22 @@
 
 	<Grid>
 		<Column size="100" md="1-3" class="mb-4">
-			<Card>
+			<Card bodyClass="hr-15 position-relative">
 				{#snippet header()}
 					<Heading level={4}>Loading Card</Heading>
 				{/snippet}
-				<div class="pa-card__body hr-15 position-relative">
-					<LoaderOverlay>
-						<Loader type="ring" size="lg" color="primary" />
-					</LoaderOverlay>
-				</div>
+				<LoaderOverlay>
+					<Loader type="ring" size="lg" color="primary" />
+				</LoaderOverlay>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3" class="mb-4">
-			<Card>
+			<Card bodyClass="pa-loader-center hr-15">
 				{#snippet header()}
 					<Heading level={4}>Loading with Text</Heading>
 				{/snippet}
-				<div class="pa-card__body pa-loader-center hr-15">
-					<Loader type="ring" size="lg" color="info" />
-					<Paragraph class="mt-4 text-secondary">Fetching data...</Paragraph>
-				</div>
+				<Loader type="ring" size="lg" color="info" />
+				<Paragraph class="mt-4 text-secondary">Fetching data...</Paragraph>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3" class="mb-4">

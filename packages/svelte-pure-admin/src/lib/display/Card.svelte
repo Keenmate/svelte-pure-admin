@@ -25,6 +25,8 @@
 		isGhost?: boolean;
 		/** Body has padding (set false to remove) */
 		hasPadding?: boolean;
+		/** Extra classes for the `pa-card__body` element (symmetric with `headerClass`). */
+		bodyClass?: string;
 		/** Stat card style */
 		isStat?: boolean;
 		/** Simple title text (alternative to header snippet) */
@@ -80,6 +82,7 @@
 		liveState,
 		isGhost = false,
 		hasPadding = true,
+		bodyClass = '',
 		isStat = false,
 		titleText,
 		title,
@@ -133,6 +136,7 @@
 	const bodyClasses = $derived(() => {
 		const base = ['pa-card__body'];
 		if (!hasPadding) base.push('pa-card__body--no-padding');
+		if (bodyClass) base.push(bodyClass);
 		return base.join(' ');
 	});
 
