@@ -218,10 +218,81 @@
 			</Table>
 		</TableContainer>
 	</Card>
+
+<!-- Implementation Notes -->
+<Card>
+	{#snippet title()}<h4 class="pa-card__title-text">Implementation Notes</h4>{/snippet}
+
+	<Heading level={5}>Visual Pattern Components</Heading>
+	<ol>
+		<li>
+			<strong>Selection Summary Bar</strong>
+			<ul>
+				<li>Appears between filters and data table when items are selected</li>
+				<li>Shows selection count and bulk action buttons (Delete, Export, Clear)</li>
+				<li>"Show Details" button to expand full list (collapsed by default)</li>
+				<li>Prevents unwanted content shifting when checking items</li>
+				<li>Uses <code>pa-alert pa-alert--primary</code> for visual consistency</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Selection Details Table (Expandable)</strong>
+			<ul>
+				<li>Hidden by default, user can expand via "Show Details" button</li>
+				<li>Shows full table of all selected items from all filters</li>
+				<li>Includes "Source Filter" column showing where each item was selected</li>
+				<li>Individual remove buttons per row for granular control</li>
+				<li>Toggle button changes to "Hide Details" when expanded</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Filter Tab Badges</strong>
+			<ul>
+				<li>Each filter tab shows count of selected items from that filter</li>
+				<li>Example: "Active Users (2)" means 2 items selected from Active filter</li>
+				<li>Helps users track selections across different views</li>
+				<li>Updates in real-time as selections change</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Row Highlighting</strong>
+			<ul>
+				<li>Selected rows in current table view have distinct background color</li>
+				<li>Uses subtle blue accent to indicate selection state</li>
+				<li>Checkboxes remain checked when switching filters</li>
+				<li>Provides immediate visual feedback</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Bulk Selection Controls</strong>
+			<ul>
+				<li>"Select All Visible" - checks all rows in current filter view</li>
+				<li>"Deselect All Visible" - unchecks visible rows (preserves hidden selections)</li>
+				<li>Header checkbox with indeterminate state support</li>
+			</ul>
+		</li>
+	</ol>
+
+	<Heading level={5} class="mt-4">Data Management</Heading>
+	<Paragraph>For framework implementations (React/Vue/Svelte):</Paragraph>
+	<ul>
+		<li>Maintain a global selection Set/Map keyed by item ID</li>
+		<li>Store full item data in selection (for display in panel)</li>
+		<li>Store source filter label with each selection</li>
+		<li>When rendering table, check if row ID exists in selection Set</li>
+		<li>Update counts in real-time as selections change</li>
+	</ul>
+
+	<Alert variant="warning" class="mt-4">
+		<strong>Important:</strong> This demo uses Svelte 5 runes ($state / $derived) for a live,
+		reactive implementation. In production, lift the selection Map into a Svelte store (or
+		context) so it survives component re-renders and can be shared across routes.
+	</Alert>
+</Card>
 {/if}
 
 <!-- Main Data Table -->
-<Card titleText="{filterLabels[activeFilter]}" hasPadding={false}>
+<Card titleText={filterLabels[activeFilter]} hasPadding={false}>
 	{#snippet description()}<Badge variant="secondary">{filteredUsers.length} items</Badge>{/snippet}
 	{#snippet headerActions()}
 		<ButtonGroup>
