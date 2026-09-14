@@ -1,5 +1,5 @@
 <script lang="ts">
-			import { Heading, Paragraph, Card, Timeline, TimelineItem, Button, Alert, BasicList } from '@keenmate/svelte-pure-admin';
+			import { Heading, Paragraph, Card, Timeline, TimelineItem, Button, Alert, BasicList, CodeBlock } from '@keenmate/svelte-pure-admin';
 	import type { TimelineItemVariant } from '@keenmate/svelte-pure-admin';
 
 	// Example: System log data from API/database
@@ -240,19 +240,19 @@
 <Card titleText="Usage Examples">
 
 	<Heading level={4}>Basic Timeline</Heading>
-	<pre class="mb-4"><code>&lt;Timeline variant="simple"&gt;
-  &lt;TimelineItem timeText="09:00 AM" variant="primary"&gt;
+	<CodeBlock class="mb-4">{`<Timeline variant="simple">
+  <TimelineItem timeText="09:00 AM" variant="primary">
     Event description
-  &lt;/TimelineItem&gt;
-  &lt;TimelineItem timeText="10:00 AM" variant="success"&gt;
+  </TimelineItem>
+  <TimelineItem timeText="10:00 AM" variant="success">
     Another event
-  &lt;/TimelineItem&gt;
-&lt;/Timeline&gt;</code></pre>
+  </TimelineItem>
+</Timeline>`}</CodeBlock>
 
 	<Heading level={4}>Filled Bullets</Heading>
-	<pre class="mb-4"><code>&lt;TimelineItem timeText="Jan 2025" variant="primary" filled&gt;
+	<CodeBlock class="mb-4">{`<TimelineItem timeText="Jan 2025" variant="primary" isFilled>
   Milestone completed
-&lt;/TimelineItem&gt;</code></pre>
+</TimelineItem>`}</CodeBlock>
 
 	<Heading level={4}>Available Variants</Heading>
 	<BasicList>
