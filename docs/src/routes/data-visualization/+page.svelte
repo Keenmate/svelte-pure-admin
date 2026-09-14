@@ -21,8 +21,7 @@
 		Heatmap,
 		HeatmapCell,
 		HeatmapLegend,
-		BarList,
-		BarListItem
+		TableCard
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -201,12 +200,11 @@
      5. DATA BARS IN TABLES
      ============================================================ -->
 
-<Card hasPadding={false}>
-	{#snippet header()}
-		<Heading level={3}>5. Data Bars in Tables</Heading>
-		<p>Inline bar visualization inside table cells for quick comparison.</p>
-	{/snippet}
-
+<TableCard
+	titleText="5. Data Bars in Tables"
+	descriptionText="Inline bar visualization inside table cells for quick comparison."
+	isScrollable
+>
 	<Table isStriped isHover>
 		<thead>
 			<tr>
@@ -261,7 +259,7 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 
 <!-- ============================================================
