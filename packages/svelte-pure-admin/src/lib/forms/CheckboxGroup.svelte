@@ -21,11 +21,13 @@
 		layout?: ChoiceGroupLayout;
 		/** Additional CSS classes */
 		class?: string;
+		/** Inline style — e.g. `--base-icon-check` / `--base-icon-indeterminate` glyph overrides applied to every option in the group. */
+		style?: string;
 		/** Children content (Checkbox components) */
 		children?: import('svelte').Snippet;
 	}
 
-	let { layout, class: className = '', children }: Props = $props();
+	let { layout, class: className = '', style, children }: Props = $props();
 
 	// Build class string
 	const classes = $derived(() => {
@@ -36,6 +38,6 @@
 	});
 </script>
 
-<div class={classes()}>
+<div class={classes()} {style}>
 	{@render children?.()}
 </div>

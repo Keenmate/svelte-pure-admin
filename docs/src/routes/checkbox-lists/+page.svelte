@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Checkbox, CheckboxBox, CheckboxList, CheckboxListItem, Button, ButtonGroup, Table, Badge, Alert, Grid, Column, BasicList } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Checkbox, CheckboxGroup, CheckboxBox, CheckboxList, CheckboxListItem, Button, ButtonGroup, Table, Badge, Alert, Grid, Column, BasicList } from '@keenmate/svelte-pure-admin';
 													
 	// ===== Card 1: Custom Tri-State Checkbox =====
 	let uncheckedDemo = $state(false);
@@ -201,6 +201,50 @@
 	</Grid>
 </Card>
 
+<!-- Card 1b: Custom Glyphs via --base-icon-* -->
+<Card
+	titleText="Custom Glyphs via --base-icon-*"
+	subtitleText="The checkmark and indeterminate dash are SVG masks reading --base-icon-check / --base-icon-indeterminate — the same tokens the web components use. Override those CSS variables (inline, on a wrapper, or in a theme) to swap the glyph without touching the component."
+>
+	<Grid>
+		<Column size="100" md="50">
+			<Heading level={4}>Per-checkbox override</Heading>
+			<div class="d-flex flex-column gap-12">
+				<Checkbox
+					id="cg-heart"
+					checked
+					labelText="Heart glyph"
+					style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Cpath d=%22M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z%22/%3E%3C/svg%3E');"
+				/>
+				<Checkbox
+					id="cg-star"
+					checked
+					labelText="Star glyph"
+					style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Cpath d=%22M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.5l7.1-.6z%22/%3E%3C/svg%3E');"
+				/>
+				<Checkbox
+					id="cg-circle"
+					checked
+					size="lg"
+					labelText="Filled circle-check (lg)"
+					style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Cpath d=%22M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.1 14.2l-4-4 1.4-1.4 2.6 2.6 5.4-5.4 1.4 1.4-6.8 6.8z%22/%3E%3C/svg%3E');"
+				/>
+			</div>
+		</Column>
+		<Column size="100" md="50">
+			<Heading level={4}>Group override (wrapper sets both vars)</Heading>
+			<CheckboxGroup
+				style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22black%22 stroke-width=%223%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M12 5v14M5 12h14%22/%3E%3C/svg%3E'); --base-icon-indeterminate: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%225%22/%3E%3C/svg%3E');"
+			>
+				<Checkbox id="cg-plus" checked labelText="Checked → plus glyph" />
+				<Checkbox id="cg-dot" isIndeterminate labelText="Indeterminate → dot glyph" />
+				<Checkbox id="cg-off" labelText="Unchecked (unaffected)" />
+			</CheckboxGroup>
+			<Paragraph class="pa-text--secondary mt-3">Both children inherit the wrapper's <code>--base-icon-*</code> — exactly how a theme would re-skin every checkbox at once.</Paragraph>
+		</Column>
+	</Grid>
+</Card>
+
 <!-- Card 2: Select All Pattern -->
 <Card titleText="Select All Pattern" subtitleText="Interactive demo showing isIndeterminate state for partial selection">
 
@@ -248,7 +292,7 @@
 					<li>When <strong>all</strong> are selected → "Select All" is checked</li>
 				</BasicList>
 			</Alert>
-			<Paragraph class="pa-text pa-text--secondary mt-5">
+			<Paragraph class="pa-text--secondary mt-5">
 				<code>checkbox.indeterminate = true</code> is set via JavaScript. The CSS <code>:indeterminate</code> pseudo-class handles the styling.
 			</Paragraph>
 		</Column>
@@ -487,4 +531,57 @@
 			{interactiveSelectedCount} item{interactiveSelectedCount !== 1 ? 's' : ''} selected
 		</div>
 	{/snippet}
+</Card>
+
+<!-- CSS Classes Reference -->
+<Card titleText="CSS Classes Reference">
+	<Heading level={4}>Custom Checkbox Component</Heading>
+	<BasicList class="pa-list-basic--compact">
+		<li><code>pa-checkbox</code> - Base custom checkbox (wraps input + box + label)</li>
+		<li><code>pa-checkbox__box</code> - Visual checkbox element</li>
+		<li><code>pa-checkbox__label</code> - Label text</li>
+		<li><code>pa-checkbox--xs</code> - Extra small size</li>
+		<li><code>pa-checkbox--sm</code> - Small size</li>
+		<li><code>pa-checkbox--lg</code> - Large size</li>
+		<li><code>pa-checkbox--xl</code> - Extra large size</li>
+		<li><code>pa-checkbox--x</code> - X mark instead of checkmark</li>
+		<li><code>pa-checkbox--disabled</code> - Disabled appearance</li>
+	</BasicList>
+
+	<Heading level={4} class="mt-4">Checkbox List Container</Heading>
+	<BasicList class="pa-list-basic--compact">
+		<li><code>pa-checkbox-list</code> - Base list container (vertical)</li>
+		<li><code>pa-checkbox-list--compact</code> - Reduced padding</li>
+		<li><code>pa-checkbox-list--bordered</code> - Border around list</li>
+		<li><code>pa-checkbox-list--striped</code> - Zebra striping</li>
+		<li><code>pa-checkbox-list--inline</code> - Horizontal wrapping layout</li>
+		<li><code>pa-checkbox-list--grid</code> - Auto-fill grid layout</li>
+		<li><code>pa-checkbox-list--2col</code> - Two-column grid</li>
+		<li><code>pa-checkbox-list--3col</code> - Three-column grid</li>
+	</BasicList>
+
+	<Heading level={4} class="mt-4">Checkbox List Items</Heading>
+	<BasicList class="pa-list-basic--compact">
+		<li><code>pa-checkbox-list__item</code> - List item</li>
+		<li><code>pa-checkbox-list__item--selected</code> - Selected state</li>
+		<li><code>pa-checkbox-list__item--disabled</code> - Disabled (feature unavailable)</li>
+		<li><code>pa-checkbox-list__item--locked</code> - Locked (requires permission)</li>
+		<li><code>pa-checkbox-list__label</code> - Clickable label wrapper</li>
+		<li><code>pa-checkbox-list__text</code> - Text content</li>
+		<li><code>pa-checkbox-list__description</code> - Secondary description</li>
+		<li><code>pa-checkbox-list__actions</code> - Action buttons container</li>
+	</BasicList>
+
+	<Heading level={4} class="mt-4">Table Checkboxes</Heading>
+	<BasicList class="pa-list-basic--compact">
+		<li><code>pa-table__checkbox-col</code> - Checkbox column (minimal width)</li>
+		<li><code>pa-table__row--selected</code> - Selected row highlight</li>
+	</BasicList>
+
+	<Heading level={4} class="mt-4">Checkbox States (via input)</Heading>
+	<BasicList class="pa-list-basic--compact">
+		<li><code>:checked</code> - Checked state (checkmark)</li>
+		<li><code>:indeterminate</code> - Indeterminate state (dash) - set via JS</li>
+		<li><code>:disabled</code> - Disabled state</li>
+	</BasicList>
 </Card>

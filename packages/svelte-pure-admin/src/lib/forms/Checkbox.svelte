@@ -44,6 +44,8 @@
 		labelText?: string;
 		/** Additional CSS classes for wrapper */
 		class?: string;
+		/** Inline style on the wrapper — e.g. `--base-icon-check` / `--base-icon-indeterminate` glyph overrides. */
+		style?: string;
 		/** Label snippet (alternative to label prop for custom label content) */
 		labelSnippet?: import('svelte').Snippet;
 		/** Change handler */
@@ -63,6 +65,7 @@
 		value,
 		labelText,
 		class: className = '',
+		style,
 		labelSnippet,
 		onchange
 	}: Props = $props();
@@ -91,7 +94,7 @@
 	});
 </script>
 
-<label class={wrapperClasses()}>
+<label class={wrapperClasses()} {style}>
 	<input
 		bind:this={inputElement}
 		type="checkbox"
