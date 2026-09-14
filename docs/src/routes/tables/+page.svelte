@@ -1247,7 +1247,7 @@
 <!-- Plain Table with Pagers -->
 <TableCard titleText="Plain Table with Pagers" isPlain class="mt-4">
 	{#snippet headerActions()}
-		<div class="pa-pager pa-pager--right">
+		<div class="pa-pager pa-pager--end">
 			<div class="pa-pager__container">
 				<span class="pa-pager__text">Showing 1-10 of 156</span>
 				<div class="pa-pager__controls">
@@ -1561,9 +1561,9 @@
 	<Heading level={4} class="mt-4">Pager</Heading>
 	<BasicList spacing="compact">
 		<li><code>pa-pager</code> - Pagination container (default: centered)</li>
-		<li><code>pa-pager--left</code> - Left-aligned</li>
+		<li><code>pa-pager--start</code> - Start-aligned</li>
 		<li><code>pa-pager--center</code> - Center-aligned</li>
-		<li><code>pa-pager--right</code> - Right-aligned</li>
+		<li><code>pa-pager--end</code> - End-aligned</li>
 		<li><code>pa-pager__container</code> - Inner wrapper (flex)</li>
 		<li><code>pa-pager__controls</code> - Navigation buttons</li>
 		<li><code>pa-pager__info</code> - Page input and text</li>
@@ -1574,9 +1574,9 @@
 	<Heading level={4} class="mt-4">Load More</Heading>
 	<BasicList spacing="compact">
 		<li><code>pa-load-more</code> - Load more container (default: centered)</li>
-		<li><code>pa-load-more--left</code> - Left-aligned</li>
+		<li><code>pa-load-more--start</code> - Start-aligned</li>
 		<li><code>pa-load-more--center</code> - Center-aligned</li>
-		<li><code>pa-load-more--right</code> - Right-aligned</li>
+		<li><code>pa-load-more--end</code> - End-aligned</li>
 		<li><code>pa-load-more__button</code> - The button element</li>
 		<li><code>pa-load-more__button--loading</code> - Loading state</li>
 		<li><code>pa-load-more__spinner</code> - Spinner element</li>
