@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {
 		Card,
+		TableCard,
 		Table,
 		Input,
 		Select,
@@ -41,13 +42,13 @@
 		<Column size="100">
 			<div class="pa-input-wrapper">
 				<Input placeholder="Search users..." />
-				<button class="pa-input-wrapper__clear" type="button">×</button>
+				<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 			</div>
 		</Column>
 	</Grid>
 </Card>
 
-<Card hasPadding={false}>
+<TableCard isScrollable>
 	<Table isStriped>
 		<thead>
 			<tr>
@@ -93,7 +94,7 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Search with More Filters Button (Expandable Filters) -->
 <Card>
@@ -105,19 +106,19 @@
 	<div class="d-flex gap-5 align-items-center flex-wrap">
 		<!-- Search by rule -->
 		<InputGroup style="flex: 1; min-width: 200px;">
-			<span class="pa-input-group__prepend">🔍</span>
+			<InputGroupPrepend>🔍</InputGroupPrepend>
 			<Input placeholder="Search by rule" />
 		</InputGroup>
 
 		<!-- Filter by data source -->
 		<InputGroup style="flex: 1; min-width: 200px;">
-			<span class="pa-input-group__prepend">🌐</span>
+			<InputGroupPrepend>🌐</InputGroupPrepend>
 			<Input placeholder="Filter by data source" />
 		</InputGroup>
 
 		<!-- Filter by Organization tree -->
 		<InputGroup style="flex: 1; min-width: 200px;">
-			<span class="pa-input-group__prepend">🌐</span>
+			<InputGroupPrepend>🌐</InputGroupPrepend>
 			<Input placeholder="Filter by Organization tree" />
 		</InputGroup>
 
@@ -143,7 +144,7 @@
 								<option>Clothing</option>
 								<option>Books</option>
 							</Select>
-							<button class="pa-input-wrapper__clear" type="button">×</button>
+							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 						</div>
 					</FormGroup>
 				</Column>
@@ -158,7 +159,7 @@
 								<option>$100 - $500</option>
 								<option>Over $500</option>
 							</Select>
-							<button class="pa-input-wrapper__clear" type="button">×</button>
+							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 						</div>
 					</FormGroup>
 				</Column>
@@ -172,7 +173,7 @@
 								<option>Out of Stock</option>
 								<option>Pre-order</option>
 							</Select>
-							<button class="pa-input-wrapper__clear" type="button">×</button>
+							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 						</div>
 					</FormGroup>
 				</Column>
@@ -186,13 +187,13 @@
 							<Column size="100" md="50">
 								<div class="pa-input-wrapper">
 									<DateInput />
-									<button class="pa-input-wrapper__clear" type="button">×</button>
+									<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 								</div>
 							</Column>
 							<Column size="100" md="50">
 								<div class="pa-input-wrapper">
 									<DateInput />
-									<button class="pa-input-wrapper__clear" type="button">×</button>
+									<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 								</div>
 							</Column>
 						</Grid>
@@ -208,7 +209,7 @@
 								<option>Supplier B</option>
 								<option>Supplier C</option>
 							</Select>
-							<button class="pa-input-wrapper__clear" type="button">×</button>
+							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 						</div>
 					</FormGroup>
 				</Column>
@@ -222,7 +223,7 @@
 	{/if}
 </Card>
 
-<Card hasPadding={false}>
+<TableCard isScrollable>
 	<Table isStriped>
 		<thead>
 			<tr>
@@ -272,7 +273,7 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Inline Filters -->
 <Card>
@@ -285,7 +286,7 @@
 				<FormLabel>Search</FormLabel>
 				<div class="pa-input-wrapper">
 					<Input placeholder="Search..." />
-					<button class="pa-input-wrapper__clear" type="button">×</button>
+					<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 				</div>
 			</FormGroup>
 		</Column>
@@ -298,7 +299,7 @@
 						<option>Active</option>
 						<option>Inactive</option>
 					</Select>
-					<button class="pa-input-wrapper__clear" type="button">×</button>
+					<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 				</div>
 			</FormGroup>
 		</Column>
@@ -311,7 +312,7 @@
 						<option>Type A</option>
 						<option>Type B</option>
 					</Select>
-					<button class="pa-input-wrapper__clear" type="button">×</button>
+					<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 				</div>
 			</FormGroup>
 		</Column>
@@ -320,7 +321,7 @@
 				<FormLabel>Date</FormLabel>
 				<div class="pa-input-wrapper">
 					<DateInput />
-					<button class="pa-input-wrapper__clear" type="button">×</button>
+					<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 				</div>
 			</FormGroup>
 		</Column>
@@ -333,7 +334,7 @@
 	</Grid>
 </Card>
 
-<Card hasPadding={false}>
+<TableCard isScrollable>
 	<Table isStriped>
 		<thead>
 			<tr>
@@ -368,7 +369,7 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Filter Tags/Pills -->
 <Card>
@@ -384,7 +385,7 @@
 
 	<div class="pa-input-wrapper">
 		<Input placeholder="Search..." />
-		<button class="pa-input-wrapper__clear" type="button">×</button>
+		<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 	</div>
 
 	<div style="margin-top: 0.75rem;">
@@ -404,7 +405,7 @@
 	</div>
 </Card>
 
-<Card hasPadding={false}>
+<TableCard isScrollable>
 	<Table isStriped>
 		<thead>
 			<tr>
@@ -435,4 +436,4 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
