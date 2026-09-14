@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, RangeGroup, type RangeGroupRow, type RangeGroupValues, type QsAdapter } from '@keenmate/svelte-pure-admin';
+	import { Card, RangeGroup, BasicList, CodeBlock, type RangeGroupRow, type RangeGroupValues, type QsAdapter } from '@keenmate/svelte-pure-admin';
 	import { replaceState } from '$app/navigation';
 	import { page } from '$app/stores';
 
@@ -210,7 +210,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <!-- Debug readout: the live {key: value} payload bound to a group -->
 {#snippet valueBox(values: RangeGroupValues)}
 	<h4 class="mt-4">Bound values</h4>
-	<pre class="pa-code pa-code--compact"><code>{JSON.stringify(values, null, 2)}</code></pre>
+	<CodeBlock isCompact>{JSON.stringify(values, null, 2)}</CodeBlock>
 {/snippet}
 
 <Card>
@@ -267,7 +267,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<code>pa-range-group:apply</code> / <code>:reset</code> on the buttons. Payload is keyed by
 		<code>data-key</code>; a bound at its extent reports <code>null</code> (i.e. “Any”).
 	</p>
-	<pre class="pa-code pa-code--compact"><code>{output}</code></pre>
+	<CodeBlock isCompact>{output}</CodeBlock>
 </Card>
 
 <!-- ============ Single-thumb thresholds ============ -->
@@ -308,7 +308,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	{/snippet}
 	<RangeGroup rows={tickRows} ariaLabel="Ticked filters" onchange={(v) => (tickValues = v)} />
 	{@render valueBox(tickValues)}
-	<pre class="pa-code pa-code--compact mt-2"><code>{codeTicks}</code></pre>
+	<CodeBlock isCompact class="mt-2">{codeTicks}</CodeBlock>
 </Card>
 
 <!-- ============ Custom tokens ============ -->
@@ -323,7 +323,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	{/snippet}
 	<RangeGroup rows={themedRows} ariaLabel="Themed filters" panelStyle={themedPanelStyle} onchange={(v) => (themedValues = v)} />
 	{@render valueBox(themedValues)}
-	<pre class="pa-code pa-code--compact mt-2"><code>{codeThemed}</code></pre>
+	<CodeBlock isCompact class="mt-2">{codeThemed}</CodeBlock>
 </Card>
 
 <!-- ============ URL / querystring sync ============ -->
@@ -347,10 +347,10 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</div>
 
 	<h4 class="mt-4">Live URL</h4>
-	<pre class="pa-code pa-code--compact"><code>{$page.url.search || '(no query yet — drag a slider)'}</code></pre>
+	<CodeBlock isCompact>{$page.url.search || '(no query yet — drag a slider)'}</CodeBlock>
 
 	<h4 class="mt-4">Bound values (<code>bind:values</code>)</h4>
-	<pre class="pa-code pa-code--compact"><code>{JSON.stringify(urlValues, null, 2)}</code></pre>
+	<CodeBlock isCompact>{JSON.stringify(urlValues, null, 2)}</CodeBlock>
 
 	<p class="text-secondary mt-2">
 		This docs site is SvelteKit, so it passes a ~10-line <code>QsAdapter</code> built on
@@ -360,7 +360,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</p>
 
 	<h4 class="mt-4">Usage</h4>
-	<pre class="pa-code"><code>{codeUrlSync}</code></pre>
+	<CodeBlock>{codeUrlSync}</CodeBlock>
 </Card>
 
 <!-- ============ Operation modes: immediate vs apply ============ -->
@@ -390,9 +390,9 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		Live <code>onchange</code> has fired <strong>{applyChangeCount}</strong> time(s) — but the
 		committed <code>bind:values</code> below only changes when you press <strong>Apply</strong>.
 	</p>
-	<pre class="pa-code pa-code--compact"><code>{JSON.stringify(applyValues, null, 2)}</code></pre>
+	<CodeBlock isCompact>{JSON.stringify(applyValues, null, 2)}</CodeBlock>
 
-	<pre class="pa-code mt-2"><code>{codeModes}</code></pre>
+	<CodeBlock class="mt-2">{codeModes}</CodeBlock>
 </Card>
 
 <!-- ============ Svelte usage ============ -->
@@ -404,7 +404,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<code>key</code>) with no event wiring; <code>onchange</code> / <code>onapply</code> /
 		<code>onreset</code> remain for side effects, and <code>qsKey</code> (above) for URL sync.
 	{/snippet}
-	<pre class="pa-code"><code>{codeSvelte}</code></pre>
+	<CodeBlock>{codeSvelte}</CodeBlock>
 </Card>
 
 <!-- ============ Markup reference ============ -->
@@ -414,14 +414,14 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		One row per dimension. Positioning is driven in 0–100% via CSS custom properties on logical inset
 		properties, so RTL mirrors automatically.
 	{/snippet}
-	<pre class="pa-code"><code>{codeMarkup}</code></pre>
+	<CodeBlock>{codeMarkup}</CodeBlock>
 </Card>
 
 <!-- CSS Classes Reference -->
 <Card class="mt-4">
 	{#snippet title()}CSS Classes Reference{/snippet}
 	<h4>Compact control</h4>
-	<ul class="pa-list-basic pa-list-basic--compact">
+	<BasicList spacing="compact">
 		<li><code>pa-range-group</code> - Root wrapper (toggle + floating panel)</li>
 		<li><code>pa-range-group__toggle</code> - The button summarising the filters</li>
 		<li><code>pa-range-group__summary</code> - Single-line "LABEL value / …" readout host</li>
@@ -431,10 +431,10 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><code>pa-range-group__seg-sep</code> - The " / " separator</li>
 		<li><code>pa-range-group__caret</code> - Dropdown chevron (rotates when open)</li>
 		<li><code>pa-range-group--open</code> - State: panel open (on the root)</li>
-	</ul>
+	</BasicList>
 
 	<h4 class="mt-4">Floating panel</h4>
-	<ul class="pa-list-basic pa-list-basic--compact">
+	<BasicList spacing="compact">
 		<li><code>pa-range-group__panel</code> - The floating panel (reparented to body when open)</li>
 		<li><code>pa-range-group__panel--open</code> - State: shown</li>
 		<li><code>pa-range-group__row</code> - One dimension (head + slider)</li>
@@ -443,10 +443,10 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><code>pa-range-group__row-value</code> - Row value readout</li>
 		<li><code>pa-range-group__row-value--empty</code> - Muted "Any" readout</li>
 		<li><code>pa-range-group__actions</code> - Reset / Apply footer</li>
-	</ul>
+	</BasicList>
 
 	<h4 class="mt-4">Slider primitive</h4>
-	<ul class="pa-list-basic pa-list-basic--compact">
+	<BasicList spacing="compact">
 		<li><code>pa-range</code> - Slider (dual-thumb by default)</li>
 		<li><code>pa-range__rail</code> - Inner rail the thumbs travel along</li>
 		<li><code>pa-range__track</code> - Full track</li>
@@ -455,33 +455,33 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><code>pa-range__thumb--min</code> / <code>--max</code> - Low / high handle</li>
 		<li><code>pa-range--single</code> - Single-thumb (threshold) mode</li>
 		<li><code>pa-range--disabled</code> - Non-interactive state</li>
-	</ul>
+	</BasicList>
 
 	<h4 class="mt-4">Handle shapes</h4>
-	<ul class="pa-list-basic pa-list-basic--compact">
+	<BasicList spacing="compact">
 		<li><code>pa-range--handle-rect</code> - Rounded rectangle handles</li>
 		<li><code>pa-range--handle-bar</code> - Thin vertical bar handles</li>
 		<li><code>pa-range--handle-arrow</code> - Chevron handles</li>
 		<li><code>pa-range--handle-needle</code> - Downward-triangle "needle" handles</li>
-	</ul>
+	</BasicList>
 
 	<h4 class="mt-4">Tick marks</h4>
-	<ul class="pa-list-basic pa-list-basic--compact">
+	<BasicList spacing="compact">
 		<li><code>pa-range__ticks</code> - Tick container (built by JS from <code>data-ticks</code>)</li>
 		<li><code>pa-range__tick</code> - A minor tick mark</li>
 		<li><code>pa-range__tick--major</code> - A major tick mark (longer)</li>
 		<li><code>pa-range__tick-labels</code> - Container for the value labels</li>
 		<li><code>pa-range__tick-label</code> - A single major-tick label</li>
 		<li><code>pa-range--ticks-labeled</code> - Row modifier reserving the label band</li>
-	</ul>
+	</BasicList>
 
 	<h4 class="mt-4">Theming tokens (CSS variables)</h4>
-	<ul class="pa-list-basic pa-list-basic--compact">
+	<BasicList spacing="compact">
 		<li><code>--pa-range-track</code> / <code>-fill</code> - Track / fill colour</li>
 		<li><code>--pa-range-thumb-bg</code> / <code>-thumb-border</code> / <code>-thumb-border-hover</code> - Handle colours</li>
 		<li><code>--pa-range-focus-ring</code> - Thumb focus / active ring</li>
 		<li><code>--pa-range-tick</code> / <code>-tick-major</code> - Minor / major tick colour</li>
 		<li><code>--pa-range-track-height</code> / <code>-thumb-size</code> - Structural sizes</li>
 		<li><code>--pa-range-group-panel-min-width</code> - Floating panel width</li>
-	</ul>
+	</BasicList>
 </Card>
