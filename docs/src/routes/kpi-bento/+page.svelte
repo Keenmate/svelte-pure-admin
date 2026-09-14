@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {
 		Paragraph,
+		Heading,
 		Card,
 		Code,
 		BasicList,
@@ -124,6 +125,79 @@
 		<span><strong>Bento layout</strong> — Asymmetric tile sizing, sparklines behind values, hero left-half × 2 rows.</span>
 		<span>Hover any KPI for detail</span>
 	{/snippet}
+</KpiBento>
+
+<br />
+
+<!-- ============================================================
+     Layout variant · hero-right (mirror of default, 6 tiles)
+     ============================================================ -->
+<Heading level={3}>Layout variant · <Code>pa-kpi-bento__grid--hero-right</Code></Heading>
+<Paragraph>
+	Mirror of the default layout — hero spans the right half × 2 rows, two stacked supporting tiles on
+	the left of rows 1-2, three equal tiles below. Same 6-tile contract; source order is unchanged
+	(1st = hero). Only the named-area template flips via <Code>layout="hero-right"</Code>.
+</Paragraph>
+
+<KpiBento
+	titleText="Key Performance Indicators"
+	isLive
+	layout="hero-right"
+	footerText="Bento layout · --hero-right — Hero on the right, mirror of the default 6-tile composition."
+>
+	<KpiBentoTile isHero variant="positive" labelText="Monthly Revenue" prefix="$" valueText="849" unit="K" deltaText="+12.8%" detailTitleText="Monthly Revenue · 12MO" previousValueText="$753K" targetText="$900K">
+		{#snippet chart()}<Sparkline data={sparks.revenue} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="positive" labelText="Completion Rate" valueText="86.5" unit="%" deltaText="+2.8%" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
+		{#snippet chart()}<Sparkline data={sparks.completion} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="up-strong" labelText="Server Capacity" valueText="85.9" unit="%" deltaText="+21.0%" detailTitleText="Server Capacity · 7D" previousValueText="71.0%" targetText="80.0%">
+		{#snippet chart()}<Sparkline data={sparks.capacity} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="negative" labelText="Server Temp" valueText="24.0" unit="°C" deltaText="-2.1%" detailTitleText="Server Temp · 24H" previousValueText="24.5°C" targetText="≤ 25°C">
+		{#snippet chart()}<Sparkline data={sparks.serverTemp} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="up-strong" labelText="Error Rate" valueText="0.28" unit="%" deltaText="-30.9%" detailTitleText="Error Rate · 24H" previousValueText="0.41%" targetText="≤ 0.50%">
+		{#snippet chart()}<Sparkline data={sparks.errorRate} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="positive" labelText="Tokyo Office" prefix="¥" valueText="12.1" unit="M" deltaText="+8.1%" detailTitleText="Tokyo Office · 12MO" previousValueText="¥11.2M" targetText="¥13.0M">
+		{#snippet chart()}<Sparkline data={sparks.tokyo} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+</KpiBento>
+
+<br />
+
+<!-- ============================================================
+     Layout variant · 5-tile (hero + 4 supporting)
+     ============================================================ -->
+<Heading level={3}>Layout variant · <Code>pa-kpi-bento__grid--5-tile</Code></Heading>
+<Paragraph>
+	Five-tile composition — hero spans left × 2 rows, two stacked supporting tiles on the right of
+	rows 1-2, two equal halves on the bottom row. Use <Code>layout="5-tile"</Code> when you have exactly
+	5 KPIs; pass exactly 5 tiles (a 6th breaks the layout).
+</Paragraph>
+
+<KpiBento
+	titleText="Key Performance Indicators"
+	isLive
+	layout="5-tile"
+	footerText="Bento layout · --5-tile — Five-tile variant for cases without a 6th supporting KPI."
+>
+	<KpiBentoTile isHero variant="positive" labelText="Monthly Revenue" prefix="$" valueText="849" unit="K" deltaText="+12.8%" detailTitleText="Monthly Revenue · 12MO" previousValueText="$753K" targetText="$900K">
+		{#snippet chart()}<Sparkline data={sparks.revenue} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="positive" labelText="Completion Rate" valueText="86.5" unit="%" deltaText="+2.8%" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
+		{#snippet chart()}<Sparkline data={sparks.completion} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="up-strong" labelText="Server Capacity" valueText="85.9" unit="%" deltaText="+21.0%" detailTitleText="Server Capacity · 7D" previousValueText="71.0%" targetText="80.0%">
+		{#snippet chart()}<Sparkline data={sparks.capacity} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="negative" labelText="Server Temp" valueText="24.0" unit="°C" deltaText="-2.1%" detailTitleText="Server Temp · 24H" previousValueText="24.5°C" targetText="≤ 25°C">
+		{#snippet chart()}<Sparkline data={sparks.serverTemp} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
+	<KpiBentoTile variant="up-strong" labelText="Error Rate" valueText="0.28" unit="%" deltaText="-30.9%" detailTitleText="Error Rate · 24H" previousValueText="0.41%" targetText="≤ 0.50%">
+		{#snippet chart()}<Sparkline data={sparks.errorRate} type="area" height="100%" />{/snippet}
+	</KpiBentoTile>
 </KpiBento>
 
 <br />
