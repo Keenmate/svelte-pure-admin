@@ -29,8 +29,9 @@
 		/** Checkbox size */
 		size?: CheckboxSize;
 		/**
-		 * Label position relative to the box. `end` (default) needs no class;
-		 * `start` / `top` emit `pa-checkbox--label-{position}`.
+		 * Label position relative to the box → `pa-checkbox--label-{position}`.
+		 * `end` is the visual default; leave unset for a classless default, or set
+		 * it explicitly to emit the (redundant but valid) `--label-end` modifier.
 		 */
 		labelPosition?: CheckboxLabelPosition;
 		/** Checkbox ID (required for label association) */
@@ -80,8 +81,10 @@
 		const base = ['pa-checkbox'];
 		if (size) base.push(`pa-checkbox--${size}`);
 		if (isXMark) base.push('pa-checkbox--x');
-		// `end` is the default (no class); only start/top emit a modifier.
-		if (labelPosition && labelPosition !== 'end') base.push(`pa-checkbox--label-${labelPosition}`);
+		// All three positions exist in core (`--label-end` is the default, so it's
+		// redundant but valid); emit whichever is explicitly set. A checkbox with no
+		// `labelPosition` stays classless (= end).
+		if (labelPosition) base.push(`pa-checkbox--label-${labelPosition}`);
 		if (disabled) base.push('pa-checkbox--disabled');
 		if (className) base.push(className);
 		return base.join(' ');

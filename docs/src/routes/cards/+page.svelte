@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { Heading, Paragraph, Card, CardTab, CardTabContent, Button, ButtonGroup, Badge, Grid, Column, Section, Table, Stat, List, ListItem, BasicList } from '@keenmate/svelte-pure-admin';
 
-	// Local type matching Card component's variant prop
-	type CardVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info'
+	// Local type matching Card component's variant prop (primary/success/warning/
+	// danger + the color-1..9 theme slots — no `info`, which Card doesn't support).
+	type CardVariant = 'primary' | 'success' | 'warning' | 'danger'
 		| 'color-1' | 'color-2' | 'color-3' | 'color-4' | 'color-5'
 		| 'color-6' | 'color-7' | 'color-8' | 'color-9';
 
@@ -301,33 +302,6 @@
 				</Card>
 			</Column>
 		{/each}
-	</Grid>
-</Section>
-
-<!-- Bordered Cards -->
-<Section titleText="Bordered Cards">
-	<Paragraph class="mb-2">Cards can have visible borders using the <code>pa-card--bordered</code> class.</Paragraph>
-	<Grid>
-		<Column size="100" md="1-2">
-			<Card class="pa-card--bordered" titleText="Bordered Card">
-				<Paragraph>Card with visible border styling.</Paragraph>
-			</Card>
-		</Column>
-		<Column size="100" md="1-2">
-			<Card class="pa-card--bordered" variant="primary" titleText="Bordered Primary">
-				<Paragraph>Bordered card with color variant.</Paragraph>
-			</Card>
-		</Column>
-		<Column size="100" md="1-2">
-			<Card class="pa-card--bordered" variant="success" titleText="Bordered Success">
-				<Paragraph>Bordered card with success variant.</Paragraph>
-			</Card>
-		</Column>
-		<Column size="100" md="1-2">
-			<Card class="pa-card--bordered" variant="danger" titleText="Bordered Danger">
-				<Paragraph>Bordered card with danger variant.</Paragraph>
-			</Card>
-		</Column>
 	</Grid>
 </Section>
 

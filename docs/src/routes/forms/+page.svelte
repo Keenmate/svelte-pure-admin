@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import {
 		Card,
+		TableCard,
 		Form,
 		FormGroup,
 		FormLabel,
@@ -135,7 +136,7 @@
 <Paragraph>Complete set of form elements with various styles and states for data input.</Paragraph>
 
 <!-- Input Sizes Reference -->
-<Card titleText="Input Sizes Reference" hasPadding={false}>
+<TableCard titleText="Input Sizes Reference" isScrollable>
 	<div bind:this={sizesRef}>
 		<Table isStriped>
 			<thead>
@@ -223,24 +224,19 @@
 			</tbody>
 		</Table>
 	</div>
-</Card>
+</TableCard>
 
 <!-- Form with Buttons in Header -->
-<Card>
-	{#snippet header()}
-		<h3>User Profile</h3>
-		<div class="pa-card__header-actions">
-			<ButtonGroup>
-				<Button variant="secondary" size="sm">
-					{#snippet icon()}×{/snippet}
-					Cancel
-				</Button>
-				<Button variant="success" size="sm">
-					{#snippet icon()}✓{/snippet}
-					Save
-				</Button>
-			</ButtonGroup>
-		</div>
+<Card titleText="User Profile">
+	{#snippet headerActions()}
+		<Button variant="secondary" size="sm">
+			{#snippet icon()}×{/snippet}
+			Cancel
+		</Button>
+		<Button variant="success" size="sm">
+			{#snippet icon()}✓{/snippet}
+			Save
+		</Button>
 	{/snippet}
 
 	<Form>
@@ -665,16 +661,16 @@
 			<Grid>
 				<Column size="100" md="1-2">
 					<CheckboxGroup>
-						<Checkbox id="lp-ce-1" class="pa-checkbox--label-end" labelText="End · Option 1" checked />
-						<Checkbox id="lp-ce-2" class="pa-checkbox--label-end" labelText="End · Option 2" />
-						<Checkbox id="lp-ce-3" class="pa-checkbox--label-end" labelText="End · Option 3" checked />
+						<Checkbox id="lp-ce-1" labelPosition="end" labelText="End · Option 1" checked />
+						<Checkbox id="lp-ce-2" labelPosition="end" labelText="End · Option 2" />
+						<Checkbox id="lp-ce-3" labelPosition="end" labelText="End · Option 3" checked />
 					</CheckboxGroup>
 				</Column>
 				<Column size="100" md="1-2">
 					<CheckboxGroup>
-						<Checkbox id="lp-cs-1" class="pa-checkbox--label-start" labelText="Start · Option 1" checked />
-						<Checkbox id="lp-cs-2" class="pa-checkbox--label-start" labelText="Start · Option 2" />
-						<Checkbox id="lp-cs-3" class="pa-checkbox--label-start" labelText="Start · Option 3" checked />
+						<Checkbox id="lp-cs-1" labelPosition="start" labelText="Start · Option 1" checked />
+						<Checkbox id="lp-cs-2" labelPosition="start" labelText="Start · Option 2" />
+						<Checkbox id="lp-cs-3" labelPosition="start" labelText="Start · Option 3" checked />
 					</CheckboxGroup>
 				</Column>
 			</Grid>
@@ -682,13 +678,13 @@
 
 		<FormGroup class="mb-2xl">
 			<FormLabel>Checkbox · label top (auto-flow grid, 6 options)</FormLabel>
-			<CheckboxGroup class="pa-checkbox-group--grid">
-				<Checkbox id="lp-ct-1" class="pa-checkbox--label-top" labelText="Top · Option 1" checked />
-				<Checkbox id="lp-ct-2" class="pa-checkbox--label-top" labelText="Top · Option 2" />
-				<Checkbox id="lp-ct-3" class="pa-checkbox--label-top" labelText="Top · Option 3" checked />
-				<Checkbox id="lp-ct-4" class="pa-checkbox--label-top" labelText="Top · Option 4" />
-				<Checkbox id="lp-ct-5" class="pa-checkbox--label-top" labelText="Top · Option 5" checked />
-				<Checkbox id="lp-ct-6" class="pa-checkbox--label-top" labelText="Top · Option 6" />
+			<CheckboxGroup layout="grid">
+				<Checkbox id="lp-ct-1" labelPosition="top" labelText="Top · Option 1" checked />
+				<Checkbox id="lp-ct-2" labelPosition="top" labelText="Top · Option 2" />
+				<Checkbox id="lp-ct-3" labelPosition="top" labelText="Top · Option 3" checked />
+				<Checkbox id="lp-ct-4" labelPosition="top" labelText="Top · Option 4" />
+				<Checkbox id="lp-ct-5" labelPosition="top" labelText="Top · Option 5" checked />
+				<Checkbox id="lp-ct-6" labelPosition="top" labelText="Top · Option 6" />
 			</CheckboxGroup>
 		</FormGroup>
 
@@ -697,16 +693,16 @@
 			<Grid>
 				<Column size="100" md="1-2">
 					<RadioGroup>
-						<Radio name="rl-end" value="1" class="pa-radio--label-end" bind:group={rlEnd} labelText="End · Option 1" />
-						<Radio name="rl-end" value="2" class="pa-radio--label-end" bind:group={rlEnd} labelText="End · Option 2" />
-						<Radio name="rl-end" value="3" class="pa-radio--label-end" bind:group={rlEnd} labelText="End · Option 3" />
+						<Radio name="rl-end" value="1" labelPosition="end" bind:group={rlEnd} labelText="End · Option 1" />
+						<Radio name="rl-end" value="2" labelPosition="end" bind:group={rlEnd} labelText="End · Option 2" />
+						<Radio name="rl-end" value="3" labelPosition="end" bind:group={rlEnd} labelText="End · Option 3" />
 					</RadioGroup>
 				</Column>
 				<Column size="100" md="1-2">
 					<RadioGroup>
-						<Radio name="rl-start" value="1" class="pa-radio--label-start" bind:group={rlStart} labelText="Start · Option 1" />
-						<Radio name="rl-start" value="2" class="pa-radio--label-start" bind:group={rlStart} labelText="Start · Option 2" />
-						<Radio name="rl-start" value="3" class="pa-radio--label-start" bind:group={rlStart} labelText="Start · Option 3" />
+						<Radio name="rl-start" value="1" labelPosition="start" bind:group={rlStart} labelText="Start · Option 1" />
+						<Radio name="rl-start" value="2" labelPosition="start" bind:group={rlStart} labelText="Start · Option 2" />
+						<Radio name="rl-start" value="3" labelPosition="start" bind:group={rlStart} labelText="Start · Option 3" />
 					</RadioGroup>
 				</Column>
 			</Grid>
@@ -714,13 +710,13 @@
 
 		<FormGroup>
 			<FormLabel>Radio · label top (auto-flow grid, 6 options)</FormLabel>
-			<RadioGroup class="pa-radio-group--grid">
-				<Radio name="rl-top" value="1" class="pa-radio--label-top" bind:group={rlTop} labelText="Top · Option 1" />
-				<Radio name="rl-top" value="2" class="pa-radio--label-top" bind:group={rlTop} labelText="Top · Option 2" />
-				<Radio name="rl-top" value="3" class="pa-radio--label-top" bind:group={rlTop} labelText="Top · Option 3" />
-				<Radio name="rl-top" value="4" class="pa-radio--label-top" bind:group={rlTop} labelText="Top · Option 4" />
-				<Radio name="rl-top" value="5" class="pa-radio--label-top" bind:group={rlTop} labelText="Top · Option 5" />
-				<Radio name="rl-top" value="6" class="pa-radio--label-top" bind:group={rlTop} labelText="Top · Option 6" />
+			<RadioGroup layout="grid">
+				<Radio name="rl-top" value="1" labelPosition="top" bind:group={rlTop} labelText="Top · Option 1" />
+				<Radio name="rl-top" value="2" labelPosition="top" bind:group={rlTop} labelText="Top · Option 2" />
+				<Radio name="rl-top" value="3" labelPosition="top" bind:group={rlTop} labelText="Top · Option 3" />
+				<Radio name="rl-top" value="4" labelPosition="top" bind:group={rlTop} labelText="Top · Option 4" />
+				<Radio name="rl-top" value="5" labelPosition="top" bind:group={rlTop} labelText="Top · Option 5" />
+				<Radio name="rl-top" value="6" labelPosition="top" bind:group={rlTop} labelText="Top · Option 6" />
 			</RadioGroup>
 		</FormGroup>
 	</Form>
@@ -762,12 +758,12 @@
 	<Form>
 		<FormGroup>
 			<FormLabel>Horizontal orientation</FormLabel>
-			<CheckboxGroup class="pa-checkbox-group--horizontal">
+			<CheckboxGroup layout="horizontal">
 				<Checkbox id="ho-red" labelText="Red" checked />
 				<Checkbox id="ho-green" labelText="Green" />
 				<Checkbox id="ho-blue" labelText="Blue" />
 			</CheckboxGroup>
-			<RadioGroup class="pa-radio-group--horizontal">
+			<RadioGroup layout="horizontal">
 				<Radio name="radio-horiz" value="low" bind:group={radioHoriz} labelText="Low" />
 				<Radio name="radio-horiz" value="medium" bind:group={radioHoriz} labelText="Medium" />
 				<Radio name="radio-horiz" value="high" bind:group={radioHoriz} labelText="High" />
@@ -778,7 +774,7 @@
 		     so the asterisk sits once on the GROUP HEADING — the options stay clean. -->
 		<FormGroup>
 			<FormLabel>Priority (required group)</FormLabel>
-			<RadioGroup class="pa-radio-group--horizontal">
+			<RadioGroup layout="horizontal">
 				<Radio name="req-priority" value="low" required bind:group={reqPriority} labelText="Low" />
 				<Radio name="req-priority" value="medium" required bind:group={reqPriority} labelText="Medium" />
 				<Radio name="req-priority" value="high" required bind:group={reqPriority} labelText="High" />

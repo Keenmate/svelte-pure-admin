@@ -29,8 +29,9 @@
 		/** Radio size */
 		size?: RadioSize;
 		/**
-		 * Label position relative to the input. `end` (default) needs no class;
-		 * `start` / `top` emit `pa-radio--label-{position}`.
+		 * Label position relative to the input → `pa-radio--label-{position}`.
+		 * `end` is the visual default; leave unset for a classless default, or set
+		 * it explicitly to emit the (redundant but valid) `--label-end` modifier.
 		 */
 		labelPosition?: RadioLabelPosition;
 		/** Label text */
@@ -61,8 +62,10 @@
 	const wrapperClasses = $derived(() => {
 		const base = ['pa-radio'];
 		if (size) base.push(`pa-radio--${size}`);
-		// `end` is the default (no class); only start/top emit a modifier.
-		if (labelPosition && labelPosition !== 'end') base.push(`pa-radio--label-${labelPosition}`);
+		// All three positions exist in core (`--label-end` is the default, so it's
+		// redundant but valid); emit whichever is explicitly set. A radio with no
+		// `labelPosition` stays classless (= end).
+		if (labelPosition) base.push(`pa-radio--label-${labelPosition}`);
 		// Core has no `.pa-radio--disabled` (only size modifiers) — the native
 		// `disabled` attribute on the <input> is the disabled contract
 		// (snippets/forms.html). Checkbox has --disabled; radio does not.
