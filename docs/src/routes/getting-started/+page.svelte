@@ -72,7 +72,7 @@
 
 	<Callout variant="info" headingText="Wiring Up Reactive Settings">
 		<p>If you do need runtime settings that affect Svelte components (like ProfilePanel), use the <code>onsettingschange</code> prop to pass settings as reactive props:</p>
-		<CodeBlock language="svelte">{`${'<'}script>
+		<CodeBlock>{`${'<'}script>
   let profileHasAvatar = $state(true);
   let profileIconOnlyTabs = $state(false);
 
@@ -119,7 +119,7 @@ yarn add @keenmate/svelte-pure-admin @keenmate/pure-admin-theme-audi`}</CodeBloc
 	</Paragraph>
 
 	<Heading level={4}>1. Import the theme (in your root layout)</Heading>
-	<CodeBlock language="svelte">{`${'<'}script>
+	<CodeBlock>{`${'<'}script>
   // Import your chosen theme - pick ONE
   import '@keenmate/pure-admin-theme-audi';
   // or: import '@keenmate/pure-admin-theme-corporate';
@@ -128,7 +128,7 @@ yarn add @keenmate/svelte-pure-admin @keenmate/pure-admin-theme-audi`}</CodeBloc
 ${'<'}/script>`}</CodeBlock>
 
 	<Heading level={4} class="mt-4">2. Wrap your app with PureAdminProvider</Heading>
-	<CodeBlock language="svelte">{`${'<'}script>
+	<CodeBlock>{`${'<'}script>
   import { PureAdminProvider, Layout, Navbar, Sidebar, Main } from '@keenmate/svelte-pure-admin';
   import '@keenmate/pure-admin-theme-corporate';
 
@@ -152,7 +152,7 @@ ${'<'}/script>
 </PureAdminProvider>`}</CodeBlock>
 
 	<Heading level={4} class="mt-4">3. Use components anywhere in your app</Heading>
-	<CodeBlock language="svelte">{`${'<'}script>
+	<CodeBlock>{`${'<'}script>
   import { Button, Card, Alert, Input } from '@keenmate/svelte-pure-admin';
 ${'<'}/script>
 
@@ -178,7 +178,7 @@ ${'<'}/script>
 				Provides a shared configuration context accessible to all child components via <code>usePureAdminConfig()</code>.
 				This includes app metadata, default values, UI preferences, and feature flags.
 			</Paragraph>
-			<CodeBlock language="typescript">{`interface PureAdminConfig {
+			<CodeBlock>{`interface PureAdminConfig {
   app: {
     name: string;
     copyright: string;
@@ -211,7 +211,7 @@ ${'<'}/script>
 			</Paragraph>
 
 			<Heading level={4} class="mt-4">Usage Example</Heading>
-			<CodeBlock language="svelte">{`${'<'}script>
+			<CodeBlock>{`${'<'}script>
   import { PureAdminProvider } from '@keenmate/svelte-pure-admin';
 
   const config = {
