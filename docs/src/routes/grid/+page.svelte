@@ -361,7 +361,7 @@
 		</Column>
 		<Column size="2-3">
 			<div style="background: var(--base-primary-bg); padding: 0.8rem; border-radius: 4px;">
-				<p class="pa-text pa-text--secondary mb-2">Nested grid inside 2/3 column:</p>
+				<Paragraph class="pa-text--secondary mb-2">Nested grid inside 2/3 column:</Paragraph>
 				<Grid>
 					<Column size="1-2"><div class="grid-demo-cell" style="background: var(--base-text-color-2);">Nested 1/2</div></Column>
 					<Column size="1-2"><div class="grid-demo-cell" style="background: var(--base-text-color-2);">Nested 1/2</div></Column>

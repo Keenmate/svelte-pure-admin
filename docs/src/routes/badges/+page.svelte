@@ -1,5 +1,5 @@
 <script lang="ts">
-			import { Heading, Paragraph, Badge, Label, BadgeGroup, CompositeBadge, CompositeBadgeGroup, Card, Grid, Column, Alert, Tooltip, Table } from '@keenmate/svelte-pure-admin';
+			import { Heading, Paragraph, Badge, Label, BadgeGroup, CompositeBadge, CompositeBadgeGroup, Card, TableCard, Grid, Column, Alert, Tooltip, Table } from '@keenmate/svelte-pure-admin';
 
 	// Badge data for interactive groups
 	const projectTags = [
@@ -148,7 +148,7 @@
 </script>
 
 <!-- Badge Sizes Reference -->
-<Card titleText="Badge Sizes Reference" hasPadding={false}>
+<TableCard titleText="Badge Sizes Reference" isScrollable>
 	<Table isStriped>
 		<thead>
 			<tr>
@@ -197,7 +197,7 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Basic Badges -->
 <Card titleText="Basic Badges">
@@ -306,7 +306,7 @@
 </Card>
 
 <!-- Label Sizes Reference -->
-<Card titleText="Label Sizes Reference" hasPadding={false}>
+<TableCard titleText="Label Sizes Reference" isScrollable>
 	<Table isStriped>
 		<thead>
 			<tr>
@@ -355,7 +355,7 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Labels -->
 <Card titleText="Labels">
