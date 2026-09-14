@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Grid, Column, Table, Badge, Button, ButtonGroup, Alert, BasicList, Code, CodeBlock } from '@keenmate/svelte-pure-admin';
+	import { Paragraph, Card, TableCard, Grid, Column, Table, Badge, Button, ButtonGroup, Alert, BasicList, Code, CodeBlock } from '@keenmate/svelte-pure-admin';
 </script>
 
 <!-- How It Works -->
@@ -8,10 +8,10 @@
 		<Column size="100" md="1-3">
 			<h4 class="mb-2">Desktop (&gt;1024px)</h4>
 			<BasicList>
-				<li>Standard isTable layout with columns</li>
+				<li>Standard table layout with columns</li>
 				<li>Headers visible at top</li>
 				<li>Data in rows and columns</li>
-				<li>Full isTable width displayed</li>
+				<li>Full table width displayed</li>
 			</BasicList>
 		</Column>
 		<Column size="100" md="1-3">
@@ -26,7 +26,7 @@
 		<Column size="100" md="1-3">
 			<h4 class="mb-2">Mobile (≤768px)</h4>
 			<BasicList>
-				<li>Each isRow becomes a card</li>
+				<li>Each row becomes a card</li>
 				<li>Headers hidden</li>
 				<li>Labels from <Code>data-label</Code></li>
 				<li>Label: Value pattern</li>
@@ -38,14 +38,14 @@
 	<Alert variant="info" class="mt-4">
 		<strong>Try it:</strong> Resize your browser window to see the responsive behavior:
 		<BasicList class="mt-2">
-			<li><strong>1024px → 769px:</strong> Table becomes isScrollable (prevents cramping)</li>
+			<li><strong>1024px → 769px:</strong> Table becomes scrollable (prevents cramping)</li>
 			<li><strong>768px and below:</strong> Transforms into stacked cards</li>
 		</BasicList>
 	</Alert>
 </Card>
 
 <!-- Basic Responsive Table -->
-<Card titleText="Basic Responsive Table" subtitleText="Simple user data isTable with automatic mobile transformation" hasPadding={false} class="mb-4">
+<TableCard titleText="Basic Responsive Table" descriptionText="Simple user data table with automatic mobile transformation" class="mb-4">
 	<Table isResponsive>
 		<thead>
 			<tr>
@@ -87,10 +87,10 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Product Table -->
-<Card titleText="Product Catalog" subtitleText="E-commerce product isTable with images, prices, and stock status" hasPadding={false} class="mb-4">
+<TableCard titleText="Product Catalog" descriptionText="E-commerce product table with images, prices, and stock status" class="mb-4">
 	<Table isResponsive isStriped>
 		<thead>
 			<tr>
@@ -157,10 +157,10 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Orders Table -->
-<Card titleText="Recent Orders" subtitleText="Order management isTable with dates, customers, and amounts" hasPadding={false} class="mb-4">
+<TableCard titleText="Recent Orders" descriptionText="Order management table with dates, customers, and amounts" class="mb-4">
 	<Table isResponsive>
 		<thead>
 			<tr>
@@ -220,14 +220,14 @@
 			</tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
 <!-- Code Example -->
 <Card titleText="HTML Implementation" subtitleText="How to make your tables responsive" class="mb-4">
 	<h4 class="mb-2">1. Add the class modifier</h4>
-	<Paragraph class="mb-3">Add <Code>.pa-table--responsive</Code> to your isTable element:</Paragraph>
+	<Paragraph class="mb-3">Add <Code>.pa-table--responsive</Code> to your table element:</Paragraph>
 	<CodeBlock class="mb-4">{`<table class="pa-table pa-table--responsive">
-  <!-- isTable content -->
+  <!-- table content -->
 </table>`}</CodeBlock>
 
 	<h4 class="mb-2">2. Add data-label attributes</h4>
@@ -252,7 +252,7 @@
 </table>`}</CodeBlock>
 
 	<h4 class="mb-2">3. That's it!</h4>
-	<Paragraph>The isTable will automatically transform on screens smaller than 768px. No JavaScript required!</Paragraph>
+	<Paragraph>The table will automatically transform on screens smaller than 768px. No JavaScript required!</Paragraph>
 
 	<Alert variant="success" class="mt-4">
 		<strong>Pro tip:</strong> Combine with <Code>.pa-table--striped</Code> for better readability on desktop. The striping is automatically disabled on mobile.
@@ -260,7 +260,7 @@
 </Card>
 
 <!-- SCSS Variables Reference -->
-<Card titleText="Customization Variables" subtitleText="SCSS variables for responsive isTable styling" class="mb-4">
+<Card titleText="Customization Variables" subtitleText="SCSS variables for responsive table styling" class="mb-4">
 	<Table>
 		<thead>
 			<tr>
@@ -278,7 +278,7 @@
 			<tr>
 				<td><Code>$table-responsive-card-margin</Code></td>
 				<td><Code>1rem</Code></td>
-				<td>Space between stacked isRow cards</td>
+				<td>Space between stacked row cards</td>
 			</tr>
 			<tr>
 				<td><Code>$table-responsive-card-padding</Code></td>
@@ -390,7 +390,7 @@
 	<CodeBlock>{`// Essential: Every <td> needs a matching data-label
 <td data-label="Column Name">Cell Value</td>
 
-// Combine with isTable variants
+// Combine with table variants
 <table class="pa-table pa-table--responsive pa-table--striped">
 <table class="pa-table pa-table--responsive">
 <table class="pa-table pa-table--responsive pa-table--compact">
