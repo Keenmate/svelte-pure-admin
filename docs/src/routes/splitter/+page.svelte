@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Splitter, SplitterPane, SplitterGutter, Card, Button } from '@keenmate/svelte-pure-admin';
+	import { Splitter, SplitterPane, SplitterGutter, Card, Button, BasicList, CodeBlock } from '@keenmate/svelte-pure-admin';
 
 	// --- Demo 4: mirror toggle ---
 	let mirror = $state(false);
@@ -128,7 +128,7 @@ console.log(greet('Pure Admin'));`;
 			style="background: var(--pc-subtle-bg); padding: 1.6rem;"
 		>
 			<h4 class="mb-3" style="margin-top: 0;">Files</h4>
-			<ul class="pa-list-basic">
+			<BasicList>
 				<li>📁 components/</li>
 				<li>📁 utils/</li>
 				<li>📄 main.scss</li>
@@ -136,13 +136,13 @@ console.log(greet('Pure Admin'));`;
 				<li>📄 package.json</li>
 				<li>📄 .gitignore</li>
 				<li>📄 LICENSE</li>
-			</ul>
+			</BasicList>
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize sidebar" />
 		<SplitterPane style="padding: 1.6rem;">
 			<h4 class="mb-3" style="margin-top: 0;">main.scss</h4>
 			<p class="text-secondary mb-3">Drag the gutter, double-click it to collapse, or focus it and use arrow keys.</p>
-			<pre class="pa-code"><code>{codeScss}</code></pre>
+			<CodeBlock>{codeScss}</CodeBlock>
 		</SplitterPane>
 	</Splitter>
 </Card>
@@ -162,7 +162,7 @@ console.log(greet('Pure Admin'));`;
 	>
 		<SplitterPane size="60%" min="80px" max="80%" style="padding: 1.6rem;">
 			<h4 class="mb-3" style="margin-top: 0;">Editor</h4>
-			<pre class="pa-code"><code>{codeEditorJs}</code></pre>
+			<CodeBlock>{codeEditorJs}</CodeBlock>
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize editor" />
 		<SplitterPane
@@ -269,13 +269,13 @@ console.log(greet('Pure Admin'));`;
 						<i class="fa-solid fa-chevron-left"></i>
 					</button>
 				{/snippet}
-				<ul class="pa-list-basic">
+				<BasicList>
 					<li>📁 src/</li>
 					<li>📁 dist/</li>
 					<li>📄 main.scss</li>
 					<li>📄 splitter.js</li>
 					<li>📄 README.md</li>
-				</ul>
+				</BasicList>
 				<p class="text-sm text-secondary mt-3 mb-0">Click the chevron in the header to minimize. Click the rail to restore.</p>
 			</Card>
 		</SplitterPane>
@@ -326,7 +326,7 @@ console.log(greet('Pure Admin'));`;
 				</div>
 				<div class="pa-card__body">
 					<p class="mb-3">When the file explorer minimizes, this card stays put and the gutter slides next to the rail.</p>
-					<pre class="pa-code"><code>{codeMinimize}</code></pre>
+					<CodeBlock>{codeMinimize}</CodeBlock>
 				</div>
 			</div>
 		</SplitterPane>
@@ -424,7 +424,7 @@ console.log(greet('Pure Admin'));`;
 			<Card style="height: 100%; margin: 0;" titleText="Editor">
 				{#snippet titleIcon()}<i class="fa-solid fa-code" aria-hidden="true"></i>{/snippet}
 				<p class="mb-3">Drag the gutter to the right (shrinking the inspector) — once the inspector's width drops below 75% of its implied min, it snaps to a rail on the right edge.</p>
-				<pre class="pa-code"><code>{codeInspector}</code></pre>
+				<CodeBlock>{codeInspector}</CodeBlock>
 			</Card>
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize inspector" />
@@ -488,7 +488,7 @@ console.log(greet('Pure Admin'));`;
 									<i class="fa-solid fa-window-minimize" aria-hidden="true"></i>
 								</button>
 							{/snippet}
-							<ul class="pa-list-basic"><li>📁 src/</li><li>📁 demo/</li><li>📄 main.scss</li><li>📄 README.md</li></ul>
+							<BasicList><li>📁 src/</li><li>📁 demo/</li><li>📄 main.scss</li><li>📄 README.md</li></BasicList>
 						</Card>
 					</SplitterPane>
 				{:else if paneKind(i, paneCount) === 'last'}
@@ -513,7 +513,7 @@ console.log(greet('Pure Admin'));`;
 								</button>
 							{/snippet}
 							<p class="text-secondary mb-2">Workspace {i} of {paneCount - 2}</p>
-							<pre class="pa-code"><code>{`// Pane ${i + 1}\nconsole.log("hi");`}</code></pre>
+							<CodeBlock>{`// Pane ${i + 1}\nconsole.log("hi");`}</CodeBlock>
 						</Card>
 					</SplitterPane>
 				{/if}
@@ -538,7 +538,7 @@ console.log(greet('Pure Admin'));`;
 	<div class="pc-col-100 pc-col-lg-50">
 		<Card class="mb-4">
 			{#snippet title()}Markup{/snippet}
-			<pre class="pa-code"><code>{codeMarkup}</code></pre>
+			<CodeBlock>{codeMarkup}</CodeBlock>
 			<p class="text-sm mt-3 mb-0">
 				Any N ≥ 2. Panes and gutters must alternate. Each pane carries its own
 				<code>data-pa-splitter-size</code> / <code>-min</code> / <code>-max</code>. Any pane with
@@ -608,12 +608,12 @@ console.log(greet('Pure Admin'));`;
 				<code>&lt;SplitterGutter&gt;</code> between each pair. Root events are surfaced as
 				<code>onresize</code> / <code>oncollapse</code> / <code>onexpand</code> callbacks.
 			</p>
-			<pre class="pa-code"><code>{`<Splitter orientation="horizontal" splitterId="my-id"
+			<CodeBlock>{`<Splitter orientation="horizontal" splitterId="my-id"
           onresize={(d) => console.log(d)}>
   <SplitterPane size="240px" min="180px" isMinimizable>A</SplitterPane>
   <SplitterGutter />
   <SplitterPane min="240px">B</SplitterPane>
-</Splitter>`}</code></pre>
+</Splitter>`}</CodeBlock>
 		</Card>
 	</div>
 </div>
