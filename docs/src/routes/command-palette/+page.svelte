@@ -451,8 +451,8 @@
 
 				{#snippet end()}
 					<NavMenu>
-						<NavItem href="#notifications">🔔</NavItem>
-						<NavItem href="#profile">👤</NavItem>
+						<NavItem href="#notifications"><span class="pa-icon pa-icon--bell" aria-hidden="true"></span></NavItem>
+						<NavItem href="#profile"><span class="pa-icon pa-icon--user" aria-hidden="true"></span></NavItem>
 					</NavMenu>
 				{/snippet}
 			</Navbar>
@@ -577,7 +577,7 @@
 				<div class="mb-4">
 					<Button variant="primary" size="lg" isBlock onclick={() => (showPalette = true)}>
 						{#snippet icon()}
-							🔍
+							<span class="pa-icon pa-icon--search" aria-hidden="true"></span>
 						{/snippet}
 						Open Command Palette (Ctrl+K)
 					</Button>
