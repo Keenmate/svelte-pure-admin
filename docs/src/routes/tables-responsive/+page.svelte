@@ -106,8 +106,8 @@
 			<tr>
 				<td data-label="Actions" class="col-auto">
 					<ButtonGroup>
-						<Button size="xs" variant="primary" titleText="View">👁️</Button>
-						<Button size="xs" variant="secondary" titleText="Edit">✏️</Button>
+						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
+						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td data-label="Product"><strong>MacBook Pro 16"</strong></td>
@@ -119,8 +119,8 @@
 			<tr>
 				<td data-label="Actions" class="col-auto">
 					<ButtonGroup>
-						<Button size="xs" variant="primary" titleText="View">👁️</Button>
-						<Button size="xs" variant="secondary" titleText="Edit">✏️</Button>
+						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
+						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td data-label="Product"><strong>iPhone 15 Pro</strong></td>
@@ -132,8 +132,8 @@
 			<tr>
 				<td data-label="Actions" class="col-auto">
 					<ButtonGroup>
-						<Button size="xs" variant="primary" titleText="View">👁️</Button>
-						<Button size="xs" variant="secondary" titleText="Edit">✏️</Button>
+						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
+						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td data-label="Product"><strong>AirPods Pro (2nd gen)</strong></td>
@@ -145,8 +145,8 @@
 			<tr>
 				<td data-label="Actions" class="col-auto">
 					<ButtonGroup>
-						<Button size="xs" variant="primary" titleText="View">👁️</Button>
-						<Button size="xs" variant="secondary" titleText="Edit">✏️</Button>
+						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
+						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td data-label="Product"><strong>iPad Air M2</strong></td>

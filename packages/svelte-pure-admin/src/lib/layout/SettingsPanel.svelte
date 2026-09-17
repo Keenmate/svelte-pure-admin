@@ -604,7 +604,7 @@
 
 <!-- Floating Settings Panel -->
 <div class="pa-settings-panel" class:pa-settings-panel--open={isOpen} id="settingsPanel">
-	<button class="pa-settings-panel__toggle" onclick={togglePanel} title={$_('pureAdmin.a11y.settings')}>⚙</button>
+	<button class="pa-settings-panel__toggle" onclick={togglePanel} title={$_('pureAdmin.a11y.settings')}><span class="pa-icon pa-icon--settings" aria-hidden="true"></span></button>
 
 	<div class="pa-settings-panel__content">
 		<h3 class="pa-settings-panel__title">Settings</h3>

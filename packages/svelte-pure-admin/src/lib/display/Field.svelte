@@ -179,10 +179,10 @@
 					onclick={handleCopy}
 					aria-label={copied ? resolvedCopiedText : resolvedHintText}
 				>
-					<!-- Static copy glyph (snippet blesses `fas fa-copy`). Core shows
+					<!-- Static copy glyph (masked --pa-icon-copy since core 3.1.0). Core shows
 					     the "Copied!" feedback via the value's ::after on --copied, so
 					     the button icon never swaps. -->
-					<i class="fas fa-copy" aria-hidden="true"></i>
+					<span class="pa-icon pa-icon--copy" aria-hidden="true"></span>
 				</button>
 			{/if}
 		</span>

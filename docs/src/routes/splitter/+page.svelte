@@ -266,7 +266,7 @@ console.log(greet('Pure Admin'));`;
 						aria-label="Minimize panel"
 						title="Minimize panel"
 					>
-						<i class="fa-solid fa-chevron-left"></i>
+						<span class="pa-icon pa-icon--chevron-left" aria-hidden="true"></span>
 					</button>
 				{/snippet}
 				<BasicList>
@@ -291,7 +291,7 @@ console.log(greet('Pure Admin'));`;
 					<div class="pa-card__actions pa-card__actions--responsive">
 						<div class="pa-card__actions-full">
 							<button class="pa-btn pa-btn--xs pa-btn--secondary" title="Save" aria-label="Save">
-								<i class="fa-solid fa-floppy-disk"></i>
+								<span class="pa-icon pa-icon--save" aria-hidden="true"></span>
 							</button>
 							<button class="pa-btn pa-btn--xs pa-btn--secondary" title="Format" aria-label="Format code">
 								<i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -306,12 +306,12 @@ console.log(greet('Pure Admin'));`;
 									<i class="fa-solid fa-play"></i>
 								</button>
 								<button class="pa-btn pa-btn--xs pa-btn--primary pa-btn-split__toggle" aria-label="More actions">
-									<i class="fa-solid fa-chevron-down pa-btn-split__chevron"></i>
+									<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 								</button>
 								<div class="pa-btn-split__menu">
 									<div class="pa-btn-split__menu-inner">
 										<button class="pa-btn-split__item" type="button">
-											<i class="fa-solid fa-floppy-disk"></i>
+											<span class="pa-icon pa-icon--save" aria-hidden="true"></span>
 											Save
 										</button>
 										<button class="pa-btn-split__item" type="button">
@@ -369,7 +369,7 @@ console.log(greet('Pure Admin'));`;
 				{#snippet titleIcon()}<i class="fa-solid fa-toolbox" aria-hidden="true"></i>{/snippet}
 				{#snippet headerActions()}
 					<button class="pa-btn pa-btn--xs pa-btn--secondary" type="button">
-						<i class="fa-solid fa-floppy-disk"></i>
+						<span class="pa-icon pa-icon--save" aria-hidden="true"></span>
 						<span>Save</span>
 					</button>
 					<button class="pa-btn pa-btn--xs pa-btn--secondary" type="button">
@@ -438,7 +438,7 @@ console.log(greet('Pure Admin'));`;
 						aria-label="Minimize inspector"
 						title="Minimize inspector"
 					>
-						<i class="fa-solid fa-chevron-right"></i>
+						<span class="pa-icon pa-icon--chevron-right" aria-hidden="true"></span>
 					</button>
 				{/snippet}
 				<p class="text-sm text-secondary mb-0">Properties, outlines, references, etc. live here. Click the chevron, double-click the gutter, or drag the gutter rightward to collapse.</p>

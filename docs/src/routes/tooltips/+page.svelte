@@ -88,17 +88,17 @@
 					<ButtonGroup>
 						<Tooltip text="Save your changes" position="start">
 							<Button variant="primary" size="sm">
-								<i class="fa-solid fa-floppy-disk"></i> Save
+								<span class="pa-icon pa-icon--save" aria-hidden="true"></span> Save
 							</Button>
 						</Tooltip>
 						<Tooltip text="Cancel and go back" position="bottom">
 							<Button variant="secondary" size="sm">
-								<i class="fa-solid fa-xmark"></i> Cancel
+								<span class="pa-icon pa-icon--x" aria-hidden="true"></span> Cancel
 							</Button>
 						</Tooltip>
 						<Tooltip text="Delete this item" position="bottom">
 							<Button variant="danger" size="sm">
-								<i class="fa-solid fa-trash"></i> Delete
+								<span class="pa-icon pa-icon--delete" aria-hidden="true"></span> Delete
 							</Button>
 						</Tooltip>
 					</ButtonGroup>
@@ -108,12 +108,12 @@
 					<ButtonGroup>
 						<Tooltip text="Edit" position="bottom">
 							<Button variant="primary" size="sm" isIconOnly titleText="">
-								<i class="fa-solid fa-pen"></i>
+								<span class="pa-icon pa-icon--edit" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
 						<Tooltip text="Copy" position="bottom">
 							<Button variant="secondary" size="sm" isIconOnly titleText="">
-								<i class="fa-solid fa-copy"></i>
+								<span class="pa-icon pa-icon--copy" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
 						<Tooltip text="Download" position="bottom">
@@ -128,7 +128,7 @@
 						</Tooltip>
 						<Tooltip text="Delete" position="bottom">
 							<Button variant="danger" size="sm" isIconOnly titleText="">
-								<i class="fa-solid fa-trash"></i>
+								<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
 						<Tooltip text="Info" position="bottom">
@@ -153,7 +153,7 @@
 							multiline
 						>
 							<Button variant="primary" size="sm">
-								<i class="fa-solid fa-floppy-disk"></i> Save
+								<span class="pa-icon pa-icon--save" aria-hidden="true"></span> Save
 							</Button>
 						</Tooltip>
 						<Tooltip
@@ -162,7 +162,7 @@
 							multiline
 						>
 							<Button variant="danger" size="sm">
-								<i class="fa-solid fa-trash"></i> Delete
+								<span class="pa-icon pa-icon--delete" aria-hidden="true"></span> Delete
 							</Button>
 						</Tooltip>
 					</ButtonGroup>

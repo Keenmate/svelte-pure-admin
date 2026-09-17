@@ -77,7 +77,12 @@ export interface ToastOptions {
 	maxWidth?: string;
 	/** Action buttons rendered inside pa-toast__actions */
 	actions?: ToastAction[];
-	/** Optional FontAwesome class for the icon (e.g. 'fas fa-check-circle') */
+	/**
+	 * Optional icon override (e.g. a FontAwesome class like 'fas fa-check-circle').
+	 * By default the toast paints the masked severity glyph derived from `variant`
+	 * (core 3.1.0 `.pa-icon--info/success/warning/danger`); set this only to
+	 * substitute a custom glyph.
+	 */
 	iconClass?: string;
 	/** Additional CSS classes on the toast root */
 	class?: string;

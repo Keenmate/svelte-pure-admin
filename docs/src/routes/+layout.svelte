@@ -423,13 +423,13 @@
 					active={activeProfileTab === 'profile'}
 					onclick={() => activeProfileTab = 'profile'}
 				>
-					<span>👤</span> Profile
+					<span class="pa-icon pa-icon--user" aria-hidden="true"></span> Profile
 				</TabItem>
 				<TabItem
 					active={activeProfileTab === 'favorites'}
 					onclick={() => activeProfileTab = 'favorites'}
 				>
-					<span>⭐</span> Favorites
+					<span class="pa-icon pa-icon--favorites" aria-hidden="true"></span> Favorites
 				</TabItem>
 			</Tabs>
 		{/snippet}
@@ -603,7 +603,7 @@
 
 			<div class="pa-notifications">
 				<button class="pa-notifications__btn" onclick={toggleNotifications} aria-label="Notifications">
-					<span class="pa-notifications__icon">🔔</span>
+					<span class="pa-notifications__icon"><span class="pa-icon pa-icon--bell" aria-hidden="true"></span></span>
 					<span class="pa-notifications__badge">3</span>
 				</button>
 				<NotificationsPanel bind:show={showNotifications} />

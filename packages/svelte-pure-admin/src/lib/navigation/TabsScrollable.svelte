@@ -102,7 +102,7 @@
 		onclick={() => scrollTabs('left')}
 		aria-label={$_('pureAdmin.a11y.scrollTabsLeft')}
 	>
-		<i class="fa-solid fa-chevron-left"></i>
+		<span class="pa-icon pa-icon--chevron-left" aria-hidden="true"></span>
 	</button>
 
 	<div class="pa-tabs__scroll-container" bind:this={scrollContainer}>
@@ -115,6 +115,6 @@
 		onclick={() => scrollTabs('right')}
 		aria-label={$_('pureAdmin.a11y.scrollTabsRight')}
 	>
-		<i class="fa-solid fa-chevron-right"></i>
+		<span class="pa-icon pa-icon--chevron-right" aria-hidden="true"></span>
 	</button>
 </div>

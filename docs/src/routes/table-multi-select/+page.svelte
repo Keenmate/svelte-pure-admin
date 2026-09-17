@@ -162,7 +162,7 @@
 				variant="secondary"
 				onclick={() => showDetails = !showDetails}
 			>
-				<span class="pa-btn__icon"><i class="fas fa-chevron-down"></i></span>
+				<span class="pa-btn__icon"><span class="pa-icon {showDetails ? 'pa-icon--chevron-up' : 'pa-icon--chevron-down'}" aria-hidden="true"></span></span>
 				{showDetails ? 'Hide Details' : 'Show Details'}
 			</Button>
 		</div>
@@ -176,10 +176,10 @@
 
 			{#snippet menu()}
 				<SplitButtonItem isDanger onclick={deleteSelected}>
-					<i class="fas fa-trash"></i> Delete Selected
+					<span class="pa-icon pa-icon--delete" aria-hidden="true"></span> Delete Selected
 				</SplitButtonItem>
 				<SplitButtonItem onclick={clearSelection}>
-					<i class="fas fa-times"></i> Clear All
+					<span class="pa-icon pa-icon--clear" aria-hidden="true"></span> Clear All
 				</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
@@ -205,7 +205,7 @@
 						<tr>
 							<td class="col-auto">
 								<Button size="xs" variant="danger" isOutline onclick={() => removeFromSelection(entry.id)}>
-									<i class="fas fa-times"></i>
+									<span class="pa-icon pa-icon--remove" aria-hidden="true"></span>
 								</Button>
 							</td>
 							<td>{entry.user.name}</td>

@@ -124,9 +124,9 @@
 				onclick={handleCopy}
 				aria-label={copied ? $_('pureAdmin.field.copied') : $_('pureAdmin.field.clickToCopy')}
 			>
-				<!-- Static copy glyph (snippet blesses `fas fa-copy`); the "Copied!"
+				<!-- Static copy glyph (masked --pa-icon-copy since core 3.1.0); the "Copied!"
 				     feedback is core's value ::after on --copied, not an icon swap. -->
-				<i class="fas fa-copy" aria-hidden="true"></i>
+				<span class="pa-icon pa-icon--copy" aria-hidden="true"></span>
 			</button>
 		{/if}
 	</div>

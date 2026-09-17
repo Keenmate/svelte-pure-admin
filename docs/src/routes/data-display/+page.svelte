@@ -796,7 +796,7 @@
 			<div class="pa-detail-panel__content">
 				<div class="pa-detail-panel__body" style="position: relative; padding-top: 1.2rem;">
 					<button class="pa-detail-panel__close" onclick={closeOrderDetail} aria-label="Close panel" style="position: absolute; top: 0.8rem; right: 0.8rem; z-index: 1;">
-						<i class="fas fa-times"></i>
+						<span class="pa-icon pa-icon--x" aria-hidden="true"></span>
 					</button>
 
 					{#if selectedOrderId && orderData[selectedOrderId]}
@@ -834,7 +834,7 @@
 				</div>
 				<div class="pa-detail-panel__footer">
 					<Button variant="primary" size="sm">
-						{#snippet icon()}<i class="fas fa-edit"></i>{/snippet}
+						{#snippet icon()}<span class="pa-icon pa-icon--edit" aria-hidden="true"></span>{/snippet}
 						Edit
 					</Button>
 					<Button variant="secondary" size="sm" class="ml-auto" onclick={closeOrderDetail}>
@@ -891,7 +891,7 @@
 	<div class="pa-detail-panel__content">
 		<div class="pa-detail-panel__body" style="position: relative;">
 			<button class="pa-detail-panel__close" onclick={closeProductOverlay} aria-label="Close panel" style="position: absolute; top: 0.8rem; right: 0.8rem; z-index: 1;">
-				<i class="fas fa-times"></i>
+				<span class="pa-icon pa-icon--x" aria-hidden="true"></span>
 			</button>
 
 			{#if selectedProductId && productData[selectedProductId]}
@@ -941,11 +941,11 @@
 		</div>
 		<div class="pa-detail-panel__footer">
 			<Button variant="primary" size="sm">
-				{#snippet icon()}<i class="fas fa-edit"></i>{/snippet}
+				{#snippet icon()}<span class="pa-icon pa-icon--edit" aria-hidden="true"></span>{/snippet}
 				Edit Product
 			</Button>
 			<Button isOutline variant="danger" size="sm">
-				{#snippet icon()}<i class="fas fa-trash"></i>{/snippet}
+				{#snippet icon()}<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>{/snippet}
 				Delete
 			</Button>
 			<Button variant="secondary" size="sm" class="ml-auto" onclick={closeProductOverlay}>

@@ -88,9 +88,12 @@
 	{#each serviceToasts as toast (toast.id)}
 		{@const iconClass = toast.iconClass}
 		{@const actions = toast.actions}
+		{@const severityIcon = { success: 'success', danger: 'danger', warning: 'warning', info: 'info', primary: 'info' }[toast.variant ?? 'primary']}
 
 		{#snippet iconSnippet()}
-			{#if iconClass}<i class={iconClass}></i>{/if}
+			<!-- Severity glyph derived from the variant (core 3.1.0 masked --pa-icon family);
+			     `iconClass` is an optional override for a custom glyph. -->
+			{#if iconClass}<i class={iconClass}></i>{:else}<span class="pa-icon pa-icon--{severityIcon}" aria-hidden="true"></span>{/if}
 		{/snippet}
 
 		{#snippet actionsSnippet()}
@@ -116,7 +119,7 @@
 			progressColor={toast.progressColor}
 			maxWidth={toast.maxWidth}
 			class={toast.class}
-			icon={iconClass ? iconSnippet : undefined}
+			icon={iconSnippet}
 			actions={actions && actions.length > 0 ? actionsSnippet : undefined}
 			onclose={() => toastStore.dismiss(toast.id)}
 		/>

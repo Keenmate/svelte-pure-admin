@@ -70,7 +70,7 @@
 			aria-label={ariaLabel}
 		>
 			<span class="pa-range-group__summary" data-range-group-summary></span>
-			<i class="fas fa-chevron-down pa-range-group__caret" aria-hidden="true"></i>
+			<span class="pa-range-group__caret" aria-hidden="true"></span>
 		</button>
 
 		<div

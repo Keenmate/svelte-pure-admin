@@ -74,7 +74,7 @@
 		{#if toggle}
 			{@render toggle()}
 		{:else}
-			<i class="fa-solid fa-ellipsis"></i>
+			<span class="pa-icon pa-icon--ellipsis" aria-hidden="true"></span>
 		{/if}
 	</button>
 	<div class={menuClasses()}>

@@ -2,93 +2,93 @@
   "_format": 1,
   "themes": {
     "audi": {
-      "version": "2.9.0",
-      "content_sha": "sha256:4e56a6817350ba3c809a0aafb1ee6518dacbce34bc3c4f5ce0d96bf7885b0a52",
-      "fetched_at": "2026-08-26T21:41:01.417Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:2e6c86c5916375b4b2f89289bf9b50247f44eefb0a713b451ebb53c5d27cef85",
+      "fetched_at": "2026-09-17T14:12:02.314Z",
       "source": "remote"
     },
     "ayu": {
-      "version": "2.9.0",
-      "content_sha": "sha256:2dc6f2e220191ea193477480f3bc9bb8d01526f2dda12ed827f755b6de58c3ec",
-      "fetched_at": "2026-08-26T21:41:01.445Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:1261e5e4259b968a8134594d97a0b319ec4bf372a4c93977f55c39f85a058796",
+      "fetched_at": "2026-09-17T14:12:02.346Z",
       "source": "remote"
     },
     "cafeindustrial": {
-      "version": "2.9.0",
-      "content_sha": "sha256:dea5ff830142cfd4280d9ca99b1b917d8206a2e4692815ee9086926fa730c2d2",
-      "fetched_at": "2026-08-26T21:41:01.475Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:a0c605194295846af97ad48498d75bc6ad393959c54dfe361fc84a496fc9bf4e",
+      "fetched_at": "2026-09-17T14:12:02.379Z",
       "source": "remote"
     },
     "cobalt2": {
-      "version": "2.9.0",
-      "content_sha": "sha256:9db907da30cad858235c361e7c8a1a95703abe8a5174eafd67fa5d45eeda8337",
-      "fetched_at": "2026-08-26T21:41:01.504Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:d94709640d5652dc132304b127325a88930dbbed53da097fc0b9bfe2ddc3eed9",
+      "fetched_at": "2026-09-17T14:12:02.410Z",
       "source": "remote"
     },
     "corporate": {
-      "version": "2.9.0",
-      "content_sha": "sha256:b41caa46a66a38d16f27d0abb462bdb1c1de4087ce32e48f5e565e6bbb7e700f",
-      "fetched_at": "2026-08-26T21:41:01.538Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:4e8a665bc0f93532a38d2014ea12f16ff0cb09aab7a6889ef9c56a558b59feb5",
+      "fetched_at": "2026-09-17T14:12:02.443Z",
       "source": "remote"
     },
     "dark": {
-      "version": "2.9.0",
-      "content_sha": "sha256:dd96699e12f5a67f1b5d10406d1cd800afd1da97cad8e124b5b985995db206d6",
-      "fetched_at": "2026-08-26T21:41:01.568Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:06623213ef83db8722c6b34c367c972bef408e770fe8f2b2ee5558621f13d509",
+      "fetched_at": "2026-09-17T14:12:02.476Z",
       "source": "remote"
     },
     "darkmatter": {
-      "version": "2.9.0",
-      "content_sha": "sha256:90189a29366e9747b7b908052dcdafe22bf991936a9dddd061ff0a236445dc21",
-      "fetched_at": "2026-08-26T21:41:01.595Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:40a15367273234e9275dfe023d8fa85731546e760e9cbe22f213bf00d567df87",
+      "fetched_at": "2026-09-17T14:12:02.508Z",
       "source": "remote"
     },
     "dracula": {
-      "version": "2.9.0",
-      "content_sha": "sha256:4ac3aa8f4c520411a280e44bfd4091408e1a89374995c912218ea48be00b0a6c",
-      "fetched_at": "2026-08-26T21:41:01.625Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:31fd2631f71506f13515cb145ca9cc74daba58882d726df21354e44e7c8c5a85",
+      "fetched_at": "2026-09-17T14:12:02.541Z",
       "source": "remote"
     },
     "express": {
-      "version": "2.9.0",
-      "content_sha": "sha256:65281b93b3d2c0993e17762badfa4986dfe1762e4aa152ddde66cfb0be1bc4ad",
-      "fetched_at": "2026-08-26T21:41:01.654Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:dc62f0ecf0869723efdea9c2b665021e25c2cea92ccafb4a16f16ff6556d6b2c",
+      "fetched_at": "2026-09-17T14:12:02.576Z",
       "source": "remote"
     },
     "gruvbox": {
-      "version": "2.9.0",
-      "content_sha": "sha256:d56dcf72e78d055d6e05ef203cdaf3c7256dbe2c61b4baff4637a9363765b860",
-      "fetched_at": "2026-08-26T21:41:01.683Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:a1edc9f0a4cb3935a585fc817461b57e7ed798cf6e43a70392e5366b3bd1074c",
+      "fetched_at": "2026-09-17T14:12:02.607Z",
       "source": "remote"
     },
     "minimal": {
-      "version": "2.9.0",
-      "content_sha": "sha256:998dc887f9fa95928592fe3cf7cfb5683e7496d92c3bdc5a1b082521519ebdb7",
-      "fetched_at": "2026-08-26T21:41:01.712Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:32d74975747fc25f0db293826e2240fb81a0e026a9cb87b9f5e3d5fe867bf4e1",
+      "fetched_at": "2026-09-17T14:12:02.639Z",
       "source": "remote"
     },
     "nato": {
-      "version": "2.9.0",
-      "content_sha": "sha256:d95d31f1c37d76263ccdf59b0de3abbfac851dcb091269a4bdc88a91e714d758",
-      "fetched_at": "2026-08-26T21:41:01.744Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:ca8ef57951a78b989781a8d53c72b0b44449c9659fcae6217ec6281dde5331c3",
+      "fetched_at": "2026-09-17T14:12:02.673Z",
       "source": "remote"
     },
     "night-owl": {
-      "version": "2.9.0",
-      "content_sha": "sha256:73adea27a02d9d805f0db273436e541da266693ec64eb57d66aaf9c50d3f9ee1",
-      "fetched_at": "2026-08-26T21:41:01.774Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:94b40f13f465f0fbc7283b928c23b1e230842d10fe38a7b653f075dfd4f527ef",
+      "fetched_at": "2026-09-17T14:12:02.705Z",
       "source": "remote"
     },
     "one-dark": {
-      "version": "2.9.0",
-      "content_sha": "sha256:92177f13e5373f494b9e0233d32e237a53676907391551efe7b10f13345669b3",
-      "fetched_at": "2026-08-26T21:41:01.802Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:74f40209f73caa555f17fffcbbc42017e7bf8d4a9d740fe045efc93bc859fe9e",
+      "fetched_at": "2026-09-17T14:12:02.738Z",
       "source": "remote"
     },
     "tokyo-night": {
-      "version": "2.9.0",
-      "content_sha": "sha256:c6882616e0fa85762951bdb14d524b61b041e83b299f9a67c80b06e6079c29d3",
-      "fetched_at": "2026-08-26T21:41:01.829Z",
+      "version": "3.1.0",
+      "content_sha": "sha256:d78e7a5c93f58dfb91528f9b8d0890bd207602d1fea7a65d62fc471a1df30fc4",
+      "fetched_at": "2026-09-17T14:12:02.768Z",
       "source": "remote"
     }
   }

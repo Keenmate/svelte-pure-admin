@@ -1160,7 +1160,7 @@
 		<Card titleText="Summary Stats">
 			{#snippet headerActions()}
 				<Button variant="secondary" size="sm" isIconOnly>
-					<i class="fa-solid fa-refresh"></i>
+					<span class="pa-icon pa-icon--refresh" aria-hidden="true"></span>
 				</Button>
 			{/snippet}
 			<Paragraph>Cards with different header content still align because isInline tabs use the same header height.</Paragraph>

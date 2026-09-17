@@ -63,7 +63,7 @@
 				<td class="col-auto">
 					<ButtonGroup>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
-						<Button size="xs" isIconOnly variant="secondary">✏️</Button>
+						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td>John Doe</td>
@@ -74,7 +74,7 @@
 				<td class="col-auto">
 					<ButtonGroup>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
-						<Button size="xs" isIconOnly variant="secondary">✏️</Button>
+						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td>Jane Smith</td>
@@ -85,7 +85,7 @@
 				<td class="col-auto">
 					<ButtonGroup>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
-						<Button size="xs" isIconOnly variant="secondary">✏️</Button>
+						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td>Bob Johnson</td>
@@ -123,10 +123,10 @@
 		</InputGroup>
 
 		<!-- Action buttons -->
-		<Button variant="secondary" isIconOnly titleText="Clear all filters"><i class="fas fa-times"></i></Button>
-		<Button variant="primary" isIconOnly titleText="Refresh"><i class="fas fa-sync-alt"></i></Button>
+		<Button variant="secondary" isIconOnly titleText="Clear all filters"><span class="pa-icon pa-icon--clear" aria-hidden="true"></span></Button>
+		<Button variant="primary" isIconOnly titleText="Refresh"><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></Button>
 		<Button variant="primary" isIconOnly titleText={expanded ? 'Hide filters' : 'More filters'} onclick={toggleFilters}>
-			<i class={expanded ? 'fas fa-caret-up' : 'fas fa-caret-down'}></i>
+			<span class="pa-icon {expanded ? 'pa-icon--chevron-up' : 'pa-icon--chevron-down'}" aria-hidden="true"></span>
 		</Button>
 	</div>
 
@@ -239,7 +239,7 @@
 				<td class="col-auto">
 					<ButtonGroup>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
-						<Button size="xs" isIconOnly variant="secondary">✏️</Button>
+						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td>Laptop Pro 15"</td>
@@ -251,7 +251,7 @@
 				<td class="col-auto">
 					<ButtonGroup>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
-						<Button size="xs" isIconOnly variant="secondary">✏️</Button>
+						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td>Wireless Mouse</td>
@@ -263,7 +263,7 @@
 				<td class="col-auto">
 					<ButtonGroup>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
-						<Button size="xs" isIconOnly variant="secondary">✏️</Button>
+						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</td>
 				<td>Office Chair</td>
@@ -376,7 +376,7 @@
 	{#snippet header()}
 		<Heading level={3}>Active Filter Tags</Heading>
 		<ButtonGroup>
-			<Button size="sm" variant="secondary" isIconOnly titleText="Refresh"><i class="fas fa-sync-alt"></i></Button>
+			<Button size="sm" variant="secondary" isIconOnly titleText="Refresh"><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></Button>
 			<Button size="sm" variant="secondary" isIconOnly titleText="Download"><i class="fas fa-download"></i></Button>
 		</ButtonGroup>
 	{/snippet}

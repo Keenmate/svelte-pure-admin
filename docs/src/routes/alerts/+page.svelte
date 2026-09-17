@@ -34,22 +34,22 @@
 <!-- Alerts with Icons -->
 <Card titleText="Alerts with Icons">
 	<Alert variant="success">
-		{#snippet icon()}✓{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--success" aria-hidden="true"></span>{/snippet}
 		<strong>Success!</strong> Your changes have been saved successfully.
 	</Alert>
 
 	<Alert variant="danger">
-		{#snippet icon()}⚠{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--danger" aria-hidden="true"></span>{/snippet}
 		<strong>Error!</strong> Unable to process your request. Please try again.
 	</Alert>
 
 	<Alert variant="warning">
-		{#snippet icon()}!{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--warning" aria-hidden="true"></span>{/snippet}
 		<strong>Warning!</strong> Your session will expire in 5 minutes.
 	</Alert>
 
 	<Alert variant="info">
-		{#snippet icon()}ⓘ{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 		<strong>Information!</strong> New features are now available in your account.
 	</Alert>
 </Card>
@@ -181,21 +181,21 @@
 >
 	<Heading level={4}>Small — <Code>size="sm"</Code></Heading>
 	<Alert size="sm" variant="success">
-		{#snippet icon()}✓{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--success" aria-hidden="true"></span>{/snippet}
 		<strong>Small alert</strong>
 		Tighter font for status strips and compact layouts.
 	</Alert>
 
 	<Heading level={4} class="mt-4">Default</Heading>
 	<Alert variant="info">
-		{#snippet icon()}ⓘ{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 		<strong>Default alert</strong>
 		Standard size — what you get with no <Code>size</Code> prop.
 	</Alert>
 
 	<Heading level={4} class="mt-4">Large — <Code>size="lg"</Code></Heading>
 	<Alert size="lg" variant="warning">
-		{#snippet icon()}!{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--warning" aria-hidden="true"></span>{/snippet}
 		<strong>Large alert</strong>
 		Bigger font for prominence — consider this when an alert sits alone above the page hero, not stacked among others.
 	</Alert>
@@ -248,7 +248,7 @@
 		<Column size="100" md="1-2">
 			<Heading level={4}>With <Code>isMultiline</Code></Heading>
 			<Alert variant="info" headingText="Heads up" isHeadingLarge isMultiline>
-				{#snippet icon()}ⓘ{/snippet}
+				{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 				<Paragraph class="mb-0">
 					This alert spans several lines, so we want the info icon to sit at the top with
 					the heading rather than floating in the vertical middle of the stack.
@@ -259,7 +259,7 @@
 		<Column size="100" md="1-2">
 			<Heading level={4}>Without (default centring)</Heading>
 			<Alert variant="info" headingText="Heads up" isHeadingLarge>
-				{#snippet icon()}ⓘ{/snippet}
+				{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 				<Paragraph class="mb-0">
 					This alert spans several lines, so we want the info icon to sit at the top with
 					the heading rather than floating in the vertical middle of the stack.
@@ -277,17 +277,17 @@
 	<Grid>
 		<Column size="100" md="1-3">
 			<Alert size="sm" variant="success">
-				{#snippet icon()}✓{/snippet} Saved
+				{#snippet icon()}<span class="pa-icon pa-icon--success" aria-hidden="true"></span>{/snippet} Saved
 			</Alert>
 		</Column>
 		<Column size="100" md="1-3">
 			<Alert size="sm" variant="warning">
-				{#snippet icon()}!{/snippet} Pending
+				{#snippet icon()}<span class="pa-icon pa-icon--warning" aria-hidden="true"></span>{/snippet} Pending
 			</Alert>
 		</Column>
 		<Column size="100" md="1-3">
 			<Alert size="sm" variant="danger">
-				{#snippet icon()}×{/snippet} Failed
+				{#snippet icon()}<span class="pa-icon pa-icon--danger" aria-hidden="true"></span>{/snippet} Failed
 			</Alert>
 		</Column>
 	</Grid>

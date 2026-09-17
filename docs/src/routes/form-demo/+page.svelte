@@ -558,7 +558,7 @@
 				<Button type="button" variant="secondary" onclick={handleReset}>Reset</Button>
 			{/if}
 			<Button type="submit" variant="primary">
-				<i class="fa-solid fa-floppy-disk"></i>
+				<span class="pa-icon pa-icon--save" aria-hidden="true"></span>
 				{submitLabel}
 			</Button>
 		</div>
@@ -578,7 +578,7 @@
 					showClearAllConfirm = !showClearAllConfirm;
 				}}
 			>
-				<i class="fa-solid fa-trash"></i> Clear All
+				<span class="pa-icon pa-icon--delete" aria-hidden="true"></span> Clear All
 			</Button>
 		{/if}
 	{/snippet}
@@ -611,7 +611,7 @@
 									title="Delete entry"
 									onclick={() => deleteEntry(e)}
 								>
-									<i class="fa-solid fa-xmark"></i>
+									<span class="pa-icon pa-icon--remove" aria-hidden="true"></span>
 								</Button>
 								<Button
 									variant="secondary"
@@ -619,7 +619,7 @@
 									title="Edit entry"
 									onclick={() => enterEditMode(e)}
 								>
-									<i class="fa-solid fa-pencil"></i>
+									<span class="pa-icon pa-icon--edit" aria-hidden="true"></span>
 								</Button>
 							</div>
 						</td>

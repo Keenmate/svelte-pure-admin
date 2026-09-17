@@ -118,7 +118,7 @@
   <button class="pa-range-group__toggle" data-range-group-toggle aria-expanded="false">
     <!-- range-group.js fills this with "LABEL value / …" segments -->
     <span class="pa-range-group__summary" data-range-group-summary></span>
-    <i class="fas fa-chevron-down pa-range-group__caret"></i>
+    <span class="pa-range-group__caret" aria-hidden="true"></span>
   </button>
 
   <div class="pa-range-group__panel" data-range-group-panel>
@@ -231,7 +231,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 			<div class="pa-filter-card__row">
 				<div class="pa-filter-card__filters">
 					<div class="pa-input-group">
-						<span class="pa-input-group__prepend"><i class="fas fa-search"></i></span>
+						<span class="pa-input-group__prepend"><span class="pa-icon pa-icon--search" aria-hidden="true"></span></span>
 						<input type="text" class="pa-input" placeholder="Search people by name" />
 					</div>
 
@@ -253,7 +253,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 				<div class="pa-filter-card__actions">
 					<button class="pa-btn pa-btn--primary pa-btn--icon-only" title="Search">
-						<i class="fas fa-search"></i>
+						<span class="pa-icon pa-icon--search" aria-hidden="true"></span>
 					</button>
 				</div>
 			</div>

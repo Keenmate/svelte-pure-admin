@@ -100,22 +100,22 @@
 <!-- Callouts with Icons -->
 <Card titleText="Callouts with Icons">
 	<Callout variant="info">
-		{#snippet icon()}i{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 		<strong>Pro Tip:</strong> You can use keyboard shortcuts to speed up your workflow. Press <Code>Ctrl+K</Code> to open the command palette.
 	</Callout>
 
 	<Callout variant="warning">
-		{#snippet icon()}!{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--warning" aria-hidden="true"></span>{/snippet}
 		<strong>Caution:</strong> Make sure to backup your data before proceeding with this operation.
 	</Callout>
 
 	<Callout variant="danger">
-		{#snippet icon()}x{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--danger" aria-hidden="true"></span>{/snippet}
 		<strong>Critical:</strong> This action cannot be undone. All associated data will be permanently deleted.
 	</Callout>
 
 	<Callout variant="success">
-		{#snippet icon()}v{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--success" aria-hidden="true"></span>{/snippet}
 		<strong>Verified:</strong> This component has been tested and approved for production use.
 	</Callout>
 </Card>

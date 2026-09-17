@@ -207,22 +207,22 @@
 		<Column size="100" lg="1-2">
 			<Card titleText="Alert Messages">
 				<Alert variant="success" class="mb-3">
-					{#snippet icon()}✓{/snippet}
+					{#snippet icon()}<span class="pa-icon pa-icon--success" aria-hidden="true"></span>{/snippet}
 					<strong>Success!</strong> Your changes have been saved.
 				</Alert>
 
 				<Alert variant="warning" class="mb-3">
-					{#snippet icon()}!{/snippet}
+					{#snippet icon()}<span class="pa-icon pa-icon--warning" aria-hidden="true"></span>{/snippet}
 					<strong>Warning!</strong> Please review before proceeding.
 				</Alert>
 
 				<Alert variant="danger" class="mb-3">
-					{#snippet icon()}⚠{/snippet}
+					{#snippet icon()}<span class="pa-icon pa-icon--danger" aria-hidden="true"></span>{/snippet}
 					<strong>Error!</strong> Something went wrong.
 				</Alert>
 
 				<Alert variant="info">
-					{#snippet icon()}ⓘ{/snippet}
+					{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 					<strong>Info!</strong> Here's some useful information.
 				</Alert>
 			</Card>

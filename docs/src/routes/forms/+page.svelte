@@ -470,7 +470,7 @@
 					<FormLabel for="button-append">Input with Button</FormLabel>
 					<InputGroup>
 						<Input id="button-append" placeholder="Search..." bind:value={buttonAppend} />
-						<Button variant="primary" class="pa-input-group__button">Search</Button>
+						<Button variant="primary" isInputGroupButton>Search</Button>
 					</InputGroup>
 				</FormGroup>
 			</Column>
@@ -481,7 +481,7 @@
 					<InputGroup>
 						<InputGroupPrepend>🔍</InputGroupPrepend>
 						<Input id="prepend-button" placeholder="Search..." bind:value={prependButton} />
-						<Button variant="primary" class="pa-input-group__button">Go</Button>
+						<Button variant="primary" isInputGroupButton>Go</Button>
 					</InputGroup>
 				</FormGroup>
 			</Column>
@@ -492,7 +492,7 @@
 					<InputGroup>
 						<Input id="append-button" placeholder="Enter amount" bind:value={appendButton} />
 						<InputGroupAppend>USD</InputGroupAppend>
-						<Button variant="success" class="pa-input-group__button">Convert</Button>
+						<Button variant="success" isInputGroupButton>Convert</Button>
 					</InputGroup>
 				</FormGroup>
 			</Column>
@@ -501,7 +501,7 @@
 				<FormGroup>
 					<FormLabel for="button-append-input">Button + Input + Append</FormLabel>
 					<InputGroup>
-						<Button variant="secondary" class="pa-input-group__button">-</Button>
+						<Button variant="secondary" isInputGroupButton>-</Button>
 						<NumberInput id="button-append-input" bind:value={buttonAppendInput} />
 						<InputGroupAppend>items</InputGroupAppend>
 					</InputGroup>
@@ -515,7 +515,7 @@
 						<InputGroupPrepend>https://</InputGroupPrepend>
 						<Input id="full-group" placeholder="example.com" bind:value={fullGroup} />
 						<InputGroupAppend>.com</InputGroupAppend>
-						<Button variant="primary" class="pa-input-group__button">Visit</Button>
+						<Button variant="primary" isInputGroupButton>Visit</Button>
 					</InputGroup>
 				</FormGroup>
 			</Column>
@@ -524,9 +524,9 @@
 				<FormGroup>
 					<FormLabel for="quantity-input">Button + Input + Button (Quantity)</FormLabel>
 					<InputGroup>
-						<Button variant="secondary" class="pa-input-group__button">-</Button>
+						<Button variant="secondary" isInputGroupButton>-</Button>
 						<NumberInput id="quantity-input" bind:value={quantityInput} class="text-center" />
-						<Button variant="secondary" class="pa-input-group__button">+</Button>
+						<Button variant="secondary" isInputGroupButton>+</Button>
 					</InputGroup>
 				</FormGroup>
 			</Column>
@@ -725,7 +725,7 @@
 <!-- Orientation & required -->
 <Card titleText="Orientation &amp; Required">
 	<Callout variant="info" headingText="How the required asterisk is placed">
-		{#snippet icon()}💡{/snippet}
+		{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 		<p>
 			The danger <strong>*</strong> is driven by the native <Code>required</Code> attribute — no class
 			needed. Where it lands depends on the field's shape:

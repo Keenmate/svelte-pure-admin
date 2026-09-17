@@ -171,8 +171,8 @@
 			</div>
 		{/if}
 		<button class="pa-detail-panel__close" onclick={onclose} aria-label={$_('pureAdmin.a11y.closeDetailPanel')}>
-			<!-- snippet blesses `fa-solid fa-xmark` for the detail-panel close -->
-			<i class="fa-solid fa-xmark" aria-hidden="true"></i>
+			<!-- masked --pa-icon-x for the detail-panel close (core 3.1.0) -->
+			<span class="pa-icon pa-icon--x" aria-hidden="true"></span>
 		</button>
 	</div>
 

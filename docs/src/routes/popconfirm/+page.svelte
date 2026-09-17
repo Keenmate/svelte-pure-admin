@@ -256,12 +256,13 @@
 					<Button
 						size="xs"
 						variant="danger"
+						aria-label="Delete"
 						onclick={(e: MouseEvent) => {
 							compactTrigger = e.currentTarget as HTMLElement;
 							showCompactPopconfirm = !showCompactPopconfirm;
 						}}
 					>
-						🗑️
+						{#snippet icon()}<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>{/snippet}
 					</Button>
 
 					<Button

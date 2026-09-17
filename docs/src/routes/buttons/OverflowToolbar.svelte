@@ -73,7 +73,7 @@
 		<div class="resizable-wrapper" style="overflow: auto; resize: horizontal; min-width: 64px; max-width: 100%; padding: 1rem; border: 1px dashed var(--pc-border-color); border-radius: var(--pc-border-radius);">
 			<div class="pa-overflow">
 				<button class="pa-btn pa-btn--secondary" onclick={() => act('Save')}>
-					<span class="pa-btn__icon"><i class="fas fa-floppy-disk"></i></span>
+					<span class="pa-btn__icon"><span class="pa-icon pa-icon--save" aria-hidden="true"></span></span>
 					Save
 				</button>
 				<button class="pa-btn pa-btn--info" onclick={() => act('Format')}>
@@ -81,7 +81,7 @@
 					Format
 				</button>
 				<button class="pa-btn pa-btn--ghost" onclick={() => act('Refresh')}>
-					<span class="pa-btn__icon"><i class="fas fa-rotate"></i></span>
+					<span class="pa-btn__icon"><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></span>
 					Refresh
 				</button>
 				<button class="pa-btn pa-btn--success" data-pa-actions-priority="10" onclick={() => act('Publish')}>
@@ -94,7 +94,7 @@
 						Run
 					</button>
 					<button class="pa-btn pa-btn--primary pa-btn-split__toggle" aria-label="Toggle menu" onclick={toggleMenu}>
-						<i class="fas fa-chevron-down text-2xs pa-btn-split__chevron"></i>
+						<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 					</button>
 					<div class="pa-btn-split__menu">
 						<div class="pa-btn-split__menu-inner">
@@ -115,7 +115,7 @@
 						Members
 					</button>
 					<button class="pa-btn pa-btn--danger pa-btn-split__toggle" aria-label="Toggle menu" onclick={toggleMenu}>
-						<i class="fas fa-chevron-down text-2xs pa-btn-split__chevron"></i>
+						<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 					</button>
 					<div class="pa-btn-split__menu">
 						<div class="pa-btn-split__menu-inner">
@@ -125,7 +125,7 @@
 									Alice Cooper
 								</button>
 								<button class="pa-btn pa-btn--danger pa-btn--xs pa-btn--icon-only" aria-label="Remove Alice Cooper" onclick={(e) => removeMember(e, 'Alice Cooper')}>
-									<i class="fas fa-trash-can"></i>
+									<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>
 								</button>
 							</div>
 							<div class="pa-btn-split__item-row">
@@ -134,7 +134,7 @@
 									Bob Dylan
 								</button>
 								<button class="pa-btn pa-btn--danger pa-btn--xs pa-btn--icon-only" aria-label="Remove Bob Dylan" onclick={(e) => removeMember(e, 'Bob Dylan')}>
-									<i class="fas fa-trash-can"></i>
+									<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>
 								</button>
 							</div>
 							<div class="pa-btn-split__item-row">
@@ -143,7 +143,7 @@
 									Charlie Parker
 								</button>
 								<button class="pa-btn pa-btn--danger pa-btn--xs pa-btn--icon-only" aria-label="Remove Charlie Parker" onclick={(e) => removeMember(e, 'Charlie Parker')}>
-									<i class="fas fa-trash-can"></i>
+									<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>
 								</button>
 							</div>
 						</div>
@@ -166,7 +166,7 @@
 		<div class="resizable-wrapper" style="overflow: auto; resize: horizontal; min-width: 200px; max-width: 100%; padding: 1rem; border: 1px dashed var(--pc-border-color); border-radius: var(--pc-border-radius);">
 			<div class="pa-overflow" data-pa-actions-overflow-from="start">
 				<button class="pa-btn pa-btn--outline-info" onclick={() => act('Filter')}>
-					<span class="pa-btn__icon"><i class="fas fa-filter"></i></span>
+					<span class="pa-btn__icon"><span class="pa-icon pa-icon--filter" aria-hidden="true"></span></span>
 					Filter
 				</button>
 				<button class="pa-btn pa-btn--outline-secondary" onclick={() => act('Sort')}>
@@ -187,7 +187,7 @@
 						Export
 					</button>
 					<button class="pa-btn pa-btn--primary pa-btn-split__toggle" aria-label="Toggle menu" onclick={toggleMenu}>
-						<i class="fas fa-chevron-down text-2xs pa-btn-split__chevron"></i>
+						<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 					</button>
 					<div class="pa-btn-split__menu">
 						<div class="pa-btn-split__menu-inner">
@@ -221,11 +221,11 @@
 						</div>
 						<div class="pa-card__actions pa-card__actions--overflow">
 							<button class="pa-btn pa-btn--xs pa-btn--ghost" title="Refresh" onclick={() => act('Refresh (Quarterly)')}>
-								<span class="pa-btn__icon"><i class="fas fa-rotate"></i></span>
+								<span class="pa-btn__icon"><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></span>
 								Refresh
 							</button>
 							<button class="pa-btn pa-btn--xs pa-btn--outline-info" onclick={() => act('Filter (Quarterly)')}>
-								<span class="pa-btn__icon"><i class="fas fa-filter"></i></span>
+								<span class="pa-btn__icon"><span class="pa-icon pa-icon--filter" aria-hidden="true"></span></span>
 								Filter
 							</button>
 							<button class="pa-btn pa-btn--xs pa-btn--outline-secondary" onclick={() => act('Configure (Quarterly)')}>
@@ -238,11 +238,11 @@
 							</button>
 							<div class="pa-btn-split" data-pa-actions-priority="20">
 								<button class="pa-btn pa-btn--xs pa-btn--primary" onclick={() => act('Add widget')}>
-									<span class="pa-btn__icon"><i class="fas fa-plus"></i></span>
+									<span class="pa-btn__icon"><span class="pa-icon pa-icon--add" aria-hidden="true"></span></span>
 									Add widget
 								</button>
 								<button class="pa-btn pa-btn--xs pa-btn--primary pa-btn-split__toggle" aria-label="Toggle menu" onclick={toggleMenu}>
-									<i class="fas fa-chevron-down text-2xs pa-btn-split__chevron"></i>
+									<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 								</button>
 								<div class="pa-btn-split__menu">
 									<div class="pa-btn-split__menu-inner">
@@ -290,7 +290,7 @@
 									Deploy
 								</button>
 								<button class="pa-btn pa-btn--xs pa-btn--success pa-btn-split__toggle" aria-label="Toggle menu" onclick={toggleMenu}>
-									<i class="fas fa-chevron-down text-2xs pa-btn-split__chevron"></i>
+									<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 								</button>
 								<div class="pa-btn-split__menu">
 									<div class="pa-btn-split__menu-inner">
@@ -325,7 +325,7 @@
 						</div>
 						<div class="pa-card__actions pa-card__actions--overflow">
 							<button class="pa-btn pa-btn--xs pa-btn--ghost" onclick={() => act('Search')}>
-								<span class="pa-btn__icon"><i class="fas fa-magnifying-glass"></i></span>
+								<span class="pa-btn__icon"><span class="pa-icon pa-icon--search" aria-hidden="true"></span></span>
 								Search
 							</button>
 							<button class="pa-btn pa-btn--xs pa-btn--outline-secondary" onclick={() => act('Sort (Team)')}>
@@ -333,7 +333,7 @@
 								Sort
 							</button>
 							<button class="pa-btn pa-btn--xs pa-btn--outline-info" onclick={() => act('Filter (Team)')}>
-								<span class="pa-btn__icon"><i class="fas fa-filter"></i></span>
+								<span class="pa-btn__icon"><span class="pa-icon pa-icon--filter" aria-hidden="true"></span></span>
 								Filter
 							</button>
 							<button class="pa-btn pa-btn--xs pa-btn--secondary" onclick={() => act('Import CSV')}>
@@ -350,7 +350,7 @@
 									Add user
 								</button>
 								<button class="pa-btn pa-btn--xs pa-btn--primary pa-btn-split__toggle" aria-label="Toggle menu" onclick={toggleMenu}>
-									<i class="fas fa-chevron-down text-2xs pa-btn-split__chevron"></i>
+									<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 								</button>
 								<div class="pa-btn-split__menu">
 									<div class="pa-btn-split__menu-inner">

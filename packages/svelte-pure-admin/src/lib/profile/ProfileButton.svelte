@@ -38,7 +38,7 @@
 		{#if icon}
 			{@render icon()}
 		{:else}
-			<i class="fa-solid fa-user"></i>
+			<span class="pa-icon pa-icon--user" aria-hidden="true"></span>
 		{/if}
 	</span>
 	{#if name}

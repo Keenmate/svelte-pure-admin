@@ -35,6 +35,14 @@
 		align?: ButtonAlign;
 		/** Icon position relative to children text */
 		iconPosition?: 'start' | 'end';
+		/**
+		 * Truncate the label with an ellipsis when it exceeds the button's width.
+		 * Combine with a fixed-width utility class (e.g. `wr-10`, `maxwr-10`) — the
+		 * width constraint is what the ellipsis clips against. Applies `text-truncate`
+		 * to the `.pa-btn__label` wrapper so it becomes the shrinking flex item
+		 * (`overflow:hidden` unlocks shrink below content width inside the flex row).
+		 */
+		shouldTruncateText?: boolean;
 		/** Used in input group (adds pa-input-group__button class) */
 		isInputGroupButton?: boolean;
 		/** Disabled state */
@@ -70,6 +78,7 @@
 		isRipple = false,
 		align,
 		iconPosition = 'start',
+		shouldTruncateText = false,
 		isInputGroupButton = false,
 		disabled = false,
 		type = 'button',
@@ -142,7 +151,15 @@
 			</span>
 		{/if}
 		{#if children}
-			<span class="pa-btn__label">{@render children()}</span>
+			{#if isIconOnly}
+				<!-- Icon-only: render the glyph bare (core convention). The
+				     `pa-btn__label` wrapper is a text flex-item — wrapping an icon
+				     in it puts the glyph on a text baseline instead of flex-centering
+				     it in the square button. -->
+				{@render children()}
+			{:else}
+				<span class="pa-btn__label" class:text-truncate={shouldTruncateText}>{@render children()}</span>
+			{/if}
 		{/if}
 		{#if icon && iconPosition === 'end'}
 			<span class="pa-btn__icon">
@@ -169,7 +186,15 @@
 			</span>
 		{/if}
 		{#if children}
-			<span class="pa-btn__label">{@render children()}</span>
+			{#if isIconOnly}
+				<!-- Icon-only: render the glyph bare (core convention). The
+				     `pa-btn__label` wrapper is a text flex-item — wrapping an icon
+				     in it puts the glyph on a text baseline instead of flex-centering
+				     it in the square button. -->
+				{@render children()}
+			{:else}
+				<span class="pa-btn__label" class:text-truncate={shouldTruncateText}>{@render children()}</span>
+			{/if}
 		{/if}
 		{#if icon && iconPosition === 'end'}
 			<span class="pa-btn__icon">

@@ -185,7 +185,7 @@
 						titleText={isSearchMode ? 'Search mode — click to switch to Filter' : 'Filter mode — click to switch to Search'}
 						onclick={() => isSearchMode = !isSearchMode}
 					>
-						<i class={isSearchMode ? 'fa-solid fa-magnifying-glass' : 'fa-solid fa-filter'}></i>
+						<span class="pa-icon {isSearchMode ? 'pa-icon--search' : 'pa-icon--filter'}" aria-hidden="true"></span>
 					</Button>
 					<Input placeholder={isSearchMode ? 'Search...' : 'Filter...'} />
 					<Button variant="primary" isInputGroupButton>Go</Button>
@@ -576,7 +576,7 @@
 <!-- Toggle Mode Button (Filter / Search) + Go -->
 <InputGroup>
   <Button variant="primary" isInputGroupButton onclick={toggleMode}>
-    <i class={isSearch ? 'fa-solid fa-magnifying-glass' : 'fa-solid fa-filter'}></i>
+    <span class="pa-icon {isSearch ? 'pa-icon--search' : 'pa-icon--filter'}" aria-hidden="true"></span>
   </Button>
   <Input placeholder={isSearch ? 'Search...' : 'Filter...'} />
   <Button variant="primary" isInputGroupButton>Go</Button>

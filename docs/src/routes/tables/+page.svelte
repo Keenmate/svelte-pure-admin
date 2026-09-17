@@ -80,8 +80,8 @@
 						<td class="col-auto">
 							<ButtonGroup>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
-								<Button variant="secondary" size="xs" isIconOnly titleText="Edit">✏️</Button>
-								<Button variant="danger" size="xs" isIconOnly titleText="Delete">🗑️</Button>
+								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
+								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
 							</ButtonGroup>
 						</td>
 						<td>1</td>
@@ -94,7 +94,7 @@
 						<td class="col-auto">
 							<ButtonGroup>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
-								<Button variant="secondary" size="xs" isIconOnly titleText="Edit">✏️</Button>
+								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 							</ButtonGroup>
 						</td>
 						<td>2</td>
@@ -107,8 +107,8 @@
 						<td class="col-auto">
 							<ButtonGroup>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
-								<Button variant="secondary" size="xs" isIconOnly titleText="Edit">✏️</Button>
-								<Button variant="danger" size="xs" isIconOnly titleText="Delete">🗑️</Button>
+								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
+								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
 							</ButtonGroup>
 						</td>
 						<td>3</td>
@@ -121,7 +121,7 @@
 						<td class="col-auto">
 							<ButtonGroup>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
-								<Button variant="danger" size="xs" isIconOnly titleText="Delete">🗑️</Button>
+								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
 							</ButtonGroup>
 						</td>
 						<td>4</td>
@@ -133,8 +133,8 @@
 					<tr>
 						<td class="col-auto">
 							<ButtonGroup>
-								<Button variant="secondary" size="xs" isIconOnly titleText="Edit">✏️</Button>
-								<Button variant="danger" size="xs" isIconOnly titleText="Delete">🗑️</Button>
+								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
+								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
 							</ButtonGroup>
 						</td>
 						<td>5</td>

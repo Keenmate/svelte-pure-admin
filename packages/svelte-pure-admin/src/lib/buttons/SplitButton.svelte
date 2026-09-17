@@ -274,7 +274,8 @@
 		{#if toggleIcon}
 			{@render toggleIcon()}
 		{:else}
-			<i class="fas {placement === 'top-end' ? 'fa-chevron-up' : 'fa-chevron-down'} text-2xs pa-btn-split__chevron"></i>
+			<!-- Masked --pa-icon-chevron (core 3.1.0); points down closed, CSS rotates to up on --open. -->
+			<span class="pa-btn-split__chevron" aria-hidden="true"></span>
 		{/if}
 	</button>
 	{#if menu}
