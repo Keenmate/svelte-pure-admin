@@ -95,6 +95,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **`TabsScrollable` / `TabsOverflow`** — a11y: both scroll-arrow buttons gain `type="button"`; the overflow toggle gains `aria-label` (new `pureAdmin.a11y.moreTabs` i18n key, en + cs), `aria-haspopup="menu"` and `aria-expanded`.
   - Deferred (recorded in `MARKUP_FIDELITY_AUDIT.md`): Checkbox tri-state (JS-wrapper decision), CommandPalette `__section`/`allowHtml`, DetailView overlay modes, Pager i18n, TimelineItem `role=button`, and dropping Tabs `overflow="scrollable"` (its class is real, so it's a breaking-API call, not a phantom).
   - `svelte-check` clean (0 errors).
+- **P1 (cont. 2) — ergonomics + i18n from the deep API-coverage audit** (2026-09-30):
+  - **`Card`** — new `href` / `tag` / `target`: the root renders (via `<svelte:element>`) as `<a>` when `href` is set, so the whole card is a link (core blesses `a.pa-card`, which resets colour/decoration — no special class). Defaults to `<div>`.
+  - **`NotificationBell`** (new, exported) — the `.pa-notifications` positioning anchor + bell trigger (`__btn` with the masked `pa-icon--bell`, `aria-label`/`aria-haspopup`/`aria-expanded`) + an optional `__badge` counter; bindable `show`, close-on-outside-click, and hosts a `<NotificationsPanel bind:show>` as children. Closes the gap where the docs hand-authored the bell/anchor.
+  - **`Pager`** — the control labels are now i18n (`« First` / `‹ Previous` / `Next ›` / `Last »` and `Page` / `of` → new `pureAdmin.pager.*` keys, en + cs), with optional `firstText` / `previousText` / `nextText` / `lastText` prop overrides. (Supersedes the "Pager i18n deferred" note above.)
+  - **`Table`** — removed the inert public props `isHover` / `isBorderless` (they emitted nothing — `pa-table--hover`/`--borderless` don't exist; hover is built into `.pa-table` and only `--bordered` adds cell rules). Minor breaking change for anyone who set them (they had no effect anyway).
+  - Deferred with rationale (see `MARKUP_FIDELITY_AUDIT.md`): KPI chart-host wrappers (#15 — established hand-authored composition across 27+ demo sites, double-wrap risk), Table row-selection (#16 — raw `<tr>/<td>` are the blessed shape; the fix is a WIP demo), List/ListItem `<ul>/<li>` (#19 — no core `pa-list--unstyled`), Card `--responsive` header actions (#20 — needs consumer-authored full/collapsed sub-structure).
+  - `svelte-check` clean (0 errors).
 
 ### Docs
 

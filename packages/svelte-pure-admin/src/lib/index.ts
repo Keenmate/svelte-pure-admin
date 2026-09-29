@@ -164,6 +164,7 @@ export { default as PopoverContainer } from './feedback/PopoverContainer.svelte'
 export { default as Popconfirm } from './feedback/Popconfirm.svelte';
 export { default as NotificationsPanel } from './feedback/NotificationsPanel.svelte';
 export type { NotificationItem } from './feedback/NotificationsPanel.svelte';
+export { default as NotificationBell } from './feedback/NotificationBell.svelte';
 
 // Display Components (Cards, Badges, Tables, Stats, Lists, Code, Timeline)
 export { default as Card } from './display/Card.svelte';

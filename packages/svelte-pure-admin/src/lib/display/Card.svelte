@@ -55,6 +55,17 @@
 		headerClass?: string;
 		/** Additional CSS classes */
 		class?: string;
+		/**
+		 * Make the whole card a link. When set, the root renders as `<a href>`
+		 * (core blesses `a.pa-card`, which resets text-decoration/colour so it
+		 * looks identical but the entire area is clickable). Avoid nesting other
+		 * interactive controls inside a clickable card.
+		 */
+		href?: string;
+		/** Root element override — defaults to `a` when `href` is set, else `div`. */
+		tag?: 'div' | 'a';
+		/** Link target (only meaningful with `href`). */
+		target?: string;
 		/** Inline style on the card root (e.g. `height: 100%; margin: 0` inside a splitter pane). */
 		style?: string;
 		/** Header snippet (for complex headers) */
@@ -97,6 +108,9 @@
 		hasInlineTabs = false,
 		headerClass,
 		class: className = '',
+		href,
+		tag,
+		target,
 		style,
 		header,
 		titleIcon,
@@ -164,9 +178,12 @@
 	const hasHeader = $derived(header || titleText || title || titleIcon || descriptionText || description || subtitleText || subtitle || headerActions || tabs);
 	// Determine if we should show footer
 	const hasFooter = $derived(footer || footerActions);
+
+	// Root element: an <a> when linking (core blesses a.pa-card), else <div>
+	const rootTag = $derived(tag ?? (href ? 'a' : 'div'));
 </script>
 
-<div class={classes()} {style}>
+<svelte:element this={rootTag} class={classes()} {style} href={rootTag === 'a' ? href : undefined} target={rootTag === 'a' ? target : undefined}>
 	{#if hasHeader}
 		<div class={headerClasses()}>
 			{#if tabs}
@@ -231,4 +248,4 @@
 			{/if}
 		</div>
 	{/if}
-</div>
+</svelte:element>

@@ -53,6 +53,14 @@ export const cs: Record<string, string> = {
 	'pureAdmin.loadMore.loadMore': 'Načíst další',
 	'pureAdmin.loadMore.loading': 'Načítání...',
 
+	// Pager
+	'pureAdmin.pager.first': '« První',
+	'pureAdmin.pager.previous': '‹ Předchozí',
+	'pureAdmin.pager.next': 'Další ›',
+	'pureAdmin.pager.last': 'Poslední »',
+	'pureAdmin.pager.page': 'Stránka',
+	'pureAdmin.pager.of': 'z',
+
 	// Field (copyable)
 	'pureAdmin.field.clickToCopy': 'Klikněte pro zkopírování',
 	'pureAdmin.field.copied': 'Zkopírováno!',

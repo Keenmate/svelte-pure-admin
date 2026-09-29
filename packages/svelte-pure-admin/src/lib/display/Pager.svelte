@@ -5,6 +5,8 @@
 	 * Pagination component for tables
 	 */
 
+	import { _ } from '../i18n';
+
 	type PagerAlign = 'start' | 'center' | 'end';
 
 	interface Props {
@@ -34,6 +36,14 @@
 		disableNext?: boolean;
 		/** Custom info text */
 		infoText?: string;
+		/** First-button label (default: i18n 'pager.first') */
+		firstText?: string;
+		/** Previous-button label (default: i18n 'pager.previous') */
+		previousText?: string;
+		/** Next-button label (default: i18n 'pager.next') */
+		nextText?: string;
+		/** Last-button label (default: i18n 'pager.last') */
+		lastText?: string;
 		/** Additional CSS classes */
 		class?: string;
 		/** Custom controls (buttons) snippet */
@@ -56,10 +66,20 @@
 		disablePrevious = false,
 		disableNext = false,
 		infoText,
+		firstText,
+		previousText,
+		nextText,
+		lastText,
 		class: className = '',
 		controls,
 		info
 	}: Props = $props();
+
+	// Resolve labels: explicit prop wins, else i18n
+	const resolvedFirst = $derived(firstText ?? $_('pureAdmin.pager.first'));
+	const resolvedPrevious = $derived(previousText ?? $_('pureAdmin.pager.previous'));
+	const resolvedNext = $derived(nextText ?? $_('pureAdmin.pager.next'));
+	const resolvedLast = $derived(lastText ?? $_('pureAdmin.pager.last'));
 
 	// Build class string
 	const classes = $derived(() => {
@@ -92,18 +112,18 @@
 			<div class="pa-pager__controls">
 				{#if onfirst}
 					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onfirst} disabled={disablePrevious}>
-						« First
+						{resolvedFirst}
 					</button>
 				{/if}
 				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onprevious} disabled={disablePrevious}>
-					‹ Previous
+					{resolvedPrevious}
 				</button>
 				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onnext} disabled={disableNext}>
-					Next ›
+					{resolvedNext}
 				</button>
 				{#if onlast}
 					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onlast} disabled={disableNext}>
-						Last »
+						{resolvedLast}
 					</button>
 				{/if}
 			</div>
@@ -113,7 +133,7 @@
 			{@render info()}
 		{:else if showInfo && showPageInput}
 			<div class="pa-pager__info">
-				<span class="pa-pager__text">Page</span>
+				<span class="pa-pager__text">{$_('pureAdmin.pager.page')}</span>
 				<input
 					type="number"
 					class="pa-input pa-input--sm pa-pager__input"
@@ -122,7 +142,7 @@
 					max={totalPages}
 					onchange={handlePageInput}
 				/>
-				<span class="pa-pager__text">of {totalPages}</span>
+				<span class="pa-pager__text">{$_('pureAdmin.pager.of')} {totalPages}</span>
 			</div>
 		{:else if infoText}
 			<span class="pa-pager__text">{infoText}</span>

@@ -9,10 +9,6 @@
 	interface Props {
 		/** Striped rows */
 		isStriped?: boolean;
-		/** Hover effect on rows */
-		isHover?: boolean;
-		/** Borderless table (no cell borders) */
-		isBorderless?: boolean;
 		/** Compact table (reduced padding, alias for size="xs") */
 		isCompact?: boolean;
 		/** Table size (affects cell padding) - xs is compact, lg/xl are spacious */
@@ -31,8 +27,6 @@
 
 	let {
 		isStriped = false,
-		isHover = false,
-		isBorderless = false,
 		isCompact = false,
 		size,
 		isBordered = false,
@@ -46,10 +40,10 @@
 	const classes = $derived(() => {
 		const base = ['pa-table'];
 		if (isStriped) base.push('pa-table--striped');
-		// Hover is built into `.pa-table` — there is no `--hover` modifier; and
-		// there is no `--borderless` (a plain table has no full cell borders,
-		// only `--bordered` adds them). `isHover` / `isBorderless` are kept as
-		// inert props for API stability. See snippets/tables.html.
+		// No `--hover` modifier (hover is built into `.pa-table`) and no
+		// `--borderless` (a plain table has no full cell borders; only
+		// `--bordered` adds them) — the former inert props were removed. See
+		// snippets/tables.html.
 		if (isCompact) base.push('pa-table--xs'); // "compact" IS the xs size in core
 		if (size) base.push(`pa-table--${size}`);
 		if (isBordered) base.push('pa-table--bordered');

@@ -53,6 +53,14 @@ export const en: Record<string, string> = {
 	'pureAdmin.loadMore.loadMore': 'Load More',
 	'pureAdmin.loadMore.loading': 'Loading...',
 
+	// Pager
+	'pureAdmin.pager.first': '« First',
+	'pureAdmin.pager.previous': '‹ Previous',
+	'pureAdmin.pager.next': 'Next ›',
+	'pureAdmin.pager.last': 'Last »',
+	'pureAdmin.pager.page': 'Page',
+	'pureAdmin.pager.of': 'of',
+
 	// Field (copyable)
 	'pureAdmin.field.clickToCopy': 'Click to copy',
 	'pureAdmin.field.copied': 'Copied!',
