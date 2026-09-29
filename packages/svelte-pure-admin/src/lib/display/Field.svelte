@@ -28,8 +28,8 @@
 		copiedText?: string;
 		/** Callback after successful copy */
 		oncopy?: (value: string) => void;
-		/** Value color variant (for chips mode: success, warning, danger) */
-		valueVariant?: 'success' | 'warning' | 'danger';
+		/** Value color variant (for chips mode: success, warning, danger, info) */
+		valueVariant?: 'success' | 'warning' | 'danger' | 'info';
 		/** Additional CSS classes */
 		class?: string;
 		/** Complex label content (snippet) */

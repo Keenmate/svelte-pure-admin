@@ -14,13 +14,15 @@
 		language?: Language;
 		/** Compact layout (smaller padding) */
 		isCompact?: boolean;
+		/** Show line numbers (pa-code--numbered) */
+		isNumbered?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Code content */
 		children?: import('svelte').Snippet;
 	}
 
-	let { language, isCompact = false, class: className = '', children }: Props = $props();
+	let { language, isCompact = false, isNumbered = false, class: className = '', children }: Props = $props();
 
 	// Build class string
 	const classes = $derived(() => {
@@ -28,6 +30,9 @@
 
 		// Compact modifier
 		if (isCompact) base.push('pa-code--compact');
+
+		// Line numbers
+		if (isNumbered) base.push('pa-code--numbered');
 
 		// Language variant
 		if (language) base.push(`pa-code--${language}`);

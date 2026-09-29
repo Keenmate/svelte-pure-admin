@@ -11,8 +11,10 @@
 		variant?: BadgeVariant;
 		/** Label section variant (for mixed colors) */
 		labelVariant?: BadgeVariant;
-		/** Button section variant (for mixed colors; no `danger` — core has no `--btn-danger`) */
+		/** Button section variant (for mixed colors) */
 		buttonVariant?: CompositeButtonVariant;
+		/** Icon section variant (pa-composite-badge--icon-{variant}) */
+		iconVariant?: BadgeVariant;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
 		/** Label text */
@@ -33,6 +35,7 @@
 		variant = 'primary',
 		labelVariant,
 		buttonVariant,
+		iconVariant,
 		icon,
 		labelText,
 		buttonText,
@@ -47,6 +50,7 @@
 		const base = ['pa-composite-badge', `pa-composite-badge--${variant}`];
 		if (labelVariant) base.push(`pa-composite-badge--label-${labelVariant}`);
 		if (buttonVariant) base.push(`pa-composite-badge--btn-${buttonVariant}`);
+		if (iconVariant) base.push(`pa-composite-badge--icon-${iconVariant}`);
 		if (className) base.push(className);
 		return base.join(' ');
 	});

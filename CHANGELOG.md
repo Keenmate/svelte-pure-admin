@@ -74,6 +74,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Outline guard.** `isOutline` only emits `pa-btn--outline-{variant}` for the six variants core actually defines (primary/secondary/success/warning/danger/info); light/dark/ghost now fall back to the solid fill instead of emitting the phantom `pa-btn--outline-light/-dark/-ghost` (dist=0).
   - **`ghost` variant** added to `ButtonVariant` (`pa-btn--ghost`, dist=2) — previously unreachable, so the docs OverflowToolbar hand-wrote the raw class.
   - `svelte-check` clean (0 errors). This changes the default DOM (removes an always-present wrapper span); the removed `.pa-btn .pa-btn__label` selector was off-contract (core never styled it outside `--align-center`) and has zero usages in-repo.
+- **P0 correctness bugs from the deep API-coverage audit** (2026-09-29; see `MARKUP_FIDELITY_AUDIT.md` → *P0*):
+  - **`CodeBlockWithHeader`** — copy button used a global `document.querySelector('.pa-code-block__body .pa-code')`, so with more than one block on a page every copy button copied the **first** block's text. Now uses a local `bind:this` ref on its own `<pre>`.
+  - **`Heatmap`** — a custom `cols` count hardcoded a `1.2rem` cell in the inline `grid-template-columns`, overriding `--compact`'s smaller `1rem` cells, so `<Heatmap cols={30} isCompact>` rendered full-size. Cell size is now derived from `isCompact` and `grid-auto-rows` is set to match.
+  - **`SlidePanel`** — the audit's flagged "missing `.pa-detail-panel__content` wrapper" was re-verified as **not** a live breakage: the blessed composition places a `<DetailPanel>` inside `<SlidePanel>`, and `DetailPanel` already emits `__content`, so the panel slides and sizes. Self-wrapping would double-wrap (the SCSS selector is a descendant combinator → panel-in-panel). No markup change; the doc comment now documents the required `__content` composition and why SlidePanel deliberately does not self-wrap.
+- **P1 missing-core-option props from the deep API-coverage audit** (2026-09-29; own-block modifiers/variants that had no prop, so a consumer had to hand-write the raw class — class-vs-prop rule 1. All verified present in the compiled `dist/css/main.css` before adding):
+  - **`Field`** — `valueVariant` gains `'info'` (`pa-field__value--info`).
+  - **`CodeBlock`** — new `isNumbered` prop (`pa-code--numbered`). **`CodeBlockWithHeader`** gains `isNumbered` + `isCompact` and now forwards both to its inner `pa-code`.
+  - **`Column`** — new `noPadding` / `grow` / `shrink` booleans (`pc-col--no-padding` / `--grow` / `--shrink`).
+  - **`CheckboxListItem`** — new `isSelected` boolean (`pa-checkbox-list__item--selected`), orthogonal to `state` so a selected row can also be disabled/locked.
+  - **`Timeline`** — new `isSingleColumn` boolean (`pa-timeline--single-column`, force a single column at any width; distinct from `alignment` / `shouldKeepLayout`).
+  - **`CompositeBadge` / `CompositeBadgeGroup` / `CompositeBadgeItem`** — the `--btn-danger` gap is **closed** (dist ships the full `--btn-*` set), so `CompositeButtonVariant` is now a plain alias of `BadgeVariant` (stale `Exclude<…,'danger'>` dropped); added `iconVariant` → `pa-composite-badge--icon-{variant}` (icon-section colour, threaded through the group's member/callback API too).
+  - **Not added — `NavbarSearch` size prop:** the audit flagged missing pill `--xs…--xl`, but a re-grep found **zero** `pa-navbar-search--*` classes in dist or the snippet — the existing "core defines no size modifiers for the pill" comment is correct, so no phantom prop was added.
+  - `svelte-check` clean (0 errors).
 
 ### Docs
 

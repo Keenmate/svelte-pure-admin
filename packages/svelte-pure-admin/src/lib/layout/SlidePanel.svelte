@@ -1,8 +1,16 @@
 <script lang="ts">
 	/**
-	 * SlidePanel - Fixed overlay panel that slides in from the right
-	 * Shared behavioral base for overlay panels (escape key, backdrop click, open/close)
-	 * Uses pa-detail-panel--overlay CSS classes from @keenmate/pure-admin-core
+	 * SlidePanel - Fixed overlay panel that slides in from the end side
+	 * Behavioral overlay shell only: escape key, backdrop click, open/close, scroll-lock.
+	 * Uses pa-detail-panel--overlay CSS classes from @keenmate/pure-admin-core.
+	 *
+	 * REQUIRED composition: children MUST provide the `.pa-detail-panel__content`
+	 * wrapper — the slide `transform`, width and position are applied to `__content`,
+	 * NOT to this `--overlay` root. In practice, place a `<DetailPanel>` inside (it
+	 * emits `__content` + header/body/footer/close). Rendering bare content here will
+	 * not slide or size. SlidePanel deliberately does NOT wrap children itself, so
+	 * nesting a DetailPanel doesn't produce a double `__content` (which the descendant
+	 * SCSS selector would style as a panel-in-panel).
 	 */
 
 	interface Props {

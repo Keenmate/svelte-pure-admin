@@ -16,6 +16,10 @@
 		language?: Language;
 		/** Show copy button */
 		showCopy?: boolean;
+		/** Compact layout on the inner code block (pa-code--compact) */
+		isCompact?: boolean;
+		/** Show line numbers on the inner code block (pa-code--numbered) */
+		isNumbered?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Code content */
@@ -26,11 +30,14 @@
 		titleText,
 		language,
 		showCopy = true,
+		isCompact = false,
+		isNumbered = false,
 		class: className = '',
 		children
 	}: Props = $props();
 
 	let copied = $state(false);
+	let codeElement: HTMLPreElement | undefined = $state();
 
 	// Build class string
 	const classes = $derived(() => {
@@ -42,13 +49,15 @@
 	// Build code block class string
 	const codeClasses = $derived(() => {
 		const base = ['pa-code'];
+		if (isCompact) base.push('pa-code--compact');
+		if (isNumbered) base.push('pa-code--numbered');
 		if (language) base.push(`pa-code--${language}`);
 		return base.join(' ');
 	});
 
 	function handleCopy() {
-		// Get the code content
-		const codeElement = document.querySelector('.pa-code-block__body .pa-code');
+		// Copy this instance's own code (local ref, not a global query — several
+		// blocks on one page would otherwise all copy the first block's text)
 		if (codeElement) {
 			const code = codeElement.textContent || '';
 
@@ -75,6 +84,6 @@
 		{/if}
 	</div>
 	<div class="pa-code-block__body">
-		<pre class={codeClasses()}>{@render children?.()}</pre>
+		<pre class={codeClasses()} bind:this={codeElement}>{@render children?.()}</pre>
 	</div>
 </div>

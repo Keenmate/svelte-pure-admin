@@ -32,6 +32,8 @@
 		labelVariantMember?: string;
 		/** Property name for button variant (e.g., 'buttonVariant', 'buttonColor') */
 		buttonVariantMember?: string;
+		/** Property name for icon variant (e.g., 'iconVariant', 'iconColor') */
+		iconVariantMember?: string;
 		/** Property name for interactive flag (e.g., 'interactive', 'clickable') */
 		interactiveMember?: string;
 		/** Property name for unique identifier (e.g., 'id', 'key') */
@@ -46,8 +48,10 @@
 		getVariantCallback?: (item: T) => BadgeVariant | undefined;
 		/** Custom callback to get label variant from data item */
 		getLabelVariantCallback?: (item: T) => BadgeVariant | undefined;
-		/** Custom callback to get button variant from data item (no `danger` — core has no `--btn-danger`) */
+		/** Custom callback to get button variant from data item */
 		getButtonVariantCallback?: (item: T) => CompositeButtonVariant | undefined;
+		/** Custom callback to get icon variant from data item */
+		getIconVariantCallback?: (item: T) => BadgeVariant | undefined;
 		/** Custom callback to get interactive flag from data item */
 		getInteractiveCallback?: (item: T) => boolean;
 
@@ -81,6 +85,7 @@
 		variantMember = 'variant',
 		labelVariantMember = 'labelVariant',
 		buttonVariantMember = 'buttonVariant',
+		iconVariantMember = 'iconVariant',
 		interactiveMember = 'interactive',
 		idMember = 'id',
 
@@ -90,6 +95,7 @@
 		getVariantCallback,
 		getLabelVariantCallback,
 		getButtonVariantCallback,
+		getIconVariantCallback,
 		getInteractiveCallback,
 
 		// Events
@@ -129,6 +135,11 @@
 	function getButtonVariant(item: T): CompositeButtonVariant | undefined {
 		if (getButtonVariantCallback) return getButtonVariantCallback(item);
 		return (item as any)[buttonVariantMember];
+	}
+
+	function getIconVariant(item: T): BadgeVariant | undefined {
+		if (getIconVariantCallback) return getIconVariantCallback(item);
+		return (item as any)[iconVariantMember];
 	}
 
 	function getInteractive(item: T): boolean {
@@ -198,6 +209,7 @@
 				variant={getVariant(item)}
 				labelVariant={getLabelVariant(item)}
 				buttonVariant={getButtonVariant(item)}
+				iconVariant={getIconVariant(item)}
 				labelText={getLabel(item)}
 				buttonText={getButtonText(item)}
 				isInteractive={getInteractive(item)}
@@ -212,6 +224,7 @@
 				variant={badge.variant}
 				labelVariant={badge.labelVariant}
 				buttonVariant={badge.buttonVariant}
+				iconVariant={badge.iconVariant}
 				labelText={badge.labelText}
 				buttonText={badge.buttonText}
 				isInteractive={badge.isInteractive}

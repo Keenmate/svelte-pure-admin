@@ -83,7 +83,7 @@ Three config files live in the **project root** (not `docs/`), modelled on `pack
 
 ## Known upstream gaps
 
-- **Composite badge missing `--btn-danger` variant.** Other button-section colour overrides exist; the base defaults are danger-coloured so the gap is cosmetic, but inconsistent.
+- ~~**Composite badge missing `--btn-danger` variant.**~~ **CLOSED** — dist ships the full `pa-composite-badge--btn-{…,danger,…}` set (and matching `--icon-*` / `--label-*`). The `CompositeBadge` wrapper's `CompositeButtonVariant` is now a plain `BadgeVariant` alias and gained `iconVariant` (deep audit 2026-09-29).
 - **Timeline `--alternating` uses physical `left/right`.** `--simple` and `--feed` mirror correctly in RTL; `--alternating` (and its `--start`/`--end`/`--keep-layout`/`--single-column` modifiers) stays on the same physical sides under `dir="rtl"`. Upstream-scope fix.
 - **`.pa-spinner` only has `--xs`.** Larger sizes (`--sm/md/lg/xl/2xl`) advertised in pure-admin demo do not exist in SCSS. Our `Spinner.svelte` type now reflects this (`size?: 'xs'`).
 - **Do not wrap yet (unstable upstream APIs):** `file-selector`, `logic-tree`, `smart-filters` (a.k.a. `query-editor`).

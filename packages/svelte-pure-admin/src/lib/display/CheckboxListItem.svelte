@@ -18,6 +18,8 @@
 		descriptionText?: string;
 		/** Item state */
 		state?: ItemState;
+		/** Selected/highlighted row (pa-checkbox-list__item--selected; orthogonal to state) */
+		isSelected?: boolean;
 		/** Checked state (bindable) */
 		checked?: boolean;
 		/** Disabled state */
@@ -35,6 +37,7 @@
 		labelText,
 		descriptionText,
 		state,
+		isSelected = false,
 		checked = $bindable(false),
 		disabled = false,
 		class: className = '',
@@ -49,6 +52,7 @@
 		// State modifiers
 		if (state === 'disabled') base.push('pa-checkbox-list__item--disabled');
 		if (state === 'locked') base.push('pa-checkbox-list__item--locked');
+		if (isSelected) base.push('pa-checkbox-list__item--selected');
 
 		// Custom classes
 		if (className) base.push(className);

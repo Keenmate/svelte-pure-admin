@@ -37,7 +37,10 @@
 
 	const style = $derived(() => {
 		if (cols !== 53) {
-			return `grid-template-columns: repeat(${cols}, 1.2rem)`;
+			// Match the cell size to the mode so a custom column count doesn't
+			// override --compact's smaller 1rem cells (SCSS: default 1.2rem / compact 1rem)
+			const cell = isCompact ? '1rem' : '1.2rem';
+			return `grid-template-columns: repeat(${cols}, ${cell}); grid-auto-rows: ${cell}`;
 		}
 		return '';
 	});

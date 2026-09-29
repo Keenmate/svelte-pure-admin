@@ -25,6 +25,8 @@
 		alignment?: 'start' | 'end';
 		/** Keep desktop layout on mobile (alternating variant) — disables single-column collapse below the breakpoint */
 		shouldKeepLayout?: boolean;
+		/** Force a single column at any screen width (alternating variant; pa-timeline--single-column) */
+		isSingleColumn?: boolean;
 
 		// MEMBER MAPPINGS (property names in data objects)
 		/** Property name for color variant (e.g., 'variant', 'status', 'type') */
@@ -106,6 +108,7 @@
 		variant = 'simple',
 		alignment,
 		shouldKeepLayout = false,
+		isSingleColumn = false,
 
 		// Member mappings
 		variantMember = 'variant',
@@ -239,6 +242,9 @@
 
 		// Keep-layout modifier (alternating variant only)
 		if (shouldKeepLayout) base.push('pa-timeline--keep-layout');
+
+		// Force single column at any width (alternating variant only)
+		if (isSingleColumn) base.push('pa-timeline--single-column');
 
 		// Custom classes
 		if (className) base.push(className);
