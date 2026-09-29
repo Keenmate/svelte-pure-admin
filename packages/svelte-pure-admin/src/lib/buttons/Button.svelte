@@ -6,9 +6,15 @@
 
 	import type { ThemeColor } from '../types';
 
-	type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+	type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'ghost';
 	type ButtonSize = 'xs' | 'sm' | 'lg' | 'xl';
 	type ButtonAlign = 'start' | 'end' | 'center' | 'justify';
+
+	// Core defines outline variants for these six only (snippets/buttons.html +
+	// _buttons.scss). There is NO pa-btn--outline-light/-dark/-ghost. isOutline
+	// with any other variant falls back to the solid fill so we never emit a
+	// phantom class.
+	const OUTLINE_VARIANTS: ButtonVariant[] = ['primary', 'secondary', 'success', 'warning', 'danger', 'info'];
 
 	/**
 	 * Note: Fixed width buttons should use utility classes (e.g., `class="wr-5 minwr-5"`)
@@ -38,9 +44,12 @@
 		/**
 		 * Truncate the label with an ellipsis when it exceeds the button's width.
 		 * Combine with a fixed-width utility class (e.g. `wr-10`, `maxwr-10`) — the
-		 * width constraint is what the ellipsis clips against. Applies `text-truncate`
-		 * to the `.pa-btn__label` wrapper so it becomes the shrinking flex item
-		 * (`overflow:hidden` unlocks shrink below content width inside the flex row).
+		 * width constraint is what the ellipsis clips against. Wraps the label in a
+		 * bare `<span class="text-truncate">` (the canonical core shape — see
+		 * snippets/buttons.html L435-438), NOT `.pa-btn__label`; `overflow:hidden`
+		 * makes that span the shrinking flex item. Mutually exclusive with
+		 * `align="center"` (a flex-fill label can't also shrink to ellipsis), so
+		 * `shouldTruncateText` takes precedence.
 		 */
 		shouldTruncateText?: boolean;
 		/** Used in input group (adds pa-input-group__button class) */
@@ -103,7 +112,7 @@
 			} else {
 				base.push(`pa-btn--color-${themeColor}`);
 			}
-		} else if (isOutline) {
+		} else if (isOutline && OUTLINE_VARIANTS.includes(variant)) {
 			base.push(`pa-btn--outline-${variant}`);
 		} else {
 			base.push(`pa-btn--${variant}`);
@@ -129,6 +138,14 @@
 
 		return base.join(' ');
 	});
+
+	// Label wrapper decision (matches core / keen):
+	//   truncate → bare `.text-truncate` inner span (canonical snippet shape)
+	//   center   → `.pa-btn__label` so the core --align-center flex-fill applies
+	//   else     → bare label (NO wrapper — core defines no base .pa-btn__label rule)
+	const labelWrapClass = $derived(
+		shouldTruncateText ? 'text-truncate' : align === 'center' ? 'pa-btn__label' : null
+	);
 </script>
 
 {#if href}
@@ -151,14 +168,15 @@
 			</span>
 		{/if}
 		{#if children}
-			{#if isIconOnly}
-				<!-- Icon-only: render the glyph bare (core convention). The
-				     `pa-btn__label` wrapper is a text flex-item — wrapping an icon
-				     in it puts the glyph on a text baseline instead of flex-centering
-				     it in the square button. -->
+			{#if isIconOnly || !labelWrapClass}
+				<!-- Bare label — matches the core snippet (default buttons render the
+				     label as a bare flex child; core defines no base `.pa-btn__label`
+				     rule). Icon-only also stays bare: `.pa-btn__label` is a text
+				     flex-item that would put a glyph on a text baseline instead of
+				     flex-centering it in the square button. -->
 				{@render children()}
 			{:else}
-				<span class="pa-btn__label" class:text-truncate={shouldTruncateText}>{@render children()}</span>
+				<span class={labelWrapClass}>{@render children()}</span>
 			{/if}
 		{/if}
 		{#if icon && iconPosition === 'end'}
@@ -186,14 +204,15 @@
 			</span>
 		{/if}
 		{#if children}
-			{#if isIconOnly}
-				<!-- Icon-only: render the glyph bare (core convention). The
-				     `pa-btn__label` wrapper is a text flex-item — wrapping an icon
-				     in it puts the glyph on a text baseline instead of flex-centering
-				     it in the square button. -->
+			{#if isIconOnly || !labelWrapClass}
+				<!-- Bare label — matches the core snippet (default buttons render the
+				     label as a bare flex child; core defines no base `.pa-btn__label`
+				     rule). Icon-only also stays bare: `.pa-btn__label` is a text
+				     flex-item that would put a glyph on a text baseline instead of
+				     flex-centering it in the square button. -->
 				{@render children()}
 			{:else}
-				<span class="pa-btn__label" class:text-truncate={shouldTruncateText}>{@render children()}</span>
+				<span class={labelWrapClass}>{@render children()}</span>
 			{/if}
 		{/if}
 		{#if icon && iconPosition === 'end'}

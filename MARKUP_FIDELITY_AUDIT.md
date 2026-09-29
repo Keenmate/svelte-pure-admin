@@ -84,7 +84,7 @@ DOM re-dumped against the snippet). See CHANGELOG *Fixed — library*. Follow-up
 
 | # | Component | Missing option | Evidence | Fix |
 |---|-----------|----------------|----------|-----|
-| 1 | **Button** | `ghost` variant unreachable (can't emit without also emitting default `pa-btn--primary`); demo hand-writes raw `pa-btn--ghost`. | `_buttons.scss:75`, dist=2; OverflowToolbar.svelte:83 | Add `'ghost'` to `ButtonVariant`. |
+| 1 | **Button** | 🔧 **FIXED 2026-09-29.** `ghost` variant was unreachable; demo hand-wrote raw `pa-btn--ghost`. Added `'ghost'` to `ButtonVariant`. | `_buttons.scss:75`, dist=2; OverflowToolbar.svelte:83 | ✅ done — see *Buttons* section + CHANGELOG *Fixed — library*. |
 | 2 | **CompositeBadge / Group / badge-types** | `--btn-danger` (dist=3) blocked by stale `Exclude<…,'danger'>`; `--icon-{variant}` (dist=1 each) entirely missing. | `_composite-badge-variants.scss:18,85-99`; badge-types.ts:24 | Drop the `Exclude`; add `iconVariant?: BadgeVariant`; update stale comments + CLAUDE.md gap. |
 | 3 | **CodeBlock / CodeBlockWithHeader** | No `isNumbered` prop (`pa-code--numbered`, dist=2); consumer must pass raw class. | CodeBlock.svelte:10-33 | Add `isNumbered?: boolean`; forward `isNumbered`/`isCompact` to the inner `pa-code` in the header variant. |
 | 4 | **NavbarSearch** | Pill size modifiers `--xs…--xl` (dist≥1 each) missing; the doc comment wrongly claims "core defines no size modifiers for the pill". | layout.html:262-266; NavbarSearch.svelte:26-28 | Add `size?` prop; delete the false comment. |
@@ -132,7 +132,7 @@ DOM re-dumped against the snippet). See CHANGELOG *Fixed — library*. Follow-up
 - **Code** — dead `language` prop on inline `<code>` (destructured, never used).
 - **SmallText vs FormHelp** — duplicate `pa-form-help` emitters with divergent capability (SmallText lacks `themeColor`); consider consolidating.
 - **Toast** — `pa-toast--hide` exit animation unused (toasts vanish without slide-out); progress uses inline width vs snippet's `w-100` (benign).
-- **Button** — always wraps label in `pa-btn__label` even when core uses bare text (benign: `flex:0 1 auto` ≈ text node); anchor disabled uses bare `.disabled` (no core rule → no pointer-block); `data-ripple` is a demo-only attribute baked into the public API.
+- **Button** — 🔧 **label-wrap FIXED 2026-09-29** (was: always wraps label in `pa-btn__label`). Cross-checked against keen + `buttons.mustache` demo: core renders a **bare** label (demo default/align-end/align-justify all bare), `.pa-btn__label` is align-center-only. Now bare by default; wraps only for `align="center"` (`.pa-btn__label`) or `shouldTruncateText` (bare `.text-truncate` span). Also 🔧 **outline guard** (light/dark/ghost no longer emit phantom `pa-btn--outline-*`). Still open (benign): anchor disabled uses bare `.disabled` (no core rule → no pointer-block); `data-ripple` is a demo-only attribute baked into the public API.
 - **Stat** — default variant without an icon renders an off-spec inline row (no `__content` wrapper); `changeText` silently no-ops on a plain (non-fit) square — document applicability.
 - **PropCardRow** — copy button DOM-ordered before text (relies on core `order:-1`); benign, matches core.
 - **pc-grid primitive** — the whole CSS-Grid ruled-matrix (`pc-grid`, `--cols-N`, `--ruled`, `pc-col-span-*`/`pc-row-span-*`, dist=51) has **zero** wrapper coverage (deferred per CLAUDE.md — noted for completeness).
@@ -318,9 +318,15 @@ These are the mistakes svelte-pure-admin actually makes (each already hit ≥1 c
 
 ## Rules / judgement calls
 
-- **Don't over-fix.** A divergence that renders identically (e.g. Button always
-  wrapping its label in `pa-btn__label`, `flex:0 1 auto` == bare text node) is 🟡 —
-  note it, don't change it. Verify no-op claims against the SCSS before dismissing.
+- **Don't over-fix — but a "renders-identically" claim is not the same as
+  "on-contract."** A pure visual no-op can still be an off-contract *extra element*
+  that drifts the DOM from the one blessed shape. Cautionary case: Button always
+  wrapping its label in `pa-btn__label` was filed 🟡 "benign (`flex:0 1 auto` ==
+  bare text node)" — but a demo cross-check (`buttons.mustache`) showed core emits a
+  **bare** label and reserves `.pa-btn__label` for `--align-center`, so it was a real
+  divergence and got fixed (2026-09-29). Lesson: before dismissing as 🟡, verify the
+  shape against the **snippet + SCSS + the demo** (and keen, when it exists) — not
+  just a CSS no-op inference. Genuinely identical *and* on-contract → 🟡, note it.
 - **Core gaps ≠ wrapper defects.** If core lacks the class the wrapper needs
   (e.g. no `pa-badge--color-N`), flag ⚠️ as a core follow-up — **do NOT invent a
   class** or edit core from here.
@@ -456,21 +462,31 @@ before this pass; recorded here for completeness (full detail in `CHANGELOG.md`)
 
 ---
 
-## Buttons — ✅ faithful (no lib change)
+## Buttons — 🔧 label-wrap + outline fixed 2026-09-29 (was ✅ "faithful, no lib change")
 
 Source: `packages/svelte-pure-admin/src/lib/buttons/Button.svelte`
 
+> **⚠️ Verdict reversed (2026-09-29).** The row below originally called the
+> always-wrapping `pa-btn__label` "benign 🟡 / the safer choice." A deeper
+> cross-check — keen's `button.ex`, the core `buttons.html` snippet, `_buttons.scss`,
+> **and** the `demo/views/buttons.mustache` demo — showed all four render a **bare**
+> label; `.pa-btn__label` has **no base rule** and is meaningful only inside
+> `--align-center`. So the always-wrapper is an off-contract extra element, now
+> removed (bare by default; wraps only for center / truncate). Also fixed: the
+> outline guard + the `ghost` variant. See CHANGELOG *Fixed — library*.
+
 | Aspect | svelte output | canonical | verdict |
 |---|---|---|---|
-| Plain label wrapped in `pa-btn__label` | `<span class="pa-btn__label">…</span>` | bare text node | 🟡 `__label` is `flex:0 1 auto` — identical to a bare text node's default, and *required* under `--align-center` (`flex:1`). Always-wrapping is the safer choice. |
+| ~~Plain label wrapped in `pa-btn__label`~~ 🔧 FIXED | now **bare** label (was `<span class="pa-btn__label">…</span>`) | bare text node | ✅ now matches core — wraps only for `align="center"` (`.pa-btn__label`) / `shouldTruncateText` (bare `.text-truncate`). |
 | `type="button"` default | present | omitted | ✅ better than canonical |
 | Loading | adds `disabled` + `pa-btn__spinner` + `pa-btn__label` | spinner + text | ✅ `disabled` on loading guards double-submit |
 | Icon-only wraps glyph in `pa-btn__icon` | `<span class="pa-btn__icon"><i/></span>` | bare `<i>`/glyph | 🟡 `--icon-only` is `padding:0` flex-center and `__icon` is a marginless flex-center span → visual no-op |
 | Icon-only accessible name | none unless `titleText` passed | snippet always sets `title` | ⚠️ **usage gap, not a lib defect** — component exposes `titleText`→`title` and forwards `aria-label` via rest props. Docs route simply didn't pass one. Recommend docs pass `titleText`/`aria-label` on every icon-only button. |
 
-**Conclusion:** Button markup is faithful to the contract. No component change
-made. The only actionable item is a documentation/usage reminder to always label
-icon-only buttons.
+**Conclusion (updated 2026-09-29):** Button markup is now faithful to the contract
+**after** three fixes (bare label / outline guard / `ghost` variant — CHANGELOG
+*Fixed — library*). Remaining actionable item is unchanged: a documentation/usage
+reminder to always label icon-only buttons (`titleText` / `aria-label`).
 
 ---
 
