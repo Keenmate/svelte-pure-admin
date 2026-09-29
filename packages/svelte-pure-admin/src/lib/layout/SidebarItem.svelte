@@ -91,14 +91,14 @@
 	{#if hasSubmenu}
 		<button class="pc-sidebar__toggle" onclick={toggleSubmenu}>
 			{#if icon}
-				<span class="pc-sidebar__icon">
+				<span class="pc-sidebar__icon pc-icon-hover-highlight">
 					{@render icon()}
 				</span>
 			{:else if shouldKeepIconSpace}
-				<span class="pc-sidebar__icon"></span>
+				<span class="pc-sidebar__icon pc-icon-hover-highlight"></span>
 			{/if}
 			<span class="pc-sidebar__label">{labelText}</span>
-			<span class="pc-sidebar__chevron">›</span>
+			<span class="pc-sidebar__chevron" aria-hidden="true"></span>
 		</button>
 
 		{#if submenu}
@@ -109,22 +109,22 @@
 	{:else if href}
 		<a {href} class={linkClasses()} {onclick}>
 			{#if icon}
-				<span class="pc-sidebar__icon">
+				<span class="pc-sidebar__icon pc-icon-hover-highlight">
 					{@render icon()}
 				</span>
 			{:else if shouldKeepIconSpace}
-				<span class="pc-sidebar__icon"></span>
+				<span class="pc-sidebar__icon pc-icon-hover-highlight"></span>
 			{/if}
 			<span class="pc-sidebar__label">{labelText}</span>
 		</a>
 	{:else}
 		<button class={linkClasses()} {onclick}>
 			{#if icon}
-				<span class="pc-sidebar__icon">
+				<span class="pc-sidebar__icon pc-icon-hover-highlight">
 					{@render icon()}
 				</span>
 			{:else if shouldKeepIconSpace}
-				<span class="pc-sidebar__icon"></span>
+				<span class="pc-sidebar__icon pc-icon-hover-highlight"></span>
 			{/if}
 			<span class="pc-sidebar__label">{labelText}</span>
 		</button>

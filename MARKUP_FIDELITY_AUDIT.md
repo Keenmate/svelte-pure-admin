@@ -18,6 +18,141 @@ fixed) · 🔧 fixed in this pass · ⚠️ needs follow-up / discussion.
 
 ---
 
+## 🔬 Deep API-Coverage + Ergonomics Audit (2026-09-29) — PLAN, not yet fixed
+
+A **fresh, deeper pass** than all prior rounds. Earlier audits checked *emitted
+classes*; they missed **option-coverage gaps** (core variants/sizes/modifiers/
+render-forms with no wrapper prop) and **API-ergonomics defects** (consumer forced
+to know/author `pa-*`/`pc-*` internals). This pass ran **17 read-only cluster
+auditors** (A/B/C method: enumerate core options → find gaps → compare DOM),
+each cross-checking snippet + SCSS + `dist/css/main.css` phantom-grep + the docs
+demo routes.
+
+**Primary lens:** the consumer should know as little as possible about pure-admin's
+internal classes/HTML. Any case where a demo hand-writes a `pa-*`/`pc-*` class or
+hand-authors internal element structure to reach a documented look is a wrapper gap.
+
+**Status: findings catalogued below — NOTHING FIXED YET (plan-first, awaiting
+review).** Every 🔴/headline claim was re-verified by direct `dist` grep (counts
+inline). Once fixing starts, record a `### Fixed — library` CHANGELOG bullet per fix.
+
+### Cross-cutting facts confirmed this pass (update CLAUDE.md)
+
+- **Shell blocks migrated `pa-*` → `pc-*` (foundation/shell layer).** `pa-navmenu__item`=0
+  / `pc-navmenu__item`=9; `pa-navbar__inner`=0 / `pc-navbar__inner`=2; `pa-sidebar`=0
+  (whole block now `pc-sidebar*` / `pc-layout__sidebar`). **The wrappers already emit
+  `pc-*` correctly** — but CLAUDE.md's "rc14 `pa-navbar__*` / `pa-navmenu`" and
+  "`pa-layout__sidebar--resizable`" notes are **stale** and should be corrected to `pc-*`.
+- **CLAUDE.md "Known upstream gap: Composite badge missing `--btn-danger`" is CLOSED.**
+  `pa-composite-badge--btn-danger`=3 rules in dist; `--icon-{variant}`=1 each. The
+  wrapper's `Exclude<…,'danger'>` and "no --btn-danger" comments are now wrong.
+
+### P0 — live breakage / correctness bugs (fix first)
+
+| # | Component | Defect | Evidence | Fix |
+|---|-----------|--------|----------|-----|
+| 1 | **SlidePanel** | Missing required `.pa-detail-panel__content` wrapper — the slide-in `transform` + width/position are applied to `__content`, not the `--overlay` root, so **nothing slides or sizes**; the panel is non-functional for its stated purpose unless the consumer hand-authors `__content`. | `_detail-panel.scss:112-146`; SlidePanel renders `{@render children}` bare in `--overlay`; snippet detail-panel.html:127 | Wrap children in `<div class="pa-detail-panel__content">`; add title/header/body/footer snippets + built-in close (`pa-icon--x`) or steer to `DetailPanel`. |
+| 2 | **CodeBlockWithHeader** | `handleCopy()` uses global `document.querySelector('.pa-code-block__body .pa-code')` → copies the **first** block on the page; every instance copies the wrong text when >1 present. | CodeBlockWithHeader.svelte:51 | `bind:this` on the `<pre>` (local ref) instead of global query. |
+| 3 | **Heatmap** | Custom `cols` hardcodes `1.2rem` cell in inline `grid-template-columns`, overriding `--compact`'s `1rem` cells → `<Heatmap cols={30} isCompact>` renders full-size, defeating compact. | Heatmap.svelte:38-43 vs `_data-viz.scss:487` | Derive cell size from `isCompact` (`isCompact ? '1rem' : '1.2rem'`) + set `grid-auto-rows`. |
+
+### P1 — ergonomics defects + missing options (high value)
+
+**Sidebar re-alignment (USER-FLAGGED PRIORITY — the core sidebar was reworked). 🔧 FIXED 2026-09-29.**
+Wrappers already migrated to `pc-*` (rename done); S1–S5 below are now fixed
+(`Sidebar.svelte` / `SidebarItem.svelte` / `SidebarSearch.svelte`; svelte-check clean,
+DOM re-dumped against the snippet). See CHANGELOG *Fixed — library*. Follow-up S6 still open:
+
+- **S6 (open) — `SettingsPanel` querySelectors the sidebar element** to toggle
+  `pc-layout__sidebar--icon-collapse` / `--resizable` (SettingsPanel.svelte:238-260,
+  500-526). A library component reaching into a *sibling* component's DOM is the same
+  ergonomics smell as S2 — and it's why the demo couldn't simply bind the new reactive
+  `Sidebar isIconCollapse` prop (dual-writer conflict). Proper fix: `SettingsPanel`
+  should emit `sidebarBehavior` via `onsettingschange` (and stop touching the element)
+  so the host binds `Sidebar` props; then the demo drops its own `querySelector` seed
+  too. Deferred — larger change to `SettingsPanel`'s established (pure-admin-mirroring)
+  contract.
+
+| # | Component | Defect | Evidence | Fix |
+|---|-----------|--------|----------|-----|
+| S1 | **Sidebar** | `mode="sticky"` emits phantom `pc-layout__sidebar--sticky` (=0 in dist). Sticky is a **body-level** class `body.pc-layout--sticky` (=6), owned by layout/SettingsPanel, not the sidebar element. | Sidebar.svelte:21,39; `_sidebar.scss:80,97` | Drop `'sticky'` from `SidebarMode`. |
+| S2 | **Sidebar** | No **reactive** prop for `--icon-collapse` (the ONE real sidebar modifier, =69 in dist). The demo bypasses the wrapper: `querySelector('.pc-layout__sidebar').classList.add('pc-layout__sidebar--icon-collapse')`. | +layout.svelte:206-207,230; snippet L562-577 | Add reactive `isIconCollapse?: boolean`; demo binds it from panel state. |
+| S3 | **SidebarItem / SidebarSearch** | Icon spans omit the blessed `pc-icon-hover-highlight` marker (=5 in dist; snippet wraps every nav icon `<span class="pc-sidebar__icon pc-icon-hover-highlight">`). Hover affordance never triggers. | SidebarItem.svelte:94-127; SidebarSearch.svelte:84; snippet L387 | Add `pc-icon-hover-highlight` to internal `pc-sidebar__icon` spans (or gate on `shouldHighlightIcon` default true). |
+| S4 | **SidebarItem** | Chevron emits stale `›` text; core made `pc-sidebar__chevron` a CSS mask (empty span, `font-size:0`). Raw `›` shows on themes built before the mask. | SidebarItem.svelte:101; `_sidebar.scss:420-428` | Emit empty `<span class="pc-sidebar__chevron" aria-hidden="true">`. |
+| S5 | **SidebarSearch** | Stale `🔍` emoji in trigger + `--input` submit button; core masks both (empty markup). | SidebarSearch.svelte:65,84; `_sidebar.scss:253-272` | Trigger → `<span class="pa-icon pa-icon--search">`; `--input` submit → empty. |
+
+**Missing core options (own-block modifier/variant with no prop → must be a prop):**
+
+| # | Component | Missing option | Evidence | Fix |
+|---|-----------|----------------|----------|-----|
+| 1 | **Button** | `ghost` variant unreachable (can't emit without also emitting default `pa-btn--primary`); demo hand-writes raw `pa-btn--ghost`. | `_buttons.scss:75`, dist=2; OverflowToolbar.svelte:83 | Add `'ghost'` to `ButtonVariant`. |
+| 2 | **CompositeBadge / Group / badge-types** | `--btn-danger` (dist=3) blocked by stale `Exclude<…,'danger'>`; `--icon-{variant}` (dist=1 each) entirely missing. | `_composite-badge-variants.scss:18,85-99`; badge-types.ts:24 | Drop the `Exclude`; add `iconVariant?: BadgeVariant`; update stale comments + CLAUDE.md gap. |
+| 3 | **CodeBlock / CodeBlockWithHeader** | No `isNumbered` prop (`pa-code--numbered`, dist=2); consumer must pass raw class. | CodeBlock.svelte:10-33 | Add `isNumbered?: boolean`; forward `isNumbered`/`isCompact` to the inner `pa-code` in the header variant. |
+| 4 | **NavbarSearch** | Pill size modifiers `--xs…--xl` (dist≥1 each) missing; the doc comment wrongly claims "core defines no size modifiers for the pill". | layout.html:262-266; NavbarSearch.svelte:26-28 | Add `size?` prop; delete the false comment. |
+| 5 | **Field** | `valueVariant` omits `info` (`pa-field__value--info`, dist=1). | Field.svelte:32 vs `_data-display.scss:474` | Add `'info'` to the union. |
+| 6 | **Column** | No `noPadding`/`grow`/`shrink` props (`pc-col--no-padding`/`--grow`/`--shrink` all real) → BYPASS via raw class. | grid.html:262-275; dist present | Add three boolean props. |
+| 7 | **CheckboxListItem** | `--selected` item state (dist-present) not in `ItemState` (`'disabled'|'locked'` only). | `_checkbox-lists.scss:133` | Add `'selected'` / `isSelected`. |
+| 8 | **Timeline** | `--single-column` modifier not exposed (distinct from `--start`). | `_timeline.scss:334`; Timeline.svelte:237-241 | Add to alignment prop. |
+| 9 | **ButtonGroup** | Only `md-vertical`/`lg-horizontal` hardcoded; core generates `--{sm,md,lg,xl}-vertical|horizontal` (~6 unreachable). | `_buttons.scss:452-466` | `verticalAt?`/`horizontalAt?: Breakpoint`. |
+| 10 | **Checkbox** | Tri-state cycler (`data-pa-tristate` + `-order`, checkbox.js) unreachable; only static `isIndeterminate`. | snippet:46-54; grep=0 in lib | Add `isTristate` + `tristateOrder` (loads checkbox.js). |
+| 11 | **ProfilePanel** | Role chip is bare `<span class="pa-badge">`; 6 documented `pa-badge--*` variants unreachable. | profile.html reference; ProfilePanel.svelte:120 | Add `roleVariant?: BadgeVariant`. |
+| 12 | **CommandPalette** | No `__section` result grouping / `__pagination` (both dist=1); no `<mark>` highlight (`allowHtml`) though siblings have it. | command-palette.html:120,139,142 | Add group key + `__section`; add `allowHtml`. |
+| 13 | **DetailView** | Fixed-overlay (mode 3 `pa-detail-panel--overlay`) + mobile-overlay (mode 4) unwrapped; consumer hand-authors. | detail-panel.html:125,252 | Wrap or document. |
+| 14 | **Section** | `pa-section-title` (standalone title outside `.pa-section`) unsupported. | `_cards.scss:625` | Add variant or `SectionTitle`. |
+
+**Ergonomics — consumer forced to author internal structure:**
+
+| # | Component | Defect | Evidence | Fix |
+|---|-----------|--------|----------|-----|
+| 15 | **KpiHeroMain / KpiBentoTile / KpiTerminalTile** | Omit the load-bearing inner chart host (`__chart-svg` / `pa-kpi-tile__spark`) around the `chart` snippet → consumer must hand-author the internal class (hero demo does it 3×, terminal demo 24×) or the SVG is unsized/unstyled. | KpiHeroMain.svelte:153-157; `_kpi-terminal.scss:201-234`; demos | Wrap the `chart` snippet in the host span inside each wrapper (mirror `KpiSparklineRow.__chart`). |
+| 16 | **Table** | No blessed row-selection support (`pa-table__checkbox-col` + `tr.pa-table__row--selected`, both dist=1) → `table-multi-select` demo ships wrong class (`col-auto`) + hardcoded inline `background-color` instead of the themed selected tint. | tables.html:176-215; table-multi-select/+page.svelte:314,330,331 | Add row/cell helpers (or at minimum expose the two classes + document). |
+| 17 | **Table** | Inert public props `isHover` + `isBorderless` emit **nothing** (dist=0 for both `--hover`/`--borderless`); the API promises behavior it can't deliver. | Table.svelte:12,15,44,58-61 | Remove both props (base `.pa-table` is already borderless + hover-on). |
+| 18 | **NotificationsPanel** | Bell trigger + `__badge` counter and the `.pa-notifications` positioning anchor are unwrapped → docs `+layout.svelte` hand-authors `pa-notifications__btn`/`__badge`. Severity glyph not derivable from `iconVariant`. | notifications.html:28-42; +layout.svelte | Add a bell-trigger mode / `NotificationBell`; render the anchor; emit masked `pa-icon--{sev}`. |
+| 19 | **List / ListItem** | Locked to `<div>`; no semantic `<ul>/<li>` path (core's a11y-preferred enumerative form). | lists.html:193-211; List.svelte:23 | Add `tag?` to both (List auto-adds `--unstyled` for `ul`). |
+| 20 | **Card** | No `<a>` clickable-card root (blessed in cards.html:517-531); `--responsive` header-actions not modeled. | Card.svelte:169 | Add `href`/`tag`; document/model `--responsive`. |
+
+**Correctness / a11y / i18n:**
+
+| # | Component | Defect | Evidence | Fix |
+|---|-----------|--------|----------|-----|
+| 21 | **Textarea** | Emits phantom `pa-textarea--{success,warning,error}` (all dist=0) — core textarea has **no** validation border by contract (snippet:553-556). | Textarea.svelte state→class | Drop the state→class map (keep `aria-invalid`); route errors via `pa-form-group--error`/`pa-form-help--error`. |
+| 22 | **Pager** | Hardcoded English `« First`/`‹ Previous`/`Next ›`/`Last »` (sibling LoadMore uses `$_()` i18n). | Pager.svelte:95-106 | Route through i18n or text props. |
+| 23 | **TimelineItem** | `role="button"` + `tabindex` + Enter-only on the `<li>` when `onclick` set (div/li-role=button anti-pattern; no such interaction in core). | TimelineItem.svelte:77-83 | Drop the ARIA button semantics; use a real `<button>`/`<a>` inside if clickable. |
+| 24 | **TabsScrollable / TabsOverflow** | Scroll-arrow `<button>`s lack `type="button"` (submit inside a form); overflow toggle lacks `aria-label`/`aria-expanded`. | TabsScrollable.svelte:99,112; TabsOverflow.svelte:73 | Add `type="button"` + ARIA. |
+| 25 | **Tabs** | `overflow="scrollable"` is a dead option — emits `pa-tabs--scrollable` with no scroll-container/arrows (needs `TabsScrollable`). | Tabs.svelte:11,65; `_tabs.scss:205-221` | Drop `'scrollable'` from the union; steer to `TabsScrollable`. |
+
+**Consistency / smaller options:** RadioGroup lacks `style` passthrough (CheckboxGroup has it); Modal `variant="info"` is a silent no-op without `isBanded`; Popconfirm can't reach the bare default-warning `__icon` (no-modifier); Tooltip `multiline`→ should be `isMultiline`; RangeGroupCore no per-row `pa-range--disabled`; Grid `gap?: number` admits dead values (7/9/11/13/14/15/17/18/19 — no such `gap-N`); Button `isRipple` emits `pa-btn--ripple` but never toggles `pa-btn--ripple-active` (inert without host JS); SplitButton `placement` type narrower than Floating-UI supports.
+
+**Demo leaks (wrapper-gap signals — fix demos as their wrappers gain props):**
+`table-multi-select` hand-authors selection (see #16); `data-display/+page.svelte` hand-authors detail panels + phantom `pa-detail-view--panel-open` (real class is `__panel--open`); `+layout.svelte` hand-authors the profile nav despite `ProfilePanelNavItem` existing, and drives sidebar icon-collapse via `querySelector` (see S2).
+
+### P2 — structural / cosmetic / dead (low priority)
+
+- **DetailPanel** — `pa-detail-panel__actions` phantom (dist=0, unstyled) — **known core follow-up**; resize handle never gets `pa-detail-panel-resize--active` (no drag visual feedback).
+- **Divider** — renders an unstyled browser-default `<hr>` (no `pa-divider`/`pc-divider` in core, dist=0); component adds no framework styling — consider dropping or documenting.
+- **Code** — dead `language` prop on inline `<code>` (destructured, never used).
+- **SmallText vs FormHelp** — duplicate `pa-form-help` emitters with divergent capability (SmallText lacks `themeColor`); consider consolidating.
+- **Toast** — `pa-toast--hide` exit animation unused (toasts vanish without slide-out); progress uses inline width vs snippet's `w-100` (benign).
+- **Button** — always wraps label in `pa-btn__label` even when core uses bare text (benign: `flex:0 1 auto` ≈ text node); anchor disabled uses bare `.disabled` (no core rule → no pointer-block); `data-ripple` is a demo-only attribute baked into the public API.
+- **Stat** — default variant without an icon renders an off-spec inline row (no `__content` wrapper); `changeText` silently no-ops on a plain (non-fit) square — document applicability.
+- **PropCardRow** — copy button DOM-ordered before text (relies on core `order:-1`); benign, matches core.
+- **pc-grid primitive** — the whole CSS-Grid ruled-matrix (`pc-grid`, `--cols-N`, `--ruled`, `pc-col-span-*`/`pc-row-span-*`, dist=51) has **zero** wrapper coverage (deferred per CLAUDE.md — noted for completeness).
+- **Stale masked glyphs** (benign, `font-size:0` collapses them on current themes; show raw on pre-mask themes): `🔍` in NavbarSearch/NavbarSearchField/NavbarSearchInput; copy `📋` in CodeBlockWithHeader (still matches current snippet).
+- **ProfilePanel** avatar defaults to `👤` emoji while ProfileButton defaults to masked `pa-icon--user` — inconsistent.
+
+### Clean clusters (no actionable findings)
+
+Splitter/SplitterPane/SplitterGutter, Fit{Container,Slot,Step}, ContainerBreakpoint,
+Navbar shell, NavMenu/NavItem/NavDropdown, SearchResults, all Loaders + Spinner,
+DialogContainer, Popover/PopoverContainer, Callout, Alert (over-wrap correctly
+avoided), most data-display (Field copy-hint fully migrated to core `::after` — the
+old invented-class `<style>` is GONE), most data-viz (Progress/Gauge/StackedBar/
+BarList…), KPI grid/editorial/strip families, TableCard/TableContainer, and the
+core text-input forms (Input/Select/Number/Date/Color/InputGroup/Form/FormGroup…).
+CommandPalette's prior invented-token/`__error` scoped-`<style>` is **fully
+reconciled** (no `<style>`, no phantom classes).
+
+---
+
 ## ✅ Status (2026-09-14) — 3.0.0 re-baseline (snippet-delta triage)
 
 The lib was synced to core **3.0.0** (the stable cut of the `2.9.0-rc` series;

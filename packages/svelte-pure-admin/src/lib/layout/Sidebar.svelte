@@ -18,10 +18,23 @@
 	import { onMount } from 'svelte';
 	import { loadCoreJs } from '../internal/core-js';
 
-	type SidebarMode = 'sticky' | 'icon-collapse';
+	/**
+	 * `--icon-collapse` is the **only** real sidebar-element modifier (core
+	 * `_sidebar.scss`). The former `sticky` value emitted a phantom
+	 * `pc-layout__sidebar--sticky` (0 rules in core) — sticky is a *body-level*
+	 * class (`body.pc-layout--sticky`) owned by the layout / SettingsPanel, not the
+	 * sidebar element, so it was removed here.
+	 */
+	type SidebarMode = 'icon-collapse';
 
 	interface Props {
-		/** Sidebar mode modifier */
+		/**
+		 * Collapse the sidebar to an icon rail (`pc-layout__sidebar--icon-collapse`).
+		 * Reactive — bind it to your settings-panel state so the rail toggles without
+		 * reaching into the DOM.
+		 */
+		isIconCollapse?: boolean;
+		/** @deprecated Use `isIconCollapse`. Only `'icon-collapse'` is a real modifier. */
 		mode?: SidebarMode;
 		/** Enable drag-to-resize (core `sidebar-resize.js`) */
 		isResizable?: boolean;
@@ -31,12 +44,12 @@
 		children?: import('svelte').Snippet;
 	}
 
-	let { mode, isResizable = false, class: className = '', children }: Props = $props();
+	let { isIconCollapse = false, mode, isResizable = false, class: className = '', children }: Props = $props();
 
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pc-layout__sidebar'];
-		if (mode) base.push(`pc-layout__sidebar--${mode}`);
+		if (isIconCollapse || mode === 'icon-collapse') base.push('pc-layout__sidebar--icon-collapse');
 		if (isResizable) base.push('pc-layout__sidebar--resizable');
 		if (className) base.push(className);
 		return base.join(' ');
