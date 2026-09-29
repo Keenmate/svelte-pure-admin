@@ -98,10 +98,12 @@
 		commandPaletteSize = (settings.commandPaletteSize || undefined) as 'sm' | 'lg' | 'xl' | undefined;
 		searchPosition = settings.searchPosition;
 	}
+	// Favorites use Lucide glyph names (rendered via <Icon>), mirroring
+	// pure-admin's profile-panel favorites — structural nav, not flavor.
 	let favorites = $state([
-		{ id: 1, href: '/', icon: '📊', label: 'Dashboard' },
-		{ id: 2, href: '/forms', icon: '📝', label: 'Forms' },
-		{ id: 3, href: '/tables', icon: '📋', label: 'Tables' }
+		{ id: 1, href: '/', icon: 'dashboard', label: 'Dashboard' },
+		{ id: 2, href: '/forms', icon: 'forms', label: 'Forms' },
+		{ id: 3, href: '/tables', icon: 'table', label: 'Tables' }
 	]);
 
 	function toggleSidebar() {
@@ -449,23 +451,23 @@
 			<nav class="pa-profile-panel__nav">
 				<ul>
 					<li><a href="/profile" class="pa-profile-panel__nav-item">
-						<span class="pa-profile-panel__nav-icon">👤</span>
+						<span class="pa-profile-panel__nav-icon"><Icon name="profile_settings" /></span>
 						Profile Settings
 					</a></li>
 					<li><a href="/security" class="pa-profile-panel__nav-item">
-						<span class="pa-profile-panel__nav-icon">🔒</span>
+						<span class="pa-profile-panel__nav-icon"><Icon name="security" /></span>
 						Security
 					</a></li>
 					<li><a href="/notifications" class="pa-profile-panel__nav-item">
-						<span class="pa-profile-panel__nav-icon">🔔</span>
+						<span class="pa-profile-panel__nav-icon"><Icon name="notifications" /></span>
 						Notifications
 					</a></li>
 					<li><a href="/preferences" class="pa-profile-panel__nav-item">
-						<span class="pa-profile-panel__nav-icon">⚙️</span>
+						<span class="pa-profile-panel__nav-icon"><Icon name="preferences" /></span>
 						Preferences
 					</a></li>
 					<li><a href="/help" class="pa-profile-panel__nav-item">
-						<span class="pa-profile-panel__nav-icon">❓</span>
+						<span class="pa-profile-panel__nav-icon"><Icon name="help" /></span>
 						Help & Support
 					</a></li>
 				</ul>
@@ -481,7 +483,7 @@
 						labelText={fav.label}
 						onremove={() => removeFavorite(fav.id)}
 					>
-						{#snippet icon()}{fav.icon}{/snippet}
+						{#snippet icon()}<Icon name={fav.icon} />{/snippet}
 					</ProfilePanelFavoriteItem>
 				{/each}
 				{#snippet addButton()}
@@ -607,8 +609,8 @@
 			{/if}
 
 			<NavMenu>
-				<NavItem href="/alerts">⚠️ Alerts</NavItem>
-				<NavItem href="/tables">📋 Tables</NavItem>
+				<NavItem href="/alerts">Alerts</NavItem>
+				<NavItem href="/tables">Tables</NavItem>
 			</NavMenu>
 
 			<div class="pa-notifications">
