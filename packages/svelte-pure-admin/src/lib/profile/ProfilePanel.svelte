@@ -5,6 +5,7 @@
 	 */
 
 	import { _ } from '../i18n';
+	import type { BadgeVariant } from '../display/badge-types';
 
 	interface Props {
 		/** Show panel */
@@ -15,6 +16,8 @@
 		email: string;
 		/** User role */
 		role?: string;
+		/** Role chip variant (pa-badge--{variant}); unset = the base neutral badge */
+		roleVariant?: BadgeVariant;
 		/** Show avatar (set false to hide for corporate apps without user photos) */
 		hasAvatar?: boolean;
 		/** Show tabs as icon-only (hides text labels) */
@@ -42,6 +45,7 @@
 		name,
 		email,
 		role,
+		roleVariant,
 		hasAvatar = true,
 		hasIconOnlyTabs = false,
 		avatar,
@@ -117,7 +121,7 @@
 				{#if role}
 					<!-- Role chip migrated to .pa-badge in core v2.9.0-rc01
 					     (the bespoke .pa-profile-panel__role SCSS rule was removed) -->
-					<span class="pa-badge">{role}</span>
+					<span class="pa-badge{roleVariant ? ` pa-badge--${roleVariant}` : ''}">{role}</span>
 				{/if}
 			</div>
 

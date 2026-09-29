@@ -97,6 +97,7 @@
 
 <div class={classes()} data-tabs-scroll>
 	<button
+		type="button"
 		class="pa-tabs__scroll-btn pa-tabs__scroll-btn--start"
 		class:pa-tabs__scroll-btn--visible={showLeftArrow}
 		onclick={() => scrollTabs('left')}
@@ -110,6 +111,7 @@
 	</div>
 
 	<button
+		type="button"
 		class="pa-tabs__scroll-btn pa-tabs__scroll-btn--end"
 		class:pa-tabs__scroll-btn--visible={showRightArrow}
 		onclick={() => scrollTabs('right')}

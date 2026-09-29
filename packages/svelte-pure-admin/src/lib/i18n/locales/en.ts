@@ -79,5 +79,6 @@ export const en: Record<string, string> = {
 	'pureAdmin.a11y.removeFromFavorites': 'Remove from favorites',
 	'pureAdmin.a11y.dragToResizeSidebar': 'Drag to resize sidebar',
 	'pureAdmin.a11y.settings': 'Settings',
-	'pureAdmin.a11y.userProfile': 'User Profile'
+	'pureAdmin.a11y.userProfile': 'User Profile',
+	'pureAdmin.a11y.moreTabs': 'More tabs'
 };

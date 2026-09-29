@@ -5,6 +5,8 @@
 	 * Provides overflow dropdown for tabs that don't fit in container
 	 */
 
+	import { _ } from '../i18n';
+
 	interface Props {
 		/** Whether an active tab is in the overflow menu */
 		hasActive?: boolean;
@@ -70,7 +72,14 @@
 </script>
 
 <div class={wrapperClasses()}>
-	<button type="button" class={toggleClasses()} onclick={handleToggleClick}>
+	<button
+		type="button"
+		class={toggleClasses()}
+		onclick={handleToggleClick}
+		aria-label={$_('pureAdmin.a11y.moreTabs')}
+		aria-haspopup="menu"
+		aria-expanded={show}
+	>
 		{#if toggle}
 			{@render toggle()}
 		{:else}

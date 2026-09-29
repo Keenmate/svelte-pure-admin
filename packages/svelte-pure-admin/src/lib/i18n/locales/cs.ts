@@ -79,5 +79,6 @@ export const cs: Record<string, string> = {
 	'pureAdmin.a11y.removeFromFavorites': 'Odebrat z oblíbených',
 	'pureAdmin.a11y.dragToResizeSidebar': 'Tažením změníte velikost postranního panelu',
 	'pureAdmin.a11y.settings': 'Nastavení',
-	'pureAdmin.a11y.userProfile': 'Uživatelský profil'
+	'pureAdmin.a11y.userProfile': 'Uživatelský profil',
+	'pureAdmin.a11y.moreTabs': 'Další záložky'
 };

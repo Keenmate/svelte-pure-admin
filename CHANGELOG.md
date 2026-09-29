@@ -87,6 +87,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **`CompositeBadge` / `CompositeBadgeGroup` / `CompositeBadgeItem`** — the `--btn-danger` gap is **closed** (dist ships the full `--btn-*` set), so `CompositeButtonVariant` is now a plain alias of `BadgeVariant` (stale `Exclude<…,'danger'>` dropped); added `iconVariant` → `pa-composite-badge--icon-{variant}` (icon-section colour, threaded through the group's member/callback API too).
   - **Not added — `NavbarSearch` size prop:** the audit flagged missing pill `--xs…--xl`, but a re-grep found **zero** `pa-navbar-search--*` classes in dist or the snippet — the existing "core defines no size modifiers for the pill" comment is correct, so no phantom prop was added.
   - `svelte-check` clean (0 errors).
+- **P1 (cont.) — more missing options + correctness/a11y from the deep API-coverage audit** (2026-09-30):
+  - **`ButtonGroup`** — new `verticalAt` / `horizontalAt` breakpoint props (`pa-btn-group--{sm,md,lg,xl}-vertical|horizontal`, all present in dist); the old `mdVertical` / `lgHorizontal` booleans are kept as deprecated aliases.
+  - **`ProfilePanel`** — new `roleVariant?: BadgeVariant` → `pa-badge--{variant}` on the role chip (was a bare `pa-badge`).
+  - **`SectionTitle`** (new, exported) — a standalone `pa-section-title` heading (`<h{level}>`, `text` / `children`) for a section title placed outside a `<Section>`; `.pa-section > h3` and `.pa-section-title` share the same underlined styling, and only the standalone form was previously unreachable.
+  - **`Textarea`** — dropped the phantom `pa-textarea--{success,warning,error}` classes (core has no textarea validation-border modifier, dist=0). The `state` / `errors` / `touched` inputs still drive `aria-invalid`; render the visual error via the surrounding `pa-form-group--error` / `pa-form-help--error`.
+  - **`TabsScrollable` / `TabsOverflow`** — a11y: both scroll-arrow buttons gain `type="button"`; the overflow toggle gains `aria-label` (new `pureAdmin.a11y.moreTabs` i18n key, en + cs), `aria-haspopup="menu"` and `aria-expanded`.
+  - Deferred (recorded in `MARKUP_FIDELITY_AUDIT.md`): Checkbox tri-state (JS-wrapper decision), CommandPalette `__section`/`allowHtml`, DetailView overlay modes, Pager i18n, TimelineItem `role=button`, and dropping Tabs `overflow="scrollable"` (its class is real, so it's a breaking-API call, not a phantom).
+  - `svelte-check` clean (0 errors).
 
 ### Docs
 

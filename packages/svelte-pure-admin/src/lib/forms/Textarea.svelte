@@ -92,7 +92,9 @@
 	const classes = $derived(() => {
 		const base = ['pa-textarea'];
 		if (size) base.push(`pa-textarea--${size}`);
-		if (effectiveState()) base.push(`pa-textarea--${effectiveState()}`);
+		// NOTE: core has no validation-border modifier for textarea (pa-textarea--success/
+		// warning/error are phantom, dist=0). The state drives `aria-invalid` only; render
+		// the visual error via the surrounding pa-form-group--error / pa-form-help--error.
 		if (themeColor) base.push(`pa-textarea--color-${themeColor}`);
 		if (className) base.push(className);
 		return base.join(' ');

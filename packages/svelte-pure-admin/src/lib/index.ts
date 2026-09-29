@@ -81,6 +81,7 @@ export { default as Footer } from './layout/Footer.svelte';
 export { default as Grid } from './layout/Grid.svelte';
 export { default as Column } from './layout/Column.svelte';
 export { default as Section } from './layout/Section.svelte';
+export { default as SectionTitle } from './layout/SectionTitle.svelte';
 export { default as SettingsPanel } from './layout/SettingsPanel.svelte';
 export { default as Divider } from './layout/Divider.svelte';
 export { default as SlidePanel } from './layout/SlidePanel.svelte';
