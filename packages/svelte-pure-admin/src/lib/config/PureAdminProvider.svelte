@@ -14,17 +14,30 @@
 	import { initI18n } from '../i18n/setup';
 	import { initThemeReadyTracker } from './theme-ready';
 	import ShortcutHelpDialog from '../feedback/ShortcutHelpDialog.svelte';
+	import { setIconProvider } from '../icon/icon-provider';
+	import { masked } from '../icon/providers';
+	import type { IconProvider } from '../icon/icon-provider';
 
 	interface Props {
 		/** Configuration overrides (merged with defaults) */
 		config?: Partial<PureAdminConfig>;
 		/** Disable keyboard shortcuts (default: false) */
 		disableShortcuts?: boolean;
+		/**
+		 * Icon provider that resolves `<Icon name="…">` to markup — configure the set
+		 * your app uses (Font Awesome, an inline-SVG set, …). Defaults to `masked()`
+		 * (the framework's structural affordances). See `icon/providers.ts`.
+		 */
+		iconProvider?: IconProvider;
 		/** Children components */
 		children?: import('svelte').Snippet;
 	}
 
-	let { config = {}, disableShortcuts = false, children }: Props = $props();
+	let { config = {}, disableShortcuts = false, iconProvider, children }: Props = $props();
+
+	// Register the icon provider for all descendant <Icon> components.
+	// svelte-ignore state_referenced_locally
+	setIconProvider(iconProvider ?? masked());
 
 	// Merge user config with defaults
 	const mergedConfig = $derived(() => mergeConfig(defaultConfig, config));

@@ -22,6 +22,15 @@ export type { PureAdminConfig } from './config/config';
 export { defaultConfig, mergeConfig } from './config/config';
 export { usePureAdminConfig } from './config/hooks';
 
+// Icons
+export { default as Icon } from './icon/Icon.svelte';
+export { masked, fontAwesome, svgIcons, combine } from './icon/providers';
+export type { FontAwesomeOptions, SvgIconsOptions } from './icon/providers';
+export { setIconProvider, useIconProvider } from './icon/icon-provider';
+export type { IconProvider, IconRenderContext } from './icon/icon-provider';
+export { AFFORDANCE_ICON_NAMES, isAffordanceIcon } from './icon/affordances';
+export type { AffordanceIconName } from './icon/affordances';
+
 // Internationalization (i18n)
 // Re-exports go through ./i18n to ensure auto-initialization runs first
 export {
