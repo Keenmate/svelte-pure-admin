@@ -87,3 +87,7 @@ temp/
 dist-ssr/
 
 *.local*
+
+# markup-fidelity harness dump artifacts (regenerable)
+scripts/fidelity/*.dump.json
+scripts/fidelity/.button.server.mjs

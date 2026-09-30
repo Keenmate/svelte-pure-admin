@@ -1,0 +1,25 @@
+{
+  "//": "Capability manifest for <Button> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component actually declares. Two consumers: (1) dump-button.mjs drives rendering generically from it; (2) core's capability.mjs diffs it against the oracle feature contract. Keep `values` honest to the component's real type union, not aspirational — a lie here surfaces as a markup FAIL in the render diff.",
+  "component": "button",
+  "features": {
+    "variant":          { "prop": "variant",            "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark", "ghost"] },
+    "size":             { "prop": "size",               "kind": "enum",   "values": ["xs", "sm", "lg", "xl"] },
+    "outline":          { "prop": "isOutline",          "kind": "bool" },
+    "block":            { "prop": "isBlock",            "kind": "bool" },
+    "loading":          { "prop": "isLoading",          "kind": "bool" },
+    "iconOnly":         { "prop": "isIconOnly",         "kind": "bool" },
+    "ripple":           { "prop": "isRipple",           "kind": "bool" },
+    "themeColor":       { "prop": "themeColor",         "kind": "enum",   "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "nativeType": "number" },
+    "align":            { "prop": "align",              "kind": "enum",   "values": ["start", "end", "center", "justify"] },
+    "iconPosition":     { "prop": "iconPosition",       "kind": "enum",   "values": ["start", "end"] },
+    "disabled":         { "prop": "disabled",           "kind": "bool" },
+    "truncate":         { "prop": "shouldTruncateText", "kind": "bool" },
+    "inputGroupButton": { "prop": "isInputGroupButton", "kind": "bool" },
+    "href":             { "prop": "href",               "kind": "string" },
+    "target":           { "prop": "target",             "kind": "string" },
+    "title":            { "prop": "titleText",          "kind": "string" },
+    "extraClass":       { "prop": "class",              "kind": "string" },
+    "label":            { "prop": "children",           "kind": "slot" },
+    "icon":             { "prop": "icon",               "kind": "slot" }
+  }
+}

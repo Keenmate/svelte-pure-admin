@@ -1,0 +1,23 @@
+{
+  "//": "Capability manifest for <Card> — svelte-pure-admin. See button.map.json for the model. `negate` on a bool inverts the neutral flag (noPadding → hasPadding=false).",
+  "component": "card",
+  "features": {
+    "variant":                   { "prop": "variant",                   "kind": "enum",   "values": ["primary", "success", "warning", "danger", "color-1", "color-2", "color-3", "color-4", "color-5", "color-6", "color-7", "color-8", "color-9"] },
+    "stat":                      { "prop": "isStat",                    "kind": "bool" },
+    "ghost":                     { "prop": "isGhost",                   "kind": "bool" },
+    "liveState":                 { "prop": "liveState",                 "kind": "enum",   "values": ["up", "down", "neutral"] },
+    "noPadding":                 { "prop": "hasPadding",                "kind": "bool",   "negate": true },
+    "headerUnderlined":          { "prop": "isHeaderUnderlined",        "kind": "bool" },
+    "headerUnderlineColor":      { "prop": "headerUnderlineColor",      "kind": "enum",   "values": ["success", "warning", "danger", "info"] },
+    "headerUnderlineThemeColor": { "prop": "headerUnderlineThemeColor", "kind": "enum",   "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "nativeType": "number" },
+    "headerWrap":                { "prop": "headerWrap",                "kind": "bool" },
+    "title":                     { "prop": "titleText",                 "kind": "string" },
+    "titleIcon":                 { "prop": "titleIcon",                 "kind": "slot" },
+    "description":               { "prop": "descriptionText",           "kind": "string" },
+    "subtitle":                  { "prop": "subtitleText",              "kind": "string" },
+    "body":                      { "prop": "children",                  "kind": "slot" },
+    "footer":                    { "prop": "footer",                    "kind": "slot" },
+    "footerActions":             { "prop": "footerActions",             "kind": "slot" },
+    "tools":                     { "prop": "headerActions",             "kind": "slot" }
+  }
+}
