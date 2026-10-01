@@ -1,0 +1,16 @@
+{
+  "//": "Capability manifest for <ProfilePanel> — svelte-pure-admin. See card.map.json for the model. `name`/`email` are REQUIRED string props flowing through to the inline header. `noAvatar` maps to hasAvatar with `negate` (hasAvatar=false → __header--no-avatar). The item-level nav/favorites classes are the deferred sub-components (ProfilePanelNavItem / ProfilePanelFavorites / ProfilePanelFavoriteItem), not covered by this container+header slice.",
+  "component": "profile",
+  "features": {
+    "id":           { "prop": "id",              "kind": "string" },
+    "name":         { "prop": "name",            "kind": "string" },
+    "email":        { "prop": "email",           "kind": "string" },
+    "role":         { "prop": "role",            "kind": "string" },
+    "noAvatar":     { "prop": "hasAvatar",       "kind": "bool", "negate": true },
+    "iconOnlyTabs": { "prop": "hasIconOnlyTabs", "kind": "bool" },
+    "tabs":         { "prop": "tabs",            "kind": "slot" },
+    "nav":          { "prop": "nav",             "kind": "slot" },
+    "actions":      { "prop": "actions",         "kind": "slot" },
+    "footer":       { "prop": "footer",          "kind": "slot" }
+  }
+}

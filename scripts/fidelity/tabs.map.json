@@ -1,0 +1,14 @@
+{
+  "//": "Capability manifest for <Tabs> (the .pa-tabs container) — svelte-pure-admin. See card.map.json / list.map.json for the model. CONTAINER-ONLY slice: Tabs.svelte is a <div class=\"pa-tabs {...modifiers} {class}\"> wrapper with a `children` slot. style is an enum (underline default → no class; pills|boxed|vertical); border-top is a SEPARATE bool prop isBorderTop (not a style option) — the oracle models it as the `borderTop` bool feature. Per-item/panel/layout-wrapper structure (TabItem/TabPanel/TabsContent/TabsContainer) is the DEFERRED sub-slice — not mapped here. scrollable is declared for axis-2 completeness; svelte emits the slot flat for it (no __scroll-* scaffold), so it has no strict scenario.",
+  "component": "tabs",
+  "features": {
+    "style":      { "prop": "style",       "kind": "enum",   "values": ["pills", "boxed", "vertical"] },
+    "size":       { "prop": "size",        "kind": "enum",   "values": ["sm", "lg"] },
+    "align":      { "prop": "align",       "kind": "enum",   "values": ["centered", "full"] },
+    "overflow":   { "prop": "overflow",    "kind": "enum",   "values": ["nowrap", "scrollable", "collapse"] },
+    "borderTop":  { "prop": "isBorderTop", "kind": "bool" },
+    "wrapLabels": { "prop": "wrapLabels",  "kind": "bool" },
+    "body":       { "prop": "children",    "kind": "slot" },
+    "extraClass": { "prop": "class",       "kind": "string" }
+  }
+}

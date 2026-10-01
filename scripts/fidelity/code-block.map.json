@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for <CodeBlock> — svelte-pure-admin. Maps each NEUTRAL feature to this wrapper's prop/kind. CodeBlock.svelte (the component the shared `code-block` key drives) emits only the bare <pre class=\"pa-code …\"> form; the headered pa-code-block form lives in the separate CodeBlockWithHeader.svelte and is deferred (see code-block.json).",
+  "component": "code-block",
+  "features": {
+    "language":   { "prop": "language",   "kind": "enum", "values": ["javascript", "json", "html", "css", "bash", "sql", "python"] },
+    "compact":    { "prop": "isCompact",  "kind": "bool" },
+    "numbered":   { "prop": "isNumbered", "kind": "bool" },
+    "extraClass": { "prop": "class",      "kind": "string" },
+    "content":    { "prop": "children",   "kind": "slot" }
+  }
+}

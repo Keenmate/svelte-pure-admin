@@ -1,0 +1,10 @@
+{
+  "//": "Capability manifest for <Label> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component actually declares. Two consumers: (1) scripts/fidelity/dump.mjs drives rendering generically from it; (2) core's capability.mjs diffs it against the oracle feature contract. Keep `values` honest to the component's real type union — a lie here surfaces as a markup FAIL in the render diff. Label's LabelVariant type is the 6 core colours (no light/dark, unlike Badge).",
+  "component": "label",
+  "features": {
+    "variant": { "prop": "variant",   "kind": "enum", "values": ["primary", "secondary", "success", "warning", "danger", "info"] },
+    "size":    { "prop": "size",      "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
+    "outline": { "prop": "isOutline", "kind": "bool" },
+    "label":   { "prop": "children",  "kind": "slot" }
+  }
+}

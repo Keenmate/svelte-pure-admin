@@ -112,7 +112,7 @@
 						onclick={handleToggle}
 						{disabled}
 					>
-						{#snippet icon()}<span class="pa-icon" class:pa-icon--chevron-up={isExpanded} class:pa-icon--chevron-down={!isExpanded} aria-hidden="true"></span>{/snippet}
+						<span class="pa-icon" class:pa-icon--chevron-up={isExpanded} class:pa-icon--chevron-down={!isExpanded} aria-hidden="true"></span>
 					</Button>
 				{/if}
 
@@ -128,7 +128,7 @@
 						onclick={handleClear}
 						{disabled}
 					>
-						{#snippet icon()}<span class="pa-icon pa-icon--clear" aria-hidden="true"></span>{/snippet}
+						<span class="pa-icon pa-icon--clear" aria-hidden="true"></span>
 					</Button>
 				{/if}
 
@@ -140,7 +140,7 @@
 						onclick={handleRefresh}
 						disabled={disabled || isLoading}
 					>
-						{#snippet icon()}<span class="pa-icon pa-icon--refresh" aria-hidden="true"></span>{/snippet}
+						<span class="pa-icon pa-icon--refresh" aria-hidden="true"></span>
 					</Button>
 				{/if}
 			</div>

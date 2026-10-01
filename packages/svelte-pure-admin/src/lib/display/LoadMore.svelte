@@ -10,7 +10,7 @@
 	type LoadMoreAlign = 'start' | 'center' | 'end';
 
 	interface Props {
-		/** Alignment (default: center) */
+		/** Alignment. Unset = no modifier (the base rule already centers, like the core snippet); pass center/start/end to emit the explicit modifier. */
 		align?: LoadMoreAlign;
 		/** Loading state */
 		isLoading?: boolean;
@@ -29,7 +29,7 @@
 	}
 
 	let {
-		align = 'center',
+		align,
 		isLoading = false,
 		text,
 		count,
@@ -45,7 +45,12 @@
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-load-more'];
+		// Emit the explicit alignment modifier for every value core ships one for
+		// (start/center/end). --center is redundant with the base rule but core
+		// blesses it, and emitting it keeps the wrapper's class contract complete
+		// (matches keen's load_more + snippets/tables.html).
 		if (align === 'start') base.push('pa-load-more--start');
+		if (align === 'center') base.push('pa-load-more--center');
 		if (align === 'end') base.push('pa-load-more--end');
 		if (className) base.push(className);
 		return base.join(' ');
@@ -66,10 +71,10 @@
 		{:else}
 			{#if isLoading}
 				<span class="pa-load-more__spinner"></span>
-				<span class="pa-load-more__text">{$_('pureAdmin.loadMore.loading')}</span>
+				<span class="pa-load-more__text">{text ?? $_('pureAdmin.loadMore.loading')}</span>
 			{:else}
 				<span class="pa-load-more__text">{resolvedText}</span>
-				{#if shouldShowCount && count}
+				{#if count}
 					<span class="pa-load-more__count">({count})</span>
 				{/if}
 			{/if}

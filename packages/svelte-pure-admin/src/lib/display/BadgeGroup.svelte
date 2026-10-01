@@ -181,8 +181,10 @@
 	const classes = $derived(() => {
 		const base = ['pa-badge-group'];
 		// In data/array mode, always add show-all to prevent CSS hiding
-		// (we control visibility via slice() in Svelte)
-		if (isDataMode || isLegacyMode) {
+		// (we control visibility via slice() in Svelte). In snippet/manual mode
+		// honour the explicit `showAll` prop so children-driven groups can disable
+		// the CSS overflow limit too (matches the core --show-all contract).
+		if (isDataMode || isLegacyMode || showAll) {
 			base.push('pa-badge-group--show-all');
 		}
 		if (className) base.push(className);

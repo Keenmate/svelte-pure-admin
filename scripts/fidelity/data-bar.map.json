@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for <DataBar> — svelte-pure-admin. See progress.map.json / card.map.json for the model. Scope: the pa-data-bar block (optional __value label + __track + __fill). negative is a separate bool prop (isNegative) in svelte, mapped from the neutral `negative` feature.",
+  "component": "data-bar",
+  "features": {
+    "variant":    { "prop": "variant",   "kind": "enum", "values": ["success", "warning", "danger", "info"] },
+    "negative":   { "prop": "isNegative", "kind": "bool" },
+    "valueText":  { "prop": "valueText",  "kind": "string" },
+    "value":      { "prop": "value",      "kind": "string", "nativeType": "number" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

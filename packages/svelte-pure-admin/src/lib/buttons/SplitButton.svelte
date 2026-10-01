@@ -264,13 +264,13 @@
 	class={classes()}
 	data-placement={placement !== 'bottom-end' ? placement : undefined}
 >
-	<button class={btnClasses()} {onclick} {disabled}>
+	<button type="button" class={btnClasses()} {onclick} {disabled}>
 		{#if icon}
 			<span class="pa-btn__icon">{@render icon()}</span>
 		{/if}
 		{@render children?.()}
 	</button>
-	<button class={toggleClasses()} onclick={handleToggle} {disabled}>
+	<button type="button" class={toggleClasses()} onclick={handleToggle} {disabled}>
 		{#if toggleIcon}
 			{@render toggleIcon()}
 		{:else}

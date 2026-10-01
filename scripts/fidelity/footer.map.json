@@ -1,0 +1,10 @@
+{
+  "//": "Capability manifest for <Footer> (the .pc-layout__footer shell container) — svelte-pure-admin. See section.map.json / card.map.json for the model. Footer.svelte renders <footer class=\"pc-layout__footer {class}\"> and, in three-section mode (any of start/center/end, or config copyright), ALWAYS emits all three section divs (pc-footer__start/__center/__end) filling each conditionally. The svelte-only `endVertical` → pc-footer__end--vertical modifier is NOT a shared oracle feature (keen has no counterpart) and is omitted here. Shared SSR features: the three section slots + the root class passthrough.",
+  "component": "footer",
+  "features": {
+    "start":      { "prop": "start",  "kind": "slot" },
+    "center":     { "prop": "center", "kind": "slot" },
+    "end":        { "prop": "end",    "kind": "slot" },
+    "extraClass": { "prop": "class",  "kind": "string" }
+  }
+}

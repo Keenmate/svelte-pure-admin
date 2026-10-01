@@ -1,0 +1,5 @@
+{
+  "//": "Capability manifest for <SettingsPanel> — svelte-pure-admin. See the core fixture's leading note: settings-panel is a fixed-chrome, slot-less LEAF whose inner tree is framework-divergent by design, so the fixture carries ZERO shared oracle features and ZERO strict-compare scenarios. This map therefore declares no features. SettingsPanel.svelte's props (availableThemes / defaultTheme / onsettingschange) drive JS behaviour + which theme sections render, not a CSS-class contract; it declares NO `class` prop, so the keen-only container class-passthrough is not shared and is not modeled. With no scenarios, the dumper renders the component once with default props to produce the dump; nothing is diffed.",
+  "component": "settings-panel",
+  "features": {}
+}

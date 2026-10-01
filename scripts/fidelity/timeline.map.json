@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <Timeline> CONTAINER — svelte-pure-admin. See card.map.json for the model. Container-only slice: variant + alternating layout modifiers + item-area slot + class passthrough. Per-item structure (TimelineItem.svelte) is the deferred sub-slice and is NOT mapped here.",
+  "component": "timeline",
+  "features": {
+    "variant":      { "prop": "variant",          "kind": "enum",   "values": ["simple", "alternating", "feed"] },
+    "alignment":    { "prop": "alignment",         "kind": "enum",   "values": ["start", "end"] },
+    "keepLayout":   { "prop": "shouldKeepLayout",  "kind": "bool" },
+    "singleColumn": { "prop": "isSingleColumn",    "kind": "bool" },
+    "body":         { "prop": "children",          "kind": "slot" },
+    "extraClass":   { "prop": "class",             "kind": "string" }
+  }
+}

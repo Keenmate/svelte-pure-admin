@@ -1,0 +1,14 @@
+{
+  "//": "Capability manifest for <RangeGroup> (the .pa-range-group compact control) — svelte-pure-admin. CAPABILITY-ONLY: RangeGroup.svelte calls onDestroy() at init (debounce cleanup), and the generic dumper's standalone render() has no component lifecycle context, so onDestroy throws 'Cannot read properties of null (reading r)' — the SAME dump.mjs lifecycle limitation documented for setContext components (splitter). So there is NO svelte dump/compare for range-group; this map exists ONLY to pass capability axis-2 (features <-> map). CONTAINER-ONLY slice: RangeGroup takes a `rows: RangeGroupRow[]` array (the per-dimension .pa-range sliders) that no map `kind` can carry; that per-row structure is the prose-deferred child-composition sub-slice in the oracle. DECLARED-BUT-UNUSED DIVERGENCES (the component has no matching prop; mapped only for axis-2 completeness, mirroring splitter's cross-wrapper divergence handling, and harmless because no dump renders): `groupId` (svelte has NO id prop — the hook keys off the display:contents host), `resetText`/`applyText` (hard-coded 'Reset'/'Apply' in RangeGroupCore), `hasActions` (the footer is always rendered). Real svelte props: ariaLabel, panelStyle, class, rows.",
+  "component": "range-group",
+  "features": {
+    "groupId":    { "prop": "id",         "kind": "string" },
+    "ariaLabel":  { "prop": "ariaLabel",  "kind": "string" },
+    "resetText":  { "prop": "resetText",  "kind": "string" },
+    "applyText":  { "prop": "applyText",  "kind": "string" },
+    "hasActions": { "prop": "hasActions", "kind": "bool" },
+    "panelStyle": { "prop": "panelStyle", "kind": "string" },
+    "body":       { "prop": "rows",       "kind": "slot" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

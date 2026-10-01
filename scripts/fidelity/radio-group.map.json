@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <RadioGroup> (the .pa-radio-group container) — svelte-pure-admin. RadioGroup.svelte is a <div class=\"pa-radio-group {layout} {class}\"> with a `children` snippet. layout→--{layout}, plus class passthrough + slot. Per-option pa-radio children are the separate radio component.",
+  "component": "radio-group",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "layout":     { "prop": "layout",   "kind": "enum", "values": ["horizontal", "grid", "2col", "3col"] },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

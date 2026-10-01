@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <Section> (the .pa-section container) — svelte-pure-admin. See card.map.json / list.map.json for the model. Section.svelte is a fixed <div class=\"pa-section {class}\"> wrapper that renders an OPTIONAL bare <h3>{titleText}</h3> before a `children` slot. The SIBLING standalone heading (SectionTitle.svelte → .pa-section-title) is a DIFFERENT component, out of scope for this slice.",
+  "component": "section",
+  "features": {
+    "title":      { "prop": "titleText", "kind": "string" },
+    "body":       { "prop": "children",  "kind": "slot" },
+    "extraClass": { "prop": "class",     "kind": "string" }
+  }
+}

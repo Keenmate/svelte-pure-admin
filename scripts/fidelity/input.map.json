@@ -1,0 +1,17 @@
+{
+  "component": "input",
+  "features": {
+    "size":        { "prop": "size",        "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
+    "state":       { "prop": "state",       "kind": "enum", "values": ["success", "warning", "error"] },
+    "themeColor":  { "prop": "themeColor",  "kind": "enum", "values": ["1","2","3","4","5","6","7","8","9"] },
+    "type":        { "prop": "type",        "kind": "enum", "values": ["text","email","password","tel","url","search"] },
+    "placeholder": { "prop": "placeholder", "kind": "string" },
+    "value":       { "prop": "value",       "kind": "string" },
+    "name":        { "prop": "name",        "kind": "string" },
+    "id":          { "prop": "id",          "kind": "string" },
+    "disabled":    { "prop": "disabled",    "kind": "bool" },
+    "readonly":    { "prop": "readonly",    "kind": "bool" },
+    "required":    { "prop": "required",    "kind": "bool" },
+    "extraClass":  { "prop": "class",       "kind": "string" }
+  }
+}

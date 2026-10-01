@@ -1,0 +1,15 @@
+{
+  "//": "Capability manifest for <Gauge> — svelte-pure-admin (display/Gauge.svelte). See progress.map.json / heatmap.map.json for the model. Scope: the pa-gauge block (ring + value + label/min/max endpoints). value is a unitless number driving the inline --value style; size overrides --pa-gauge-size (prop gaugeSize). The children snippet (replaces valueText rendering) is out of scope — the fixture uses valueText.",
+  "component": "gauge",
+  "features": {
+    "variant":    { "prop": "variant",   "kind": "enum", "values": ["success", "warning", "danger", "info"] },
+    "zones":      { "prop": "isZones",    "kind": "bool" },
+    "value":      { "prop": "value",      "kind": "string", "nativeType": "number" },
+    "valueText":  { "prop": "valueText",  "kind": "string" },
+    "label":      { "prop": "labelText",  "kind": "string" },
+    "min":        { "prop": "minText",    "kind": "string" },
+    "max":        { "prop": "maxText",    "kind": "string" },
+    "size":       { "prop": "gaugeSize",  "kind": "string" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

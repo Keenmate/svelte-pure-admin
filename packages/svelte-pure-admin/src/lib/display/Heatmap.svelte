@@ -13,9 +13,16 @@
 		isCompact?: boolean;
 		/** Number of columns (default 53 for weekly calendar) */
 		cols?: number;
+		/**
+		 * Intensity levels (0-4) — one cell is rendered per entry as
+		 * `.pa-heatmap__cell[data-level]`. The data-driven shape the core snippet
+		 * and keen's heatmap/1 bless. When omitted, fall back to the `children`
+		 * snippet (hand-authored <HeatmapCell> list).
+		 */
+		levels?: number[];
 		/** Additional CSS classes */
 		class?: string;
-		/** HeatmapCell children */
+		/** HeatmapCell children (used when `levels` is not provided) */
 		children?: import('svelte').Snippet;
 	}
 
@@ -23,6 +30,7 @@
 		variant,
 		isCompact = false,
 		cols = 53,
+		levels,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -37,15 +45,18 @@
 
 	const style = $derived(() => {
 		if (cols !== 53) {
-			// Match the cell size to the mode so a custom column count doesn't
-			// override --compact's smaller 1rem cells (SCSS: default 1.2rem / compact 1rem)
-			const cell = isCompact ? '1rem' : '1.2rem';
-			return `grid-template-columns: repeat(${cols}, ${cell}); grid-auto-rows: ${cell}`;
+			return `grid-template-columns: repeat(${cols}, 1.2rem)`;
 		}
 		return '';
 	});
 </script>
 
 <div class={classes()} style={style()}>
-	{@render children?.()}
+	{#if levels}
+		{#each levels as level}
+			<div class="pa-heatmap__cell" data-level={level}></div>
+		{/each}
+	{:else}
+		{@render children?.()}
+	{/if}
 </div>

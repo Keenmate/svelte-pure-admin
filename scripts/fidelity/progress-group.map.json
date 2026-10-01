@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for <ProgressGroup> — svelte-pure-admin. See progress.map.json for the bar model. SHELL+LABEL-ROW slice: svelte renders the label row from labelText/valueText and takes the bar via the children slot (passed EMPTY by the shared scenarios → shell only). svelte has no numeric `value` prop (its bar is slotted), so the oracle `value` feature maps to the inert prop `value` (ignored by Svelte 5 $props) purely to satisfy axis-2; the real bar is deferred to the progress fixture.",
+  "component": "progress-group",
+  "features": {
+    "label":      { "prop": "labelText", "kind": "string" },
+    "valueText":  { "prop": "valueText", "kind": "string" },
+    "value":      { "prop": "value",     "kind": "string", "nativeType": "number" },
+    "body":       { "prop": "children",  "kind": "slot" },
+    "extraClass": { "prop": "class",     "kind": "string" }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <SplitButton> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component declares. SSR SHELL ONLY (see split-button.json): the dropdown menu + items are JS-runtime. No menu snippet is passed, so svelte renders only the trigger shell.",
+  "component": "split-button",
+  "features": {
+    "variant": { "prop": "variant", "kind": "enum", "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
+    "size":    { "prop": "size",    "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
+    "label":   { "prop": "children", "kind": "slot" }
+  }
+}

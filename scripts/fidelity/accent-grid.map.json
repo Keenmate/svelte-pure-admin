@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <AccentGrid> — svelte-pure-admin. See prop-card.map.json / banded.map.json for the container-only model. Items come from the sibling <AccentGridItem>, fed through the default `children` slot (dumper renders slot content as plain text), so only the container features are mapped here. The container exposes no block-level modifiers — just class passthrough + the slot.",
+  "component": "accent-grid",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

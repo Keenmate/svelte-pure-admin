@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <KpiGaugeList> — svelte-pure-admin. SCOPE = the pa-kpi-gauge-list CONTAINER (card shell + header + body/grid + footer) the component emits; the per-KPI gauges come from the sibling <KpiGauge>, fed through the default `children` slot (dumper renders slot content as plain text), so only container features are mapped here — the .pa-kpi-gauge* block is deferred in the oracle fixture. The container has NO block-level modifiers; `gridLayout` is an element modifier on __grid and `cellMinWidth` is an inline style on __grid. `footer` maps to the plain-string `footerText` prop (not the `footer` snippet) so the harness exercises the <span>-wrapped caption shape. The LIVE pill label is hardcoded 'LIVE' in the component (no live_text prop).",
+  "component": "kpi-gauge-list",
+  "features": {
+    "titleText":    { "prop": "titleText",    "kind": "string" },
+    "live":         { "prop": "isLive",       "kind": "bool" },
+    "footerText":   { "prop": "footerText",   "kind": "string" },
+    "gridLayout":   { "prop": "gridLayout",   "kind": "enum", "values": ["2col", "max-2", "max-3", "max-4", "max-5", "max-6"] },
+    "cellMinWidth": { "prop": "cellMinWidth", "kind": "string" },
+    "body":         { "prop": "children",     "kind": "slot" },
+    "extraClass":   { "prop": "class",        "kind": "string" }
+  }
+}

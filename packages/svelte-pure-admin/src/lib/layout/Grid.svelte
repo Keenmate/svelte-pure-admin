@@ -11,7 +11,9 @@
 	 */
 
 	type HorizontalAlign = 'center' | 'end' | 'between' | 'around';
-	type VerticalAlign = 'top' | 'middle' | 'bottom';
+	// `stretch` is the default align-items value, kept as an explicit option
+	// (pc-row--stretch) so it can be set deliberately.
+	type VerticalAlign = 'top' | 'middle' | 'bottom' | 'stretch';
 
 	type GapSize = '0' | 'xs' | 'sm' | 'md' | 'base' | 'lg' | 'xl' | '2xl';
 

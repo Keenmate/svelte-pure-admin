@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for <FormGroup> (the .pa-form-group container) — svelte-pure-admin. FormGroup.svelte is a <div class=\"pa-form-group {state} {required} {horizontal} {class}\"> with a `children` snippet. state→--{state}, isRequired→--required, isHorizontal→--horizontal, plus class passthrough + slot. keen's label/field have no svelte counterpart (container content, prose-deferred).",
+  "component": "form-group",
+  "features": {
+    "body":       { "prop": "children",     "kind": "slot" },
+    "state":      { "prop": "state",        "kind": "enum", "values": ["success", "warning", "error"] },
+    "required":   { "prop": "isRequired",   "kind": "bool" },
+    "horizontal": { "prop": "isHorizontal", "kind": "bool" },
+    "extraClass": { "prop": "class",        "kind": "string" }
+  }
+}

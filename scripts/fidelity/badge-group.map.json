@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <BadgeGroup> — svelte-pure-admin. Maps each NEUTRAL feature to this wrapper's prop/kind. CONTAINER-ONLY (see badge-group.json): scenarios use snippet mode (children badges, no data/badges arrays) so no slice/toggle logic runs. showAll drives pa-badge-group--show-all (now honoured in snippet mode too — fixed in this slice).",
+  "component": "badge-group",
+  "features": {
+    "showAll":    { "prop": "showAll",  "kind": "bool" },
+    "extraClass": { "prop": "class",    "kind": "string" },
+    "content":    { "prop": "children", "kind": "slot" }
+  }
+}

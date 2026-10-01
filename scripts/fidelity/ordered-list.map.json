@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <OrderedList> — svelte-pure-admin. See list.map.json for the container model. CONTAINER-ONLY slice of the styled <ol> pa-list-ordered; item <li>s flow through the children slot.",
+  "component": "ordered-list",
+  "features": {
+    "style":      { "prop": "style",    "kind": "enum",   "values": ["roman", "alpha"] },
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

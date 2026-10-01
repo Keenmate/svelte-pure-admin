@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <List> (the .pa-list container) — svelte-pure-admin. See card.map.json for the model. CONTAINER-ONLY slice: List.svelte is a fixed <div class=\"pa-list {class}\"> wrapper with a `children` slot — no props beyond content + class passthrough. It has NO `as` prop (div-only, single-shape wrapper); keen's div|ul `as` is an absorbed API divergence covered in keen's own test, not a shared feature. Per-item structure (ListItem.svelte) is the DEFERRED sub-slice — not mapped here.",
+  "component": "list",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

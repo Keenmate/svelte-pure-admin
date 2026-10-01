@@ -1,0 +1,14 @@
+{
+  "//": "Capability manifest for <Table> (the .pa-table container) — svelte-pure-admin. See definition-list.map.json / list.map.json for the container-only model. CONTAINER-ONLY by construction: Table.svelte is `<table class=\"pa-table {class}\">{@render children()}</table>` — a pure shell whose thead/tbody rows are native children the consumer writes inside the slot. Siblings TableContainer/TableResponsive/TableCard wrap it; this is the plain <table> element. isCompact (= size xs, same pa-table--xs class) is svelte-only sugar and is covered by the `size` enum — not a separate oracle feature.",
+  "component": "table",
+  "features": {
+    "striped":        { "prop": "isStriped",        "kind": "bool" },
+    "bordered":       { "prop": "isBordered",        "kind": "bool" },
+    "plain":          { "prop": "isPlain",           "kind": "bool" },
+    "responsive":     { "prop": "isResponsive",      "kind": "bool" },
+    "responsiveGrid": { "prop": "isResponsiveGrid",  "kind": "bool" },
+    "size":           { "prop": "size",              "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
+    "body":           { "prop": "children",          "kind": "slot" },
+    "extraClass":     { "prop": "class",             "kind": "string" }
+  }
+}

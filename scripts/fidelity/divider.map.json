@@ -1,0 +1,7 @@
+{
+  "//": "Capability manifest for <Divider> (a bare <hr>) — svelte-pure-admin. Divider.svelte emits a bare <hr class={...}> with NO base class — core defines none for a standalone rule (`.pa-divider` is a phantom, absent from main.css/snippets/themes). The only feature is the class passthrough. Note: svelte also has a `spacing` prop that prepends a spacing class before `class`; it is just a second class-passthrough channel (no core class), so it is NOT modeled as a shared feature — `extraClass` covers the passthrough contract.",
+  "component": "divider",
+  "features": {
+    "extraClass": { "prop": "class", "kind": "string" }
+  }
+}

@@ -24,7 +24,17 @@ import { defaultConfig } from './config';
  * ```
  */
 export function usePureAdminConfig(): () => PureAdminConfig {
-	const config = getContext<(() => PureAdminConfig) | undefined>('pure-admin-config');
+	// `getContext` throws (`lifecycle_outside_component`) when called outside a
+	// component-init frame — e.g. a bare `svelte/server` `render()` with no
+	// provider mounted above (SSR fragment rendering, the markup-fidelity dumper).
+	// The hook's contract is "no provider → default config", so treat that throw
+	// the same as a missing provider instead of propagating it.
+	let config: (() => PureAdminConfig) | undefined;
+	try {
+		config = getContext<(() => PureAdminConfig) | undefined>('pure-admin-config');
+	} catch {
+		config = undefined;
+	}
 
 	// Return default config if no provider found
 	if (!config) {

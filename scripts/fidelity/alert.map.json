@@ -1,0 +1,19 @@
+{
+  "//": "Capability manifest for <Alert> — svelte-pure-admin. See button.map.json / card.map.json for the model. Maps each NEUTRAL alert feature to this wrapper's prop, kind, and (for enums) the option set THIS component declares. `headingLarge` → isHeadingLarge; the icon slot presence drives the pa-alert__content wrap.",
+  "component": "alert",
+  "features": {
+    "variant":      { "prop": "variant",        "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
+    "outline":      { "prop": "isOutline",       "kind": "bool" },
+    "themeColor":   { "prop": "themeColor",      "kind": "enum",   "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "nativeType": "number" },
+    "size":         { "prop": "size",            "kind": "enum",   "values": ["sm", "lg"] },
+    "dismissible":  { "prop": "isDismissible",   "kind": "bool" },
+    "multiline":    { "prop": "isMultiline",     "kind": "bool" },
+    "heading":      { "prop": "headingText",     "kind": "string" },
+    "headingLarge": { "prop": "isHeadingLarge",  "kind": "bool" },
+    "icon":         { "prop": "icon",            "kind": "slot" },
+    "body":         { "prop": "children",        "kind": "slot" },
+    "list":         { "prop": "list",            "kind": "slot" },
+    "actions":      { "prop": "actions",         "kind": "slot" },
+    "extraClass":   { "prop": "class",           "kind": "string" }
+  }
+}

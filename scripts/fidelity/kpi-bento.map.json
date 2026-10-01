@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <KpiBento> — svelte-pure-admin. SCOPE = the pa-kpi-bento CONTAINER (card shell + header + body/grid + footer) the component emits; the per-KPI tiles come from the sibling <KpiBentoTile>, fed through the default `children` slot (dumper renders slot content as plain text), so only container features are mapped here — the .pa-kpi-bento-tile* block is deferred in the oracle fixture. The container has NO block-level modifiers; `layout` is an element modifier on __grid. `footer` maps to the plain-string `footerText` prop (not the `footer` snippet) so the harness exercises the <span>-wrapped caption shape. The LIVE pill label is hardcoded 'LIVE' in the component (no live_text prop).",
+  "component": "kpi-bento",
+  "features": {
+    "title":      { "prop": "titleText",  "kind": "string" },
+    "live":       { "prop": "isLive",     "kind": "bool" },
+    "layout":     { "prop": "layout",     "kind": "enum",   "values": ["hero-right", "5-tile"] },
+    "body":       { "prop": "children",   "kind": "slot" },
+    "footer":     { "prop": "footerText", "kind": "string" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

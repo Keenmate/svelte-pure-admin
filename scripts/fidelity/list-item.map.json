@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for ListItem.svelte (fragment of List). See card.map.json for the model.",
+  "component": "list-item",
+  "features": {
+    "avatar":     { "prop": "avatar",       "kind": "slot" },
+    "title":      { "prop": "titleText",    "kind": "string" },
+    "subtitle":   { "prop": "subtitleText", "kind": "string" },
+    "meta":       { "prop": "metaText",     "kind": "string" },
+    "extraClass": { "prop": "class",        "kind": "string" }
+  }
+}

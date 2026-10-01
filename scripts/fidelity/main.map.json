@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <Main> (the .pc-layout__main content region) — svelte-pure-admin. See page-header.map.json / section.map.json for the model. Main.svelte is a fixed <main class=\"pc-layout__main {class}\"> wrapper around its `children` — no inner wrapper class. Shared SSR features: the body slot + the root class passthrough.",
+  "component": "main",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

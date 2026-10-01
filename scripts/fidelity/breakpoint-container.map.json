@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <ContainerBreakpoint> — svelte-pure-admin. Maps each NEUTRAL feature to this wrapper's prop/kind. CAPABILITY-ONLY fixture (see breakpoint-container.json): the component is class-less and configures the Container Breakpoint engine imperatively in onMount, so its SSR emits only data-mode + an optional class — the render diff is intentionally skipped and only axis-2 completeness is enforced.",
+  "component": "breakpoint-container",
+  "features": {
+    "steps":      { "prop": "steps",    "kind": "map" },
+    "initial":    { "prop": "initial",  "kind": "string" },
+    "unit":       { "prop": "unit",     "kind": "enum", "values": ["rem", "px"] },
+    "tag":        { "prop": "tag",      "kind": "string" },
+    "content":    { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

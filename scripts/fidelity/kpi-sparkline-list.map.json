@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <KpiSparklineList> — svelte-pure-admin. See table-card.map.json for the header/body/footer-card model and stacked-bar.map.json for the deferred-row-sub-component model. SCOPE = the pa-kpi-spark-list container card chrome the component emits inline (canonical .pa-card__title header + .pa-kpi-live pill, the pa-kpi-spark-list__body region, the pa-kpi-footer footer) + the two block modifiers --no-delta / --chart-first. The ROWS are a SEPARATE child component (KpiSparklineRow) fed through the children slot; the dumper can't materialize them (slot content arrives as plain text), so the whole pa-kpi-spark-row* family is the DEFERRED row sub-slice, not mapped here. Title is the canonical .pa-card__title > .pa-card__title-text (blessed). footerText is a plain string prop (richer footer markup would use the footer snippet, out of this string-scoped slice).",
+  "component": "kpi-sparkline-list",
+  "features": {
+    "title":      { "prop": "titleText",    "kind": "string" },
+    "live":       { "prop": "isLive",       "kind": "bool" },
+    "footer":     { "prop": "footerText",   "kind": "string" },
+    "noDelta":    { "prop": "noDelta",      "kind": "bool" },
+    "chartFirst": { "prop": "isChartFirst", "kind": "bool" },
+    "body":       { "prop": "children",     "kind": "slot" },
+    "extraClass": { "prop": "class",        "kind": "string" }
+  }
+}

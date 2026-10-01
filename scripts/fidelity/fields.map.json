@@ -1,0 +1,22 @@
+{
+  "//": "Capability manifest for <Fields> — svelte-pure-admin. See filter-card.map.json for the model. CONTAINER-ONLY slice: the pa-field items / pa-field-group title come from the separate <Field>/<FieldGroup> components and flow through this container's children slot as plain text, so only the pa-fields container's own props are mapped. noBorder maps to hasBorder with negate (hasBorder defaults true; noBorder=true -> hasBorder=false -> pa-fields--no-border). cols/color are numeric props in svelte but the dumper forwards the scenario's string token, which interpolates identically.",
+  "component": "fields",
+  "features": {
+    "cols":       { "prop": "cols",       "kind": "enum", "values": ["2", "3", "4"] },
+    "horizontal": { "prop": "isHorizontal", "kind": "bool" },
+    "table":      { "prop": "isTable",    "kind": "bool" },
+    "bordered":   { "prop": "isBordered", "kind": "bool" },
+    "striped":    { "prop": "isStriped",  "kind": "bool" },
+    "compact":    { "prop": "isCompact",  "kind": "bool" },
+    "relaxed":    { "prop": "isRelaxed",  "kind": "bool" },
+    "inline":     { "prop": "isInline",   "kind": "bool" },
+    "row":        { "prop": "isRow",      "kind": "bool" },
+    "linear":     { "prop": "isLinear",   "kind": "bool" },
+    "chips":      { "prop": "isChips",    "kind": "bool" },
+    "filled":     { "prop": "isFilled",   "kind": "bool" },
+    "color":      { "prop": "color",      "kind": "enum", "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"] },
+    "noBorder":   { "prop": "hasBorder",  "kind": "bool", "negate": true },
+    "body":       { "prop": "children",   "kind": "slot" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

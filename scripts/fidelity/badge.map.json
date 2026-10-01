@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <Badge> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component actually declares. Two consumers: (1) scripts/fidelity/dump.mjs drives rendering generically from it; (2) core's capability.mjs diffs it against the oracle feature contract. Keep `values` honest to the component's real type union — a lie here surfaces as a markup FAIL in the render diff.",
+  "component": "badge",
+  "features": {
+    "variant":       { "prop": "variant",         "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
+    "themeColor":    { "prop": "themeColor",       "kind": "enum",   "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "nativeType": "number" },
+    "size":          { "prop": "size",             "kind": "enum",   "values": ["xs", "sm", "lg", "xl"] },
+    "pill":          { "prop": "isPill",           "kind": "bool" },
+    "ellipsisStart": { "prop": "isEllipsisStart",  "kind": "bool" },
+    "icon":          { "prop": "icon",             "kind": "slot" },
+    "label":         { "prop": "children",         "kind": "slot" }
+  }
+}

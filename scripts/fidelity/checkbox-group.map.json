@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <CheckboxGroup> (the .pa-checkbox-group container) — svelte-pure-admin. CheckboxGroup.svelte is a <div class=\"pa-checkbox-group {layout} {class}\"> with a `children` snippet. layout→--{layout}, plus class passthrough + slot. Per-option pa-checkbox children are the separate checkbox component.",
+  "component": "checkbox-group",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "layout":     { "prop": "layout",   "kind": "enum", "values": ["horizontal", "grid", "2col", "3col"] },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

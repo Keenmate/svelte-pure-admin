@@ -31,7 +31,9 @@
 
 	const classes = $derived(() => {
 		const base = ['pa-data-bar'];
-		if (variant) base.push(`pa-data-bar--${variant}`);
+		// `primary` is the base fill (var(--pc-accent)); there is no pa-data-bar--primary
+		// in core CSS — emitting it would be a phantom modifier.
+		if (variant && variant !== 'primary') base.push(`pa-data-bar--${variant}`);
 		if (isNegative) base.push('pa-data-bar--negative');
 		if (className) base.push(className);
 		return base.join(' ');
@@ -40,7 +42,7 @@
 
 <div class={classes()}>
 	{#if valueText}
-		<span class="pa-data-bar__value">{valueText}</span>
+		<div class="pa-data-bar__value">{valueText}</div>
 	{/if}
 	{#if children}
 		{@render children()}

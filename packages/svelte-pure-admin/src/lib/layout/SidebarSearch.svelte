@@ -15,7 +15,6 @@
 	 * Renders its own `<li class="pc-sidebar__item">`, so it sits as a sibling of
 	 * `SidebarItem` inside `<Sidebar>`.
 	 */
-	import { _ } from '../i18n';
 
 	interface Props {
 		/** Label text (trigger mode). */
@@ -44,7 +43,7 @@
 		action,
 		method = 'get',
 		name = 'q',
-		value = $bindable(''),
+		value = $bindable(undefined),
 		placeholder = 'Search…',
 		class: className = '',
 		icon
@@ -62,8 +61,10 @@
 			role="search"
 		>
 			<!-- Empty by default: core masks a magnifier onto `pc-sidebar__search-icon`
-			     (font-size:0). Pass an `icon` snippet only to override. -->
-			<button type="submit" class="pc-sidebar__search-icon" aria-label={$_('pureAdmin.a11y.openSearch')}>{#if icon}{@render icon()}{/if}</button>
+			     (font-size:0). Pass an `icon` snippet only to override. The oracle
+			     snippet (snippets/layout.html) blesses aria-label="Search" on both the
+			     submit magnifier and the input, and emits no `value` when empty. -->
+			<button type="submit" class="pc-sidebar__search-icon" aria-label="Search">{#if icon}{@render icon()}{/if}</button>
 			<input
 				type="search"
 				{name}
@@ -71,15 +72,16 @@
 				bind:value
 				{placeholder}
 				autocomplete="off"
-				aria-label={$_('pureAdmin.a11y.openSearch')}
+				aria-label="Search"
 			/>
 		</form>
 	{:else}
+		<!-- No aria-label: the visible .pc-sidebar__label is the accessible name
+		     (matches the oracle snippet + keen's trigger). -->
 		<button
 			type="button"
 			class={['pc-sidebar__search', className].filter(Boolean).join(' ')}
 			{onclick}
-			aria-label={$_('pureAdmin.a11y.openSearch')}
 		>
 			<span class="pc-sidebar__icon pc-icon-hover-highlight" aria-hidden="true">{#if icon}{@render icon()}{:else}<span class="pa-icon pa-icon--search"></span>{/if}</span>
 			<span class="pc-sidebar__label">{labelText}</span>

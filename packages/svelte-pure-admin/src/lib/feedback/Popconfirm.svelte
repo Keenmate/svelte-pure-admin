@@ -62,7 +62,11 @@
 	const resolvedCancelText = $derived(cancelText ?? $_('pureAdmin.popconfirm.cancel'));
 
 	let popconfirmEl: HTMLDivElement;
-	let actualPosition = $state<Position>('bottom');
+	// Seed from the `position` prop so the server-rendered class matches the
+	// requested side. The $effect below keeps it in sync for runtime flip()
+	// updates, but effects don't run under SSR — without this seed every
+	// server render emitted pa-popconfirm--bottom regardless of `position`.
+	let actualPosition = $state<Position>(position);
 	let isPositioned = $state(false);
 	let isFixedPositioning = $state(false);
 
@@ -259,10 +263,10 @@
 			<p>{messageText}</p>
 		</div>
 		<div class="pa-popconfirm__actions">
-			<button class="pa-btn pa-btn--secondary" onclick={handleCancel}>
+			<button type="button" class="pa-btn pa-btn--secondary" onclick={handleCancel}>
 				{resolvedCancelText}
 			</button>
-			<button class={`pa-btn pa-btn--${confirmVariant}`} onclick={handleConfirm}>
+			<button type="button" class={`pa-btn pa-btn--${confirmVariant}`} onclick={handleConfirm}>
 				{resolvedConfirmText}
 			</button>
 		</div>

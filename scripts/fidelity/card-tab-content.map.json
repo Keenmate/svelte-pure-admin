@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for CardTabContent.svelte (svelte-only fragment of Card — keen has no counterpart). See card.map.json for the model.",
+  "component": "card-tab-content",
+  "features": {
+    "active":     { "prop": "active",   "kind": "bool" },
+    "content":    { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

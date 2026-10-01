@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <Sidebar> (the .pc-layout__sidebar shell container) — svelte-pure-admin. See navbar.map.json / command-palette.map.json for the capability-only model. Sidebar.svelte renders <aside class=\"pc-layout__sidebar {--icon-collapse} {--resizable} {class}\"> > <nav class=\"pc-sidebar__nav\"><ul>{children}</ul></nav>; the resize driver is attached at onMount (RUNTIME) and injects no SSR handle. No `id` prop (reactive component) — the reason, with keen's hook-anchor id, this fixture is capability-only (see sidebar.json). Shared SSR features: the two block modifiers + the root class passthrough.",
+  "component": "sidebar",
+  "features": {
+    "iconCollapse": { "prop": "isIconCollapse", "kind": "bool" },
+    "resizable":    { "prop": "isResizable",    "kind": "bool" },
+    "extraClass":   { "prop": "class",          "kind": "string" }
+  }
+}

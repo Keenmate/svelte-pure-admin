@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <Popover> — svelte-pure-admin. Maps each NEUTRAL feature to this wrapper's prop/kind. CAPABILITY-ONLY fixture (see popover.json): svelte renders a trigger-only SSR shell and portals the content (header/body/close) via a global PopoverContainer at runtime, so the render diff is intentionally skipped. title_text is required; supplied here.",
+  "component": "popover",
+  "features": {
+    "placement": { "prop": "placement",   "kind": "enum",   "values": ["top", "end", "bottom", "start"] },
+    "size":      { "prop": "size",         "kind": "enum",   "values": ["sm", "lg"] },
+    "alignment": { "prop": "alignment",    "kind": "enum",   "values": ["center", "end"] },
+    "triggerText": { "prop": "triggerText", "kind": "string" },
+    "title":     { "prop": "titleText",    "kind": "string" },
+    "content":   { "prop": "children",     "kind": "slot" }
+  }
+}

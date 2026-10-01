@@ -1,0 +1,10 @@
+{
+  "//": "Capability manifest for <CheckboxList> (the .pa-checkbox-list container) — svelte-pure-admin. See list.map.json for the container-only model. CheckboxList.svelte is a <ul class=\"pa-checkbox-list {variant} {layout} {class}\"> with a `children` snippet. Two enum axes (variant: compact/bordered/striped; layout: inline/grid/2col/3col) plus class passthrough + slot. Per-ROW structure (CheckboxListItem.svelte) is the PROSE-deferred sub-slice in the oracle fixture — not mapped here (the dumper's slot carries only plain text).",
+  "component": "checkbox-list",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "variant":    { "prop": "variant",  "kind": "enum", "values": ["compact", "bordered", "striped"] },
+    "layout":     { "prop": "layout",   "kind": "enum", "values": ["inline", "grid", "2col", "3col"] },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

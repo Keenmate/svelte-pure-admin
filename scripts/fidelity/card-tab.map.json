@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for CardTab.svelte (fragment of Card). See card.map.json for the model.",
+  "component": "card-tab",
+  "features": {
+    "active":     { "prop": "active",   "kind": "bool" },
+    "label":      { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

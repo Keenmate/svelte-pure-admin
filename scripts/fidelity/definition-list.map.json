@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <DefinitionList> (the .pa-list-definition container) — svelte-pure-admin. See list.map.json for the model. CONTAINER-ONLY slice: DefinitionList.svelte is a <dl class=\"pa-list-definition {class}\"> wrapper with a `children` slot and one modifier prop (isInline). dt/dd pairs are native elements written inside the slot by the consumer — no sub-component, nothing deferred.",
+  "component": "definition-list",
+  "features": {
+    "inline":     { "prop": "isInline", "kind": "bool" },
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

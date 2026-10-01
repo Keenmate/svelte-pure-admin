@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <Code> (inline) — svelte-pure-admin. See card.map.json for the model. SCOPE: inline <code> only — the dumper renders display/Code.svelte. Block/header forms are CodeBlock.svelte / CodeBlockWithHeader.svelte (out of scope, dumper not wired to them).",
+  "component": "code",
+  "features": {
+    "content":    { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

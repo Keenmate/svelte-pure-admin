@@ -12,7 +12,7 @@
 	interface Props {
 		/** Textarea value */
 		value?: string;
-		/** Number of rows */
+		/** Number of rows — emitted only when set (no always-on default, so the bare control matches the core golden) */
 		rows?: number;
 		/** Textarea size */
 		size?: TextareaSize;
@@ -50,7 +50,7 @@
 
 	let {
 		value = $bindable(''),
-		rows = 4,
+		rows,
 		size,
 		state,
 		errors,

@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <InputGroup> (the .pa-input-group container) — svelte-pure-admin. InputGroup.svelte is a <div class=\"pa-input-group {size} {class}\"> with a `children` snippet. size→--{size}, plus class passthrough + slot. The addon elements (__prepend/__append/__button) are raw child markup, prose-deferred in the oracle.",
+  "component": "input-group",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "size":       { "prop": "size",     "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

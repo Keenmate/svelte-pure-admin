@@ -18,6 +18,8 @@
     "body":                      { "prop": "children",                  "kind": "slot" },
     "footer":                    { "prop": "footer",                    "kind": "slot" },
     "footerActions":             { "prop": "footerActions",             "kind": "slot" },
-    "tools":                     { "prop": "headerActions",             "kind": "slot" }
+    "tools":                     { "prop": "headerActions",             "kind": "slot" },
+    "tabs":                      { "prop": "tabs",                      "kind": "slot" },
+    "inlineTabs":                { "prop": "hasInlineTabs",             "kind": "bool" }
   }
 }

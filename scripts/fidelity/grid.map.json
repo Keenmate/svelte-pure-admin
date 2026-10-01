@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <Grid> — svelte-pure-admin. See accent-grid.map.json for the container model. Grid.svelte renders `<div class=\"pc-row …\">` with no-gutter/same-height/justify/valign modifiers + a class passthrough + children slot. `justify` maps to the `justify` prop (center|end|between|around); `valign` maps to the `align` prop (top|middle|bottom|stretch). Gap spacing is the component's `gap` prop → `gap-*` utility, out of scope (shared utility, not a pc-row modifier).",
+  "component": "grid",
+  "features": {
+    "noGutter":   { "prop": "noGutter",   "kind": "bool" },
+    "sameHeight": { "prop": "sameHeight", "kind": "bool" },
+    "justify":    { "prop": "justify",    "kind": "enum",   "values": ["center", "end", "between", "around"] },
+    "valign":     { "prop": "align",      "kind": "enum",   "values": ["top", "middle", "bottom", "stretch"] },
+    "body":       { "prop": "children",   "kind": "slot" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

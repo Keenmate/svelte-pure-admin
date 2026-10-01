@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <ButtonGroup> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component actually declares. Consumed by dump.mjs (drives rendering) and core's capability.mjs (diffs against the oracle feature contract). `responsive` is the combined-token shorthand added in this slice so a single enum value drives the pa-btn-group--{bp}-{dir} class (verticalAt/horizontalAt remain for the split form).",
+  "component": "button-group",
+  "features": {
+    "vertical":   { "prop": "vertical",   "kind": "bool" },
+    "align":      { "prop": "align",      "kind": "enum", "values": ["center", "end", "stretch"] },
+    "nowrap":     { "prop": "nowrap",     "kind": "bool" },
+    "responsive": { "prop": "responsive", "kind": "enum", "values": ["sm-vertical", "sm-horizontal", "md-vertical", "md-horizontal", "lg-vertical", "lg-horizontal", "xl-vertical", "xl-horizontal"] },
+    "extraClass": { "prop": "class",      "kind": "string" },
+    "content":    { "prop": "children",   "kind": "slot" }
+  }
+}

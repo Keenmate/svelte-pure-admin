@@ -1,0 +1,18 @@
+{
+  "//": "Capability manifest for <Modal> — svelte-pure-admin. Maps each NEUTRAL modal feature to this wrapper's prop/kind. `static` is behavioural-only on this wrapper (isStatic blocks Esc/backdrop close but emits NO class — see fixture); it's declared here so capability axis-2 passes, and the fixture never exercises it in a golden. `show` is intentionally NOT mapped: it's a JS-toggled state class (pa-modal--show) left out of all goldens. See card.map.json for the model.",
+  "component": "modal",
+  "features": {
+    "id":         { "prop": "id",               "kind": "string" },
+    "variant":    { "prop": "variant",         "kind": "enum",   "values": ["primary", "success", "warning", "danger", "info"] },
+    "banded":     { "prop": "isBanded",         "kind": "bool" },
+    "top":        { "prop": "position",         "kind": "const",  "value": "top" },
+    "size":       { "prop": "size",             "kind": "enum",   "values": ["sm", "lg", "xl", "xxl", "fw"] },
+    "scrollable": { "prop": "isScrollable",     "kind": "bool" },
+    "static":     { "prop": "isStatic",         "kind": "bool" },
+    "showClose":  { "prop": "shouldShowClose",  "kind": "bool" },
+    "title":      { "prop": "titleText",        "kind": "string" },
+    "titleIcon":  { "prop": "titleIcon",        "kind": "string" },
+    "body":       { "prop": "children",         "kind": "slot" },
+    "footer":     { "prop": "footer",           "kind": "slot" }
+  }
+}

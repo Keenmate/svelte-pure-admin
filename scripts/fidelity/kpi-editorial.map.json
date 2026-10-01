@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <KpiEditorial> — svelte-pure-admin. CONTAINER-ONLY slice (see accent-grid.map.json / stacked-bar.map.json). Tiles come from the sibling <KpiEditorialTile>, fed through the default `children` slot (the dumper renders slot content as plain text), so only the container features are mapped here. `live` → the isLive bool (the pill label is a hardcoded 'LIVE' literal). gridLayout is the dash-cased column-cap enum; cellMinWidth is the inline --pa-kpi-edit-cell-min density override.",
+  "component": "kpi-editorial",
+  "features": {
+    "titleText":    { "prop": "titleText",    "kind": "string" },
+    "live":         { "prop": "isLive",        "kind": "bool" },
+    "footerText":   { "prop": "footerText",    "kind": "string" },
+    "gridLayout":   { "prop": "gridLayout",    "kind": "enum", "values": ["2col", "max-2", "max-3", "max-4", "max-5", "max-6"] },
+    "cellMinWidth": { "prop": "cellMinWidth",  "kind": "string" },
+    "body":         { "prop": "children",      "kind": "slot" },
+    "extraClass":   { "prop": "class",         "kind": "string" }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <FormLabel> (the class-less field label) — svelte-pure-admin. FormLabel.svelte renders <label for={htmlFor} class={className || undefined}>{children}</label>. No base class (core has no .pa-form-label). `for`→htmlFor, class passthrough, children slot.",
+  "component": "form-label",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "forAttr":    { "prop": "for",      "kind": "string" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

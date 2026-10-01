@@ -1,0 +1,7 @@
+{
+  "//": "Capability manifest for <Navbar> (the .pc-navbar shell container) — svelte-pure-admin. See settings-panel.map.json / command-palette.map.json for the capability-only model. Navbar.svelte renders a fixed <nav class=\"pc-navbar {class}\"> > <div class=\"pc-navbar__inner\"> with conditional start/center/end zone snippets; the fit engine + nav-dropdown touch support are attached at onMount (RUNTIME), so the SSR shell has NO id/hook on __inner — the reason this fixture is capability-only (see navbar.json). The one shared SSR feature is the root class passthrough.",
+  "component": "navbar",
+  "features": {
+    "extraClass": { "prop": "class", "kind": "string" }
+  }
+}

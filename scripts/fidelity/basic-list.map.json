@@ -1,0 +1,15 @@
+{
+  "//": "Capability manifest for <BasicList> — svelte-pure-admin. See list.map.json for the container model. CONTAINER-ONLY slice of the styled <ul> pa-list-basic; item <li>s flow through the children slot. iconVariant is coupled to hasIcon (see the fixture).",
+  "component": "basic-list",
+  "features": {
+    "spacing":     { "prop": "spacing",     "kind": "enum",   "values": ["compact", "spacious"] },
+    "unstyled":    { "prop": "isUnstyled",  "kind": "bool" },
+    "inline":      { "prop": "isInline",    "kind": "bool" },
+    "bordered":    { "prop": "isBordered",  "kind": "bool" },
+    "striped":     { "prop": "isStriped",   "kind": "bool" },
+    "hasIcon":     { "prop": "hasIcon",     "kind": "bool" },
+    "iconVariant": { "prop": "iconVariant", "kind": "enum",   "values": ["success", "danger", "info", "warning"] },
+    "body":        { "prop": "children",    "kind": "slot" },
+    "extraClass":  { "prop": "class",       "kind": "string" }
+  }
+}

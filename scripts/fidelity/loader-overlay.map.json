@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <LoaderOverlay> — svelte-pure-admin. See list.map.json for the container model. CONTAINER-ONLY slice: an absolutely-positioned backdrop overlay with a children slot + class passthrough. (svelte renders nothing for an absent slot; keen falls back to a spinner — divergence noted in the fixture, covered by keen's own test.)",
+  "component": "loader-overlay",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

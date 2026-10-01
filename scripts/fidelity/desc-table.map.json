@@ -1,0 +1,18 @@
+{
+  "//": "Capability manifest for <DescTable> — svelte-pure-admin. See list.map.json / banded.map.json for the container-only model. CONTAINER ONLY: the label/value cells come from the sibling <DescTableItem>, fed through the default children slot — the harness passes slot content as plain text, so only the container is exercised. cols2 maps to the numeric `cols` prop via a const (svelte sets pa-desc-table--cols-2 only when cols===2). hasContainerQuery is an EXTRA flag (not an oracle feature): svelte emits the outer pa-desc-container ONLY when it's set, whereas keen always emits it — forcing it true in every scenario aligns svelte to keen's always-wrapped shape. capability.mjs reports it as a yellow EXTRA, which is expected.",
+  "component": "desc-table",
+  "features": {
+    "cols2":            { "prop": "cols",             "kind": "const", "value": 2 },
+    "fixed":            { "prop": "isFixed",          "kind": "bool" },
+    "middle":           { "prop": "isMiddle",         "kind": "bool" },
+    "labelEnd":         { "prop": "isLabelEnd",       "kind": "bool" },
+    "labelCenter":      { "prop": "isLabelCenter",    "kind": "bool" },
+    "valueEnd":         { "prop": "isValueEnd",       "kind": "bool" },
+    "valueCenter":      { "prop": "isValueCenter",    "kind": "bool" },
+    "truncate":         { "prop": "isTruncate",       "kind": "bool" },
+    "labelWidth":       { "prop": "labelWidth",       "kind": "string" },
+    "body":             { "prop": "children",         "kind": "slot" },
+    "extraClass":       { "prop": "class",            "kind": "string" },
+    "hasContainerQuery":{ "prop": "hasContainerQuery","kind": "bool" }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <Paragraph> — svelte-pure-admin. See label.map.json for the flat-element-with-modifiers model. Paragraph.svelte renders `<p class=\"pa-text ...\">` with size/color/align/semantic modifiers + a class passthrough + children slot. `align` maps to the component's `horizontalAlignment` prop; `color` is the explicit primary|secondary colour prop (the legacy `mode=\"muted\"` alias is not mapped here).",
+  "component": "paragraph",
+  "features": {
+    "size":       { "prop": "size",                "kind": "enum",   "values": ["xs", "sm", "lg", "xl"] },
+    "color":      { "prop": "color",               "kind": "enum",   "values": ["primary", "secondary"] },
+    "align":      { "prop": "horizontalAlignment", "kind": "enum",   "values": ["start", "center", "end"] },
+    "semantic":   { "prop": "semantic",            "kind": "enum",   "values": ["caption", "lead"] },
+    "content":    { "prop": "children",            "kind": "slot" },
+    "extraClass": { "prop": "class",               "kind": "string" }
+  }
+}

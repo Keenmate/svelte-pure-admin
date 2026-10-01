@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <Splitter> — svelte-pure-admin. Maps each NEUTRAL splitter feature to this wrapper's prop/kind. SCOPE = CONTAINER (ROOT) ONLY — the generic dumper renders Splitter.svelte with `children` as a single text slot and can't compose <SplitterPane>/<SplitterGutter> children, so panes/gutters are deferred in the fixture. IMPORTANT: svelte is NOT DUMPABLE for this component via the generic harness — Splitter.svelte calls setContext() at init (so SplitterGutter children can read orientation), and dump.mjs imports `render` from Node's svelte while loading the component through vite's SSR graph; the split module state leaves ssr_context null, so setContext throws `lifecycle_outside_component` (verified reproducible with a trivial setContext component under the identical dumper config — a dump.mjs limitation, not a Splitter.svelte bug). So no svelte compare is run; this map still exists and is validated by capability axis-2 (feature/option completeness), which needs no dump. `splitterId` is declared for axis-2 completeness but exercised in no golden: svelte emits only data-pa-splitter-id (no bare id / hook), keen additionally emits id + phx-hook — an acknowledged API divergence (see fixture). See modal.map.json for the model.",
+  "component": "splitter",
+  "features": {
+    "orientation":       { "prop": "orientation",      "kind": "enum", "values": ["horizontal", "vertical"] },
+    "minimizeMirror":    { "prop": "isMinimizeMirror", "kind": "bool" },
+    "splitterId":        { "prop": "splitterId",       "kind": "string" },
+    "step":              { "prop": "step",             "kind": "string" },
+    "railSize":          { "prop": "railSize",         "kind": "string" },
+    "minimizeThreshold": { "prop": "minimizeThreshold","kind": "string" },
+    "body":              { "prop": "children",         "kind": "slot" }
+  }
+}

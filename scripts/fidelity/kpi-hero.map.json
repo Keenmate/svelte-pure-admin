@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <KpiHeroList> — svelte-pure-admin. SCOPE = the pa-kpi-hero-list CONTAINER (card shell + header + body/layout-grid + footer) the component emits; the hero panel comes from the sibling <KpiHeroMain> (default `children` slot) and the supporting tiles from <KpiHeroSide> (the `rail` snippet) — the dumper renders slot content as plain text, so only container features are mapped here, and the .pa-kpi-hero-main*/.pa-kpi-hero-side* blocks (plus __rail) are deferred in the oracle fixture. The container has NO block-level modifiers; `layout` is an element modifier on __layout (heroSplit '2-3'/'3-4'). `footer` maps to the plain-string `footerText` prop (not the `footer` snippet) so the harness exercises the <span>-wrapped caption shape. The LIVE pill label is hardcoded 'LIVE' in the component (no live_text prop).",
+  "component": "kpi-hero",
+  "features": {
+    "title":      { "prop": "titleText",  "kind": "string" },
+    "live":       { "prop": "isLive",     "kind": "bool" },
+    "layout":     { "prop": "heroSplit",  "kind": "enum",   "values": ["2-3", "3-4"] },
+    "body":       { "prop": "children",   "kind": "slot" },
+    "footer":     { "prop": "footerText", "kind": "string" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

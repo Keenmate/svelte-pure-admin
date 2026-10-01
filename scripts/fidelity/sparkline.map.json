@@ -1,0 +1,10 @@
+{
+  "//": "Capability manifest for <Sparkline> — svelte-pure-admin (display/Sparkline.svelte). See heatmap.map.json for the model. Scope: the pa-sparkline block (inline-flex row + data-driven pa-sparkline__bar children). `values` is a data list rendered as pa-sparkline__bar divs, each carrying the inline style --value: N% (the oracle/keen shape); svelte also accepts a hand-authored <SparklineBar> `children` snippet when values is omitted, out of scope here. variant is success|warning|danger|info (the four CSS-backed bar ramps); primary/default emits no modifier. size is sm|lg.",
+  "component": "sparkline",
+  "features": {
+    "variant":    { "prop": "variant", "kind": "enum", "values": ["success", "warning", "danger", "info"] },
+    "size":       { "prop": "size",    "kind": "enum", "values": ["sm", "lg"] },
+    "values":     { "prop": "values",  "kind": "string" },
+    "extraClass": { "prop": "class",   "kind": "string" }
+  }
+}

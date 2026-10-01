@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for <Heatmap> — svelte-pure-admin. Scope: the pa-heatmap block (grid container + data-level cells). `levels` is a data list rendered as pa-heatmap__cell[data-level] children (the oracle/keen shape); svelte also accepts a hand-authored <HeatmapCell> `children` snippet when levels is omitted, out of scope here. `columns` drives the inline grid-template-columns (svelte prop `cols`). variant is success|danger only (the two CSS-backed cell ramps). The separate pa-heatmap-legend / pa-heatmap__legend* block is a different component (HeatmapLegend.svelte) and out of scope.",
+  "component": "heatmap",
+  "features": {
+    "variant":    { "prop": "variant",   "kind": "enum", "values": ["success", "danger"] },
+    "compact":    { "prop": "isCompact",  "kind": "bool" },
+    "columns":    { "prop": "cols",       "kind": "string", "nativeType": "number" },
+    "levels":     { "prop": "levels",     "kind": "string" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

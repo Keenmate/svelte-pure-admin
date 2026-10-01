@@ -49,7 +49,9 @@
 		const base = ['pa-gauge'];
 		if (isZones) {
 			base.push('pa-gauge--zones');
-		} else if (variant) {
+		} else if (variant && variant !== 'primary') {
+			// primary is the BASE fill (var(--pc-accent)); there is no
+			// pa-gauge--primary in the CSS — don't emit a phantom modifier.
 			base.push(`pa-gauge--${variant}`);
 		}
 		if (className) base.push(className);
@@ -65,11 +67,11 @@
 			<span class="pa-gauge__value">{valueText}</span>
 		{/if}
 	</div>
-	{#if labelText}
-		<span class="pa-gauge__label">{labelText}</span>
-	{/if}
 	{#if minText}
 		<span class="pa-gauge__min">{minText}</span>
+	{/if}
+	{#if labelText}
+		<span class="pa-gauge__label">{labelText}</span>
 	{/if}
 	{#if maxText}
 		<span class="pa-gauge__max">{maxText}</span>

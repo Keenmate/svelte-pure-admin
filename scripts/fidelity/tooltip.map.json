@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <Tooltip> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component actually declares. The trigger's hardcoded pa-tooltip--floating is a goldenConvention (not a prop), so it has no map entry. See button.map.json for the model.",
+  "component": "tooltip",
+  "features": {
+    "position":  { "prop": "position",  "kind": "enum",   "values": ["end", "bottom", "start"] },
+    "variant":   { "prop": "variant",   "kind": "enum",   "values": ["primary", "success", "warning", "danger", "color-1", "color-2", "color-3", "color-4", "color-5", "color-6", "color-7", "color-8", "color-9"] },
+    "multiline": { "prop": "multiline", "kind": "bool" },
+    "help":      { "prop": "isHelp",    "kind": "bool" },
+    "keyword":   { "prop": "isKeyword", "kind": "bool" },
+    "text":      { "prop": "text",      "kind": "string" },
+    "content":   { "prop": "children",  "kind": "slot" }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for TimelineItem.svelte (fragment of Timeline). See card.map.json for the model.",
+  "component": "timeline-item",
+  "features": {
+    "variant":    { "prop": "variant",      "kind": "enum", "values": ["primary", "secondary", "success", "warning", "danger", "info"] },
+    "filled":     { "prop": "isFilled",     "kind": "bool" },
+    "dateHeader": { "prop": "isDateHeader", "kind": "bool" },
+    "time":       { "prop": "timeText",     "kind": "string" },
+    "content":    { "prop": "children",     "kind": "slot" }
+  }
+}

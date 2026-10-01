@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <PropCard> — svelte-pure-admin. See list.map.json for the container-only model. Rows come from the sibling <PropCardRow>, fed through the default `children` slot (dumper renders slot content as plain text), so only the container features are mapped here.",
+  "component": "prop-card",
+  "features": {
+    "header":     { "prop": "headerText", "kind": "string" },
+    "body":       { "prop": "children",   "kind": "slot" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <Layout> (the .pc-layout wrapper) — svelte-pure-admin. See footer.map.json / main.map.json for the model. Layout.svelte is a fixed <div class=\"pc-layout {class}\"> wrapper around its `children`; the inner/content/sidebar/main/footer structure comes from SEPARATE sub-components fed through the slot (container-only). Width constraints (pc-container-*) and the pc-layout--sticky mode are BODY-level classes, not props of this component. Shared SSR features: the body slot + the root class passthrough.",
+  "component": "layout",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

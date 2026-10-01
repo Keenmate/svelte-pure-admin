@@ -44,7 +44,9 @@
 	const classes = $derived(() => {
 		const base = ['pa-progress'];
 		if (size) base.push(`pa-progress--${size}`);
-		if (variant) base.push(`pa-progress--${variant}`);
+		// `primary` is the base fill (var(--pc-accent)); there is no pa-progress--primary
+		// in core CSS — emitting it would be a phantom modifier.
+		if (variant && variant !== 'primary') base.push(`pa-progress--${variant}`);
 		if (isRounded) base.push('pa-progress--rounded');
 		if (isStriped) base.push('pa-progress--striped');
 		if (isAnimated) base.push('pa-progress--animated');

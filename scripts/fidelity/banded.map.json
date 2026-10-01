@@ -1,0 +1,16 @@
+{
+  "//": "Capability manifest for <Banded> — svelte-pure-admin (container-only slice). See list.map.json for the container-only model. Banded.svelte exposes the label-band WIDTH as a single width='narrow'|'wide' enum, so the neutral narrow/wide bool features map to a fixed `const` width value (set only when the bool is truthy). The other seven layout modifiers are plain bool props. body → the children snippet; extraClass → the class passthrough. Per-ROW structure (pa-banded__row/__label/__value/__copy) is the BandedRow.svelte sub-component, deferred in the fixture.",
+  "component": "banded",
+  "features": {
+    "narrow":      { "prop": "width", "kind": "const", "value": "narrow" },
+    "wide":        { "prop": "width", "kind": "const", "value": "wide" },
+    "middle":      { "prop": "isMiddle",      "kind": "bool" },
+    "truncate":    { "prop": "isTruncate",    "kind": "bool" },
+    "labelEnd":    { "prop": "isLabelEnd",    "kind": "bool" },
+    "labelCenter": { "prop": "isLabelCenter", "kind": "bool" },
+    "valueEnd":    { "prop": "isValueEnd",    "kind": "bool" },
+    "valueCenter": { "prop": "isValueCenter", "kind": "bool" },
+    "body":        { "prop": "children", "kind": "slot" },
+    "extraClass":  { "prop": "class",    "kind": "string" }
+  }
+}

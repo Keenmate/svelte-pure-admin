@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <DotLeaders> (the .pa-dot-leaders container) — svelte-pure-admin. See list.map.json for the model. CONTAINER-ONLY slice: DotLeaders.svelte is a fixed <div class=\"pa-dot-leaders {class}\"> wrapper with a `children` slot — no props beyond content + class passthrough. The per-ROW structure (DotLeadersItem.svelte: __item / __label / __leader / __value / __item--total) is the DEFERRED sub-slice — not mapped here (both dumpers pass slots as plain text, so item children can't flow through).",
+  "component": "dot-leaders",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

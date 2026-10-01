@@ -5,11 +5,16 @@
 	 */
 
 	import { _ } from '../i18n';
-
 	import type { ThemeColor } from '../types';
 
 	type AlertVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
 	type AlertSize = 'sm' | 'lg';
+
+	// Core defines outline variants for these five only (snippets/alerts.html +
+	// _alerts.scss). There is NO pa-alert--outline-secondary/-light/-dark — for
+	// those, isOutline falls back to the solid fill instead of emitting a phantom
+	// unstyled class.
+	const OUTLINE_VARIANTS: AlertVariant[] = ['primary', 'success', 'danger', 'warning', 'info'];
 
 	interface Props {
 		/** Alert variant */
@@ -78,7 +83,7 @@
 			} else {
 				base.push(`pa-alert--color-${themeColor}`);
 			}
-		} else if (isOutline) {
+		} else if (isOutline && OUTLINE_VARIANTS.includes(variant)) {
 			base.push(`pa-alert--outline-${variant}`);
 		} else {
 			base.push(`pa-alert--${variant}`);
@@ -144,7 +149,7 @@
 		{/if}
 
 		{#if isDismissible}
-			<button type="button" class="pa-alert__close" onclick={dismiss} aria-label={$_('pureAdmin.common.buttons.close')}>
+			<button type="button" class="pa-alert__close" onclick={dismiss} aria-label={$_('pureAdmin.buttons.close')}>
 				<span class="pa-icon pa-icon--x" aria-hidden="true"></span>
 			</button>
 		{/if}

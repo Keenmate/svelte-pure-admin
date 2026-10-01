@@ -23,6 +23,16 @@
 
 	const NUMERIC_COLUMNS: ReadonlySet<KpiStripColumn> = new Set(['now', 'previousValue', 'deltaPercent']);
 
+	// Core (`_kpi-numeric-strip.scss`) blesses only the short head modifiers
+	// `--prev` / `--delta` / `--target` (the `--no-*` hide rules target these);
+	// `metric` / `now` head cells carry no column modifier. Mirror the core
+	// snippet's head cells so the markup matches the blessed shape.
+	const HEAD_MODIFIERS: Partial<Record<KpiStripColumn, string>> = {
+		previousValue: 'prev',
+		deltaPercent: 'delta',
+		targetBar: 'target'
+	};
+
 	const DEFAULT_HEADER_LABELS: Record<KpiStripColumn, string> = {
 		metric: 'Metric',
 		now: 'Now',
@@ -119,6 +129,9 @@
 					<div
 						class="pa-kpi-strip__head"
 						class:pa-kpi-strip__head--num={NUMERIC_COLUMNS.has(col)}
+						class:pa-kpi-strip__head--prev={HEAD_MODIFIERS[col] === 'prev'}
+						class:pa-kpi-strip__head--delta={HEAD_MODIFIERS[col] === 'delta'}
+						class:pa-kpi-strip__head--target={HEAD_MODIFIERS[col] === 'target'}
 					>
 						{labelOf(col)}
 					</div>

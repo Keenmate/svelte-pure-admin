@@ -1,0 +1,7 @@
+{
+  "//": "Capability manifest for <NotificationsPanel> (the .pa-notifications block) — svelte-pure-admin. Capability-only (see navbar.map.json / sidebar.map.json precedent). NotificationsPanel.svelte models ONLY the panel: root <div class=\"pa-notifications__panel {is-open?} {class}\"> (header/list/footer), no .pa-notifications widget wrapper, no bell, no id. keen's notifications/1 models the WHOLE bell+panel widget (root .pa-notifications), so the two SSR roots don't reconcile — no strict scenarios. The class passthrough lands on the panel root here. The only shared declarable feature is the class passthrough.",
+  "component": "notifications",
+  "features": {
+    "extraClass": { "prop": "class", "kind": "string" }
+  }
+}

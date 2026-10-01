@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <Heading> — svelte-pure-admin. See section.map.json for the model. Heading.svelte renders a BARE <h1>..<h6> (chosen by `level`) with an optional class passthrough (`class`) and a `children` slot. Core blesses a class-less bare heading (styled by the h1..h6 type selectors), so there is no block feature — only the structural level + slot + class passthrough. `level` is a number prop (strict `===` compare in the component), so scenario values are numeric.",
+  "component": "heading",
+  "features": {
+    "level":      { "prop": "level",    "kind": "enum",   "values": ["1", "2", "3", "4", "5", "6"], "nativeType": "number" },
+    "content":    { "prop": "children",  "kind": "slot" },
+    "extraClass": { "prop": "class",     "kind": "string" }
+  }
+}

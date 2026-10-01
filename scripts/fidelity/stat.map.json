@@ -1,0 +1,19 @@
+{
+  "//": "Capability manifest for <Stat> — svelte-pure-admin. See card.map.json for the model. Enum values are the wrapper's real prop values; changeDirection uses the 5-step sentiment scale (dashes). icon is a Snippet; the icon slot presence switches the default variant to the icon+content shape.",
+  "component": "stat",
+  "features": {
+    "variant":         { "prop": "variant",         "kind": "enum",   "values": ["hero", "hero-compact", "square"] },
+    "color":           { "prop": "color",            "kind": "enum",   "values": ["primary", "secondary", "success", "info", "warning", "danger"] },
+    "iconVariant":     { "prop": "iconVariant",      "kind": "enum",   "values": ["primary", "success", "warning", "info", "danger"] },
+    "changeDirection": { "prop": "changeDirection",  "kind": "enum",   "values": ["very-positive", "positive", "neutral", "negative", "very-negative"] },
+    "isFit":           { "prop": "isFit",            "kind": "bool" },
+    "isSymbolPrefix":  { "prop": "isSymbolPrefix",   "kind": "bool" },
+    "number":          { "prop": "number",           "kind": "string" },
+    "labelText":       { "prop": "labelText",        "kind": "string" },
+    "changeText":      { "prop": "changeText",       "kind": "string" },
+    "symbolText":      { "prop": "symbolText",        "kind": "string" },
+    "contextText":     { "prop": "contextText",      "kind": "string" },
+    "icon":            { "prop": "icon",             "kind": "slot" },
+    "extraClass":      { "prop": "class",            "kind": "string" }
+  }
+}

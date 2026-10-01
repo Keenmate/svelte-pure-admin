@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <CompositeBadge> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component actually declares. Two consumers: (1) scripts/fidelity/dump.mjs drives rendering generically from it; (2) core's capability.mjs diffs it against the oracle feature contract. CompositeBadge renders its three sections inline: icon via the `icon` snippet, label/button via the `labelText`/`buttonText` string props. The four variant axes (variant / labelVariant / buttonVariant / iconVariant) all exist as props. Keep `values` honest to the component's real type union — a lie here surfaces as a markup FAIL in the render diff.",
+  "component": "composite-badge",
+  "features": {
+    "variant":       { "prop": "variant",       "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
+    "labelVariant":  { "prop": "labelVariant",  "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
+    "buttonVariant": { "prop": "buttonVariant", "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
+    "iconVariant":   { "prop": "iconVariant",   "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
+    "icon":          { "prop": "icon",          "kind": "slot" },
+    "label":         { "prop": "labelText",     "kind": "string" },
+    "buttonText":    { "prop": "buttonText",    "kind": "string" }
+  }
+}

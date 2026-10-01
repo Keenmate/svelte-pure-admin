@@ -3,10 +3,10 @@
 	 * Pure Admin FormHelp Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/forms.html
 	 *
-	 * For form help text and validation messages:
-	 * <span class="pa-form-help">Help text</span>
-	 * <span class="pa-form-help pa-form-help--error">Error message</span>
-	 * <span class="pa-form-help pa-form-help--success">Success message</span>
+	 * For form help text and validation messages (core blesses a <small>):
+	 * <small class="pa-form-help">Help text</small>
+	 * <small class="pa-form-help pa-form-help--error">Error message</small>
+	 * <small class="pa-form-help pa-form-help--success">Success message</small>
 	 */
 
 	import type { ThemeColor } from '../types';
@@ -43,6 +43,8 @@
 	});
 </script>
 
-<span class={classes()}>
+<!-- Core blesses a <small> for help/validation text (snippets/forms.html:119-133);
+     keen renders <small> too. Use <small> so the field-help shape matches the oracle. -->
+<small class={classes()}>
 	{@render children?.()}
-</span>
+</small>

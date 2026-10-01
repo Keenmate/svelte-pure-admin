@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <LoaderCenter> — svelte-pure-admin. See list.map.json for the container model. CONTAINER-ONLY slice: a flex-centering wrapper with a children slot + class passthrough. (<LoaderCenter> also has a `style` prop, not part of the shared contract.)",
+  "component": "loader-center",
+  "features": {
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

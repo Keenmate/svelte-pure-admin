@@ -8,6 +8,10 @@
 	import type { BadgeVariant } from '../display/badge-types';
 
 	interface Props {
+		/** Optional id on the panel root — the toggle/close JS target hook the core
+		 *  snippet carries (toggleProfilePanel/closeProfilePanel(id)); keen's
+		 *  profile_panel/1 always renders it (default "profile-panel"). Omitted when unset. */
+		id?: string;
 		/** Show panel */
 		show?: boolean;
 		/** User name */
@@ -41,6 +45,7 @@
 	}
 
 	let {
+		id,
 		show = $bindable(false),
 		name,
 		email,
@@ -100,7 +105,7 @@
 	});
 </script>
 
-<div class={classes()}>
+<div {id} class={classes()}>
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="pa-profile-panel__overlay" onclick={handleOverlayClick}></div>
@@ -111,13 +116,13 @@
 				{#if avatar}
 					{@render avatar()}
 				{:else}
-					<span class="pa-profile-panel__avatar-icon">👤</span>
+					<span class="pa-profile-panel__avatar-icon"><span class="pa-icon pa-icon--user" aria-hidden="true"></span></span>
 				{/if}
 			</div>
 
 			<div class="pa-profile-panel__info">
-				<h3 class="pa-profile-panel__name">{name}</h3>
-				<p class="pa-profile-panel__email">{email}</p>
+				<h3 class="pa-profile-panel__name" title={name}>{name}</h3>
+				<p class="pa-profile-panel__email" title={email}>{email}</p>
 				{#if role}
 					<!-- Role chip migrated to .pa-badge in core v2.9.0-rc01
 					     (the bespoke .pa-profile-panel__role SCSS rule was removed) -->

@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <TableContainer> — svelte-pure-admin. Maps each NEUTRAL feature to this wrapper's prop/kind. CONTAINER-ONLY (see table-container.json): scenarios set no isPanel/titleText, so TableContainer emits the bare card-less wrapper; the inner table rides the children snippet. The deprecated panel form is out of scope.",
+  "component": "table-container",
+  "features": {
+    "content":    { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

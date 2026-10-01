@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <PageHeader> (the .pc-page-header title block) — svelte-pure-admin. See section.map.json / app-header.map.json for the model. PageHeader.svelte is a fixed <div class=\"pc-page-header {class}\"> wrapper around its `children` (usually an <h2>). No modifiers, no fallback, no hook. Shared SSR features: the title slot + the root class passthrough.",
+  "component": "page-header",
+  "features": {
+    "title":      { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

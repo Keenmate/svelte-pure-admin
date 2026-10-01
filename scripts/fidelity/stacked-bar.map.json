@@ -1,0 +1,10 @@
+{
+  "//": "Capability manifest for <StackedBar> (the .pa-stacked-bar container) — svelte-pure-admin. See list.map.json / data-bar.map.json for the model. CONTAINER-ONLY slice: StackedBar.svelte is a <div class=\"pa-stacked-bar [--size] [--rounded] {class}\"> wrapper with a `children` slot. The segments + legend are SEPARATE child components (StackedBarSegment / StackedBarLegend / StackedBarLegendItem) fed through the slot — the dumper can't materialize them (slot content arrives as plain text), so the __segment / __legend* element classes are the DEFERRED child-component sub-slice, not mapped here. size is sm|lg; rounded is the isRounded bool.",
+  "component": "stacked-bar",
+  "features": {
+    "size":       { "prop": "size",      "kind": "enum", "values": ["sm", "lg"] },
+    "rounded":    { "prop": "isRounded", "kind": "bool" },
+    "body":       { "prop": "children",  "kind": "slot" },
+    "extraClass": { "prop": "class",     "kind": "string" }
+  }
+}

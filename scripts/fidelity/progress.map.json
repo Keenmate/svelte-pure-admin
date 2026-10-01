@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <Progress> — svelte-pure-admin. See card.map.json for the model. Scope: the bare pa-progress bar. <Progress> also folds the pa-progress-group label wrapper in via labelText/valueText, but that composed shape is out of this bar-scoped fixture.",
+  "component": "progress",
+  "features": {
+    "variant":    { "prop": "variant",    "kind": "enum", "values": ["success", "warning", "danger", "info"] },
+    "size":       { "prop": "size",        "kind": "enum", "values": ["xs", "sm", "lg"] },
+    "rounded":    { "prop": "isRounded",   "kind": "bool" },
+    "striped":    { "prop": "isStriped",   "kind": "bool" },
+    "animated":   { "prop": "isAnimated",  "kind": "bool" },
+    "value":      { "prop": "value",       "kind": "string", "nativeType": "number" },
+    "extraClass": { "prop": "class",       "kind": "string" }
+  }
+}

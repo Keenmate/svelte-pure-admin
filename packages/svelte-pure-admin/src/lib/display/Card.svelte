@@ -186,11 +186,7 @@
 <svelte:element this={rootTag} class={classes()} {style} href={rootTag === 'a' ? href : undefined} target={rootTag === 'a' ? target : undefined}>
 	{#if hasHeader}
 		<div class={headerClasses()}>
-			{#if tabs}
-				<div class={tabsClasses()}>
-					{@render tabs()}
-				</div>
-			{:else if header}
+			{#if header}
 				{@render header()}
 			{:else}
 				<!-- Canonical three-part header (core v2.9.0-rc05): Title - Description - Actions.
@@ -229,6 +225,11 @@
 						{@render headerActions()}
 					</div>
 				{/if}
+			{/if}
+			{#if tabs}
+				<div class={tabsClasses()}>
+					{@render tabs()}
+				</div>
 			{/if}
 		</div>
 	{/if}

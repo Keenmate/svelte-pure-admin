@@ -1,0 +1,16 @@
+{
+  "//": "Capability manifest for <FilterCard> — svelte-pure-admin. See card.map.json for the model. The show* flags default TRUE in the component, so scenarios that want a clean structural __actions pass them false. isExpanded is $bindable but accepts an initial value.",
+  "component": "filter-card",
+  "features": {
+    "loading":             { "prop": "isLoading",                 "kind": "bool" },
+    "disabled":            { "prop": "disabled",                  "kind": "bool" },
+    "expanded":            { "prop": "isExpanded",                "kind": "bool" },
+    "showToggle":          { "prop": "shouldShowToggle",          "kind": "bool" },
+    "showClear":           { "prop": "shouldShowClear",           "kind": "bool" },
+    "showRefresh":         { "prop": "shouldShowRefresh",         "kind": "bool" },
+    "showAdvancedActions": { "prop": "shouldShowAdvancedActions", "kind": "bool" },
+    "filters":             { "prop": "filters",                   "kind": "slot" },
+    "advancedFilters":     { "prop": "advancedFilters",           "kind": "slot" },
+    "actions":             { "prop": "actions",                   "kind": "slot" }
+  }
+}

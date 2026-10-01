@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <ProgressRing> — svelte-pure-admin. See progress.map.json for the data-driven-bar model. The ring fill is the inline style `--value: N` (unitless). primary emits NO modifier (base is the accent); svelte was fixed in this slice to guard primary (previously emitted a phantom pa-progress-ring--primary). __value text comes from valueText; __label from labelText.",
+  "component": "progress-ring",
+  "features": {
+    "variant":    { "prop": "variant",   "kind": "enum",   "values": ["success", "warning", "danger", "info"] },
+    "size":       { "prop": "size",       "kind": "enum",   "values": ["sm", "lg"] },
+    "value":      { "prop": "value",      "kind": "string", "nativeType": "number" },
+    "valueText":  { "prop": "valueText",  "kind": "string" },
+    "label":      { "prop": "labelText",  "kind": "string" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

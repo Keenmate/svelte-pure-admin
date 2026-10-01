@@ -1,0 +1,10 @@
+{
+  "//": "Capability manifest for <Link> — svelte-pure-admin. See button.map.json (href/target) for the model. Link.svelte renders `<a class=\"pa-link …\" href target>` with a children slot. `href` is required. `target` is a declared prop enum.",
+  "component": "link",
+  "features": {
+    "href":       { "prop": "href",     "kind": "string" },
+    "target":     { "prop": "target",   "kind": "enum",   "values": ["_blank", "_self", "_parent", "_top"] },
+    "content":    { "prop": "children",  "kind": "slot" },
+    "extraClass": { "prop": "class",     "kind": "string" }
+  }
+}

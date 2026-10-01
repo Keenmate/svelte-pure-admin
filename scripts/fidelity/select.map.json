@@ -1,0 +1,15 @@
+{
+  "//": "Capability manifest for <Select> (the .pa-select control) — svelte-pure-admin. Select.svelte renders <select class=\"pa-select {size} {state} {color} {class}\" ...>{@render children}</select>, with a `multiple` branch. Size + state + themeColor are the class axes; disabled/required/multiple are native props; name/id native. The option `children` snippet is OUT OF SCOPE (API-divergent from keen's options list) — not mapped, so every scenario renders the empty select.",
+  "component": "select",
+  "features": {
+    "size":        { "prop": "size",       "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
+    "state":       { "prop": "state",      "kind": "enum", "values": ["success", "warning", "error"] },
+    "themeColor":  { "prop": "themeColor", "kind": "enum", "values": ["1","2","3","4","5","6","7","8","9"] },
+    "name":        { "prop": "name",       "kind": "string" },
+    "id":          { "prop": "id",         "kind": "string" },
+    "disabled":    { "prop": "disabled",   "kind": "bool" },
+    "required":    { "prop": "required",   "kind": "bool" },
+    "multiple":    { "prop": "multiple",   "kind": "bool" },
+    "extraClass":  { "prop": "class",      "kind": "string" }
+  }
+}

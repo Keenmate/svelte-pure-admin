@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <NavDropdown> (the .pc-navmenu__dropdown <ul>) — svelte-pure-admin. See nav-dropdown fixture / nav-menu.map.json for the model. NavDropdown.svelte renders <ul class=\"pc-navmenu__dropdown {--level2?} {class}\">{children}</ul>. Items come from NavItem sub-components (slot). Shared SSR features: the level2 modifier, the items slot, the root class passthrough.",
+  "component": "nav-dropdown",
+  "features": {
+    "level2":     { "prop": "level2",   "kind": "bool" },
+    "items":      { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

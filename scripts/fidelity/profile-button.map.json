@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <ProfileButton> (the .pc-navbar__profile-btn trigger) — svelte-pure-admin. ProfileButton.svelte renders <button class=\"pc-navbar__profile-btn {class}\" aria-label={a11y.userProfile → \"User Profile\"}> with a .pa-btn__icon wrapper (default .pa-icon.pa-icon--user, or the `icon` snippet) and a .pc-navbar__profile-name span when `name` is set. Shared SSR features: the name string (→ name span) + the root class passthrough. The custom `icon` snippet is a shared slot, defaulted in the goldens.",
+  "component": "profile-button",
+  "features": {
+    "name":       { "prop": "name",  "kind": "string" },
+    "extraClass": { "prop": "class", "kind": "string" }
+  }
+}

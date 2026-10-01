@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <AppHeader> (the .pc-app-header brand block) — svelte-pure-admin. See section.map.json / footer.map.json for the model. AppHeader.svelte renders <div class=\"pc-app-header {class}\"> around its `children`; with no children it falls back to the config logo + app name (divergent from keen, so the fixture always supplies children). The .pc-app-header__version fit-ladder element is composed by the consumer inside children, not this container — deferred in the fixture, not a feature here. Shared SSR features: the brand slot + the root class passthrough.",
+  "component": "app-header",
+  "features": {
+    "brand":      { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

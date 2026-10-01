@@ -1,0 +1,17 @@
+{
+  "//": "Capability manifest for <Checkbox> (the .pa-checkbox tri-state checkbox) — svelte-pure-admin. Checkbox.svelte renders <label class=\"pa-checkbox {size} {x} {label-pos} {disabled} {class}\"><input type=checkbox .../><span pa-checkbox__box/><span pa-checkbox__label>{labelText}</span></label>. `id` is a REQUIRED prop (label association) so every scenario supplies it. The label text prop is `labelText` (not `label`). isXMark→--x, labelPosition→--label-{pos}, disabled→--disabled + native attr. checked/value/name/required are native <input> props. Indeterminate is JS-only (not modeled).",
+  "component": "checkbox",
+  "features": {
+    "size":          { "prop": "size",          "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
+    "labelPosition": { "prop": "labelPosition", "kind": "enum", "values": ["end", "start", "top"] },
+    "isXMark":       { "prop": "isXMark",        "kind": "bool" },
+    "disabled":      { "prop": "disabled",       "kind": "bool" },
+    "label":         { "prop": "labelText",      "kind": "string" },
+    "name":          { "prop": "name",           "kind": "string" },
+    "id":            { "prop": "id",             "kind": "string" },
+    "value":         { "prop": "value",          "kind": "string" },
+    "checked":       { "prop": "checked",        "kind": "bool" },
+    "required":      { "prop": "required",       "kind": "bool" },
+    "extraClass":    { "prop": "class",          "kind": "string" }
+  }
+}

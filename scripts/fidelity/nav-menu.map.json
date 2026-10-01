@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <NavMenu> (the .pc-navmenu container) — svelte-pure-admin. See layout.map.json / footer.map.json for the model. NavMenu.svelte renders <nav class=\"pc-navmenu {class}\"><ul>{children}</ul></nav>; with `collapse` set it adds data-pc-fit-nav* and attaches the core Fit engine at onMount (NO id — binds via bind:this), so collapse is capability-only (not strict-compared). Items come from NavItem/NavDropdown sub-components (container-only). Shared SSR features: the items slot, the collapse capability (menu|sidebar), the root class passthrough.",
+  "component": "nav-menu",
+  "features": {
+    "items":      { "prop": "children", "kind": "slot" },
+    "collapse":   { "prop": "collapse", "kind": "enum", "values": ["menu", "sidebar"] },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

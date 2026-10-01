@@ -1,0 +1,11 @@
+{
+  "//": "Capability manifest for <LoadMore> — svelte-pure-admin. Maps each NEUTRAL feature to this wrapper's prop/kind. `text` uses the `text` STRING prop (not the children snippet, which would replace the whole button body) so the label lands inside pa-load-more__text exactly like keen's inner_block. count renders the __count span when present (the shouldShowCount gate was dropped in this slice). align enum drives pa-load-more--{align} (including --center, added in this slice).",
+  "component": "load-more",
+  "features": {
+    "align":     { "prop": "align",     "kind": "enum", "values": ["start", "center", "end"] },
+    "loading":   { "prop": "isLoading", "kind": "bool" },
+    "count":     { "prop": "count",     "kind": "string" },
+    "text":      { "prop": "text",      "kind": "string" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

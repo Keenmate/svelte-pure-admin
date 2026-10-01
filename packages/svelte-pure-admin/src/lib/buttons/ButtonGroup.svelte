@@ -9,12 +9,23 @@
 
 	type AlignVariant = 'center' | 'end' | 'stretch';
 	type Breakpoint = 'sm' | 'md' | 'lg' | 'xl';
+	type ResponsiveDirection =
+		| 'sm-vertical' | 'sm-horizontal'
+		| 'md-vertical' | 'md-horizontal'
+		| 'lg-vertical' | 'lg-horizontal'
+		| 'xl-vertical' | 'xl-horizontal';
 
 	interface Props {
 		/** Vertical orientation */
 		vertical?: boolean;
 		/** Vertical alignment (only for vertical groups): center, end, stretch */
 		align?: AlignVariant;
+		/**
+		 * Responsive orientation change in one shot — emits
+		 * `pa-btn-group--{responsive}` (e.g. `md-vertical` becomes vertical at 768px+).
+		 * Shorthand for `verticalAt`/`horizontalAt` when you have the combined token.
+		 */
+		responsive?: ResponsiveDirection;
 		/** Switch to vertical at this breakpoint and up (pa-btn-group--{bp}-vertical) */
 		verticalAt?: Breakpoint;
 		/** Switch to horizontal at this breakpoint and up (pa-btn-group--{bp}-horizontal) */
@@ -34,6 +45,7 @@
 	let {
 		vertical = false,
 		align,
+		responsive,
 		verticalAt,
 		horizontalAt,
 		mdVertical = false,
@@ -48,7 +60,9 @@
 		const base = ['pa-btn-group'];
 		if (vertical) base.push('pa-btn-group--vertical');
 		if (align) base.push(`pa-btn-group--${align}`);
-		// Responsive orientation (new breakpoint props; fall back to the deprecated booleans)
+		// Responsive orientation: combined `responsive` token first, then the
+		// per-direction breakpoint props (fall back to the deprecated booleans).
+		if (responsive) base.push(`pa-btn-group--${responsive}`);
 		const vAt = verticalAt ?? (mdVertical ? 'md' : undefined);
 		const hAt = horizontalAt ?? (lgHorizontal ? 'lg' : undefined);
 		if (vAt) base.push(`pa-btn-group--${vAt}-vertical`);

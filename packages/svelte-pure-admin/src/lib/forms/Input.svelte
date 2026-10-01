@@ -70,7 +70,7 @@
 
 	let {
 		type = 'text',
-		value = $bindable(''),
+		value = $bindable(),
 		size,
 		state,
 		errors,

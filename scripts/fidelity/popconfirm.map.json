@@ -1,0 +1,14 @@
+{
+  "//": "Capability manifest for <Popconfirm> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop, kind, and — for enums — the option set THIS component actually declares. Two consumers: (1) scripts/fidelity/dump.mjs drives rendering generically from it; (2) core's capability.mjs diffs it against the oracle feature contract. Keep `values` honest to the component's real type union — a lie here surfaces as a markup FAIL in the render diff. NOTE: the svelte component renders ONLY the .pa-popconfirm overlay (the consumer supplies the trigger separately and passes it via the `trigger` prop for positioning) — so its dump is exactly the oracle overlay block. `show` defaults false, so the overlay is emitted CLOSED (no is-open) and un-positioned (SSR, pre-effect) — matching the fixture's closed-overlay goldens.",
+  "component": "popconfirm",
+  "features": {
+    "placement":      { "prop": "position",       "kind": "enum",   "values": ["top", "bottom", "start", "end"] },
+    "compact":        { "prop": "isCompact",       "kind": "bool" },
+    "icon":           { "prop": "icon",            "kind": "enum",   "values": ["danger", "warning", "info"] },
+    "message":        { "prop": "messageText",     "kind": "string" },
+    "confirmVariant": { "prop": "confirmVariant",  "kind": "string" },
+    "confirmText":    { "prop": "confirmText",     "kind": "string" },
+    "cancelText":     { "prop": "cancelText",      "kind": "string" },
+    "class":          { "prop": "class",           "kind": "string" }
+  }
+}
