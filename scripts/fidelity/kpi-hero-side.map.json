@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for KpiHeroSide.svelte (fragment of KpiHeroList — one supporting rail tile). SCOPE = the .pa-kpi-hero-side block (label · value · delta in a 2×2 grid). The __label and __value cells always render (fixed grid areas); __delta is conditional. The opt-in detail popover is deferred in the oracle fixture. Default variant emits NO modifier (guarded `if (variant)`). See timeline-item.map.json for the fragment model.",
+  "component": "kpi-hero-side",
+  "features": {
+    "variant":    { "prop": "variant",    "kind": "enum",   "values": ["positive", "negative", "neutral", "up-strong"] },
+    "label":      { "prop": "labelText",   "kind": "string" },
+    "value":      { "prop": "valueText",   "kind": "string" },
+    "prefix":     { "prop": "prefix",      "kind": "string" },
+    "unit":       { "prop": "unit",        "kind": "string" },
+    "delta":      { "prop": "deltaText",   "kind": "string" },
+    "extraClass": { "prop": "class",       "kind": "string" }
+  }
+}

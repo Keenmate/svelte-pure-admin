@@ -1,0 +1,15 @@
+{
+  "//": "Capability manifest for <KpiSparklineRow> (the .pa-kpi-spark-row block) — svelte-pure-admin. The row the <KpiSparklineList> container feeds through its children slot and defers to this fixture. variant is the trend sentiment (KpiSparklineTrendVariant, already dashed up-strong/down-strong); deltaVariant is the SEPARATE Δ% tint scale (KpiSparklineDeltaVariant, very-positive…very-negative). chart is a Snippet host (the author SVG); here fed a plain-text token so both SSR shells match. See kpi-tile.map.json for the KPI dashed-enum model.",
+  "component": "kpi-sparkline-row",
+  "features": {
+    "variant":      { "prop": "variant",      "kind": "enum", "values": ["up-strong", "up", "flat", "down", "down-strong"] },
+    "label":        { "prop": "labelText",    "kind": "string" },
+    "chart":        { "prop": "chart",        "kind": "slot" },
+    "value":        { "prop": "valueText",    "kind": "string" },
+    "unit":         { "prop": "unit",         "kind": "string" },
+    "prefix":       { "prop": "prefix",       "kind": "string" },
+    "delta":        { "prop": "deltaText",    "kind": "string" },
+    "deltaVariant": { "prop": "deltaVariant", "kind": "enum", "values": ["very-positive", "positive", "neutral", "negative", "very-negative"] },
+    "extraClass":   { "prop": "class",        "kind": "string" }
+  }
+}

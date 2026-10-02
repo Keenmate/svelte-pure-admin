@@ -1,0 +1,14 @@
+{
+  "//": "Capability manifest for <KpiEditorialTile> — svelte-pure-admin. FRAGMENT of KpiEditorial (the per-KPI editorial cell the container defers). Flat-sibling block pa-kpi-edit__tile; its cells are flat pa-kpi-edit__* siblings. `deltaVariant` is the delta sentiment-tint enum (no default modifier — the component guards `if (deltaVariant)`). prefix/unit share the __unit class around __num; targetText renders after a literal <em>tgt</em>. The detail popover is out of this slice (its own fragment).",
+  "component": "kpi-editorial-tile",
+  "features": {
+    "labelText":    { "prop": "labelText",    "kind": "string" },
+    "valueText":    { "prop": "valueText",    "kind": "string" },
+    "unit":         { "prop": "unit",         "kind": "string" },
+    "prefix":       { "prop": "prefix",       "kind": "string" },
+    "deltaText":    { "prop": "deltaText",    "kind": "string" },
+    "deltaVariant": { "prop": "deltaVariant", "kind": "enum", "values": ["positive", "negative", "neutral", "up-strong", "down-strong"] },
+    "targetText":   { "prop": "targetText",   "kind": "string" },
+    "extraClass":   { "prop": "class",        "kind": "string" }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "//": "Capability manifest for <KpiGauge> — svelte-pure-admin. FRAGMENT slice: one gauge tile (pa-kpi-gauge) of the comparison-gauges design, the sub-component <KpiGaugeList> defers through its default `children` slot. Maps the tile's own features: the sentiment variant (→ pa-kpi-gauge--*), the head label/value text (labelText / valueText → __num), the prefix/unit affixes (prefix / unit → __unit spans), the inline bar fill width (barPercent → style=\"width: N%\" on __fill), the optional target-tick position (tickPosition → inline --pa-kpi-gauge-tick-pos on __bar; the component omits the style attribute entirely when unset), and the right scale label (scaleEndText; scaleStartText keeps its default '0'). The detail popover (KpiDetailPopover) is a separate sub-component (kpi-detail fixture) only rendered when detail props are set — none here.",
+  "component": "kpi-gauge",
+  "features": {
+    "variant":      { "prop": "variant",       "kind": "enum", "values": ["positive", "warning", "negative", "neutral"] },
+    "labelText":    { "prop": "labelText",      "kind": "string" },
+    "valueText":    { "prop": "valueText",      "kind": "string" },
+    "unit":         { "prop": "unit",           "kind": "string" },
+    "prefix":       { "prop": "prefix",         "kind": "string" },
+    "barPercent":   { "prop": "barPercent",     "kind": "string" },
+    "tickPosition": { "prop": "tickPosition",   "kind": "string" },
+    "scaleEndText": { "prop": "scaleEndText",   "kind": "string" }
+  }
+}

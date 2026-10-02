@@ -1,0 +1,12 @@
+{
+  "//": "Capability manifest for <KpiTerminal> — svelte-pure-admin. CAP-ONLY: KpiTerminal.svelte calls setContext at init (panes register themselves back through the context), which the standalone SSR render() in the dumper can't drive, so kpi-terminal is NOT registered in the svelte dumper and no svelte compare runs for it — this map exists ONLY for capability axis-2 (the oracle verifies svelte DECLARES every feature). Same cap-only precedent as settings-panel / navbar / command-palette. SCOPE = the pa-kpi-terminal CONTAINER. The `tabs` neutral feature maps to svelte's `hasTabs` bool (switches the body from a single wrapped grid to pane children); the per-KPI tiles + panes are deferred (fixture-ref kpi-tile) in the oracle fixture. `footer` maps to the plain-string `footerText` prop (not the footer snippet). The LIVE pill label is hardcoded 'LIVE' in the component.",
+  "component": "kpi-terminal",
+  "features": {
+    "title":      { "prop": "titleText",  "kind": "string" },
+    "live":       { "prop": "isLive",     "kind": "bool" },
+    "tabs":       { "prop": "hasTabs",    "kind": "bool" },
+    "body":       { "prop": "children",   "kind": "slot" },
+    "footer":     { "prop": "footerText", "kind": "string" },
+    "extraClass": { "prop": "class",      "kind": "string" }
+  }
+}

@@ -123,6 +123,19 @@ const REGISTRY = {
   'table-container': 'packages/svelte-pure-admin/src/lib/display/TableContainer.svelte',
   popover: 'packages/svelte-pure-admin/src/lib/feedback/Popover.svelte',
   'breakpoint-container': 'packages/svelte-pure-admin/src/lib/layout/ContainerBreakpoint.svelte',
+  // KPI fragment fixtures — the per-tile / per-row sub-components every KPI
+  // showcase container defers. (kpi-terminal uses setContext at init → svelte
+  // dumper-blocked, capability-only; kpi-sparkline has no svelte component —
+  // the chart slot takes any SVG — so it's keen-only.)
+  'kpi-tile': 'packages/svelte-pure-admin/src/lib/display/KpiTerminalTile.svelte',
+  'kpi-detail': 'packages/svelte-pure-admin/src/lib/display/KpiDetailPopover.svelte',
+  'kpi-bento-tile': 'packages/svelte-pure-admin/src/lib/display/KpiBentoTile.svelte',
+  'kpi-editorial-tile': 'packages/svelte-pure-admin/src/lib/display/KpiEditorialTile.svelte',
+  'kpi-strip-row': 'packages/svelte-pure-admin/src/lib/display/KpiStripRow.svelte',
+  'kpi-sparkline-row': 'packages/svelte-pure-admin/src/lib/display/KpiSparklineRow.svelte',
+  'kpi-hero-main': 'packages/svelte-pure-admin/src/lib/display/KpiHeroMain.svelte',
+  'kpi-hero-side': 'packages/svelte-pure-admin/src/lib/display/KpiHeroSide.svelte',
+  'kpi-gauge': 'packages/svelte-pure-admin/src/lib/display/KpiGauge.svelte',
   // Fragment fixtures — sub-components of a complex parent, tested in isolation.
   'card-tab': 'packages/svelte-pure-admin/src/lib/display/CardTab.svelte',
   'card-tab-content': 'packages/svelte-pure-admin/src/lib/display/CardTabContent.svelte',

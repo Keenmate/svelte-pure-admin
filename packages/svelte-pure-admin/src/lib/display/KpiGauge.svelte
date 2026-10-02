@@ -121,7 +121,12 @@
 		const parts: string[] = [];
 		if (tickPosition) parts.push(`--pa-kpi-gauge-tick-pos: ${tickPosition}`);
 		if (tickColor) parts.push(`--pa-kpi-gauge-tick-color: ${tickColor}`);
-		return parts.join('; ');
+		// Return undefined (not '') when there's no tick override so Svelte omits
+		// the attribute entirely — an empty style="" is a phantom-attr artifact
+		// that drifts from keen (HEEx omits a nil style). When present, each decl
+		// ends with a trailing ';' to match keen's bar_style/2 serialization (and
+		// the fill-width / cell-min inline-style convention across the wrappers).
+		return parts.length ? parts.map((p) => `${p};`).join(' ') : undefined;
 	});
 
 	const fillWidth = $derived(barPercent === undefined ? 0 : Math.max(0, barPercent));

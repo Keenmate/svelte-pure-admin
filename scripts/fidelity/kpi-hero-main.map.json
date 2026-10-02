@@ -1,0 +1,15 @@
+{
+  "//": "Capability manifest for KpiHeroMain.svelte (fragment of KpiHeroList — the headline hero panel). SCOPE = the .pa-kpi-hero-main block (label · value · meta row). The sparkline (__chart/__chart-svg) and the opt-in detail popover are deferred in the oracle fixture. Default variant emits NO modifier (guarded `if (variant)`). The three meta cells (delta/period/target) are <span>s. See timeline-item.map.json for the fragment model.",
+  "component": "kpi-hero-main",
+  "features": {
+    "variant":    { "prop": "variant",    "kind": "enum",   "values": ["positive", "negative", "neutral", "up-strong"] },
+    "label":      { "prop": "labelText",   "kind": "string" },
+    "value":      { "prop": "valueText",   "kind": "string" },
+    "prefix":     { "prop": "prefix",      "kind": "string" },
+    "unit":       { "prop": "unit",        "kind": "string" },
+    "delta":      { "prop": "deltaText",   "kind": "string" },
+    "period":     { "prop": "periodText",  "kind": "string" },
+    "target":     { "prop": "targetText",  "kind": "string" },
+    "extraClass": { "prop": "class",       "kind": "string" }
+  }
+}

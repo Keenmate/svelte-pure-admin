@@ -120,8 +120,8 @@
 <div class={classes()} use:kpiPopover>
 	{#if label}
 		<div class="pa-kpi-hero-main__label">{@render label()}</div>
-	{:else}
-		<div class="pa-kpi-hero-main__label">{labelText ?? ''}</div>
+	{:else if labelText !== undefined}
+		<div class="pa-kpi-hero-main__label">{labelText}</div>
 	{/if}
 
 	{#if value}

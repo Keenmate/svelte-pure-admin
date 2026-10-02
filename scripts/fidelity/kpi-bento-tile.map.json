@@ -1,0 +1,14 @@
+{
+  "//": "Capability manifest for <KpiBentoTile> — svelte-pure-admin. FRAGMENT of KpiBento (the per-KPI bento cell the container defers). Clean block pa-kpi-bento-tile. `variant` is the sentiment enum (no default modifier — the component guards `if (variant)`), `isHero` the --hero bool. prefix/unit share the __unit class around __num. The sparkline chart slot + detail popover are out of this slice (deferred prose in the oracle fixture / their own fragment).",
+  "component": "kpi-bento-tile",
+  "features": {
+    "variant":    { "prop": "variant",   "kind": "enum", "values": ["positive", "negative", "neutral", "up-strong", "down-strong"] },
+    "isHero":     { "prop": "isHero",    "kind": "bool" },
+    "labelText":  { "prop": "labelText", "kind": "string" },
+    "deltaText":  { "prop": "deltaText", "kind": "string" },
+    "valueText":  { "prop": "valueText", "kind": "string" },
+    "unit":       { "prop": "unit",      "kind": "string" },
+    "prefix":     { "prop": "prefix",    "kind": "string" },
+    "extraClass": { "prop": "class",     "kind": "string" }
+  }
+}

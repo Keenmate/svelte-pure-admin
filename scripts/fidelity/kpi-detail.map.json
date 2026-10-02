@@ -1,0 +1,7 @@
+{
+  "//": "Capability manifest for <KpiDetailPopover> — svelte-pure-admin. SCOPE = the title-driven popover shape (`<div class=\"pa-kpi-detail\" role=\"tooltip\">` + `.pa-kpi-detail__title`). The auto-row `<dl>` body is driven by the typed `rows` prop (KpiDetailRow[]) not exercised here — those are native <dl>/<dt>/<dd> tags with no pa-* class, deferred as acknowledged prose in the oracle fixture.",
+  "component": "kpi-detail",
+  "features": {
+    "title": { "prop": "titleText", "kind": "string" }
+  }
+}

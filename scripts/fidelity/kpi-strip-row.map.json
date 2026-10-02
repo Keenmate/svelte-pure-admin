@@ -1,0 +1,16 @@
+{
+  "//": "Capability manifest for <KpiStripRow> (the .pa-kpi-strip__row fragment) — svelte-pure-admin. The row the <KpiStrip> container feeds through its default slot and defers to this fixture. Flat-sibling cells under pa-kpi-strip__ (metric/now/num/unit/prev/delta/target/bar/fill/bar-pct). deltaVariant values are already dashed (svelte's KpiDeltaVariant type uses up-strong/down-strong). targetBarPercent is a number prop driving the INLINE fill width; targetPercentText is the label below the bar. See list-item.map.json for the flat-sibling fragment model.",
+  "component": "kpi-strip-row",
+  "features": {
+    "metric":           { "prop": "metricText",         "kind": "string" },
+    "value":            { "prop": "valueText",          "kind": "string" },
+    "unit":             { "prop": "unit",               "kind": "string" },
+    "prefix":           { "prop": "prefix",             "kind": "string" },
+    "prev":             { "prop": "previousValueText",  "kind": "string" },
+    "delta":            { "prop": "deltaText",          "kind": "string" },
+    "deltaVariant":     { "prop": "deltaVariant",       "kind": "enum", "values": ["positive", "negative", "neutral", "up-strong", "down-strong"] },
+    "targetBarPercent": { "prop": "targetBarPercent",   "kind": "string" },
+    "targetPercent":    { "prop": "targetPercentText",  "kind": "string" },
+    "extraClass":       { "prop": "class",              "kind": "string" }
+  }
+}

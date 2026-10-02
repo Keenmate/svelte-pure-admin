@@ -1,0 +1,20 @@
+{
+  "//": "Capability manifest for <KpiTerminalTile> — svelte-pure-admin. SCOPE = the pa-kpi-tile fragment (head / label / value group / prev+delta row). The sparkline SVG (`.pa-kpi-tile__spark`) and the hover popover (`.pa-kpi-detail*`) are deferred in the oracle fixture — no scenario sets the chart slot or detailTitleText, avoiding the two acknowledged divergences: svelte ALWAYS emits `.pa-kpi-tile__label` + `.pa-kpi-tile__values` (even empty, so every scenario supplies both), and svelte wraps the chart slot in a `<div style=\"display:contents\">` host (so the chart slot is never exercised). variant/value/delta/status variants pass through as the component's class suffixes verbatim.",
+  "component": "kpi-tile",
+  "features": {
+    "variant":        { "prop": "variant",            "kind": "enum",   "values": ["up-strong", "up", "flat", "down", "down-strong"] },
+    "standalone":     { "prop": "isStandalone",        "kind": "bool" },
+    "idText":         { "prop": "idText",              "kind": "string" },
+    "statusText":     { "prop": "statusText",          "kind": "string" },
+    "statusVariant":  { "prop": "statusVariant",       "kind": "enum",   "values": ["good", "warn", "neutral"] },
+    "labelText":      { "prop": "labelText",           "kind": "string" },
+    "valuePrefix":    { "prop": "valuePrefix",         "kind": "string" },
+    "valueText":      { "prop": "valueText",           "kind": "string" },
+    "valueUnit":      { "prop": "valueUnit",           "kind": "string" },
+    "valueVariant":   { "prop": "valueVariant",        "kind": "enum",   "values": ["very-positive", "positive", "neutral", "negative", "very-negative"] },
+    "previousValueText": { "prop": "previousValueText", "kind": "string" },
+    "deltaText":      { "prop": "deltaText",           "kind": "string" },
+    "deltaVariant":   { "prop": "deltaVariant",        "kind": "enum",   "values": ["very-positive", "positive", "neutral", "negative", "very-negative"] },
+    "extraClass":     { "prop": "class",               "kind": "string" }
+  }
+}
