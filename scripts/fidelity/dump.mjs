@@ -180,16 +180,49 @@ function toProps(neutralProps, map) {
   return props;
 }
 
-async function main() {
-  const component = process.argv[2];
-  if (!component || !REGISTRY[component]) {
-    console.error(`usage: node dump.mjs <component>\n  known: ${Object.keys(REGISTRY).join(', ')}`);
-    process.exit(2);
-  }
-
+// Dump one component through the given (already-booted) vite server.
+async function dumpOne(component, server) {
   const fixture = JSON.parse(fs.readFileSync(path.join(CORE_FIXTURES, `${component}.json`), 'utf-8'));
   const map = JSON.parse(fs.readFileSync(path.join(__dirname, `${component}.map.json`), 'utf-8'));
   const compPath = path.resolve(REPO_ROOT, REGISTRY[component]);
+
+  const mod = await server.ssrLoadModule(compPath);
+  const Component = mod.default;
+  // Composite (tree) fixture: render the parent WITH real child components
+  // nested in. The parent's own props map via this fixture's map; each child
+  // in `scenario.children` maps via the CHILD component's map (fixture.childComponent).
+  const childMap = fixture.composite
+    ? JSON.parse(fs.readFileSync(path.join(__dirname, `${fixture.childComponent}.map.json`), 'utf-8'))
+    : null;
+  const dump = fixture.scenarios.map((s) => {
+    const props = fixture.composite
+      ? { parent: toProps(s.props || {}, map), children: (s.children || []).map((c) => toProps(c, childMap)) }
+      : toProps(s.props, map);
+    const { body } = render(Component, { props });
+    return { name: s.name, html: body };
+  });
+  const out = path.join(__dirname, `svelte-${component}.dump.json`);
+  fs.writeFileSync(out, JSON.stringify(dump, null, 2), 'utf-8');
+  return dump.length;
+}
+
+// Components eligible for --all: a REGISTRY entry WITH both a core fixture and a
+// local capability map (child-only maps like tab-item have no fixture → skipped).
+function allComponents() {
+  return Object.keys(REGISTRY).filter(
+    (c) =>
+      fs.existsSync(path.join(CORE_FIXTURES, `${c}.json`)) &&
+      fs.existsSync(path.join(__dirname, `${c}.map.json`))
+  );
+}
+
+async function main() {
+  const arg = process.argv[2];
+  const all = arg === '--all';
+  if (!arg || (!all && !REGISTRY[arg])) {
+    console.error(`usage: node dump.mjs <component> | --all\n  known: ${Object.keys(REGISTRY).join(', ')}`);
+    process.exit(2);
+  }
 
   const server = await createServer({
     configFile: false,
@@ -211,24 +244,24 @@ async function main() {
   });
 
   try {
-    const mod = await server.ssrLoadModule(compPath);
-    const Component = mod.default;
-    // Composite (tree) fixture: render the parent WITH real child components
-    // nested in. The parent's own props map via this fixture's map; each child
-    // in `scenario.children` maps via the CHILD component's map (fixture.childComponent).
-    const childMap = fixture.composite
-      ? JSON.parse(fs.readFileSync(path.join(__dirname, `${fixture.childComponent}.map.json`), 'utf-8'))
-      : null;
-    const dump = fixture.scenarios.map((s) => {
-      const props = fixture.composite
-        ? { parent: toProps(s.props || {}, map), children: (s.children || []).map((c) => toProps(c, childMap)) }
-        : toProps(s.props, map);
-      const { body } = render(Component, { props });
-      return { name: s.name, html: body };
-    });
-    const out = path.join(__dirname, `svelte-${component}.dump.json`);
-    fs.writeFileSync(out, JSON.stringify(dump, null, 2), 'utf-8');
-    console.log(`wrote ${dump.length} scenarios → ${path.relative(REPO_ROOT, out)}`);
+    if (all) {
+      const comps = allComponents();
+      let ok = 0, failed = 0;
+      for (const c of comps) {
+        try {
+          const n = await dumpOne(c, server);
+          ok++;
+          console.log(`  ✓ ${c} (${n})`);
+        } catch (e) {
+          failed++;
+          console.log(`  ✗ ${c} — ${e.message.split('\n')[0]}`);
+        }
+      }
+      console.log(`\n${ok}/${comps.length} dumped → scripts/fidelity/svelte-*.dump.json${failed ? ` (${failed} failed)` : ''}`);
+    } else {
+      const n = await dumpOne(arg, server);
+      console.log(`wrote ${n} scenarios → ${path.relative(REPO_ROOT, path.join(__dirname, `svelte-${arg}.dump.json`))}`);
+    }
   } finally {
     await server.close();
   }
