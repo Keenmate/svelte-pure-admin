@@ -1,0 +1,8 @@
+{
+  "//": "Composite (tree) map — svelte. Maps the PARENT's neutral props (button-group vocabulary) to <ButtonGroup>'s props. The children are mapped separately via button.map.json (the fixture's childComponent). dump.mjs composite path renders scripts/fidelity/_compose/ButtonGroupComposed.svelte with { group, buttons }.",
+  "component": "button-group-composed",
+  "features": {
+    "vertical": { "prop": "vertical", "kind": "bool" },
+    "align":    { "prop": "align",    "kind": "enum", "values": ["center", "end", "stretch"] }
+  }
+}

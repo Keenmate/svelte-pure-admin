@@ -140,7 +140,15 @@ const REGISTRY = {
   'card-tab': 'packages/svelte-pure-admin/src/lib/display/CardTab.svelte',
   'card-tab-content': 'packages/svelte-pure-admin/src/lib/display/CardTabContent.svelte',
   'list-item': 'packages/svelte-pure-admin/src/lib/display/ListItem.svelte',
-  'timeline-item': 'packages/svelte-pure-admin/src/lib/display/TimelineItem.svelte'
+  'timeline-item': 'packages/svelte-pure-admin/src/lib/display/TimelineItem.svelte',
+  // Composite (tree) fixtures — a fidelity-only wrapper that nests the REAL
+  // child components inside the REAL parent in one SSR pass (tests the seam a
+  // container-only fixture skips). See fixtures/<key>.json "composite": true.
+  'button-group-composed': 'scripts/fidelity/_compose/ButtonGroupComposed.svelte',
+  'badge-group-composed': 'scripts/fidelity/_compose/BadgeGroupComposed.svelte',
+  'list-composed': 'scripts/fidelity/_compose/ListComposed.svelte',
+  // Context-coupled seam: parent owns which child is --active. See tabs-composed.json.
+  'tabs-composed': 'scripts/fidelity/_compose/TabsComposed.svelte'
 };
 
 // A server-side snippet that emits a piece of (escaped) text.
@@ -205,8 +213,17 @@ async function main() {
   try {
     const mod = await server.ssrLoadModule(compPath);
     const Component = mod.default;
+    // Composite (tree) fixture: render the parent WITH real child components
+    // nested in. The parent's own props map via this fixture's map; each child
+    // in `scenario.children` maps via the CHILD component's map (fixture.childComponent).
+    const childMap = fixture.composite
+      ? JSON.parse(fs.readFileSync(path.join(__dirname, `${fixture.childComponent}.map.json`), 'utf-8'))
+      : null;
     const dump = fixture.scenarios.map((s) => {
-      const { body } = render(Component, { props: toProps(s.props, map) });
+      const props = fixture.composite
+        ? { parent: toProps(s.props || {}, map), children: (s.children || []).map((c) => toProps(c, childMap)) }
+        : toProps(s.props, map);
+      const { body } = render(Component, { props });
       return { name: s.name, html: body };
     });
     const out = path.join(__dirname, `svelte-${component}.dump.json`);

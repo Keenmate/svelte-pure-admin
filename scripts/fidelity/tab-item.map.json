@@ -1,0 +1,8 @@
+{
+  "//": "Capability manifest for <TabItem> (fragment of Tabs) — svelte-pure-admin. The tab button's active state is an EXPLICIT `active` prop the author sets (svelte does NOT inject it from the parent via context — switching is a client onclick closure). NOTE: there is intentionally NO `target` feature — svelte's TabItem has no target prop (it binds onclick directly), so the composite children's `target` field is skipped here (warned, harmless). keen DOES model target (server-side switching handle); its resulting id/data-tab-target handles are trimmed as wiring by tabs-composed.json's per-component `normalize` block — see fixtures/tabs-composed.json.",
+  "component": "tab-item",
+  "features": {
+    "label":  { "prop": "children", "kind": "slot" },
+    "active": { "prop": "active",   "kind": "bool" }
+  }
+}
