@@ -67,8 +67,11 @@
 	let sidebarHidden = $state(
 		typeof localStorage !== 'undefined' && localStorage.getItem('sidebar-hidden') === 'true'
 	);
-	let sidebarUserToggled = $state(false);
 	let sidebarMobileVisible = $state(false);
+	// Reactive viewport flag so the burger icon reflects the REAL open-state
+	// (X when the sidebar is open, hamburger when closed) — desktop uses
+	// !sidebarHidden, mobile uses sidebarMobileVisible. Maintained in onMount.
+	let isMobile = $state(false);
 	let showProfilePanel = $state(false);
 	let showNotifications = $state(false);
 	let showCommandPalette = $state(false);
@@ -108,16 +111,14 @@
 
 	function toggleSidebar() {
 		if (typeof document !== 'undefined') {
-			const isMobile = window.innerWidth <= 768;
+			isMobile = window.innerWidth <= 768;
 			if (isMobile) {
 				// Mobile: Toggle sidebar visibility (overlay)
 				sidebarMobileVisible = !sidebarMobileVisible;
-				sidebarUserToggled = false;
 				document.body.classList.toggle('sidebar-visible', sidebarMobileVisible);
 			} else {
 				// Desktop: Toggle sidebar hidden state
 				sidebarHidden = !sidebarHidden;
-				sidebarUserToggled = !sidebarUserToggled;
 				sidebarMobileVisible = false;
 				document.body.classList.remove('sidebar-visible');
 				document.body.classList.toggle('sidebar-hidden', sidebarHidden);
@@ -212,6 +213,13 @@
 		// Add click outside handler
 		document.addEventListener('click', handleClickOutside);
 
+		// Track viewport so the burger icon reflects the real open-state on resize.
+		const updateIsMobile = () => {
+			isMobile = window.innerWidth <= 768;
+		};
+		updateIsMobile();
+		window.addEventListener('resize', updateIsMobile);
+
 		// Apply sidebar icon-collapse class to sidebar element (can't be done in blocking script)
 		const sidebarBehavior = localStorage.getItem('sidebar-behavior') || 'hide';
 		const sidebar = document.querySelector('.pc-layout__sidebar');
@@ -228,6 +236,7 @@
 		return () => {
 			// Remove click outside handler
 			document.removeEventListener('click', handleClickOutside);
+			window.removeEventListener('resize', updateIsMobile);
 
 			// Remove container width classes
 			document.body.classList.remove('pc-container-sm', 'pc-container-md', 'pc-container-lg', 'pc-container-xl', 'pc-container-2xl');
@@ -517,7 +526,7 @@
 	<Navbar
 		onburgerclick={toggleSidebar}
 		showBurger={true}
-		burgerActive={sidebarMobileVisible || sidebarUserToggled}
+		burgerActive={isMobile ? sidebarMobileVisible : !sidebarHidden}
 	>
 		{#snippet start()}
 			<!-- App identity. As the header narrows the version tag drops first
@@ -671,6 +680,9 @@
 						</SidebarItem>
 						<SidebarItem href="/icons" labelText="Icons" active={$page.url.pathname === '/icons'}>
 							{#snippet icon()}<Icon name="icons" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/typography" labelText="Typography" active={$page.url.pathname === '/typography'}>
+							{#snippet icon()}<Icon name="typography" />{/snippet}
 						</SidebarItem>
 					{/snippet}
 				</SidebarItem>

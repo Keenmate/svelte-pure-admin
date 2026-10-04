@@ -377,7 +377,7 @@
 		<Heading level={3}>Active Filter Tags</Heading>
 		<ButtonGroup>
 			<Button size="sm" variant="secondary" isIconOnly titleText="Refresh"><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></Button>
-			<Button size="sm" variant="secondary" isIconOnly titleText="Download"><i class="fas fa-download"></i></Button>
+			<Button size="sm" variant="secondary" isIconOnly titleText="Download"><span class="pa-icon pa-icon--download" aria-hidden="true"></span></Button>
 		</ButtonGroup>
 	{/snippet}
 

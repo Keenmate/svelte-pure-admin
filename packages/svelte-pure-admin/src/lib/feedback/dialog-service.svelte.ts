@@ -22,6 +22,13 @@ export interface BaseDialogOptions {
 	title?: string;
 	message?: string;
 	variant?: DialogVariant;
+	/**
+	 * Leading masked icon in the title (`.pa-icon--*`). Pass a `pa-icon--*` name to
+	 * override (e.g. `'delete'`), or `false` to hide. When omitted it is derived from
+	 * `variant` — success/warning/danger/info show the matching severity mark, `primary`
+	 * shows none. Mirrors core's `modal-dialogs.js` `icon` option. Since core v3.2.0.
+	 */
+	icon?: string | false;
 	size?: DialogSize;
 	position?: DialogPosition;
 	closeOnBackdrop?: boolean;

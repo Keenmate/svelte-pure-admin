@@ -23,7 +23,7 @@
 
 	const classes = $derived(() => {
 		const base: string[] = [];
-		if (horizontalAlignment) base.push(`pa-text--${horizontalAlignment}`);
+		if (horizontalAlignment) base.push(`text-${horizontalAlignment}`);
 		if (className) base.push(className);
 		return base.length > 0 ? base.join(' ') : undefined;
 	});

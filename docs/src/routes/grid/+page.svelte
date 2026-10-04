@@ -4,7 +4,7 @@
 
 <!-- Overview -->
 <Card titleText="Overview">
-	<Paragraph class="pa-text--secondary mb-4">
+	<Paragraph color="secondary" class="mb-4">
 		Pure Admin uses a custom flexbox grid system with intuitive naming. Columns use <Code>pc-col-&#123;size&#125;</Code> for percentages
 		and <Code>pc-col-&#123;x&#125;-&#123;y&#125;</Code> for fractions.
 	</Paragraph>
@@ -196,14 +196,14 @@
 <!-- Responsive Grid -->
 <Card titleText="Responsive Grid" subtitleText="Stack on mobile, columns on larger screens. Resize your browser to see the effect.">
 	<h4>Mobile-First Pattern</h4>
-	<Paragraph class="pa-text--secondary mb-2">Full width on mobile, 50% on medium screens and up:</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Full width on mobile, 50% on medium screens and up:</Paragraph>
 	<Grid class="mb-4">
 		<Column size="100" md="50"><div class="grid-demo-cell">.pc-col-100 .pc-col-md-50</div></Column>
 		<Column size="100" md="50"><div class="grid-demo-cell">.pc-col-100 .pc-col-md-50</div></Column>
 	</Grid>
 
 	<h4>Progressive Columns</h4>
-	<Paragraph class="pa-text--secondary mb-2">Different layouts at each breakpoint:</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Different layouts at each breakpoint:</Paragraph>
 	<Grid class="mb-4">
 		<Column size="100" sm="50" lg="25">
 			<div class="grid-demo-cell">100% &rarr; 50% &rarr; 25%</div>
@@ -220,7 +220,7 @@
 	</Grid>
 
 	<h4>Responsive Fractions</h4>
-	<Paragraph class="pa-text--secondary mb-2">Fractions also support breakpoints:</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Fractions also support breakpoints:</Paragraph>
 	<Grid>
 		<Column size="100" md="1-3"><div class="grid-demo-cell">.pc-col-100 .pc-col-md-1-3</div></Column>
 		<Column size="100" md="2-3"><div class="grid-demo-cell">.pc-col-100 .pc-col-md-2-3</div></Column>
@@ -255,23 +255,23 @@
 <Card titleText="Row Alignment" subtitleText="Control horizontal and vertical alignment of columns">
 	<h4>Horizontal Alignment</h4>
 
-	<Paragraph class="pa-text--secondary mb-2"><Code>.pc-row--center</Code></Paragraph>
+	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--center</Code></Paragraph>
 	<Grid justify="center" class="mb-2" style="background: var(--base-primary-bg);">
 		<Column size="30"><div class="grid-demo-cell">Centered</div></Column>
 	</Grid>
 
-	<Paragraph class="pa-text--secondary mb-2"><Code>.pc-row--end</Code></Paragraph>
+	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--end</Code></Paragraph>
 	<Grid justify="end" class="mb-2" style="background: var(--base-primary-bg);">
 		<Column size="30"><div class="grid-demo-cell">Right aligned</div></Column>
 	</Grid>
 
-	<Paragraph class="pa-text--secondary mb-2"><Code>.pc-row--between</Code></Paragraph>
+	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--between</Code></Paragraph>
 	<Grid justify="between" class="mb-2" style="background: var(--base-primary-bg);">
 		<Column size="20"><div class="grid-demo-cell">Left</div></Column>
 		<Column size="20"><div class="grid-demo-cell">Right</div></Column>
 	</Grid>
 
-	<Paragraph class="pa-text--secondary mb-2"><Code>.pc-row--around</Code></Paragraph>
+	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--around</Code></Paragraph>
 	<Grid justify="around" class="mb-4" style="background: var(--base-primary-bg);">
 		<Column size="20"><div class="grid-demo-cell">A</div></Column>
 		<Column size="20"><div class="grid-demo-cell">B</div></Column>
@@ -281,21 +281,21 @@
 	<h4>Vertical Alignment</h4>
 	<Grid>
 		<Column size="100" md="1-3">
-			<Paragraph class="pa-text--secondary mb-2"><Code>.pc-row--top</Code></Paragraph>
+			<Paragraph color="secondary" class="mb-2"><Code>.pc-row--top</Code></Paragraph>
 			<Grid align="top" style="background: var(--base-primary-bg); min-height: 100px;">
 				<Column><div class="grid-demo-cell">Top</div></Column>
 				<Column><div class="grid-demo-cell">Top</div></Column>
 			</Grid>
 		</Column>
 		<Column size="100" md="1-3">
-			<Paragraph class="pa-text--secondary mb-2"><Code>.pc-row--middle</Code></Paragraph>
+			<Paragraph color="secondary" class="mb-2"><Code>.pc-row--middle</Code></Paragraph>
 			<Grid align="middle" style="background: var(--base-primary-bg); min-height: 100px;">
 				<Column><div class="grid-demo-cell">Middle</div></Column>
 				<Column><div class="grid-demo-cell">Middle</div></Column>
 			</Grid>
 		</Column>
 		<Column size="100" md="1-3">
-			<Paragraph class="pa-text--secondary mb-2"><Code>.pc-row--bottom</Code></Paragraph>
+			<Paragraph color="secondary" class="mb-2"><Code>.pc-row--bottom</Code></Paragraph>
 			<Grid align="bottom" style="background: var(--base-primary-bg); min-height: 100px;">
 				<Column><div class="grid-demo-cell">Bottom</div></Column>
 				<Column><div class="grid-demo-cell">Bottom</div></Column>
@@ -361,7 +361,7 @@
 		</Column>
 		<Column size="2-3">
 			<div style="background: var(--base-primary-bg); padding: 0.8rem; border-radius: 4px;">
-				<Paragraph class="pa-text--secondary mb-2">Nested grid inside 2/3 column:</Paragraph>
+				<Paragraph color="secondary" class="mb-2">Nested grid inside 2/3 column:</Paragraph>
 				<Grid>
 					<Column size="1-2"><div class="grid-demo-cell" style="background: var(--base-text-color-2);">Nested 1/2</div></Column>
 					<Column size="1-2"><div class="grid-demo-cell" style="background: var(--base-text-color-2);">Nested 1/2</div></Column>
@@ -376,7 +376,7 @@
 	<Grid>
 		<Column size="100" md="50">
 			<h4>Percentage Classes</h4>
-			<Paragraph class="pa-text--secondary">
+			<Paragraph color="secondary">
 				<Code>.pc-col-5</Code> <Code>.pc-col-10</Code> <Code>.pc-col-15</Code> <Code>.pc-col-20</Code> <Code>.pc-col-25</Code><br>
 				<Code>.pc-col-30</Code> <Code>.pc-col-35</Code> <Code>.pc-col-40</Code> <Code>.pc-col-45</Code> <Code>.pc-col-50</Code><br>
 				<Code>.pc-col-55</Code> <Code>.pc-col-60</Code> <Code>.pc-col-65</Code> <Code>.pc-col-70</Code> <Code>.pc-col-75</Code><br>
@@ -385,7 +385,7 @@
 		</Column>
 		<Column size="100" md="50">
 			<h4>Fraction Classes</h4>
-			<Paragraph class="pa-text--secondary">
+			<Paragraph color="secondary">
 				<Code>.pc-col-1-2</Code><br>
 				<Code>.pc-col-1-3</Code> <Code>.pc-col-2-3</Code><br>
 				<Code>.pc-col-1-4</Code> <Code>.pc-col-3-4</Code><br>

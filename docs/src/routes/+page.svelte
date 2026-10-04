@@ -40,7 +40,7 @@
 <!-- Dashboard Header -->
 <Grid>
 	<Column size="100">
-		<Paragraph mode="muted">Real-time overview of key performance metrics</Paragraph>
+		<Paragraph color="secondary">Real-time overview of key performance metrics</Paragraph>
 	</Column>
 </Grid>
 

@@ -5,9 +5,10 @@
 	 * Uses utility classes like text-danger, text-success, etc.
 	 */
 
-	// Core ships only text-{primary,success,danger,warning,info} colour utilities.
-	// No text-secondary/-muted/-light/-dark exist (they'd resolve to nothing).
-	type TextVariant = 'default' | 'primary' | 'success' | 'danger' | 'warning' | 'info';
+	// All semantic colours are flat `.text-*` utilities. `secondary` →
+	// `.text-secondary` is the muted/subdued colour (colour-only, so inline-safe).
+	// Every variant maps straight to `text-{variant}`.
+	type TextVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 
 	interface Props {
 		/** Text color variant */

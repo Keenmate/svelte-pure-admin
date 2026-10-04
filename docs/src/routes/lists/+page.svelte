@@ -1,5 +1,5 @@
 <script lang="ts">
-			import { Heading, Paragraph, Card, Grid, Column, BasicList, OrderedList, DefinitionList, List, ListItem } from '@keenmate/svelte-pure-admin';
+			import { Heading, Paragraph, Card, Grid, Column, BasicList, OrderedList, DefinitionList, List, ListItem, Code } from '@keenmate/svelte-pure-admin';
 </script>
 
 <Paragraph>Styled lists for content organization - from basic bullets to icon lists and definition lists.</Paragraph>
@@ -33,6 +33,34 @@
 				<li>Better for longer content blocks</li>
 				<li>Improved readability</li>
 			</BasicList>
+
+			<Heading level={4} class="mt-8">Nested (Subnodes)</Heading>
+			<BasicList>
+				<li>Dashboard
+					<BasicList>
+						<li>Real-time metrics</li>
+						<li>Activity feed
+							<BasicList>
+								<li>Recent logins</li>
+								<li>System events</li>
+							</BasicList>
+						</li>
+					</BasicList>
+				</li>
+				<li>User management
+					<BasicList>
+						<li>Roles &amp; permissions</li>
+						<li>Invitations</li>
+					</BasicList>
+				</li>
+				<li>Settings</li>
+			</BasicList>
+			<Paragraph class="text-secondary mt-2">
+				Nested lists use the same marker at every depth (the theme's <Code>--base-list-bullet-type</Code>,
+				default <Code>disc</Code>) rather than the browser's depth cascade, and inherit
+				<Code>--compact</Code> / <Code>--spacious</Code> density from the parent. Override the marker at
+				runtime with <Code>--pc-list-bullet-type</Code> (a foundation CSS variable, since core v3.2.0).
+			</Paragraph>
 		</Card>
 
 		<!-- Ordered Lists -->

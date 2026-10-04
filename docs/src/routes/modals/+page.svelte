@@ -253,9 +253,10 @@
   Processing...
 </Modal>
 
-<!-- Themed modal -->
+<!-- Themed modal + leading severity icon -->
 <Modal bind:show={showDanger}
   titleText="Delete Item"
+  titleIcon="delete"
   variant="danger">
   Are you sure?
   {#snippet footer()}
@@ -265,7 +266,7 @@
 
 <!-- Full modal theme -->
 <Modal bind:show={showSuccess}
-  titleText="Done!" variant="success">
+  titleText="Done!" titleIcon="success" variant="success">
   Operation completed.
 </Modal>`}</CodeBlock>
 		</Column>
@@ -292,6 +293,7 @@
 			<tr><td><Code>isScrollable</Code></td><td>boolean</td><td>false</td><td>Scrollable body content</td></tr>
 			<tr><td><Code>isStatic</Code></td><td>boolean</td><td>false</td><td>Prevents ESC/backdrop close</td></tr>
 			<tr><td><Code>titleText</Code></td><td>string</td><td>-</td><td>Modal title</td></tr>
+			<tr><td><Code>titleIcon</Code></td><td>string</td><td>-</td><td>Leading masked icon before the title (e.g. <Code>success</Code> / <Code>warning</Code> / <Code>danger</Code> / <Code>info</Code> / <Code>delete</Code>) — inherits the header colour. Since core v3.2.0.</td></tr>
 			<tr><td><Code>shouldShowClose</Code></td><td>boolean</td><td>true</td><td>Show close button in header</td></tr>
 			<tr><td><Code>shouldCloseOnEscape</Code></td><td>boolean</td><td>true</td><td>Close on ESC key</td></tr>
 			<tr><td><Code>beforeCloseCallback</Code></td><td>() => boolean | void</td><td>-</td><td>Return false to prevent closing</td></tr>
@@ -536,10 +538,7 @@
 </Modal>
 
 <!-- Success Modal -->
-<Modal bind:show={showSuccess} variant="success">
-	{#snippet header()}
-		<Heading level={4}>✓ Success!</Heading>
-	{/snippet}
+<Modal bind:show={showSuccess} variant="success" titleText="Success!" titleIcon="success">
 	<Paragraph>Your action has been completed successfully!</Paragraph>
 	<Alert variant="success">Operation completed without any errors.</Alert>
 	{#snippet footer()}
@@ -548,10 +547,7 @@
 </Modal>
 
 <!-- Warning Modal -->
-<Modal bind:show={showWarning} variant="warning">
-	{#snippet header()}
-		<Heading level={4}>⚠ Warning</Heading>
-	{/snippet}
+<Modal bind:show={showWarning} variant="warning" titleText="Warning" titleIcon="warning">
 	<Paragraph>Please review your action before proceeding.</Paragraph>
 	<Alert variant="warning">
 		This action may have consequences that cannot be undone.
@@ -563,10 +559,7 @@
 </Modal>
 
 <!-- Danger Modal -->
-<Modal bind:show={showDanger} variant="danger">
-	{#snippet header()}
-		<Heading level={4}>🔥 Danger Zone</Heading>
-	{/snippet}
+<Modal bind:show={showDanger} variant="danger" titleText="Danger Zone" titleIcon="danger">
 	<Paragraph>This action is potentially destructive.</Paragraph>
 	<Alert variant="danger">
 		<strong>Warning:</strong> This action cannot be undone and may result in data loss.
@@ -674,7 +667,7 @@
 </Modal>
 
 <!-- Delete Confirmation Modal -->
-<Modal bind:show={showConfirmDelete} size="sm" variant="danger" titleText="Confirm Delete">
+<Modal bind:show={showConfirmDelete} size="sm" variant="danger" titleText="Confirm Delete" titleIcon="delete">
 	<Paragraph>Are you sure you want to delete this item?</Paragraph>
 	<Alert variant="danger">
 		<strong>This action cannot be undone.</strong>
@@ -696,7 +689,7 @@
 </Modal>
 
 <!-- Information Dialog -->
-<Modal bind:show={showInfo} variant="info" titleText="Information">
+<Modal bind:show={showInfo} variant="info" titleText="Information" titleIcon="info">
 	<Paragraph>Here's some important information you should know:</Paragraph>
 	<Alert variant="info">
 		Your subscription will expire in 7 days. Consider renewing to continue enjoying all features.
@@ -739,10 +732,7 @@
 </Modal>
 
 <!-- Static Modal (no ESC, no backdrop click) -->
-<Modal bind:show={showStatic} size="sm" isStatic variant="warning" shouldShowClose={false}>
-	{#snippet header()}
-		<Heading level={4}>Static Modal</Heading>
-	{/snippet}
+<Modal bind:show={showStatic} size="sm" isStatic variant="warning" shouldShowClose={false} titleText="Static Modal" titleIcon="warning">
 	<Paragraph>This modal <strong>cannot</strong> be closed by:</Paragraph>
 	<BasicList>
 		<li>Pressing the <kbd>Escape</kbd> key</li>

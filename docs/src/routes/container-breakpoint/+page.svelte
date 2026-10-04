@@ -9,11 +9,13 @@
 		FitContainer,
 		FitSlot,
 		FitStep,
+		Paragraph,
 		Sparkline,
 		SparklineBar,
 		Stat,
 		TabItem,
-		Tabs
+		Tabs,
+		Text
 	} from '@keenmate/svelte-pure-admin';
 	import MountLog from './MountLog.svelte';
 
@@ -67,7 +69,7 @@
 
 <div class="pa-page-content">
 	<h1>Fit to Size</h1>
-	<p class="text-muted">
+	<Paragraph color="secondary">
 		Three ways to make a component adapt to the space it is given — and the
 		point of this page is <em>which one to reach for</em>. A CSS
 		<code>@container</code> query costs nothing and should be the default.
@@ -77,7 +79,7 @@
 		you <code>{'{#if}'}</code> on it and Svelte <strong>mounts only the branch that
 		shows</strong> — the one thing CSS cannot do, because a hidden branch is still
 		built. §3 and §4 are deliberately the <strong>same card</strong>, done both ways.
-	</p>
+	</Paragraph>
 
 	<Callout variant="info" class="mb-4">
 		<strong>The vocabulary.</strong> Under the hood these wrap core's
@@ -95,7 +97,7 @@
 	     §1 — Toolbar row: fit.js (content-measured, 1-D)
 	     ============================================================ -->
 	<h2 class="mt-5">1 · Card toolbar — shrink, don't lose</h2>
-	<p class="text-muted">
+	<Paragraph color="secondary">
 		A <code>steps</code> slot degrades <strong>full label → icon-only → gone</strong>
 		instead of vanishing outright, so an action stays reachable as an icon before
 		it is dropped. <strong>Save</strong> is pinned full
@@ -103,10 +105,10 @@
 		<strong>Export</strong> shrink to icons (higher priority survives longer);
 		<strong>Delete</strong> is untagged, so it inherits the container's
 		<code>defaultPriority={20}</code> and drops first.
-	</p>
+	</Paragraph>
 
 	<div class="stage-slider">
-		<span class="text-muted">Container width</span>
+		<Text variant="secondary">Container width</Text>
 		<input type="range" min="200" max="720" bind:value={w1} aria-label="Example 1 width" />
 		<output>{w1}px</output>
 	</div>
@@ -138,17 +140,17 @@
 	     §2 — chart ↔ KPI: pure CSS container query, no JS
 	     ============================================================ -->
 	<h2 class="mt-5">2 · Product card — chart ↔ KPI</h2>
-	<p class="text-muted">
+	<Paragraph color="secondary">
 		A different job needs a different tool. Swapping a <strong>sparkline</strong>
 		for a compact <strong>KPI</strong> is a 2-D layout change, not a 1-D row fold —
 		so this one is a plain CSS <strong>container query</strong> on the card, with
 		<em>no engine at all</em>. The left half stays product identity; the right half
 		shows the trend while there is room and swaps to a <code>Stat</code> once the
 		card narrows past <code>45rem</code> (450px).
-	</p>
+	</Paragraph>
 
 	<div class="stage-slider">
-		<span class="text-muted">Container width</span>
+		<Text variant="secondary">Container width</Text>
 		<input type="range" min="260" max="720" bind:value={w2} aria-label="Example 2 width" />
 		<output>{w2}px</output>
 	</div>
@@ -169,7 +171,7 @@
 							<Sparkline>
 								{#each trend as v}<SparklineBar value={v} />{/each}
 							</Sparkline>
-							<div class="text-muted stage-note mt-1">Revenue · 12 weeks</div>
+							<div class="text-secondary stage-note mt-1">Revenue · 12 weeks</div>
 						</div>
 						<div class="cq-narrow">
 							<Stat number="$847K" labelText="Revenue" changeText="+12.5%" changeDirection="positive" />
@@ -184,7 +186,7 @@
 	     §3 — rich card, three levels: still pure CSS
 	     ============================================================ -->
 	<h2 class="mt-5">3 · Rich product card — degrade on multiple levels</h2>
-	<p class="text-muted">
+	<Paragraph color="secondary">
 		The real power shows when one card restyles on <strong>several axes at once</strong>.
 		A single container query with three widths: as it narrows, the three data
 		panels (<strong>Orders · Stock · Sales</strong>) collapse from a
@@ -193,10 +195,10 @@
 		then its packaging line and trend badge. Every visible piece — <code>Badge</code>,
 		<code>Stat</code>, <code>Tabs</code>, <code>DotLeaders</code> — is a real
 		component; only the layout switches.
-	</p>
+	</Paragraph>
 
 	<div class="stage-slider">
-		<span class="text-muted">Container width</span>
+		<Text variant="secondary">Container width</Text>
 		<input type="range" min="260" max="880" bind:value={w3} aria-label="Example 3 width" />
 		<output>{w3}px</output>
 	</div>
@@ -259,7 +261,7 @@
 	     §4 — the same card on the engine: mount on demand
 	     ============================================================ -->
 	<h2 class="mt-5">4 · The same card, on the engine — with a chart it builds on demand</h2>
-	<p class="text-muted">
+	<Paragraph color="secondary">
 		This is §3's card again — the same three-level degrade, the same header
 		trimming — but driven by <code>ContainerBreakpoint</code> instead of a CSS
 		<code>@container</code>. Why bother, if CSS already did it? Because in §3
@@ -267,7 +269,7 @@
 		are <code>{'{#if}'}</code>-gated, so Svelte constructs only the one on screen:
 		the grid-only <strong>revenue chart</strong> is <em>built when the card
 		reaches <code>grid</code> and destroyed when it leaves</em>. Watch the log.
-	</p>
+	</Paragraph>
 
 	<Callout variant="info" class="mb-3">
 		<strong>What the numbers mean.</strong> The values in <code>steps</code> are
@@ -284,7 +286,7 @@
 	</Callout>
 
 	<div class="stage-slider">
-		<span class="text-muted">Container width</span>
+		<Text variant="secondary">Container width</Text>
 		<input type="range" min="260" max="880" bind:value={w4} aria-label="Example 4 width" />
 		<output>{w4}px</output>
 		<Badge variant="primary">mode: {mode4}</Badge>

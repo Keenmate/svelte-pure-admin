@@ -548,6 +548,59 @@
 	</Table>
 </Card>
 
+<!-- Plain table + two-line cells (core 3.3.0) -->
+<Heading level={2} class="mt-8">Plain Table &amp; Two-Line Cells</Heading>
+
+<Card titleText="Plain ruled table (isPlain)">
+	<Paragraph>
+		<code>isPlain</code> (<code>pa-table--plain</code>) strips the themed header fill and
+		body/stripe backgrounds so the table reads as a plain ruled grid — for paper forms,
+		printouts and embedded sheet grids. Backgrounds go transparent, so it inherits whatever
+		surface it sits on; pair it with <code>isBordered</code> for the cell rules.
+	</Paragraph>
+	<TableContainer>
+		<Table isPlain isBordered>
+			{#snippet children()}
+				<thead>
+					<tr>
+						<th>Description</th>
+						<th class="text-end">Qty</th>
+						<th class="text-end">Unit price</th>
+						<th class="text-end">Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<!-- Two-line cell: item title + muted-italic description in one <td>. -->
+						<td>
+							<span class="pa-table__item-title">Application support</span>
+							<span class="pa-table__item-desc">Business portal — August 2026</span>
+						</td>
+						<td class="text-end">5 days</td>
+						<td class="text-end">8,000.00</td>
+						<td class="text-end">40,000.00</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="pa-table__item-title">Small sewing machine</span>
+							<span class="pa-table__item-desc">For home owners, hobbyists, light clothing</span>
+						</td>
+						<td class="text-end">2 pcs</td>
+						<td class="text-end">1,250.00</td>
+						<td class="text-end">2,500.00</td>
+					</tr>
+				</tbody>
+			{/snippet}
+		</Table>
+	</TableContainer>
+	<Paragraph class="mt-4">
+		The <strong>two-line cell</strong> — <code>pa-table__item-title</code> plus muted-italic
+		<code>pa-table__item-desc</code> stacked in a single <code>&lt;td&gt;</code> — is plain cell
+		content (a primary name over a secondary description, e.g. line-item name + spec, or a name
+		+ email), so it needs no Table prop: just drop the two spans into the cell.
+	</Paragraph>
+</Card>
+
 <!-- Load More Examples -->
 <Heading level={2} class="mt-8">Load More</Heading>
 

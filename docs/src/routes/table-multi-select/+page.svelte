@@ -171,7 +171,7 @@
 			variant="primary"
 			onclick={exportSelected}
 		>
-			<span class="pa-btn__icon"><i class="fas fa-download"></i></span>
+			<span class="pa-btn__icon"><span class="pa-icon pa-icon--download" aria-hidden="true"></span></span>
 			Export
 
 			{#snippet menu()}

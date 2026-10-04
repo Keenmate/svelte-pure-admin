@@ -205,7 +205,7 @@
 		<Card titleText="Net Promoter Score">
 			<div class="d-flex flex-column align-center">
 				<Gauge value={72} variant="success" valueText="72" labelText="NPS" minText="0" maxText="100" />
-				<div class="mt-sm text-muted text-xs text-center">Target: 65 &nbsp;|&nbsp; Industry avg: 58</div>
+				<div class="mt-sm text-secondary text-xs text-center">Target: 65 &nbsp;|&nbsp; Industry avg: 58</div>
 			</div>
 		</Card>
 	</Column>
@@ -356,7 +356,7 @@
 		<Card titleText="Email Open Rate">
 			<div class="d-flex flex-column align-center">
 				<ProgressRing value={38} size="lg" labelText="open rate" />
-				<div class="mt-sm text-muted text-xs text-center">Industry avg: 21%</div>
+				<div class="mt-sm text-secondary text-xs text-center">Industry avg: 21%</div>
 			</div>
 		</Card>
 	</Column>

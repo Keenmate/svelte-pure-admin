@@ -15,6 +15,14 @@
 		size?: TableSize;
 		/** Full cell borders on all sides */
 		isBordered?: boolean;
+		/**
+		 * Neutral ruled table — strips the themed header fill and body/stripe
+		 * backgrounds so the table reads as a plain ruled grid (paper forms,
+		 * printouts, embedded sheet grids) instead of an app data table.
+		 * Backgrounds go transparent so it inherits the surface it sits on;
+		 * pair with `isBordered` for the cell rules. Since core v3.3.0.
+		 */
+		isPlain?: boolean;
 		/** Responsive table with horizontal scrolling */
 		isResponsive?: boolean;
 		/** Responsive grid layout (collapses to cards on mobile) */
@@ -30,6 +38,7 @@
 		isCompact = false,
 		size,
 		isBordered = false,
+		isPlain = false,
 		isResponsive = false,
 		isResponsiveGrid = false,
 		class: className = '',
@@ -47,6 +56,7 @@
 		if (isCompact) base.push('pa-table--xs'); // "compact" IS the xs size in core
 		if (size) base.push(`pa-table--${size}`);
 		if (isBordered) base.push('pa-table--bordered');
+		if (isPlain) base.push('pa-table--plain');
 		if (isResponsive) base.push('pa-table--responsive');
 		if (isResponsiveGrid) base.push('pa-table--responsive-grid');
 		if (className) base.push(className);

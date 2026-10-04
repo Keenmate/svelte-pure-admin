@@ -24,7 +24,8 @@
 		ToastContainer,
 		BasicList,
 		Link,
-		Code
+		Code,
+		Text
 	} from '@keenmate/svelte-pure-admin';
 	import { tick } from 'svelte';
 
@@ -629,27 +630,27 @@
 							{#if e.department}
 								<Badge variant="info">{e.department}</Badge>
 							{:else}
-								<span class="text-muted">—</span>
+								<Text variant="secondary">—</Text>
 							{/if}
 						</td>
 						<td>
 							{#if e.start_date}
 								{e.start_date}
 							{:else}
-								<span class="text-muted">—</span>
+								<Text variant="secondary">—</Text>
 							{/if}
 						</td>
 						<td>
 							{#if e.bio}
 								<span title={e.bio}>{truncate(e.bio, 60)}</span>
 							{:else}
-								<span class="text-muted">—</span>
+								<Text variant="secondary">—</Text>
 							{/if}
 						</td>
 						<td>
-							<span class="text-muted" title={longDateTime(e.inserted_at)}>
+							<Text variant="secondary" titleText={longDateTime(e.inserted_at)}>
 								{relativeTime(e.inserted_at)}
-							</span>
+							</Text>
 						</td>
 					</tr>
 				{/each}

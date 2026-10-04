@@ -744,7 +744,10 @@
 			<li>
 				<strong>Standalone choice</strong> (a lone <Code>.pa-checkbox</Code> / <Code>.pa-radio</Code>,
 				e.g. a consent box with no <Code>*-group</Code> wrapper) → the <strong>*</strong> sits on its
-				<strong>own</strong> option label. See <em>I accept the terms</em> below.
+				<strong>own</strong> option label. Use native <Code>required</Code>, or — when the checked
+				state is JS-driven and never carries the attribute — declare it on the group with
+				<Code>.pa-form-group--required</Code> (the <Code>isRequired</Code> prop). Both land the
+				<strong>*</strong> on the option label. See <em>I accept the terms</em> below.
 			</li>
 			<li>
 				<strong>Complex widgets</strong> with no native control (image browser, dropzone, web component)
@@ -786,6 +789,14 @@
 		<FormGroup>
 			<Checkbox id="consent" required labelText="I accept the terms" />
 		</FormGroup>
+
+		<!-- Same standalone consent, but the requirement is declared on the GROUP
+		     (isRequired → .pa-form-group--required) rather than a native attribute —
+		     the escape hatch when the checked state is JS-driven and never carries
+		     `required`. The asterisk still lands on the option label. Since core v3.2.0. -->
+		<FormGroup isRequired>
+			<Checkbox id="consent-group" labelText="I accept the terms (required via group modifier)" />
+		</FormGroup>
 	</Form>
 </Card>
 
@@ -826,7 +837,7 @@
 <Card>
 	{#snippet header()}
 		<h3>Horizontal Form Layout</h3>
-		<Paragraph class="pa-text--sm pa-text--secondary m-0">Labels on the left, inputs on the right with varying field widths</Paragraph>
+		<Paragraph size="sm" color="secondary" class="m-0">Labels on the left, inputs on the right with varying field widths</Paragraph>
 	{/snippet}
 
 	<Form>
@@ -929,7 +940,7 @@
 	</Form>
 
 	{#snippet footer()}
-		<Paragraph class="pa-text--sm pa-text--secondary m-0">
+		<Paragraph size="sm" color="secondary" class="m-0">
 			<strong>Layout pattern:</strong> Each field uses <Code>.pa-form-group--horizontal</Code> (label left, input right) inside <Code>pc-col-*</Code> columns.
 			Line 1: equal widths (1/3 each).
 			Line 2: varying sizes (1/4 + 5/12 + 1/3).

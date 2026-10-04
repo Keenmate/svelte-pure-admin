@@ -25,6 +25,20 @@
 	// Get dialogs reactively via getter
 	const dialogs = $derived(dialogStore.dialogs);
 
+	// Leading masked title icon — mirrors core's modal-dialogs.js: an explicit `icon`
+	// overrides (or `false` hides), otherwise it's derived from `variant` (primary → none).
+	const severityIcon: Record<string, string> = {
+		success: 'success',
+		warning: 'warning',
+		danger: 'danger',
+		info: 'info'
+	};
+	function resolveTitleIcon(options: DialogState['options']): string | undefined {
+		if (options.icon === false) return undefined;
+		if (typeof options.icon === 'string') return options.icon;
+		return options.variant ? severityIcon[options.variant] : undefined;
+	}
+
 	// Track input values and errors for prompt dialogs
 	let inputValues = $state<Record<string, string>>({});
 	let inputErrors = $state<Record<string, string>>({});
@@ -133,6 +147,7 @@
 		shouldShowClose={false}
 		position={options.position || 'center'}
 		titleText={options.title}
+		titleIcon={resolveTitleIcon(options)}
 		class={options.class}
 		bodyClass={options.bodyClass}
 		footerClass={options.footerClass}

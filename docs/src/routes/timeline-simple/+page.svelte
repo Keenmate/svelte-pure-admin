@@ -203,7 +203,7 @@
 		</div>
 	{:else}
 		<div class="mt-4 text-center">
-			<Paragraph class="text-sm text-muted">
+			<Paragraph color="secondary" class="text-sm">
 				All activities loaded
 			</Paragraph>
 		</div>

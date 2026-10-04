@@ -214,14 +214,14 @@
 	<Grid>
 		<Column size="100" md="50">
 			<Heading level={4}>Callout</Heading>
-			<Paragraph mode="muted">Documentation-style, left border accent, for static content</Paragraph>
+			<Paragraph color="secondary">Documentation-style, left border accent, for static content</Paragraph>
 			<Callout variant="info">
 				<strong>Callouts</strong> are best for documentation, tips, and static informational content that doesn't require user action.
 			</Callout>
 		</Column>
 		<Column size="100" md="50">
 			<Heading level={4}>Alert</Heading>
-			<Paragraph mode="muted">Full background, dismissible, for dynamic feedback</Paragraph>
+			<Paragraph color="secondary">Full background, dismissible, for dynamic feedback</Paragraph>
 			<Alert variant="info">
 				<strong>Alerts</strong> are best for dynamic feedback, notifications, and messages that may require user action or dismissal.
 			</Alert>

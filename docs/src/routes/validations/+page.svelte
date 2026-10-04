@@ -121,14 +121,13 @@
 	<Paragraph class="mb-3">All errors collected in a single alert at the top. Good for accessibility and giving users a quick overview of all issues.</Paragraph>
 
 	<Form>
-		<Alert variant="danger" class="mb-4">
-			<Strong>Please fix the following errors:</Strong>
-			<BasicList class="mt-0 mb-0">
+		<Alert variant="danger" class="mb-4" headingText="Please fix the following errors:">
+			{#snippet list()}
 				<li>First name is required</li>
 				<li>Email address is not valid</li>
 				<li>Password must contain at least one uppercase letter</li>
 				<li>Please accept the terms and conditions</li>
-			</BasicList>
+			{/snippet}
 		</Alert>
 
 		<Grid>
@@ -176,12 +175,11 @@
 	<Paragraph class="mb-3">The best of both worlds. Summary for overview, isInline for specific guidance. Most accessible approach.</Paragraph>
 
 	<Form>
-		<Alert variant="danger" class="mb-4">
-			<Strong>2 errors found:</Strong>
-			<BasicList class="mt-0 mb-0">
+		<Alert variant="danger" class="mb-4" headingText="2 errors found:">
+			{#snippet list()}
 				<li><Link href="#card-number">Card number</Link> - Invalid card number format</li>
 				<li><Link href="#cvv">CVV</Link> - Must be 3 or 4 digits</li>
-			</BasicList>
+			{/snippet}
 		</Alert>
 
 		<Grid>
@@ -348,7 +346,7 @@
 
 	<!-- Simulated toast preview -->
 	<Card class="mt-4 bg-light" hasPadding>
-		<Paragraph class="text-muted mb-2"><Em>Toast preview (normally appears in corner):</Em></Paragraph>
+		<Paragraph color="secondary" class="mb-2"><Em>Toast preview (normally appears in corner):</Em></Paragraph>
 		<Toast variant="danger" titleText="Validation Failed" messageText="Invalid credentials. Please check your email and password." show={true} duration={0} />
 	</Card>
 
@@ -378,7 +376,7 @@
 						<FormHelp variant="success">Looks good!</FormHelp>
 					{/if}
 				</FormGroup>
-				<SmallText class="mt-2 text-muted">Validates on every keystroke. Can feel aggressive.</SmallText>
+				<SmallText class="mt-2 text-secondary">Validates on every keystroke. Can feel aggressive.</SmallText>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
@@ -398,7 +396,7 @@
 						<FormHelp variant="success">Looks good!</FormHelp>
 					{/if}
 				</FormGroup>
-				<SmallText class="mt-2 text-muted">Validates when field loses focus. Good balance.</SmallText>
+				<SmallText class="mt-2 text-secondary">Validates when field loses focus. Good balance.</SmallText>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
@@ -419,7 +417,7 @@
 					{/if}
 				</FormGroup>
 				<Button variant="info" size="sm" class="mt-2" onclick={handleSubmitValidation}>Submit</Button>
-				<SmallText class="mt-2 text-muted">All errors shown at once on submit. Traditional approach.</SmallText>
+				<SmallText class="mt-2 text-secondary">All errors shown at once on submit. Traditional approach.</SmallText>
 			</Card>
 		</Column>
 	</Grid>
@@ -487,7 +485,7 @@
 		</Column>
 		<Column size="1-3" class="text-center">
 			<Badge size="lg" class="pa-badge--default">3</Badge>
-			<Paragraph class="mt-2 text-muted">Confirm</Paragraph>
+			<Paragraph color="secondary" class="mt-2">Confirm</Paragraph>
 		</Column>
 	</Grid>
 
@@ -556,7 +554,7 @@
 		<li><Code>text-danger</Code> - Red text color</li>
 		<li><Code>text-warning</Code> - Yellow/orange text color</li>
 		<li><Code>text-success</Code> - Green text color</li>
-		<li><Code>text-muted</Code> - Muted/gray text color</li>
+		<li><Code>text-secondary</Code> - Muted/gray text color</li>
 	</BasicList>
 </Card>
 

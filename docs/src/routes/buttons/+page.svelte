@@ -249,42 +249,42 @@
 	<Column size="100" lg="1-2">
 		<Card titleText="Button Groups - Gap Sizes">
 			<Heading level={4}>Semantic Gap Classes</Heading>
-			<Paragraph class="text-muted mb-1"><code>gap-xs</code> (4px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><code>gap-xs</code> (4px)</Paragraph>
 			<ButtonGroup class="gap-xs mb-1">
 				<Button variant="primary">A</Button>
 				<Button variant="primary">B</Button>
 				<Button variant="primary">C</Button>
 				<Button variant="primary">D</Button>
 			</ButtonGroup>
-			<Paragraph class="text-muted mb-1"><code>gap-sm</code> (8px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><code>gap-sm</code> (8px)</Paragraph>
 			<ButtonGroup class="gap-sm mb-1">
 				<Button variant="secondary">A</Button>
 				<Button variant="secondary">B</Button>
 				<Button variant="secondary">C</Button>
 				<Button variant="secondary">D</Button>
 			</ButtonGroup>
-			<Paragraph class="text-muted mb-1"><code>gap-md</code> (12px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><code>gap-md</code> (12px)</Paragraph>
 			<ButtonGroup class="gap-md mb-1">
 				<Button variant="success">A</Button>
 				<Button variant="success">B</Button>
 				<Button variant="success">C</Button>
 				<Button variant="success">D</Button>
 			</ButtonGroup>
-			<Paragraph class="text-muted mb-1"><code>gap-base</code> (16px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><code>gap-base</code> (16px)</Paragraph>
 			<ButtonGroup class="gap-base mb-1">
 				<Button variant="info">A</Button>
 				<Button variant="info">B</Button>
 				<Button variant="info">C</Button>
 				<Button variant="info">D</Button>
 			</ButtonGroup>
-			<Paragraph class="text-muted mb-1"><code>gap-lg</code> (24px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><code>gap-lg</code> (24px)</Paragraph>
 			<ButtonGroup class="gap-lg mb-1">
 				<Button variant="warning">A</Button>
 				<Button variant="warning">B</Button>
 				<Button variant="warning">C</Button>
 				<Button variant="warning">D</Button>
 			</ButtonGroup>
-			<Paragraph class="text-muted mb-1"><code>gap-xl</code> (32px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><code>gap-xl</code> (32px)</Paragraph>
 			<ButtonGroup class="gap-xl">
 				<Button variant="danger">A</Button>
 				<Button variant="danger">B</Button>
@@ -300,7 +300,7 @@
 	<!-- Vertical Alignment -->
 	<Column size="100" lg="1-2">
 		<Card titleText="Vertical Alignment">
-			<Paragraph class="text-muted mb-md">Use semantic gap classes (<code>gap-sm</code>, <code>gap-md</code>, <code>gap-lg</code>, <code>gap-xl</code>) to control vertical spacing between buttons.</Paragraph>
+			<Paragraph color="secondary" class="mb-md">Use semantic gap classes (<code>gap-sm</code>, <code>gap-md</code>, <code>gap-lg</code>, <code>gap-xl</code>) to control vertical spacing between buttons.</Paragraph>
 			<Grid>
 				<Column size="50" xl="25">
 					<Heading level={4}>Start <code>gap-sm</code></Heading>
@@ -342,7 +342,7 @@
 	<Column size="100" lg="1-2">
 		<Card titleText="Responsive Direction">
 			<Heading level={4}>Horizontal → Vertical at md (768px)</Heading>
-			<Paragraph class="text-muted mb-1">Resize window to see change</Paragraph>
+			<Paragraph color="secondary" class="mb-1">Resize window to see change</Paragraph>
 			<ButtonGroup mdVertical>
 				<Button variant="primary">Save</Button>
 				<Button variant="secondary">Cancel</Button>
@@ -350,7 +350,7 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-2">Vertical → Horizontal at lg (992px)</Heading>
-			<Paragraph class="text-muted mb-1">Starts vertical, becomes horizontal on large screens</Paragraph>
+			<Paragraph color="secondary" class="mb-1">Starts vertical, becomes horizontal on large screens</Paragraph>
 			<ButtonGroup vertical lgHorizontal>
 				<Button variant="success">Approve</Button>
 				<Button variant="warning">Review</Button>
@@ -399,7 +399,7 @@
 		</SplitButton>
 
 		<SplitButton variant="secondary" onclick={() => alert('Export')}>
-			{#snippet icon()}<i class="fas fa-download"></i>{/snippet}
+			{#snippet icon()}<span class="pa-icon pa-icon--download" aria-hidden="true"></span>{/snippet}
 			Export
 			{#snippet menu()}
 				<SplitButtonItem onclick={() => alert('CSV')}>
@@ -453,7 +453,7 @@
 
 	<!-- Upward Placement -->
 	<Heading level={4} class="mt-4">Upward Placement</Heading>
-	<Paragraph class="text-muted mb-2">Use <code>data-placement="top-end"</code> to open the menu upward. Floating UI will auto-flip if there's not enough space.</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Use <code>data-placement="top-end"</code> to open the menu upward. Floating UI will auto-flip if there's not enough space.</Paragraph>
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" placement="top-end" onclick={() => {}}>
 			Upload
@@ -476,7 +476,7 @@
 
 	<!-- Custom Icons -->
 	<Heading level={4} class="mt-4">Custom Icons (no rotation)</Heading>
-	<Paragraph class="text-muted mb-2">Omit <code>pa-btn-split__chevron</code> from the icon for static icons that don't rotate on open.</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Omit <code>pa-btn-split__chevron</code> from the icon for static icons that don't rotate on open.</Paragraph>
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => alert('Share')}>
 			Share
@@ -508,7 +508,7 @@
 
 	<!-- Items with Actions -->
 	<Heading level={4} class="mt-4">Items with Actions</Heading>
-	<Paragraph class="text-muted mb-2">Two patterns. <strong>Bookmarks</strong> and <strong>Recent</strong> use an inline action button (a <code>.pa-btn-split__item-row</code> delete) — a row-action isn't the item itself, so clicking it removes the row and the menu stays open on its own. <strong>Members</strong> instead confirms on the item: the item carries <code>data-pa-keep-open</code> so clicking it (a real menu item, which would otherwise close the menu) keeps it open while the popconfirm is anchored — and the primary button adds a new member.</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Two patterns. <strong>Bookmarks</strong> and <strong>Recent</strong> use an inline action button (a <code>.pa-btn-split__item-row</code> delete) — a row-action isn't the item itself, so clicking it removes the row and the menu stays open on its own. <strong>Members</strong> instead confirms on the item: the item carries <code>data-pa-keep-open</code> so clicking it (a real menu item, which would otherwise close the menu) keeps it open while the popconfirm is anchored — and the primary button adds a new member.</Paragraph>
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => {}}>
 			{#snippet icon()}<i class="fas fa-bookmark"></i>{/snippet}
@@ -578,7 +578,7 @@
 
 <!-- Text Truncation -->
 <Card titleText="Text Truncation">
-	<Paragraph class="text-muted mb-1">Give the button a fixed width (<code>.wr-*</code>) and set <code>shouldTruncateText</code> to truncate long text with ellipsis</Paragraph>
+	<Paragraph color="secondary" class="mb-1">Give the button a fixed width (<code>.wr-*</code>) and set <code>shouldTruncateText</code> to truncate long text with ellipsis</Paragraph>
 	<div class="component-showcase">
 		<Tooltip text="This is a very long button text that will be truncated with ellipsis" position="bottom" multiline>
 			<Button variant="secondary" class="wr-15" shouldTruncateText>
@@ -664,7 +664,7 @@
 						<Button variant="danger" isIconOnly size="xs" titleText="Delete">🗑️</Button>
 						<Button variant="success" isIconOnly size="xs" titleText="Check"><span class="pa-icon pa-icon--check" aria-hidden="true"></span></Button>
 						<Button variant="warning" isIconOnly size="xs" titleText="Warning"><i class="fa-solid fa-triangle-exclamation"></i></Button>
-						<Button variant="info" isIconOnly size="xs" titleText="Download"><i class="fa-solid fa-download"></i></Button>
+						<Button variant="info" isIconOnly size="xs" titleText="Download"><span class="pa-icon pa-icon--download" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</Column>
 			</Grid>

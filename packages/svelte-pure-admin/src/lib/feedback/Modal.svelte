@@ -11,6 +11,10 @@
 	type ModalPosition = 'center' | 'top';
 
 	interface Props {
+		/** Optional id on the modal root — the open/close JS target hook the core
+		 *  snippet carries (openModal/closeModal(id)); also usable for aria-labelledby
+		 *  wiring or external addressing. Omitted entirely when not set. */
+		id?: string;
 		/** Show modal */
 		show?: boolean;
 		/** Modal size */
@@ -27,6 +31,14 @@
 		isStatic?: boolean;
 		/** Modal title text */
 		titleText?: string;
+		/**
+		 * Optional leading masked icon shown before `titleText` — a `.pa-icon--{name}`
+		 * span that inherits the header's colour via `currentColor` (e.g. `success` /
+		 * `warning` / `danger` / `info` for a severity mark, or `delete` on a
+		 * confirm-delete header). Only applies to the built-in `titleText` header;
+		 * a custom `header` snippet supplies its own icon. Since core v3.2.0.
+		 */
+		titleIcon?: string;
 		/** Show close button in header (default: true) */
 		shouldShowClose?: boolean;
 		/** Close on Escape key (default: true, ignored when isStatic is true) */
@@ -50,6 +62,7 @@
 	}
 
 	let {
+		id,
 		show = $bindable(false),
 		size = 'md',
 		variant,
@@ -58,6 +71,7 @@
 		isScrollable = false,
 		isStatic = false,
 		titleText,
+		titleIcon,
 		shouldShowClose = true,
 		shouldCloseOnEscape = true,
 		beforeCloseCallback,
@@ -168,7 +182,7 @@
 
 <svelte:window onkeydown={handleKeyDown} />
 
-<div class={modalClasses()}>
+<div {id} class={modalClasses()}>
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="pa-modal__backdrop" onclick={handleBackdropClick}></div>
@@ -178,7 +192,7 @@
 				{#if header}
 					{@render header()}
 				{:else if titleText}
-					<h3 class="pa-modal__title">{titleText}</h3>
+					<h3 class="pa-modal__title">{#if titleIcon}<span class="pa-icon pa-icon--{titleIcon}" aria-hidden="true"></span> {/if}{titleText}</h3>
 				{/if}
 				{#if shouldShowClose}<button class={closeBtnClasses} onclick={handleClose} aria-label={$_('pureAdmin.buttons.close')}><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>{/if}
 			</div>

@@ -118,12 +118,12 @@
 						</Tooltip>
 						<Tooltip text="Download" position="bottom">
 							<Button variant="success" size="sm" isIconOnly titleText="">
-								<i class="fa-solid fa-download"></i>
+								<span class="pa-icon pa-icon--download" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
 						<Tooltip text="Settings" position="bottom">
 							<Button variant="warning" size="sm" isIconOnly titleText="">
-								<i class="fa-solid fa-gear"></i>
+								<span class="pa-icon pa-icon--settings" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
 						<Tooltip text="Delete" position="bottom">
@@ -133,7 +133,7 @@
 						</Tooltip>
 						<Tooltip text="Info" position="bottom">
 							<Button variant="info" size="sm" isIconOnly titleText="">
-								<i class="fa-solid fa-circle-info"></i>
+								<span class="pa-icon pa-icon--info" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
 					</ButtonGroup>

@@ -232,7 +232,7 @@ toastService.dismissAll();`}</CodeBlock>
 		<Button variant="info"    onclick={() => fire('info',    { shouldShowProgress: true, progressColor: '#14b8a6' })}>Teal progress</Button>
 	</ButtonGroup>
 
-	<Paragraph class="pa-text--secondary mt-4">
+	<Paragraph color="secondary" class="mt-4">
 		Progress bar shows time remaining before auto-dismiss (default 5s — pass <code>duration</code> to change it).
 	</Paragraph>
 </Card>
@@ -256,7 +256,7 @@ toastService.dismissAll();`}</CodeBlock>
 			</Button>
 		</Column>
 	</Grid>
-	<Paragraph class="pa-text--secondary mt-4">
+	<Paragraph color="secondary" class="mt-4">
 		<code>duration: 0</code> stays until manually closed. Capture the id from
 		<code>show()</code> to dismiss programmatically (<code>toastService.dismiss(id)</code>).
 	</Paragraph>
@@ -289,7 +289,7 @@ toastService.dismissAll();`}</CodeBlock>
 <!-- 7. Stacking -->
 <Card titleText="Multiple toasts (stacking)">
 	<Button variant="primary" onclick={showStackingDemo}>Show 3 Toasts</Button>
-	<Paragraph class="pa-text--secondary mt-4">
+	<Paragraph color="secondary" class="mt-4">
 		Toasts automatically stack vertically in the container. Container width ratchets up
 		to the widest toast and resets when empty.
 	</Paragraph>

@@ -21,7 +21,8 @@
 		Heatmap,
 		HeatmapCell,
 		HeatmapLegend,
-		TableCard
+		TableCard,
+		Text
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -63,19 +64,19 @@
 	<Heading level={4} class="mt-lg mb-sm">Sizes</Heading>
 	<div class="d-flex flex-column gap-sm">
 		<div>
-			<span class="text-muted font-xs">XS</span>
+			<Text variant="secondary" class="font-xs">XS</Text>
 			<Progress value={60} size="xs" />
 		</div>
 		<div>
-			<span class="text-muted font-xs">SM</span>
+			<Text variant="secondary" class="font-xs">SM</Text>
 			<Progress value={60} size="sm" />
 		</div>
 		<div>
-			<span class="text-muted font-xs">Default</span>
+			<Text variant="secondary" class="font-xs">Default</Text>
 			<Progress value={60} />
 		</div>
 		<div>
-			<span class="text-muted font-xs">LG</span>
+			<Text variant="secondary" class="font-xs">LG</Text>
 			<Progress value={60} size="lg" />
 		</div>
 	</div>
@@ -326,7 +327,7 @@
 	<div class="d-flex gap-xl flex-wrap align-items-end">
 		<!-- Default -->
 		<div>
-			<span class="text-muted font-xs d-block mb-xs">Revenue (7d)</span>
+			<Text variant="secondary" class="font-xs d-block mb-xs">Revenue (7d)</Text>
 			<Sparkline>
 				<SparklineBar value={40} /><SparklineBar value={65} /><SparklineBar value={55} /><SparklineBar value={80} /><SparklineBar value={70} /><SparklineBar value={90} /><SparklineBar value={85} />
 			</Sparkline>
@@ -334,7 +335,7 @@
 
 		<!-- Success -->
 		<div>
-			<span class="text-muted font-xs d-block mb-xs">Orders (7d)</span>
+			<Text variant="secondary" class="font-xs d-block mb-xs">Orders (7d)</Text>
 			<Sparkline variant="success">
 				<SparklineBar value={30} /><SparklineBar value={45} /><SparklineBar value={60} /><SparklineBar value={50} /><SparklineBar value={75} /><SparklineBar value={85} /><SparklineBar value={95} />
 			</Sparkline>
@@ -342,7 +343,7 @@
 
 		<!-- Warning -->
 		<div>
-			<span class="text-muted font-xs d-block mb-xs">Errors (7d)</span>
+			<Text variant="secondary" class="font-xs d-block mb-xs">Errors (7d)</Text>
 			<Sparkline variant="warning">
 				<SparklineBar value={90} /><SparklineBar value={70} /><SparklineBar value={50} /><SparklineBar value={60} /><SparklineBar value={40} /><SparklineBar value={25} /><SparklineBar value={15} />
 			</Sparkline>
@@ -350,7 +351,7 @@
 
 		<!-- Large -->
 		<div>
-			<span class="text-muted font-xs d-block mb-xs">Traffic (14d)</span>
+			<Text variant="secondary" class="font-xs d-block mb-xs">Traffic (14d)</Text>
 			<Sparkline size="lg" variant="info">
 				<SparklineBar value={50} /><SparklineBar value={60} /><SparklineBar value={45} /><SparklineBar value={70} /><SparklineBar value={80} /><SparklineBar value={65} /><SparklineBar value={75} /><SparklineBar value={90} /><SparklineBar value={85} /><SparklineBar value={60} /><SparklineBar value={55} /><SparklineBar value={70} /><SparklineBar value={95} /><SparklineBar value={80} />
 			</Sparkline>
@@ -375,7 +376,7 @@
 			<Card>
 				<div class="d-flex justify-content-between align-items-start">
 					<div>
-						<div class="text-muted font-xs text-upper mb-xs">Total Revenue</div>
+						<div class="text-secondary font-xs text-upper mb-xs">Total Revenue</div>
 						<div class="font-2xl font-bold">$284,520</div>
 						<div class="font-xs mt-xs" style="color: #28a745">+12.5% vs last month</div>
 					</div>
@@ -389,7 +390,7 @@
 			<Card>
 				<div class="d-flex justify-content-between align-items-start">
 					<div>
-						<div class="text-muted font-xs text-upper mb-xs">Active Users</div>
+						<div class="text-secondary font-xs text-upper mb-xs">Active Users</div>
 						<div class="font-2xl font-bold">8,429</div>
 						<div class="font-xs mt-xs" style="color: #28a745">+3.2% vs last week</div>
 					</div>
@@ -403,7 +404,7 @@
 			<Card>
 				<div class="d-flex justify-content-between align-items-start">
 					<div>
-						<div class="text-muted font-xs text-upper mb-xs">Error Rate</div>
+						<div class="text-secondary font-xs text-upper mb-xs">Error Rate</div>
 						<div class="font-2xl font-bold">0.24%</div>
 						<div class="font-xs mt-xs" style="color: #dc3545">+0.02% vs yesterday</div>
 					</div>
@@ -420,19 +421,19 @@
 	<div class="d-flex gap-xl flex-wrap justify-content-center">
 		<div class="text-center">
 			<ProgressRing value={72} valueText="72%" size="sm" />
-			<div class="font-xs text-muted mt-sm">CPU</div>
+			<div class="font-xs text-secondary mt-sm">CPU</div>
 		</div>
 		<div class="text-center">
 			<ProgressRing value={58} valueText="58%" size="sm" variant="warning" />
-			<div class="font-xs text-muted mt-sm">Memory</div>
+			<div class="font-xs text-secondary mt-sm">Memory</div>
 		</div>
 		<div class="text-center">
 			<ProgressRing value={87} valueText="87%" size="sm" variant="danger" />
-			<div class="font-xs text-muted mt-sm">Disk</div>
+			<div class="font-xs text-secondary mt-sm">Disk</div>
 		</div>
 		<div class="text-center">
 			<ProgressRing value={99} valueText="99%" size="sm" variant="success" />
-			<div class="font-xs text-muted mt-sm">Uptime</div>
+			<div class="font-xs text-secondary mt-sm">Uptime</div>
 		</div>
 	</div>
 
