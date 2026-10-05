@@ -77,7 +77,7 @@
 		<Column size="100" md="1-3">
 			<Heading level={4}>Background Colors</Heading>
 			<Paragraph>
-				<Code>.pa-bg-color-1</Code> to <Code>.pa-bg-color-9</Code>
+				<Code>.bg-color-1</Code> to <Code>.bg-color-9</Code>
 			</Paragraph>
 			<div class="d-flex flex-wrap gap-xs" style="margin-top: 1rem;">
 				{#each colorSlots as color}
@@ -88,23 +88,23 @@
 		<Column size="100" md="1-3">
 			<Heading level={4}>Text Colors</Heading>
 			<Paragraph>
-				<Code>.pa-text-color-1</Code> to <Code>.pa-text-color-9</Code>
+				<Code>.text-color-1</Code> to <Code>.text-color-9</Code>
 			</Paragraph>
 			<div class="d-flex flex-wrap gap-sm" style="margin-top: 1rem;">
 				{#each colorSlots as color}
-					<span class="pa-text-color-{color.num}" style="font-weight: 600;">Text {color.num}</span>
+					<span class="text-color-{color.num}" style="font-weight: 600;">Text {color.num}</span>
 				{/each}
 			</div>
 		</Column>
 		<Column size="100" md="1-3">
 			<Heading level={4}>Border Colors</Heading>
 			<Paragraph>
-				<Code>.pa-border-color-1</Code> to <Code>.pa-border-color-9</Code>
+				<Code>.border-color-1</Code> to <Code>.border-color-9</Code>
 			</Paragraph>
 			<div class="d-flex flex-wrap gap-xs" style="margin-top: 1rem;">
 				{#each colorSlots.slice(0, 5) as color}
 					<span
-						class="pa-badge pa-border-color-{color.num}"
+						class="pa-badge border-color-{color.num}"
 						style="border: 2px solid; background: transparent;">Border {color.num}</span
 					>
 				{/each}
@@ -119,33 +119,33 @@
 
 	<Heading level={4}>Alerts with Theme Colors</Heading>
 	<Alert themeColor={1}>
-		<strong>Color 1 Alert:</strong> Using <code style="color: inherit;">.pa-bg-color-1</code> utility
+		<strong>Color 1 Alert:</strong> Using <code style="color: inherit;">.bg-color-1</code> utility
 		class.
 	</Alert>
 	<Alert themeColor={4}>
-		<strong>Color 4 Alert:</strong> Using <code style="color: inherit;">.pa-bg-color-4</code> utility
+		<strong>Color 4 Alert:</strong> Using <code style="color: inherit;">.bg-color-4</code> utility
 		class.
 	</Alert>
 	<Alert themeColor={7}>
-		<strong>Color 7 Alert:</strong> Using <code style="color: inherit;">.pa-bg-color-7</code> utility
+		<strong>Color 7 Alert:</strong> Using <code style="color: inherit;">.bg-color-7</code> utility
 		class.
 	</Alert>
 
 	<Heading level={4} class="mt-4">Cards with Colored Headers</Heading>
 	<Grid>
 		<Column size="100" md="1-3">
-			<Card headerClass="pa-bg-color-1" titleText="Color 1 Header">
-				Card with <Code>.pa-bg-color-1</Code> on header.
+			<Card headerClass="bg-color-1" titleText="Color 1 Header">
+				Card with <Code>.bg-color-1</Code> on header.
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
-			<Card headerClass="pa-bg-color-5" titleText="Color 5 Header">
-				Card with <Code>.pa-bg-color-5</Code> on header.
+			<Card headerClass="bg-color-5" titleText="Color 5 Header">
+				Card with <Code>.bg-color-5</Code> on header.
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
-			<Card headerClass="pa-bg-color-8" titleText="Color 8 Header">
-				Card with <Code>.pa-bg-color-8</Code> on header.
+			<Card headerClass="bg-color-8" titleText="Color 8 Header">
+				Card with <Code>.bg-color-8</Code> on header.
 			</Card>
 		</Column>
 	</Grid>
