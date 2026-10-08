@@ -79,10 +79,11 @@
 				{@render header()}
 			{:else}
 				{#if titleText}
-					<!-- Core styles bare h1..h6 in the header automatically; the
-					     blessed title shape is a plain heading (snippets/tables.html),
-					     not the legacy .pa-table-card__title / __title-text wrapper. -->
-					<h3>{titleText}</h3>
+					<!-- Canonical title: .pa-table-card__title > .pa-table-card__title-text,
+					     mirroring .pa-card__title (see snippets/tables.html). -->
+					<div class="pa-table-card__title">
+						<h3 class="pa-table-card__title-text">{titleText}</h3>
+					</div>
 				{/if}
 				{#if descriptionText}
 					<p class="pa-table-card__description">{descriptionText}</p>

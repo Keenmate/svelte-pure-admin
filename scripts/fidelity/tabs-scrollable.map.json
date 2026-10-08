@@ -1,0 +1,10 @@
+{
+  "//": "Capability manifest for <TabsScrollable> — svelte-pure-admin. The dedicated scrollable-tabs component (svelte splits scrollable out of <Tabs> into its own component that emits the start/end arrow + scroll-container scaffold). scrollable-ness is intrinsic (no prop). See tabs.map.json for the container model.",
+  "component": "tabs-scrollable",
+  "features": {
+    "style":      { "prop": "style",    "kind": "enum",   "values": ["pills", "boxed"] },
+    "size":       { "prop": "size",     "kind": "enum",   "values": ["sm", "lg"] },
+    "body":       { "prop": "children", "kind": "slot" },
+    "extraClass": { "prop": "class",    "kind": "string" }
+  }
+}

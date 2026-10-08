@@ -1,26 +1,30 @@
 /**
- * Built-in icon providers. Each is a factory returning an {@link IconProvider}.
- * Consumers configure one on `PureAdminProvider`:
+ * Built-in icon providers for non-affordance names. Each is a factory returning an
+ * {@link IconProvider}. Configure an ordered LIST on `PureAdminProvider`:
  *
  * ```svelte
- * <PureAdminProvider iconProvider={combine(svgIcons(myLucideSet), masked())}>
+ * <PureAdminProvider iconProviders={[svgIcons(myLucideSet), fontAwesome()]}>
  * ```
  *
- * - {@link masked} — the framework's ~34 structural affordances (no data needed).
+ * Framework structural affordances resolve FIRST, built-in and reserved (see
+ * `resolveIcon` in `icon-provider.ts`) — you do NOT add `masked()` to the list.
+ *
  * - {@link fontAwesome} — `<i class="fa-… fa-NAME fa-fw">` (font-class sets).
  * - {@link svgIcons} — inline `<svg>` from a `{ name: markup }` map (Lucide, Tabler,
  *   Heroicons outline, or any set you import at build time).
- * - {@link combine} — first provider to return non-empty markup wins (chain a
- *   decorative set with `masked()` so affordances always resolve).
+ * - {@link masked} — emits a `pa-icon--NAME` span for an affordance name; rarely
+ *   needed now that affordances are built-in, kept for manual/advanced composition.
+ * - {@link combine} — fold several providers into one reusable provider (the
+ *   provider list already composes; combine is for pre-building a single provider).
  */
 import type { IconProvider } from './icon-provider';
 import { isAffordanceIcon } from './affordances';
 
 /**
  * Renders the framework's masked structural affordances as
- * `<span class="pa-icon pa-icon--NAME">`. Returns `''` for any non-affordance
- * name (so it can be the tail of a {@link combine} chain). This is the default
- * provider when none is configured.
+ * `<span class="pa-icon pa-icon--NAME">`. Returns `''` for any non-affordance name.
+ * NOTE: affordances now resolve built-in (see `resolveIcon`), so this is rarely
+ * needed — kept for manual/advanced provider composition.
  */
 export function masked(): IconProvider {
 	return (name) => (isAffordanceIcon(name) ? `<span class="pa-icon pa-icon--${name}"></span>` : '');

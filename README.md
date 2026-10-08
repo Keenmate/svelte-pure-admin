@@ -409,7 +409,7 @@ The `docs/` folder contains a full documentation site showcasing all components 
 
 ```bash
 npm install       # Install workspace dependencies
-make dev          # Install themes via pureadmin CLI + start docs site (http://localhost:5173)
+make dev          # Install themes via pureadmin CLI + start docs site (http://localhost:18800)
 ```
 
 `make dev` runs `npx @keenmate/pureadmin themes install` against the project's `pureadmin.json` / `pureadmin.lock.json` to populate `docs/static/themes/`, then starts the SvelteKit dev server. To add or remove a theme, edit `pureadmin.json` (or use `npx @keenmate/pureadmin themes add <id>` / `themes remove <id>`) and re-run `make dev` — the settings panel picks it up automatically because the theme list is derived from `docs/static/themes/*/theme.json` at prerender, not hardcoded.
@@ -462,7 +462,7 @@ ai/common-patterns.txt    # Snippets, $derived classes, event handlers
 
 ```bash
 npm install       # Install dependencies
-npm run dev       # Start dev server (http://localhost:5173)
+npm run dev       # Start dev server (http://localhost:18800)
 npm run build     # Build library
 npm run package   # Package for npm
 npm run check     # Type check

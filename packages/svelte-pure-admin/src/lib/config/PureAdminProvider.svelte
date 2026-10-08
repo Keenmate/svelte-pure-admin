@@ -14,8 +14,7 @@
 	import { initI18n } from '../i18n/setup';
 	import { initThemeReadyTracker } from './theme-ready';
 	import ShortcutHelpDialog from '../feedback/ShortcutHelpDialog.svelte';
-	import { setIconProvider } from '../icon/icon-provider';
-	import { masked } from '../icon/providers';
+	import { setIconProviders } from '../icon/icon-provider';
 	import type { IconProvider } from '../icon/icon-provider';
 
 	interface Props {
@@ -24,20 +23,22 @@
 		/** Disable keyboard shortcuts (default: false) */
 		disableShortcuts?: boolean;
 		/**
-		 * Icon provider that resolves `<Icon name="…">` to markup — configure the set
-		 * your app uses (Font Awesome, an inline-SVG set, …). Defaults to `masked()`
-		 * (the framework's structural affordances). See `icon/providers.ts`.
+		 * Ordered list of icon providers that resolve non-affordance `<Icon name="…">`
+		 * names to markup — configure the set(s) your app uses (Font Awesome, inline-SVG
+		 * sets, …); the first to return markup wins. Framework structural affordances
+		 * (close, chevrons, success, danger, …) always resolve first, built-in, and need
+		 * no provider. See `icon/providers.ts`.
 		 */
-		iconProvider?: IconProvider;
+		iconProviders?: IconProvider[];
 		/** Children components */
 		children?: import('svelte').Snippet;
 	}
 
-	let { config = {}, disableShortcuts = false, iconProvider, children }: Props = $props();
+	let { config = {}, disableShortcuts = false, iconProviders, children }: Props = $props();
 
-	// Register the icon provider for all descendant <Icon> components.
+	// Register the icon provider list for all descendant <Icon> components.
 	// svelte-ignore state_referenced_locally
-	setIconProvider(iconProvider ?? masked());
+	setIconProviders(iconProviders ?? []);
 
 	// Merge user config with defaults
 	const mergedConfig = $derived(() => mergeConfig(defaultConfig, config));

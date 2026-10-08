@@ -53,7 +53,11 @@
 		bodyClass?: string;
 		/** Additional CSS classes for footer */
 		footerClass?: string;
-		/** Header snippet */
+		/** Title-content snippet (overrides `titleText`) — rendered INSIDE the
+		 *  canonical `<h3 class="pa-modal__title">`, which the wrapper always owns.
+		 *  Supply inline title markup (text, a leading icon, `<code>`, …); do NOT
+		 *  wrap it in your own `<h3 class="pa-modal__title">`. Matches core's single
+		 *  blessed title shape (snippets/modals.html) and keen's `:header` slot. */
 		header?: import('svelte').Snippet;
 		/** Body snippet */
 		children?: import('svelte').Snippet;
@@ -190,7 +194,7 @@
 		{#if header || titleText}
 			<div class={headerClasses()}>
 				{#if header}
-					{@render header()}
+					<h3 class="pa-modal__title">{@render header()}</h3>
 				{:else if titleText}
 					<h3 class="pa-modal__title">{#if titleIcon}<span class="pa-icon pa-icon--{titleIcon}" aria-hidden="true"></span> {/if}{titleText}</h3>
 				{/if}

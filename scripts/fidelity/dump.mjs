@@ -77,6 +77,8 @@ const REGISTRY = {
   sidebar: 'packages/svelte-pure-admin/src/lib/layout/Sidebar.svelte',
   footer: 'packages/svelte-pure-admin/src/lib/layout/Footer.svelte',
   tabs: 'packages/svelte-pure-admin/src/lib/navigation/Tabs.svelte',
+  'tabs-scrollable': 'packages/svelte-pure-admin/src/lib/navigation/TabsScrollable.svelte',
+  'tabs-overflow': 'packages/svelte-pure-admin/src/lib/navigation/TabsOverflow.svelte',
   'kpi-gauge-list': 'packages/svelte-pure-admin/src/lib/display/KpiGaugeList.svelte',
   'kpi-hero': 'packages/svelte-pure-admin/src/lib/display/KpiHeroList.svelte',
   // Batch 12 (finish) — form family

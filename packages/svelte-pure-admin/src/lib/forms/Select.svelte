@@ -74,9 +74,10 @@
 		return undefined;
 	});
 
-	// Compute aria-invalid for accessibility
+	// aria-invalid tracks the effective ERROR state (manual `state="error"` OR
+	// derived errors+touched), consistent with the pa-select--error class.
 	const ariaInvalid = $derived(() => {
-		return hasErrors() && touched ? 'true' : undefined;
+		return effectiveState() === 'error' ? 'true' : undefined;
 	});
 
 	// Build class string

@@ -408,7 +408,7 @@ ${'<'}/script>
 		<Column size="100" md="1-2">
 			<Callout variant="info">
 				<strong>Customize Themes</strong>
-				<p class="mb-0">Check <a href="/theme-variables">Theme Variables</a> to learn how to customize colors and styles.</p>
+				<p class="mb-0">Check <a href="/design/theme-variables">Theme Variables</a> to learn how to customize colors and styles.</p>
 			</Callout>
 		</Column>
 	</Grid>

@@ -16,6 +16,25 @@ Svelte 5 component library wrapping the Pure Admin CSS framework (`@keenmate/pur
 8. **KeenMate naming** — `on*` for fire-and-forget events, `*Callback` only when return value is used, `is*` / `should*` for booleans. See [guides/naming-conventions.md](docs/guides/naming-conventions.md).
 9. **Test against original** — compare with pure-admin demo (port 3000) for visual parity.
 
+## Demo philosophy — the docs exercise components, not raw markup
+
+The docs site (`docs/`) is not just a showroom — it is how we **prove the component
+library is complete and correct**. So:
+
+1. **Build every demo page out of library components.** Only drop to raw `pa-*`
+   HTML when there is genuinely no component for that thing — and treat that as a
+   signal that a component is probably **missing** and should be added.
+2. **A demo page core/keen have but svelte lacks is a two-step job:** first add the
+   component(s) (standard naming + structure, mirroring the core snippet / the keen
+   wrapper's API), *then* compose the page from them. Never paste the core snippet's
+   HTML into a page as a shortcut — that hides the gap instead of closing it.
+3. **`svelte-check` is the guardrail that makes this work.** When a page may only use
+   components + their typed props, the type-checker rejects invented classes, wrong
+   prop names, and nonexistent variants before they ship. Hand-authored
+   `class="pa-…"` strings have no such safety net and silently drift from core.
+
+(Same reasoning drives keen's demo + `mix compile`; this is a shared ecosystem rule.)
+
 ## Class-vs-prop rule
 
 When a demo/consumer passes a CSS class to a library component, decide prop-vs-`class=` by one litmus: **does `.pa-<thisBlock>`'s own CSS key off that class?**
@@ -79,7 +98,7 @@ Three config files live in the **project root** (not `docs/`), modelled on `pack
 4. Add Props interface with full TS types.
 5. Export from `src/lib/index.ts`.
 6. Add / update the demo showcase.
-7. `npm run dev` (port 5173) → compare visually with the pure-admin demo (port 3000).
+7. `npm run dev` (port 18800) → compare visually with the pure-admin demo (port 3000).
 
 ## Known upstream gaps
 
@@ -87,7 +106,8 @@ Three config files live in the **project root** (not `docs/`), modelled on `pack
 - **Timeline `--alternating` uses physical `left/right`.** `--simple` and `--feed` mirror correctly in RTL; `--alternating` (and its `--start`/`--end`/`--keep-layout`/`--single-column` modifiers) stays on the same physical sides under `dir="rtl"`. Upstream-scope fix.
 - **`.pa-spinner` only has `--xs`.** Larger sizes (`--sm/md/lg/xl/2xl`) advertised in pure-admin demo do not exist in SCSS. Our `Spinner.svelte` type now reflects this (`size?: 'xs'`).
 - **Do not wrap yet (unstable upstream APIs):** `file-selector`, `logic-tree`, `smart-filters` (a.k.a. `query-editor`).
-- **Do not wrap yet (experimental — printable-document system, core 3.3.0-rc):** `pa-document` (Word-style hierarchical auto-numbered sections — `snippets/document.html`), `pa-sheet` (printable A4 "paper" shell for invoices/orders/quotes + its ~18 invoice-shaped regions `__masthead`/`__parties`/`__party`/`__meta`/`__totals`/`__footer`/`__barcode`/`__qr`… — `snippets/sheet.html`) and its `sheet-print.js` single-element print helper (`window.pureAdmin.printElement` / `printSheet`), plus **`pc-grid`** (the CSS-**Grid** ruled-matrix layout primitive — `--cols-1…12`/`--pc-grid-cols`, `--ruled`, `--flush`, children span with `pc-col-span-*`/`pc-row-span-*`; distinct from our flex `Grid` = `pc-row`/`pc-col` — `snippets/grid.html`). These landed together as the rc01 "printable document system" (+ rc03 grid primitive); wrappers wait for a POC once the APIs settle. Line items in a sheet compose the existing `.pa-table-container > .pa-table`, so no sheet-specific table is needed.
+- **`pa-document` + `pa-sheet` are now WRAPPED (2026-10-06).** Despite the original "experimental, wait for a POC" hold, keen had already shipped `Document`/`Sheet` wrappers, so svelte caught up (mirroring keen's settled API). `Document` + `DocumentSection` + `DocumentText` (`snippets/document.html`); `Sheet` + its region sub-components `SheetMasthead`/`SheetLogo`/`SheetParties`/`SheetParty`/`SheetMeta`/`SheetMetaRow`/`SheetTitle`/`SheetTotals`/`SheetTotalRow`/`SheetNotes`/`SheetFooter`/`SheetSignatures`/`SheetSign`/`SheetLegal`/`SheetPageno` + `SheetPrintButton` (`snippets/sheet.html`). `SheetPrintButton` drives `sheet-print.js` via `loadCoreJs('sheet-print')` → `window.pureAdmin.printElement` / `printSheet` (typed in `global.d.ts`). Line items compose the existing `<TableContainer>` + `<Table>`, so there is no sheet-specific table. Demos: `/data-display/document`, `/data-display/sheet`. The `__barcode`/`__qr` slots are left as raw markup (inject your own SVG). **Still experimental upstream** — pin an exact core version if you build on the sheet shape.
+- **Do not wrap yet (experimental — core 3.3.0-rc):** **`pc-grid`** (the CSS-**Grid** ruled-matrix layout primitive — `--cols-1…12`/`--pc-grid-cols`, `--ruled`, `--flush`, children span with `pc-col-span-*`/`pc-row-span-*`; distinct from our flex `Grid` = `pc-row`/`pc-col` — `snippets/grid.html`). Landed with the rc03 grid primitive; wrapper waits for a POC once the API settles.
 - **Overflow toolbar (`.pa-overflow` / `js/overflow.js`) is core-JS-driven raw markup, NOT a library component.** rc06 **removed** the earlier auto-absorb mechanism (`.pa-btn-split--auto-absorb` + `.pa-btn-toolbar` + `btn-split-auto-absorb.js`) — where overflowing siblings folded into a domain split button's own dropdown — and replaced it with `.pa-overflow`: a generic progressive-collapse row that auto-appends its own dedicated `[⋮]` "more" trigger, and collapses a `.pa-btn-split` child atomically (primary + its own menu rows, under a section label). Attribute renames: `data-pa-absorb-priority` → `data-pa-actions-priority`, `data-pa-absorb-from` → `data-pa-actions-overflow-from`. The docs demo (`docs/src/routes/buttons/OverflowToolbar.svelte`) renders the raw core markup and drives `overflow.js` + `split-button.js` directly. `Card`'s `isActionsOverflow` already uses the card-flavoured `.pa-card__actions--overflow` alias of the same primitive.
 - **`SplitButton` honours `data-pa-keep-open`.** A menu item (or ancestor) with the attribute keeps the menu open on click (for actions that spawn their own popover, e.g. a `Popconfirm`). Backward compatible; mirrors core's rc06 opt-out in `split-button.js` — so `data-pa-keep-open` is one convention across both our Svelte-native `SplitButton` and raw-core overflow/split markup.
 - **Buttons are centered by default (core rc06 unified content model).** `.pa-btn` is one `inline-flex` row (center) for every type; icon+label full-width buttons that used to left-align now center — add `--align-start` where the old look is wanted. Our `Button` `align` prop maps to the `--align-*` modifiers.

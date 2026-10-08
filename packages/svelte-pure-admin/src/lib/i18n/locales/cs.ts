@@ -65,6 +65,10 @@ export const cs: Record<string, string> = {
 	'pureAdmin.field.clickToCopy': 'Klikněte pro zkopírování',
 	'pureAdmin.field.copied': 'Zkopírováno!',
 
+	// Forms (FormErrorSummary)
+	'pureAdmin.form.errorFound': 'Nalezena {count} chyba:',
+	'pureAdmin.form.errorsFound': 'Nalezeno chyb: {count}',
+
 	// Buttons
 	'pureAdmin.buttons.ok': 'OK',
 	'pureAdmin.buttons.cancel': 'Zrušit',

@@ -20,11 +20,16 @@ export async function loadCoreJs(
 		| 'navbar-fit'
 		| 'container-breakpoint'
 		| 'sidebar-resize'
+		| 'sheet-print'
 ): Promise<void> {
 	if (typeof window === 'undefined') return;
 	switch (module) {
 		case 'splitter':
 			await import('@keenmate/pure-admin-core/js/splitter.js');
+			break;
+		case 'sheet-print':
+			// Attaches pureAdmin.printElement / printSheet (single-element print helper).
+			await import('@keenmate/pure-admin-core/js/sheet-print.js');
 			break;
 		case 'range-group':
 			await import('@keenmate/pure-admin-core/js/range-group.js');

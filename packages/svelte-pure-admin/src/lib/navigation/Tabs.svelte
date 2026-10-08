@@ -8,7 +8,11 @@
 	type TabsStyle = 'underline' | 'pills' | 'boxed' | 'vertical';
 	type TabsSize = 'sm' | 'lg';
 	type TabsAlign = 'centered' | 'full';
-	type TabsOverflow = 'nowrap' | 'scrollable' | 'collapse';
+	// NOTE: 'scrollable' is intentionally NOT here. The scrollable variant needs
+	// the `pa-tabs__scroll-container` + start/end `pa-tabs__scroll-btn` scaffold
+	// to actually scroll — emitting a bare `pa-tabs--scrollable` on a flat <Tabs>
+	// renders an inert, clipped row. Use the dedicated <TabsScrollable> instead.
+	type TabsOverflow = 'nowrap' | 'collapse';
 
 	interface Props {
 		/** Tab style (default: underline) */

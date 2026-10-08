@@ -26,7 +26,7 @@ export { usePureAdminConfig } from './config/hooks';
 export { default as Icon } from './icon/Icon.svelte';
 export { masked, fontAwesome, svgIcons, combine } from './icon/providers';
 export type { FontAwesomeOptions, SvgIconsOptions } from './icon/providers';
-export { setIconProvider, useIconProvider } from './icon/icon-provider';
+export { setIconProviders, useIconProviders, resolveIcon } from './icon/icon-provider';
 export type { IconProvider, IconRenderContext } from './icon/icon-provider';
 export { AFFORDANCE_ICON_NAMES, isAffordanceIcon } from './icon/affordances';
 export type { AffordanceIconName } from './icon/affordances';
@@ -242,6 +242,30 @@ export type {
 	TimelineItemVariant,
 	TimelineItemData
 } from './display/timeline-types';
+// Document (Word-style hierarchical auto-numbered sections — snippets/document.html)
+export { default as Document } from './display/Document.svelte';
+export { default as DocumentSection } from './display/DocumentSection.svelte';
+export { default as DocumentText } from './display/DocumentText.svelte';
+
+// Sheet (printable A4 "paper" shell for invoices/orders/receipts — snippets/sheet.html)
+export { default as Sheet } from './display/Sheet.svelte';
+export { default as SheetMasthead } from './display/SheetMasthead.svelte';
+export { default as SheetLogo } from './display/SheetLogo.svelte';
+export { default as SheetParties } from './display/SheetParties.svelte';
+export { default as SheetParty } from './display/SheetParty.svelte';
+export { default as SheetMeta } from './display/SheetMeta.svelte';
+export { default as SheetMetaRow } from './display/SheetMetaRow.svelte';
+export { default as SheetTitle } from './display/SheetTitle.svelte';
+export { default as SheetTotals } from './display/SheetTotals.svelte';
+export { default as SheetTotalRow } from './display/SheetTotalRow.svelte';
+export { default as SheetNotes } from './display/SheetNotes.svelte';
+export { default as SheetFooter } from './display/SheetFooter.svelte';
+export { default as SheetSignatures } from './display/SheetSignatures.svelte';
+export { default as SheetSign } from './display/SheetSign.svelte';
+export { default as SheetLegal } from './display/SheetLegal.svelte';
+export { default as SheetPageno } from './display/SheetPageno.svelte';
+export { default as SheetPrintButton } from './display/SheetPrintButton.svelte';
+
 export { default as CheckboxList } from './display/CheckboxList.svelte';
 export { default as CheckboxListItem } from './display/CheckboxListItem.svelte';
 export { default as DetailView } from './display/DetailView.svelte';

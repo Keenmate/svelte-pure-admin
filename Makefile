@@ -1,6 +1,6 @@
 # Makefile for @keenmate/svelte-pure-admin Monorepo
 
-.PHONY: help setup install dev dev-lib build build-docs build-all package check check-lib check-docs publish publish-rc publish-dry clean sync-snippets sync-snippets-update verify podman-build podman-run podman-stop podman-restart podman-logs podman-clean podman-deploy podman-push
+.PHONY: help setup install dev dev-lib kill-port build build-docs build-all package check check-lib check-docs publish publish-rc publish-dry clean sync-snippets sync-snippets-update verify podman-build podman-run podman-stop podman-restart podman-logs podman-clean podman-deploy podman-push
 
 # === Shell Configuration (cross-platform) ===
 # Use sh on Unix, cmd on Windows
@@ -34,8 +34,9 @@ help:
 	@echo "    make install              - Install all workspace dependencies"
 	@echo ""
 	@echo "  Development:"
-	@echo "    make dev                  - Start docs dev server (port 5173)"
+	@echo "    make dev                  - Start docs dev server (port 18800)"
 	@echo "    make dev-lib              - Start library dev server"
+	@echo "    make kill-port            - Free the docs dev-server port (18800)"
 	@echo "    make build                - Build library package"
 	@echo "    make build-docs           - Build docs site"
 	@echo "    make build-all            - Build library + docs"
@@ -83,6 +84,21 @@ dev:
 dev-lib:
 	npm run dev:lib
 
+# Free the docs dev-server port. The docs vite config pins port 18800 with
+# strictPort, so a stale run holds exactly 18800 (no hop). Kills whatever is
+# LISTENING on it, covering both IPv4 and IPv6 (vite binds [::1] too). On
+# Windows the recipe runs in cmd.exe (see SHELL config above), so we shell out
+# to PowerShell with double quotes; `$$_` emits a literal `$_` for PowerShell's
+# pipeline variable.
+kill-port:
+	@echo "Freeing port 18800..."
+ifeq ($(OS),Windows_NT)
+	-@powershell -NoProfile -Command "Get-NetTCPConnection -LocalPort 18800 -State Listen -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $$_ -Force -ErrorAction SilentlyContinue }"
+else
+	-@lsof -ti tcp:18800 | xargs -r kill -9
+endif
+	@echo "Port 18800 is free"
+
 # Build library
 build:
 	npm run build
@@ -110,6 +126,11 @@ check-lib:
 # Type check docs
 check-docs:
 	npm run check:docs
+
+# Markup fidelity: re-dump ALL scenarios fresh, then run the core markup + coverage
+# gate (dumps are gitignored → re-dumping IS the freshness guarantee)
+fidelity:
+	npm run fidelity
 
 # Check for snippet changes
 sync-snippets:

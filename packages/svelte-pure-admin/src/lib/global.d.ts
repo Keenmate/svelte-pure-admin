@@ -60,6 +60,8 @@ declare global {
 				fit?: { defaultPriority?: number };
 				containerBreakpoint?: { hysteresis?: number; hiddenClass?: string };
 			};
+			printElement?: (target: string | HTMLElement, options?: { title?: string }) => void;
+			printSheet?: (target: string | HTMLElement, options?: { title?: string }) => void;
 			events?: {
 				emit: (name: string, detail?: unknown) => void;
 				/** Subscribe to a topic; returns an unsubscribe function. */

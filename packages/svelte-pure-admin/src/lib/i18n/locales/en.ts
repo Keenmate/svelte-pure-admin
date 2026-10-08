@@ -65,6 +65,10 @@ export const en: Record<string, string> = {
 	'pureAdmin.field.clickToCopy': 'Click to copy',
 	'pureAdmin.field.copied': 'Copied!',
 
+	// Forms (FormErrorSummary)
+	'pureAdmin.form.errorFound': '{count} error found:',
+	'pureAdmin.form.errorsFound': '{count} errors found:',
+
 	// Buttons
 	'pureAdmin.buttons.ok': 'OK',
 	'pureAdmin.buttons.cancel': 'Cancel',

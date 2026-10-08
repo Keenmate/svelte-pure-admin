@@ -12,9 +12,7 @@
 		Sidebar,
 		SidebarItem,
 		Icon,
-		combine,
 		svgIcons,
-		masked,
 		Main,
 		Footer,
 		PopoverContainer,
@@ -59,10 +57,11 @@
 	// install themes via `npx @keenmate/pureadmin themes install` and they appear here.
 	const availableThemes: ThemeOption[] = data.themes;
 
-	// Icon provider for the docs: inline Lucide nav glyphs first, then the
-	// framework's masked structural affordances. So <Icon name="…"> in the sidebar
-	// renders proper SVGs (no unicode/emoji), mirroring keen-pure-admin.
-	const iconProvider = combine(svgIcons(navIcons), masked());
+	// Icon providers for the docs: inline Lucide nav glyphs. Framework structural
+	// affordances (close, chevrons, help, …) resolve first, built-in — no need to
+	// add masked() here. So <Icon name="…"> in the sidebar renders proper SVGs
+	// (no unicode/emoji), mirroring keen-pure-admin.
+	const iconProviders = [svgIcons(navIcons)];
 
 	let sidebarHidden = $state(
 		typeof localStorage !== 'undefined' && localStorage.getItem('sidebar-hidden') === 'true'
@@ -106,7 +105,7 @@
 	let favorites = $state([
 		{ id: 1, href: '/', icon: 'dashboard', label: 'Dashboard' },
 		{ id: 2, href: '/forms', icon: 'forms', label: 'Forms' },
-		{ id: 3, href: '/tables', icon: 'table', label: 'Tables' }
+		{ id: 3, href: '/tables/standard', icon: 'table', label: 'Tables' }
 	]);
 
 	function toggleSidebar() {
@@ -427,7 +426,7 @@
 	<title>{$page.data.pageTitle ? `${$page.data.pageTitle} - ` : ''}Svelte Pure Admin</title>
 </svelte:head>
 
-<PureAdminProvider config={myConfig} {iconProvider}>
+<PureAdminProvider config={myConfig} {iconProviders}>
 	<PopoverContainer />
 	<SettingsPanel {availableThemes} defaultTheme={data.theme} onsettingschange={handleSettingsChange} />
 	<ProfilePanel
@@ -556,21 +555,21 @@
 					{#snippet dropdown()}
 						<NavDropdown>
 							<NavItem href="/buttons">Buttons</NavItem>
-							<NavItem href="/cards">Cards</NavItem>
-							<NavItem href="/tabs">Tabs</NavItem>
+							<NavItem href="/surfaces/cards">Cards</NavItem>
+							<NavItem href="/surfaces/tabs">Tabs</NavItem>
 							<NavItem hasDropdown>
 								More ›
 								{#snippet dropdown()}
 									<NavDropdown level2>
-										<NavItem href="/badges">Badges</NavItem>
-										<NavItem href="/modals">Modals</NavItem>
-										<NavItem href="/loaders">Loaders</NavItem>
-										<NavItem href="/tooltips">Tooltips</NavItem>
-										<NavItem href="/popconfirm">Popconfirm</NavItem>
-										<NavItem href="/alerts">Alerts</NavItem>
-										<NavItem href="/lists">Lists</NavItem>
-										<NavItem href="/checkbox-lists">Checkbox Lists</NavItem>
-										<NavItem href="/code">Code</NavItem>
+										<NavItem href="/interactive/badges">Badges</NavItem>
+										<NavItem href="/surfaces/modals">Modals</NavItem>
+										<NavItem href="/feedback/loaders">Loaders</NavItem>
+										<NavItem href="/feedback/tooltips">Tooltips</NavItem>
+										<NavItem href="/buttons/popconfirm">Popconfirm</NavItem>
+										<NavItem href="/feedback/alerts">Alerts</NavItem>
+										<NavItem href="/data-display/lists">Lists</NavItem>
+										<NavItem href="/forms/checkbox-lists">Checkbox Lists</NavItem>
+										<NavItem href="/data-display/code">Code</NavItem>
 									</NavDropdown>
 								{/snippet}
 							</NavItem>
@@ -618,8 +617,8 @@
 			{/if}
 
 			<NavMenu>
-				<NavItem href="/alerts">Alerts</NavItem>
-				<NavItem href="/tables">Tables</NavItem>
+				<NavItem href="/feedback/alerts">Alerts</NavItem>
+				<NavItem href="/tables/standard">Tables</NavItem>
 			</NavMenu>
 
 			<div class="pa-notifications">
@@ -668,20 +667,51 @@
 					{#snippet icon()}<Icon name="components_overview" />{/snippet}
 				</SidebarItem>
 
+				<!-- ===================== Svelte (Svelte-only) =================== -->
+				<SidebarItem labelText="Svelte" hasSubmenu={true}>
+					{#snippet icon()}<Icon name="phoenix" />{/snippet}
+					{#snippet submenu()}
+						<SidebarItem href="/svelte/icon-component" labelText="Icon Component" active={$page.url.pathname === '/svelte/icon-component'}>
+							{#snippet icon()}<Icon name="icons" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/svelte/validation" labelText="Validation" active={$page.url.pathname === '/svelte/validation'}>
+							{#snippet icon()}<Icon name="validations" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/svelte/form-demo" labelText="Form Demo" active={$page.url.pathname === '/svelte/form-demo'}>
+							{#snippet icon()}<Icon name="forms" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/svelte/batch-rpc" labelText="Batch RPC" active={$page.url.pathname === '/svelte/batch-rpc'}>
+							{#snippet icon()}<Icon name="batch_rpc" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/svelte/i18n" labelText="i18n" active={$page.url.pathname === '/svelte/i18n'}>
+							{#snippet icon()}<Icon name="i18n" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/svelte/auto-theme" labelText="Auto Theme" active={$page.url.pathname === '/svelte/auto-theme'}>
+							{#snippet icon()}<Icon name="auto_theme" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/svelte/events-callbacks" labelText="Events & Callbacks" active={$page.url.pathname === '/svelte/events-callbacks'}>
+							{#snippet icon()}<Icon name="events" />{/snippet}
+						</SidebarItem>
+					{/snippet}
+				</SidebarItem>
+
 				<!-- ============================ Design ========================== -->
 				<SidebarItem labelText="Design" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="design" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/theme-variables" labelText="Theme Variables" active={$page.url.pathname === '/theme-variables'}>
+						<SidebarItem href="/design/theme-variables" labelText="Theme Variables" active={$page.url.pathname === '/design/theme-variables'}>
 							{#snippet icon()}<Icon name="theme_variables" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/colors" labelText="Colors" active={$page.url.pathname === '/colors'}>
+						<SidebarItem href="/design/colors" labelText="Colors" active={$page.url.pathname === '/design/colors'}>
 							{#snippet icon()}<Icon name="colors" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/icons" labelText="Icons" active={$page.url.pathname === '/icons'}>
+						<SidebarItem href="/design/icons" labelText="Icons" active={$page.url.pathname === '/design/icons'}>
 							{#snippet icon()}<Icon name="icons" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/typography" labelText="Typography" active={$page.url.pathname === '/typography'}>
+						<SidebarItem href="/design/layouts" labelText="Layouts" active={$page.url.pathname === '/design/layouts'}>
+							{#snippet icon()}<Icon name="layout" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/design/typography" labelText="Typography" active={$page.url.pathname === '/design/typography'}>
 							{#snippet icon()}<Icon name="typography" />{/snippet}
 						</SidebarItem>
 					{/snippet}
@@ -691,42 +721,17 @@
 				<SidebarItem labelText="Layout & responsivity" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="layout" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/layouts" labelText="Layouts" active={$page.url.pathname === '/layouts'}>
-							{#snippet icon()}<Icon name="layout" />{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/grid" labelText="Grid System" active={$page.url.pathname === '/grid'}>
+						<SidebarItem href="/layout/grid" labelText="Grid System" active={$page.url.pathname === '/layout/grid'}>
 							{#snippet icon()}<Icon name="grid" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/responsivity" labelText="How It Works" active={$page.url.pathname === '/responsivity'}>
+						<SidebarItem href="/layout/responsivity" labelText="How It Works" active={$page.url.pathname === '/layout/responsivity'}>
 							{#snippet icon()}<Icon name="responsivity" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/container-breakpoint" labelText="Fit to Size" active={$page.url.pathname === '/container-breakpoint'}>
+						<SidebarItem href="/layout/container-breakpoint" labelText="Fit to Size" active={$page.url.pathname === '/layout/container-breakpoint'}>
 							{#snippet icon()}<Icon name="container_breakpoint" />{/snippet}
 						</SidebarItem>
-					{/snippet}
-				</SidebarItem>
-
-				<!-- ===================== Svelte (Svelte-only) =================== -->
-				<SidebarItem labelText="Svelte" hasSubmenu={true}>
-					{#snippet icon()}<Icon name="phoenix" />{/snippet}
-					{#snippet submenu()}
-						<SidebarItem href="/validation" labelText="Validation" active={$page.url.pathname === '/validation'}>
-							{#snippet icon()}<Icon name="validations" />{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/form-demo" labelText="Form Demo" active={$page.url.pathname === '/form-demo'}>
+						<SidebarItem href="/layout/responsive-form" labelText="Responsive Form" active={$page.url.pathname === '/layout/responsive-form'}>
 							{#snippet icon()}<Icon name="forms" />{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/batch-rpc" labelText="Batch RPC" active={$page.url.pathname === '/batch-rpc'}>
-							{#snippet icon()}<Icon name="batch_rpc" />{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/i18n" labelText="i18n" active={$page.url.pathname === '/i18n'}>
-							{#snippet icon()}<Icon name="i18n" />{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/auto-theme" labelText="Auto Theme" active={$page.url.pathname === '/auto-theme'}>
-							{#snippet icon()}<Icon name="auto_theme" />{/snippet}
-						</SidebarItem>
-						<SidebarItem href="/events-callbacks" labelText="Events & Callbacks" active={$page.url.pathname === '/events-callbacks'}>
-							{#snippet icon()}<Icon name="events" />{/snippet}
 						</SidebarItem>
 					{/snippet}
 				</SidebarItem>
@@ -735,19 +740,19 @@
 				<SidebarItem labelText="Forms & inputs" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="forms_inputs" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/inputs" labelText="Inputs" active={$page.url.pathname === '/inputs'}>
+						<SidebarItem href="/forms/inputs" labelText="Inputs" active={$page.url.pathname === '/forms/inputs'}>
 							{#snippet icon()}<Icon name="inputs" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/validations" labelText="Validations" active={$page.url.pathname === '/validations'}>
+						<SidebarItem href="/forms/validations" labelText="Validations" active={$page.url.pathname === '/forms/validations'}>
 							{#snippet icon()}<Icon name="validations" />{/snippet}
 						</SidebarItem>
 						<SidebarItem href="/forms" labelText="Forms" active={$page.url.pathname === '/forms'}>
 							{#snippet icon()}<Icon name="forms" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/checkbox-lists" labelText="Checkbox Lists" active={$page.url.pathname === '/checkbox-lists'}>
+						<SidebarItem href="/forms/checkbox-lists" labelText="Checkbox Lists" active={$page.url.pathname === '/forms/checkbox-lists'}>
 							{#snippet icon()}<Icon name="checkbox_lists" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/range-group" labelText="Range Group" active={$page.url.pathname === '/range-group'}>
+						<SidebarItem href="/forms/range-group" labelText="Range Group" active={$page.url.pathname === '/forms/range-group'}>
 							{#snippet icon()}<Icon name="range_group" />{/snippet}
 						</SidebarItem>
 					{/snippet}
@@ -760,10 +765,10 @@
 						<SidebarItem href="/buttons" labelText="Buttons" active={$page.url.pathname === '/buttons'}>
 							{#snippet icon()}<Icon name="buttons" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/pagers" labelText="Pagers" active={$page.url.pathname === '/pagers'}>
+						<SidebarItem href="/buttons/pagers" labelText="Pagers" active={$page.url.pathname === '/buttons/pagers'}>
 							{#snippet icon()}<Icon name="pagers" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/popconfirm" labelText="Popconfirm" active={$page.url.pathname === '/popconfirm'}>
+						<SidebarItem href="/buttons/popconfirm" labelText="Popconfirm" active={$page.url.pathname === '/buttons/popconfirm'}>
 							{#snippet icon()}<Icon name="popconfirm" />{/snippet}
 						</SidebarItem>
 					{/snippet}
@@ -773,22 +778,22 @@
 				<SidebarItem labelText="Surfaces" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="surfaces" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/cards" labelText="Cards" active={$page.url.pathname === '/cards'}>
+						<SidebarItem href="/surfaces/cards" labelText="Cards" active={$page.url.pathname === '/surfaces/cards'}>
 							{#snippet icon()}<Icon name="cards" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/tabs" labelText="Tabs" active={$page.url.pathname === '/tabs'}>
+						<SidebarItem href="/surfaces/tabs" labelText="Tabs" active={$page.url.pathname === '/surfaces/tabs'}>
 							{#snippet icon()}<Icon name="tabs" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/modals" labelText="Modals" active={$page.url.pathname === '/modals'}>
+						<SidebarItem href="/surfaces/modals" labelText="Modals" active={$page.url.pathname === '/surfaces/modals'}>
 							{#snippet icon()}<Icon name="modals" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/modal-dialogs" labelText="Modal Dialogs" active={$page.url.pathname === '/modal-dialogs'}>
+						<SidebarItem href="/surfaces/modal-dialogs" labelText="Modal Dialogs" active={$page.url.pathname === '/surfaces/modal-dialogs'}>
 							{#snippet icon()}<Icon name="modal_dialogs" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/detail-panel" labelText="Detail Panel" active={$page.url.pathname === '/detail-panel'}>
+						<SidebarItem href="/surfaces/detail-panel" labelText="Detail Panel" active={$page.url.pathname === '/surfaces/detail-panel'}>
 							{#snippet icon()}<Icon name="detail_panel" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/splitter" labelText="Splitter" active={$page.url.pathname === '/splitter'}>
+						<SidebarItem href="/surfaces/splitter" labelText="Splitter" active={$page.url.pathname === '/surfaces/splitter'}>
 							{#snippet icon()}<Icon name="splitter" />{/snippet}
 						</SidebarItem>
 					{/snippet}
@@ -798,39 +803,48 @@
 				<SidebarItem labelText="Data display" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="data_display_group" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/lists" labelText="Lists" active={$page.url.pathname === '/lists'}>
+						<SidebarItem href="/data-display/lists" labelText="Lists" active={$page.url.pathname === '/data-display/lists'}>
 							{#snippet icon()}<Icon name="lists" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/code" labelText="Code" active={$page.url.pathname === '/code'}>
+						<SidebarItem href="/data-display/code" labelText="Code" active={$page.url.pathname === '/data-display/code'}>
 							{#snippet icon()}<Icon name="code" />{/snippet}
 						</SidebarItem>
 						<SidebarItem href="/data-display" labelText="Data Display" active={$page.url.pathname === '/data-display'}>
 							{#snippet icon()}<Icon name="data_display" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/data-display-2" labelText="Data Display v2" active={$page.url.pathname === '/data-display-2'}>
+						<SidebarItem href="/data-display/data-display-2" labelText="Data Display v2" active={$page.url.pathname === '/data-display/data-display-2'}>
 							{#snippet icon()}<Icon name="data_display_2" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/data-display/stats" labelText="Stat Cards" active={$page.url.pathname === '/data-display/stats'}>
+							{#snippet icon()}<Icon name="kpi" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/data-display/document" labelText="Document" active={$page.url.pathname === '/data-display/document'}>
+							{#snippet icon()}<Icon name="document" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/data-display/sheet" labelText="Sheet" active={$page.url.pathname === '/data-display/sheet'}>
+							{#snippet icon()}<Icon name="sheet" />{/snippet}
 						</SidebarItem>
 
 						<!-- Tables (nested, mirrors pure-admin) -->
 						<SidebarItem labelText="Tables" hasSubmenu={true}>
 							{#snippet icon()}<Icon name="table" />{/snippet}
 							{#snippet submenu()}
-								<SidebarItem href="/tables" labelText="Standard Tables" active={$page.url.pathname === '/tables'}>
+								<SidebarItem href="/tables/standard" labelText="Standard Tables" active={$page.url.pathname === '/tables/standard'}>
 									{#snippet icon()}<Icon name="table" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/tables-sizing" labelText="Table Sizing" active={$page.url.pathname === '/tables-sizing'}>
+								<SidebarItem href="/tables/sizing" labelText="Table Sizing" active={$page.url.pathname === '/tables/sizing'}>
 									{#snippet icon()}<Icon name="sizing" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/tables-responsive" labelText="Responsive" active={$page.url.pathname === '/tables-responsive'}>
+								<SidebarItem href="/tables/responsive" labelText="Responsive" active={$page.url.pathname === '/tables/responsive'}>
 									{#snippet icon()}<Icon name="table_responsive" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/table-filters" labelText="Filters" active={$page.url.pathname === '/table-filters'}>
+								<SidebarItem href="/tables/filters" labelText="Filters" active={$page.url.pathname === '/tables/filters'}>
 									{#snippet icon()}<Icon name="table_filters" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/table-multi-select" labelText="Multi-Select" active={$page.url.pathname === '/table-multi-select'}>
+								<SidebarItem href="/tables/multi-select" labelText="Multi-Select" active={$page.url.pathname === '/tables/multi-select'}>
 									{#snippet icon()}<Icon name="table_multiselect" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/comparison" labelText="Comparison" active={$page.url.pathname === '/comparison'}>
+								<SidebarItem href="/tables/comparison" labelText="Comparison" active={$page.url.pathname === '/tables/comparison'}>
 									{#snippet icon()}<Icon name="table_comparison" />{/snippet}
 								</SidebarItem>
 							{/snippet}
@@ -842,7 +856,7 @@
 				<SidebarItem labelText="Data visualization" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="data_viz_group" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/data-visualization" labelText="Data Visualization" active={$page.url.pathname === '/data-visualization'}>
+						<SidebarItem href="/data-viz" labelText="Data Visualization" active={$page.url.pathname === '/data-viz'}>
 							{#snippet icon()}<Icon name="data_visualization" />{/snippet}
 						</SidebarItem>
 
@@ -850,25 +864,25 @@
 						<SidebarItem labelText="KPI" hasSubmenu={true}>
 							{#snippet icon()}<Icon name="kpi" />{/snippet}
 							{#snippet submenu()}
-								<SidebarItem href="/kpi-terminal-grid" labelText="Terminal grid" active={$page.url.pathname === '/kpi-terminal-grid'}>
+								<SidebarItem href="/kpi/terminal-grid" labelText="Terminal grid" active={$page.url.pathname === '/kpi/terminal-grid'}>
 									{#snippet icon()}<Icon name="kpi_terminal" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/kpi-sparkline-list" labelText="Sparkline list" active={$page.url.pathname === '/kpi-sparkline-list'}>
+								<SidebarItem href="/kpi/sparkline-list" labelText="Sparkline list" active={$page.url.pathname === '/kpi/sparkline-list'}>
 									{#snippet icon()}<Icon name="kpi_sparkline" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/kpi-comparison-gauges" labelText="Comparison gauges" active={$page.url.pathname === '/kpi-comparison-gauges'}>
+								<SidebarItem href="/kpi/comparison-gauges" labelText="Comparison gauges" active={$page.url.pathname === '/kpi/comparison-gauges'}>
 									{#snippet icon()}<Icon name="kpi" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/kpi-hero-supporting" labelText="Hero + supporting" active={$page.url.pathname === '/kpi-hero-supporting'}>
+								<SidebarItem href="/kpi/hero-supporting" labelText="Hero + supporting" active={$page.url.pathname === '/kpi/hero-supporting'}>
 									{#snippet icon()}<Icon name="kpi" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/kpi-bento" labelText="Bento layout" active={$page.url.pathname === '/kpi-bento'}>
+								<SidebarItem href="/kpi/bento" labelText="Bento layout" active={$page.url.pathname === '/kpi/bento'}>
 									{#snippet icon()}<Icon name="kpi_editorial" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/kpi-numeric-strip" labelText="Numeric strip" active={$page.url.pathname === '/kpi-numeric-strip'}>
+								<SidebarItem href="/kpi/numeric-strip" labelText="Numeric strip" active={$page.url.pathname === '/kpi/numeric-strip'}>
 									{#snippet icon()}<Icon name="kpi_numeric" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/kpi-editorial-minimal" labelText="Editorial minimal" active={$page.url.pathname === '/kpi-editorial-minimal'}>
+								<SidebarItem href="/kpi/editorial-minimal" labelText="Editorial minimal" active={$page.url.pathname === '/kpi/editorial-minimal'}>
 									{#snippet icon()}<Icon name="kpi_editorial" />{/snippet}
 								</SidebarItem>
 							{/snippet}
@@ -880,34 +894,40 @@
 				<SidebarItem labelText="Feedback" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="feedback" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/alerts" labelText="Alerts" active={$page.url.pathname === '/alerts'}>
+						<SidebarItem href="/feedback/alerts" labelText="Alerts" active={$page.url.pathname === '/feedback/alerts'}>
 							{#snippet icon()}<Icon name="alerts" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/callouts" labelText="Callouts" active={$page.url.pathname === '/callouts'}>
+						<SidebarItem href="/feedback/callouts" labelText="Callouts" active={$page.url.pathname === '/feedback/callouts'}>
 							{#snippet icon()}<Icon name="callouts" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/toasts" labelText="Toasts" active={$page.url.pathname === '/toasts'}>
+						<SidebarItem href="/feedback/toasts" labelText="Toasts" active={$page.url.pathname === '/feedback/toasts'}>
 							{#snippet icon()}<Icon name="toasts" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/tooltips" labelText="Tooltips" active={$page.url.pathname === '/tooltips'}>
+						<SidebarItem href="/feedback/tooltips" labelText="Tooltips" active={$page.url.pathname === '/feedback/tooltips'}>
 							{#snippet icon()}<Icon name="tooltips" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/loaders" labelText="Loaders" active={$page.url.pathname === '/loaders'}>
+						<SidebarItem href="/feedback/loaders" labelText="Loaders" active={$page.url.pathname === '/feedback/loaders'}>
 							{#snippet icon()}<Icon name="loaders" />{/snippet}
+						</SidebarItem>
+						<SidebarItem href="/feedback/notifications" labelText="Notifications" active={$page.url.pathname === '/feedback/notifications'}>
+							{#snippet icon()}<Icon name="notifications" />{/snippet}
 						</SidebarItem>
 
 						<!-- Timeline (nested, mirrors pure-admin) -->
 						<SidebarItem labelText="Timeline" hasSubmenu={true}>
 							{#snippet icon()}<Icon name="timeline" />{/snippet}
 							{#snippet submenu()}
-								<SidebarItem href="/timeline-simple" labelText="Simple" active={$page.url.pathname === '/timeline-simple'}>
+								<SidebarItem href="/timeline/simple" labelText="Simple" active={$page.url.pathname === '/timeline/simple'}>
 									{#snippet icon()}<Icon name="timeline_simple" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/timeline-block" labelText="Block" active={$page.url.pathname === '/timeline-block'}>
+								<SidebarItem href="/timeline/block" labelText="Block" active={$page.url.pathname === '/timeline/block'}>
 									{#snippet icon()}<Icon name="timeline_block" />{/snippet}
 								</SidebarItem>
-								<SidebarItem href="/timeline-feed" labelText="Feed" active={$page.url.pathname === '/timeline-feed'}>
+								<SidebarItem href="/timeline/feed" labelText="Feed" active={$page.url.pathname === '/timeline/feed'}>
 									{#snippet icon()}<Icon name="timeline_feed" />{/snippet}
+								</SidebarItem>
+								<SidebarItem href="/timeline/advanced" labelText="Advanced" active={$page.url.pathname === '/timeline/advanced'}>
+									{#snippet icon()}<Icon name="timeline" />{/snippet}
 								</SidebarItem>
 							{/snippet}
 						</SidebarItem>
@@ -918,10 +938,10 @@
 				<SidebarItem labelText="Interactive & misc" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="interactive" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/badges" labelText="Badges" active={$page.url.pathname === '/badges'}>
+						<SidebarItem href="/interactive/badges" labelText="Badges" active={$page.url.pathname === '/interactive/badges'}>
 							{#snippet icon()}<Icon name="badges" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/command-palette" labelText="Command Palette" active={$page.url.pathname === '/command-palette'}>
+						<SidebarItem href="/interactive/command-palette" labelText="Command Palette" active={$page.url.pathname === '/interactive/command-palette'}>
 							{#snippet icon()}<Icon name="command_palette" />{/snippet}
 						</SidebarItem>
 					{/snippet}
@@ -931,16 +951,16 @@
 				<SidebarItem labelText="Practical Examples" hasSubmenu={true}>
 					{#snippet icon()}<Icon name="practical" />{/snippet}
 					{#snippet submenu()}
-						<SidebarItem href="/kpi-dashboard" labelText="KPI Dashboard" active={$page.url.pathname === '/kpi-dashboard'}>
+						<SidebarItem href="/showcases/kpi-dashboard" labelText="KPI Dashboard" active={$page.url.pathname === '/showcases/kpi-dashboard'}>
 							{#snippet icon()}<Icon name="kpi" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/movies" labelText="Movies" active={$page.url.pathname === '/movies'}>
+						<SidebarItem href="/showcases/movies" labelText="Movies" active={$page.url.pathname === '/showcases/movies'}>
 							{#snippet icon()}<Icon name="movies" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/movies/detail?id=1" labelText="Movie Detail" active={$page.url.pathname === '/movies/detail'}>
+						<SidebarItem href="/showcases/movies/detail?id=1" labelText="Movie Detail" active={$page.url.pathname === '/showcases/movies/detail'}>
 							{#snippet icon()}<Icon name="movies" />{/snippet}
 						</SidebarItem>
-						<SidebarItem href="/movies-panel" labelText="Movies + Panel" active={$page.url.pathname === '/movies-panel'}>
+						<SidebarItem href="/showcases/movies-panel" labelText="Movies + Panel" active={$page.url.pathname === '/showcases/movies-panel'}>
 							{#snippet icon()}<Icon name="movies" />{/snippet}
 						</SidebarItem>
 					{/snippet}

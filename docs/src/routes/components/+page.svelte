@@ -69,7 +69,7 @@
 					<li>Collapsible Cards</li>
 					<li>Card with Tabs</li>
 				</BasicList>
-				<Button variant="primary" size="sm" href="/cards">View Cards</Button>
+				<Button variant="primary" size="sm" href="/surfaces/cards">View Cards</Button>
 			</Card>
 		</Column>
 
@@ -85,7 +85,7 @@
 					<li>Fixed Width</li>
 					<li>Composite Badges</li>
 				</BasicList>
-				<Button variant="primary" size="sm" href="/badges">View Badges</Button>
+				<Button variant="primary" size="sm" href="/interactive/badges">View Badges</Button>
 			</Card>
 		</Column>
 
@@ -101,7 +101,7 @@
 					<li>Rich Content</li>
 					<li>Compact Mode</li>
 				</BasicList>
-				<Button variant="primary" size="sm" href="/alerts">View Alerts</Button>
+				<Button variant="primary" size="sm" href="/feedback/alerts">View Alerts</Button>
 			</Card>
 		</Column>
 
@@ -117,7 +117,7 @@
 					<li>Rich Content</li>
 					<li>Multiple Sizes</li>
 				</BasicList>
-				<Button variant="primary" size="sm" href="/tooltips">View Tooltips</Button>
+				<Button variant="primary" size="sm" href="/feedback/tooltips">View Tooltips</Button>
 			</Card>
 		</Column>
 

@@ -2,9 +2,10 @@
 	/**
 	 * Icon — renders an icon by NAME through the configured icon provider.
 	 *
-	 * The consumer passes a `name`; the provider (set on `PureAdminProvider`, default
-	 * {@link masked}) turns it into markup so projects use whatever icon set they
-	 * already have without hand-authoring `<fa-icon>` / `<hero-icon>` / raw `<svg>`.
+	 * The consumer passes a `name`. Framework affordances (close, chevrons, success,
+	 * danger, …) resolve first, built-in and reserved. Any other name is handed to the
+	 * configured provider list (set on `PureAdminProvider`) so projects use whatever
+	 * icon set they already have without hand-authoring `<fa-icon>` / `<hero-icon>` / raw `<svg>`.
 	 *
 	 * @example
 	 * ```svelte
@@ -18,7 +19,7 @@
 	 * `.pa-btn` / nav link / `.pa-tabs__item` reacts on the control's hover with no
 	 * prop. `isInteractive` adds `.pc-icon-hover` so a standalone icon reacts too.
 	 */
-	import { useIconProvider } from './icon-provider';
+	import { useIconProviders, resolveIcon } from './icon-provider';
 
 	interface Props {
 		/** Icon name — resolved by the configured provider. */
@@ -35,8 +36,8 @@
 
 	let { name, size, isInteractive = false, label, class: className = '' }: Props = $props();
 
-	const provider = useIconProvider();
-	const markup = $derived(provider(name, { class: className, size, isInteractive }));
+	const providers = useIconProviders();
+	const markup = $derived(resolveIcon(name, { class: className, size, isInteractive, label }, providers));
 
 	const hostClass = $derived(
 		[isInteractive ? 'pc-icon-hover' : '', className].filter(Boolean).join(' ')

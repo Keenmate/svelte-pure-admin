@@ -4,9 +4,10 @@
  * Mirrors keen-pure-admin's `sidebar_icons.ex`, so the Svelte docs nav uses the
  * same glyphs as the Phoenix reference app — no unicode/emoji icons.
  *
- * Wired in `+layout.svelte` via
- * `iconProvider={combine(svgIcons(navIcons), masked())}`, so `<Icon name="…">`
- * resolves these first and falls back to the framework's masked affordances.
+ * Wired in `+layout.svelte` via `iconProviders={[svgIcons(navIcons)]}`. Framework
+ * masked affordances resolve FIRST, built-in and reserved — so a key here that
+ * collides with an affordance name (e.g. `help`) is shadowed by `pa-icon--help`.
+ * Qualify such names in the nav if you want the Lucide glyph instead.
  */
 export const navIcons: Record<string, string> = {
 	// Top-level / docs
@@ -90,6 +91,10 @@ export const navIcons: Record<string, string> = {
 		'<rect width="7" height="7" x="3" y="3" rx="1" /><rect width="7" height="7" x="3" y="14" rx="1" /><path d="M14 4h7" /><path d="M14 9h7" /><path d="M14 15h7" /><path d="M14 20h7" />',
 	data_display_2:
 		'<path d="M15 3v18" /><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M21 9H3" /><path d="M21 15H3" />',
+	document:
+		'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M16 13H8" /><path d="M16 17H8" /><path d="M10 9H8" />',
+	sheet:
+		'<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" /><path d="M8 7h8" /><path d="M8 11h8" /><path d="M8 15h5" />',
 	data_visualization:
 		'<path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" />',
 

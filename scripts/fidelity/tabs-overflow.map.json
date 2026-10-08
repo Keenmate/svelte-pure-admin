@@ -1,0 +1,9 @@
+{
+  "//": "Capability manifest for <TabsOverflow> — svelte-pure-admin. The card-header overflow dropdown: a toggle snippet (defaults to an ellipsis glyph) + a children snippet rendered into the menu. `show` (open state) is JS/reactive and not exercised. See tabs.map.json for the family.",
+  "component": "tabs-overflow",
+  "features": {
+    "hasActive":  { "prop": "hasActive", "kind": "bool" },
+    "body":       { "prop": "children",  "kind": "slot" },
+    "extraClass": { "prop": "class",     "kind": "string" }
+  }
+}

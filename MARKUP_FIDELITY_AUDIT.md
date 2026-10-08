@@ -269,7 +269,7 @@ long `COMPONENT REFERENCE` comment) **plus** the component's SCSS in
 
 ## Harness workflow (per component)
 
-1. Dev server (SvelteKit docs) runs at **http://localhost:5173**; its vite alias
+1. Dev server (SvelteKit docs) runs at **http://localhost:18800**; its vite alias
    maps `@keenmate/svelte-pure-admin` → the lib **source**, so editing a lib file
    hot-reloads instantly. (If the server is down, start it in `../svelte-pure-admin`.)
 2. Overwrite `docs/src/routes/audit/+page.svelte` — import the component, render the

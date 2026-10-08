@@ -20,6 +20,7 @@
     "publish:lib": "npm run package && npm publish -w @keenmate/svelte-pure-admin --access public",
     "sync:snippets": "node scripts/sync-snippets.js",
     "sync:snippets:update": "node scripts/sync-snippets.js --update",
+    "fidelity": "node scripts/fidelity/dump.mjs --all && node ../pure-admin/packages/core/fidelity/compare-all.mjs --wrapper svelte",
     "clean": "npm run clean -w @keenmate/svelte-pure-admin && npm run clean -w docs"
   },
   "devDependencies": {

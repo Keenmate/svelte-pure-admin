@@ -4,9 +4,8 @@
 	 * Displays a summary of form validation errors with clickable anchor links
 	 */
 	import Alert from '../feedback/Alert.svelte';
-	import Strong from '../typography/Strong.svelte';
-	import BasicList from '../display/BasicList.svelte';
 	import Link from '../typography/Link.svelte';
+	import { _ } from '../i18n';
 
 	export interface FormErrorItem {
 		field: string;
@@ -27,16 +26,20 @@
 
 	const shouldShow = $derived(show && errors.length > 0);
 	const errorCount = $derived(errors.length);
-	const errorText = $derived(errorCount === 1 ? 'error' : 'errors');
+	const headingText = $derived(
+		$_(errorCount === 1 ? 'pureAdmin.form.errorFound' : 'pureAdmin.form.errorsFound', {
+			values: { count: errorCount }
+		})
+	);
 </script>
 
 {#if shouldShow}
 	<Alert variant="danger" class="mb-4 {className}">
-		<Strong>{errorCount} {errorText} found:</Strong>
-		<BasicList class="mt-0 mb-0">
+		<h4 class="pa-alert__heading">{headingText}</h4>
+		<ul class="pa-alert__list">
 			{#each errors as error}
 				<li><Link href="#{error.id}">{error.field}</Link> - {error.message}</li>
 			{/each}
-		</BasicList>
+		</ul>
 	</Alert>
 {/if}
