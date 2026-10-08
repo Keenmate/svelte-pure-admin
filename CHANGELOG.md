@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added / Fixed — dialog service parity
+
+- **`dialogService` now supports `isBanded`** (all dialog types) — banded header + footer
+  bands, composed with `variant` for the colour. Passed through `DialogContainer` to
+  `<Modal isBanded>`. Mirrors keen's server dialog and core's declarative modal; brings
+  the programmatic dialog to banded parity.
+- **`closeOnBackdrop` is now honoured.** It was accepted but ignored, so a dialog meant to
+  be non-dismissable (e.g. `prompt`, or a forced-choice `confirm`) could still be closed by
+  clicking the backdrop. `DialogContainer` now wires it to the new `<Modal shouldCloseOnBackdrop>`
+  prop. **Backdrop-only** — Escape still cancels, matching core's `modal-dialogs.js`.
+- **New `Modal` prop `shouldCloseOnBackdrop`** (default `true`) — gates backdrop dismissal
+  independently of `shouldCloseOnEscape` (symmetry; `isStatic` still blocks both).
+- Docs: the **Modal Dialogs** page gains an "Outcome → Toast" card — the svelte idiom of
+  keen's server-driven dialog (`await` a banded confirm, then `toastService` the outcome)
+  plus a forced-choice (`closeOnBackdrop: false`) example.
+
 ### Changed — typography (flat `text-*` consolidation)
 
 - **`Paragraph`, `Text` and `Heading` now emit the flat `text-*` utilities** instead of

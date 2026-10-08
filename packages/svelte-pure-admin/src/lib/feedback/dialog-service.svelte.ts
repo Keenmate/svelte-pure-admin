@@ -23,6 +23,13 @@ export interface BaseDialogOptions {
 	message?: string;
 	variant?: DialogVariant;
 	/**
+	 * Banded header + footer (`pa-modal--banded`). Compose with `variant` for the
+	 * band colour (success/warning/danger/info). Mirrors keen's server dialog and
+	 * core's declarative modal; the programmatic JS services (core/keen) don't
+	 * expose this yet. Since core v2.7.0 (banded modal).
+	 */
+	isBanded?: boolean;
+	/**
 	 * Leading masked icon in the title (`.pa-icon--*`). Pass a `pa-icon--*` name to
 	 * override (e.g. `'delete'`), or `false` to hide. When omitted it is derived from
 	 * `variant` — success/warning/danger/info show the matching severity mark, `primary`

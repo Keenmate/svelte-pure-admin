@@ -43,6 +43,10 @@
 		shouldShowClose?: boolean;
 		/** Close on Escape key (default: true, ignored when isStatic is true) */
 		shouldCloseOnEscape?: boolean;
+		/** Close on backdrop click (default: true, ignored when isStatic is true).
+		 *  Mirrors core `modal-dialogs.js` `closeOnBackdrop` — gates the backdrop
+		 *  only; Escape is governed separately by `shouldCloseOnEscape`. */
+		shouldCloseOnBackdrop?: boolean;
 		/** Called before close - return false to prevent closing */
 		beforeCloseCallback?: () => boolean | void;
 		/** Close callback (called after close) */
@@ -78,6 +82,7 @@
 		titleIcon,
 		shouldShowClose = true,
 		shouldCloseOnEscape = true,
+		shouldCloseOnBackdrop = true,
 		beforeCloseCallback,
 		onclose,
 		class: className = '',
@@ -170,8 +175,9 @@
 	}
 
 	function handleBackdropClick() {
-		// Static modals don't close on backdrop click
-		if (isStatic) return;
+		// Static modals never close on backdrop; `shouldCloseOnBackdrop` gates the
+		// backdrop independently of Escape (core modal-dialogs.js `closeOnBackdrop`).
+		if (isStatic || !shouldCloseOnBackdrop) return;
 		handleClose();
 	}
 

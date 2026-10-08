@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Paragraph, Code, CodeBlock, Heading, Card, Button, ButtonGroup, Alert, Callout, Table, dialogService } from '@keenmate/svelte-pure-admin';
+	import { Paragraph, Code, CodeBlock, Heading, Card, Button, ButtonGroup, Alert, Callout, Table, dialogService, toastService, ToastContainer } from '@keenmate/svelte-pure-admin';
 				
 	// Result state for confirm dialogs
 	let confirmResult = $state<{ result: boolean; shown: boolean }>({ result: false, shown: false });
@@ -410,6 +410,57 @@ switch (result) {
     // User cancelled
     break;
 }`;
+
+	// Banded "document changed" confirm — the svelte idiom of keen's server-driven
+	// dialog: await the promise, then toast each outcome. `isBanded` is newly
+	// supported by dialogService. The ✕/backdrop/Escape dismiss resolves the
+	// promise too (confirm → false), so no separate dismiss event is needed.
+	async function documentChanged() {
+		const reload = await dialogService.confirm({
+			title: 'Document changed',
+			message: 'Someone else updated this document. Reload their version? Your unsaved changes will be lost.',
+			variant: 'warning',
+			isBanded: true,
+			position: 'top',
+			confirmText: 'Reload theirs',
+			cancelText: 'Keep mine'
+		});
+
+		if (reload) {
+			toastService.show({ variant: 'warning', titleText: 'Document reloaded', messageText: 'Loaded the latest version; your edits were discarded.' });
+		} else {
+			toastService.show({ variant: 'success', titleText: 'Kept your version', messageText: 'Your local changes were preserved.' });
+		}
+	}
+
+	// Forced choice — `closeOnBackdrop: false` now actually sticks: clicking the
+	// backdrop no longer dismisses (Escape still cancels, matching core's
+	// modal-dialogs.js). Previously the option was accepted but ignored.
+	async function forcedChoice() {
+		const ok = await dialogService.confirm({
+			title: 'Are you sure?',
+			message: 'Clicking outside will NOT dismiss this — pick a button. (Escape still cancels.)',
+			variant: 'danger',
+			confirmText: 'Yes, do it',
+			cancelText: 'No',
+			closeOnBackdrop: false
+		});
+		toastService.show({ variant: 'info', titleText: ok ? 'Confirmed' : 'Cancelled', messageText: `You chose ${ok ? 'yes' : 'no'}.` });
+	}
+
+	const serverStyleCode = `// svelte idiom of keen's server-driven dialog: await + toast.
+const reload = await dialogService.confirm({
+  title: 'Document changed',
+  message: 'Someone else updated this document. Reload their version?',
+  variant: 'warning', isBanded: true, position: 'top',   // isBanded: new
+  confirmText: 'Reload theirs', cancelText: 'Keep mine'
+});
+reload
+  ? toastService.show({ variant: 'warning', titleText: 'Document reloaded', messageText: '…' })
+  : toastService.show({ variant: 'success', titleText: 'Kept your version', messageText: '…' });
+
+// Forced choice: closeOnBackdrop:false now sticks (Escape still cancels).
+await dialogService.confirm({ closeOnBackdrop: false, confirmText: 'Yes', cancelText: 'No' });`;
 </script>
 
 <!-- When to use -->
@@ -443,6 +494,23 @@ switch (result) {
 			<strong>Result:</strong> {confirmResult.result ? 'User clicked OK (true)' : 'User clicked Cancel (false)'}
 		</Alert>
 	{/if}
+</Card>
+
+<!-- Dialog → Toast + banded + forced choice -->
+<Card titleText="Outcome → Toast (banded + forced choice)" class="pa-section">
+	<Paragraph>
+		The svelte counterpart of keen's server-driven dialog: <Code>await</Code> the promise, then raise a
+		<a href="/feedback/toasts">toast</a> for the outcome. <Code>isBanded</Code> is newly supported by
+		<Code>dialogService</Code>, and <Code>closeOnBackdrop: false</Code> now actually sticks (the backdrop
+		no longer dismisses; Escape still cancels — matching core's <Code>modal-dialogs.js</Code>).
+	</Paragraph>
+
+	<ButtonGroup class="mt-4">
+		<Button variant="warning" onclick={documentChanged}>Someone edited this document…</Button>
+		<Button variant="danger" onclick={forcedChoice}>Forced choice (no backdrop dismiss)</Button>
+	</ButtonGroup>
+
+	<CodeBlock class="mt-4">{serverStyleCode}</CodeBlock>
 </Card>
 
 <!-- Position Options -->
@@ -843,3 +911,6 @@ switch (result) {
 		</tbody>
 	</Table>
 </Card>
+
+<!-- Renders the toasts raised by the "Outcome → Toast" card above. -->
+<ToastContainer position="top-end" />

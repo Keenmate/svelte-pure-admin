@@ -144,7 +144,9 @@
 		show={true}
 		size={options.size || 'sm'}
 		variant={options.variant}
+		isBanded={options.isBanded ?? false}
 		shouldShowClose={false}
+		shouldCloseOnBackdrop={options.closeOnBackdrop !== false}
 		position={options.position || 'center'}
 		titleText={options.title}
 		titleIcon={resolveTitleIcon(options)}
