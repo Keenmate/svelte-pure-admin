@@ -45,6 +45,7 @@ export const en: Record<string, string> = {
 	'pureAdmin.commandPalette.select': 'Select',
 	'pureAdmin.commandPalette.complete': 'Complete',
 	'pureAdmin.commandPalette.close': 'Close',
+	'pureAdmin.commandPalette.back': 'Back',
 	'pureAdmin.commandPalette.searchFailed': 'Search failed. Please try again.',
 	'pureAdmin.commandPalette.loadOptionsFailed': 'Failed to load options. Please try again.',
 	'pureAdmin.commandPalette.openCommandPalette': 'Open command palette',

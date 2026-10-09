@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed — command palette alignment with core
+
+- **Global (no-prefix) search now surfaces matching commands and contexts.** Typing a
+  bare query like `go` previously returned "No results found" unless a `globalSearch`
+  provider happened to match; it now prepends any command/context whose
+  name/shortcut/alias matches (mirroring core's `global_matches`), so `go` finds
+  **Go to Page** even without a provider.
+- **Step-back parity.** `Esc` now steps back from a command step / context search (to the
+  previous step, the command list, or the context list) instead of closing outright, and
+  `Backspace` on empty input steps back too — matching core/keen. The footer gains a
+  `⌫ Back` hint and `Esc` reads *Back* in those modes.
+- **Input-mode badge** shows only in a command step (the command name) or a context search
+  ("Search <context>"), not for the command/context lists or global search — removing the
+  stray "Search" badge the other wrappers don't show.
+- **Footer** drops the `Tab Complete` hint (Tab still completes; core/keen don't advertise
+  it) so the hint row matches the other wrappers.
+
 ## [1.9.0-rc05] - 2026-10-09
 
 ### Changed — Pure Admin Core 3.3.0-rc06

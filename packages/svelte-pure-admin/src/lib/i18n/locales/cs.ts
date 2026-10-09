@@ -45,6 +45,7 @@ export const cs: Record<string, string> = {
 	'pureAdmin.commandPalette.select': 'Vybrat',
 	'pureAdmin.commandPalette.complete': 'Doplnit',
 	'pureAdmin.commandPalette.close': 'Zavřít',
+	'pureAdmin.commandPalette.back': 'Zpět',
 	'pureAdmin.commandPalette.searchFailed': 'Vyhledávání selhalo. Zkuste to prosím znovu.',
 	'pureAdmin.commandPalette.loadOptionsFailed': 'Načtení možností selhalo. Zkuste to prosím znovu.',
 	'pureAdmin.commandPalette.openCommandPalette': 'Otevřít paletu příkazů',

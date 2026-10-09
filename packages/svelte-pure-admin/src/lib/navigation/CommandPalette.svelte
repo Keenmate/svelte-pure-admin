@@ -347,22 +347,62 @@
 	function handleGlobalSearchInput(query: string) {
 		mode = 'global-search';
 
+		// Prepend matching commands + contexts — mirrors core's `global_matches` in
+		// the LiveComponent, so a bare query like "go" surfaces the "Go to Page"
+		// command even without a globalSearch provider. selectGlobalResult already
+		// routes _type 'command'/'context' into their modes.
+		const q = query.trim().toLowerCase();
+		const entryMatches = (name: string | undefined, shortcut: string, aliases?: string[]) =>
+			q !== '' &&
+			((name || '').toLowerCase().includes(q) ||
+				shortcut.toLowerCase().includes(q) ||
+				(aliases || []).some((a) => a.toLowerCase().includes(q)));
+
+		const prepended: SearchResult[] = [
+			...commands
+				.filter((cmd) => entryMatches(cmd.name, cmd.shortcut, cmd.aliases))
+				.map((cmd) => ({
+					id: `cmd-${cmd.shortcut}`,
+					title: cmd.name || cmd.shortcut,
+					subtitle: cmd.description,
+					icon: cmd.icon,
+					badge: cmd.shortcut,
+					_type: 'command',
+					_command: cmd
+				})),
+			...contexts
+				.filter((ctx) => entryMatches(ctx.name, ctx.shortcut, ctx.aliases))
+				.map((ctx) => ({
+					id: `ctx-${ctx.shortcut}`,
+					title: ctx.name || ctx.shortcut,
+					subtitle: ctx.description,
+					icon: ctx.icon,
+					badge: ctx.shortcut,
+					_type: 'context',
+					_context: ctx
+				}))
+		];
+
+		clearTimeout(searchDebounceTimer);
+
 		if (!globalSearch) {
-			displayItems = [];
+			displayItems = prepended;
+			activeIndex = prepended.length > 0 ? 0 : -1;
 			return;
 		}
 
-		// Debounce search
+		// Debounce the provider search; command/context matches show alongside its results.
 		searchDebounceTimer = setTimeout(async () => {
 			loading = true;
 			try {
 				const results = await globalSearch(query);
-				displayItems = results;
-				activeIndex = results.length > 0 ? 0 : -1;
+				displayItems = [...prepended, ...results];
+				activeIndex = displayItems.length > 0 ? 0 : -1;
 			} catch (err) {
 				console.error('Global search failed:', err);
 				error = $_('pureAdmin.commandPalette.searchFailed');
-				displayItems = [];
+				displayItems = prepended;
+				activeIndex = prepended.length > 0 ? 0 : -1;
 			} finally {
 				loading = false;
 			}
@@ -497,6 +537,38 @@
 		inputRef?.focus();
 	}
 
+	// Step back one level — mirrors core/keen. A command step returns to the
+	// previous step (or to the command list from the first step); a context search
+	// returns to the context list. Driven by Esc and by Backspace on empty input.
+	function goBack() {
+		if (mode === 'command-step') {
+			if (selections.length > 0) {
+				rewindToStep(selections.length - 1);
+			} else {
+				// First step → back out to the command list.
+				activeCommand = undefined;
+				selections = [];
+				currentStepIndex = 0;
+				mode = 'command-list';
+				inputValue = '/';
+				displayItems = commands;
+				activeIndex = commands.length > 0 ? 0 : -1;
+				inputRef?.focus();
+			}
+			return;
+		}
+		if (mode === 'context-search') {
+			activeContext = undefined;
+			mode = 'context-list';
+			inputValue = ':';
+			displayItems = contexts;
+			activeIndex = contexts.length > 0 ? 0 : -1;
+			inputRef?.focus();
+			return;
+		}
+		close();
+	}
+
 	function selectGlobalResult(result: SearchResult) {
 		// Route based on result type (commands/contexts enter their mode, others notify consumer)
 		if (result._type === 'command' && result._command) {
@@ -609,9 +681,23 @@
 				event.preventDefault();
 				handleTab();
 				break;
+			case 'Backspace':
+				// Empty editable text in a step/context → step back one level instead
+				// of deleting into the locked prefix. Otherwise fall through to normal
+				// character deletion.
+				if ((mode === 'command-step' || mode === 'context-search') && getQueryFromInput() === '') {
+					event.preventDefault();
+					goBack();
+				}
+				break;
 			case 'Escape':
 				event.preventDefault();
-				close();
+				// Esc steps back from a step/context; closes everywhere else.
+				if (mode === 'command-step' || mode === 'context-search') {
+					goBack();
+				} else {
+					close();
+				}
 				break;
 		}
 	}
@@ -899,8 +985,10 @@
 					bind:value={inputValue}
 					oninput={handleInput}
 				/>
-				<!-- Mode label -->
-				{#if mode !== 'idle'}
+				<!-- Mode label — only the command name (in a step) or "Search <context>"
+				     (in a context search), matching core. Command/context lists and
+				     global search show no badge. -->
+				{#if mode === 'command-step' || mode === 'context-search'}
 					<div class="pa-command-palette__context pa-command-palette__context--visible">
 						{getModeLabel()}
 					</div>
@@ -1020,13 +1108,17 @@
 				<span class="pa-command-palette__key">↵</span>
 				<span>{$_('pureAdmin.commandPalette.select')}</span>
 			</div>
-			<div class="pa-command-palette__hint">
-				<span class="pa-command-palette__key">Tab</span>
-				<span>{$_('pureAdmin.commandPalette.complete')}</span>
-			</div>
+			{#if mode === 'command-step' || mode === 'context-search'}
+				<div class="pa-command-palette__hint">
+					<span class="pa-command-palette__key">⌫</span>
+					<span>{$_('pureAdmin.commandPalette.back')}</span>
+				</div>
+			{/if}
 			<div class="pa-command-palette__hint">
 				<span class="pa-command-palette__key">Esc</span>
-				<span>{$_('pureAdmin.commandPalette.close')}</span>
+				<span>{mode === 'command-step' || mode === 'context-search'
+					? $_('pureAdmin.commandPalette.back')
+					: $_('pureAdmin.commandPalette.close')}</span>
 			</div>
 		</div>
 	</div>
