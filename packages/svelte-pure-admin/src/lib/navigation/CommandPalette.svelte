@@ -12,6 +12,7 @@
 	import { get } from 'svelte/store';
 	import { _, locale } from '../i18n';
 	import { shortcutRegistry } from '../services/shortcut-registry.svelte';
+	import Icon from '../icon/Icon.svelte';
 	import type {
 		Command,
 		SearchContext,
@@ -82,6 +83,7 @@
 	// =========================================================================
 
 	let inputRef = $state<HTMLInputElement>();
+	let resultsRef = $state<HTMLElement>();
 	let inputValue = $state('');
 	let mode = $state<PaletteMode>('idle');
 	let activeCommand = $state<Command | undefined>(undefined);
@@ -118,6 +120,15 @@
 		if (resultsMaxHeight) vars.push(`--pa-command-palette-results-max-height: ${resultsMaxHeight}`);
 		return vars.join('; ') || undefined;
 	});
+
+	// Idle "home" screen entries, in render order (commands then contexts), so the
+	// keyboard can traverse them with ↑↓ / Enter just like a result list. The home
+	// screen renders its own markup (section headings), so these aren't in
+	// `displayItems` — navigation falls back to this list when `mode === 'idle'`.
+	const homeEntries = $derived(() => [
+		...commands.map((c) => ({ kind: 'command' as const, item: c })),
+		...contexts.map((c) => ({ kind: 'context' as const, item: c }))
+	]);
 
 	// Get current step (if in command mode)
 	const currentStep = $derived(() => {
@@ -508,29 +519,59 @@
 	// KEYBOARD HANDLING
 	// =========================================================================
 
+	// A command's `hotkey` holds a leading-key SEQUENCE ("g g") or a chord
+	// ("Ctrl+K"); the last token is the resolving key. Match on it, splitting on
+	// whitespace OR '+' so both shapes work.
 	function findCommandByHotkey(key: string): Command | undefined {
 		return commands.find((c) => {
 			if (!c.hotkey) return false;
-			const parts = c.hotkey.toLowerCase().split('+');
+			const parts = c.hotkey.toLowerCase().split(/[+\s]+/).filter(Boolean);
 			return key.toLowerCase() === parts[parts.length - 1];
 		});
 	}
 
+	// Leading-key command sequences ("g" then a letter) — the idiomatic,
+	// glyph-free, cross-platform pattern (Gmail / Linear / GitHub). Chosen over
+	// Alt+letter, which on macOS is a text-composition modifier (Option+G types
+	// "©", Option+T "†", …) — non-idiomatic there and it inserts glyphs in fields.
+	// Modifier-free and only active when NOT typing in a field and the palette is
+	// closed, so it never fights text entry. Ctrl/⌘+K still opens the full palette.
+	let seqActive = false;
+	let seqTimer: ReturnType<typeof setTimeout> | undefined;
+	function endSequence() {
+		seqActive = false;
+		clearTimeout(seqTimer);
+	}
+	function isTypingTarget(t: EventTarget | null): boolean {
+		const el = t as HTMLElement | null;
+		return !!el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
+	}
+
 	function handleKeyDown(event: KeyboardEvent) {
-		// Alt+key hotkeys — work globally (open palette + enter command)
-		if (event.altKey && !event.ctrlKey && !event.metaKey && event.key !== 'Alt') {
+		// Leading-key sequences are modifier-free and inert while typing or open.
+		if (!show && !event.ctrlKey && !event.metaKey && !event.altKey && !isTypingTarget(event.target)) {
+			if (!seqActive) {
+				// Arm on the leader key ("g"); wait a short window for the second key.
+				if (event.key.toLowerCase() === 'g') {
+					seqActive = true;
+					clearTimeout(seqTimer);
+					seqTimer = setTimeout(endSequence, 1200);
+				}
+				return;
+			}
+			// Second key — resolve against each command's sequence (last token).
+			endSequence();
 			const cmd = findCommandByHotkey(event.key);
 			if (cmd) {
 				event.preventDefault();
-				if (show) reset();
-				if (!show) show = true;
-				// Wait for focus then enter command
+				show = true;
+				// Wait for focus/mount, then enter the command.
 				setTimeout(() => {
 					inputValue = cmd.shortcut + ' ';
 					enterCommandMode(cmd);
 				}, 0);
-				return;
 			}
+			return;
 		}
 
 		if (!show) return;
@@ -543,6 +584,22 @@
 			case 'ArrowUp':
 				event.preventDefault();
 				navigateUp();
+				break;
+			case 'PageDown':
+				event.preventDefault();
+				navigatePage(1);
+				break;
+			case 'PageUp':
+				event.preventDefault();
+				navigatePage(-1);
+				break;
+			case 'Home':
+				event.preventDefault();
+				navigateEdge(false);
+				break;
+			case 'End':
+				event.preventDefault();
+				navigateEdge(true);
 				break;
 			case 'Enter':
 				event.preventDefault();
@@ -559,17 +616,52 @@
 		}
 	}
 
+	// In idle mode the navigable list is the home entries, not displayItems.
+	function navLength(): number {
+		return mode === 'idle' ? homeEntries().length : displayItems.length;
+	}
+
 	function navigateDown() {
-		if (displayItems.length === 0) return;
-		activeIndex = activeIndex >= displayItems.length - 1 ? 0 : activeIndex + 1;
+		const len = navLength();
+		if (len === 0) return;
+		activeIndex = activeIndex >= len - 1 ? 0 : activeIndex + 1;
 	}
 
 	function navigateUp() {
-		if (displayItems.length === 0) return;
-		activeIndex = activeIndex <= 0 ? displayItems.length - 1 : activeIndex - 1;
+		const len = navLength();
+		if (len === 0) return;
+		activeIndex = activeIndex <= 0 ? len - 1 : activeIndex - 1;
+	}
+
+	// PageUp/PageDown jump by a page; Home/End go to the ends. These clamp (no
+	// wrap, unlike the single-step arrows) — conventional list behaviour.
+	const PAGE_STEP = 8;
+	function navigatePage(dir: number) {
+		const len = navLength();
+		if (len === 0) return;
+		const from = activeIndex < 0 ? 0 : activeIndex;
+		activeIndex = Math.max(0, Math.min(len - 1, from + dir * PAGE_STEP));
+	}
+
+	function navigateEdge(toEnd: boolean) {
+		const len = navLength();
+		if (len === 0) return;
+		activeIndex = toEnd ? len - 1 : 0;
 	}
 
 	function handleEnter() {
+		// Idle home screen: activate the highlighted command/context.
+		if (mode === 'idle') {
+			const entry = homeEntries()[activeIndex];
+			if (entry?.kind === 'command') {
+				inputValue = entry.item.shortcut + ' ';
+				enterCommandMode(entry.item);
+			} else if (entry?.kind === 'context') {
+				inputValue = entry.item.shortcut + ' ';
+				enterContextSearchMode(entry.item);
+			}
+			return;
+		}
 		if (activeIndex >= 0 && activeIndex < displayItems.length) {
 			selectItem(displayItems[activeIndex]);
 		} else if (mode === 'command-step') {
@@ -649,6 +741,17 @@
 		}
 	});
 
+	// Keep the keyboard-selected row in view as activeIndex moves (↑↓ / PgUp/Dn /
+	// Home/End). Runs after the DOM updates, so the `--active` class is already on
+	// the right row. Without this the selection scrolls out of sight on long lists.
+	$effect(() => {
+		activeIndex; // dependency
+		mode; // re-scroll when the list swaps (home ↔ results)
+		if (!show || !resultsRef) return;
+		const el = resultsRef.querySelector('.pa-command-palette__item--active');
+		if (el) (el as HTMLElement).scrollIntoView({ block: 'nearest' });
+	});
+
 	// Note: Input changes for command-step and context-search are handled by processInput()
 
 	// Register global keyboard shortcut via registry
@@ -672,6 +775,14 @@
 
 	function getItemIcon(item: Command | SearchContext | StepOption | SearchResult): string {
 		return (item as any).icon || '';
+	}
+
+	// An item's `icon` may be an icon-provider NAME (rendered through `<Icon>`, the
+	// same path the sidebar uses — e.g. page entries carry a Lucide key) or a plain
+	// glyph/emoji (commands, contexts, data results). An ASCII-leading string is a
+	// name; a leading non-ASCII byte is an emoji, rendered as text.
+	function isIconName(icon: string): boolean {
+		return typeof icon === 'string' && /^[A-Za-z]/.test(icon);
 	}
 
 	function getItemTitle(item: Command | SearchContext | StepOption | SearchResult): string {
@@ -735,6 +846,14 @@
 
 <svelte:window onkeydown={handleKeyDown} />
 
+{#snippet iconSlot(icon: string)}
+	{#if isIconName(icon)}
+		<Icon name={icon} size="1.8rem" />
+	{:else}
+		{icon}
+	{/if}
+{/snippet}
+
 <div class={classes()} style={paletteStyle()}>
 	<!-- Backdrop -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -790,18 +909,22 @@
 		</div>
 
 		<!-- Results container -->
-		<div class="pa-command-palette__results" class:pa-command-palette__results--loading={loading}>
+		<div class="pa-command-palette__results" class:pa-command-palette__results--loading={loading} bind:this={resultsRef}>
 			{#if mode === 'idle'}
 				<!-- Home screen with commands and contexts -->
 				<div class="pa-command-palette__home">
 					<div class="pa-command-palette__home-section">
 						<div class="pa-command-palette__home-heading">{$_('pureAdmin.commandPalette.commands')}</div>
-						{#each commands as cmd}
+						{#each commands as cmd, index}
 							<!-- svelte-ignore a11y_click_events_have_key_events -->
 							<!-- svelte-ignore a11y_no_static_element_interactions -->
-							<div class="pa-command-palette__item" onclick={() => { inputValue = cmd.shortcut + ' '; enterCommandMode(cmd); }}>
+							<div
+								class="pa-command-palette__item"
+								class:pa-command-palette__item--active={mode === 'idle' && activeIndex === index}
+								onclick={() => { inputValue = cmd.shortcut + ' '; enterCommandMode(cmd); }}
+							>
 								{#if cmd.icon}
-									<div class="pa-command-palette__item-icon">{cmd.icon}</div>
+									<div class="pa-command-palette__item-icon">{@render iconSlot(cmd.icon)}</div>
 								{/if}
 								<div class="pa-command-palette__item-content">
 									<div class="pa-command-palette__item-title">{cmd.name}</div>
@@ -809,7 +932,7 @@
 								</div>
 								{#if cmd.hotkey}
 									<div class="pa-command-palette__shortcut">
-										{#each cmd.hotkey.split('+') as key, i}
+										{#each cmd.hotkey.split(/[+\s]+/).filter(Boolean) as key, i}
 											<span class="pa-command-palette__key">{key}</span>
 										{/each}
 									</div>
@@ -821,12 +944,16 @@
 					</div>
 					<div class="pa-command-palette__home-section">
 						<div class="pa-command-palette__home-heading">{$_('pureAdmin.commandPalette.searchIn')}</div>
-						{#each contexts as ctx}
+						{#each contexts as ctx, index}
 							<!-- svelte-ignore a11y_click_events_have_key_events -->
 							<!-- svelte-ignore a11y_no_static_element_interactions -->
-							<div class="pa-command-palette__item" onclick={() => { inputValue = ctx.shortcut + ' '; enterContextSearchMode(ctx); }}>
+							<div
+								class="pa-command-palette__item"
+								class:pa-command-palette__item--active={mode === 'idle' && activeIndex === commands.length + index}
+								onclick={() => { inputValue = ctx.shortcut + ' '; enterContextSearchMode(ctx); }}
+							>
 								{#if ctx.icon}
-									<div class="pa-command-palette__item-icon">{ctx.icon}</div>
+									<div class="pa-command-palette__item-icon">{@render iconSlot(ctx.icon)}</div>
 								{/if}
 								<div class="pa-command-palette__item-content">
 									<div class="pa-command-palette__item-title">{ctx.name}</div>
@@ -867,7 +994,7 @@
 						onclick={() => selectItem(item)}
 					>
 						{#if getItemIcon(item)}
-							<div class="pa-command-palette__item-icon">{getItemIcon(item)}</div>
+							<div class="pa-command-palette__item-icon">{@render iconSlot(getItemIcon(item))}</div>
 						{/if}
 						<div class="pa-command-palette__item-content">
 							<div class="pa-command-palette__item-title">{getItemTitle(item)}</div>

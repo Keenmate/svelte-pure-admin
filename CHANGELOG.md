@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-rc05] - 2026-10-09
+
+### Changed — Pure Admin Core 3.3.0-rc06
+
+- **Synced to `@keenmate/pure-admin-core` 3.3.0-rc06** (peer + dev dependency; was
+  3.3.0-rc03). CSS-only / theme-coupled changes inherited from the rebuilt themes.
+
 ### Added / Fixed — dialog service parity
 
 - **`dialogService` now supports `isBanded`** (all dialog types) — banded header + footer
@@ -22,6 +29,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Docs: the **Modal Dialogs** page gains an "Outcome → Toast" card — the svelte idiom of
   keen's server-driven dialog (`await` a banded confirm, then `toastService` the outcome)
   plus a forced-choice (`closeOnBackdrop: false`) example.
+
+### Fixed — command palette
+
+- **Leading-key command shortcuts (`g <letter>`)** replace the old `Alt+<letter>`
+  hotkeys in `CommandPalette` (Gmail/Linear-style, modifier-free; active only when not
+  typing and the palette is closed). `Alt+<letter>` was unusable on macOS, where
+  Option+letter is a text-composition modifier (Option+G types `©`). The docs commands
+  move to `g g` (Go to Page), `g t`, `g b`, `g s`. Hotkey hint keycaps now split on
+  whitespace **or** `+` so both sequences and chords render one cap per token.
+- **The idle "home" screen is now keyboard-navigable.** `↑ ↓` traverse the Commands +
+  Search entries (first item pre-selected) and `Enter` activates the highlighted one —
+  previously the arrows did nothing until you started typing.
+- **The keyboard-selected row now scrolls into view** as you move with `↑↓` — on long
+  lists the active item used to scroll out of sight behind the results edge.
+- **`PgUp`/`PgDn` (jump a page of 8) and `Home`/`End` (first/last item)** added to the
+  list navigation.
+- **Palette item icons render through `<Icon>`, not unicode.** `CommandPalette` now
+  renders an item's `icon` via the `<Icon>` component when it's a provider NAME
+  (the same key the sidebar passes), and as text when it's a plain emoji
+  (commands/contexts). The docs `pages.ts` index now carries `navIcons` keys
+  (`dashboard`, `cards`, …) instead of emoji, so `/go` and the `:pages` / `:components`
+  contexts show the exact Lucide glyphs the sidebar uses.
+- **Docs `pages.ts` icon index** was mojibake-corrupted (multi-pass UTF-8/Latin-1
+  re-encoding), so every `/go` / `:pages` result rendered garbage glyphs; rewritten with
+  clean emoji.
 
 ### Changed — typography (flat `text-*` consolidation)
 
