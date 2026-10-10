@@ -28,15 +28,22 @@
 				var link = document.createElement('link');
 				link.id = 'pa-theme-css';
 				link.rel = 'stylesheet';
-				// Registry-extracted layout: themes/<id>/css/<id>.css
-				// (manifest currently mis-declares dist/ — see +layout.server.ts probe)
-				// The ?v= token is a one-time cache-buster: earlier builds served theme
-				// CSS as `immutable`, so browsers that cached it never revalidate a bare
-				// URL. Changing the URL forces one fresh fetch (now served with ETag +
-				// must-revalidate). MUST match the token appended to cssPath in
-				// +layout.server.ts, or SettingsPanel/theme-ready re-assign the href on
-				// mount and double-load the CSS.
-				link.href = '/themes/' + theme + '/css/' + theme + '.css?v=rc16';
+				// Installed themes live at themes/<id>/dist/<id>.css (the zip-extracted
+				// layout the CLI ships today). This render-blocking bootstrap MUST point
+				// at the same file the server resolves (+layout.server.ts resolveCssRelative,
+				// which probes dist/ AND the registry's css/ layout) — otherwise the link
+				// 404s and the whole admin paints COMPLETELY UNSTYLED until hydration
+				// re-assigns the href. Use dist/ (current reality) with a css/ fallback
+				// for the registry layout, so either install source works without a flash.
+				// The ?v= token is a one-time cache-buster (earlier builds served theme CSS
+				// as `immutable`); it MUST match the token appended to cssPath in
+				// +layout.server.ts, or the href gets re-assigned on mount and double-loads.
+				link.href = '/themes/' + theme + '/dist/' + theme + '.css?v=rc16';
+				link.onerror = function() {
+					if (link.href.indexOf('/dist/') !== -1) {
+						link.href = '/themes/' + theme + '/css/' + theme + '.css?v=rc16';
+					}
+				};
 				document.currentScript.parentNode.insertBefore(link, document.currentScript);
 			})();
 		</script>
