@@ -230,7 +230,7 @@
 </Card>
 
 <!-- Theme Color Slot Callouts -->
-<Card titleText="Theme Color Slot Callouts" subtitleText="Callouts using custom theme color slots (1-9). Colors are defined by the active theme.">
+<Card titleText="Theme Color Slot Callouts" descriptionText="Callouts using custom theme color slots (1-9). Colors are defined by the active theme.">
 	<Grid>
 		<Column size="100" md="1-3">
 			<Callout themeColor={1}>

@@ -37,7 +37,7 @@
 </script>
 
 <!-- Basic Modal Examples -->
-<Card titleText="Basic Modals" subtitleText="Standard modal dialogs for user interactions">
+<Card titleText="Basic Modals" descriptionText="Standard modal dialogs for user interactions">
 
 	<Grid>
 		<Column size="100" md="1-2">
@@ -80,7 +80,7 @@
 </Card>
 
 <!-- Form Modals -->
-<Card titleText="Form Modals" subtitleText="Modals containing forms and isInteractive content">
+<Card titleText="Form Modals" descriptionText="Modals containing forms and isInteractive content">
 	<ButtonGroup>
 		<Button variant="secondary" onclick={() => (showForm = true)}>Contact Form</Button>
 		<Button variant="info" onclick={() => (showLogin = true)}>Login Form</Button>
@@ -89,7 +89,7 @@
 </Card>
 
 <!-- Confirmation Modals -->
-<Card titleText="Confirmation Modals" subtitleText="Action confirmation and decision dialogs">
+<Card titleText="Confirmation Modals" descriptionText="Action confirmation and decision dialogs">
 	<ButtonGroup>
 		<Button variant="danger" isOutline onclick={() => (showConfirmDelete = true)}>Delete Confirmation</Button>
 		<Button variant="warning" isOutline onclick={() => (showConfirmAction = true)}>Action Confirmation</Button>

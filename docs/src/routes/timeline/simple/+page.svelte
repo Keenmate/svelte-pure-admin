@@ -148,10 +148,8 @@
 
 <!-- Data-Driven Timeline (KeenMate Pattern) -->
 <Card titleText="Data-Driven Timeline (KeenMate Pattern)">
-	{#snippet header()}
-		<Paragraph>
-			Timeline populated from database/API data with member mappings and callbacks
-		</Paragraph>
+	{#snippet description()}
+		Timeline populated from database/API data with member mappings and callbacks
 	{/snippet}
 
 	<Heading level={4}>Using Callbacks for Transformation</Heading>
@@ -180,10 +178,8 @@
 
 <!-- Load More Example -->
 <Card titleText="Timeline with Load More (Pagination)">
-	{#snippet header()}
-		<Paragraph>
-			Data-driven timeline with pagination - showing {visibleActivities.length} of {allActivities.length} activities
-		</Paragraph>
+	{#snippet description()}
+		Data-driven timeline with pagination - showing {visibleActivities.length} of {allActivities.length} activities
 	{/snippet}
 
 	<Timeline

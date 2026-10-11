@@ -66,6 +66,7 @@ const REGISTRY = {
   section: 'packages/svelte-pure-admin/src/lib/layout/Section.svelte',
   'range-group': 'packages/svelte-pure-admin/src/lib/forms/RangeGroup.svelte',
   'table-card': 'packages/svelte-pure-admin/src/lib/display/TableCard.svelte',
+  'detail-panel': 'packages/svelte-pure-admin/src/lib/display/DetailPanel.svelte',
   'command-palette': 'packages/svelte-pure-admin/src/lib/navigation/CommandPalette.svelte',
   profile: 'packages/svelte-pure-admin/src/lib/profile/ProfilePanel.svelte',
   input: 'packages/svelte-pure-admin/src/lib/forms/Input.svelte',

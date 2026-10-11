@@ -12,22 +12,19 @@
 <Paragraph>Two-column and three-column comparison patterns for version control, data changes, and A/B comparisons.</Paragraph>
 
 <!-- Two-Column Comparison -->
-<Card hasPadding={false}>
-	{#snippet header()}
-		<div class="d-flex justify-content-between align-items-center">
-			<Heading level={3}>Version Detail (2-Column)</Heading>
-			<ButtonGroup>
-				<Button variant="primary" size="sm">
-					<i class="fa-solid fa-table-list"></i> View in form
-				</Button>
-				<Button variant="secondary" size="sm">
-					<i class="fa-solid fa-table"></i> View in table
-				</Button>
-				<Button variant="secondary" size="sm" isIconOnly>
-					<i class="fa-solid fa-location-dot"></i>
-				</Button>
-			</ButtonGroup>
-		</div>
+<Card hasPadding={false} titleText="Version Detail (2-Column)">
+	{#snippet headerActions()}
+		<ButtonGroup>
+			<Button variant="primary" size="sm">
+				<i class="fa-solid fa-table-list"></i> View in form
+			</Button>
+			<Button variant="secondary" size="sm">
+				<i class="fa-solid fa-table"></i> View in table
+			</Button>
+			<Button variant="secondary" size="sm" isIconOnly>
+				<i class="fa-solid fa-location-dot"></i>
+			</Button>
+		</ButtonGroup>
 	{/snippet}
 
 	<table class="pa-table pa-comparison-table">
@@ -166,22 +163,19 @@
 </Card>
 
 <!-- Three-Column Comparison -->
-<Card hasPadding={false}>
-	{#snippet header()}
-		<div class="d-flex justify-content-between align-items-center">
-			<Heading level={3}>Merge Comparison (3-Column)</Heading>
-			<ButtonGroup>
-				<Button variant="success" size="sm">
-					<i class="fa-solid fa-code-merge"></i> Accept A
-				</Button>
-				<Button variant="info" size="sm">
-					<i class="fa-solid fa-code-merge"></i> Accept B
-				</Button>
-				<Button variant="secondary" size="sm">
-					<span class="pa-icon pa-icon--x" aria-hidden="true"></span> Reject Both
-				</Button>
-			</ButtonGroup>
-		</div>
+<Card hasPadding={false} titleText="Merge Comparison (3-Column)">
+	{#snippet headerActions()}
+		<ButtonGroup>
+			<Button variant="success" size="sm">
+				<i class="fa-solid fa-code-merge"></i> Accept A
+			</Button>
+			<Button variant="info" size="sm">
+				<i class="fa-solid fa-code-merge"></i> Accept B
+			</Button>
+			<Button variant="secondary" size="sm">
+				<span class="pa-icon pa-icon--x" aria-hidden="true"></span> Reject Both
+			</Button>
+		</ButtonGroup>
 	{/snippet}
 
 	<table class="pa-table pa-comparison-table">
@@ -325,12 +319,9 @@
 </Card>
 
 <!-- Solid Background Variant -->
-<Card hasPadding={false} class="mt-8">
-	{#snippet header()}
-		<Heading level={3}>Version Detail (Solid Background Variant)</Heading>
-		<Paragraph class="text-secondary mt-2">
-			Using <code>pa-comparison-table__changed--solid</code> for uniform background highlighting without left border accent
-		</Paragraph>
+<Card hasPadding={false} class="mt-8" titleText="Version Detail (Solid Background Variant)">
+	{#snippet description()}
+		Using <code>pa-comparison-table__changed--solid</code> for uniform background highlighting without left border accent
 	{/snippet}
 
 	<table class="pa-table pa-comparison-table">

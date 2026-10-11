@@ -73,7 +73,7 @@
 <!-- Alerts with Additional Content -->
 <Card
 	titleText="Alerts with Additional Content"
-	subtitleText="Pair headingText with the list and actions snippets to build full-bleed alerts. Add isHeadingLarge for the punchy, deliberate-read presentation."
+	descriptionText="Pair headingText with the list and actions snippets to build full-bleed alerts. Add isHeadingLarge for the punchy, deliberate-read presentation."
 >
 	<Grid>
 		<Column size="100" md="1-2">
@@ -109,7 +109,7 @@
 <!-- Heading size: default vs lg (NEW in v2.5.0) -->
 <Card
 	titleText="Heading size: default vs. isHeadingLarge"
-	subtitleText="Same markup either way. Default sits at the alert's body font-size for compact status banners (Validation failed, Saved, Connection lost). Add isHeadingLarge when the alert needs deliberate attention (blocking errors, system updates, quota warnings)."
+	descriptionText="Same markup either way. Default sits at the alert's body font-size for compact status banners (Validation failed, Saved, Connection lost). Add isHeadingLarge when the alert needs deliberate attention (blocking errors, system updates, quota warnings)."
 >
 	<Grid>
 		<Column size="100" md="1-2">
@@ -137,7 +137,7 @@
 <!-- Alerts with custom actions (NEW v2.5.0 layout) -->
 <Card
 	titleText="Alerts with custom actions"
-	subtitleText="The actions snippet renders a thin divider above with symmetric padding — same separator pattern as toast actions, so action-bearing alerts and custom-action toasts feel visually consistent."
+	descriptionText="The actions snippet renders a thin divider above with symmetric padding — same separator pattern as toast actions, so action-bearing alerts and custom-action toasts feel visually consistent."
 >
 	<Grid>
 		<Column size="100" md="1-2">
@@ -177,7 +177,7 @@
 <!-- Sizes (NEW v2.5.0 — sm/default/lg actually differ now) -->
 <Card
 	titleText="Sizes"
-	subtitleText="Three sizes — sm, default, and lg. Both padding and font-size step at each size. Themes can retune via the $alert-padding and $alert-font-size SCSS variables (sm/lg overrides + v/h axes)."
+	descriptionText="Three sizes — sm, default, and lg. Both padding and font-size step at each size. Themes can retune via the $alert-padding and $alert-font-size SCSS variables (sm/lg overrides + v/h axes)."
 >
 	<Heading level={4}>Small — <Code>size="sm"</Code></Heading>
 	<Alert size="sm" variant="success">
@@ -213,7 +213,7 @@
 <!-- Theme Color Slot Alerts (1-9, full set) -->
 <Card
 	titleText="Theme Color Slot Alerts"
-	subtitleText="Custom theme color slots (1-9). Colors are defined by the active theme — invisible in the base theme."
+	descriptionText="Custom theme color slots (1-9). Colors are defined by the active theme — invisible in the base theme."
 >
 	<Grid>
 		{#each [1, 2, 3, 4, 5, 6, 7, 8, 9] as n}
@@ -242,7 +242,7 @@
 <!-- Icon + multi-line content (NEW v2.5.0 --multiline modifier) -->
 <Card
 	titleText="Icon + multi-line content"
-	subtitleText="When you pair an icon with a multi-line content stack (heading + body + actions), set isMultiline so the icon stays at the top with the heading instead of vertically centring against the whole stack."
+	descriptionText="When you pair an icon with a multi-line content stack (heading + body + actions), set isMultiline so the icon stays at the top with the heading instead of vertically centring against the whole stack."
 >
 	<Grid>
 		<Column size="100" md="1-2">
@@ -272,7 +272,7 @@
 <!-- Status strip layout — real-world compact -->
 <Card
 	titleText="Status strip layout"
-	subtitleText="Real-world example — small, icon-prefixed alerts arranged in a row above a section. size='sm' keeps each pill compact so multiple states fit on one line at desktop widths."
+	descriptionText="Real-world example — small, icon-prefixed alerts arranged in a row above a section. size='sm' keeps each pill compact so multiple states fit on one line at desktop widths."
 >
 	<Grid>
 		<Column size="100" md="1-3">

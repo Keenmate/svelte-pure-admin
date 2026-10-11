@@ -200,10 +200,7 @@
 </TableCard>
 
 <!-- Basic Badges -->
-<Card titleText="Basic Badges">
-	{#snippet header()}
-		<Paragraph>Simple badges for status indication and categorization</Paragraph>
-	{/snippet}
+<Card titleText="Basic Badges" descriptionText="Simple badges for status indication and categorization">
 
 	<Grid>
 		<Column size="100" md="1-2">
@@ -238,10 +235,7 @@
 </Card>
 
 <!-- Pill Badges -->
-<Card titleText="Pill Badges">
-	{#snippet header()}
-		<Paragraph>Rounded badges for a softer, modern appearance</Paragraph>
-	{/snippet}
+<Card titleText="Pill Badges" descriptionText="Rounded badges for a softer, modern appearance">
 
 	<Grid>
 		<Column size="100" md="1-2">
@@ -272,10 +266,7 @@
 </Card>
 
 <!-- Badges with Icons -->
-<Card titleText="Badges with Icons">
-	{#snippet header()}
-		<Paragraph>Enhanced badges with icon indicators</Paragraph>
-	{/snippet}
+<Card titleText="Badges with Icons" descriptionText="Enhanced badges with icon indicators">
 
 	<div class="component-showcase">
 		<Badge variant="primary">
@@ -358,10 +349,7 @@
 </TableCard>
 
 <!-- Labels -->
-<Card titleText="Labels">
-	{#snippet header()}
-		<Paragraph>Text labels for categorization and tagging</Paragraph>
-	{/snippet}
+<Card titleText="Labels" descriptionText="Text labels for categorization and tagging">
 
 	<Grid>
 		<Column size="100" md="1-2">
@@ -393,11 +381,9 @@
 
 <!-- Badge Groups with Limits -->
 <Card titleText="Badge Groups with Limits">
-	{#snippet header()}
-		<Paragraph>
-			Display many badges with automatic overflow handling - shows 5 badges and "... N more"
-			indicator
-		</Paragraph>
+	{#snippet description()}
+		Display many badges with automatic overflow handling - shows 5 badges and "... N more"
+		indicator
 	{/snippet}
 	<Grid>
 		<Column size="100">
@@ -503,10 +489,8 @@
 
 <!-- Data-Driven Badge Groups (KeenMate Pattern) -->
 <Card titleText="Data-Driven Badge Groups (KeenMate Pattern)">
-	{#snippet header()}
-		<Paragraph>
-			Use generic data from database/API with member mappings - no need to transform data first!
-		</Paragraph>
+	{#snippet description()}
+		Use generic data from database/API with member mappings - no need to transform data first!
 	{/snippet}
 
 	<Grid>
@@ -548,11 +532,9 @@
 
 <!-- Fixed-Width Badges with Ellipsis -->
 <Card titleText="Fixed-Width Badges with Ellipsis">
-	{#snippet header()}
-		<Paragraph>
-			Badges with constrained width show ellipsis for overflow text. Hover for tooltip with full
-			text.
-		</Paragraph>
+	{#snippet description()}
+		Badges with constrained width show ellipsis for overflow text. Hover for tooltip with full
+		text.
 	{/snippet}
 		<Grid>
 			<Column size="100" md="1-2">
@@ -683,10 +665,8 @@
 
 <!-- Composite Badge Groups (Data-Driven) -->
 <Card titleText="Composite Badge Groups (Data-Driven)">
-	{#snippet header()}
-		<Paragraph>
-			Display composite badges from database/API data with member mappings and click handlers
-		</Paragraph>
+	{#snippet description()}
+		Display composite badges from database/API data with member mappings and click handlers
 	{/snippet}
 
 	<Grid>
@@ -716,10 +696,7 @@
 </Card>
 
 <!-- Usage Examples -->
-<Card titleText="Usage Examples">
-	{#snippet header()}
-		<Paragraph>Real-world examples of badges and labels in context</Paragraph>
-	{/snippet}
+<Card titleText="Usage Examples" descriptionText="Real-world examples of badges and labels in context">
 		<Grid>
 			<Column size="100" md="1-2">
 				<Heading level={4}>User Status</Heading>
@@ -763,10 +740,7 @@
 </Card>
 
 <!-- Composite Badges -->
-<Card titleText="Composite Badges">
-	{#snippet header()}
-		<Paragraph>Three-part badges with separate icon, label, and button sections</Paragraph>
-	{/snippet}
+<Card titleText="Composite Badges" descriptionText="Three-part badges with separate icon, label, and button sections">
 		<Grid>
 			<Column size="100" md="1-2">
 				<Heading level={4}>Standard Color Variations</Heading>
@@ -878,10 +852,7 @@
 </Card>
 
 <!-- Interactive Examples -->
-<Card titleText="Interactive Composite Badges">
-	{#snippet header()}
-		<Paragraph>Examples with click handlers and dynamic behavior</Paragraph>
-	{/snippet}
+<Card titleText="Interactive Composite Badges" descriptionText="Examples with click handlers and dynamic behavior">
 		<div class="component-showcase">
 			<CompositeBadge
 				variant="info"

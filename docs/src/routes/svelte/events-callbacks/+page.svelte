@@ -139,8 +139,7 @@
 	<Column size="1-2" class="d-flex flex-column gap-md">
 
 		<!-- 1. ALERT -->
-		<Card>
-			{#snippet header()}<h3>Alert</h3>{/snippet}
+		<Card titleText="Alert">
 			<Paragraph>Events: <code>ondismiss</code></Paragraph>
 
 			{#key alertKey}
@@ -159,8 +158,7 @@
 		</Card>
 
 		<!-- 2. MODAL -->
-		<Card>
-			{#snippet header()}<h3>Modal</h3>{/snippet}
+		<Card titleText="Modal">
 			<Paragraph>Events: <code>onclose</code> &middot; Callbacks: <code>beforeCloseCallback</code></Paragraph>
 
 			<Button onclick={() => { showModal = true; confirmClose = false; }}>Open Modal</Button>
@@ -188,8 +186,7 @@
 		</Card>
 
 		<!-- 3. TOAST -->
-		<Card>
-			{#snippet header()}<h3>Toast</h3>{/snippet}
+		<Card titleText="Toast">
 			<Paragraph>Events: <code>onclose</code></Paragraph>
 
 			<Button onclick={() => { showToast = true; }}>Show Toast</Button>
@@ -209,8 +206,7 @@
 		</Card>
 
 		<!-- 4. POPCONFIRM -->
-		<Card>
-			{#snippet header()}<h3>Popconfirm</h3>{/snippet}
+		<Card titleText="Popconfirm">
 			<Paragraph>Events: <code>onconfirm</code> &middot; <code>oncancel</code></Paragraph>
 
 			<button
@@ -233,8 +229,7 @@
 		</Card>
 
 		<!-- 5. PAGER -->
-		<Card>
-			{#snippet header()}<h3>Pager</h3>{/snippet}
+		<Card titleText="Pager">
 			<Paragraph>Events: <code>onprevious</code> &middot; <code>onnext</code> &middot; <code>onpagechange</code> &middot; <code>onfirst</code> &middot; <code>onlast</code></Paragraph>
 
 			<Pager
@@ -251,8 +246,7 @@
 		</Card>
 
 		<!-- 6. CHECKBOX LIST ITEM -->
-		<Card>
-			{#snippet header()}<h3>CheckboxListItem</h3>{/snippet}
+		<Card titleText="CheckboxListItem">
 			<Paragraph>Events: <code>onchange</code></Paragraph>
 
 			<ul class="pa-checkbox-list">
@@ -272,8 +266,7 @@
 		</Card>
 
 		<!-- 7. COMPOSITE BADGE -->
-		<Card>
-			{#snippet header()}<h3>CompositeBadge</h3>{/snippet}
+		<Card titleText="CompositeBadge">
 			<Paragraph>Events: <code>onlabelclick</code> &middot; <code>onbuttonclick</code></Paragraph>
 
 			<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
@@ -297,8 +290,7 @@
 		</Card>
 
 		<!-- 8. BADGE GROUP -->
-		<Card>
-			{#snippet header()}<h3>BadgeGroup</h3>{/snippet}
+		<Card titleText="BadgeGroup">
 			<Paragraph>Events: <code>onbadgeclick</code></Paragraph>
 
 			<BadgeGroup
@@ -309,8 +301,7 @@
 		</Card>
 
 		<!-- 9. COMPOSITE BADGE GROUP -->
-		<Card>
-			{#snippet header()}<h3>CompositeBadgeGroup</h3>{/snippet}
+		<Card titleText="CompositeBadgeGroup">
 			<Paragraph>Events: <code>onlabelclick</code> &middot; <code>onbuttonclick</code></Paragraph>
 
 			<CompositeBadgeGroup
@@ -321,8 +312,7 @@
 		</Card>
 
 		<!-- 10. TIMELINE -->
-		<Card>
-			{#snippet header()}<h3>Timeline</h3>{/snippet}
+		<Card titleText="Timeline">
 			<Paragraph>Events: <code>onitemclick</code></Paragraph>
 
 			<Timeline
@@ -333,8 +323,7 @@
 		</Card>
 
 		<!-- 11. FILTER CARD -->
-		<Card>
-			{#snippet header()}<h3>FilterCard</h3>{/snippet}
+		<Card titleText="FilterCard">
 			<Paragraph>Events: <code>onclear</code> &middot; <code>onrefresh</code> &middot; <code>onapply</code> &middot; <code>ontoggle</code></Paragraph>
 
 			<FilterCard
@@ -356,8 +345,7 @@
 		</Card>
 
 		<!-- 12. FIELD -->
-		<Card>
-			{#snippet header()}<h3>Field</h3>{/snippet}
+		<Card titleText="Field">
 			<Paragraph>Events: <code>oncopy</code> &middot; Callbacks: <code>copyValueCallback</code></Paragraph>
 
 			<Fields cols={2}>
@@ -382,8 +370,7 @@
 		</Card>
 
 		<!-- 13. DETAIL PANEL + DETAIL VIEW (card overlay) -->
-		<Card>
-			{#snippet header()}<h3>DetailPanel + DetailView</h3>{/snippet}
+		<Card titleText="DetailPanel + DetailView">
 			<Paragraph>Events: <code>onclose</code> (card overlay mode)</Paragraph>
 
 			<DetailView
@@ -410,8 +397,7 @@
 		</Card>
 
 		<!-- 14. SLIDE PANEL + DETAIL PANEL (full overlay) -->
-		<Card>
-			{#snippet header()}<h3>SlidePanel + DetailPanel</h3>{/snippet}
+		<Card titleText="SlidePanel + DetailPanel">
 			<Paragraph>Events: <code>onclose</code> (slide overlay mode)</Paragraph>
 
 			<Button onclick={() => { showSlidePanel = true; }}>Open Slide Panel</Button>
@@ -434,8 +420,7 @@
 		</Card>
 
 		<!-- 15. PROFILE PANEL -->
-		<Card>
-			{#snippet header()}<h3>ProfilePanel</h3>{/snippet}
+		<Card titleText="ProfilePanel">
 			<Paragraph>Events: <code>onclose</code></Paragraph>
 
 			<Button onclick={() => { showProfilePanel = true; }}>Open Profile Panel</Button>
@@ -450,8 +435,7 @@
 		</Card>
 
 		<!-- 16. PROFILE PANEL FAVORITE ITEM -->
-		<Card>
-			{#snippet header()}<h3>ProfilePanelFavoriteItem</h3>{/snippet}
+		<Card titleText="ProfilePanelFavoriteItem">
 			<Paragraph>Events: <code>onclick</code> &middot; <code>onremove</code></Paragraph>
 
 			<ul class="pa-profile-panel__favorites-list" style="list-style:none;padding:0;">
@@ -469,8 +453,7 @@
 		</Card>
 
 		<!-- 17. COMMAND PALETTE -->
-		<Card>
-			{#snippet header()}<h3>CommandPalette</h3>{/snippet}
+		<Card titleText="CommandPalette">
 			<Paragraph>Events: <code>onglobalselect</code></Paragraph>
 
 			<Button onclick={() => { showCommandPalette = true; }}>Open Command Palette</Button>

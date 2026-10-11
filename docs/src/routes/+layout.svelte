@@ -40,7 +40,7 @@
 		TabPanel
 	} from '@keenmate/svelte-pure-admin';
 	import type { PureAdminConfig, Command, SearchContext, SearchResult, ThemeOption } from '@keenmate/svelte-pure-admin';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { goto, afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { pages } from '$lib/pages';
@@ -142,8 +142,16 @@
 	// Bug A: SvelteKit navigates client-side (goto), so unlike the full-page
 	// reload in the mustache demo the drawer would otherwise stay open over the
 	// new page. Close it after every navigation.
-	afterNavigate(() => {
+	afterNavigate(async () => {
 		closeMobileSidebar();
+		// Re-run the core Floating-UI tooltip/popover enhancer for the freshly
+		// rendered page. Raw `.pa-tooltip` elements (e.g. the card
+		// tooltip-description demo) need a Floating-UI bubble appended to <body>
+		// to escape ancestor `overflow: hidden`; the pure-CSS ::before fallback
+		// gets clipped. The module (loaded in onMount) listens for this event
+		// and skips already-initialised nodes, so re-dispatch is idempotent.
+		await tick();
+		window.dispatchEvent(new Event('content-loaded'));
 	});
 
 	function toggleProfilePanel() {
@@ -208,6 +216,14 @@
 		if (typeof w.__pageLoaderReady === 'function') {
 			w.__pageLoaderReady();
 		}
+
+		// Load the core Floating-UI tooltip/popover enhancer once (browser-only).
+		// It self-initialises on import; afterNavigate re-inits per page. This is
+		// what keen gets via its bundled app.js — without it, raw `.pa-tooltip`
+		// elements inside an `overflow: hidden` box (e.g. `.pa-card__description`)
+		// fall back to the CSS ::before, which gets clipped. The native
+		// `<Tooltip>` component opts out via `data-tooltip-init`.
+		void import('@keenmate/pure-admin-core/js/tooltips-popovers.js');
 
 		// Add click outside handler
 		document.addEventListener('click', handleClickOutside);

@@ -209,7 +209,7 @@
 </script>
 
 <!-- Popconfirm Component -->
-<Card titleText="Popconfirm Component" subtitleText="Small confirmation dialogs anchored to trigger buttons - perfect for delete confirmations and quick decisions">
+<Card titleText="Popconfirm Component" descriptionText="Small confirmation dialogs anchored to trigger buttons - perfect for delete confirmations and quick decisions">
 
 	<Grid>
 		<Column size="100" md="50">
@@ -335,7 +335,7 @@
 </Card>
 
 <!-- Position Variants (Svelte-specific) -->
-<Card titleText="Position Variants" subtitleText="Popconfirms automatically adjust position based on available space using Floating UI">
+<Card titleText="Position Variants" descriptionText="Popconfirms automatically adjust position based on available space using Floating UI">
 
 	<ButtonGroup>
 		<Button
@@ -417,7 +417,7 @@
 </Card>
 
 <!-- Icon Variants (Svelte-specific) -->
-<Card titleText="Icon Variants" subtitleText="Different icon styles to indicate the severity of the action">
+<Card titleText="Icon Variants" descriptionText="Different icon styles to indicate the severity of the action">
 
 	<ButtonGroup>
 		<Button
@@ -480,7 +480,7 @@
 </Card>
 
 <!-- Table with Popconfirms -->
-<Card titleText="Table with Popconfirms" subtitleText="Common use case: delete confirmations in data tables" hasPadding={false}>
+<Card titleText="Table with Popconfirms" descriptionText="Common use case: delete confirmations in data tables" hasPadding={false}>
 
 	<Table isStriped>
 		<thead>
@@ -530,7 +530,7 @@
 </Card>
 
 <!-- WebGrid + Shadow DOM Integration (Live Demo) -->
-<Card titleText="WebGrid Integration (Shadow DOM)" subtitleText="Live demo: single shared Popconfirm with @keenmate/web-grid inline toolbar — toolbar buttons live inside Shadow DOM, handled transparently since v1.5.1">
+<Card titleText="WebGrid Integration (Shadow DOM)" descriptionText="Live demo: single shared Popconfirm with @keenmate/web-grid inline toolbar — toolbar buttons live inside Shadow DOM, handled transparently since v1.5.1">
 
 	<Callout variant="info">
 		Since v1.5.1, Popconfirm automatically handles triggers inside Shadow DOM (e.g. web-grid toolbar buttons). No extra code needed — just pass the trigger element from the event detail. Hover a row below and click the delete button to see it in action.

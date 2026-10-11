@@ -33,11 +33,7 @@
      1. PROGRESS BARS
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>1. Progress Bars</Heading>
-		<p>Horizontal progress indicators with size, color, striped, and animated variants.</p>
-	{/snippet}
+<Card titleText="1. Progress Bars" descriptionText="Horizontal progress indicators with size, color, striped, and animated variants.">
 
 	<!-- Basic progress bars -->
 	<Heading level={4} class="mb-sm">Default (with labels)</Heading>
@@ -102,11 +98,7 @@
      2. STACKED BARS
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>2. Stacked Bars</Heading>
-		<p>Multiple colored segments in one bar showing breakdowns and distributions.</p>
-	{/snippet}
+<Card titleText="2. Stacked Bars" descriptionText="Multiple colored segments in one bar showing breakdowns and distributions.">
 
 	<!-- Disk usage -->
 	<Heading level={4} class="mb-sm">Disk Usage (256 GB)</Heading>
@@ -144,10 +136,9 @@
      3. PROGRESS RINGS
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>3. Progress Rings</Heading>
-		<p>Circular progress indicators using CSS <code>conic-gradient</code>. Set value via <code>style="--value: 72"</code> (0-100).</p>
+<Card titleText="3. Progress Rings">
+	{#snippet description()}
+		Circular progress indicators using CSS <code>conic-gradient</code>. Set value via <code>style="--value: 72"</code> (0-100).
 	{/snippet}
 
 	<!-- Default rings -->
@@ -174,10 +165,9 @@
      4. DASHBOARD GAUGES
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>4. Dashboard Gauges</Heading>
-		<p>Semi-circle gauge indicators. Set value via <code>style="--value: 72"</code> (0-100).</p>
+<Card titleText="4. Dashboard Gauges">
+	{#snippet description()}
+		Semi-circle gauge indicators. Set value via <code>style="--value: 72"</code> (0-100).
 	{/snippet}
 
 	<div class="d-flex gap-xl flex-wrap align-items-end">
@@ -267,10 +257,9 @@
      6. HEATMAP
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>6. Activity Heatmap</Heading>
-		<p>GitHub contribution-style activity grid. Each cell uses <code>data-level="0-4"</code> for intensity.</p>
+<Card titleText="6. Activity Heatmap">
+	{#snippet description()}
+		GitHub contribution-style activity grid. Each cell uses <code>data-level="0-4"</code> for intensity.
 	{/snippet}
 
 	<div style="overflow-x: auto">
@@ -318,11 +307,7 @@
      7. SPARKLINES
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>7. Sparkline Bars</Heading>
-		<p>Compact mini bar charts for inline data visualization inside cards or table cells.</p>
-	{/snippet}
+<Card titleText="7. Sparkline Bars" descriptionText="Compact mini bar charts for inline data visualization inside cards or table cells.">
 
 	<div class="d-flex gap-xl flex-wrap align-items-end">
 		<!-- Default -->
@@ -364,11 +349,7 @@
      8. COMBINED: KPI DASHBOARD
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>8. Combined: KPI Dashboard</Heading>
-		<p>Real-world example combining stat cards, progress rings, sparklines, and data bars.</p>
-	{/snippet}
+<Card titleText="8. Combined: KPI Dashboard" descriptionText="Real-world example combining stat cards, progress rings, sparklines, and data bars.">
 
 	<!-- KPI Row: Stat cards with sparklines -->
 	<Grid gap="base">

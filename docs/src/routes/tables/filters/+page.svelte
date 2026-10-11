@@ -33,11 +33,7 @@
 </svelte:head>
 
 <!-- Basic Search Filter -->
-<Card>
-	{#snippet header()}
-		<Heading level={3}>Basic Search Filter</Heading>
-	{/snippet}
-
+<Card titleText="Basic Search Filter">
 	<Grid>
 		<Column size="100">
 			<div class="pa-input-wrapper">
@@ -97,12 +93,7 @@
 </TableCard>
 
 <!-- Search with More Filters Button (Expandable Filters) -->
-<Card>
-	{#snippet header()}
-		<Heading level={3}>Expandable Filters</Heading>
-		<Paragraph>Search with expandable advanced filters</Paragraph>
-	{/snippet}
-
+<Card titleText="Expandable Filters" descriptionText="Search with expandable advanced filters">
 	<div class="d-flex gap-5 align-items-center flex-wrap">
 		<!-- Search by rule -->
 		<InputGroup style="flex: 1; min-width: 200px;">
@@ -372,9 +363,8 @@
 </TableCard>
 
 <!-- Filter Tags/Pills -->
-<Card>
-	{#snippet header()}
-		<Heading level={3}>Active Filter Tags</Heading>
+<Card titleText="Active Filter Tags">
+	{#snippet headerActions()}
 		<ButtonGroup>
 			<Button size="sm" variant="secondary" isIconOnly titleText="Refresh"><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></Button>
 			<Button size="sm" variant="secondary" isIconOnly titleText="Download"><span class="pa-icon pa-icon--download" aria-hidden="true"></span></Button>

@@ -42,11 +42,9 @@
 </Card>
 
 <Card titleText="Manual numbering">
-	{#snippet header()}
-		<Paragraph>
-			Set <code>isManual</code> on the container and author each number via the section's
-			<code>number</code> prop — useful for appendices or non-decimal schemes.
-		</Paragraph>
+	{#snippet description()}
+		Set <code>isManual</code> on the container and author each number via the section's
+		<code>number</code> prop — useful for appendices or non-decimal schemes.
 	{/snippet}
 	<Document isManual>
 		<DocumentSection heading="Appendix" number="A">
@@ -60,8 +58,8 @@
 </Card>
 
 <Card titleText="Flush — no indentation">
-	{#snippet header()}
-		<Paragraph>With <code>isFlush</code> the per-level indentation is dropped; the number chain still conveys depth.</Paragraph>
+	{#snippet description()}
+		With <code>isFlush</code> the per-level indentation is dropped; the number chain still conveys depth.
 	{/snippet}
 	<Document isFlush>
 		<DocumentSection heading="Requirements">

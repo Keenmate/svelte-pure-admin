@@ -30,8 +30,8 @@
 </Card>
 
 <Card titleText="Forced to one side (alignment)">
-	{#snippet header()}
-		<Paragraph>Set <code>alignment="start"</code> to keep every item on the start side instead of zig-zagging.</Paragraph>
+	{#snippet description()}
+		Set <code>alignment="start"</code> to keep every item on the start side instead of zig-zagging.
 	{/snippet}
 	<Timeline variant="alternating" alignment="start">
 		<TimelineItem variant="primary" date="09:00" iconText="1">Stand-up and sprint planning.</TimelineItem>

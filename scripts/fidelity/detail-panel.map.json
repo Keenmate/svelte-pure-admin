@@ -1,0 +1,13 @@
+{
+  "//": "Capability manifest for <DetailPanel> (the content shell) — svelte-pure-admin. See card.map.json for the model. Scope = the shared content shell; DetailView (modes) is a separate concern.",
+  "component": "detail-panel",
+  "features": {
+    "title":     { "prop": "titleText",   "kind": "string" },
+    "bordered":  { "prop": "isBordered",  "kind": "bool" },
+    "resizable": { "prop": "isResizable", "kind": "bool" },
+    "actions":   { "prop": "actions",     "kind": "slot" },
+    "tabs":      { "prop": "tabs",        "kind": "slot" },
+    "body":      { "prop": "children",    "kind": "slot" },
+    "footer":    { "prop": "footer",      "kind": "slot" }
+  }
+}

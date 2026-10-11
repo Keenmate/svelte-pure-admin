@@ -265,7 +265,7 @@ toastService.dismissAll();`}</CodeBlock>
 <!-- 6. Action toasts -->
 <Card
 	titleText="Action toasts"
-	subtitleText="Buttons separated from the body by a horizontal rule. Clicking an action dismisses the toast unless keepOpen is true."
+	descriptionText="Buttons separated from the body by a horizontal rule. Clicking an action dismisses the toast unless keepOpen is true."
 >
 	<ButtonGroup>
 		<Button variant="danger"  onclick={fireUndoToast}>Undo Delete</Button>
@@ -309,7 +309,7 @@ toastService.dismissAll();`}</CodeBlock>
 <!-- 9. Theme color toasts -->
 <Card
 	titleText="Theme color toasts"
-	subtitleText="Use custom theme color slots (1-9). Colors are defined by the active theme."
+	descriptionText="Use custom theme color slots (1-9). Colors are defined by the active theme."
 >
 	<ButtonGroup>
 		{#each [1, 2, 3, 4, 5, 6, 7, 8, 9] as n}

@@ -60,8 +60,8 @@
 </Paragraph>
 
 <Card titleText="Dropdown panel">
-	{#snippet header()}
-		<Paragraph>The panel as it appears under the navbar bell. {unread} unread.</Paragraph>
+	{#snippet description()}
+		The panel as it appears under the navbar bell. {unread} unread.
 	{/snippet}
 	<div class="maxwr-110">
 		<NotificationsPanel
@@ -76,8 +76,8 @@
 </Card>
 
 <Card titleText="Page view — with bulk-select + actions">
-	{#snippet header()}
-		<Paragraph>Full-width list (<code>isPageView</code>) with selection checkboxes and per-item actions.</Paragraph>
+	{#snippet description()}
+		Full-width list (<code>isPageView</code>) with selection checkboxes and per-item actions.
 	{/snippet}
 	<NotificationsPanel {items} isPageView shouldShowCheckboxes>
 		{#snippet itemActions(item)}

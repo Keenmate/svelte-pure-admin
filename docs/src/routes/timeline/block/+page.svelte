@@ -130,7 +130,7 @@
 <!-- Variant 1: Basic alternating layouts side-by-side -->
 <Grid>
 	<Column size="100" md="50">
-		<Card titleText="Timeline Block" subtitleText="Centered alternating layout">
+		<Card titleText="Timeline Block" descriptionText="Centered alternating layout">
 			<Timeline variant="alternating">
 				<TimelineItem date="15 Dec" iconText="🏠">
 					<Heading level={4}>Project Started</Heading>
@@ -161,7 +161,7 @@
 	</Column>
 
 	<Column size="100" md="50">
-		<Card titleText="Timeline Block" subtitleText="Another example with different content">
+		<Card titleText="Timeline Block" descriptionText="Another example with different content">
 			<Timeline variant="alternating">
 				<TimelineItem date="Q1 2024" iconText="📋">
 					<Heading level={4}>Planning Phase</Heading>
@@ -185,7 +185,7 @@
 </Grid>
 
 <!-- Variant 2: Load More -->
-<Card titleText="Timeline Block - Load More" subtitleText="Click button to load additional timeline entries">
+<Card titleText="Timeline Block - Load More" descriptionText="Click button to load additional timeline entries">
 	<Timeline variant="alternating">
 		{#each loadMoreItems as item (item.title)}
 			<TimelineItem date={item.date} iconText={item.iconText}>
@@ -203,7 +203,7 @@
 </Card>
 
 <!-- Variant 3: Virtual Scroll -->
-<Card titleText="Timeline Block - Virtual Scroll" subtitleText="Automatically loads more entries as you scroll down">
+<Card titleText="Timeline Block - Virtual Scroll" descriptionText="Automatically loads more entries as you scroll down">
 	<div class="pa-timeline__scroll-container" bind:this={scrollContainerEl}>
 		<Timeline variant="alternating">
 			{#each virtualScrollItems as item (item.title)}

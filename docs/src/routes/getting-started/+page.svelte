@@ -252,10 +252,7 @@ ${'<'}/script>
 
 	<Grid>
 		<Column size="100" md="1-2" lg="2-5">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Audi</Heading>
-				{/snippet}
+			<Card titleText="Audi">
 				<Paragraph class="mb-0">
 					Clean design with sharp contrasts. A good starting point for modern admin interfaces.
 				</Paragraph>
@@ -266,10 +263,7 @@ ${'<'}/script>
 		</Column>
 
 		<Column size="100" md="1-2" lg="2-5">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Corporate</Heading>
-				{/snippet}
+			<Card titleText="Corporate">
 				<Paragraph class="mb-0">
 					Traditional look with conservative colors. Starter for business-oriented applications.
 				</Paragraph>
@@ -280,10 +274,7 @@ ${'<'}/script>
 		</Column>
 
 		<Column size="100" md="1-2" lg="2-5">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Dark</Heading>
-				{/snippet}
+			<Card titleText="Dark">
 				<Paragraph class="mb-0">
 					Dark mode example. Use as a base for building your own dark theme variant.
 				</Paragraph>
@@ -294,10 +285,7 @@ ${'<'}/script>
 		</Column>
 
 		<Column size="100" md="1-2" lg="2-5">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Express</Heading>
-				{/snippet}
+			<Card titleText="Express">
 				<Paragraph class="mb-0">
 					Bolder accent colors. Example of a more vibrant color palette.
 				</Paragraph>
@@ -308,10 +296,7 @@ ${'<'}/script>
 		</Column>
 
 		<Column size="100" md="1-2" lg="2-5">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Minimal</Heading>
-				{/snippet}
+			<Card titleText="Minimal">
 				<Paragraph class="mb-0">
 					Subtle colors with reduced visual noise. Starting point for minimalist designs.
 				</Paragraph>

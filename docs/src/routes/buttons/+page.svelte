@@ -369,7 +369,7 @@
 </Grid>
 
 <!-- 7. Split Buttons -->
-<Card titleText="Split Buttons" subtitleText="Primary action + dropdown toggle combined into a single control.">
+<Card titleText="Split Buttons" descriptionText="Primary action + dropdown toggle combined into a single control.">
 	<!-- Primary examples (Save, Delete, Export) -->
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => alert('Save clicked')}>

@@ -9,11 +9,16 @@
 	import { _ } from '../i18n';
 
 	interface Props {
-		/** Panel title text */
+		/** Panel title text — rendered into the canonical `<h4 class="pa-detail-panel__title">`. */
 		titleText?: string;
-		/** Custom header content (replaces title area, close button still rendered separately) */
+		/**
+		 * LEGACY: raw header override that replaces the whole `<h4 class="pa-detail-panel__title">`.
+		 * Prefer `titleText` (title) + `actions` (buttons) — those emit the blessed header shape.
+		 * This still renders for back-compat but is not the documented structure. */
 		header?: import('svelte').Snippet;
-		/** Header actions (buttons rendered between title and close button) */
+		/** Header actions — buttons in `.pa-detail-panel__actions`, between the title and the
+		 *  close button (mirrors `.pa-card__actions`). For panel-level buttons that stay visible
+		 *  while the body scrolls; primary confirm/cancel belong in `footer`. */
 		actions?: import('svelte').Snippet;
 		/** Tabs content rendered between header and body */
 		tabs?: import('svelte').Snippet;
@@ -170,7 +175,7 @@
 				{@render actions()}
 			</div>
 		{/if}
-		<button class="pa-detail-panel__close" onclick={onclose} aria-label={$_('pureAdmin.a11y.closeDetailPanel')}>
+		<button class="pa-detail-panel__close" onclick={onclose} aria-label={$_('pureAdmin.buttons.close')}>
 			<!-- masked --pa-icon-x for the detail-panel close (core 3.1.0) -->
 			<span class="pa-icon pa-icon--x" aria-hidden="true"></span>
 		</button>

@@ -167,6 +167,7 @@
 	bind:this={triggerElement}
 	class={classes()}
 	data-tooltip={text}
+	data-tooltip-init="true"
 	onmouseenter={showTooltip}
 	onmouseleave={hideTooltip}
 	onfocus={showTooltip}

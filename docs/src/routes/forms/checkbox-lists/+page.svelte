@@ -167,7 +167,7 @@
 </script>
 
 <!-- Card 1: Custom Tri-State Checkbox -->
-<Card titleText="Custom Tri-State Checkbox" subtitleText="Fully styled custom checkboxes with 3 states: unchecked, checked, and indeterminate">
+<Card titleText="Custom Tri-State Checkbox" descriptionText="Fully styled custom checkboxes with 3 states: unchecked, checked, and indeterminate">
 
 	<Grid>
 		<Column size="100" md="50">
@@ -204,7 +204,7 @@
 <!-- Card 1b: Custom Glyphs via --base-icon-* -->
 <Card
 	titleText="Custom Glyphs via --base-icon-*"
-	subtitleText="The checkmark and indeterminate dash are SVG masks reading --base-icon-check / --base-icon-indeterminate — the same tokens the web components use. Override those CSS variables (inline, on a wrapper, or in a theme) to swap the glyph without touching the component."
+	descriptionText="The checkmark and indeterminate dash are SVG masks reading --base-icon-check / --base-icon-indeterminate — the same tokens the web components use. Override those CSS variables (inline, on a wrapper, or in a theme) to swap the glyph without touching the component."
 >
 	<Grid>
 		<Column size="100" md="50">
@@ -246,7 +246,7 @@
 </Card>
 
 <!-- Card 2: Select All Pattern -->
-<Card titleText="Select All Pattern" subtitleText="Interactive demo showing isIndeterminate state for partial selection">
+<Card titleText="Select All Pattern" descriptionText="Interactive demo showing isIndeterminate state for partial selection">
 
 	<Grid>
 		<Column size="100" md="50">
@@ -300,7 +300,7 @@
 </Card>
 
 <!-- Card 3: Disabled Checkboxes -->
-<Card titleText="Disabled Checkboxes" subtitleText="Disabled state with reduced opacity">
+<Card titleText="Disabled Checkboxes" descriptionText="Disabled state with reduced opacity">
 
 	<div class="d-flex flex-wrap gap-2xl">
 		<Checkbox id="disabled-unchecked" labelText="Disabled unchecked" disabled bind:checked={disabledUnchecked} />
@@ -313,7 +313,7 @@
 <Heading level={2} class="mb-6">Checkbox Lists</Heading>
 
 <!-- Card 4: Basic Checkbox Lists -->
-<Card titleText="Basic Checkbox Lists" subtitleText="Simple vertical checkbox lists with hover effects - full item area is clickable">
+<Card titleText="Basic Checkbox Lists" descriptionText="Simple vertical checkbox lists with hover effects - full item area is clickable">
 
 	<Grid>
 		<Column size="100" md="50">
@@ -352,7 +352,7 @@
 </Card>
 
 <!-- Card 5: Item States -->
-<Card titleText="Item States" subtitleText="Clickable, disabled, and locked states with different visual feedback">
+<Card titleText="Item States" descriptionText="Clickable, disabled, and locked states with different visual feedback">
 
 	<Heading level={4}>State Comparison</Heading>
 	<CheckboxList variant="bordered">
@@ -374,7 +374,7 @@
 </Card>
 
 <!-- Card 6: List Variants -->
-<Card titleText="List Variants" subtitleText="Different styles for checkbox lists">
+<Card titleText="List Variants" descriptionText="Different styles for checkbox lists">
 
 	<Grid>
 		<Column size="100" md="1-3">
@@ -406,7 +406,7 @@
 </Card>
 
 <!-- Card 7: Checkbox Lists with Actions -->
-<Card titleText="Checkbox Lists with Actions" subtitleText="Lists with action buttons for each item">
+<Card titleText="Checkbox Lists with Actions" descriptionText="Lists with action buttons for each item">
 
 	<Heading level={4}>Task List</Heading>
 	<CheckboxList variant="bordered">
@@ -422,7 +422,7 @@
 </Card>
 
 <!-- Card 8: Alternative Layouts -->
-<Card titleText="Alternative Layouts" subtitleText="Inline, grid, and multi-column layouts">
+<Card titleText="Alternative Layouts" descriptionText="Inline, grid, and multi-column layouts">
 
 	<Heading level={4}>Inline Layout</Heading>
 	<CheckboxList layout="inline">
@@ -460,7 +460,7 @@
 </Card>
 
 <!-- Card 9: Tables with Checkboxes -->
-<Card titleText="Tables with Checkboxes" subtitleText="Checkboxes in isTable first column for isRow selection">
+<Card titleText="Tables with Checkboxes" descriptionText="Checkboxes in isTable first column for isRow selection">
 
 	<Table isStriped>
 		<thead>
@@ -497,7 +497,7 @@
 </Card>
 
 <!-- Card 10: Interactive Demo -->
-<Card titleText="Interactive Demo" subtitleText="Select-all functionality and row selection">
+<Card titleText="Interactive Demo" descriptionText="Select-all functionality and row selection">
 
 	<Table isStriped>
 		<thead>

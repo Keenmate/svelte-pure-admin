@@ -207,8 +207,8 @@
 
 <!-- Data-Driven Feed Timeline -->
 <Card titleText="Data-Driven Feed Timeline">
-	{#snippet header()}
-		<Paragraph>Timeline populated from database/API data</Paragraph>
+	{#snippet description()}
+		Timeline populated from database/API data
 	{/snippet}
 
 	<Timeline
@@ -228,8 +228,8 @@
 
 <!-- Data-Driven with Date Sections -->
 <Card titleText="Data-Driven with Date Sections">
-	{#snippet header()}
-		<Paragraph>Organized by date with time prefixes</Paragraph>
+	{#snippet description()}
+		Organized by date with time prefixes
 	{/snippet}
 
 	<Timeline variant="feed">

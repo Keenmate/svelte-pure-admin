@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Demo card headers — canonical shape across all pages
+
+- **Every demo `<Card>`/`<TableCard>` header now uses the canonical props**
+  (`titleText` / `descriptionText` / `description` snippet / `headerActions`) instead of a
+  raw `header` snippet wrapping a bare `<Heading>`/`<Paragraph>` — so no demo card renders a
+  bare `<h3>`/`<p>` in its header. Also migrated ~47 `<Card subtitleText>` (the deprecated
+  `.pa-card__meta`, which wraps and squeezes the title) to `descriptionText`
+  (`.pa-card__description`). Genuinely rich headers (tooltip-on-description, title+actions)
+  keep their structure but now use the canonical `.pa-card__title` › `.pa-card__title-text`
+  inside. A frequent latent bug fixed along the way: cards that had *both* `titleText` and a
+  raw `header` snippet silently dropped the title (the snippet overrides).
+
+### Fixed — tooltips clipped inside cards
+
+- **The docs now load core's Floating-UI tooltip enhancer** (`tooltips-popovers.js`),
+  initialised on mount and re-run after each navigation (`loadCoreJs('tooltips-popovers')`).
+  Raw `.pa-tooltip` elements inside an `overflow: hidden` box (e.g. a truncating
+  `.pa-card__description`) were falling back to the CSS `::before`, which got clipped; they
+  now get a Floating-UI bubble appended to `<body>` that escapes the clip, matching keen.
+  The native `<Tooltip>` component opts out via `data-tooltip-init` so it isn't
+  double-handled.
+
+### Detail panel — alignment with core
+
+- **`actions` slot is now the blessed way to put buttons in the header** on
+  `<DetailPanel>` — it renders `.pa-detail-panel__actions` (between the title and the
+  close button). The legacy `header` slot is demoted to legacy tolerance; `titleText` is
+  the canonical title path.
+- **Close-button `aria-label` is now `pureAdmin.buttons.close` ("Close")**, matching
+  core and keen (was "Close detail panel"). Keeps the shared markup-fidelity shell green.
+- **Detail-panel docs page rebuilt to mirror the core demo section-for-section** —
+  min-height, inline split-view, card overlay (±backdrop), tabbed, header-actions,
+  list-driven (with simulated loading), table-card, two-up Products/Orders, full-screen
+  overlay, plus the CSS/SCSS/custom-property reference tables — all built from components.
+  Removed a fabricated `pa-detail-panel__user-header` class, a dead `isBorderless` Table
+  prop, and a duplicate page-title heading (the layout already renders it).
+
 ### Fixed — command palette alignment with core
 
 - **Global (no-prefix) search now surfaces matching commands and contexts.** Typing a

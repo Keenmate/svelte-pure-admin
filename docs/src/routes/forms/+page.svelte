@@ -834,11 +834,7 @@
 </Card>
 
 <!-- Horizontal Form Layout -->
-<Card>
-	{#snippet header()}
-		<h3>Horizontal Form Layout</h3>
-		<Paragraph size="sm" color="secondary" class="m-0">Labels on the left, inputs on the right with varying field widths</Paragraph>
-	{/snippet}
+<Card titleText="Horizontal Form Layout" descriptionText="Labels on the left, inputs on the right with varying field widths">
 
 	<Form>
 		<!-- Line 1: First Name, Last Name, Email (equal widths) -->

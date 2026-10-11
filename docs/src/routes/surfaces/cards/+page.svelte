@@ -70,10 +70,7 @@
 
 		<!-- Card with Header -->
 		<Column size="100" md="1-2">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Card with Header</Heading>
-				{/snippet}
+			<Card titleText="Card with Header">
 				<Paragraph>This card includes a header section for titles and actions.</Paragraph>
 			</Card>
 		</Column>
@@ -191,10 +188,15 @@
 		<Column size="100" lg="1-2">
 			<Card>
 				{#snippet header()}
-					<h4>Dashboard</h4>
-					<p class="pa-tooltip pa-tooltip--multiline pa-tooltip--bottom"
+					<div class="pa-card__title">
+						<span class="pa-card__title-icon"><i class="fas fa-gauge-high"></i></span>
+						<h4 class="pa-card__title-text">Dashboard</h4>
+					</div>
+					<p class="pa-card__description pa-tooltip pa-tooltip--multiline pa-tooltip--bottom"
 						data-tooltip="View real-time metrics, KPIs, and performance indicators for your organization. Includes customizable widgets, drill-down reports, and automated alerts.">View real-time metrics, KPIs, and performance indicators for your organization. Includes customizable widgets, drill-down reports, and automated alerts.</p>
-					<Button variant="primary" size="sm">Open</Button>
+					<div class="pa-card__actions">
+						<Button variant="primary" size="sm">Open</Button>
+					</div>
 				{/snippet}
 				<Paragraph>Hover over the truncated description to see the full text in a multiline tooltip.</Paragraph>
 			</Card>
@@ -203,13 +205,16 @@
 		<Column size="100" lg="1-2">
 			<Card>
 				{#snippet header()}
-					<h4>Audit Log</h4>
-					<p class="pa-tooltip pa-tooltip--multiline pa-tooltip--bottom"
+					<div class="pa-card__title">
+						<span class="pa-card__title-icon"><i class="fas fa-clipboard-list"></i></span>
+						<h4 class="pa-card__title-text">Audit Log</h4>
+					</div>
+					<p class="pa-card__description pa-tooltip pa-tooltip--multiline pa-tooltip--bottom"
 						data-tooltip="Complete history of system changes, user actions, and security events. Filter by date, user, action type, or resource. Export to CSV for compliance reporting.">Complete history of system changes, user actions, and security events. Filter by date, user, action type, or resource. Export to CSV for compliance reporting.</p>
-					<ButtonGroup>
+					<div class="pa-card__actions">
 						<Button variant="secondary" size="sm">Export</Button>
 						<Button variant="primary" size="sm">View</Button>
-					</ButtonGroup>
+					</div>
 				{/snippet}
 				<Paragraph>The tooltip provides full context while keeping the header compact and consistent.</Paragraph>
 			</Card>
@@ -248,40 +253,28 @@
 	<Grid>
 		<!-- Primary Card -->
 		<Column size="100" md="1-2">
-			<Card variant="primary">
-				{#snippet header()}
-					<Heading level={4}>Primary Card</Heading>
-				{/snippet}
+			<Card variant="primary" titleText="Primary Card">
 				<Paragraph>Card with primary color theme.</Paragraph>
 			</Card>
 		</Column>
 
 		<!-- Success Card -->
 		<Column size="100" md="1-2">
-			<Card variant="success">
-				{#snippet header()}
-					<Heading level={4}>Success Card</Heading>
-				{/snippet}
+			<Card variant="success" titleText="Success Card">
 				<Paragraph>Card with success color theme.</Paragraph>
 			</Card>
 		</Column>
 
 		<!-- Warning Card -->
 		<Column size="100" md="1-2">
-			<Card variant="warning">
-				{#snippet header()}
-					<Heading level={4}>Warning Card</Heading>
-				{/snippet}
+			<Card variant="warning" titleText="Warning Card">
 				<Paragraph>Card with warning color theme.</Paragraph>
 			</Card>
 		</Column>
 
 		<!-- Danger Card -->
 		<Column size="100" md="1-2">
-			<Card variant="danger">
-				{#snippet header()}
-					<Heading level={4}>Danger Card</Heading>
-				{/snippet}
+			<Card variant="danger" titleText="Danger Card">
 				<Paragraph>Card with danger color theme.</Paragraph>
 			</Card>
 		</Column>
@@ -294,10 +287,7 @@
 	<Grid>
 		{#each colorVariants as variant, i}
 			<Column size="100" md="1-3">
-				<Card {variant}>
-					{#snippet header()}
-						<Heading level={4}>Color {i + 1}</Heading>
-					{/snippet}
+				<Card {variant} titleText="Color {i + 1}">
 					<Paragraph>Theme color slot {i + 1}</Paragraph>
 				</Card>
 			</Column>
@@ -460,10 +450,7 @@
 
 		<!-- Card with Tabs -->
 		<Column size="100" md="1-2">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Card with Tabs</Heading>
-				{/snippet}
+			<Card titleText="Card with Tabs">
 				{#snippet tabs()}
 					<CardTab active={activeTab === 'tab1'} onclick={() => showTab('tab1')}>Overview</CardTab>
 					<CardTab active={activeTab === 'tab2'} onclick={() => showTab('tab2')}>Details</CardTab>

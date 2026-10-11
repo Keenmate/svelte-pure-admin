@@ -427,10 +427,7 @@
 
 <!-- Demo Navbar with Search -->
 <div class="mb-6">
-	<Card>
-		{#snippet header()}
-			<h3>Navbar with Search Bar</h3>
-		{/snippet}
+	<Card titleText="Navbar with Search Bar">
 
 		<p class="mb-3">
 			Add a search bar to your navbar that opens the command palette when clicked:
@@ -569,10 +566,7 @@
 		<!-- Left Column -->
 		<Column size="100" lg="50">
 			<!-- Quick Start -->
-			<Card class="mb-4">
-				{#snippet header()}
-					<h3>Quick Start</h3>
-				{/snippet}
+			<Card class="mb-4" titleText="Quick Start">
 
 				<div class="mb-4">
 					<Button variant="primary" size="lg" isBlock onclick={() => (showPalette = true)}>
@@ -619,10 +613,7 @@
 			</Card>
 
 			<!-- Search Contexts -->
-			<Card class="mb-4">
-				{#snippet header()}
-					<h3>Search Contexts (:)</h3>
-				{/snippet}
+			<Card class="mb-4" titleText="Search Contexts (:)">
 
 				<p class="mb-3">Use <code>:</code> prefix to search within a specific context:</p>
 
@@ -654,10 +645,7 @@
 		<!-- Right Column -->
 		<Column size="100" lg="50">
 			<!-- Multi-step Commands -->
-			<Card class="mb-4">
-				{#snippet header()}
-					<h3>Multi-Step Commands</h3>
-				{/snippet}
+			<Card class="mb-4" titleText="Multi-Step Commands">
 
 				<p class="mb-3">Commands can have multiple steps with conditional logic:</p>
 
@@ -694,10 +682,7 @@
 			</Card>
 
 			<!-- Keyboard Shortcuts -->
-			<Card class="mb-4">
-				{#snippet header()}
-					<h3>Keyboard Shortcuts</h3>
-				{/snippet}
+			<Card class="mb-4" titleText="Keyboard Shortcuts">
 
 				<Table isCompact>
 					<thead>
@@ -737,10 +722,7 @@
 			</Card>
 
 			<!-- Try It -->
-			<Card class="mb-4">
-				{#snippet header()}
-					<h3>Try These</h3>
-				{/snippet}
+			<Card class="mb-4" titleText="Try These">
 
 				<p class="mb-3">Click to open palette with pre-filled text:</p>
 

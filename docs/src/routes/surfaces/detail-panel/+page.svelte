@@ -1,6 +1,9 @@
 <script lang="ts">
 	import {
 		Card,
+		TableCard,
+		Grid,
+		Column,
 		Table,
 		Badge,
 		Button,
@@ -14,48 +17,109 @@
 		Spinner,
 		LoaderCenter,
 		Tabs,
-		TabItem
+		TabItem,
+		FieldGroup,
+		Fields,
+		Field
 	} from '@keenmate/svelte-pure-admin';
 
-	// Sample data (8 users matching pure-admin demo)
-	const users = [
-		{ id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'Active', department: 'Engineering', phone: '+1 555-0101', location: 'New York', joined: '2022-01-15' },
-		{ id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'Active', department: 'Marketing', phone: '+1 555-0102', location: 'San Francisco', joined: '2022-03-22' },
-		{ id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'Viewer', status: 'Pending', department: 'Sales', phone: '+1 555-0103', location: 'Chicago', joined: '2022-06-10' },
-		{ id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'Admin', status: 'Active', department: 'Engineering', phone: '+1 555-0104', location: 'Austin', joined: '2022-08-05' },
-		{ id: 5, name: 'Charlie Wilson', email: 'charlie@example.com', role: 'Editor', status: 'Inactive', department: 'Design', phone: '+1 555-0105', location: 'Seattle', joined: '2023-01-18' },
-		{ id: 6, name: 'Diana Prince', email: 'diana@example.com', role: 'Admin', status: 'Active', department: 'Management', phone: '+1 555-0106', location: 'Boston', joined: '2023-04-02' },
-		{ id: 7, name: 'Edward Kim', email: 'edward@example.com', role: 'Viewer', status: 'Active', department: 'Support', phone: '+1 555-0107', location: 'Denver', joined: '2023-07-14' },
-		{ id: 8, name: 'Fiona Garcia', email: 'fiona@example.com', role: 'Editor', status: 'Active', department: 'Content', phone: '+1 555-0108', location: 'Portland', joined: '2023-09-28' }
+	// ----------------------------------------------------------------
+	// Sample data — mirrors the pure-admin (core) detail-panel demo
+	// ----------------------------------------------------------------
+
+	interface User {
+		id: number;
+		name: string;
+		email: string;
+		role: string;
+		department: string;
+		status: string;
+		phone: string;
+		location: string;
+		joined: string;
+	}
+
+	const users: User[] = [
+		{ id: 1, name: 'John Doe', email: 'john.doe@company.com', role: 'Administrator', department: 'Engineering', status: 'Active', phone: '+1 555-0101', location: 'New York', joined: '2022-01-15' },
+		{ id: 2, name: 'Jane Smith', email: 'jane.smith@company.com', role: 'Editor', department: 'Marketing', status: 'Active', phone: '+1 555-0102', location: 'San Francisco', joined: '2022-03-22' },
+		{ id: 3, name: 'Bob Wilson', email: 'bob.wilson@company.com', role: 'Viewer', department: 'Sales', status: 'Active', phone: '+1 555-0103', location: 'Chicago', joined: '2022-06-10' },
+		{ id: 4, name: 'Alice Brown', email: 'alice.brown@company.com', role: 'Editor', department: 'Design', status: 'Inactive', phone: '+1 555-0104', location: 'Austin', joined: '2022-08-05' },
+		{ id: 5, name: 'Charlie Davis', email: 'charlie.davis@company.com', role: 'Administrator', department: 'Engineering', status: 'Active', phone: '+1 555-0105', location: 'Seattle', joined: '2023-01-18' },
+		{ id: 6, name: 'Diana Evans', email: 'diana.evans@company.com', role: 'Viewer', department: 'HR', status: 'Active', phone: '+1 555-0106', location: 'Boston', joined: '2023-04-02' },
+		{ id: 7, name: 'Edward Foster', email: 'edward.foster@company.com', role: 'Editor', department: 'Content', status: 'Active', phone: '+1 555-0107', location: 'Denver', joined: '2023-07-14' },
+		{ id: 8, name: 'Fiona Garcia', email: 'fiona.garcia@company.com', role: 'Viewer', department: 'Support', status: 'Inactive', phone: '+1 555-0108', location: 'Portland', joined: '2023-09-28' }
 	];
 
-	type User = typeof users[0];
+	// Section 0 — single configuration row
+	const config = { name: 'Main Configuration', code: 'main', status: 'Active', created: '2026-01-15' };
 
-	// --- Section 1: Inline Split-View ---
+	// Section 6 — employees (mirrors core's web-grid sample data)
+	interface Employee {
+		id: number;
+		name: string;
+		email: string;
+		department: string;
+		salary: number;
+		startDate: string;
+		status: string;
+		location: string;
+	}
+
+	const employees: Employee[] = [
+		{ id: 1847, name: 'Alice Johnson', email: 'alice@example.com', department: 'Engineering', salary: 85000, startDate: '2020-03-15', status: 'Active', location: 'New York' },
+		{ id: 1848, name: 'Bob Smith', email: 'bob@example.com', department: 'Marketing', salary: 72000, startDate: '2019-07-22', status: 'Active', location: 'Chicago' },
+		{ id: 1849, name: 'Carol Williams', email: 'carol@example.com', department: 'Sales', salary: 91000, startDate: '2021-01-10', status: 'Inactive', location: 'Boston' },
+		{ id: 1850, name: 'David Brown', email: 'david@example.com', department: 'Engineering', salary: 95000, startDate: '2018-11-05', status: 'Active', location: 'Seattle' },
+		{ id: 1851, name: 'Eva Martinez', email: 'eva@example.com', department: 'Design', salary: 78000, startDate: '2022-04-18', status: 'Active', location: 'Austin' },
+		{ id: 1852, name: 'Frank Davis', email: 'frank@example.com', department: 'HR', salary: 68000, startDate: '2020-09-30', status: 'Active', location: 'Denver' },
+		{ id: 1853, name: 'Grace Lee', email: 'grace@example.com', department: 'Engineering', salary: 102000, startDate: '2017-06-12', status: 'Active', location: 'San Francisco' },
+		{ id: 1854, name: 'Henry Wilson', email: 'henry@example.com', department: 'Support', salary: 62000, startDate: '2023-02-01', status: 'Active', location: 'Miami' },
+		{ id: 1855, name: 'Iris Taylor', email: 'iris@example.com', department: 'Marketing', salary: 76000, startDate: '2021-08-20', status: 'Inactive', location: 'Portland' },
+		{ id: 1856, name: 'Jack Anderson', email: 'jack@example.com', department: 'Sales', salary: 88000, startDate: '2019-12-03', status: 'Active', location: 'Dallas' }
+	];
+
+	// Section 6b — table-card records
+	interface Record_ { id: number; name: string; department: string; status: string; }
+	const records: Record_[] = [
+		{ id: 101, name: 'Sarah Connor', department: 'Security', status: 'Active' },
+		{ id: 102, name: 'John Wick', department: 'Operations', status: 'Active' },
+		{ id: 103, name: 'Ellen Ripley', department: 'Engineering', status: 'Inactive' },
+		{ id: 104, name: 'Neo Anderson', department: 'IT', status: 'Active' },
+		{ id: 105, name: 'Diana Prince', department: 'HR', status: 'Active' }
+	];
+
+	// Section 6c — two-up products / orders
+	interface Product { sku: string; name: string; price: string; }
+	interface Order { id: string; customer: string; total: string; }
+	const products: Product[] = [
+		{ sku: 'A001', name: 'Widget Pro', price: '$29.99' },
+		{ sku: 'A002', name: 'Gadget Plus', price: '$49.99' },
+		{ sku: 'A003', name: 'Tool Basic', price: '$19.99' },
+		{ sku: 'A004', name: 'Device Max', price: '$99.99' }
+	];
+	const orders: Order[] = [
+		{ id: '#1001', customer: 'Acme Corp', total: '$1,250' },
+		{ id: '#1002', customer: 'Globex Inc', total: '$890' },
+		{ id: '#1003', customer: 'Initech', total: '$2,100' },
+		{ id: '#1004', customer: 'Umbrella Co', total: '$450' }
+	];
+
+	// ----------------------------------------------------------------
+	// Per-section state (every section is visible simultaneously, like core)
+	// ----------------------------------------------------------------
+
+	// Section 0 — Min-Height
+	let minHeightShow = $state(false);
+
+	// Section 1 — Inline Split-View
 	let inlineShow = $state(false);
 	let inlineUser = $state(users[0]);
-	let inlineLoading = $state(false);
 
-	function selectInline(user: User) {
-		inlineUser = user;
-		inlineShow = true;
-		inlineLoading = true;
-		setTimeout(() => { inlineLoading = false; }, 600);
-	}
-
-	// --- Section 2: Card Overlay ---
+	// Section 2 — Card Overlay (with backdrop)
 	let cardOverlayShow = $state(false);
 	let cardOverlayUser = $state(users[0]);
-	let cardOverlayLoading = $state(false);
 
-	function selectCardOverlay(user: User) {
-		cardOverlayUser = user;
-		cardOverlayShow = true;
-		cardOverlayLoading = true;
-		setTimeout(() => { cardOverlayLoading = false; }, 600);
-	}
-
-	// --- Section 3: No Backdrop ---
+	// Section 3 — Card Overlay (no backdrop, simulated loading)
 	let noBackdropShow = $state(false);
 	let noBackdropUser = $state(users[0]);
 	let noBackdropLoading = $state(false);
@@ -64,65 +128,63 @@
 		noBackdropUser = user;
 		noBackdropShow = true;
 		noBackdropLoading = true;
-		setTimeout(() => { noBackdropLoading = false; }, 600);
+		setTimeout(() => { noBackdropLoading = false; }, 400);
 	}
 
-	// --- Section 4: Tabbed ---
+	// Section 4 — Tabbed
 	let tabbedShow = $state(false);
 	let tabbedUser = $state(users[0]);
-	let tabbedLoading = $state(false);
 	let activeTab = $state<'details' | 'activity' | 'notes'>('details');
 
 	function selectTabbed(user: User) {
 		tabbedUser = user;
 		tabbedShow = true;
-		tabbedLoading = true;
 		activeTab = 'details';
-		setTimeout(() => { tabbedLoading = false; }, 600);
 	}
 
-	function switchTab(tab: 'details' | 'activity' | 'notes') {
-		activeTab = tab;
-		tabbedLoading = true;
-		setTimeout(() => { tabbedLoading = false; }, 400);
-	}
-
-	// --- Section 5: Header Actions ---
+	// Section 5 — Header Actions (no footer)
 	let headerActionsShow = $state(false);
 	let headerActionsUser = $state(users[0]);
-	let headerActionsLoading = $state(false);
 
-	function selectHeaderActions(user: User) {
-		headerActionsUser = user;
-		headerActionsShow = true;
-		headerActionsLoading = true;
-		setTimeout(() => { headerActionsLoading = false; }, 600);
+	// Section 6 — List drives panel (simulated loading)
+	let listShow = $state(false);
+	let listEmployee = $state(employees[0]);
+	let listLoading = $state(false);
+
+	function selectEmployee(emp: Employee) {
+		listEmployee = emp;
+		listShow = true;
+		listLoading = true;
+		setTimeout(() => { listLoading = false; }, 600);
 	}
 
-	// --- Section 6: Overlay Mode ---
+	// Section 6b — Table Card + Detail View
+	let tcShow = $state(false);
+	let tcRecord = $state(records[0]);
+
+	// Section 6c — two-up Products / Orders
+	let prodShow = $state(false);
+	let prodItem = $state(products[0]);
+	let ordShow = $state(false);
+	let ordItem = $state(orders[0]);
+
+	// Section 7 — Full-Screen Overlay
 	let overlayShow = $state(false);
 	let overlayUser = $state(users[0]);
-	let overlayLoading = $state(false);
 
-	function selectOverlay(user: User) {
-		overlayUser = user;
-		overlayShow = true;
-		overlayLoading = true;
-		setTimeout(() => { overlayLoading = false; }, 600);
+	// ----------------------------------------------------------------
+	// Helpers
+	// ----------------------------------------------------------------
+
+	function statusVariant(status: string): 'success' | 'secondary' {
+		return status === 'Active' ? 'success' : 'secondary';
 	}
 
-	// --- Helpers ---
-	function statusVariant(status: string) {
-		if (status === 'Active') return 'success';
-		if (status === 'Pending') return 'warning';
-		return 'danger';
+	function formatSalary(salary: number): string {
+		return `$${salary.toLocaleString()}`;
 	}
 
-	function getInitial(name: string) {
-		return name.split(' ').map(n => n[0]).join('').toUpperCase();
-	}
-
-	// Activity data for tabbed demo
+	// Activity data for the tabbed demo
 	const activities = [
 		{ action: 'Updated profile settings', time: '2 hours ago' },
 		{ action: 'Completed project review', time: '5 hours ago' },
@@ -131,23 +193,24 @@
 		{ action: 'Created account', time: '1 week ago' }
 	];
 
-	// Notes data for tabbed demo
+	// Notes data for the tabbed demo
 	const notes = [
-		{ date: '2024-01-15', text: 'Follow up on Q4 report submission.' },
-		{ date: '2024-01-10', text: 'Discussed project timeline with team lead.' },
-		{ date: '2024-01-05', text: 'Initial onboarding completed successfully.' }
+		{ date: '2026-01-15', text: 'Follow up on Q4 report submission.' },
+		{ date: '2026-01-10', text: 'Discussed project timeline with team lead.' },
+		{ date: '2026-01-05', text: 'Initial onboarding completed successfully.' }
 	];
 </script>
 
-<svelte:head>
-	<title>Detail Panel - Svelte Pure Admin</title>
-</svelte:head>
-
-<Heading level={2}>Detail Panel</Heading>
 <Paragraph class="mb-4">
-	The Detail Panel components provide a flexible way to show detail views alongside data tables.
-	Multiple modes are available: inline split-view, card overlay with/without backdrop, tabbed panels, custom header actions, and full-screen overlay.
+	Detail panels display row details alongside a table. Modes: <strong>inline split-view</strong> (the table
+	shrinks and the panel appears alongside), <strong>card overlay</strong> (the panel overlays the table within
+	the card, with or without a backdrop), <strong>tabbed</strong> and <strong>header-action</strong> variants,
+	and a fixed <strong>full-screen overlay</strong>.
 </Paragraph>
+
+<!-- ================================================================
+     Shared snippets
+     ================================================================ -->
 
 {#snippet userTable(selectedUser: User | null, isOpen: boolean, onSelect: (user: User) => void)}
 	<Table isStriped>
@@ -156,6 +219,7 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Role</th>
+				<th>Department</th>
 				<th>Status</th>
 			</tr>
 		</thead>
@@ -169,6 +233,7 @@
 					<td>{user.name}</td>
 					<td>{user.email}</td>
 					<td>{user.role}</td>
+					<td>{user.department}</td>
 					<td><Badge variant={statusVariant(user.status)}>{user.status}</Badge></td>
 				</tr>
 			{/each}
@@ -177,24 +242,47 @@
 {/snippet}
 
 {#snippet userDetail(user: User)}
-	<div class="pa-detail-panel__user-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-		<div style="width: 3rem; height: 3rem; border-radius: 50%; background: var(--pc-primary, #3b82f6); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.1rem; flex-shrink: 0;">
-			{getInitial(user.name)}
+	<FieldGroup titleText="Personal">
+		<Fields cols={2}>
+			<Field labelText="Name" valueText={user.name} />
+			<Field labelText="Email" valueText={user.email} />
+			<Field labelText="Phone" valueText={user.phone} />
+			<Field labelText="Location" valueText={user.location} />
+		</Fields>
+	</FieldGroup>
+	<FieldGroup titleText="Employment">
+		<Fields cols={2}>
+			<Field labelText="Role" valueText={user.role} />
+			<Field labelText="Department" valueText={user.department} />
+			<Field labelText="Joined" valueText={user.joined} />
+			<Field labelText="Status">
+				{#snippet valueSnippet()}
+					<Badge variant={statusVariant(user.status)}>{user.status}</Badge>
+				{/snippet}
+			</Field>
+		</Fields>
+	</FieldGroup>
+{/snippet}
+
+{#snippet employeeDetail(emp: Employee)}
+	<div style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.6rem;">
+		<div style="width: 5.6rem; height: 5.6rem; border-radius: 50%; background: var(--pc-accent-light); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; color: var(--pc-accent); flex-shrink: 0;">
+			{emp.name.charAt(0)}
 		</div>
 		<div>
-			<div style="font-weight: 600; font-size: 1.05rem;">{user.name}</div>
-			<div style="color: var(--pc-text-muted, #6b7280); font-size: 0.875rem;">{user.email}</div>
+			<div style="font-weight: 600; font-size: 1.6rem;">{emp.name}</div>
+			<div style="color: var(--pc-text-color-2); font-size: 1.3rem;">{emp.email}</div>
 		</div>
 	</div>
 
-	<Table isBorderless size="sm">
+	<Table size="sm">
 		<tbody>
-			<tr><td style="font-weight: 500; width: 7rem; color: var(--pc-text-muted, #6b7280);">Role</td><td>{user.role}</td></tr>
-			<tr><td style="font-weight: 500; color: var(--pc-text-muted, #6b7280);">Department</td><td>{user.department}</td></tr>
-			<tr><td style="font-weight: 500; color: var(--pc-text-muted, #6b7280);">Phone</td><td>{user.phone}</td></tr>
-			<tr><td style="font-weight: 500; color: var(--pc-text-muted, #6b7280);">Location</td><td>{user.location}</td></tr>
-			<tr><td style="font-weight: 500; color: var(--pc-text-muted, #6b7280);">Joined</td><td>{user.joined}</td></tr>
-			<tr><td style="font-weight: 500; color: var(--pc-text-muted, #6b7280);">Status</td><td><Badge variant={statusVariant(user.status)}>{user.status}</Badge></td></tr>
+			<tr><td style="width: 40%; color: var(--pc-text-color-2); font-weight: 500;">ID</td><td>{emp.id}</td></tr>
+			<tr><td style="color: var(--pc-text-color-2); font-weight: 500;">Department</td><td>{emp.department}</td></tr>
+			<tr><td style="color: var(--pc-text-color-2); font-weight: 500;">Salary</td><td>{formatSalary(emp.salary)}</td></tr>
+			<tr><td style="color: var(--pc-text-color-2); font-weight: 500;">Start Date</td><td>{emp.startDate}</td></tr>
+			<tr><td style="color: var(--pc-text-color-2); font-weight: 500;">Location</td><td>{emp.location}</td></tr>
+			<tr><td style="color: var(--pc-text-color-2); font-weight: 500;">Status</td><td><Badge variant={statusVariant(emp.status)}>{emp.status}</Badge></td></tr>
 		</tbody>
 	</Table>
 {/snippet}
@@ -205,78 +293,134 @@
 	</LoaderCenter>
 {/snippet}
 
-<!-- ================================
-     Section 1: Inline Split-View
-     ================================ -->
+{#snippet headerActionButtons()}
+	<ButtonGroup>
+		<Button variant="primary" size="xs" isOutline isIconOnly titleText="Edit">
+			<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+		</Button>
+		<Button variant="secondary" size="xs" isOutline isIconOnly titleText="Bookmark">
+			<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+		</Button>
+		<Button variant="danger" size="xs" isOutline isIconOnly titleText="Delete">
+			<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+		</Button>
+	</ButtonGroup>
+{/snippet}
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Inline Split-View</Heading>
-		<Paragraph>Panel appears alongside the table (no overlay). The table shrinks to make room for the panel. Uses <code>isOverlay=&#123;false&#125;</code>.</Paragraph>
+{#snippet footerButtons(onClose: () => void)}
+	<Button variant="primary" size="sm">Edit</Button>
+	<Button variant="danger" size="sm" isOutline>Delete</Button>
+	<Button variant="secondary" size="sm" class="ms-auto" onclick={onClose}>Close</Button>
+{/snippet}
+
+<!-- ================================================================
+     Section 0: Min-Height Card with Single Row
+     ================================================================ -->
+
+<TableCard isPlain class="minhr-25 mb-4" titleText="Min-Height Card with Single Row"
+	descriptionText="The card uses minhr-25 so the detail panel fills the available height even when the table has minimal content.">
+	<DetailView bind:show={minHeightShow} onclose={() => minHeightShow = false}>
+		{#snippet main()}
+			<Table isStriped>
+				<thead>
+					<tr><th>Name</th><th>Code</th><th>Status</th></tr>
+				</thead>
+				<tbody>
+					<tr
+						class={minHeightShow ? 'is-selected' : ''}
+						onclick={() => minHeightShow = true}
+						style="cursor: pointer;"
+					>
+						<td>{config.name}</td>
+						<td class="font-family-mono">{config.code}</td>
+						<td><Badge variant="success">Active</Badge></td>
+					</tr>
+				</tbody>
+			</Table>
+		{/snippet}
+
+		<DetailPanel titleText={config.name} isBordered onclose={() => minHeightShow = false}>
+			<FieldGroup titleText="Configuration Info">
+				<Fields cols={2}>
+					<Field labelText="Name" valueText={config.name} />
+					<Field labelText="Code">
+						{#snippet valueSnippet()}<code>{config.code}</code>{/snippet}
+					</Field>
+					<Field labelText="Status">
+						{#snippet valueSnippet()}<Badge variant="success">Active</Badge>{/snippet}
+					</Field>
+					<Field labelText="Created" valueText={config.created} />
+				</Fields>
+			</FieldGroup>
+			<FieldGroup titleText="Description">
+				<Fields>
+					<Field full valueText="This is the main configuration entry. The panel fills the available height defined by minhr-25 on the card, even though the table only has one row." />
+				</Fields>
+			</FieldGroup>
+			<FieldGroup titleText="Actions">
+				<ButtonGroup>
+					<Button variant="warning" size="sm">Simulate</Button>
+					<Button variant="success" size="sm">Deploy</Button>
+				</ButtonGroup>
+			</FieldGroup>
+		</DetailPanel>
+	</DetailView>
+</TableCard>
+
+<!-- ================================================================
+     Section 1: Inline Split-View
+     ================================================================ -->
+
+<Card class="mb-4" hasPadding={false} titleText="Inline Split-View">
+	{#snippet description()}
+		Click a row to open the detail panel alongside the table. The table shrinks to make room. Uses <code>isOverlay=&#123;false&#125;</code>.
 	{/snippet}
 
 	<DetailView bind:show={inlineShow} isOverlay={false} onclose={() => inlineShow = false}>
 		{#snippet main()}
-			{@render userTable(inlineUser, inlineShow, selectInline)}
+			{@render userTable(inlineUser, inlineShow, (user) => { inlineUser = user; inlineShow = true; })}
 		{/snippet}
 
 		<DetailPanel titleText={inlineUser.name} onclose={() => inlineShow = false}>
-			{#if inlineLoading}
-				{@render loadingSpinner()}
-			{:else}
-				{@render userDetail(inlineUser)}
-			{/if}
+			{@render userDetail(inlineUser)}
 
 			{#snippet footer()}
-				<Button variant="primary" size="sm">Edit</Button>
-				<Button variant="danger" size="sm" isOutline>Delete</Button>
-				<Button variant="secondary" size="sm" onclick={() => inlineShow = false}>Close</Button>
+				{@render footerButtons(() => inlineShow = false)}
 			{/snippet}
 		</DetailPanel>
 	</DetailView>
 </Card>
 
-<!-- ================================
-     Section 2: Card Overlay with Backdrop
-     ================================ -->
+<!-- ================================================================
+     Section 2: Card Overlay (with Backdrop)
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Card Overlay (with Backdrop)</Heading>
-		<Paragraph>Panel overlays the table within the card. Clicking the backdrop closes the panel.</Paragraph>
-	{/snippet}
+<Card class="mb-4" hasPadding={false} titleText="Card Overlay (with Backdrop)"
+	descriptionText="Panel overlays the table within the card. Clicking the backdrop closes the panel.">
 
 	<DetailView bind:show={cardOverlayShow} shouldShowBackdrop onclose={() => cardOverlayShow = false}>
 		{#snippet main()}
-			{@render userTable(cardOverlayUser, cardOverlayShow, selectCardOverlay)}
+			{@render userTable(cardOverlayUser, cardOverlayShow, (user) => { cardOverlayUser = user; cardOverlayShow = true; })}
 		{/snippet}
 
 		<DetailPanel titleText={cardOverlayUser.name} onclose={() => cardOverlayShow = false}>
-			{#if cardOverlayLoading}
-				{@render loadingSpinner()}
-			{:else}
-				{@render userDetail(cardOverlayUser)}
-			{/if}
+			{@render userDetail(cardOverlayUser)}
 
 			{#snippet footer()}
-				<Button variant="primary" size="sm">Edit</Button>
-				<Button variant="secondary" size="sm" onclick={() => cardOverlayShow = false}>Close</Button>
+				{@render footerButtons(() => cardOverlayShow = false)}
 			{/snippet}
 		</DetailPanel>
 	</DetailView>
 </Card>
 
-<!-- ================================
-     Section 3: Card Overlay without Backdrop
-     ================================ -->
+<!-- ================================================================
+     Section 3: Card Overlay (No Backdrop)
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Card Overlay (No Backdrop)</Heading>
-		<Paragraph>Panel stays open while you click different rows. Table remains interactive. Simulated loading delay on row switch.</Paragraph>
-	{/snippet}
+<Card class="mb-4" hasPadding={false} titleText="Card Overlay (No Backdrop)"
+	descriptionText="Panel stays open while you click rows. Simulates loading data from a server with a short delay.">
 
-	<DetailView bind:show={noBackdropShow} shouldShowBackdrop={false}>
+	<DetailView bind:show={noBackdropShow} shouldShowBackdrop={false} onclose={() => noBackdropShow = false}>
 		{#snippet main()}
 			{@render userTable(noBackdropUser, noBackdropShow, selectNoBackdrop)}
 		{/snippet}
@@ -289,45 +433,42 @@
 			{/if}
 
 			{#snippet footer()}
-				<Button variant="primary" size="sm">Edit</Button>
-				<Button variant="danger" size="sm" isOutline>Delete</Button>
-				<Button variant="secondary" size="sm" onclick={() => noBackdropShow = false}>Close</Button>
+				{@render footerButtons(() => noBackdropShow = false)}
 			{/snippet}
 		</DetailPanel>
 	</DetailView>
 </Card>
 
-<!-- ================================
+<!-- ================================================================
      Section 4: Tabbed Detail Panel
-     ================================ -->
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Tabbed Detail Panel</Heading>
-		<Paragraph>Panel with tabs for organizing content into sections. Uses the <code>tabs</code> snippet prop on <code>DetailPanel</code>.</Paragraph>
+<Card class="mb-4" hasPadding={false} titleText="Tabbed Detail Panel">
+	{#snippet description()}
+		Detail panel with tabs inside, like the profile panel. Click a row, then switch between Details, Activity and Notes. Uses the <code>tabs</code> snippet prop on <code>DetailPanel</code>.
 	{/snippet}
 
-	<DetailView bind:show={tabbedShow} shouldShowBackdrop={false}>
+	<DetailView bind:show={tabbedShow} shouldShowBackdrop={false} onclose={() => tabbedShow = false}>
 		{#snippet main()}
 			{@render userTable(tabbedUser, tabbedShow, selectTabbed)}
 		{/snippet}
 
-		<DetailPanel titleText={tabbedUser.name} onclose={() => { tabbedShow = false; }}>
+		<DetailPanel titleText={tabbedUser.name} onclose={() => tabbedShow = false}>
 			{#snippet tabs()}
 				<Tabs align="full">
-					<TabItem active={activeTab === 'details'} onclick={() => switchTab('details')}>
+					<TabItem active={activeTab === 'details'} onclick={() => (activeTab = 'details')}>
 						{#snippet icon()}
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
 						{/snippet}
 						Details
 					</TabItem>
-					<TabItem active={activeTab === 'activity'} onclick={() => switchTab('activity')}>
+					<TabItem active={activeTab === 'activity'} onclick={() => (activeTab = 'activity')}>
 						{#snippet icon()}
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
 						{/snippet}
 						Activity
 					</TabItem>
-					<TabItem active={activeTab === 'notes'} onclick={() => switchTab('notes')}>
+					<TabItem active={activeTab === 'notes'} onclick={() => (activeTab = 'notes')}>
 						{#snippet icon()}
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
 						{/snippet}
@@ -336,88 +477,246 @@
 				</Tabs>
 			{/snippet}
 
-			{#if tabbedLoading}
-				{@render loadingSpinner()}
-			{:else if activeTab === 'details'}
+			{#if activeTab === 'details'}
 				{@render userDetail(tabbedUser)}
 			{:else if activeTab === 'activity'}
 				<div style="display: flex; flex-direction: column; gap: 0.75rem;">
 					{#each activities as activity}
-						<div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 0.5rem 0; border-bottom: 1px solid var(--pc-border-color, #e5e7eb);">
-							<span style="font-size: 0.9rem;">{activity.action}</span>
-							<span style="font-size: 0.8rem; color: var(--pc-text-muted, #6b7280); white-space: nowrap; margin-left: 1rem;">{activity.time}</span>
+						<div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 0.5rem 0; border-bottom: 1px solid var(--pc-border-color);">
+							<span>{activity.action}</span>
+							<span style="color: var(--pc-text-color-2); white-space: nowrap; margin-left: 1rem;">{activity.time}</span>
 						</div>
 					{/each}
 				</div>
-			{:else if activeTab === 'notes'}
+			{:else}
 				<div style="display: flex; flex-direction: column; gap: 0.75rem;">
 					{#each notes as note}
-						<div style="padding: 0.75rem; border: 1px solid var(--pc-border-color, #e5e7eb); border-radius: 0.375rem;">
-							<div style="font-size: 0.8rem; color: var(--pc-text-muted, #6b7280); margin-bottom: 0.25rem;">{note.date}</div>
-							<div style="font-size: 0.9rem;">{note.text}</div>
+						<div style="padding: 0.75rem; border: 1px solid var(--pc-border-color); border-radius: 0.375rem;">
+							<div style="color: var(--pc-text-color-2); margin-bottom: 0.25rem;">{note.date}</div>
+							<div>{note.text}</div>
 						</div>
 					{/each}
 				</div>
 			{/if}
 
 			{#snippet footer()}
-				<Button variant="primary" size="sm">Edit</Button>
-				<Button variant="secondary" size="sm" onclick={() => tabbedShow = false}>Close</Button>
+				{@render footerButtons(() => tabbedShow = false)}
 			{/snippet}
 		</DetailPanel>
 	</DetailView>
 </Card>
 
-<!-- ================================
-     Section 5: Header Actions (No Footer)
-     ================================ -->
+<!-- ================================================================
+     Section 5: Header Actions — No Footer
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Header Actions (No Footer)</Heading>
-		<Paragraph>Custom header with action buttons using <code>header</code> snippet. Close button is rendered automatically after the header content.</Paragraph>
+<Card class="mb-4" hasPadding={false} titleText="Header Actions — No Footer">
+	{#snippet description()}
+		Icon buttons live in the header next to the close button via the <code>actions</code> snippet. No footer, like a compact card.
 	{/snippet}
 
-	<DetailView bind:show={headerActionsShow} shouldShowBackdrop={false}>
+	<DetailView bind:show={headerActionsShow} shouldShowBackdrop={false} onclose={() => headerActionsShow = false}>
 		{#snippet main()}
-			{@render userTable(headerActionsUser, headerActionsShow, selectHeaderActions)}
+			{@render userTable(headerActionsUser, headerActionsShow, (user) => { headerActionsUser = user; headerActionsShow = true; })}
 		{/snippet}
 
-		<DetailPanel onclose={() => headerActionsShow = false}>
-			{#snippet header()}
-				<div style="display: flex; align-items: center; gap: 0.75rem; flex: 1; min-width: 0;">
-					<h4 class="pa-detail-panel__title" style="margin: 0;">{headerActionsUser.name}</h4>
-					<ButtonGroup>
-						<Button variant="secondary" size="sm" titleText="Edit">
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-						</Button>
-						<Button variant="secondary" size="sm" titleText="Bookmark">
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-						</Button>
-						<Button variant="danger" size="sm" isOutline titleText="Delete">
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-						</Button>
-					</ButtonGroup>
-				</div>
+		<DetailPanel titleText={headerActionsUser.name} onclose={() => headerActionsShow = false}>
+			{#snippet actions()}
+				{@render headerActionButtons()}
 			{/snippet}
 
-			{#if headerActionsLoading}
+			{@render userDetail(headerActionsUser)}
+		</DetailPanel>
+	</DetailView>
+</Card>
+
+<!-- ================================================================
+     Section 6: List drives panel (simulated loading)
+     Mirrors core's "Web-Grid Integration" section — a selectable list in
+     the main slot drives the panel. Per the demo-uses-components principle,
+     svelte-pure-admin has no grid *component*, so this uses the native Table
+     (core drives an equivalent panel from a <web-grid> web component).
+     ================================================================ -->
+
+<Card class="mb-4" hasPadding={false} titleText="List Drives Panel"
+	descriptionText="A selectable table drives the detail panel. Selecting a row shows a spinner, then loads the detail (simulated server fetch). Header actions, no footer.">
+
+	<DetailView bind:show={listShow} shouldShowBackdrop={false} onclose={() => listShow = false}>
+		{#snippet main()}
+			<Table isStriped>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Department</th>
+						<th>Salary</th>
+						<th>Status</th>
+						<th>Location</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each employees as emp}
+						<tr
+							class={listShow && listEmployee?.id === emp.id ? 'is-selected' : ''}
+							onclick={() => selectEmployee(emp)}
+							style="cursor: pointer;"
+						>
+							<td>{emp.id}</td>
+							<td>{emp.name}</td>
+							<td>{emp.department}</td>
+							<td>{formatSalary(emp.salary)}</td>
+							<td><Badge variant={statusVariant(emp.status)}>{emp.status}</Badge></td>
+							<td>{emp.location}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</Table>
+		{/snippet}
+
+		<DetailPanel titleText={listLoading ? 'Loading…' : listEmployee.name} onclose={() => listShow = false}>
+			{#snippet actions()}
+				{@render headerActionButtons()}
+			{/snippet}
+
+			{#if listLoading}
 				{@render loadingSpinner()}
 			{:else}
-				{@render userDetail(headerActionsUser)}
+				{@render employeeDetail(listEmployee)}
 			{/if}
 		</DetailPanel>
 	</DetailView>
 </Card>
 
-<!-- ================================
-     Section 6: Full-Screen Overlay
-     ================================ -->
+<!-- ================================================================
+     Section 6b: Table Card + Detail View
+     Mirrors core's "Table Card + Web-Grid" (native Table in place of web-grid).
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Full-Screen Overlay</Heading>
-		<Paragraph>Panel slides in from the right as a fixed overlay using <code>SlidePanel</code> + <code>DetailPanel</code>.</Paragraph>
+<TableCard class="mb-4" titleText="Table Card + Detail View">
+	{#snippet headerActions()}
+		<Button variant="primary" size="sm">Add New</Button>
+	{/snippet}
+
+	<DetailView bind:show={tcShow} onclose={() => tcShow = false}>
+		{#snippet main()}
+			<Table isStriped>
+				<thead>
+					<tr><th>ID</th><th>Name</th><th>Department</th><th>Status</th></tr>
+				</thead>
+				<tbody>
+					{#each records as rec}
+						<tr
+							class={tcShow && tcRecord?.id === rec.id ? 'is-selected' : ''}
+							onclick={() => { tcRecord = rec; tcShow = true; }}
+							style="cursor: pointer;"
+						>
+							<td>{rec.id}</td>
+							<td>{rec.name}</td>
+							<td>{rec.department}</td>
+							<td><Badge variant={statusVariant(rec.status)}>{rec.status}</Badge></td>
+						</tr>
+					{/each}
+				</tbody>
+			</Table>
+		{/snippet}
+
+		<DetailPanel titleText={tcRecord.name} onclose={() => tcShow = false}>
+			<Fields>
+				<Field labelText="ID" valueText={tcRecord.id} />
+				<Field labelText="Department" valueText={tcRecord.department} />
+				<Field labelText="Status">
+					{#snippet valueSnippet()}<Badge variant={statusVariant(tcRecord.status)}>{tcRecord.status}</Badge>{/snippet}
+				</Field>
+			</Fields>
+		</DetailPanel>
+	</DetailView>
+
+	{#snippet footer()}
+		<span class="text-secondary text-sm">Using <code>TableCard</code> with <code>DetailView</code></span>
+	{/snippet}
+</TableCard>
+
+<!-- ================================================================
+     Section 6c: Plain Table Cards — Products / Orders (two-up)
+     ================================================================ -->
+
+<Grid class="mb-4">
+	<Column md="50">
+		<TableCard isPlain titleText="Products">
+			<DetailView bind:show={prodShow} onclose={() => prodShow = false}>
+				{#snippet main()}
+					<Table isStriped>
+						<thead>
+							<tr><th>SKU</th><th>Product</th><th>Price</th></tr>
+						</thead>
+						<tbody>
+							{#each products as product}
+								<tr
+									class={prodShow && prodItem?.sku === product.sku ? 'is-selected' : ''}
+									onclick={() => { prodItem = product; prodShow = true; }}
+									style="cursor: pointer;"
+								>
+									<td>{product.sku}</td>
+									<td>{product.name}</td>
+									<td>{product.price}</td>
+								</tr>
+							{/each}
+						</tbody>
+					</Table>
+				{/snippet}
+
+				<DetailPanel titleText={prodItem.name} isResizable={false} onclose={() => prodShow = false}>
+					<Fields>
+						<Field labelText="SKU" valueText={prodItem.sku} />
+						<Field labelText="Price" valueText={prodItem.price} />
+					</Fields>
+				</DetailPanel>
+			</DetailView>
+		</TableCard>
+	</Column>
+
+	<Column md="50">
+		<TableCard isPlain titleText="Orders">
+			<DetailView bind:show={ordShow} onclose={() => ordShow = false}>
+				{#snippet main()}
+					<Table isStriped>
+						<thead>
+							<tr><th>Order #</th><th>Customer</th><th>Total</th></tr>
+						</thead>
+						<tbody>
+							{#each orders as order}
+								<tr
+									class={ordShow && ordItem?.id === order.id ? 'is-selected' : ''}
+									onclick={() => { ordItem = order; ordShow = true; }}
+									style="cursor: pointer;"
+								>
+									<td>{order.id}</td>
+									<td>{order.customer}</td>
+									<td>{order.total}</td>
+								</tr>
+							{/each}
+						</tbody>
+					</Table>
+				{/snippet}
+
+				<DetailPanel titleText={ordItem.id} isResizable={false} onclose={() => ordShow = false}>
+					<Fields>
+						<Field labelText="Customer" valueText={ordItem.customer} />
+						<Field labelText="Total" valueText={ordItem.total} />
+					</Fields>
+				</DetailPanel>
+			</DetailView>
+		</TableCard>
+	</Column>
+</Grid>
+
+<!-- ================================================================
+     Section 7: Full-Screen Overlay
+     ================================================================ -->
+
+<Card class="mb-4" titleText="Full-Screen Overlay">
+	{#snippet description()}
+		Click a row to open an overlay panel that slides in from the right, using <code>SlidePanel</code> + <code>DetailPanel</code>.
 	{/snippet}
 
 	<Table isStriped>
@@ -426,6 +725,7 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Role</th>
+				<th>Department</th>
 				<th>Status</th>
 			</tr>
 		</thead>
@@ -433,12 +733,13 @@
 			{#each users as user}
 				<tr
 					class={overlayShow && overlayUser.id === user.id ? 'is-selected' : ''}
-					onclick={() => selectOverlay(user)}
+					onclick={() => { overlayUser = user; overlayShow = true; }}
 					style="cursor: pointer;"
 				>
 					<td>{user.name}</td>
 					<td>{user.email}</td>
 					<td>{user.role}</td>
+					<td>{user.department}</td>
 					<td><Badge variant={statusVariant(user.status)}>{user.status}</Badge></td>
 				</tr>
 			{/each}
@@ -447,29 +748,20 @@
 </Card>
 
 <SlidePanel bind:show={overlayShow} onclose={() => overlayShow = false}>
-	<DetailPanel titleText={overlayUser.name} onclose={() => overlayShow = false}>
-		{#if overlayLoading}
-			{@render loadingSpinner()}
-		{:else}
-			{@render userDetail(overlayUser)}
-		{/if}
+	<DetailPanel titleText={overlayUser.name} isResizable={false} onclose={() => overlayShow = false}>
+		{@render userDetail(overlayUser)}
 
 		{#snippet footer()}
-			<Button variant="primary" size="sm">Save</Button>
-			<Button variant="secondary" size="sm" onclick={() => overlayShow = false}>Cancel</Button>
+			{@render footerButtons(() => overlayShow = false)}
 		{/snippet}
 	</DetailPanel>
 </SlidePanel>
 
-<!-- ================================
+<!-- ================================================================
      Usage Reference
-     ================================ -->
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Usage</Heading>
-	{/snippet}
-
+<Card class="mb-4" titleText="Usage">
 	<Heading level={4}>Inline Split-View Mode</Heading>
 	<Callout variant="info" class="mb-3">
 		Use <code>DetailView</code> with <code>isOverlay=&#123;false&#125;</code>. The table shrinks and the panel appears alongside it.
@@ -488,6 +780,12 @@
 		Place a <code>Tabs</code> component with <code>TabItem</code> children inside the snippet.
 	</Callout>
 
+	<Heading level={4} class="mt-4">Header Actions</Heading>
+	<Callout variant="info" class="mb-3">
+		Use the <code>actions</code> snippet on <code>DetailPanel</code> for buttons in <code>.pa-detail-panel__actions</code>,
+		between the title and the close button. Primary confirm/cancel buttons belong in <code>footer</code>.
+	</Callout>
+
 	<Heading level={4} class="mt-4">Full-Screen Overlay Mode</Heading>
 	<Callout variant="info" class="mb-3">
 		Use <code>SlidePanel</code> + <code>DetailPanel</code> together. The <code>SlidePanel</code> handles the fixed
@@ -496,21 +794,16 @@
 
 	<Heading level={4} class="mt-4">Resize</Heading>
 	<Callout variant="info">
-		All panels include a drag handle on the left edge. Drag to resize (min 28rem, max 64rem).
-		Double-click the handle to reset to default width. Width is persisted to localStorage.
-		Disable with <code>isResizable=&#123;false&#125;</code> on <code>DetailPanel</code>.
+		Resizable panels include a drag handle on the left edge (min 28rem, max 64rem). Disable with
+		<code>isResizable=&#123;false&#125;</code> on <code>DetailPanel</code>.
 	</Callout>
 </Card>
 
-<!-- ================================
+<!-- ================================================================
      Component Props Reference
-     ================================ -->
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>Component Props</Heading>
-	{/snippet}
-
+<Card class="mb-4" titleText="Component Props">
 	<Heading level={4}>DetailView</Heading>
 	<Table isStriped size="sm" class="mb-4">
 		<thead>
@@ -543,13 +836,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>titleText</code></td><td>string</td><td>''</td><td>Panel title text</td></tr>
-			<tr><td><code>header</code></td><td>Snippet</td><td>-</td><td>Custom header content (replaces title area, close button still rendered)</td></tr>
+			<tr><td><code>titleText</code></td><td>string</td><td>''</td><td>Panel title text (blessed header shape)</td></tr>
+			<tr><td><code>actions</code></td><td>Snippet</td><td>-</td><td>Header action buttons, between the title and the close button</td></tr>
 			<tr><td><code>tabs</code></td><td>Snippet</td><td>-</td><td>Tabs content rendered between header and body</td></tr>
 			<tr><td><code>children</code></td><td>Snippet</td><td>-</td><td>Body content</td></tr>
-			<tr><td><code>footer</code></td><td>Snippet</td><td>-</td><td>Footer content (action buttons)</td></tr>
-			<tr><td><code>onclose</code></td><td>() =&gt; void</td><td>-</td><td>Called when close button is clicked</td></tr>
+			<tr><td><code>footer</code></td><td>Snippet</td><td>-</td><td>Footer content (confirm/cancel buttons)</td></tr>
+			<tr><td><code>isBordered</code></td><td>boolean</td><td>false</td><td>Add top/bottom borders to the content wrapper</td></tr>
 			<tr><td><code>isResizable</code></td><td>boolean</td><td>true</td><td>Enable drag-to-resize handle</td></tr>
+			<tr><td><code>onclose</code></td><td>() =&gt; void</td><td>-</td><td>Called when the close button is clicked</td></tr>
+			<tr><td><code>header</code></td><td>Snippet</td><td>-</td><td>Legacy: raw header override. Prefer <code>titleText</code> + <code>actions</code>.</td></tr>
 			<tr><td><code>class</code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>
 		</tbody>
 	</Table>
@@ -573,16 +868,12 @@
 	</Table>
 </Card>
 
-<!-- ================================
+<!-- ================================================================
      CSS Reference
-     ================================ -->
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>CSS Reference</Heading>
-	{/snippet}
-
-	<Table isStriped size="sm">
+<TableCard class="mb-4" titleText="CSS Reference" isScrollable>
+	<Table isStriped>
 		<thead>
 			<tr>
 				<th>Class</th>
@@ -590,38 +881,33 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>.pa-detail-view</code></td><td>Container for inline split-view mode (table + panel side by side)</td></tr>
-			<tr><td><code>.pa-detail-view--overlay</code></td><td>Modifier for overlay mode (panel overlays the table within the container)</td></tr>
-			<tr><td><code>.pa-detail-view__main</code></td><td>Main content area (table, list, etc.)</td></tr>
-			<tr><td><code>.pa-detail-view__panel</code></td><td>Panel wrapper (slides open/closed)</td></tr>
-			<tr><td><code>.pa-detail-view__panel--open</code></td><td>Panel open state</td></tr>
-			<tr><td><code>.pa-detail-view__overlay</code></td><td>Backdrop overlay element</td></tr>
-			<tr><td><code>.pa-detail-view__overlay--visible</code></td><td>Backdrop visible state</td></tr>
-			<tr><td><code>.pa-detail-panel__content</code></td><td>Detail panel content wrapper</td></tr>
-			<tr><td><code>.pa-detail-panel__header</code></td><td>Panel header (title + close button)</td></tr>
-			<tr><td><code>.pa-detail-panel__title</code></td><td>Panel title text</td></tr>
-			<tr><td><code>.pa-detail-panel__close</code></td><td>Close button in panel header</td></tr>
-			<tr><td><code>.pa-detail-panel__tabs</code></td><td>Tabs area between header and body</td></tr>
-			<tr><td><code>.pa-detail-panel__body</code></td><td>Scrollable body area</td></tr>
-			<tr><td><code>.pa-detail-panel__footer</code></td><td>Footer with action buttons</td></tr>
-			<tr><td><code>.pa-detail-panel-resize</code></td><td>Drag-to-resize handle on left edge</td></tr>
-			<tr><td><code>.pa-detail-panel-resizing</code></td><td>Body class applied during resize drag</td></tr>
-			<tr><td><code>.pa-detail-panel--overlay</code></td><td>Fixed full-screen overlay mode (SlidePanel)</td></tr>
-			<tr><td><code>.pa-detail-panel--open</code></td><td>SlidePanel open state</td></tr>
-			<tr><td><code>.pa-detail-panel__overlay</code></td><td>Full-screen backdrop for SlidePanel</td></tr>
+			<tr><td><code>.pa-detail-view</code></td><td>Flex wrapper for inline split-view mode (table + panel side by side)</td></tr>
+			<tr><td><code>.pa-detail-view__main</code></td><td>Left side container (table area), <code>flex: 1</code></td></tr>
+			<tr><td><code>.pa-detail-view__panel</code></td><td>Right side panel container, hidden by default (<code>width: 0</code>)</td></tr>
+			<tr><td><code>.pa-detail-view__panel--open</code></td><td>Shows the inline panel with configured width</td></tr>
+			<tr><td><code>.pa-detail-view--overlay</code></td><td>Card overlay modifier: panel overlays the table within the card instead of pushing it</td></tr>
+			<tr><td><code>.pa-detail-view__overlay</code></td><td>Backdrop overlay for card overlay mode (click to close)</td></tr>
+			<tr><td><code>.pa-detail-view__overlay--visible</code></td><td>Shows the card overlay backdrop</td></tr>
+			<tr><td><code>.pa-detail-panel--overlay</code></td><td>Full-screen overlay mode wrapper (fixed position, like profile panel)</td></tr>
+			<tr><td><code>.pa-detail-panel--open</code></td><td>Makes the overlay panel visible with slide-in transition</td></tr>
+			<tr><td><code>.pa-detail-panel__content</code></td><td>Panel content wrapper (flex column: header/body/footer)</td></tr>
+			<tr><td><code>.pa-detail-panel__header</code></td><td>Panel header with title and close button</td></tr>
+			<tr><td><code>.pa-detail-panel__title</code></td><td>Truncated panel title</td></tr>
+			<tr><td><code>.pa-detail-panel__close</code></td><td>Close button in header</td></tr>
+			<tr><td><code>.pa-detail-panel__body</code></td><td>Scrollable body area (<code>flex: 1; overflow-y: auto</code>)</td></tr>
+			<tr><td><code>.pa-detail-panel__footer</code></td><td>Fixed footer with action buttons</td></tr>
+			<tr><td><code>.pa-detail-panel__overlay</code></td><td>Backdrop overlay (overlay mode only, click to close)</td></tr>
+			<tr><td><code>.pa-detail-panel-resize</code></td><td>Drag handle on left edge of panel for resizing</td></tr>
+			<tr><td><code>.is-selected</code></td><td>Applied to <code>tr</code> elements to highlight the selected row</td></tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
-<!-- ================================
+<!-- ================================================================
      SCSS Variables
-     ================================ -->
+     ================================================================ -->
 
-<Card class="mb-4">
-	{#snippet header()}
-		<Heading level={3}>SCSS Variables</Heading>
-	{/snippet}
-
+<TableCard class="mb-4" titleText="SCSS Variables" isScrollable>
 	<Table isStriped size="sm">
 		<thead>
 			<tr>
@@ -631,25 +917,25 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>$detail-panel-width</code></td><td>40rem</td><td>Default panel width</td></tr>
-			<tr><td><code>$detail-panel-min-width</code></td><td>28rem</td><td>Minimum panel width (resize constraint)</td></tr>
-			<tr><td><code>$detail-panel-max-width</code></td><td>64rem</td><td>Maximum panel width (resize constraint)</td></tr>
-			<tr><td><code>$detail-panel-resize-handle-width</code></td><td>6px</td><td>Width of the resize drag handle</td></tr>
-			<tr><td><code>$detail-panel-transition-duration</code></td><td>0.3s</td><td>Open/close transition duration</td></tr>
-			<tr><td><code>$detail-panel-overlay-bg</code></td><td>rgba(0, 0, 0, 0.3)</td><td>Backdrop overlay background color</td></tr>
+			<tr><td><code>$detail-panel-width</code></td><td><code>40rem</code></td><td>Default panel width</td></tr>
+			<tr><td><code>$detail-panel-min-width</code></td><td><code>28rem</code></td><td>Minimum panel width</td></tr>
+			<tr><td><code>$detail-panel-max-width</code></td><td><code>64rem</code></td><td>Maximum panel width</td></tr>
+			<tr><td><code>$detail-panel-mobile-width</code></td><td><code>90vw</code></td><td>Panel width on mobile (overlay mode)</td></tr>
+			<tr><td><code>$detail-panel-overlay-bg</code></td><td><code>rgba(0,0,0,0.3)</code></td><td>Backdrop overlay background</td></tr>
+			<tr><td><code>$detail-panel-z-index</code></td><td><code>4500</code></td><td>Z-index (below profile panel, above header)</td></tr>
+			<tr><td><code>$detail-panel-shadow</code></td><td><code>$shadow-profile-panel</code></td><td>Box shadow for overlay mode</td></tr>
+			<tr><td><code>$detail-panel-close-size</code></td><td><code>3.2rem</code></td><td>Close button size</td></tr>
+			<tr><td><code>$detail-panel-resize-handle-width</code></td><td><code>6px</code></td><td>Width of the resize drag handle</td></tr>
+			<tr><td><code>$detail-panel-selected-bg</code></td><td><code>rgba($accent-color, 0.08)</code></td><td>Background color of selected table rows</td></tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>
 
-<!-- ================================
+<!-- ================================================================
      CSS Custom Properties
-     ================================ -->
+     ================================================================ -->
 
-<Card>
-	{#snippet header()}
-		<Heading level={3}>CSS Custom Properties</Heading>
-	{/snippet}
-
+<TableCard titleText="CSS Custom Properties" isScrollable>
 	<Table isStriped size="sm">
 		<thead>
 			<tr>
@@ -658,11 +944,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>--pa-local-detail-panel-width</code></td><td>Runtime panel width (set by resize handle, persisted to localStorage)</td></tr>
-			<tr><td><code>--pc-detail-panel-bg</code></td><td>Panel background color (defaults to card background)</td></tr>
-			<tr><td><code>--pc-detail-panel-border-color</code></td><td>Panel border color</td></tr>
-			<tr><td><code>--pc-detail-panel-header-bg</code></td><td>Header background color</td></tr>
-			<tr><td><code>--pc-detail-panel-footer-bg</code></td><td>Footer background color</td></tr>
+			<tr><td><code>--pc-local-detail-panel-width</code></td><td>Runtime panel width (set by JS resize handle). Default: <code>40rem</code></td></tr>
+			<tr><td><code>--pc-local-detail-panel-max-width</code></td><td>Runtime max width. Default: <code>64rem</code></td></tr>
+			<tr><td><code>--pc-detail-panel-overlay-bg</code></td><td>Backdrop overlay color (themeable via CSS variables)</td></tr>
+			<tr><td><code>--pc-detail-panel-selected-bg</code></td><td>Selected row highlight color (themeable via CSS variables)</td></tr>
 		</tbody>
 	</Table>
-</Card>
+</TableCard>

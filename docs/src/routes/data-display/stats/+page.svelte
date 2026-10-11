@@ -60,8 +60,8 @@
 </Card>
 
 <Card titleText="Square — compact KPI tiles (KpiGrid)">
-	{#snippet header()}
-		<Paragraph>Square tiles with a trailing unit symbol, or a prefixed currency symbol via <code>isSymbolPrefix</code>.</Paragraph>
+	{#snippet description()}
+		Square tiles with a trailing unit symbol, or a prefixed currency symbol via <code>isSymbolPrefix</code>.
 	{/snippet}
 	<KpiGrid>
 		<Stat variant="square" color="primary" number="847" symbolText="K" labelText="Impressions" />

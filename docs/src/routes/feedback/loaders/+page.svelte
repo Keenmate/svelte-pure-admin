@@ -115,29 +115,20 @@
 
 	<Grid>
 		<Column size="100" md="1-3" class="mb-4">
-			<Card bodyClass="hr-15 position-relative">
-				{#snippet header()}
-					<Heading level={4}>Loading Card</Heading>
-				{/snippet}
+			<Card bodyClass="hr-15 position-relative" titleText="Loading Card">
 				<LoaderOverlay>
 					<Loader type="ring" size="lg" color="primary" />
 				</LoaderOverlay>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3" class="mb-4">
-			<Card bodyClass="pa-loader-center hr-15">
-				{#snippet header()}
-					<Heading level={4}>Loading with Text</Heading>
-				{/snippet}
+			<Card bodyClass="pa-loader-center hr-15" titleText="Loading with Text">
 				<Loader type="ring" size="lg" color="info" />
 				<Paragraph class="mt-4 text-secondary">Fetching data...</Paragraph>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3" class="mb-4">
-			<Card>
-				{#snippet header()}
-					<Heading level={4}>Loaded Content</Heading>
-				{/snippet}
+			<Card titleText="Loaded Content">
 				<Paragraph>Content has loaded successfully!</Paragraph>
 				<Paragraph class="mt-2">This is what appears after the loader completes.</Paragraph>
 			</Card>

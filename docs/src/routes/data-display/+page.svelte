@@ -213,10 +213,9 @@
 
 <Grid>
 	<Column size="1-2">
-		<Card>
-			{#snippet header()}
-				<h3>Multiple pa-fields Blocks</h3>
-				<Paragraph>Consecutive <code>Fields</code> blocks get automatic spacing via <code>.pa-fields + .pa-fields</code>.</Paragraph>
+		<Card titleText="Multiple pa-fields Blocks">
+			{#snippet description()}
+				Consecutive <code>Fields</code> blocks get automatic spacing via <code>.pa-fields + .pa-fields</code>.
 			{/snippet}
 
 			<Fields isRow>
@@ -235,10 +234,9 @@
 		</Card>
 	</Column>
 	<Column size="1-2">
-		<Card>
-			{#snippet header()}
-				<h3>Multi-Column Grid</h3>
-				<Paragraph>Uses <code>cols={2|3|4}</code>. Use <code>full</code> prop to span all columns.</Paragraph>
+		<Card titleText="Multi-Column Grid">
+			{#snippet description()}
+				Uses <code>cols={2|3|4}</code>. Use <code>full</code> prop to span all columns.
 			{/snippet}
 
 			<Fields cols={2}>
@@ -256,10 +254,9 @@
      Row 2: Field Groups (100%)
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<h3>Field Groups</h3>
-		<Paragraph>Labeled sections using <code>FieldGroup</code> with title prop.</Paragraph>
+<Card titleText="Field Groups">
+	{#snippet description()}
+		Labeled sections using <code>FieldGroup</code> with title prop.
 	{/snippet}
 
 	<Grid>
@@ -296,10 +293,9 @@
 
 <Grid>
 	<Column size="1-3">
-		<Card>
-			{#snippet header()}
-				<h3>Horizontal</h3>
-				<Paragraph>Uses <code>horizontal</code> prop.</Paragraph>
+		<Card titleText="Horizontal">
+			{#snippet description()}
+				Uses <code>horizontal</code> prop.
 			{/snippet}
 
 			<Fields isHorizontal>
@@ -311,10 +307,9 @@
 		</Card>
 	</Column>
 	<Column size="1-3">
-		<Card>
-			{#snippet header()}
-				<h3>Table-Style Bordered</h3>
-				<Paragraph>Uses <code>table bordered</code> props.</Paragraph>
+		<Card titleText="Table-Style Bordered">
+			{#snippet description()}
+				Uses <code>table bordered</code> props.
 			{/snippet}
 
 			<Fields isTable isBordered>
@@ -330,10 +325,9 @@
 		</Card>
 	</Column>
 	<Column size="1-3">
-		<Card>
-			{#snippet header()}
-				<h3>Striped</h3>
-				<Paragraph>Uses <code>striped</code> prop.</Paragraph>
+		<Card titleText="Striped">
+			{#snippet description()}
+				Uses <code>striped</code> prop.
 			{/snippet}
 
 			<Fields isStriped>
@@ -352,10 +346,9 @@
 
 <Grid>
 	<Column size="1-4">
-		<Card>
-			{#snippet header()}
-				<h3>Compact</h3>
-				<Paragraph><code>compact</code></Paragraph>
+		<Card titleText="Compact">
+			{#snippet description()}
+				<code>compact</code>
 			{/snippet}
 
 			<Fields isCompact>
@@ -366,10 +359,9 @@
 		</Card>
 	</Column>
 	<Column size="1-4">
-		<Card>
-			{#snippet header()}
-				<h3>Inline</h3>
-				<Paragraph><code>inline</code></Paragraph>
+		<Card titleText="Inline">
+			{#snippet description()}
+				<code>inline</code>
 			{/snippet}
 
 			<Fields isInline>
@@ -380,10 +372,9 @@
 		</Card>
 	</Column>
 	<Column size="1-4">
-		<Card>
-			{#snippet header()}
-				<h3>Row</h3>
-				<Paragraph><code>row</code></Paragraph>
+		<Card titleText="Row">
+			{#snippet description()}
+				<code>row</code>
 			{/snippet}
 
 			<Fields isRow>
@@ -394,10 +385,9 @@
 		</Card>
 	</Column>
 	<Column size="1-4">
-		<Card>
-			{#snippet header()}
-				<h3>Relaxed</h3>
-				<Paragraph><code>relaxed</code></Paragraph>
+		<Card titleText="Relaxed">
+			{#snippet description()}
+				<code>relaxed</code>
 			{/snippet}
 
 			<Fields isRelaxed>
@@ -414,10 +404,9 @@
 
 <Grid>
 	<Column size="3-4">
-		<Card>
-			{#snippet header()}
-				<h3>Filled Fields</h3>
-				<Paragraph>Subtle background to distinguish data blocks. Uses <code>filled</code> prop.</Paragraph>
+		<Card titleText="Filled Fields">
+			{#snippet description()}
+				Subtle background to distinguish data blocks. Uses <code>filled</code> prop.
 			{/snippet}
 
 			<Grid>
@@ -441,11 +430,7 @@
 		</Card>
 	</Column>
 	<Column size="1-4">
-		<Card>
-			{#snippet header()}
-				<h3>Form vs Display</h3>
-			{/snippet}
-
+		<Card titleText="Form vs Display">
 			<Heading level={4}>Edit</Heading>
 			<FormGroup>
 				<FormLabel>Name</FormLabel>
@@ -463,10 +448,9 @@
      Row 6: Color Variants (100%)
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<h3>Color Variants</h3>
-		<Paragraph>Theme colors for border and isFilled background. Uses <code>color={1-9}</code>. Combine with <code>filled</code> for tinted backgrounds. Use <code>noBorder</code> to remove the border.</Paragraph>
+<Card titleText="Color Variants">
+	{#snippet description()}
+		Theme colors for border and isFilled background. Uses <code>color={1-9}</code>. Combine with <code>filled</code> for tinted backgrounds. Use <code>noBorder</code> to remove the border.
 	{/snippet}
 
 	<Heading level={4}>Border Colors</Heading>
@@ -537,11 +521,7 @@
      Row 7: Copyable Fields (100%)
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<h3>Copyable Fields</h3>
-		<Paragraph>Three styles for copy-to-clipboard functionality. Click to test each variant.</Paragraph>
-	{/snippet}
+<Card titleText="Copyable Fields" descriptionText="Three styles for copy-to-clipboard functionality. Click to test each variant.">
 
 	<Grid>
 		<Column size="1-3">
@@ -577,10 +557,9 @@
      Row 8: Invoice Layout (100%)
      ============================================================ -->
 
-<Card>
-	{#snippet header()}
-		<h3>Real-World: Invoice Layout</h3>
-		<Paragraph>Customer (full width) + Receipt/Delivery addresses (50/50). Combines <code>FieldGroup</code> with <code>Grid</code>/<code>Column</code>.</Paragraph>
+<Card titleText="Real-World: Invoice Layout">
+	{#snippet description()}
+		Customer (full width) + Receipt/Delivery addresses (50/50). Combines <code>FieldGroup</code> with <code>Grid</code>/<code>Column</code>.
 	{/snippet}
 
 	<FieldGroup titleText="Customer">
@@ -662,11 +641,7 @@
 
 <Grid>
 	<Column size="1-3">
-		<Card>
-			{#snippet header()}
-				<h3>User Profile</h3>
-			{/snippet}
-
+		<Card titleText="User Profile">
 			<div class="profile-header">
 				<div class="profile-avatar">EP</div>
 				<strong>Elena Petrova</strong><br>
@@ -692,11 +667,7 @@
 		</Card>
 	</Column>
 	<Column size="2-3">
-		<Card>
-			{#snippet header()}
-				<h3>CSS Classes Reference</h3>
-			{/snippet}
-
+		<Card titleText="CSS Classes Reference">
 			<Grid>
 				<Column size="1-2">
 					<Heading level={4}>Field Elements</Heading>
@@ -754,10 +725,9 @@
      Row 10: Detail Panel Integration (100%)
      ============================================================ -->
 
-<Card bodyClass="p-0">
-	{#snippet header()}
-		<h3>Detail Panel Integration</h3>
-		<Paragraph>Headerless detail panel with floating close button. Click a row to view order data using <code>Fields</code> components.</Paragraph>
+<Card bodyClass="p-0" titleText="Detail Panel Integration">
+	{#snippet description()}
+		Headerless detail panel with floating close button. Click a row to view order data using <code>Fields</code> components.
 	{/snippet}
 
 	<div class="pa-detail-view" class:pa-detail-view--panel-open={detailPanelOpen}>

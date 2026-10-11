@@ -223,7 +223,7 @@
 </TableCard>
 
 <!-- Code Example -->
-<Card titleText="HTML Implementation" subtitleText="How to make your tables responsive" class="mb-4">
+<Card titleText="HTML Implementation" descriptionText="How to make your tables responsive" class="mb-4">
 	<h4 class="mb-2">1. Add the class modifier</h4>
 	<Paragraph class="mb-3">Add <Code>.pa-table--responsive</Code> to your table element:</Paragraph>
 	<CodeBlock class="mb-4">{`<table class="pa-table pa-table--responsive">
@@ -260,7 +260,7 @@
 </Card>
 
 <!-- SCSS Variables Reference -->
-<Card titleText="Customization Variables" subtitleText="SCSS variables for responsive table styling" class="mb-4">
+<Card titleText="Customization Variables" descriptionText="SCSS variables for responsive table styling" class="mb-4">
 	<Table>
 		<thead>
 			<tr>

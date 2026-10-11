@@ -42,7 +42,7 @@
 </Card>
 
 <!-- Basic Usage -->
-<Card titleText="Basic Usage" subtitleText="Auto-equal width columns with .pc-col">
+<Card titleText="Basic Usage" descriptionText="Auto-equal width columns with .pc-col">
 	<h4>Two Equal Columns</h4>
 	<Grid class="mb-4">
 		<Column>
@@ -94,7 +94,7 @@
 </Card>
 
 <!-- Percentage Columns -->
-<Card titleText="Percentage Columns" subtitleText="Fixed widths in 5% increments: .pc-col-5 through .pc-col-100">
+<Card titleText="Percentage Columns" descriptionText="Fixed widths in 5% increments: .pc-col-5 through .pc-col-100">
 	<Grid class="mb-2">
 		<Column size="25"><div class="grid-demo-cell">.pc-col-25</div></Column>
 		<Column size="75"><div class="grid-demo-cell">.pc-col-75</div></Column>
@@ -128,7 +128,7 @@
 </Card>
 
 <!-- Fraction Columns -->
-<Card titleText="Fraction Columns" subtitleText="Intuitive naming for common layouts: .pc-col-1-3, .pc-col-2-3, etc.">
+<Card titleText="Fraction Columns" descriptionText="Intuitive naming for common layouts: .pc-col-1-3, .pc-col-2-3, etc.">
 	<h4>Halves (1/2)</h4>
 	<Grid class="mb-4">
 		<Column size="1-2"><div class="grid-demo-cell">.pc-col-1-2 (50%)</div></Column>
@@ -194,7 +194,7 @@
 </Card>
 
 <!-- Responsive Grid -->
-<Card titleText="Responsive Grid" subtitleText="Stack on mobile, columns on larger screens. Resize your browser to see the effect.">
+<Card titleText="Responsive Grid" descriptionText="Stack on mobile, columns on larger screens. Resize your browser to see the effect.">
 	<h4>Mobile-First Pattern</h4>
 	<Paragraph color="secondary" class="mb-2">Full width on mobile, 50% on medium screens and up:</Paragraph>
 	<Grid class="mb-4">
@@ -228,7 +228,7 @@
 </Card>
 
 <!-- Offsets -->
-<Card titleText="Offsets" subtitleText={`Push columns with left margin: .pc-offset-{size}`}>
+<Card titleText="Offsets" descriptionText={`Push columns with left margin: .pc-offset-{size}`}>
 	<h4>Centering with Offsets</h4>
 	<Grid class="mb-2">
 		<Column size="50" offset="25"><div class="grid-demo-cell">.pc-col-50 .pc-offset-25</div></Column>
@@ -252,7 +252,7 @@
 </Card>
 
 <!-- Row Alignment -->
-<Card titleText="Row Alignment" subtitleText="Control horizontal and vertical alignment of columns">
+<Card titleText="Row Alignment" descriptionText="Control horizontal and vertical alignment of columns">
 	<h4>Horizontal Alignment</h4>
 
 	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--center</Code></Paragraph>
@@ -305,7 +305,7 @@
 </Card>
 
 <!-- No Gutter -->
-<Card titleText="No Gutter" subtitleText="Remove spacing between columns with .pc-row--no-gutter">
+<Card titleText="No Gutter" descriptionText="Remove spacing between columns with .pc-row--no-gutter">
 	<h4>Default (with gutter)</h4>
 	<Grid class="mb-4">
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
@@ -322,7 +322,7 @@
 </Card>
 
 <!-- Visibility Utilities -->
-<Card titleText="Visibility Utilities" subtitleText="Show/hide elements at different breakpoints">
+<Card titleText="Visibility Utilities" descriptionText="Show/hide elements at different breakpoints">
 	<Table isStriped class="mb-4">
 		<thead>
 			<tr>
@@ -354,7 +354,7 @@
 </Card>
 
 <!-- Nested Grids -->
-<Card titleText="Nested Grids" subtitleText="Grids can be nested inside columns">
+<Card titleText="Nested Grids" descriptionText="Grids can be nested inside columns">
 	<Grid>
 		<Column size="1-3">
 			<div class="grid-demo-cell">1/3</div>

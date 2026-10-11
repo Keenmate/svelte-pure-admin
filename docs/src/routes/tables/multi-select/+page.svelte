@@ -129,7 +129,7 @@
 <Paragraph>Demonstration of maintaining selection state when switching between filters — a common pattern in admin dashboards.</Paragraph>
 
 <!-- Intro -->
-<Card titleText="Multi-Select Across Different Filters" subtitleText="Select items in one filter, switch to another, and your selections are preserved">
+<Card titleText="Multi-Select Across Different Filters" descriptionText="Select items in one filter, switch to another, and your selections are preserved">
 	<Alert variant="info">
 		This pattern uses a global selection Map that persists across filter changes. Each selected item remembers which filter it was selected from. The select-all checkbox supports indeterminate state for partial selections.
 	</Alert>

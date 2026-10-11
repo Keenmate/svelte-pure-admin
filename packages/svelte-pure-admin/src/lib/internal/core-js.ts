@@ -21,6 +21,7 @@ export async function loadCoreJs(
 		| 'container-breakpoint'
 		| 'sidebar-resize'
 		| 'sheet-print'
+		| 'tooltips-popovers'
 ): Promise<void> {
 	if (typeof window === 'undefined') return;
 	switch (module) {
@@ -39,6 +40,15 @@ export async function loadCoreJs(
 			break;
 		case 'overflow':
 			await import('@keenmate/pure-admin-core/js/overflow.js');
+			break;
+		case 'tooltips-popovers':
+			// Floating-UI tooltip/popover enhancer. Converts any `.pa-tooltip`
+			// element into a Floating-UI bubble appended to <body>, so tooltips
+			// escape ancestor `overflow: hidden` (e.g. a `.pa-card__description`
+			// that truncates). Depends on `window.FloatingUIDOM`. Self-inits on
+			// import and re-inits on a `content-loaded` window event. The native
+			// `<Tooltip>` component opts out by setting `data-tooltip-init`.
+			await import('@keenmate/pure-admin-core/js/tooltips-popovers.js');
 			break;
 		// The four app-shell engines moved DOWN into @keenmate/pure-css (Stage C).
 		// They register on window.pureCss and read its event bus / config, so the
