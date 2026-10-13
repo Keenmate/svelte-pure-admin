@@ -133,27 +133,27 @@
 		<Card titleText="Timeline Block" descriptionText="Centered alternating layout">
 			<Timeline variant="alternating">
 				<TimelineItem date="15 Dec" iconText="🏠">
-					<Heading level={4}>Project Started</Heading>
+					<Heading level={3}>Project Started</Heading>
 					<Paragraph>New project "Pure Admin Dashboard" has been initialized with base configuration and team setup.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="22 Oct" iconText="🎁">
-					<Heading level={4}>First Release</Heading>
+					<Heading level={3}>First Release</Heading>
 					<Paragraph>Version 1.0 released to production with core features and documentation.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="10 Jul" iconText="👤">
-					<Heading level={4}>Team Expansion</Heading>
+					<Heading level={3}>Team Expansion</Heading>
 					<Paragraph>Added three new developers to the team to accelerate development.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="18 May" iconText="🏃">
-					<Heading level={4}>Sprint Milestone</Heading>
+					<Heading level={3}>Sprint Milestone</Heading>
 					<Paragraph>Completed major refactoring sprint, improving code quality and performance.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="10 Feb" iconText="⚙️">
-					<Heading level={4}>System Upgrade</Heading>
+					<Heading level={3}>System Upgrade</Heading>
 					<Paragraph>Migrated to new infrastructure with improved scalability and reliability.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="01 Jan" iconText="🏆">
-					<Heading level={4}>Award Recognition</Heading>
+					<Heading level={3}>Award Recognition</Heading>
 					<Paragraph>Received "Best Admin Framework" award from the developer community.</Paragraph>
 				</TimelineItem>
 			</Timeline>
@@ -164,19 +164,19 @@
 		<Card titleText="Timeline Block" descriptionText="Another example with different content">
 			<Timeline variant="alternating">
 				<TimelineItem date="Q1 2024" iconText="📋">
-					<Heading level={4}>Planning Phase</Heading>
+					<Heading level={3}>Planning Phase</Heading>
 					<Paragraph>Strategic planning and goal setting for the year ahead.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="Q2 2024" iconText="🚀">
-					<Heading level={4}>Launch Preparation</Heading>
+					<Heading level={3}>Launch Preparation</Heading>
 					<Paragraph>Final testing and deployment preparation phase.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="Q3 2024" iconText="📈">
-					<Heading level={4}>Growth Period</Heading>
+					<Heading level={3}>Growth Period</Heading>
 					<Paragraph>User acquisition and feature expansion phase.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="Q4 2024" iconText="🎯">
-					<Heading level={4}>Optimization</Heading>
+					<Heading level={3}>Optimization</Heading>
 					<Paragraph>Performance improvements and user feedback implementation.</Paragraph>
 				</TimelineItem>
 			</Timeline>
@@ -189,7 +189,7 @@
 	<Timeline variant="alternating">
 		{#each loadMoreItems as item (item.title)}
 			<TimelineItem date={item.date} iconText={item.iconText}>
-				<Heading level={4}>{item.title}</Heading>
+				<Heading level={3}>{item.title}</Heading>
 				<Paragraph>{item.content}</Paragraph>
 			</TimelineItem>
 		{/each}
@@ -208,7 +208,7 @@
 		<Timeline variant="alternating">
 			{#each virtualScrollItems as item (item.title)}
 				<TimelineItem date={item.date} iconText={item.iconText}>
-					<Heading level={4}>{item.title}</Heading>
+					<Heading level={3}>{item.title}</Heading>
 					<Paragraph>{item.content}</Paragraph>
 				</TimelineItem>
 			{/each}
@@ -237,7 +237,7 @@
 			<Timeline variant="alternating" alignment="start">
 				{#each modifierItems as item (item.title)}
 					<TimelineItem date={item.date} iconText={item.iconText}>
-						<Heading level={4}>{item.title}</Heading>
+						<Heading level={3}>{item.title}</Heading>
 						<Paragraph>{item.content}</Paragraph>
 					</TimelineItem>
 				{/each}
@@ -253,7 +253,7 @@
 			<Timeline variant="alternating" alignment="end">
 				{#each modifierItems as item (item.title)}
 					<TimelineItem date={item.date} iconText={item.iconText}>
-						<Heading level={4}>{item.title}</Heading>
+						<Heading level={3}>{item.title}</Heading>
 						<Paragraph>{item.content}</Paragraph>
 					</TimelineItem>
 				{/each}
@@ -268,15 +268,15 @@
 			{/snippet}
 			<Timeline variant="alternating" shouldKeepLayout>
 				<TimelineItem date="Jan" iconText="📝">
-					<Heading level={4}>Planning</Heading>
+					<Heading level={3}>Planning</Heading>
 					<Paragraph>Stays alternating on mobile.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="Feb" iconText="🚀">
-					<Heading level={4}>Launch</Heading>
+					<Heading level={3}>Launch</Heading>
 					<Paragraph>Zig-zag preserved on small screens.</Paragraph>
 				</TimelineItem>
 				<TimelineItem date="Mar" iconText="✅">
-					<Heading level={4}>Complete</Heading>
+					<Heading level={3}>Complete</Heading>
 					<Paragraph>Layout maintained at all widths.</Paragraph>
 				</TimelineItem>
 			</Timeline>
@@ -294,7 +294,7 @@
 			<Timeline variant="alternating" alignment="start" shouldKeepLayout>
 				{#each combinationItems as item (item.title)}
 					<TimelineItem date={item.date} iconText={item.iconText}>
-						<Heading level={4}>{item.title}</Heading>
+						<Heading level={3}>{item.title}</Heading>
 						<Paragraph>{item.content}</Paragraph>
 					</TimelineItem>
 				{/each}
@@ -310,7 +310,7 @@
 			<Timeline variant="alternating" alignment="end" shouldKeepLayout>
 				{#each combinationItems as item (item.title)}
 					<TimelineItem date={item.date} iconText={item.iconText}>
-						<Heading level={4}>{item.title}</Heading>
+						<Heading level={3}>{item.title}</Heading>
 						<Paragraph>{item.content}</Paragraph>
 					</TimelineItem>
 				{/each}
@@ -324,7 +324,7 @@
 	<Heading level={4}>Basic Alternating Timeline</Heading>
 	<CodeBlock class="mb-4">{`<Timeline variant="alternating">
   <TimelineItem date="15 Dec" iconText="🏠">
-    <Heading level={4}>Project Started</Heading>
+    <Heading level={3}>Project Started</Heading>
     <Paragraph>Description here</Paragraph>
   </TimelineItem>
 </Timeline>`}</CodeBlock>

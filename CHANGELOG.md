@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Timeline Block demo — alternating item titles use `<h3>`
+
+- **The Timeline Block demo's alternating item titles now use `<Heading level={3}>` (`<h3>`)**
+  instead of `level={4}`. Core's `.pa-timeline--alternating .pa-timeline__content` styles
+  `h3`, so the former `<h4>` rendered unstyled; `<h3>` matches core's snippet and keen's
+  `timeline_item`. Page section subheadings are unchanged. (Demo-only.)
+
 ### `<Alert>` / `<Callout>` — rich `heading` slot (parity with keen)
 
 - **`<Alert>` and `<Callout>` each gained a `heading` snippet slot** for rich heading
