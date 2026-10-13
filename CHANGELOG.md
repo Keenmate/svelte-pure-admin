@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### `<Alert>` / `<Callout>` — rich `heading` slot (parity with keen)
+
+- **`<Alert>` and `<Callout>` each gained a `heading` snippet slot** for rich heading
+  content (an inline icon, `<code>`, emphasis) rendered inside the component-owned
+  `<h4 class="pa-alert__heading">` / `<h4 class="pa-callout__heading">` in place of
+  `headingText` (slot takes precedence). Previously only the plain-string `headingText`
+  was exposed, so a rich heading forced hand-written `<h4 class="pa-…__heading">` markup
+  inside `children` — a `pa-*__*` internal leak. Mirrors keen's `<:heading>` / `<:title>`
+  slots and the `title`/`titleText` dual shape on `<Card>`.
+
+### `<ListItem>` — rich `meta` slot (parity with keen's `<:meta>`)
+
+- **`<ListItem>` gained a `meta` snippet slot** for rich meta content (a badge, a
+  button row, timestamps) rendered inside `.pa-list__content` in place of `metaText`.
+  Previously, rich meta forced the all-or-nothing `children` snippet, which meant
+  hand-writing the `.pa-list__content` / `.pa-list__meta` internals — now the
+  component owns that structure, so a consumer never touches a `pa-list__*` class.
+  Matches keen's `<.list_item><:meta>…</:meta></.list_item>`.
+
+### Sidebar — overlay behaviour + readable, non-clipping collapsed flyouts
+
+- **New "Overlay (Floating Drawer)" sidebar behaviour** in the settings panel. On
+  desktop it arms `body.sidebar-overlay` (the fixed floating-drawer CSS from
+  `@keenmate/pure-css`) and the burger opens/closes it like the mobile drawer
+  (`body.sidebar-visible`), with scrim/outside-tap + after-navigation close. The
+  `<SettingsPanel>` component gained the option; `docs/+layout.svelte` routes the
+  burger and tracks the drawer open-state.
+- **Collapsed icon-rail submenu flyouts now stay inside the viewport.** `Sidebar`
+  loads the new `sidebar-flyout` core engine (`@keenmate/pure-css`
+  `sidebar-flyout.js`) on mount — it shifts a flyout up / caps-and-scrolls / flips
+  it so it no longer opens off the bottom edge. Paired with the foundation CSS fix
+  (flyouts no longer shrink the font per level and linger ~0.4s on mouse-out).
+
 ### Demo card headers — canonical shape across all pages
 
 - **Every demo `<Card>`/`<TableCard>` header now uses the canonical props**

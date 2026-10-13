@@ -246,6 +246,15 @@
 				settings.sidebarBehavior === 'icon-collapse'
 			);
 
+			// Overlay behaviour — arm the fixed floating-drawer CSS (body.sidebar-overlay).
+			// This is the STYLE only; the open/close state (body.sidebar-visible) is
+			// owned by the host's burger (docs +layout.svelte routes the burger to a
+			// drawer toggle when overlay is armed). Disarming clears both so switching
+			// away from overlay can't leave the drawer stuck open.
+			const overlay = settings.sidebarBehavior === 'overlay';
+			document.body.classList.toggle('sidebar-overlay', overlay);
+			if (!overlay) document.body.classList.remove('sidebar-visible');
+
 			// Sidebar resizable — mirror pure-admin's settings panel: toggle the
 			// class AND drive core's sidebar-resize.js. init() creates + binds the
 			// handle; on disable we remove the handle core created (core exposes no
@@ -510,6 +519,9 @@
 		if (!sidebar) return;
 		sidebar.classList.remove('pc-layout__sidebar--icon-collapse');
 		document.body.classList.remove('sidebar-hidden');
+		// Clear any overlay state; the overlay branch re-adds it. Switching AWAY
+		// from overlay must drop the fixed-drawer class + its open state.
+		document.body.classList.remove('sidebar-overlay', 'sidebar-visible');
 		if (behavior === 'icon-collapse') {
 			sidebar.classList.add('pc-layout__sidebar--icon-collapse');
 			burgerMenu?.classList.remove('active');
@@ -518,6 +530,12 @@
 			document.body.classList.add('sidebar-hidden');
 			burgerMenu?.classList.remove('active');
 			localStorage.setItem('sidebar-hidden', 'true');
+		} else if (behavior === 'overlay') {
+			// Temporary floating drawer: arm the fixed-drawer CSS, leave it closed.
+			// The host burger toggles it open; open state is not persisted.
+			document.body.classList.add('sidebar-overlay');
+			burgerMenu?.classList.remove('active');
+			localStorage.setItem('sidebar-hidden', 'false');
 		} else {
 			burgerMenu?.classList.add('active');
 			localStorage.setItem('sidebar-hidden', 'false');
@@ -718,6 +736,7 @@
 			>
 				<option value="hide">Hide Completely</option>
 				<option value="icon-collapse">Show Icons Only</option>
+				<option value="overlay">Overlay (Floating Drawer)</option>
 			</select>
 		</div>
 

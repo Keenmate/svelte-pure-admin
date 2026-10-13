@@ -56,6 +56,12 @@
 	});
 
 	onMount(() => {
+		// Keep collapsed icon-rail submenu flyouts inside the viewport. Loaded
+		// unconditionally: icon-collapse can be toggled at runtime (settings
+		// panel), and the engine self-inits + delegates on document, acting only
+		// in collapsed mode — so it's cheap and safe regardless of the props.
+		loadCoreJs('sidebar-flyout');
+
 		if (!isResizable) return;
 		// Load + init core's sidebar-resize (SSR-safe via the loader). init() is
 		// idempotent and creates/binds the handle on `.pc-layout__sidebar--resizable`.

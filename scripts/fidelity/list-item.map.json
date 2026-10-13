@@ -6,6 +6,7 @@
     "title":      { "prop": "titleText",    "kind": "string" },
     "subtitle":   { "prop": "subtitleText", "kind": "string" },
     "meta":       { "prop": "metaText",     "kind": "string" },
+    "highlighted": { "prop": "isHighlighted", "kind": "bool" },
     "extraClass": { "prop": "class",        "kind": "string" }
   }
 }

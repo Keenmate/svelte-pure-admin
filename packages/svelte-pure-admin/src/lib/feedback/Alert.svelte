@@ -39,6 +39,8 @@
 		isMultiline?: boolean;
 		/** Alert heading text */
 		headingText?: string;
+		/** Heading snippet (for rich content headings with markup - alternative to headingText; takes precedence). Rendered inside the wrapper-owned <h4 class="pa-alert__heading"> — supply content, don't roll your own <h4>. */
+		heading?: import('svelte').Snippet;
 		/** Additional CSS classes */
 		class?: string;
 		/** Icon snippet (when provided, content is wrapped in pa-alert__content) */
@@ -62,6 +64,7 @@
 		isHeadingLarge = false,
 		isMultiline = false,
 		headingText,
+		heading,
 		class: className = '',
 		icon,
 		children,
@@ -109,8 +112,8 @@
 </script>
 
 {#snippet body()}
-	{#if headingText}
-		<h4 class={isHeadingLarge ? 'pa-alert__heading pa-alert__heading--lg' : 'pa-alert__heading'}>{headingText}</h4>
+	{#if heading || headingText}
+		<h4 class={isHeadingLarge ? 'pa-alert__heading pa-alert__heading--lg' : 'pa-alert__heading'}>{#if heading}{@render heading()}{:else}{headingText}{/if}</h4>
 	{/if}
 	{@render children?.()}
 	{#if list}

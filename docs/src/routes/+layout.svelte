@@ -67,6 +67,10 @@
 		typeof localStorage !== 'undefined' && localStorage.getItem('sidebar-hidden') === 'true'
 	);
 	let sidebarMobileVisible = $state(false);
+	// Overlay behaviour: when armed (settings panel → "Overlay"), the desktop
+	// sidebar is a floating drawer the burger opens/closes (body.sidebar-overlay +
+	// sidebar-visible), so the burger icon tracks the drawer state, not hide/show.
+	let overlayMode = $state(false);
 	// Reactive viewport flag so the burger icon reflects the REAL open-state
 	// (X when the sidebar is open, hamburger when closed) — desktop uses
 	// !sidebarHidden, mobile uses sidebarMobileVisible. Maintained in onMount.
@@ -94,11 +98,14 @@
 		profileIconOnlyTabs: boolean;
 		commandPaletteSize: string;
 		searchPosition: string;
+		sidebarBehavior?: string;
 	}) {
 		profileHasAvatar = settings.profileHasAvatar;
 		profileIconOnlyTabs = settings.profileIconOnlyTabs;
 		commandPaletteSize = (settings.commandPaletteSize || undefined) as 'sm' | 'lg' | 'xl' | undefined;
 		searchPosition = settings.searchPosition;
+		// Keep the burger wired to the drawer when overlay behaviour is armed.
+		overlayMode = settings.sidebarBehavior === 'overlay';
 	}
 	// Favorites use Lucide glyph names (rendered via <Icon>), mirroring
 	// pure-admin's profile-panel favorites — structural nav, not flavor.
@@ -111,8 +118,13 @@
 	function toggleSidebar() {
 		if (typeof document !== 'undefined') {
 			isMobile = window.innerWidth <= 768;
-			if (isMobile) {
-				// Mobile: Toggle sidebar visibility (overlay)
+			// Overlay behaviour (body.sidebar-overlay, armed by the settings panel)
+			// makes the DESKTOP sidebar a temporary floating drawer too — so the
+			// burger opens/closes it exactly like the mobile drawer (toggling
+			// body.sidebar-visible), not the docked hide/show state.
+			overlayMode = document.body.classList.contains('sidebar-overlay');
+			if (isMobile || overlayMode) {
+				// Drawer: toggle sidebar visibility (overlay)
 				sidebarMobileVisible = !sidebarMobileVisible;
 				document.body.classList.toggle('sidebar-visible', sidebarMobileVisible);
 			} else {
@@ -240,6 +252,13 @@
 		const sidebar = document.querySelector('.pc-layout__sidebar');
 		if (sidebar && sidebarBehavior === 'icon-collapse') {
 			sidebar.classList.add('pc-layout__sidebar--icon-collapse');
+		}
+		// Restore overlay behaviour: arm the fixed floating-drawer CSS (closed), and
+		// flag overlayMode so the burger routes to the drawer toggle + shows the
+		// right icon. The open state (sidebar-visible) is never persisted.
+		if (sidebarBehavior === 'overlay') {
+			document.body.classList.add('sidebar-overlay');
+			overlayMode = true;
 		}
 
 		// Initialize ProfilePanel settings from localStorage
@@ -541,7 +560,7 @@
 	<Navbar
 		onburgerclick={toggleSidebar}
 		showBurger={true}
-		burgerActive={isMobile ? sidebarMobileVisible : !sidebarHidden}
+		burgerActive={isMobile || overlayMode ? sidebarMobileVisible : !sidebarHidden}
 	>
 		{#snippet start()}
 			<!-- App identity. As the header narrows the version tag drops first

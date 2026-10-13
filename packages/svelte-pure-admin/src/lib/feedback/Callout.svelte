@@ -19,6 +19,8 @@
 		size?: CalloutSize;
 		/** Callout heading text */
 		headingText?: string;
+		/** Heading snippet (for rich content headings with markup - alternative to headingText; takes precedence). Rendered inside the component-owned <h4 class="pa-callout__heading"> — supply content, don't roll your own <h4>. */
+		heading?: import('svelte').Snippet;
 		/** Additional CSS classes */
 		class?: string;
 		/** Icon snippet (when provided, content is wrapped in pa-callout__content) */
@@ -32,6 +34,7 @@
 		themeColor,
 		size,
 		headingText,
+		heading,
 		class: className = '',
 		icon,
 		children
@@ -65,15 +68,15 @@
 			{@render icon()}
 		</span>
 		<div class="pa-callout__content">
-			{#if headingText}
-				<h4 class="pa-callout__heading">{headingText}</h4>
+			{#if heading || headingText}
+				<h4 class="pa-callout__heading">{#if heading}{@render heading()}{:else}{headingText}{/if}</h4>
 			{/if}
 			{@render children?.()}
 		</div>
 	{:else}
 		<!-- Simple callout -->
-		{#if headingText}
-			<h4 class="pa-callout__heading">{headingText}</h4>
+		{#if heading || headingText}
+			<h4 class="pa-callout__heading">{#if heading}{@render heading()}{:else}{headingText}{/if}</h4>
 		{/if}
 		{@render children?.()}
 	{/if}

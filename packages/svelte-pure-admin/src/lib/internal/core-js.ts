@@ -20,6 +20,7 @@ export async function loadCoreJs(
 		| 'navbar-fit'
 		| 'container-breakpoint'
 		| 'sidebar-resize'
+		| 'sidebar-flyout'
 		| 'sheet-print'
 		| 'tooltips-popovers'
 ): Promise<void> {
@@ -69,6 +70,13 @@ export async function loadCoreJs(
 		case 'sidebar-resize':
 			await import('@keenmate/pure-css/js/pure-css.js');
 			await import('@keenmate/pure-css/js/sidebar-resize.js');
+			break;
+		case 'sidebar-flyout':
+			// Keeps collapsed icon-rail submenu flyouts inside the viewport
+			// (CSS alone always opens them downward, so they clip off-screen).
+			// Self-inits + delegates on document; acts only in collapsed mode.
+			await import('@keenmate/pure-css/js/pure-css.js');
+			await import('@keenmate/pure-css/js/sidebar-flyout.js');
 			break;
 	}
 }
