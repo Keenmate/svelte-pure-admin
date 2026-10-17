@@ -175,6 +175,27 @@
 			<Paragraph class="mt-2"><code>.pa-loader-wave</code></Paragraph>
 		</Column>
 
+		<!-- Grid Loader -->
+		<Column size="100" md="1-3" class="text-center mb-4">
+			<Loader type="grid" size="lg" color="primary" />
+			<Paragraph class="mt-2 text-secondary"><strong>Grid Loader</strong></Paragraph>
+			<Paragraph class="mt-2"><code>.pa-loader-grid</code></Paragraph>
+		</Column>
+
+		<!-- Ripple Loader -->
+		<Column size="100" md="1-3" class="text-center mb-4">
+			<Loader type="ripple" size="lg" color="success" />
+			<Paragraph class="mt-2 text-secondary"><strong>Ripple Loader</strong></Paragraph>
+			<Paragraph class="mt-2"><code>.pa-loader-ripple</code></Paragraph>
+		</Column>
+
+		<!-- Dual Ring Loader -->
+		<Column size="100" md="1-3" class="text-center mb-4">
+			<Loader type="dual-ring" size="lg" color="danger" />
+			<Paragraph class="mt-2 text-secondary"><strong>Dual Ring Loader</strong></Paragraph>
+			<Paragraph class="mt-2"><code>.pa-loader-dual-ring</code></Paragraph>
+		</Column>
+
 		<!-- Spinner (existing) -->
 		<Column size="100" md="1-3" class="text-center mb-4">
 			<Spinner class="text-secondary" />
@@ -212,5 +233,8 @@
 <Loader type="bars" size="lg" color="success" />
 <Loader type="pulse" size="lg" color="danger" />
 <Loader type="ring" size="lg" color="warning" />
-<Loader type="wave" size="lg" color="info" />`}</CodeBlock>
+<Loader type="wave" size="lg" color="info" />
+<Loader type="grid" size="lg" color="primary" />
+<Loader type="ripple" size="lg" color="success" />
+<Loader type="dual-ring" size="lg" color="danger" />`}</CodeBlock>
 </Card>

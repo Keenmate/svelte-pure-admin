@@ -3,11 +3,11 @@
 	 * Pure Admin Loader Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/loaders.html
 	 *
-	 * Advanced loader animations: dots, bars, pulse, ring, wave
+	 * Advanced loader animations: dots, bars, pulse, ring, wave, grid, ripple, dual-ring
 	 * For spinner-style loaders, use the Spinner component instead.
 	 */
 
-	export type LoaderType = 'dots' | 'bars' | 'pulse' | 'ring' | 'wave';
+	export type LoaderType = 'dots' | 'bars' | 'pulse' | 'ring' | 'wave' | 'grid' | 'ripple' | 'dual-ring';
 	export type LoaderSize = 'default' | 'lg';
 	// Core blesses NO pa-loader-{type}--{color} modifier — loaders theme via
 	// `currentColor`, set on the wrapper. The core snippet documents this as an
@@ -64,7 +64,19 @@
 		<span></span>
 		<span></span>
 	</div>
+{:else if type === 'grid'}
+	<div class={classes()} {style}>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
 {:else}
-	<!-- pulse and ring are CSS-only, no children needed -->
+	<!-- pulse, ring, ripple and dual-ring are CSS-only, no children needed -->
 	<div class={classes()} {style}></div>
 {/if}
