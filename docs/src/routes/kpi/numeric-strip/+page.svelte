@@ -113,8 +113,6 @@
 	{/snippet}
 </KpiStrip>
 
-<br />
-
 <!-- ============================================================
      2. Asymmetric 25 / 35 / 40 page-grid — same wide-only design
      allocated across three differently-sized cells. Cells are below
@@ -123,7 +121,7 @@
      endorse using the design at these widths.
      ============================================================ -->
 
-<Grid>
+<Grid class="mt-xl">
 	<Column size="100" md="25">
 		<KpiStrip titleText="Revenue" isLive noPreviousValue>
 			<KpiStripRow
@@ -271,14 +269,12 @@
 	</Column>
 </Grid>
 
-<br />
-
 <!-- ============================================================
      3. Column variations — composable --no-* toggle modifiers,
      showing the 4-col, 3-col, and 2-col shapes side-by-side.
      ============================================================ -->
 
-<Heading level={3}>Column variations · composable <Code>no*</Code> toggles</Heading>
+<Heading class="mt-xl" level={3}>Column variations · composable <Code>no*</Code> toggles</Heading>
 <Paragraph>
 	<Code>noPreviousValue</Code>, <Code>noDeltaPercent</Code>, and <Code>noTargetBar</Code> compose.
 	<Code>metric</Code> and <Code>now</Code> are mandatory; any combination of the other three can be dropped
@@ -394,11 +390,9 @@
 	</Column>
 </Grid>
 
-<br />
-
 <!-- Usage Guide -->
-<Card titleText="Usage Guide">
-	<h4>When to use</h4>
+<Card class="mt-xl" titleText="Usage Guide">
+	<Heading level={4}>When to use</Heading>
 	<Paragraph>
 		"Spreadsheet-style" KPI scanning: pure tabular numbers, most data per pixel. Best when the operator wants
 		to scan many KPIs side-by-side with consistent column alignment (now / prev / Δ% / vs target). No
@@ -406,7 +400,7 @@
 		Sparkline list or Terminal grid; if you want headline numbers with restraint, pick Editorial minimal.
 	</Paragraph>
 
-	<h4 class="mt-4">Wide-only by design</h4>
+	<Heading level={4} class="mt-4">Wide-only by design</Heading>
 	<Paragraph>
 		This showcase has no responsive collapse. The narrow-card "stack each row into a mini-card" pattern was
 		tried first but converged visually with the Comparison gauges showcase. For narrow page-grid placements
@@ -415,7 +409,7 @@
 		past the column tracks. End-developer's call whether that's acceptable.
 	</Paragraph>
 
-	<h4 class="mt-4">Composable column toggles</h4>
+	<Heading level={4} class="mt-4">Composable column toggles</Heading>
 	<Paragraph>
 		<Code>metric</Code> and <Code>now</Code> are mandatory. <Code>previousValue</Code>,
 		<Code>deltaPercent</Code>, and <Code>targetBar</Code> are independently optional via
@@ -426,7 +420,7 @@
 		toggle the props — no manual track-width tuning.
 	</Paragraph>
 
-	<h4 class="mt-4">Auto-generated header + popovers</h4>
+	<Heading level={4} class="mt-4">Auto-generated header + popovers</Heading>
 	<Paragraph>
 		The header row renders from the visible columns automatically. Default labels:
 		<Code>Metric</Code> · <Code>Now</Code> · <Code>Prev</Code> · <Code>Δ%</Code> · <Code>vs Target</Code>.
@@ -436,7 +430,7 @@
 		<Code>deltaVariant</Code>.
 	</Paragraph>
 
-	<h4 class="mt-4">Bar + percent in the target column</h4>
+	<Heading level={4} class="mt-4">Bar + percent in the target column</Heading>
 	<Paragraph>
 		The "vs target" column carries a tiny progress bar with the percent value pinned below it. Bar fill
 		is theme-neutral grey via <Code>color-mix(in srgb, var(--pc-text-color-1) 40%, transparent)</Code>;
@@ -446,11 +440,9 @@
 	</Paragraph>
 </Card>
 
-<br />
-
 <!-- Component Reference -->
-<Card titleText="Component Reference">
-	<h4>KpiStrip props</h4>
+<Card class="mt-xl" titleText="Component Reference">
+	<Heading level={4}>KpiStrip props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
@@ -463,7 +455,7 @@
 		<li><Code>head</Code> snippet — fully-custom header markup. Wins over <Code>headerLabels</Code> + <Code>noHeader</Code>.</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiStripRow props — cells</h4>
+	<Heading level={4} class="mt-4">KpiStripRow props — cells</Heading>
 	<BasicList spacing="compact">
 		<li><Code>metricText</Code> — metric label.</li>
 		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — focal "now" cell (e.g. <Code>$</Code> / <Code>862</Code> / <Code>K</Code>).</li>
@@ -473,7 +465,7 @@
 		<li><Code>targetPercentText</Code> — percent label below the bar (may exceed 100).</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiStripRow props — popover</h4>
+	<Heading level={4} class="mt-4">KpiStripRow props — popover</Heading>
 	<BasicList spacing="compact">
 		<li><Code>detailTitleText</Code> — popover title. Setting this enables the popover.</li>
 		<li><Code>targetText</Code> — target value shown only in the popover.</li>
@@ -483,7 +475,7 @@
 		<li><Code>detail</Code> snippet — fully-custom popover markup, overrides everything.</li>
 	</BasicList>
 
-	<h4 class="mt-4">Delta sentiment variants</h4>
+	<Heading level={4} class="mt-4">Delta sentiment variants</Heading>
 	<BasicList spacing="compact">
 		<li><Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> — ordinary movement / no change.</li>
 		<li><Code>up-strong</Code> / <Code>down-strong</Code> — outlier positive / negative (deeper colours).</li>

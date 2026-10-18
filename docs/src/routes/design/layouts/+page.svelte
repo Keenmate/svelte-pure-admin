@@ -179,7 +179,7 @@
 	</Column>
 	<Column size="100" md="50">
 		<Card titleText="Code">
-			<h4 class="mb-2">Sidebar with flat sections</h4>
+			<Heading level={4} class="mb-2">Sidebar with flat sections</Heading>
 			<CodeBlock>{`<Sidebar>
   <SidebarSection labelText="Project" />
   <SidebarItem href="/" labelText="Dashboard" active />
@@ -191,7 +191,7 @@
   <SidebarItem href="/getting-started" labelText="Getting Started" />
 </Sidebar>`}</CodeBlock>
 
-			<h4 class="mb-2 mt-4">Zones: compose start / center / end</h4>
+			<Heading level={4} class="mb-2 mt-4">Zones: compose start / center / end</Heading>
 			<Paragraph>
 				<Code>Navbar</Code> mirrors core's universal schema — a fixed burger plus three
 				open zones. It prescribes no fixed brand / nav / search / profile slots: compose
@@ -207,7 +207,7 @@
   {#snippet end()}<ProfileButton name="Jane" onclick={openProfile} />{/snippet}
 </Navbar>`}</CodeBlock>
 
-			<h4 class="mb-2 mt-4">NavMenu: active state + responsive collapse</h4>
+			<Heading level={4} class="mb-2 mt-4">NavMenu: active state + responsive collapse</Heading>
 			<Paragraph>
 				Mark the current section with <Code>isActive</Code> on a <Code>NavItem</Code>. Opt a
 				<Code>NavMenu</Code> into progressive collapse with <Code>collapse</Code> — its
@@ -224,7 +224,7 @@
 <!-- Or fold items into the sidebar instead of a "More" menu: -->
 <NavMenu collapse="sidebar" collapseLabel="Menu">…</NavMenu>`}</CodeBlock>
 
-			<h4 class="mb-2 mt-4">Navbar Fit: priority-driven header degradation (rc12–rc14)</h4>
+			<Heading level={4} class="mb-2 mt-4">Navbar Fit: priority-driven header degradation (rc12–rc14)</Heading>
 			<Paragraph>
 				Where <Code>navCollapse</Code> only folds nav <em>items</em>, Navbar Fit degrades
 				<em>every</em> header slot — brand wordmark, version tag, page title, search box —
@@ -366,7 +366,7 @@
 <Card titleText="Code Examples" class="mt-6">
 	<Grid>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Common Layout Patterns</h4>
+			<Heading level={4} class="mb-2">Common Layout Patterns</Heading>
 			<CodeBlock>{`<!-- Two Column (50/50) -->
 <Grid>
   <Column size="100" md="50">Left</Column>
@@ -387,7 +387,7 @@
 </Grid>`}</CodeBlock>
 		</Column>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Cards in Grid</h4>
+			<Heading level={4} class="mb-2">Cards in Grid</Heading>
 			<CodeBlock>{`<!-- Same height cards in grid -->
 <Grid sameHeight>
   <Column size="100" md="1-3">
@@ -410,7 +410,7 @@
 		</Column>
 	</Grid>
 
-	<h4 class="mb-2 mt-4">Nested Grids</h4>
+	<Heading level={4} class="mb-2 mt-4">Nested Grids</Heading>
 	<CodeBlock>{`<!-- Nested layout with sidebar -->
 <Grid>
   <Column size="100" md="2-3">

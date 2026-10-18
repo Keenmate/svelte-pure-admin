@@ -5,7 +5,7 @@
 	 */
 
 	import { onMount } from 'svelte';
-	import type { ThemeColor } from '../types';
+	import type { ThemeColor, TooltipPosition, TooltipVariant } from '../types';
 	import { loadCoreJs } from '../internal/core-js';
 
 	// Core card variants: primary/success/warning/danger (no --info / --secondary)
@@ -37,6 +37,42 @@
 		descriptionText?: string;
 		/** Description snippet (for rich content descriptions with markup - alternative to descriptionText) */
 		description?: import('svelte').Snippet;
+		/**
+		 * Tooltip on the title (`.pa-card__title-text`). `true` shows the title's own
+		 * text, a string shows custom text. By default it appears ONLY while the title is
+		 * truncated (ellipsis); see `titleTooltipAlways`.
+		 */
+		titleTooltip?: boolean | string;
+		/** Title tooltip placement (default `top`) */
+		titleTooltipPosition?: TooltipPosition;
+		/** Title tooltip colour */
+		titleTooltipVariant?: TooltipVariant;
+		/** Wide, wrapping title tooltip */
+		titleTooltipMultiline?: boolean;
+		/** Help cursor on the title */
+		titleTooltipIsHelp?: boolean;
+		/** Dotted-underline keyword style on the title */
+		titleTooltipIsKeyword?: boolean;
+		/** Show the title tooltip even when the text is not truncated */
+		titleTooltipAlways?: boolean;
+		/**
+		 * Tooltip on the description (`.pa-card__description`). `true` shows the description's own
+		 * text, a string shows custom text. By default it appears ONLY while the description is
+		 * truncated (ellipsis); see `descriptionTooltipAlways`.
+		 */
+		descriptionTooltip?: boolean | string;
+		/** Description tooltip placement (default `top`) */
+		descriptionTooltipPosition?: TooltipPosition;
+		/** Description tooltip colour */
+		descriptionTooltipVariant?: TooltipVariant;
+		/** Wide, wrapping description tooltip */
+		descriptionTooltipMultiline?: boolean;
+		/** Help cursor on the description */
+		descriptionTooltipIsHelp?: boolean;
+		/** Dotted-underline keyword style on the description */
+		descriptionTooltipIsKeyword?: boolean;
+		/** Show the description tooltip even when the text is not truncated */
+		descriptionTooltipAlways?: boolean;
 		/** Subtitle/description text (shown below title) - deprecated, use descriptionText for inline layout */
 		subtitleText?: string;
 		/** Subtitle snippet (for rich content subtitles with markup - alternative to subtitleText) */
@@ -74,6 +110,14 @@
 		titleIcon?: import('svelte').Snippet;
 		/** Header actions snippet (buttons, controls in header toolbar area) */
 		headerActions?: import('svelte').Snippet;
+		/**
+		 * Compact fallback for `headerActions` (typically a `SplitButton` menu). Supplying it turns
+		 * the actions into core's CSS-only `.pa-card__actions--responsive` pair: `headerActions`
+		 * renders in `.pa-card__actions-full` (shown while wide) and this in
+		 * `.pa-card__actions-collapsed` (shown once the header's container query collapses).
+		 * Alternative to `isActionsOverflow` — when both are set, this wins (dev warning).
+		 */
+		headerActionsCollapsed?: import('svelte').Snippet;
 		/** Progressively collapse header actions into a "…" overflow menu when space is tight (core v2.9.0-rc02, JS-driven via overflow.js). */
 		isActionsOverflow?: boolean;
 		/** Which end drops first when actions overflow — `end` (rightmost, default) or `start`. */
@@ -99,6 +143,20 @@
 		title,
 		descriptionText,
 		description,
+		titleTooltip,
+		titleTooltipPosition,
+		titleTooltipVariant,
+		titleTooltipMultiline = false,
+		titleTooltipIsHelp = false,
+		titleTooltipIsKeyword = false,
+		titleTooltipAlways = false,
+		descriptionTooltip,
+		descriptionTooltipPosition,
+		descriptionTooltipVariant,
+		descriptionTooltipMultiline = false,
+		descriptionTooltipIsHelp = false,
+		descriptionTooltipIsKeyword = false,
+		descriptionTooltipAlways = false,
 		subtitleText,
 		subtitle,
 		headerWrap = false,
@@ -115,6 +173,7 @@
 		header,
 		titleIcon,
 		headerActions,
+		headerActionsCollapsed,
 		tabs,
 		children,
 		footer,
@@ -123,16 +182,101 @@
 		actionsOverflowFrom
 	}: Props = $props();
 
+	// Header actions: the two shrink patterns are alternatives (core cards.html) —
+	// CSS-only --responsive (driven by headerActionsCollapsed) beats JS --overflow.
+	const isActionsResponsive = $derived(!!headerActionsCollapsed);
+	const isOverflowActive = $derived(isActionsOverflow && !isActionsResponsive);
+
+	$effect(() => {
+		if (isActionsOverflow && headerActionsCollapsed) {
+			console.warn(
+				'Card: headerActionsCollapsed and isActionsOverflow are alternative patterns; using the collapsed (--responsive) one and ignoring isActionsOverflow.'
+			);
+		}
+	});
+
 	// Header actions wrapper — target for the JS-driven overflow menu.
 	let headerActionsEl = $state<HTMLDivElement | undefined>(undefined);
 	const headerActionsClasses = $derived(
-		isActionsOverflow ? 'pa-card__actions pa-card__actions--overflow' : 'pa-card__actions'
+		isActionsResponsive
+			? 'pa-card__actions pa-card__actions--responsive'
+			: isOverflowActive
+				? 'pa-card__actions pa-card__actions--overflow'
+				: 'pa-card__actions'
 	);
 
 	onMount(() => {
-		if (!isActionsOverflow || !headerActionsEl) return;
+		if (!isOverflowActive || !headerActionsEl) return;
 		const el = headerActionsEl;
 		loadCoreJs('overflow').then(() => window.PaCardActionsOverflow?.init(el));
+	});
+
+	// ── Title / description tooltips ────────────────────────────────────────
+	// Core's canonical shape: the tooltip sits ON the truncating element
+	// (h3.pa-card__title-text / p.pa-card__description) as `.pa-tooltip
+	// .pa-tooltip--floating` + `data-tooltip`, with `data-pa-tooltip-overflow`
+	// so core's tooltips-popovers.js shows it only while the text is cut off.
+	let titleEl = $state<HTMLElement | undefined>(undefined);
+	let descriptionEl = $state<HTMLElement | undefined>(undefined);
+	// Plain text of a snippet-rendered title/description (for `…Tooltip={true}`).
+	let titleSnippetText = $state('');
+	let descriptionSnippetText = $state('');
+	$effect(() => {
+		if (titleTooltip === true && title && titleEl) titleSnippetText = titleEl.textContent?.trim() ?? '';
+		if (descriptionTooltip === true && description && descriptionEl)
+			descriptionSnippetText = descriptionEl.textContent?.trim() ?? '';
+	});
+
+	interface TooltipOpts {
+		on: boolean | string | undefined;
+		text: string | undefined;
+		position?: TooltipPosition;
+		variant?: TooltipVariant;
+		multiline: boolean;
+		isHelp: boolean;
+		isKeyword: boolean;
+		always: boolean;
+	}
+	function tooltipClasses(base: string, o: TooltipOpts): string {
+		if (!o.on) return base;
+		const c = [base, 'pa-tooltip', 'pa-tooltip--floating'];
+		if (o.position && o.position !== 'top') c.push(`pa-tooltip--${o.position}`);
+		if (o.variant) c.push(`pa-tooltip--${o.variant}`);
+		if (o.multiline) c.push('pa-tooltip--multiline');
+		if (o.isHelp) c.push('pa-tooltip--help');
+		if (o.isKeyword) c.push('pa-tooltip--keyword');
+		return c.join(' ');
+	}
+	function tooltipText(o: TooltipOpts): string | undefined {
+		if (!o.on) return undefined;
+		return typeof o.on === 'string' ? o.on : o.text || undefined;
+	}
+	const titleTip = $derived<TooltipOpts>({
+		on: titleTooltip,
+		text: titleText ?? titleSnippetText,
+		position: titleTooltipPosition,
+		variant: titleTooltipVariant,
+		multiline: titleTooltipMultiline,
+		isHelp: titleTooltipIsHelp,
+		isKeyword: titleTooltipIsKeyword,
+		always: titleTooltipAlways
+	});
+	const descriptionTip = $derived<TooltipOpts>({
+		on: descriptionTooltip,
+		text: descriptionText ?? descriptionSnippetText,
+		position: descriptionTooltipPosition,
+		variant: descriptionTooltipVariant,
+		multiline: descriptionTooltipMultiline,
+		isHelp: descriptionTooltipIsHelp,
+		isKeyword: descriptionTooltipIsKeyword,
+		always: descriptionTooltipAlways
+	});
+
+	// Enhance the tooltip targets with core's floating-tooltip runtime once mounted.
+	$effect(() => {
+		const targets = [titleTooltip && titleEl, descriptionTooltip && descriptionEl].filter(Boolean);
+		if (!targets.length) return;
+		loadCoreJs('tooltips-popovers').then(() => window.pureAdmin?.tooltips?.initTooltips?.());
 	});
 
 	// Build class string
@@ -175,7 +319,7 @@
 	});
 
 	// Determine if we should show header
-	const hasHeader = $derived(header || titleText || title || titleIcon || descriptionText || description || subtitleText || subtitle || headerActions || tabs);
+	const hasHeader = $derived(header || titleText || title || titleIcon || descriptionText || description || subtitleText || subtitle || headerActions || headerActionsCollapsed || tabs);
 	// Determine if we should show footer
 	const hasFooter = $derived(footer || footerActions);
 
@@ -199,16 +343,24 @@
 								{@render titleIcon()}
 							</span>
 						{/if}
-						<h3 class="pa-card__title-text">
+						<h3
+							bind:this={titleEl}
+							class={tooltipClasses('pa-card__title-text', titleTip)}
+							data-tooltip={tooltipText(titleTip)}
+							data-pa-tooltip-overflow={titleTooltip && !titleTooltipAlways ? '' : undefined}
+						>
 							{#if title}{@render title()}{:else}{titleText}{/if}
 						</h3>
 					</div>
 				{/if}
-				{#if description}
-					<p class="pa-card__description">{@render description()}</p>
-				{:else if descriptionText}
+				{#if description || descriptionText}
 					<!-- Description flexes to fill and truncates with ellipsis -->
-					<p class="pa-card__description">{descriptionText}</p>
+					<p
+						bind:this={descriptionEl}
+						class={tooltipClasses('pa-card__description', descriptionTip)}
+						data-tooltip={tooltipText(descriptionTip)}
+						data-pa-tooltip-overflow={descriptionTooltip && !descriptionTooltipAlways ? '' : undefined}
+					>{#if description}{@render description()}{:else}{descriptionText}{/if}</p>
 				{:else if subtitle}
 					<!-- Legacy subtitle → canonical .pa-card__meta (the card's own muted
 					     byline element) rather than a generic utility class. -->
@@ -216,13 +368,22 @@
 				{:else if subtitleText}
 					<span class="pa-card__meta">{subtitleText}</span>
 				{/if}
-				{#if headerActions}
+				{#if headerActions || headerActionsCollapsed}
 					<div
 						bind:this={headerActionsEl}
 						class={headerActionsClasses}
-						data-pa-actions-overflow-from={isActionsOverflow ? actionsOverflowFrom : undefined}
+						data-pa-actions-overflow-from={isOverflowActive ? actionsOverflowFrom : undefined}
 					>
-						{@render headerActions()}
+						{#if headerActionsCollapsed}
+							<div class="pa-card__actions-full">
+								{@render headerActions?.()}
+							</div>
+							<div class="pa-card__actions-collapsed">
+								{@render headerActionsCollapsed()}
+							</div>
+						{:else}
+							{@render headerActions?.()}
+						{/if}
 					</div>
 				{/if}
 			{/if}

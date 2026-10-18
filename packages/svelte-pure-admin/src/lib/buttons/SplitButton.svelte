@@ -37,6 +37,12 @@
 		disabled?: boolean;
 		/** Click handler for the main button */
 		onclick?: (event: MouseEvent) => void;
+		/** Native tooltip (`title`) on the main button */
+		titleText?: string;
+		/** Accessible name for the main button — needed when it is icon-only */
+		ariaLabel?: string;
+		/** Accessible name for the menu toggle (the chevron button) */
+		toggleAriaLabel?: string;
 		/** Additional CSS classes */
 		class?: string;
 		/** Main button icon snippet (renders in pa-btn__icon) */
@@ -58,6 +64,9 @@
 		placement = 'bottom-end',
 		disabled = false,
 		onclick,
+		titleText,
+		ariaLabel,
+		toggleAriaLabel,
 		class: className = '',
 		icon,
 		children,
@@ -264,13 +273,13 @@
 	class={classes()}
 	data-placement={placement !== 'bottom-end' ? placement : undefined}
 >
-	<button type="button" class={btnClasses()} {onclick} {disabled}>
+	<button type="button" class={btnClasses()} {onclick} {disabled} title={titleText} aria-label={ariaLabel}>
 		{#if icon}
 			<span class="pa-btn__icon">{@render icon()}</span>
 		{/if}
 		{@render children?.()}
 	</button>
-	<button type="button" class={toggleClasses()} onclick={handleToggle} {disabled}>
+	<button type="button" class={toggleClasses()} onclick={handleToggle} {disabled} aria-label={toggleAriaLabel}>
 		{#if toggleIcon}
 			{@render toggleIcon()}
 		{:else}

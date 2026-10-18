@@ -153,13 +153,11 @@
 	{/snippet}
 </KpiSparklineList>
 
-<br />
-
 <!-- ============================================================
      2. Layout variant: noDelta (3-col rows)
      ============================================================ -->
 
-<Heading level={3}>Layout variant · <Code>noDelta</Code></Heading>
+<Heading class="mt-xl" level={3}>Layout variant · <Code>noDelta</Code></Heading>
 <Paragraph>
 	Drops the rightmost (Δ%) column — each row reads as <strong>label · sparkline · value</strong>. Useful
 	when the sparkline's slope already conveys direction and the percentage delta would be redundant chrome.
@@ -249,9 +247,7 @@
 	{/snippet}
 </KpiSparklineList>
 
-<br />
-
-<Heading level={3}>1×3 page-grid — <Code>isChartFirst</Code> comparison</Heading>
+<Heading class="mt-xl" level={3}>1×3 page-grid — <Code>isChartFirst</Code> comparison</Heading>
 <Paragraph>
 	Three smaller cards side-by-side. The middle card uses the <Code>isChartFirst</Code> modifier so you can
 	see the two stacking styles at the same width: <strong>card 1 + 3 = value-above-chart (default)</strong>,
@@ -305,10 +301,8 @@
 	</Column>
 </Grid>
 
-<br />
-
-<Card titleText="Usage Guide">
-	<h4>When to use</h4>
+<Card class="mt-xl" titleText="Usage Guide">
+	<Heading level={4}>When to use</Heading>
 	<Paragraph>
 		Vertical scanning of many KPIs side-by-side. Each row reads label · trend · value · Δ% in a single
 		glance. Best for "give me the whole board at once" use cases — financial dashboards, ops monitoring,
@@ -316,7 +310,7 @@
 		minimal instead.
 	</Paragraph>
 
-	<h4 class="mt-4">Chart cell is library-agnostic</h4>
+	<Heading level={4} class="mt-4">Chart cell is library-agnostic</Heading>
 	<Paragraph>
 		Pass any chart content via the <Code>chart</Code> snippet — inline SVG (as shown), Chart.js
 		<Code>{`<canvas>`}</Code>, or any other library. When SVG with a <Code>{`<circle>`}</Code> endpoint
@@ -324,7 +318,7 @@
 		span so the dot stays round under the SVG's <Code>preserveAspectRatio="none"</Code> stretching.
 	</Paragraph>
 
-	<h4 class="mt-4">Two sentiment scales</h4>
+	<Heading level={4} class="mt-4">Two sentiment scales</Heading>
 	<Paragraph>
 		<Code>variant</Code> sets the trend colour (line, area-fill, dot) via a <Code>currentColor</Code>
 		cascade — 5 levels: <Code>up-strong</Code> / <Code>up</Code> / <Code>flat</Code> / <Code>down</Code> /
@@ -334,14 +328,14 @@
 		disagree (e.g., a sharp drop in error rate is line-going-down but delta-very-positive).
 	</Paragraph>
 
-	<h4 class="mt-4">Responsive layout</h4>
+	<Heading level={4} class="mt-4">Responsive layout</Heading>
 	<Paragraph>
 		Container queries (driven by card width, not viewport) collapse the 4-col grid in stages: below
 		640 px → label/value/delta on one row with chart spanning below; below 360 px → label / chart /
 		value+delta as three rows.
 	</Paragraph>
 
-	<h4 class="mt-4">List-level modifiers (composable)</h4>
+	<Heading level={4} class="mt-4">List-level modifiers (composable)</Heading>
 	<Paragraph>
 		Two independently composable boolean props on <Code>KpiSparklineList</Code>:
 	</Paragraph>
@@ -366,10 +360,8 @@
 	</Paragraph>
 </Card>
 
-<br />
-
-<Card titleText="Component Reference">
-	<h4>KpiSparklineList props</h4>
+<Card class="mt-xl" titleText="Component Reference">
+	<Heading level={4}>KpiSparklineList props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
@@ -378,7 +370,7 @@
 		<li><Code>noDelta</Code> — apply <Code>pa-kpi-spark-list--no-delta</Code> modifier (drops the Δ% column; composes with <Code>isChartFirst</Code>).</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiSparklineRow props</h4>
+	<Heading level={4} class="mt-4">KpiSparklineRow props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — trend line/area/dot colour: <Code>up-strong</Code> / <Code>up</Code> / <Code>flat</Code> / <Code>down</Code> / <Code>down-strong</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Grid, Column, Alert, Table, Code, CodeBlock } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Grid, Column, Alert, Table, Code, CodeBlock, BasicList } from '@keenmate/svelte-pure-admin';
 </script>
 
 <!-- Overview -->
@@ -11,17 +11,17 @@
 
 	<Grid>
 		<Column size="100" md="50">
-			<h4>Key Features</h4>
-			<ul style="line-height: 1.8;">
+			<Heading level={4}>Key Features</Heading>
+			<BasicList spacing="spacious">
 				<li><strong>Gutter:</strong> 0.8rem (8px) per side, 1.6rem (16px) total gap</li>
 				<li><strong>Percentage columns:</strong> 5% increments (5, 10, 15... 100)</li>
 				<li><strong>Fraction columns:</strong> Halves, thirds, quarters, fifths, sixths, twelfths</li>
 				<li><strong>Responsive:</strong> All columns have breakpoint variants</li>
 				<li><strong>Offsets:</strong> Left margin in 5% increments</li>
-			</ul>
+			</BasicList>
 		</Column>
 		<Column size="100" md="50">
-			<h4>Breakpoints</h4>
+			<Heading level={4}>Breakpoints</Heading>
 			<Table isStriped>
 				<thead>
 					<tr>
@@ -43,7 +43,7 @@
 
 <!-- Basic Usage -->
 <Card titleText="Basic Usage" descriptionText="Auto-equal width columns with .pc-col">
-	<h4>Two Equal Columns</h4>
+	<Heading level={4}>Two Equal Columns</Heading>
 	<Grid class="mb-4">
 		<Column>
 			<div class="grid-demo-cell">.pc-col</div>
@@ -53,24 +53,8 @@
 		</Column>
 	</Grid>
 
-	<h4>Three Equal Columns</h4>
+	<Heading level={4}>Three Equal Columns</Heading>
 	<Grid class="mb-4">
-		<Column>
-			<div class="grid-demo-cell">.pc-col</div>
-		</Column>
-		<Column>
-			<div class="grid-demo-cell">.pc-col</div>
-		</Column>
-		<Column>
-			<div class="grid-demo-cell">.pc-col</div>
-		</Column>
-	</Grid>
-
-	<h4>Four Equal Columns</h4>
-	<Grid class="mb-4">
-		<Column>
-			<div class="grid-demo-cell">.pc-col</div>
-		</Column>
 		<Column>
 			<div class="grid-demo-cell">.pc-col</div>
 		</Column>
@@ -82,7 +66,23 @@
 		</Column>
 	</Grid>
 
-	<h4>Auto Width Column</h4>
+	<Heading level={4}>Four Equal Columns</Heading>
+	<Grid class="mb-4">
+		<Column>
+			<div class="grid-demo-cell">.pc-col</div>
+		</Column>
+		<Column>
+			<div class="grid-demo-cell">.pc-col</div>
+		</Column>
+		<Column>
+			<div class="grid-demo-cell">.pc-col</div>
+		</Column>
+		<Column>
+			<div class="grid-demo-cell">.pc-col</div>
+		</Column>
+	</Grid>
+
+	<Heading level={4}>Auto Width Column</Heading>
 	<Grid>
 		<Column>
 			<div class="grid-demo-cell">.pc-col (fills remaining)</div>
@@ -129,13 +129,13 @@
 
 <!-- Fraction Columns -->
 <Card titleText="Fraction Columns" descriptionText="Intuitive naming for common layouts: .pc-col-1-3, .pc-col-2-3, etc.">
-	<h4>Halves (1/2)</h4>
+	<Heading level={4}>Halves (1/2)</Heading>
 	<Grid class="mb-4">
 		<Column size="1-2"><div class="grid-demo-cell">.pc-col-1-2 (50%)</div></Column>
 		<Column size="1-2"><div class="grid-demo-cell">.pc-col-1-2 (50%)</div></Column>
 	</Grid>
 
-	<h4>Thirds (1/3, 2/3)</h4>
+	<Heading level={4}>Thirds (1/3, 2/3)</Heading>
 	<Grid class="mb-2">
 		<Column size="1-3"><div class="grid-demo-cell">.pc-col-1-3 (33.3%)</div></Column>
 		<Column size="2-3"><div class="grid-demo-cell">.pc-col-2-3 (66.7%)</div></Column>
@@ -146,7 +146,7 @@
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
 	</Grid>
 
-	<h4>Quarters (1/4, 3/4)</h4>
+	<Heading level={4}>Quarters (1/4, 3/4)</Heading>
 	<Grid class="mb-2">
 		<Column size="1-4"><div class="grid-demo-cell">.pc-col-1-4 (25%)</div></Column>
 		<Column size="3-4"><div class="grid-demo-cell">.pc-col-3-4 (75%)</div></Column>
@@ -158,7 +158,7 @@
 		<Column size="1-4"><div class="grid-demo-cell">1/4</div></Column>
 	</Grid>
 
-	<h4>Fifths (1/5, 2/5, 3/5, 4/5)</h4>
+	<Heading level={4}>Fifths (1/5, 2/5, 3/5, 4/5)</Heading>
 	<Grid class="mb-2">
 		<Column size="1-5"><div class="grid-demo-cell">1/5</div></Column>
 		<Column size="4-5"><div class="grid-demo-cell">4/5</div></Column>
@@ -168,7 +168,7 @@
 		<Column size="3-5"><div class="grid-demo-cell">3/5</div></Column>
 	</Grid>
 
-	<h4>Sixths (1/6, 5/6)</h4>
+	<Heading level={4}>Sixths (1/6, 5/6)</Heading>
 	<Grid class="mb-2">
 		<Column size="1-6"><div class="grid-demo-cell">1/6</div></Column>
 		<Column size="5-6"><div class="grid-demo-cell">5/6</div></Column>
@@ -182,7 +182,7 @@
 		<Column size="1-6"><div class="grid-demo-cell">1/6</div></Column>
 	</Grid>
 
-	<h4>Twelfths (1/12, 5/12, 7/12, 11/12)</h4>
+	<Heading level={4}>Twelfths (1/12, 5/12, 7/12, 11/12)</Heading>
 	<Grid class="mb-2">
 		<Column size="1-12"><div class="grid-demo-cell">1/12</div></Column>
 		<Column size="11-12"><div class="grid-demo-cell">11/12</div></Column>
@@ -195,14 +195,14 @@
 
 <!-- Responsive Grid -->
 <Card titleText="Responsive Grid" descriptionText="Stack on mobile, columns on larger screens. Resize your browser to see the effect.">
-	<h4>Mobile-First Pattern</h4>
+	<Heading level={4}>Mobile-First Pattern</Heading>
 	<Paragraph color="secondary" class="mb-2">Full width on mobile, 50% on medium screens and up:</Paragraph>
 	<Grid class="mb-4">
 		<Column size="100" md="50"><div class="grid-demo-cell">.pc-col-100 .pc-col-md-50</div></Column>
 		<Column size="100" md="50"><div class="grid-demo-cell">.pc-col-100 .pc-col-md-50</div></Column>
 	</Grid>
 
-	<h4>Progressive Columns</h4>
+	<Heading level={4}>Progressive Columns</Heading>
 	<Paragraph color="secondary" class="mb-2">Different layouts at each breakpoint:</Paragraph>
 	<Grid class="mb-4">
 		<Column size="100" sm="50" lg="25">
@@ -219,7 +219,7 @@
 		</Column>
 	</Grid>
 
-	<h4>Responsive Fractions</h4>
+	<Heading level={4}>Responsive Fractions</Heading>
 	<Paragraph color="secondary" class="mb-2">Fractions also support breakpoints:</Paragraph>
 	<Grid>
 		<Column size="100" md="1-3"><div class="grid-demo-cell">.pc-col-100 .pc-col-md-1-3</div></Column>
@@ -229,7 +229,7 @@
 
 <!-- Offsets -->
 <Card titleText="Offsets" descriptionText={`Push columns with left margin: .pc-offset-{size}`}>
-	<h4>Centering with Offsets</h4>
+	<Heading level={4}>Centering with Offsets</Heading>
 	<Grid class="mb-2">
 		<Column size="50" offset="25"><div class="grid-demo-cell">.pc-col-50 .pc-offset-25</div></Column>
 	</Grid>
@@ -237,13 +237,13 @@
 		<Column size="1-3" class="pc-offset-33"><div class="grid-demo-cell">.pc-col-1-3 .pc-offset-33</div></Column>
 	</Grid>
 
-	<h4>Asymmetric Layouts</h4>
+	<Heading level={4}>Asymmetric Layouts</Heading>
 	<Grid class="mb-2">
 		<Column size="30" offset="10"><div class="grid-demo-cell">.pc-col-30 .pc-offset-10</div></Column>
 		<Column size="40" offset="10"><div class="grid-demo-cell">.pc-col-40 .pc-offset-10</div></Column>
 	</Grid>
 
-	<h4>Responsive Offsets</h4>
+	<Heading level={4}>Responsive Offsets</Heading>
 	<Grid>
 		<Column size="100" md="50" offsetMd="25">
 			<div class="grid-demo-cell">.pc-col-100 .pc-col-md-50 .pc-offset-md-25<br><small>Full width mobile, centered on desktop</small></div>
@@ -253,7 +253,7 @@
 
 <!-- Row Alignment -->
 <Card titleText="Row Alignment" descriptionText="Control horizontal and vertical alignment of columns">
-	<h4>Horizontal Alignment</h4>
+	<Heading level={4}>Horizontal Alignment</Heading>
 
 	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--center</Code></Paragraph>
 	<Grid justify="center" class="mb-2" style="background: var(--pc-primary-bg-subtle);">
@@ -278,7 +278,7 @@
 		<Column size="20"><div class="grid-demo-cell">C</div></Column>
 	</Grid>
 
-	<h4>Vertical Alignment</h4>
+	<Heading level={4}>Vertical Alignment</Heading>
 	<Grid>
 		<Column size="100" md="1-3">
 			<Paragraph color="secondary" class="mb-2"><Code>.pc-row--top</Code></Paragraph>
@@ -306,14 +306,14 @@
 
 <!-- No Gutter -->
 <Card titleText="No Gutter" descriptionText="Remove spacing between columns with .pc-row--no-gutter">
-	<h4>Default (with gutter)</h4>
+	<Heading level={4}>Default (with gutter)</Heading>
 	<Grid class="mb-4">
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
 	</Grid>
 
-	<h4>No Gutter</h4>
+	<Heading level={4}>No Gutter</Heading>
 	<Grid noGutter>
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
@@ -340,7 +340,7 @@
 		</tbody>
 	</Table>
 
-	<h4>Live Demo (resize browser)</h4>
+	<Heading level={4}>Live Demo (resize browser)</Heading>
 	<Grid>
 		<Column>
 			<div class="grid-demo-cell pc-hide-md" style="background: var(--base-danger-color);">
@@ -375,7 +375,7 @@
 <Card titleText="Quick Reference">
 	<Grid>
 		<Column size="100" md="50">
-			<h4>Percentage Classes</h4>
+			<Heading level={4}>Percentage Classes</Heading>
 			<Paragraph color="secondary">
 				<Code>.pc-col-5</Code> <Code>.pc-col-10</Code> <Code>.pc-col-15</Code> <Code>.pc-col-20</Code> <Code>.pc-col-25</Code><br>
 				<Code>.pc-col-30</Code> <Code>.pc-col-35</Code> <Code>.pc-col-40</Code> <Code>.pc-col-45</Code> <Code>.pc-col-50</Code><br>
@@ -384,7 +384,7 @@
 			</Paragraph>
 		</Column>
 		<Column size="100" md="50">
-			<h4>Fraction Classes</h4>
+			<Heading level={4}>Fraction Classes</Heading>
 			<Paragraph color="secondary">
 				<Code>.pc-col-1-2</Code><br>
 				<Code>.pc-col-1-3</Code> <Code>.pc-col-2-3</Code><br>
@@ -401,7 +401,7 @@
 <Card titleText="Code Examples">
 	<Grid>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Basic Grid</h4>
+			<Heading level={4} class="mb-2">Basic Grid</Heading>
 			<CodeBlock>{`<Grid>
   <Column size="50">Left half</Column>
   <Column size="50">Right half</Column>
@@ -414,7 +414,7 @@
 </Grid>`}</CodeBlock>
 		</Column>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Responsive Grid</h4>
+			<Heading level={4} class="mb-2">Responsive Grid</Heading>
 			<CodeBlock>{`<!-- Stack on mobile, columns on desktop -->
 <Grid>
   <Column size="100" md="50">
@@ -434,7 +434,7 @@
 
 	<Grid class="mt-4">
 		<Column size="100" md="50">
-			<h4 class="mb-2">Grid Props</h4>
+			<Heading level={4} class="mb-2">Grid Props</Heading>
 			<CodeBlock>{`<!-- Alignment -->
 <Grid justify="center">...</Grid>
 <Grid justify="between">...</Grid>
@@ -447,7 +447,7 @@
 <Grid noGutter>...</Grid>`}</CodeBlock>
 		</Column>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Column Props</h4>
+			<Heading level={4} class="mb-2">Column Props</Heading>
 			<CodeBlock>{`<!-- Sizes (percentage or fraction) -->
 <Column size="50">Half</Column>
 <Column size="1-3">One third</Column>

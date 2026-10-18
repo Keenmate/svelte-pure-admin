@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, RangeGroup, BasicList, CodeBlock, type RangeGroupRow, type RangeGroupValues, type QsAdapter, Code } from '@keenmate/svelte-pure-admin';
+	import { Card, RangeGroup, BasicList, CodeBlock, type RangeGroupRow, type RangeGroupValues, type QsAdapter, Code, Heading } from '@keenmate/svelte-pure-admin';
 	import { replaceState } from '$app/navigation';
 	import { page } from '$app/stores';
 
@@ -209,7 +209,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 <!-- Debug readout: the live {key: value} payload bound to a group -->
 {#snippet valueBox(values: RangeGroupValues)}
-	<h4 class="mt-4">Bound values</h4>
+	<Heading level={4} class="mt-4">Bound values</Heading>
 	<CodeBlock isCompact>{JSON.stringify(values, null, 2)}</CodeBlock>
 {/snippet}
 
@@ -223,7 +223,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	{/snippet}
 
 	<!-- ============ In a filter card ============ -->
-	<h4>In a filter bar</h4>
+	<Heading level={4}>In a filter bar</Heading>
 	<p class="text-muted">The range group drops into a <Code>.pa-filter-card__filters</Code> row as a single control standing in for three sliders. Open it, drag, and Apply.</p>
 
 	<div class="pa-card pa-filter-card mt-2">
@@ -261,7 +261,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</div>
 
 	<!-- Event output -->
-	<h4 class="mt-4">Emitted values</h4>
+	<Heading level={4} class="mt-4">Emitted values</Heading>
 	<p class="text-muted">
 		The group dispatches <Code>pa-range-group:change</Code> live and
 		<Code>pa-range-group:apply</Code> / <Code>:reset</Code> on the buttons. Payload is keyed by
@@ -346,10 +346,10 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		</div>
 	</div>
 
-	<h4 class="mt-4">Live URL</h4>
+	<Heading level={4} class="mt-4">Live URL</Heading>
 	<CodeBlock isCompact>{$page.url.search || '(no query yet — drag a slider)'}</CodeBlock>
 
-	<h4 class="mt-4">Bound values (<Code>bind:values</Code>)</h4>
+	<Heading level={4} class="mt-4">Bound values (<Code>bind:values</Code>)</Heading>
 	<CodeBlock isCompact>{JSON.stringify(urlValues, null, 2)}</CodeBlock>
 
 	<p class="text-muted mt-2">
@@ -359,7 +359,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<Code>createSpaRouterAdapter</Code> factory. All three are below.
 	</p>
 
-	<h4 class="mt-4">Usage</h4>
+	<Heading level={4} class="mt-4">Usage</Heading>
 	<CodeBlock>{codeUrlSync}</CodeBlock>
 </Card>
 
@@ -420,7 +420,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <!-- CSS Classes Reference -->
 <Card class="mt-4">
 	{#snippet title()}CSS Classes Reference{/snippet}
-	<h4>Compact control</h4>
+	<Heading level={4}>Compact control</Heading>
 	<BasicList spacing="compact">
 		<li><Code>pa-range-group</Code> - Root wrapper (toggle + floating panel)</li>
 		<li><Code>pa-range-group__toggle</Code> - The button summarising the filters</li>
@@ -433,7 +433,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><Code>pa-range-group--open</Code> - State: panel open (on the root)</li>
 	</BasicList>
 
-	<h4 class="mt-4">Floating panel</h4>
+	<Heading level={4} class="mt-4">Floating panel</Heading>
 	<BasicList spacing="compact">
 		<li><Code>pa-range-group__panel</Code> - The floating panel (reparented to body when open)</li>
 		<li><Code>pa-range-group__panel--open</Code> - State: shown</li>
@@ -445,7 +445,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><Code>pa-range-group__actions</Code> - Reset / Apply footer</li>
 	</BasicList>
 
-	<h4 class="mt-4">Slider primitive</h4>
+	<Heading level={4} class="mt-4">Slider primitive</Heading>
 	<BasicList spacing="compact">
 		<li><Code>pa-range</Code> - Slider (dual-thumb by default)</li>
 		<li><Code>pa-range__rail</Code> - Inner rail the thumbs travel along</li>
@@ -457,7 +457,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><Code>pa-range--disabled</Code> - Non-interactive state</li>
 	</BasicList>
 
-	<h4 class="mt-4">Handle shapes</h4>
+	<Heading level={4} class="mt-4">Handle shapes</Heading>
 	<BasicList spacing="compact">
 		<li><Code>pa-range--handle-rect</Code> - Rounded rectangle handles</li>
 		<li><Code>pa-range--handle-bar</Code> - Thin vertical bar handles</li>
@@ -465,7 +465,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><Code>pa-range--handle-needle</Code> - Downward-triangle "needle" handles</li>
 	</BasicList>
 
-	<h4 class="mt-4">Tick marks</h4>
+	<Heading level={4} class="mt-4">Tick marks</Heading>
 	<BasicList spacing="compact">
 		<li><Code>pa-range__ticks</Code> - Tick container (built by JS from <Code>data-ticks</Code>)</li>
 		<li><Code>pa-range__tick</Code> - A minor tick mark</li>
@@ -475,7 +475,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		<li><Code>pa-range--ticks-labeled</Code> - Row modifier reserving the label band</li>
 	</BasicList>
 
-	<h4 class="mt-4">Theming tokens (CSS variables)</h4>
+	<Heading level={4} class="mt-4">Theming tokens (CSS variables)</Heading>
 	<BasicList spacing="compact">
 		<li><Code>--pa-range-track</Code> / <Code>-fill</Code> - Track / fill colour</li>
 		<li><Code>--pa-range-thumb-bg</Code> / <Code>-thumb-border</Code> / <Code>-thumb-border-hover</Code> - Handle colours</li>

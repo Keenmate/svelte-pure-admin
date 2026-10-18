@@ -29,7 +29,8 @@
 		Input,
 		Grid,
 		Column,
-		Code
+		Code,
+		CheckboxList
 	} from '@keenmate/svelte-pure-admin';
 
 	import type { SearchResult } from '@keenmate/svelte-pure-admin';
@@ -250,7 +251,7 @@
 		<Card titleText="CheckboxListItem">
 			<Paragraph>Events: <Code>onchange</Code></Paragraph>
 
-			<ul class="pa-checkbox-list">
+			<CheckboxList>
 				<CheckboxListItem
 					id="evt-cb-1"
 					labelText="Enable notifications"
@@ -263,7 +264,7 @@
 					descriptionText="Use dark theme"
 					onchange={(checked) => log('CheckboxListItem', 'onchange', `checked: ${checked}`)}
 				/>
-			</ul>
+			</CheckboxList>
 		</Card>
 
 		<!-- 7. COMPOSITE BADGE -->

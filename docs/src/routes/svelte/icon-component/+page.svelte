@@ -18,7 +18,8 @@
 		CodeBlock,
 		Callout,
 		Icon,
-		Link
+		Link,
+		BasicList
 	} from '@keenmate/svelte-pure-admin';
 
 	// Affordances demoed in the first branch (resolved built-in, no provider needed).
@@ -149,12 +150,12 @@ const tabler: IconProvider = (name, ctx) => {
 		Each is a factory returning a provider; compose them in an ordered list. You do <em>not</em> add
 		<Code>masked()</Code> — affordances are built-in.
 	</Paragraph>
-	<ul>
+	<BasicList>
 		<li><Code>fontAwesome(opts?)</Code> — <Code>name="user"</Code> → <Code>{'<i class="fa-solid fa-user fa-fw">'}</Code>.</li>
 		<li><Code>svgIcons(map, opts?)</Code> — inline <Code>&lt;svg&gt;</Code> from a <Code>{'{ name: innerMarkup }'}</Code> map (Lucide, Tabler, Heroicons-outline, …).</li>
 		<li><Code>combine(...providers)</Code> — fold several into one reusable provider (the list already composes; this is for pre-building a single provider).</li>
 		<li><Code>masked()</Code> — emits a <Code>pa-icon--NAME</Code> span for an affordance name; rarely needed now that affordances are built-in, kept for advanced composition.</li>
-	</ul>
+	</BasicList>
 
 	<Heading level={4} class="mt-6">Configure them</Heading>
 	<CodeBlock language="html">{codeConfigure}</CodeBlock>
@@ -174,7 +175,7 @@ const tabler: IconProvider = (name, ctx) => {
 <!-- Context & hover -->
 <!-- ============================================================ -->
 <Card titleText="Size, accessibility &amp; hover" class="mt-4">
-	<ul>
+	<BasicList>
 		<li><Code>size</Code> — a CSS length; sets <Code>font-size</Code> + <Code>--pa-icon-size</Code> on the host.</li>
 		<li><Code>label</Code> — when set, the icon is exposed as <Code>role="img"</Code> with that name; otherwise it's <Code>aria-hidden</Code>.</li>
 		<li>
@@ -184,7 +185,7 @@ const tabler: IconProvider = (name, ctx) => {
 			(<Code>pc-icon-hover-fill</Code> for Font Awesome, <Code>pc-icon-hover-highlight</Code> for outline
 			SVG, <Code>--pa-icon-src-hover</Code> for masked).
 		</li>
-	</ul>
+	</BasicList>
 	<CodeBlock language="html">{codeUsage}</CodeBlock>
 </Card>
 
@@ -195,19 +196,19 @@ const tabler: IconProvider = (name, ctx) => {
 	<Grid>
 		<Column size="100" md="50">
 			<Heading level={4}>Use <Code>&lt;Icon name&gt;</Code></Heading>
-			<ul>
+			<BasicList>
 				<li>The name is <strong>data/config-driven</strong> and you don't know its type ahead of time.</li>
 				<li>You want <strong>one call-site</strong> that works across your configured icon sets.</li>
 				<li>You need the provider's hover marker / size / a11y wiring for free.</li>
-			</ul>
+			</BasicList>
 		</Column>
 		<Column size="100" md="50">
 			<Heading level={4}>Use a raw <Code>.pa-icon</Code> span</Heading>
-			<ul>
+			<BasicList>
 				<li>You're writing a <strong>fixed framework affordance</strong> inline (close button, chevron).</li>
 				<li>It's how the library's own components render affordances — no provider dependency.</li>
 				<li>See <Link href="/design/icons">Design › Icons</Link> for the full glyph gallery + token chain.</li>
-			</ul>
+			</BasicList>
 		</Column>
 	</Grid>
 	<Callout variant="info" class="mt-3">

@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — `<Card>` responsive header actions (`headerActionsCollapsed`)
+
+- New `headerActionsCollapsed` snippet: the compact fallback for `headerActions` (typically a
+  `SplitButton`). Supplying it emits core's CSS-only `.pa-card__actions--responsive` with both
+  wrappers — `headerActions` in `.pa-card__actions-full`, the fallback in
+  `.pa-card__actions-collapsed` — so the modifier can never be set without its fallback.
+- `--responsive` and `isActionsOverflow` (`--overflow`, JS) are alternatives per core; if both are
+  set the collapsed snippet wins, `isActionsOverflow` is ignored and a dev warning is logged.
+- `SplitButton` gains `titleText` / `ariaLabel` (main button) and `toggleAriaLabel` (chevron), so
+  an icon-only split button keeps an accessible name.
+- Docs: the splitter page's "Editor" card was hand-built markup for this pattern; it is now
+  `<Card headerActionsCollapsed>` with `Button` / `SplitButton` / `SplitButtonItem`.
+
+### Docs — raw lists and headings use components
+
+- Raw `<ul>`/`<ol>` in docs prose → `BasicList` / `OrderedList` (callouts + 11 other pages); the
+  events-callbacks page's `<ul class="pa-checkbox-list">` → `CheckboxList`.
+- ~154 raw `<h1>`–`<h6>` → `<Heading level>` across 21 pages. Left raw: headings inside code
+  strings, and container-breakpoint's `prod__title` / `prod__panel-title` (page-scoped CSS).
+- Multi-select "Implementation Notes" card uses `titleText` instead of a raw title snippet.
+
+### Docs — card titles are always `h3`
+
+- The splitter page's hand-built card header used `h4.pa-card__title-text`; core now states the
+  title is always `h3` (what `<Card>` renders), so it is `h3`.
+
+### Added — `<Card>` title / description tooltips
+
+- `titleTooltip` / `descriptionTooltip` (`true` = the text itself, or a custom string) with
+  `…TooltipPosition`, `…TooltipVariant`, `…TooltipMultiline`, `…TooltipIsHelp`, `…TooltipIsKeyword`,
+  `…TooltipAlways`. Shown ONLY while the title/description is truncated (core's
+  `data-pa-tooltip-overflow`) unless `…Always`. Works with `titleText`/`descriptionText` and the
+  `title`/`description` snippets. Floating (core `tooltips-popovers.js`), so never clipped by the card.
+  Needs core ≥ rc08 for the truncation check.
+- `TooltipPosition` / `TooltipVariant` types exported (shared with `<Tooltip>`).
+- Docs: the cards page's tooltip demo uses the props (was a raw `header` snippet); the long-title
+  card shows `titleTooltip`.
+
+### Docs — KPI pages: no spacer `<br>`
+
+- 29 standalone `<br>` lines between KPI sections removed; the next element carries `mt-xl`
+  (consistent 32px gap), same as pure-admin and keen.
+
 ### Docs — Expandable Filters uses `<FilterCard>`
 
 - The table-filters page hand-built the panel (`d-flex` + loose buttons, toggle LAST). It is now

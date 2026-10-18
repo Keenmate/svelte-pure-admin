@@ -20,6 +20,20 @@
     "footerActions":             { "prop": "footerActions",             "kind": "slot" },
     "tools":                     { "prop": "headerActions",             "kind": "slot" },
     "tabs":                      { "prop": "tabs",                      "kind": "slot" },
-    "inlineTabs":                { "prop": "hasInlineTabs",             "kind": "bool" }
+    "inlineTabs":                { "prop": "hasInlineTabs",             "kind": "bool" },
+    "titleTooltip":              { "prop": "titleTooltip",                        "kind": "bool" },
+    "titleTooltipPosition":      { "prop": "titleTooltipPosition",                "kind": "enum", "values": ["bottom", "start", "end"] },
+    "titleTooltipVariant":       { "prop": "titleTooltipVariant",                 "kind": "enum", "values": ["primary", "success", "warning", "danger", "color-1", "color-2", "color-3", "color-4", "color-5", "color-6", "color-7", "color-8", "color-9"] },
+    "titleTooltipMultiline":     { "prop": "titleTooltipMultiline",               "kind": "bool" },
+    "titleTooltipIsHelp":        { "prop": "titleTooltipIsHelp",                  "kind": "bool" },
+    "titleTooltipIsKeyword":     { "prop": "titleTooltipIsKeyword",               "kind": "bool" },
+    "titleTooltipAlways":        { "prop": "titleTooltipAlways",                  "kind": "bool" },
+    "descriptionTooltip":        { "prop": "descriptionTooltip",                  "kind": "bool" },
+    "descriptionTooltipPosition":{ "prop": "descriptionTooltipPosition",          "kind": "enum", "values": ["bottom", "start", "end"] },
+    "descriptionTooltipVariant": { "prop": "descriptionTooltipVariant",           "kind": "enum", "values": ["primary", "success", "warning", "danger", "color-1", "color-2", "color-3", "color-4", "color-5", "color-6", "color-7", "color-8", "color-9"] },
+    "descriptionTooltipMultiline":{ "prop": "descriptionTooltipMultiline",         "kind": "bool" },
+    "descriptionTooltipIsHelp":  { "prop": "descriptionTooltipIsHelp",            "kind": "bool" },
+    "descriptionTooltipIsKeyword":{ "prop": "descriptionTooltipIsKeyword",         "kind": "bool" },
+    "descriptionTooltipAlways":  { "prop": "descriptionTooltipAlways",            "kind": "bool" }
   }
 }

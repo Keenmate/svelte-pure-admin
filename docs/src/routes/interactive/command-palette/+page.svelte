@@ -19,7 +19,8 @@
 		NavbarSearchField,
 		SearchResults,
 		CodeBlock,
-		Code
+		Code,
+		Heading
 	} from '@keenmate/svelte-pure-admin';
 	import type { Command, SearchContext, SearchResult, SearchGroup } from '@keenmate/svelte-pure-admin';
 
@@ -437,7 +438,7 @@
 		<div class="pa-card__body--no-padding">
 			<Navbar class="position-relative">
 				{#snippet start()}
-					<AppHeader><h1>My App</h1></AppHeader>
+					<AppHeader><Heading level={1}>My App</Heading></AppHeader>
 				{/snippet}
 
 				{#snippet center()}
@@ -466,7 +467,7 @@
 
 	<Card class="mt-3">
 		<div class="pa-card__body">
-			<h3>Inline Live Search (NavbarSearchField)</h3>
+			<Heading level={3}>Inline Live Search (NavbarSearchField)</Heading>
 			<p>
 				A live search box with its own anchored results dropdown — distinct from the pill that
 				opens the palette. Type e.g. <Code>a</Code> or <Code>pro</Code>: one
@@ -478,7 +479,7 @@
 			<div class="pa-card__body--no-padding">
 				<Navbar class="position-relative">
 					{#snippet start()}
-						<AppHeader><h1>My App</h1></AppHeader>
+						<AppHeader><Heading level={1}>My App</Heading></AppHeader>
 					{/snippet}
 					{#snippet center()}
 						<NavbarSearchField
@@ -510,7 +511,7 @@
 
 	<Card class="mt-3">
 		<div class="pa-card__body">
-			<h3>Search Results Page (SearchResults)</h3>
+			<Heading level={3}>Search Results Page (SearchResults)</Heading>
 			<p>
 				The page-level results list a search <em>navigates to</em> (distinct from the live
 				dropdown). One item tree, four presets — switch below. The <Code>grouped</Code> preset
@@ -590,7 +591,7 @@
 					<strong>Try it!</strong> Type <Code>/</Code> for commands or <Code>:</Code> for search contexts.
 				</Alert>
 
-				<h4 class="mb-2">Commands (/)</h4>
+				<Heading level={4} class="mb-2">Commands (/)</Heading>
 				<Table isCompact>
 					<thead>
 						<tr>
@@ -651,7 +652,7 @@
 				<p class="mb-3">Commands can have multiple steps with conditional logic:</p>
 
 				<div class="mb-3">
-					<h4 class="mb-2">Example: /deploy (2 steps)</h4>
+					<Heading level={4} class="mb-2">Example: /deploy (2 steps)</Heading>
 					<OrderedList>
 						<li>Type <Code>/deploy</Code> and press Space</li>
 						<li>Select environment (Development, Staging, Production)</li>
@@ -662,7 +663,7 @@
 				</div>
 
 				<div class="mb-3">
-					<h4 class="mb-2">Example: /assign (2 steps)</h4>
+					<Heading level={4} class="mb-2">Example: /assign (2 steps)</Heading>
 					<OrderedList>
 						<li>Type <Code>/assign</Code> and press Space</li>
 						<li>Select an item (bug, feature, task)</li>
@@ -673,7 +674,7 @@
 				</div>
 
 				<div class="mb-3">
-					<h4 class="mb-2">Example: /go (free text)</h4>
+					<Heading level={4} class="mb-2">Example: /go (free text)</Heading>
 					<OrderedList>
 						<li>Type <Code>/go</Code> and press Space</li>
 						<li>Select a page or type a custom path</li>
@@ -728,7 +729,7 @@
 				<p class="mb-3">Click to open palette with pre-filled text:</p>
 
 				<div class="mb-3">
-					<h4 class="mb-2">Commands</h4>
+					<Heading level={4} class="mb-2">Commands</Heading>
 					<ButtonGroup class="mb-2">
 						<Button size="sm" variant="secondary" onclick={() => (showPalette = true)}>/</Button>
 						<Button size="sm" variant="secondary" onclick={() => (showPalette = true)}>/deploy</Button>
@@ -739,7 +740,7 @@
 				</div>
 
 				<div class="mb-3">
-					<h4 class="mb-2">Context Search</h4>
+					<Heading level={4} class="mb-2">Context Search</Heading>
 					<ButtonGroup class="mb-2">
 						<Button size="sm" variant="secondary" onclick={() => (showPalette = true)}>:</Button>
 						<Button size="sm" variant="secondary" onclick={() => (showPalette = true)}>:p macbook</Button>
@@ -749,7 +750,7 @@
 				</div>
 
 				<div class="mb-3">
-					<h4 class="mb-2">Global Search</h4>
+					<Heading level={4} class="mb-2">Global Search</Heading>
 					<ButtonGroup class="mb-2">
 						<Button size="sm" variant="secondary" onclick={() => (showPalette = true)}>macbook</Button>
 						<Button size="sm" variant="secondary" onclick={() => (showPalette = true)}>john</Button>

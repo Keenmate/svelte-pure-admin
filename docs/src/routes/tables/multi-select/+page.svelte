@@ -12,7 +12,9 @@
 		SplitButtonItem,
 		Heading,
 		Paragraph,
-		Code
+		Code,
+		OrderedList,
+		BasicList
 	} from '@keenmate/svelte-pure-admin';
 
 	// --- Mock data ---
@@ -221,68 +223,67 @@
 	</Card>
 
 <!-- Implementation Notes -->
-<Card>
-	{#snippet title()}<h4 class="pa-card__title-text">Implementation Notes</h4>{/snippet}
+<Card titleText="Implementation Notes">
 
 	<Heading level={5}>Visual Pattern Components</Heading>
-	<ol>
+	<OrderedList>
 		<li>
 			<strong>Selection Summary Bar</strong>
-			<ul>
+			<BasicList>
 				<li>Appears between filters and data table when items are selected</li>
 				<li>Shows selection count and bulk action buttons (Delete, Export, Clear)</li>
 				<li>"Show Details" button to expand full list (collapsed by default)</li>
 				<li>Prevents unwanted content shifting when checking items</li>
 				<li>Uses <Code>pa-alert pa-alert--primary</Code> for visual consistency</li>
-			</ul>
+			</BasicList>
 		</li>
 		<li>
 			<strong>Selection Details Table (Expandable)</strong>
-			<ul>
+			<BasicList>
 				<li>Hidden by default, user can expand via "Show Details" button</li>
 				<li>Shows full table of all selected items from all filters</li>
 				<li>Includes "Source Filter" column showing where each item was selected</li>
 				<li>Individual remove buttons per row for granular control</li>
 				<li>Toggle button changes to "Hide Details" when expanded</li>
-			</ul>
+			</BasicList>
 		</li>
 		<li>
 			<strong>Filter Tab Badges</strong>
-			<ul>
+			<BasicList>
 				<li>Each filter tab shows count of selected items from that filter</li>
 				<li>Example: "Active Users (2)" means 2 items selected from Active filter</li>
 				<li>Helps users track selections across different views</li>
 				<li>Updates in real-time as selections change</li>
-			</ul>
+			</BasicList>
 		</li>
 		<li>
 			<strong>Row Highlighting</strong>
-			<ul>
+			<BasicList>
 				<li>Selected rows in current table view have distinct background color</li>
 				<li>Uses subtle blue accent to indicate selection state</li>
 				<li>Checkboxes remain checked when switching filters</li>
 				<li>Provides immediate visual feedback</li>
-			</ul>
+			</BasicList>
 		</li>
 		<li>
 			<strong>Bulk Selection Controls</strong>
-			<ul>
+			<BasicList>
 				<li>"Select All Visible" - checks all rows in current filter view</li>
 				<li>"Deselect All Visible" - unchecks visible rows (preserves hidden selections)</li>
 				<li>Header checkbox with indeterminate state support</li>
-			</ul>
+			</BasicList>
 		</li>
-	</ol>
+	</OrderedList>
 
 	<Heading level={5} class="mt-4">Data Management</Heading>
 	<Paragraph>For framework implementations (React/Vue/Svelte):</Paragraph>
-	<ul>
+	<BasicList>
 		<li>Maintain a global selection Set/Map keyed by item ID</li>
 		<li>Store full item data in selection (for display in panel)</li>
 		<li>Store source filter label with each selection</li>
 		<li>When rendering table, check if row ID exists in selection Set</li>
 		<li>Update counts in real-time as selections change</li>
-	</ul>
+	</BasicList>
 
 	<Alert variant="warning" class="mt-4">
 		<strong>Important:</strong> This demo uses Svelte 5 runes ($state / $derived) for a live,

@@ -349,11 +349,11 @@ import type {
 
 			<div class="mt-3 p-3 bg-light rounded">
 				<Strong>Current State:</Strong>
-				<ul class="mt-2 mb-0">
+				<BasicList class="mt-2 mb-0">
 					<li><Code>currentLocale</Code>: <Badge variant="primary">{i18n.currentLocale}</Badge></li>
 					<li><Code>isLoading</Code>: <Badge variant={i18n.isLoading ? 'warning' : 'secondary'}>{i18n.isLoading}</Badge></li>
 					<li><Code>languages.length</Code>: <Badge variant="info">{i18n.languages.length}</Badge></li>
-				</ul>
+				</BasicList>
 			</div>
 		</Column>
 
@@ -414,21 +414,21 @@ import type {
 		<Grid>
 			<Column size="100" md="50">
 				<Strong>Dialog Keys:</Strong>
-				<ul class="mt-2 mb-0">
+				<BasicList class="mt-2 mb-0">
 					<li><Code>dialog.confirm</Code>: {$_('dialog.confirm')}</li>
 					<li><Code>dialog.cancel</Code>: {$_('dialog.cancel')}</li>
 					<li><Code>dialog.ok</Code>: {$_('dialog.ok')}</li>
 					<li><Code>dialog.areYouSure</Code>: {$_('dialog.areYouSure')}</li>
-				</ul>
+				</BasicList>
 			</Column>
 			<Column size="100" md="50">
 				<Strong>Other Keys:</Strong>
-				<ul class="mt-2 mb-0">
+				<BasicList class="mt-2 mb-0">
 					<li><Code>popconfirm.confirm</Code>: {$_('popconfirm.confirm')}</li>
 					<li><Code>popconfirm.cancel</Code>: {$_('popconfirm.cancel')}</li>
 					<li><Code>loadMore.loadMore</Code>: {$_('loadMore.loadMore')}</li>
 					<li><Code>loadMore.loading</Code>: {$_('loadMore.loading')}</li>
-				</ul>
+				</BasicList>
 			</Column>
 		</Grid>
 	</div>

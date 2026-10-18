@@ -11,7 +11,9 @@ export type {
 	TextMode,
 	ValidationState,
 	DataVizVariant,
-	ThemeColor
+	ThemeColor,
+	TooltipPosition,
+	TooltipVariant
 } from './types';
 
 // Configuration

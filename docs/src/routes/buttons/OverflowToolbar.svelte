@@ -20,7 +20,7 @@
 	 * it at eval time, so we import them only after mount (browser-only).
 	 */
 	import { onMount } from 'svelte';
-	import { Paragraph, Text, Code } from '@keenmate/svelte-pure-admin';
+	import { Paragraph, Text, Code, BasicList, Heading } from '@keenmate/svelte-pure-admin';
 
 	let hostEl: HTMLDivElement;
 
@@ -162,7 +162,7 @@
 			{/if}
 		</p>
 
-		<h4 class="mt-4">Drop direction</h4>
+		<Heading level={4} class="mt-4">Drop direction</Heading>
 		<Paragraph color="secondary" class="mb-1">Default <Code>data-pa-actions-overflow-from="end"</Code> collapses the rightmost child first. Set <Code>data-pa-actions-overflow-from="start"</Code> on the <Code>.pa-overflow</Code> container to collapse the leftmost child first instead.</Paragraph>
 		<div class="resizable-wrapper" style="overflow: auto; resize: horizontal; min-width: 200px; max-width: 100%; padding: 1rem; border: 1px dashed var(--pc-border-color); border-radius: var(--pc-border-radius);">
 			<div class="pa-overflow" data-pa-actions-overflow-from="start">
@@ -210,7 +210,7 @@
 			</div>
 		</div>
 
-		<h4 class="mt-4">In card headers</h4>
+		<Heading level={4} class="mt-4">In card headers</Heading>
 		<Paragraph color="secondary" class="mb-1">In a card header, use the card-flavored alias <Code>.pa-card__actions--overflow</Code> on the <Code>.pa-card__actions</Code> slot itself — the buttons and split button become its direct children (no inner wrapper). It auto-inits like a standalone <Code>.pa-overflow</Code>, appending its own <Code>[⋮]</Code> more-menu, and the header title yields before the actions collapse. Laid out three-up (<Code>pc-col-lg-1-3</Code>) so each card is already narrow — resize the browser window to watch each toolbar consume and spit out action buttons live, each collapsing at its own breakpoint.</Paragraph>
 
 		<div class="pc-row mt-2">
@@ -375,14 +375,14 @@
 			</div>
 		</div>
 
-		<h4 class="mt-4">How it works</h4>
-		<ul class="text-muted">
+		<Heading level={4} class="mt-4">How it works</Heading>
+		<BasicList class="text-muted">
 			<li><Code>.pa-overflow</Code> is the row; it provides <Code>min-width: 0; overflow: hidden; flex-shrink: 1</Code>. Works standalone in any flex context; in a card header use the alias <Code>.pa-card__actions--overflow</Code> on the actions slot itself. Both auto-init — no JS wiring needed.</li>
 			<li><Code>overflow.js</Code> appends a dedicated <Code>[⋮]</Code> "more" trigger and, on resize, walks the lowest-priority children (<Code>data-pa-actions-priority</Code>, default <Code>0</Code>) into that trigger's menu until the row fits; higher-priority children survive longer.</li>
 			<li>A <Code>.pa-btn-split</Code> child collapses atomically — its primary action and its own menu items drop into the more-menu together under a section label, nothing foreign mixes in. Give it a high priority (e.g. <Code>20</Code>) so it stays visible longest.</li>
 			<li>Plain items get their class swapped to <Code>pa-btn-split__item</Code> while collapsed; the original classList is stashed on the element and restored on the way back out.</li>
 			<li>Drop direction is controlled by <Code>data-pa-actions-overflow-from</Code> on the container: <Code>"end"</Code> (default — rightmost first) or <Code>"start"</Code> (leftmost first).</li>
 			<li>Click handlers survive — the DOM node moves but is preserved. Every button above updates the <strong>Last click</strong> readout, so you can confirm it still fires after collapsing into <Code>[⋮]</Code> (the per-member delete buttons included).</li>
-		</ul>
+		</BasicList>
 	</div>
 </div>

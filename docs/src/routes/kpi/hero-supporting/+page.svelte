@@ -102,13 +102,11 @@
 	{/snippet}
 </KpiHeroList>
 
-<br />
-
 <!-- ============================================================
      2. Layout variant: hero 2/3, rail 1/3 (heroSplit="2-3")
      ============================================================ -->
 
-<Heading level={3}>Layout variant · <Code>heroSplit="2-3"</Code></Heading>
+<Heading class="mt-xl" level={3}>Layout variant · <Code>heroSplit="2-3"</Code></Heading>
 <Paragraph>
 	Hero gets 2/3 of the width, rail 1/3. Pushes more visual weight onto the headline metric — common in
 	marketing/exec layouts where the supporting tiles are reference rather than focal. Source markup is identical
@@ -175,13 +173,11 @@
 	{/snippet}
 </KpiHeroList>
 
-<br />
-
 <!-- ============================================================
      3. Layout variant: hero 3/4, rail 1/4 (heroSplit="3-4")
      ============================================================ -->
 
-<Heading level={3}>Layout variant · <Code>heroSplit="3-4"</Code></Heading>
+<Heading class="mt-xl" level={3}>Layout variant · <Code>heroSplit="3-4"</Code></Heading>
 <Paragraph>
 	Hero gets 3/4 of the width, rail 1/4 (a thin sidebar). The hero-dominant shape — the rail becomes a quick
 	reference column rather than an equal-weight partner. At narrow card widths the same
@@ -249,10 +245,8 @@
 	{/snippet}
 </KpiHeroList>
 
-<br />
-
-<Card titleText="Usage Guide">
-	<h4>When to use</h4>
+<Card class="mt-xl" titleText="Usage Guide">
+	<Heading level={4}>When to use</Heading>
 	<Paragraph>
 		The "one big number plus context" pattern — marketing/exec dashboards, weekly review pages, board updates.
 		The hero panel gives the headline metric a generous, container-query-relative size with a big filled-area
@@ -260,7 +254,7 @@
 		under 700 px.
 	</Paragraph>
 
-	<h4 class="mt-4">Split-ratio modifiers</h4>
+	<Heading level={4} class="mt-4">Split-ratio modifiers</Heading>
 	<Paragraph>
 		Pass <Code>heroSplit</Code> on <Code>KpiHeroList</Code> to shift weight to the hero without touching the
 		markup. Default (omitted) is <strong>1:1</strong> (50/50). <Code>"2-3"</Code> gives the hero 2/3 of the
@@ -269,7 +263,7 @@
 		grid-template-columns at narrow widths, so the same source works in narrow page-grid cells.
 	</Paragraph>
 
-	<h4 class="mt-4">Sentiment cascade</h4>
+	<Heading level={4} class="mt-4">Sentiment cascade</Heading>
 	<Paragraph>
 		Both <Code>KpiHeroMain</Code> and <Code>KpiHeroSide</Code> accept a <Code>variant</Code> prop that drives a
 		<Code>--pa-kpi-accent</Code> cascade var. Hero variants: <Code>positive</Code> / <Code>negative</Code> /
@@ -278,10 +272,8 @@
 	</Paragraph>
 </Card>
 
-<br />
-
-<Card titleText="Component Reference">
-	<h4>KpiHeroList props</h4>
+<Card class="mt-xl" titleText="Component Reference">
+	<Heading level={4}>KpiHeroList props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
@@ -290,7 +282,7 @@
 		<li><Code>rail</Code> — snippet for the right-side rail (pass <Code>KpiHeroSide</Code> instances).</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiHeroMain props</h4>
+	<Heading level={4} class="mt-4">KpiHeroMain props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — accent colour: <Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> / <Code>up-strong</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
@@ -301,7 +293,7 @@
 		<li><Code>detailRows</Code> typed override + <Code>detail</Code> snippet for fully-custom popover.</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiHeroSide props</h4>
+	<Heading level={4} class="mt-4">KpiHeroSide props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — accent colour (same 4-step scale as hero).</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>

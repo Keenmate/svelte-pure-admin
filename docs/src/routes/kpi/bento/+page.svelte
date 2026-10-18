@@ -127,12 +127,10 @@
 	{/snippet}
 </KpiBento>
 
-<br />
-
 <!-- ============================================================
      Layout variant · hero-end (mirror of default, 6 tiles)
      ============================================================ -->
-<Heading level={3}>Layout variant · <Code>pa-kpi-bento__grid--hero-end</Code></Heading>
+<Heading class="mt-xl" level={3}>Layout variant · <Code>pa-kpi-bento__grid--hero-end</Code></Heading>
 <Paragraph>
 	Mirror of the default layout — hero spans the right half × 2 rows, two stacked supporting tiles on
 	the left of rows 1-2, three equal tiles below. Same 6-tile contract; source order is unchanged
@@ -165,12 +163,10 @@
 	</KpiBentoTile>
 </KpiBento>
 
-<br />
-
 <!-- ============================================================
      Layout variant · 5-tile (hero + 4 supporting)
      ============================================================ -->
-<Heading level={3}>Layout variant · <Code>pa-kpi-bento__grid--5-tile</Code></Heading>
+<Heading class="mt-xl" level={3}>Layout variant · <Code>pa-kpi-bento__grid--5-tile</Code></Heading>
 <Paragraph>
 	Five-tile composition — hero spans left × 2 rows, two stacked supporting tiles on the right of
 	rows 1-2, two equal halves on the bottom row. Use <Code>layout="5-tile"</Code> when you have exactly
@@ -200,24 +196,22 @@
 	</KpiBentoTile>
 </KpiBento>
 
-<br />
-
-<Card titleText="Usage Guide">
-	<h4>When to use</h4>
+<Card class="mt-xl" titleText="Usage Guide">
+	<Heading level={4}>When to use</Heading>
 	<Paragraph>
 		Editorial-feeling dashboards where one KPI is the headline and the rest are supporting. The hero tile gets a
 		container-query-relative value so it scales gracefully across page-grid widths. The asymmetric layout reads
 		as "magazine cover": the eye lands on the hero first, then sweeps right and down through the supporting tiles.
 	</Paragraph>
 
-	<h4 class="mt-4">Tile order matters</h4>
+	<Heading level={4} class="mt-4">Tile order matters</Heading>
 	<Paragraph>
 		Tile placement is hardcoded by source order via <Code>:nth-child</Code>. Pass exactly 6 tiles in this order:
 		<strong>hero, a (top-right), b (bottom-right), c (bottom-left), d (bottom-middle), e (bottom-right)</strong>.
 		Mark the first tile with <Code>isHero</Code> for the larger value font + taller chart.
 	</Paragraph>
 
-	<h4 class="mt-4">Chart as background</h4>
+	<Heading level={4} class="mt-4">Chart as background</Heading>
 	<Paragraph>
 		The chart cell is absolutely positioned across the bottom 65% of the tile with z-index 0; label / delta / value
 		sit at z-index 1 over it. Polyline opacity 0.55, fill opacity 0.10 — soft enough that the focal value stays
@@ -225,17 +219,15 @@
 	</Paragraph>
 </Card>
 
-<br />
-
-<Card titleText="Component Reference">
-	<h4>KpiBento props</h4>
+<Card class="mt-xl" titleText="Component Reference">
+	<Heading level={4}>KpiBento props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiBentoTile props</h4>
+	<Heading level={4} class="mt-4">KpiBentoTile props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — accent colour: <Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> / <Code>up-strong</Code> / <Code>down-strong</Code>.</li>
 		<li><Code>isHero</Code> — bump value font + chart height. Set on the first (left-half) tile.</li>

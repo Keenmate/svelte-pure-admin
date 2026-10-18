@@ -22,7 +22,8 @@
 		Badge,
 		Tabs,
 		TabItem,
-		Link
+		Link,
+		BasicList
 	} from '@keenmate/svelte-pure-admin';
 
 	// Reference grids — one entry per shipped icon variable (name without the `--` prefix).
@@ -255,7 +256,7 @@
 	<CodeBlock language="css">{`.pa-icon--search  →  var(--pa-icon-src)
                   →  var(--pa-icon-search)
                   →  var(--base-icon-search, /* inline Lucide fallback */)`}</CodeBlock>
-	<ul>
+	<BasicList>
 		<li>
 			<strong><Code>--base-icon-*</Code></strong> — the shared contract (published in
 			<Code>@keenmate/base-css-variables</Code> and mirrored by <Code>@keenmate/pure-css</Code>). Override
@@ -270,7 +271,7 @@
 			and are <em>not</em> part of the <Code>--base-*</Code> contract, so they're defined directly with no
 			<Code>--base-icon-*</Code> route.
 		</li>
-	</ul>
+	</BasicList>
 	<Paragraph>
 		To retarget a single glyph, set its <Code>--pa-icon-name</Code> (or the shared
 		<Code>--base-icon-name</Code>) at <Code>:root</Code> or on any subtree.
@@ -285,7 +286,7 @@
 		An icon can swap to a <strong>filled</strong> variant when its enabled button or tab is hovered. It's
 		opt-in on two axes:
 	</Paragraph>
-	<ul>
+	<BasicList>
 		<li>
 			<strong>Per glyph</strong> — an icon opts in by declaring a filled source on
 			<Code>--pa-icon-src-hover</Code>. Icons without one are left untouched.
@@ -294,7 +295,7 @@
 			<strong>Per context</strong> — the swap only fires inside an <em>enabled</em> <Code>.pa-btn</Code>
 			or <Code>.pa-tabs__item</Code> on <Code>:hover</Code>. Disabled controls never react.
 		</li>
-	</ul>
+	</BasicList>
 
 	<Callout variant="warning" headingText="The default Lucide set is outline-only">
 		{#snippet icon()}<span class="pa-icon pa-icon--warning" aria-hidden="true"></span>{/snippet}

@@ -36,5 +36,23 @@ export type ValidationState = 'default' | 'success' | 'warning' | 'error';
 // 'primary' = the base fill (no modifier emitted — core has no --primary for these).
 export type DataVizVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
 
+// Tooltip placement (logical: start/end flip in RTL) and colour variants —
+// shared by <Tooltip> and the card title/description tooltips.
+export type TooltipPosition = 'top' | 'end' | 'bottom' | 'start';
+export type TooltipVariant =
+	| 'primary'
+	| 'success'
+	| 'warning'
+	| 'danger'
+	| 'color-1'
+	| 'color-2'
+	| 'color-3'
+	| 'color-4'
+	| 'color-5'
+	| 'color-6'
+	| 'color-7'
+	| 'color-8'
+	| 'color-9';
+
 // Theme colors (1-9)
 export type ThemeColor = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;

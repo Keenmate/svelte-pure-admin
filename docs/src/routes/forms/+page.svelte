@@ -26,7 +26,8 @@
 		Column,
 		Table,
 		Code,
-		Paragraph
+		Paragraph,
+		BasicList
 	} from '@keenmate/svelte-pure-admin';
 
 	// Form state bindings
@@ -730,7 +731,7 @@
 			The danger <strong>*</strong> is driven by the native <Code>required</Code> attribute — no class
 			needed. Where it lands depends on the field's shape:
 		</p>
-		<ul>
+		<BasicList>
 			<li>
 				<strong>Simple fields</strong> (input / select / textarea) → the group's <Code>&lt;label&gt;</Code>,
 				via <Code>.pa-form-group:has(:required) &gt; label</Code>.
@@ -753,7 +754,7 @@
 				<strong>Complex widgets</strong> with no native control (image browser, dropzone, web component)
 				→ add <Code>.pa-form-group--required</Code> to the group as the explicit trigger.
 			</li>
-		</ul>
+		</BasicList>
 		<p class="mb-0">
 			The first “Horizontal orientation” group has no <Code>required</Code>, so it shows no marker.
 		</p>

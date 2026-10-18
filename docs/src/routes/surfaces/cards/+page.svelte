@@ -182,39 +182,44 @@
 	</Grid>
 
 	<Heading level={4} class="mt-4">With Tooltip for Full Description</Heading>
-	<Paragraph class="mb-2">Add <Code>pa-tooltip pa-tooltip--multiline</Code> to the description paragraph to show the full text on hover.</Paragraph>
+	<Paragraph class="mb-2">
+		<Code>descriptionTooltip</Code> puts a tooltip with the full text on the description. It appears
+		<strong>only while the description is cut off</strong> — widen the window until it fits and hovering
+		shows nothing (<Code>descriptionTooltipAlways</Code> shows it regardless). Position, colour, multiline,
+		help and keyword styles: <Code>descriptionTooltipPosition</Code> / <Code>…Variant</Code> /
+		<Code>…Multiline</Code> / <Code>…IsHelp</Code> / <Code>…IsKeyword</Code>; the same set exists for the
+		title as <Code>titleTooltip…</Code>.
+	</Paragraph>
 
 	<Grid>
 		<Column size="100" lg="1-2">
-			<Card>
-				{#snippet header()}
-					<div class="pa-card__title">
-						<span class="pa-card__title-icon"><i class="fas fa-gauge-high"></i></span>
-						<h4 class="pa-card__title-text">Dashboard</h4>
-					</div>
-					<p class="pa-card__description pa-tooltip pa-tooltip--multiline pa-tooltip--bottom"
-						data-tooltip="View real-time metrics, KPIs, and performance indicators for your organization. Includes customizable widgets, drill-down reports, and automated alerts.">View real-time metrics, KPIs, and performance indicators for your organization. Includes customizable widgets, drill-down reports, and automated alerts.</p>
-					<div class="pa-card__actions">
-						<Button variant="primary" size="sm">Open</Button>
-					</div>
+			<Card
+				titleText="Dashboard"
+				descriptionText="View real-time metrics, KPIs, and performance indicators for your organization. Includes customizable widgets, drill-down reports, and automated alerts."
+				descriptionTooltip
+				descriptionTooltipPosition="bottom"
+				descriptionTooltipMultiline
+			>
+				{#snippet titleIcon()}<i class="fas fa-gauge-high"></i>{/snippet}
+				{#snippet headerActions()}
+					<Button variant="primary" size="sm">Open</Button>
 				{/snippet}
 				<Paragraph>Hover over the truncated description to see the full text in a multiline tooltip.</Paragraph>
 			</Card>
 		</Column>
 
 		<Column size="100" lg="1-2">
-			<Card>
-				{#snippet header()}
-					<div class="pa-card__title">
-						<span class="pa-card__title-icon"><i class="fas fa-clipboard-list"></i></span>
-						<h4 class="pa-card__title-text">Audit Log</h4>
-					</div>
-					<p class="pa-card__description pa-tooltip pa-tooltip--multiline pa-tooltip--bottom"
-						data-tooltip="Complete history of system changes, user actions, and security events. Filter by date, user, action type, or resource. Export to CSV for compliance reporting.">Complete history of system changes, user actions, and security events. Filter by date, user, action type, or resource. Export to CSV for compliance reporting.</p>
-					<div class="pa-card__actions">
-						<Button variant="secondary" size="sm">Export</Button>
-						<Button variant="primary" size="sm">View</Button>
-					</div>
+			<Card
+				titleText="Audit Log"
+				descriptionText="Complete history of system changes, user actions, and security events. Filter by date, user, action type, or resource. Export to CSV for compliance reporting."
+				descriptionTooltip
+				descriptionTooltipPosition="bottom"
+				descriptionTooltipMultiline
+			>
+				{#snippet titleIcon()}<i class="fas fa-clipboard-list"></i>{/snippet}
+				{#snippet headerActions()}
+					<Button variant="secondary" size="sm">Export</Button>
+					<Button variant="primary" size="sm">View</Button>
 				{/snippet}
 				<Paragraph>The tooltip provides full context while keeping the header compact and consistent.</Paragraph>
 			</Card>
@@ -493,6 +498,9 @@
 		<Column size="100" md="1-2">
 			<Card
 				titleText="This is a Very Long Card Title That Should Be Truncated With Ellipsis When It Exceeds Available Space"
+				titleTooltip
+				titleTooltipPosition="bottom"
+				titleTooltipMultiline
 			>
 				{#snippet titleIcon()}🔒{/snippet}
 				{#snippet headerActions()}
@@ -503,7 +511,7 @@
 				{/snippet}
 				<Paragraph>
 					Notice how the title truncates with ellipsis (...) when there's not enough space due to
-					the tool buttons.
+					the tool buttons. <Code>titleTooltip</Code> shows the full title on hover — only while it is cut off.
 				</Paragraph>
 			</Card>
 		</Column>

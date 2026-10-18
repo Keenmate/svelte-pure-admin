@@ -8,7 +8,8 @@
 		NavbarSearchInput,
 		Pager,
 		LoadMore,
-		Code
+		Code,
+		Heading
 	} from '@keenmate/svelte-pure-admin';
 	import type { SearchResult, SearchGroup } from '@keenmate/svelte-pure-admin';
 
@@ -118,7 +119,7 @@
 </script>
 
 <div class="pa-page-content">
-	<h1>Search</h1>
+	<Heading level={1}>Search</Heading>
 	<Paragraph>
 		This is the landing page for the <strong>type-and-go</strong> search variants
 		(<Code>NavbarSearchInput</Code> / <Code>SidebarSearch action="/search"</Code>). They submit here

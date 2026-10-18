@@ -392,7 +392,7 @@
 
 <Callout variant="info" class="mb-4">
 	<strong>Things to try:</strong>
-	<ul class="mt-2 mb-0">
+	<BasicList class="mt-2 mb-0">
 		<li>Submit valid data — the form resets and a success alert replaces any prior status.</li>
 		<li>
 			Tick <em>Force validation errors</em> before saving — typed values stick and every field
@@ -414,7 +414,7 @@
 			Refresh the page — entries reset to the three seed rows, so you can <em>Clear All</em>
 			and reload to get back to a clean demo state.
 		</li>
-	</ul>
+	</BasicList>
 </Callout>
 
 <!-- New Entry -->

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Callout, Card, Alert, Grid, Column, Code } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Callout, Card, Alert, Grid, Column, Code, BasicList, OrderedList } from '@keenmate/svelte-pure-admin';
 	import { HighlightedCode } from '$lib/components';
 
 	// Code examples (stored as constants to avoid Svelte parsing template syntax)
@@ -126,23 +126,23 @@
 		<Column size="100" md="50">
 			<Callout variant="info" headingText="Prerequisites">
 				<p>Before you begin, make sure you have:</p>
-				<ul>
+				<BasicList>
 					<li>Node.js 18 or higher installed</li>
 					<li>npm or yarn package manager</li>
 					<li>A code editor (VS Code recommended)</li>
 					<li>Basic knowledge of JavaScript</li>
-				</ul>
+				</BasicList>
 			</Callout>
 		</Column>
 		<Column size="100" md="50">
 			<Callout variant="warning" headingText="Known Limitations">
 				<p>Please be aware of these current limitations:</p>
-				<ol>
+				<OrderedList>
 					<li>Maximum file size is 10MB</li>
 					<li>Concurrent uploads limited to 5</li>
 					<li>Some formats not yet supported</li>
 					<li>Mobile optimization in progress</li>
-				</ol>
+				</OrderedList>
 			</Callout>
 		</Column>
 	</Grid>
@@ -271,15 +271,15 @@
 <Card titleText="Code Examples">
 	<Grid>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Basic Usage</h4>
+			<Heading level={4} class="mb-2">Basic Usage</Heading>
 			<HighlightedCode code={codeBasicUsage} language="svelte" />
 		</Column>
 		<Column size="100" md="50">
-			<h4 class="mb-2">With Heading & Icon</h4>
+			<Heading level={4} class="mb-2">With Heading & Icon</Heading>
 			<HighlightedCode code={codeWithHeadingIcon} language="svelte" />
 		</Column>
 	</Grid>
 
-	<h4 class="mb-2 mt-4">Available Props</h4>
+	<Heading level={4} class="mb-2 mt-4">Available Props</Heading>
 	<HighlightedCode code={codeProps} language="typescript" />
 </Card>

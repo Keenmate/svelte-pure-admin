@@ -119,13 +119,11 @@
 	{/snippet}
 </KpiGaugeList>
 
-<br />
-
 <!-- ============================================================
      2. Layout test — 1×3 page grid (.pc-col-1-3)
      ============================================================ -->
 
-<Heading level={3}>1×3 · <Code>.pc-col-1-3</Code> columns</Heading>
+<Heading class="mt-xl" level={3}>1×3 · <Code>.pc-col-1-3</Code> columns</Heading>
 <Paragraph>
 	Three smaller cards side-by-side. Each card uses the default <Code>KpiGaugeList</Code> (no
 	<Code>gridLayout</Code> modifier) — at ~400 px wide the cell-min threshold forces a single
@@ -155,13 +153,11 @@
 	</Column>
 </Grid>
 
-<br />
-
 <!-- ============================================================
      3. Layout test — page grid 25% + 45% (asymmetric, 30% empty)
      ============================================================ -->
 
-<Heading level={3}>2×3 stack · <Code>.pc-col-25</Code> + <Code>.pc-col-45</Code> (asymmetric, 30% empty)</Heading>
+<Heading class="mt-xl" level={3}>2×3 stack · <Code>.pc-col-25</Code> + <Code>.pc-col-45</Code> (asymmetric, 30% empty)</Heading>
 <Paragraph>
 	Two page-grid columns: 25% wide on the left (narrow stress test — each gauge gets ~280–320 px),
 	45% on the right. Each holds three gauges with the default <Code>KpiGaugeList</Code>. Both cards
@@ -186,10 +182,8 @@
 	</Column>
 </Grid>
 
-<br />
-
-<Card titleText="Usage Guide">
-	<h4>When to use</h4>
+<Card class="mt-xl" titleText="Usage Guide">
+	<Heading level={4}>When to use</Heading>
 	<Paragraph>
 		Goal-oriented dashboards where every KPI has a defined target and "are we on/under/over?" is the
 		question that matters most. The bar reads value/target as a percent; the target tick anchors the
@@ -197,7 +191,7 @@
 		direction (green / orange / grey).
 	</Paragraph>
 
-	<h4 class="mt-4">Tick position (<Code>tickPosition</Code>)</h4>
+	<Heading level={4} class="mt-4">Tick position (<Code>tickPosition</Code>)</Heading>
 	<Paragraph>
 		Default tick sits at <Code>100%</Code> — the right edge of the bar's "0 → target" scale. Set
 		<Code>tickPosition="80%"</Code> (or any percent) when the bar's scale runs wider than the target
@@ -206,7 +200,7 @@
 		the default capped-at-100% pattern.
 	</Paragraph>
 
-	<h4 class="mt-4">Variant colours</h4>
+	<Heading level={4} class="mt-4">Variant colours</Heading>
 	<Paragraph>
 		Bar fill colour is driven by the <Code>variant</Code> prop via the <Code>--pa-kpi-bar-color</Code>
 		cascade var. Variants: <Code>positive</Code> (green), <Code>warning</Code> (orange,
@@ -215,7 +209,7 @@
 		<Code>--pa-kpi-bar-color</Code>.
 	</Paragraph>
 
-	<h4 class="mt-4">Layout</h4>
+	<Heading level={4} class="mt-4">Layout</Heading>
 	<Paragraph>
 		<strong>Cell-min-driven <Code>auto-fit</Code> grid.</strong> The default
 		<Code>KpiGaugeList</Code> packs as many columns as fit while keeping each cell at least
@@ -242,7 +236,7 @@
 		still uses <Code>padding: 0</Code> so the dividers go edge-to-edge.
 	</Paragraph>
 
-	<h4 class="mt-4">Hover detail popover</h4>
+	<Heading level={4} class="mt-4">Hover detail popover</Heading>
 	<Paragraph>
 		Cursor-anchored via Floating UI's <Code>computePosition</Code> + a virtual reference element built
 		from <Code>e.clientX/clientY</Code>. Same recipe as the other KPI showcases:
@@ -251,10 +245,8 @@
 	</Paragraph>
 </Card>
 
-<br />
-
-<Card titleText="Component Reference">
-	<h4>KpiGaugeList props</h4>
+<Card class="mt-xl" titleText="Component Reference">
+	<Heading level={4}>KpiGaugeList props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
@@ -263,7 +255,7 @@
 		<li><Code>cellMinWidth</Code> — CSS length applied as <Code>--pa-kpi-gauge-cell-min</Code> on the grid (default upstream <Code>20rem</Code>). Smaller → more columns at the same container width; larger → fewer.</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiGauge props</h4>
+	<Heading level={4} class="mt-4">KpiGauge props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — sentiment colour: <Code>positive</Code> / <Code>warning</Code> / <Code>negative</Code> / <Code>neutral</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>

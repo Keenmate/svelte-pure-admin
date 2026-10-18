@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Badge, Button, ButtonGroup, CodeBlock, Code } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Badge, Button, ButtonGroup, CodeBlock, Code, BasicList } from '@keenmate/svelte-pure-admin';
 </script>
 
 <svelte:head>
@@ -400,7 +400,7 @@
 <!-- Usage Documentation -->
 <Card titleText="Implementation Notes" class="mt-8">
 	<Heading level={4}>Component Classes</Heading>
-	<ul>
+	<BasicList>
 		<li><Code>pa-comparison-table</Code> - Apply to table element</li>
 		<li><Code>pa-comparison-table__label</Code> - Field name column</li>
 		<li><Code>pa-comparison-table__value</Code> - Wrapper for value + copy button</li>
@@ -410,10 +410,10 @@
 		<li><Code>pa-comparison-table__conflict</Code> - Orange highlight for merge conflicts</li>
 		<li><Code>pa-comparison-table__conflict--solid</Code> - Solid orange background (no left border accent)</li>
 		<li><Code>pa-comparison-table__section</Code> - Section header row</li>
-	</ul>
+	</BasicList>
 
 	<Heading level={4} class="mt-4">Features</Heading>
-	<ul>
+	<BasicList>
 		<li>✅ 2-column comparison (Base vs New)</li>
 		<li>✅ 3-column comparison (Base vs A vs B)</li>
 		<li>✅ Section headers for grouping fields</li>
@@ -422,7 +422,7 @@
 		<li>✅ Conflict highlighting (orange background)</li>
 		<li>✅ Status indicators (checkmarks, badges)</li>
 		<li>✅ Empty row preservation for structure</li>
-	</ul>
+	</BasicList>
 
 	<Heading level={4} class="mt-4">JavaScript Integration</Heading>
 	<CodeBlock>{`// Copy button functionality

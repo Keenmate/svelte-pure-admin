@@ -7,7 +7,8 @@
 		Code,
 		BasicList,
 		KpiEditorial,
-		KpiEditorialTile
+		KpiEditorialTile,
+		Heading
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -108,10 +109,8 @@
 	{/snippet}
 </KpiEditorial>
 
-<br />
-
 <!-- 1×3 page-grid: same design at 1/3-width cards, internal grid forced to 2-col -->
-<Paragraph>
+<Paragraph class="mt-xl">
 	1×3 page-grid demonstrating the design at 1/3-width cards. Each card's internal grid forces 2-col via
 	<Code>gridLayout="2col"</Code>.
 </Paragraph>
@@ -147,10 +146,8 @@
 	</Column>
 </Grid>
 
-<br />
-
 <!-- Asymmetric 25/45/30 page-grid -->
-<Paragraph>
+<Paragraph class="mt-xl">
 	Asymmetric 25 / 45 / 30 page-grid showing how the design behaves across cells of different widths. The
 	25 % card crosses the 360 px container-query breakpoint to single-column at typical viewport widths;
 	the 45 % card stays multi-col; the 30 % card sits at the awkward zone right around the 360 px breakpoint.
@@ -183,24 +180,22 @@
 	</Column>
 </Grid>
 
-<br />
-
-<Card titleText="Usage Guide">
-	<h4>When to use</h4>
+<Card class="mt-xl" titleText="Usage Guide">
+	<Heading level={4}>When to use</Heading>
 	<Paragraph>
 		Executive dashboards / weekly review pages. The design's identity is restraint — one big light-weight
 		number per tile, hairline rules, generous space, no chart chrome. Best when the operator wants "how
 		are we doing" at a glance and reads the supporting context only on hover.
 	</Paragraph>
 
-	<h4 class="mt-4">Hairline rules</h4>
+	<Heading level={4} class="mt-4">Hairline rules</Heading>
 	<Paragraph>
 		Dividers between cells are painted by <Code>gap: 1px</Code> on <Code>pa-kpi-edit__grid</Code> over a
 		<Code>background: var(--pc-border-color)</Code>; each tile paints <Code>--pa-card-bg</Code> over its
 		own area. Only the gap shows through, giving single-pixel hairlines on every interior boundary.
 	</Paragraph>
 
-	<h4 class="mt-4">Picking the column count</h4>
+	<Heading level={4} class="mt-4">Picking the column count</Heading>
 	<Paragraph>
 		Default is a cell-min-driven <Code>auto-fit</Code> grid. Pass <Code>gridLayout="2col"</Code> on
 		<Code>KpiEditorial</Code> to force exactly 2 columns regardless of card width, or a
@@ -212,10 +207,8 @@
 	</Paragraph>
 </Card>
 
-<br />
-
-<Card titleText="Component Reference">
-	<h4>KpiEditorial props</h4>
+<Card class="mt-xl" titleText="Component Reference">
+	<Heading level={4}>KpiEditorial props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
@@ -224,7 +217,7 @@
 		<li><Code>cellMinWidth</Code> — CSS length for <Code>--pa-kpi-edit-cell-min</Code> (default <Code>14rem</Code>).</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiEditorialTile props</h4>
+	<Heading level={4} class="mt-4">KpiEditorialTile props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>labelText</Code> — single-line label. Use the <Code>label</Code> snippet for multi-line (<Code>{'<br>'}</Code>).</li>
 		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — headline number (e.g. <Code>$</Code> / <Code>871</Code> / <Code>K</Code>).</li>
@@ -235,7 +228,7 @@
 		<li><Code>deltaAbsoluteText</Code> — "Δ absolute" row in the auto-generated popover.</li>
 	</BasicList>
 
-	<h4 class="mt-4">Delta sentiment variants</h4>
+	<Heading level={4} class="mt-4">Delta sentiment variants</Heading>
 	<BasicList spacing="compact">
 		<li><Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> — ordinary movement / no change.</li>
 		<li><Code>up-strong</Code> / <Code>down-strong</Code> — outlier positive / negative (deeper colours).</li>

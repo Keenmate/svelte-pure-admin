@@ -60,6 +60,12 @@ declare global {
 				fit?: { defaultPriority?: number };
 				containerBreakpoint?: { hysteresis?: number; hiddenClass?: string };
 			};
+			/** core tooltips-popovers.js — floating tooltips for `.pa-tooltip` elements. */
+			tooltips?: {
+				init?: () => void;
+				initTooltips?: () => void;
+				isTruncated?: (el: Element) => boolean;
+			};
 			printElement?: (target: string | HTMLElement, options?: { title?: string }) => void;
 			printSheet?: (target: string | HTMLElement, options?: { title?: string }) => void;
 			events?: {

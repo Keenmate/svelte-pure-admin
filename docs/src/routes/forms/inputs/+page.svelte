@@ -507,7 +507,7 @@
 <Card titleText="Code Examples">
 	<Grid>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Basic Input with Sizes</h4>
+			<Heading level={4} class="mb-2">Basic Input with Sizes</Heading>
 			<CodeBlock>{`<FormGroup>
   <FormLabel>Label</FormLabel>
   <Input placeholder="Enter text" />
@@ -522,7 +522,7 @@
 <Input size="xl" placeholder="Extra Large" />`}</CodeBlock>
 		</Column>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Validation States</h4>
+			<Heading level={4} class="mb-2">Validation States</Heading>
 			<CodeBlock>{`<!-- Success state -->
 <FormGroup state="success">
   <FormLabel>Valid Input</FormLabel>
@@ -546,7 +546,7 @@
 		</Column>
 	</Grid>
 
-	<h4 class="mb-2 mt-4">Input Groups (Prepend/Append)</h4>
+	<Heading level={4} class="mb-2 mt-4">Input Groups (Prepend/Append)</Heading>
 	<CodeBlock>{`<!-- With prepend -->
 <InputGroup>
   <InputGroupPrepend>@</InputGroupPrepend>
@@ -586,7 +586,7 @@
 
 	<Grid class="mt-4">
 		<Column size="100" md="50">
-			<h4 class="mb-2">Select & Textarea</h4>
+			<Heading level={4} class="mb-2">Select & Textarea</Heading>
 			<CodeBlock>{`<!-- Select dropdown -->
 <Select>
   <option>Choose...</option>
@@ -605,7 +605,7 @@
 <Textarea rows={5} />`}</CodeBlock>
 		</Column>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Checkboxes & Radios</h4>
+			<Heading level={4} class="mb-2">Checkboxes & Radios</Heading>
 			<CodeBlock>{`<!-- Checkbox group -->
 <CheckboxGroup>
   <Checkbox labelText="Option 1" checked />

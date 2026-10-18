@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Paragraph, Card, TableCard, Grid, Column, Table, Badge, Button, ButtonGroup, Alert, BasicList, Code, CodeBlock } from '@keenmate/svelte-pure-admin';
+	import { Paragraph, Card, TableCard, Grid, Column, Table, Badge, Button, ButtonGroup, Alert, BasicList, Code, CodeBlock, Heading } from '@keenmate/svelte-pure-admin';
 </script>
 
 <!-- How It Works -->
 <Card titleText="How It Works" class="mb-4">
 	<Grid>
 		<Column size="100" md="1-3">
-			<h4 class="mb-2">Desktop (&gt;1024px)</h4>
+			<Heading level={4} class="mb-2">Desktop (&gt;1024px)</Heading>
 			<BasicList>
 				<li>Standard table layout with columns</li>
 				<li>Headers visible at top</li>
@@ -15,7 +15,7 @@
 			</BasicList>
 		</Column>
 		<Column size="100" md="1-3">
-			<h4 class="mb-2">Tablet (769px - 1024px)</h4>
+			<Heading level={4} class="mb-2">Tablet (769px - 1024px)</Heading>
 			<BasicList>
 				<li>Table becomes horizontally scrollable</li>
 				<li>Maintains desktop structure</li>
@@ -24,7 +24,7 @@
 			</BasicList>
 		</Column>
 		<Column size="100" md="1-3">
-			<h4 class="mb-2">Mobile (≤768px)</h4>
+			<Heading level={4} class="mb-2">Mobile (≤768px)</Heading>
 			<BasicList>
 				<li>Each row becomes a card</li>
 				<li>Headers hidden</li>
@@ -224,13 +224,13 @@
 
 <!-- Code Example -->
 <Card titleText="HTML Implementation" descriptionText="How to make your tables responsive" class="mb-4">
-	<h4 class="mb-2">1. Add the class modifier</h4>
+	<Heading level={4} class="mb-2">1. Add the class modifier</Heading>
 	<Paragraph class="mb-3">Add <Code>.pa-table--responsive</Code> to your table element:</Paragraph>
 	<CodeBlock class="mb-4">{`<table class="pa-table pa-table--responsive">
   <!-- table content -->
 </table>`}</CodeBlock>
 
-	<h4 class="mb-2">2. Add data-label attributes</h4>
+	<Heading level={4} class="mb-2">2. Add data-label attributes</Heading>
 	<Paragraph class="mb-3">Each <Code>&lt;td&gt;</Code> needs a <Code>data-label</Code> attribute matching its column header:</Paragraph>
 	<CodeBlock class="mb-4">{`<table class="pa-table pa-table--responsive">
   <thead>
@@ -251,7 +251,7 @@
   </tbody>
 </table>`}</CodeBlock>
 
-	<h4 class="mb-2">3. That's it!</h4>
+	<Heading level={4} class="mb-2">3. That's it!</Heading>
 	<Paragraph>The table will automatically transform on screens smaller than 768px. No JavaScript required!</Paragraph>
 
 	<Alert variant="success" class="mt-4">
@@ -307,7 +307,7 @@
 <Card titleText="Testing Tips">
 	<Grid>
 		<Column size="100" md="1-3">
-			<h4>Desktop Browser</h4>
+			<Heading level={4}>Desktop Browser</Heading>
 			<BasicList>
 				<li>Resize browser window</li>
 				<li>Use DevTools device toolbar</li>
@@ -315,7 +315,7 @@
 			</BasicList>
 		</Column>
 		<Column size="100" md="1-3">
-			<h4>Real Device</h4>
+			<Heading level={4}>Real Device</Heading>
 			<BasicList>
 				<li>Test on actual phones/tablets</li>
 				<li>Check both orientations</li>
@@ -323,7 +323,7 @@
 			</BasicList>
 		</Column>
 		<Column size="100" md="1-3">
-			<h4>Common Breakpoints</h4>
+			<Heading level={4}>Common Breakpoints</Heading>
 			<BasicList>
 				<li>Mobile: 320px - 767px</li>
 				<li>Tablet: 768px - 1023px</li>
@@ -337,7 +337,7 @@
 <Card titleText="Svelte Component Code Examples">
 	<Grid>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Using Table Component</h4>
+			<Heading level={4} class="mb-2">Using Table Component</Heading>
 			<CodeBlock>{`<!-- Add responsive class via class prop -->
 <Table class="pa-table--responsive" isStriped>
   <thead>
@@ -359,7 +359,7 @@
 </Table>`}</CodeBlock>
 		</Column>
 		<Column size="100" md="50">
-			<h4 class="mb-2">Using Raw HTML Table</h4>
+			<Heading level={4} class="mb-2">Using Raw HTML Table</Heading>
 			<CodeBlock>{`<!-- Wrap in Card with hasPadding={false} for flush edges -->
 <Card titleText="Users" hasPadding={false}>
   <table class="pa-table pa-table--responsive">
@@ -386,7 +386,7 @@
 		</Column>
 	</Grid>
 
-	<h4 class="mb-2 mt-4">Key Points</h4>
+	<Heading level={4} class="mb-2 mt-4">Key Points</Heading>
 	<CodeBlock>{`// Essential: Every <td> needs a matching data-label
 <td data-label="Column Name">Cell Value</td>
 

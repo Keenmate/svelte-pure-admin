@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Splitter, SplitterPane, SplitterGutter, Card, Button, BasicList, CodeBlock, Code } from '@keenmate/svelte-pure-admin';
+	import { Splitter, SplitterPane, SplitterGutter, Card, Button, SplitButton, SplitButtonItem, BasicList, CodeBlock, Code, Heading } from '@keenmate/svelte-pure-admin';
 
 	// --- Demo 4: mirror toggle ---
 	let mirror = $state(false);
@@ -127,7 +127,7 @@ console.log(greet('Pure Admin'));`;
 			max="60%"
 			style="background: var(--pc-subtle-bg); padding: 1.6rem;"
 		>
-			<h4 class="mb-3" style="margin-top: 0;">Files</h4>
+			<Heading level={4} class="mb-3 mt-0">Files</Heading>
 			<BasicList>
 				<li>📁 components/</li>
 				<li>📁 utils/</li>
@@ -140,7 +140,7 @@ console.log(greet('Pure Admin'));`;
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize sidebar" />
 		<SplitterPane style="padding: 1.6rem;">
-			<h4 class="mb-3" style="margin-top: 0;">main.scss</h4>
+			<Heading level={4} class="mb-3 mt-0">main.scss</Heading>
 			<p class="text-muted mb-3">Drag the gutter, double-click it to collapse, or focus it and use arrow keys.</p>
 			<CodeBlock>{codeScss}</CodeBlock>
 		</SplitterPane>
@@ -161,7 +161,7 @@ console.log(greet('Pure Admin'));`;
 		style="height: 420px; border: 1px solid var(--pc-border-color); border-radius: var(--pc-border-radius);"
 	>
 		<SplitterPane size="60%" min="80px" max="80%" style="padding: 1.6rem;">
-			<h4 class="mb-3" style="margin-top: 0;">Editor</h4>
+			<Heading level={4} class="mb-3 mt-0">Editor</Heading>
 			<CodeBlock>{codeEditorJs}</CodeBlock>
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize editor" />
@@ -281,54 +281,37 @@ console.log(greet('Pure Admin'));`;
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize or minimize file explorer" />
 		<SplitterPane style="padding: 0;">
-			<!-- Raw markup: pa-card__actions--responsive (CSS-only full/collapsed pattern, not wrapped) -->
-			<div class="pa-card" style="height: 100%; margin: 0;">
-				<div class="pa-card__header">
-					<div class="pa-card__title">
-						<i class="pa-card__title-icon fa-solid fa-code" aria-hidden="true"></i>
-						<h4 class="pa-card__title-text">Editor</h4>
-					</div>
-					<div class="pa-card__actions pa-card__actions--responsive">
-						<div class="pa-card__actions-full">
-							<button class="pa-btn pa-btn--xs pa-btn--secondary" title="Save" aria-label="Save">
-								<span class="pa-icon pa-icon--save" aria-hidden="true"></span>
-							</button>
-							<button class="pa-btn pa-btn--xs pa-btn--secondary" title="Format" aria-label="Format code">
-								<i class="fa-solid fa-wand-magic-sparkles"></i>
-							</button>
-							<button class="pa-btn pa-btn--xs pa-btn--primary" title="Run" aria-label="Run">
-								<i class="fa-solid fa-play"></i>
-							</button>
-						</div>
-						<div class="pa-card__actions-collapsed">
-							<div class="pa-btn-split">
-								<button class="pa-btn pa-btn--xs pa-btn--primary" title="Run" aria-label="Run">
-									<i class="fa-solid fa-play"></i>
-								</button>
-								<button class="pa-btn pa-btn--xs pa-btn--primary pa-btn-split__toggle" aria-label="More actions">
-									<span class="pa-btn-split__chevron" aria-hidden="true"></span>
-								</button>
-								<div class="pa-btn-split__menu">
-									<div class="pa-btn-split__menu-inner">
-										<button class="pa-btn-split__item" type="button">
-											<span class="pa-icon pa-icon--save" aria-hidden="true"></span>
-											Save
-										</button>
-										<button class="pa-btn-split__item" type="button">
-											<i class="fa-solid fa-wand-magic-sparkles"></i>
-											Format
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="pa-card__body">
-					<p class="mb-3">When the file explorer minimizes, this card stays put and the gutter slides next to the rail.</p>
-					<CodeBlock>{codeMinimize}</CodeBlock>
-				</div>
-			</div>
+			<Card style="height: 100%; margin: 0;" titleText="Editor">
+				{#snippet titleIcon()}<i class="fa-solid fa-code" aria-hidden="true"></i>{/snippet}
+				{#snippet headerActions()}
+					<Button variant="secondary" size="xs" titleText="Save" aria-label="Save">
+						<span class="pa-icon pa-icon--save" aria-hidden="true"></span>
+					</Button>
+					<Button variant="secondary" size="xs" titleText="Format" aria-label="Format code">
+						<i class="fa-solid fa-wand-magic-sparkles"></i>
+					</Button>
+					<Button variant="primary" size="xs" titleText="Run" aria-label="Run">
+						<i class="fa-solid fa-play"></i>
+					</Button>
+				{/snippet}
+				{#snippet headerActionsCollapsed()}
+					<SplitButton variant="primary" size="xs" titleText="Run" ariaLabel="Run" toggleAriaLabel="More actions">
+						<i class="fa-solid fa-play"></i>
+						{#snippet menu()}
+							<SplitButtonItem>
+								{#snippet icon()}<span class="pa-icon pa-icon--save" aria-hidden="true"></span>{/snippet}
+								Save
+							</SplitButtonItem>
+							<SplitButtonItem>
+								{#snippet icon()}<i class="fa-solid fa-wand-magic-sparkles"></i>{/snippet}
+								Format
+							</SplitButtonItem>
+						{/snippet}
+					</SplitButton>
+				{/snippet}
+				<p class="mb-3">When the file explorer minimizes, this card stays put and the gutter slides next to the rail.</p>
+				<CodeBlock>{codeMinimize}</CodeBlock>
+			</Card>
 		</SplitterPane>
 	</Splitter>
 </Card>
@@ -343,10 +326,10 @@ console.log(greet('Pure Admin'));`;
 		lowest-priority button moves into a "..." menu (appended to <Code>&lt;body&gt;</Code> so card
 		<Code>overflow: hidden</Code> can't clip it).
 	</p>
-	<ul class="mb-3">
+	<BasicList class="mb-3">
 		<li>Priority via <Code>data-pa-actions-priority="N"</Code> — higher stays longer.</li>
 		<li>Tiebreak direction via <Code>data-pa-actions-overflow-from="end"</Code> (default — rightmost drops first) or <Code>"start"</Code> (leftmost drops first).</li>
-	</ul>
+	</BasicList>
 
 	<label class="mb-3" style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
 		<input type="checkbox" bind:checked={overflowFromStart} />

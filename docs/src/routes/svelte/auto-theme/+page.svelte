@@ -207,7 +207,7 @@ function applyThemeToDOM(resolvedMode: 'light' | 'dark') {
 
 			<div class="mt-3 p-3 bg-light rounded">
 				<Strong>Current State:</Strong>
-				<ul class="mt-2 mb-0">
+				<BasicList class="mt-2 mb-0">
 					<li>
 						<Code>themeMode</Code>:
 						<Badge variant={demoThemeMode === 'auto' ? 'primary' : 'secondary'}>{demoThemeMode}</Badge>
@@ -220,7 +220,7 @@ function applyThemeToDOM(resolvedMode: 'light' | 'dark') {
 						<Code>resolvedTheme</Code>:
 						<Badge variant={resolvedTheme === 'dark' ? 'warning' : 'success'}>{resolvedTheme}</Badge>
 					</li>
-				</ul>
+				</BasicList>
 			</div>
 		</Column>
 
@@ -236,11 +236,11 @@ function applyThemeToDOM(resolvedMode: 'light' | 'dark') {
 					</li>
 					<li>
 						<Strong>Auto:</Strong> Follows your OS preference
-						<ul class="mt-1">
+						<BasicList class="mt-1">
 							<li>OS set to dark → Dark theme</li>
 							<li>OS set to light → Light theme</li>
 							<li>OS changes → Theme updates automatically</li>
-						</ul>
+						</BasicList>
 					</li>
 				</BasicList>
 			</div>

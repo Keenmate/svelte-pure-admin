@@ -305,8 +305,6 @@
 	{/snippet}
 </KpiTerminal>
 
-<br />
-
 <!-- ============================================================
      2. Layout test — 1×3 using page grid (.pc-col-1-3)
      Standalone tiles in page-grid columns — no terminal-grid chrome,
@@ -314,7 +312,7 @@
      viewport width (typical "stat strip" placement).
      ============================================================ -->
 
-<Heading level={3}>1×3 · <Code>.pc-col-1-3</Code> columns</Heading>
+<Heading class="mt-xl" level={3}>1×3 · <Code>.pc-col-1-3</Code> columns</Heading>
 <Paragraph>
 	Each tile in its own <Code>.pc-col-1-3</Code> (33% page-grid column) as a <em>standalone</em>
 	mini-card — no shared terminal-grid chrome, no tabs. Tests how a single tile renders at one-third
@@ -394,14 +392,12 @@
 	</Column>
 </Grid>
 
-<br />
-
 <!-- ============================================================
      3. Layout test — page grid 25% + 45% columns, 3 tiles stacked
      per column. No terminal-grid chrome, no tabs.
      ============================================================ -->
 
-<Heading level={3}>2×3 stack · <Code>.pc-col-25</Code> + <Code>.pc-col-45</Code> (asymmetric, 30% empty)</Heading>
+<Heading class="mt-xl" level={3}>2×3 stack · <Code>.pc-col-25</Code> + <Code>.pc-col-45</Code> (asymmetric, 30% empty)</Heading>
 <Paragraph>
 	Two page-grid columns: 25% wide on the left (narrow stress test), 45% wide on the right (mid-width).
 	Each holds three standalone tiles stacked vertically. The remaining 30% of the row is intentionally
@@ -542,15 +538,13 @@
 	</Column>
 </Grid>
 
-<br />
-
 <!-- ============================================================
      4. Single-pane card · no tabs
      Single-pane card (no tabs needed) — illustrates the no-tabs
      case where children are tiles directly inside KpiTerminal.
      ============================================================ -->
 
-<Heading level={3}>Single-pane card · no tabs</Heading>
+<Heading class="mt-xl" level={3}>Single-pane card · no tabs</Heading>
 <Paragraph>
 	The simplest form: <Code>KpiTerminal</Code> without <Code>hasTabs</Code>. Children are
 	<Code>KpiTerminalTile</Code> instances directly; the host wraps them in the canonical
@@ -599,14 +593,12 @@
 	</KpiTerminalTile>
 </KpiTerminal>
 
-<br />
-
 <!-- ============================================================
      Usage Guide
      ============================================================ -->
 
-<Card titleText="Usage Guide">
-	<h4>When to use</h4>
+<Card class="mt-xl" titleText="Usage Guide">
+	<Heading level={4}>When to use</Heading>
 	<Paragraph>
 		Bloomberg-style dense KPI panels: per-tile depth (id, status pill, label, focal value, prev row,
 		sparkline) with an optional tab strip on top that swaps in a different pane (different tile set,
@@ -615,7 +607,7 @@
 		pick Sparkline list or Editorial minimal.
 	</Paragraph>
 
-	<h4 class="mt-4">Tab strip (optional)</h4>
+	<Heading level={4} class="mt-4">Tab strip (optional)</Heading>
 	<Paragraph>
 		Pass <Code>hasTabs</Code> on <Code>KpiTerminal</Code> and supply one or more <Code>KpiTerminalPane</Code>
 		children — each carries its own <Code>id</Code> + <Code>labelText</Code>. The host renders the tab strip
@@ -630,14 +622,14 @@
 		by default.
 	</Paragraph>
 
-	<h4 class="mt-4">Single-pane card (no tabs)</h4>
+	<Heading level={4} class="mt-4">Single-pane card (no tabs)</Heading>
 	<Paragraph>
 		Without <Code>hasTabs</Code>, <Code>KpiTerminal</Code> wraps its tile children in a single
 		<Code>pa-kpi-terminal__grid--2col</Code>. This is the simplest form — section 4 above. Use this when
 		one panel = one view.
 	</Paragraph>
 
-	<h4 class="mt-4">No wrapper at all</h4>
+	<Heading level={4} class="mt-4">No wrapper at all</Heading>
 	<Paragraph>
 		For layout tests / sidebar widgets where you want a single tile in a page-grid column with no
 		surrounding terminal chrome, render <Code>KpiTerminalTile isStandalone</Code> directly inside a
@@ -646,7 +638,7 @@
 		bottom margin that the grid-bookkeeping borders normally provide.
 	</Paragraph>
 
-	<h4 class="mt-4">Status pills (different axis from sentiment)</h4>
+	<Heading level={4} class="mt-4">Status pills (different axis from sentiment)</Heading>
 	<Paragraph>
 		Three pill styles for tile-level status: <Code>WARN</Code> (filled orange — needs attention),
 		<Code>GOOD</Code> (text-only — passing, no chrome by design), <Code>NEUTRAL</Code> (filled grey —
@@ -662,7 +654,7 @@
 		intentionally.
 	</Paragraph>
 
-	<h4 class="mt-4">Custom chart libraries</h4>
+	<Heading level={4} class="mt-4">Custom chart libraries</Heading>
 	<Paragraph>
 		The <Code>chart</Code> snippet is library-agnostic — drop in inline SVG (the default sparkline
 		pattern), <Code>{`<canvas>`}</Code> + Chart.js / D3 / ECharts, or any other renderer. The
@@ -671,7 +663,7 @@
 		scale + theme without per-tile overrides.
 	</Paragraph>
 
-	<h4 class="mt-4">Sparkline trailing dot</h4>
+	<Heading level={4} class="mt-4">Sparkline trailing dot</Heading>
 	<Paragraph>
 		SVG <Code>preserveAspectRatio="none"</Code> stretches a <Code>{`<circle>`}</Code> into an oval, so
 		the <Code>kpiSparklineDots</Code> action converts each circle to an HTML <Code>{`<span>`}</Code>
@@ -679,7 +671,7 @@
 		circle regardless of chart aspect ratio.
 	</Paragraph>
 
-	<h4 class="mt-4">Hover detail popover</h4>
+	<Heading level={4} class="mt-4">Hover detail popover</Heading>
 	<Paragraph>
 		Cursor-anchored via Floating UI. The popover is appended to <Code>{`<body>`}</Code> on mount to
 		escape ancestor <Code>overflow: hidden</Code>; <Code>pointer-events: none</Code> so the cursor passes
@@ -688,10 +680,8 @@
 	</Paragraph>
 </Card>
 
-<br />
-
-<Card titleText="Component Reference">
-	<h4>KpiTerminal props</h4>
+<Card class="mt-xl" titleText="Component Reference">
+	<Heading level={4}>KpiTerminal props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
@@ -700,7 +690,7 @@
 		<li><Code>view</Code> — currently active pane id (bindable). Default: first registered pane's id.</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiTerminalPane props</h4>
+	<Heading level={4} class="mt-4">KpiTerminalPane props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>id</Code> — unique pane id. Used for <Code>data-tab</Code> and visibility matching.</li>
 		<li><Code>labelText</Code> — tab button text shown in the parent's tab strip.</li>
@@ -708,7 +698,7 @@
 		<li><Code>class</Code> — optional extra class for the pane element.</li>
 	</BasicList>
 
-	<h4 class="mt-4">KpiTerminalTile props</h4>
+	<Heading level={4} class="mt-4">KpiTerminalTile props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — sparkline + dot trend colour (<Code>up-strong</Code> / <Code>up</Code> / <Code>flat</Code> / <Code>down</Code> / <Code>down-strong</Code>).</li>
 		<li><Code>isStandalone</Code> — full border + card bg + bottom margin (use when tile lives in a page-grid <Code>Column</Code> outside any terminal grid / pane).</li>

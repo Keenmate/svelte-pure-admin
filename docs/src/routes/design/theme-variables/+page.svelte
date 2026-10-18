@@ -17,7 +17,7 @@
 
 <!-- How It Works -->
 <Card titleText="How It Works">
-	<h3 class="mb-2">Architecture</h3>
+	<Heading level={3} class="mb-2">Architecture</Heading>
 	<OrderedList class="mb-3">
 		<li><strong>Pure Admin defines SCSS variables</strong> - <Code>$base-*</Code> variables in <Code>_variables.scss</Code></li>
 		<li><strong>Themes override as needed</strong> - Each theme can customize these base variables</li>
@@ -25,7 +25,7 @@
 		<li><strong>Web components consume</strong> - Components use <Code>var(--base-*, fallback)</Code></li>
 	</OrderedList>
 
-	<h3 class="mb-2">Data Flow</h3>
+	<Heading level={3} class="mb-2">Data Flow</Heading>
 	<CodeBlock class="mb-3">{`_variables.scss          themes/express.scss           Output CSS
 ────────────────        ─────────────────────        ─────────────
 $base-accent-color:     $base-accent-color:          :root {
@@ -33,7 +33,7 @@ $base-accent-color:     $base-accent-color:          :root {
                         @include output-base-vars;     ...
                                                      }`}</CodeBlock>
 
-	<h3 class="mb-2">Web Component Consumption</h3>
+	<Heading level={3} class="mb-2">Web Component Consumption</Heading>
 	<CodeBlock>{`/* In web component CSS */
 :host {
     --ms-accent-color: var(--base-primary-color, #3b82f6);
@@ -150,7 +150,7 @@ $base-accent-color:     $base-accent-color:          :root {
 
 	<Grid>
 		<Column size="50" md="25">
-			<h4 class="mb-1">Colors</h4>
+			<Heading level={4} class="mb-1">Colors</Heading>
 			<div class="d-flex align-items-center gap-8 mb-2">
 				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-primary-color); border: 1px solid var(--base-border-color);"></div>
 				<Code>--base-primary-color</Code>
@@ -169,7 +169,7 @@ $base-accent-color:     $base-accent-color:          :root {
 			</div>
 		</Column>
 		<Column size="50" md="25">
-			<h4 class="mb-1">Text Colors</h4>
+			<Heading level={4} class="mb-1">Text Colors</Heading>
 			<div class="d-flex align-items-center gap-8 mb-2">
 				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-text-color-1); border: 1px solid var(--base-border-color);"></div>
 				<Code>--base-text-color-1</Code>
@@ -188,7 +188,7 @@ $base-accent-color:     $base-accent-color:          :root {
 			</div>
 		</Column>
 		<Column size="50" md="25">
-			<h4 class="mb-1">Input Fields</h4>
+			<Heading level={4} class="mb-1">Input Fields</Heading>
 			<div class="d-flex align-items-center gap-8 mb-2">
 				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-input-bg); border: 1px solid var(--base-border-color);"></div>
 				<Code>--base-input-bg</Code>
@@ -203,7 +203,7 @@ $base-accent-color:     $base-accent-color:          :root {
 			</div>
 		</Column>
 		<Column size="50" md="25">
-			<h4 class="mb-1">Typography</h4>
+			<Heading level={4} class="mb-1">Typography</Heading>
 			<p class="mb-1" style="font-size: calc(var(--base-font-size-2xs, 1.0) * 1rem);"><Code>--base-font-size-2xs</Code> (1.0)</p>
 			<p class="mb-1" style="font-size: calc(var(--base-font-size-xs, 1.2) * 1rem);"><Code>--base-font-size-xs</Code> (1.2)</p>
 			<p class="mb-1" style="font-size: calc(var(--base-font-size-sm, 1.4) * 1rem);"><Code>--base-font-size-sm</Code> (1.4)</p>

@@ -568,13 +568,13 @@
 			     shrinks to its monogram (steps, priority 30). FitStep auto-indexes each
 			     variant and hides the non-first ones for a correct first paint. -->
 			<AppHeader>
-				<h1>
+				<Heading level={1}>
 					<FitSlot strategy="steps" priority={30} class="pc-app-header__name">
 						<FitStep>Svelte Pure Admin</FitStep>
 						<FitStep>SPA</FitStep>
 					</FitSlot>
 					<FitSlot priority={10} class="pc-app-header__version">v{libVersion}</FitSlot>
-				</h1>
+				</Heading>
 			</AppHeader>
 
 			<!-- Primary nav — folds into the sidebar as the header narrows. -->

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Badge, Callout, FitContainer, FitSlot, Table, Code } from '@keenmate/svelte-pure-admin';
+	import { Badge, Callout, FitContainer, FitSlot, Table, Code, Heading } from '@keenmate/svelte-pure-admin';
 	import { HighlightedCode } from '$lib/components';
 
 	// §2 live relocate demo — the slider drives the stage width; the fit engine's
@@ -55,7 +55,7 @@
 </script>
 
 <div class="pa-page-content">
-	<h1>Responsivity — how it works</h1>
+	<Heading level={1}>Responsivity — how it works</Heading>
 	<p class="resp-legend mb-4 text-sm">
 		Two small JavaScript engines let a component react to <strong
 			>the space it is actually given</strong
@@ -74,7 +74,7 @@
 	<!-- ============================================================
 	     THE TWO ENGINES
 	     ============================================================ -->
-	<h2 class="mt-4 mb-2">The two engines</h2>
+	<Heading level={2} class="mt-4 mb-2">The two engines</Heading>
 	<div class="pa-table-wrapper mb-4">
 		<Table isBordered>
 			<thead>
@@ -112,7 +112,7 @@
 	<!-- ============================================================
 	     FIT ENGINE
 	     ============================================================ -->
-	<h2 class="mt-4 mb-2">1 · Fit — degrade a row to fit</h2>
+	<Heading level={2} class="mt-4 mb-2">1 · Fit — degrade a row to fit</Heading>
 	<p>
 		Fit watches a horizontal container and, when the content can't fit, degrades the <strong
 			>lowest-priority slot first</strong
@@ -141,7 +141,7 @@
 	<!-- ============================================================
 	     RELOCATION + SINKS  (LIVE demo)
 	     ============================================================ -->
-	<h2 class="mt-4 mb-2">2 · Relocation — fit decides, a <em>sink</em> places</h2>
+	<Heading level={2} class="mt-4 mb-2">2 · Relocation — fit decides, a <em>sink</em> places</Heading>
 	<p>
 		A <Code>relocate</Code> slot doesn't just hide — it <strong>moves out of the row</strong> into a
 		named destination and comes back on widen. Crucially, the Fit engine only
@@ -198,7 +198,7 @@
 	<!-- ============================================================
 	     THE EVENT + MANAGED MODE
 	     ============================================================ -->
-	<h2 class="mt-4 mb-2">3 · The event &amp; hands-off mode (Svelte / Phoenix)</h2>
+	<Heading level={2} class="mt-4 mb-2">3 · The event &amp; hands-off mode (Svelte / Phoenix)</Heading>
 	<p>
 		Before it moves anything, Fit fires a cancelable <Code>pc:fit-relocate</Code> event on the slot
 		(<Code>detail = &#123; action: 'out' | 'in', target, container &#125;</Code>). A plain HTML page
@@ -225,7 +225,7 @@
 	<!-- ============================================================
 	     CONTAINER BREAKPOINT
 	     ============================================================ -->
-	<h2 class="mt-4 mb-2">4 · Container Breakpoint — named modes at set widths</h2>
+	<Heading level={2} class="mt-4 mb-2">4 · Container Breakpoint — named modes at set widths</Heading>
 	<p>
 		When a component restyles <em>wholesale</em> at set sizes — not a row shedding pieces, but a card
 		that becomes a grid, then tabs, then icons — declare width thresholds and let the engine name the
@@ -263,7 +263,7 @@
 	<!-- ============================================================
 	     WHICH DO I USE
 	     ============================================================ -->
-	<h2 class="mt-4 mb-2">Which one do I reach for?</h2>
+	<Heading level={2} class="mt-4 mb-2">Which one do I reach for?</Heading>
 	<Callout variant="warning" class="mb-4">
 		<strong>Row of items fighting for one line?</strong> Fit — it measures and sheds by priority.<br
 		/>
