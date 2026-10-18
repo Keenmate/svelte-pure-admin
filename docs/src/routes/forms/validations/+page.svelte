@@ -421,7 +421,7 @@
 						<FormHelp variant="success">Looks good!</FormHelp>
 					{/if}
 				</FormGroup>
-				<SmallText class="mt-2 text-secondary">Validates on every keystroke. Can feel aggressive.</SmallText>
+				<SmallText class="mt-2 text-muted">Validates on every keystroke. Can feel aggressive.</SmallText>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
@@ -441,7 +441,7 @@
 						<FormHelp variant="success">Looks good!</FormHelp>
 					{/if}
 				</FormGroup>
-				<SmallText class="mt-2 text-secondary">Validates when field loses focus. Good balance.</SmallText>
+				<SmallText class="mt-2 text-muted">Validates when field loses focus. Good balance.</SmallText>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3">
@@ -462,7 +462,7 @@
 					{/if}
 				</FormGroup>
 				<Button variant="info" size="sm" class="mt-2" onclick={handleSubmitValidation}>Submit</Button>
-				<SmallText class="mt-2 text-secondary">All errors shown at once on submit. Traditional approach.</SmallText>
+				<SmallText class="mt-2 text-muted">All errors shown at once on submit. Traditional approach.</SmallText>
 			</Card>
 		</Column>
 	</Grid>
@@ -617,7 +617,7 @@
 		<li><Code>text-danger</Code> - Red text color</li>
 		<li><Code>text-warning</Code> - Yellow/orange text color</li>
 		<li><Code>text-success</Code> - Green text color</li>
-		<li><Code>text-secondary</Code> - Muted/gray text color</li>
+		<li><Code>text-muted</Code> - Muted/gray text color</li>
 	</BasicList>
 </Card>
 

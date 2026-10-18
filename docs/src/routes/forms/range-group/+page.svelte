@@ -224,7 +224,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 	<!-- ============ In a filter card ============ -->
 	<h4>In a filter bar</h4>
-	<p class="text-secondary">The range group drops into a <code>.pa-filter-card__filters</code> row as a single control standing in for three sliders. Open it, drag, and Apply.</p>
+	<p class="text-muted">The range group drops into a <code>.pa-filter-card__filters</code> row as a single control standing in for three sliders. Open it, drag, and Apply.</p>
 
 	<div class="pa-card pa-filter-card mt-2">
 		<div class="pa-card__body">
@@ -262,7 +262,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 	<!-- Event output -->
 	<h4 class="mt-4">Emitted values</h4>
-	<p class="text-secondary">
+	<p class="text-muted">
 		The group dispatches <code>pa-range-group:change</code> live and
 		<code>pa-range-group:apply</code> / <code>:reset</code> on the buttons. Payload is keyed by
 		<code>data-key</code>; a bound at its extent reports <code>null</code> (i.e. “Any”).
@@ -352,7 +352,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	<h4 class="mt-4">Bound values (<code>bind:values</code>)</h4>
 	<CodeBlock isCompact>{JSON.stringify(urlValues, null, 2)}</CodeBlock>
 
-	<p class="text-secondary mt-2">
+	<p class="text-muted mt-2">
 		This docs site is SvelteKit, so it passes a ~10-line <code>QsAdapter</code> built on
 		<code>replaceState</code>. A plain Vite / History app needs no adapter at all — just
 		<code>qsKey</code>. For a hash SPA (<code>@keenmate/svelte-spa-router</code>), use the
@@ -386,7 +386,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 		</div>
 	</div>
 
-	<p class="text-secondary mt-2">
+	<p class="text-muted mt-2">
 		Live <code>onchange</code> has fired <strong>{applyChangeCount}</strong> time(s) — but the
 		committed <code>bind:values</code> below only changes when you press <strong>Apply</strong>.
 	</p>

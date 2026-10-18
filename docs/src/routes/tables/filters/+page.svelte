@@ -269,7 +269,7 @@
 <!-- Inline Filters -->
 <Card>
 	<Heading level={3}>Inline Horizontal Filters</Heading>
-	<Paragraph class="text-secondary mb-4">All filters visible in a single row</Paragraph>
+	<Paragraph class="text-muted mb-4">All filters visible in a single row</Paragraph>
 
 	<Grid>
 		<Column size="100" md="20">

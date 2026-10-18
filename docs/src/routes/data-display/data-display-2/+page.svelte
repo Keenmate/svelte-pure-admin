@@ -427,7 +427,7 @@
 	<Grid>
 		<Column size="1-3">
 			<Heading level={4} class="mb-2">Copy Button (always visible)</Heading>
-			<Paragraph class="text-secondary mb-2"><code>copyMode="btn"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><code>copyMode="btn"</code></Paragraph>
 			<Banded>
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" copyMode="btn" />
 				<BandedRow labelText="Hash" valueText="sha256:e3b0c44298fc1c" copyMode="btn" />
@@ -435,7 +435,7 @@
 		</Column>
 		<Column size="1-3">
 			<Heading level={4} class="mb-2">Click Value to Copy</Heading>
-			<Paragraph class="text-secondary mb-2"><code>copyMode="click"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><code>copyMode="click"</code></Paragraph>
 			<Banded>
 				<BandedRow labelText="Server" valueText="prod-api-01" copyMode="click" />
 				<BandedRow labelText="OS" valueText="Ubuntu 22.04 LTS" copyMode="click" />
@@ -443,7 +443,7 @@
 		</Column>
 		<Column size="1-3">
 			<Heading level={4} class="mb-2">Icon on Hover Only</Heading>
-			<Paragraph class="text-secondary mb-2"><code>copyMode="hover"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><code>copyMode="hover"</code></Paragraph>
 			<Banded>
 				<BandedRow labelText="IBAN" valueText="CZ65 0800 0000 1920 0014 5399" copyMode="hover" />
 				<BandedRow labelText="BIC/SWIFT" valueText="GIBACZPX" copyMode="hover" />
@@ -454,7 +454,7 @@
 	<Grid class="mt-8">
 		<Column size="1-2">
 			<Heading level={4} class="mb-2">Property Card — Hover Copy</Heading>
-			<Paragraph class="text-secondary mb-2"><code>copyMode="hover"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><code>copyMode="hover"</code></Paragraph>
 			<PropCard headerText="Order Details">
 				<PropCardRow labelText="Order ID" valueText="#ORD-2026-00847" copyMode="hover" />
 				<PropCardRow labelText="Date" valueText="28 January 2026" />
@@ -464,7 +464,7 @@
 		</Column>
 		<Column size="1-2">
 			<Heading level={4} class="mb-2">Descriptions Table — Copy Button</Heading>
-			<Paragraph class="text-secondary mb-2"><code>copyMode="btn"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><code>copyMode="btn"</code></Paragraph>
 			<DescTable cols={2} hasContainerQuery>
 				<DescTableItem labelText="Reg. No." valueText="CZ48207497" copyMode="btn" />
 				<DescTableItem labelText="VAT ID" valueText="CZ48207497" copyMode="btn" />

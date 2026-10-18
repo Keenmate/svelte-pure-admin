@@ -87,10 +87,10 @@
 		{#each primitiveSizes as size}
 			<span class="pa-icon pa-icon--search" style="--pa-icon-size: {size};" aria-hidden="true"></span>
 		{/each}
-		<span class="pa-icon pa-icon--search" style="--pa-icon-size: 2.4rem; color: var(--pc-primary);" aria-hidden="true"></span>
-		<span class="pa-icon pa-icon--search" style="--pa-icon-size: 2.4rem; color: var(--pc-danger);" aria-hidden="true"></span>
+		<span class="pa-icon pa-icon--search" style="--pa-icon-size: 2.4rem; color: var(--pc-primary-color);" aria-hidden="true"></span>
+		<span class="pa-icon pa-icon--search" style="--pa-icon-size: 2.4rem; color: var(--pc-danger-color);" aria-hidden="true"></span>
 	</div>
-	<Paragraph class="text-secondary mt-3">
+	<Paragraph class="text-muted mt-3">
 		Same class, sized with <Code>--pa-icon-size</Code> and coloured with <Code>color</Code> /
 		<Code>currentColor</Code>.
 	</Paragraph>
@@ -100,7 +100,7 @@
 
 <!-- sized + coloured -->
 <span class="pa-icon pa-icon--search"
-      style="--pa-icon-size: 2.4rem; color: var(--pc-primary);"></span>`}</CodeBlock>
+      style="--pa-icon-size: 2.4rem; color: var(--pc-primary-color);"></span>`}</CodeBlock>
 </Card>
 
 <!-- ============================================================ -->
@@ -124,7 +124,7 @@
 	</div>
 
 	<Heading level={4} class="mt-6">Disclosure &amp; direction</Heading>
-	<Paragraph class="text-secondary">
+	<Paragraph class="text-muted">
 		The four chevron directions are one glyph rotated with a transform, so overriding the chevron re-skins
 		all four at once. Same for the ellipsis (horizontal / vertical).
 	</Paragraph>
@@ -158,7 +158,7 @@
 	</div>
 
 	<Heading level={4} class="mt-6">Severity</Heading>
-	<Paragraph class="text-secondary">
+	<Paragraph class="text-muted">
 		One shared family used by toasts, alerts, callouts, notifications and popconfirm, so every severity
 		surface shows the same mark. Shown here in their semantic colours.
 	</Paragraph>
@@ -182,7 +182,7 @@
 	</Paragraph>
 
 	<Heading level={4}>In buttons</Heading>
-	<Paragraph class="text-secondary">
+	<Paragraph class="text-muted">
 		Icon-only buttons take the glyph as their child; icon+label buttons put it in the <Code>icon</Code>
 		snippet so it lands in the centred <Code>.pa-btn__icon</Code> slot.
 	</Paragraph>
@@ -213,7 +213,7 @@
 </Button>`}</CodeBlock>
 
 	<Heading level={4} class="mt-6">In alerts &amp; callouts</Heading>
-	<Paragraph class="text-secondary">
+	<Paragraph class="text-muted">
 		Pass a severity glyph to the <Code>icon</Code> snippet — it inherits the alert/callout colour via
 		<Code>currentColor</Code>.
 	</Paragraph>
@@ -305,7 +305,7 @@
 	</Callout>
 
 	<Heading level={4} class="mt-6">Live demo</Heading>
-	<Paragraph class="text-secondary">
+	<Paragraph class="text-muted">
 		Hover each control. The first uses a Tabler outline→filled star and morphs; the second is a Lucide star
 		and stays outline (nothing to fill to); the third is the <em>same</em> Tabler star but disabled, so it
 		never reacts despite being fillable (proving the disabled gate). No transition —
@@ -353,7 +353,7 @@
 .pa-tabs__item:not(:disabled):hover .pa-icon {
   mask-image: var(--pa-icon-src-hover, var(--pa-icon-src));
 }`}</CodeBlock>
-	<Paragraph class="text-secondary">
+	<Paragraph class="text-muted">
 		The fallback to <Code>--pa-icon-src</Code> is what makes the rule safe to ship globally: any icon that
 		didn't declare a filled source simply keeps its resting glyph.
 	</Paragraph>

@@ -266,7 +266,7 @@
 
 {#snippet employeeDetail(emp: Employee)}
 	<div style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.6rem;">
-		<div style="width: 5.6rem; height: 5.6rem; border-radius: 50%; background: var(--pc-primary-bg-subtle); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; color: var(--pc-primary); flex-shrink: 0;">
+		<div style="width: 5.6rem; height: 5.6rem; border-radius: 50%; background: var(--pc-primary-bg-subtle); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; color: var(--pc-primary-color); flex-shrink: 0;">
 			{emp.name.charAt(0)}
 		</div>
 		<div>
@@ -632,7 +632,7 @@
 	</DetailView>
 
 	{#snippet footer()}
-		<span class="text-secondary text-sm">Using <code>TableCard</code> with <code>DetailView</code></span>
+		<span class="text-muted text-sm">Using <code>TableCard</code> with <code>DetailView</code></span>
 	{/snippet}
 </TableCard>
 

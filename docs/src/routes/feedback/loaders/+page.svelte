@@ -15,7 +15,7 @@
 
 <!-- Spinner Sizes -->
 <Card titleText="Spinner Sizes" class="mb-6">
-	<Paragraph class="mb-4 text-secondary">
+	<Paragraph class="mb-4 text-muted">
 		Pure Admin's <code>.pa-spinner</code> only ships two sizes: the default and <code>--xs</code>.
 		Earlier versions of these docs advertised <code>sm</code>, <code>md</code>, <code>lg</code>,
 		<code>xl</code> and <code>2xl</code> modifiers — those CSS rules don't exist in core,
@@ -25,11 +25,11 @@
 	<Grid>
 		<Column size="100" md="1-2" class="text-center mb-4">
 			<Spinner />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner<br />default (1rem)</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner<br />default (1rem)</Paragraph>
 		</Column>
 		<Column size="100" md="1-2" class="text-center mb-4">
 			<Spinner size="xs" />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner--xs<br />0.75rem</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner--xs<br />0.75rem</Paragraph>
 		</Column>
 	</Grid>
 </Card>
@@ -39,27 +39,27 @@
 	<Grid>
 		<Column size="100" md="1-4" class="text-center mb-4">
 			<Spinner variant="primary" />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner--primary</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner--primary</Paragraph>
 		</Column>
 		<Column size="100" md="1-4" class="text-center mb-4">
 			<Spinner variant="secondary" />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner--secondary</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner--secondary</Paragraph>
 		</Column>
 		<Column size="100" md="1-4" class="text-center mb-4">
 			<Spinner variant="success" />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner--success</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner--success</Paragraph>
 		</Column>
 		<Column size="100" md="1-4" class="text-center mb-4">
 			<Spinner variant="danger" />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner--danger</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner--danger</Paragraph>
 		</Column>
 		<Column size="100" md="1-4" class="text-center mb-4">
 			<Spinner variant="warning" />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner--warning</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner--warning</Paragraph>
 		</Column>
 		<Column size="100" md="1-4" class="text-center mb-4">
 			<Spinner variant="info" />
-			<Paragraph class="mt-2 text-secondary">.pa-spinner--info</Paragraph>
+			<Paragraph class="mt-2 text-muted">.pa-spinner--info</Paragraph>
 		</Column>
 	</Grid>
 </Card>
@@ -98,13 +98,13 @@
 		<Column size="100" md="1-2" class="mb-4">
 			<LoaderCenter class="hr-15 border border-dashed rounded">
 				<Loader type="ring" size="lg" color="primary" />
-				<Paragraph class="mt-4 text-secondary">Loading data...</Paragraph>
+				<Paragraph class="mt-4 text-muted">Loading data...</Paragraph>
 			</LoaderCenter>
 		</Column>
 		<Column size="100" md="1-2" class="mb-4">
 			<LoaderCenter class="hr-15 border border-dashed rounded">
 				<Loader type="ring" size="lg" color="success" />
-				<Paragraph class="mt-4 text-secondary">Processing...</Paragraph>
+				<Paragraph class="mt-4 text-muted">Processing...</Paragraph>
 			</LoaderCenter>
 		</Column>
 	</Grid>
@@ -124,7 +124,7 @@
 		<Column size="100" md="1-3" class="mb-4">
 			<Card bodyClass="pa-loader-center hr-15" titleText="Loading with Text">
 				<Loader type="ring" size="lg" color="info" />
-				<Paragraph class="mt-4 text-secondary">Fetching data...</Paragraph>
+				<Paragraph class="mt-4 text-muted">Fetching data...</Paragraph>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3" class="mb-4">
@@ -143,63 +143,63 @@
 		<!-- Dots Loader -->
 		<Column size="100" md="1-3" class="text-center mb-6">
 			<Loader type="dots" size="lg" color="primary" />
-			<Paragraph class="mt-2 text-secondary"><strong>Dots Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Dots Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-dots</code></Paragraph>
 		</Column>
 
 		<!-- Bars Loader -->
 		<Column size="100" md="1-3" class="text-center mb-6">
 			<Loader type="bars" size="lg" color="success" />
-			<Paragraph class="mt-2 text-secondary"><strong>Bars Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Bars Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-bars</code></Paragraph>
 		</Column>
 
 		<!-- Pulse Loader -->
 		<Column size="100" md="1-3" class="text-center mb-6">
 			<Loader type="pulse" size="lg" color="danger" />
-			<Paragraph class="mt-2 text-secondary"><strong>Pulse Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Pulse Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-pulse</code></Paragraph>
 		</Column>
 
 		<!-- Ring Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
 			<Loader type="ring" size="lg" color="warning" />
-			<Paragraph class="mt-2 text-secondary"><strong>Ring Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Ring Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-ring</code></Paragraph>
 		</Column>
 
 		<!-- Wave Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
 			<Loader type="wave" size="lg" color="info" />
-			<Paragraph class="mt-2 text-secondary"><strong>Wave Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Wave Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-wave</code></Paragraph>
 		</Column>
 
 		<!-- Grid Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
 			<Loader type="grid" size="lg" color="primary" />
-			<Paragraph class="mt-2 text-secondary"><strong>Grid Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Grid Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-grid</code></Paragraph>
 		</Column>
 
 		<!-- Ripple Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
 			<Loader type="ripple" size="lg" color="success" />
-			<Paragraph class="mt-2 text-secondary"><strong>Ripple Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Ripple Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-ripple</code></Paragraph>
 		</Column>
 
 		<!-- Dual Ring Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
 			<Loader type="dual-ring" size="lg" color="danger" />
-			<Paragraph class="mt-2 text-secondary"><strong>Dual Ring Loader</strong></Paragraph>
+			<Paragraph class="mt-2 text-muted"><strong>Dual Ring Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-loader-dual-ring</code></Paragraph>
 		</Column>
 
 		<!-- Spinner (existing) -->
 		<Column size="100" md="1-3" class="text-center mb-4">
-			<Spinner class="text-secondary" />
-			<Paragraph class="mt-2 text-secondary"><strong>Spinner (Default)</strong></Paragraph>
+			<Spinner class="text-muted" />
+			<Paragraph class="mt-2 text-muted"><strong>Spinner (Default)</strong></Paragraph>
 			<Paragraph class="mt-2"><code>.pa-spinner</code></Paragraph>
 		</Column>
 	</Grid>

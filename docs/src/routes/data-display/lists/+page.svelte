@@ -55,7 +55,7 @@
 				</li>
 				<li>Settings</li>
 			</BasicList>
-			<Paragraph class="text-secondary mt-2">
+			<Paragraph class="text-muted mt-2">
 				Nested lists use the same marker at every depth (the theme's <Code>--base-list-bullet-type</Code>,
 				default <Code>disc</Code>) rather than the browser's depth cascade, and inherit
 				<Code>--compact</Code> / <Code>--spacious</Code> density from the parent. Override the marker at

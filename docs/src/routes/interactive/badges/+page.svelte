@@ -799,7 +799,7 @@
 		<Grid class="mt-4">
 			<Column size="100">
 				<Heading level={4}>Advanced: Mixed Section Colors</Heading>
-				<Paragraph class="text-sm text-secondary mb-3">
+				<Paragraph class="text-sm text-muted mb-3">
 					For advanced customization, you can mix individual section colors using separate classes.
 				</Paragraph>
 				<div class="component-showcase">

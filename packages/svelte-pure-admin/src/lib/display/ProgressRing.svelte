@@ -35,7 +35,7 @@
 	const classes = $derived(() => {
 		const base = ['pa-progress-ring'];
 		if (size) base.push(`pa-progress-ring--${size}`);
-		// `primary` is the BASE fill (var(--pc-primary)) — core ships NO
+		// `primary` is the BASE fill (var(--pc-primary-color)) — core ships NO
 		// pa-progress-ring--primary rule, so emitting it is a phantom class.
 		if (variant && variant !== 'primary') base.push(`pa-progress-ring--${variant}`);
 		if (className) base.push(className);

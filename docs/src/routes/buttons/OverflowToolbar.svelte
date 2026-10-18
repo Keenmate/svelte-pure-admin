@@ -376,7 +376,7 @@
 		</div>
 
 		<h4 class="mt-4">How it works</h4>
-		<ul class="text-secondary">
+		<ul class="text-muted">
 			<li><code>.pa-overflow</code> is the row; it provides <code>min-width: 0; overflow: hidden; flex-shrink: 1</code>. Works standalone in any flex context; in a card header use the alias <code>.pa-card__actions--overflow</code> on the actions slot itself. Both auto-init — no JS wiring needed.</li>
 			<li><code>overflow.js</code> appends a dedicated <code>[⋮]</code> "more" trigger and, on resize, walks the lowest-priority children (<code>data-pa-actions-priority</code>, default <code>0</code>) into that trigger's menu until the row fits; higher-priority children survive longer.</li>
 			<li>A <code>.pa-btn-split</code> child collapses atomically — its primary action and its own menu items drop into the more-menu together under a section label, nothing foreign mixes in. Give it a high priority (e.g. <code>20</code>) so it stays visible longest.</li>

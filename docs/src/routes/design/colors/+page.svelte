@@ -4,11 +4,11 @@
 	// Semantic colors — each carries its own guaranteed-contrasting text colour
 	// (matching the canonical pure-admin colors page), so no blanket white + shadow.
 	const semanticColors = [
-		{ name: 'Success', variable: '--pc-success', text: '--pa-btn-success-text' },
-		{ name: 'Warning', variable: '--pc-warning', text: '--pa-btn-warning-text' },
-		{ name: 'Danger', variable: '--pc-danger', text: '--pa-btn-danger-text' },
-		{ name: 'Info', variable: '--pc-info', text: '--pa-btn-info-text' },
-		{ name: 'Primary', variable: '--pc-primary', text: '--pa-btn-primary-text' },
+		{ name: 'Success', variable: '--pc-success-color', text: '--pa-btn-success-text' },
+		{ name: 'Warning', variable: '--pc-warning-color', text: '--pa-btn-warning-text' },
+		{ name: 'Danger', variable: '--pc-danger-color', text: '--pa-btn-danger-text' },
+		{ name: 'Info', variable: '--pc-info-color', text: '--pa-btn-info-text' },
+		{ name: 'Primary', variable: '--pc-primary-color', text: '--pa-btn-primary-text' },
 		{ name: 'Main BG', variable: '--pc-main-bg', text: '--pc-text-color-1' },
 		{ name: 'Page BG', variable: '--pc-page-bg', text: '--pc-text-color-1' }
 	];
@@ -45,7 +45,7 @@
 					<div class={previewClasses} style={previewColor(color.variable, color.text)}>{color.name}</div>
 					<div class="p-3 text-xs" style="background: var(--pa-card-bg);">
 						<div class="font-weight-semibold mb-1">{color.name}</div>
-						<div class="text-secondary font-family-mono">{color.variable}</div>
+						<div class="text-muted font-family-mono">{color.variable}</div>
 					</div>
 				</div>
 			</Column>
@@ -56,7 +56,7 @@
 <!-- Theme Color Slots -->
 <Card titleText="Theme Color Slots (1-9)">
 	<Paragraph>Custom theme colors that can be overridden per-theme. Use these for branded elements.</Paragraph>
-	<Paragraph class="text-sm text-secondary">
+	<Paragraph class="text-sm text-muted">
 		Colors are ordered by perceived luminance: <strong>color-1</strong> is always the lightest,
 		<strong>color-9</strong> is always the darkest. This consistent ordering allows components to pick
 		slots by relative brightness (e.g. use lower numbers for light accents, higher numbers for
@@ -70,7 +70,7 @@
 					<div class="{previewClasses} surface-color-{color.num}">{color.name}</div>
 					<div class="p-3 text-xs" style="background: var(--pa-card-bg);">
 						<div class="font-weight-semibold mb-1">{color.name}</div>
-						<div class="text-secondary font-family-mono">{color.variable}</div>
+						<div class="text-muted font-family-mono">{color.variable}</div>
 					</div>
 				</div>
 			</Column>
@@ -88,7 +88,7 @@
 			<Paragraph>
 				<Code>.surface-color-1</Code> to <Code>.surface-color-9</Code>
 			</Paragraph>
-			<Paragraph class="text-sm text-secondary">
+			<Paragraph class="text-sm text-muted">
 				Slot background + auto-contrasting text. Use <Code>.bg-color-N</Code> for background only.
 			</Paragraph>
 			<div class="component-showcase mt-4">

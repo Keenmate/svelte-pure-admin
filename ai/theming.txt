@@ -285,7 +285,7 @@ Key CSS custom properties:
   Components:
     --pc-card-bg                - Card background
     --pc-primary-rgb            - Primary color as RGB triplet (for alpha use)
-    --pc-danger                 - Danger color (solid)
+    --pc-danger-color                 - Danger color (solid)
 
   Color slots:
     --pc-color-1 through --pc-color-9

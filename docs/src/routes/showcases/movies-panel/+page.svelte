@@ -138,7 +138,7 @@
 <!-- Table Card with Detail Panel -->
 <TableCard isPlain class="minhr-100" titleText="Movies Database">
 	{#snippet headerActions()}
-		<span class="text-secondary text-sm">{filtered.length} movies</span>
+		<span class="text-muted text-sm">{filtered.length} movies</span>
 	{/snippet}
 
 	<DetailView bind:show={showPanel} isOverlay={true} onclose={closePanel}>
@@ -231,7 +231,7 @@
 					</ButtonGroup>
 				</FieldGroup>
 			{:else}
-				<p class="text-secondary">Click a movie row to view details here.</p>
+				<p class="text-muted">Click a movie row to view details here.</p>
 			{/if}
 		</DetailPanel>
 	</DetailView>

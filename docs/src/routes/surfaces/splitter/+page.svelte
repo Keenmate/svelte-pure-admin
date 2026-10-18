@@ -109,7 +109,7 @@ console.log(greet('Pure Admin'));`;
 
 <!-- Demo 1 — Horizontal -->
 <Card class="mb-4">
-	{#snippet title()}Horizontal split <small class="text-secondary">— side-by-side, vertical gutter</small>{/snippet}
+	{#snippet title()}Horizontal split <small class="text-muted">— side-by-side, vertical gutter</small>{/snippet}
 	<p class="mb-3">
 		Sidebar + main content. Start pane is constrained to <code>min: 200px</code> and
 		<code>max: 60%</code>, with a default of <code>280px</code>. Size persists to
@@ -141,7 +141,7 @@ console.log(greet('Pure Admin'));`;
 		<SplitterGutter ariaLabel="Resize sidebar" />
 		<SplitterPane style="padding: 1.6rem;">
 			<h4 class="mb-3" style="margin-top: 0;">main.scss</h4>
-			<p class="text-secondary mb-3">Drag the gutter, double-click it to collapse, or focus it and use arrow keys.</p>
+			<p class="text-muted mb-3">Drag the gutter, double-click it to collapse, or focus it and use arrow keys.</p>
 			<CodeBlock>{codeScss}</CodeBlock>
 		</SplitterPane>
 	</Splitter>
@@ -149,7 +149,7 @@ console.log(greet('Pure Admin'));`;
 
 <!-- Demo 2 — Vertical -->
 <Card class="mb-4">
-	{#snippet title()}Vertical split <small class="text-secondary">— stacked, horizontal gutter</small>{/snippet}
+	{#snippet title()}Vertical split <small class="text-muted">— stacked, horizontal gutter</small>{/snippet}
 	<p class="mb-3">
 		Editor over console. Constraints: <code>min: 80px</code>, <code>max: 80%</code>, default
 		<code>60%</code>. Persists under <code>demo-vertical</code>.
@@ -180,7 +180,7 @@ console.log(greet('Pure Admin'));`;
 
 <!-- Demo 3 — Spaced cards -->
 <Card class="mb-4">
-	{#snippet title()}Spaced cards <small class="text-secondary">— gutter with breathing room</small>{/snippet}
+	{#snippet title()}Spaced cards <small class="text-muted">— gutter with breathing room</small>{/snippet}
 	<p class="mb-3">
 		Use native <code>gap</code> on the splitter root to add space between the panes and the gutter —
 		the JS subtracts it from the available space so percent constraints stay accurate. A thicker
@@ -214,7 +214,7 @@ console.log(greet('Pure Admin'));`;
 
 <!-- Demo 4 — Minimize to rail -->
 <Card class="mb-4">
-	{#snippet title()}Minimize to rail <small class="text-secondary">— vertical header instead of collapse</small>{/snippet}
+	{#snippet title()}Minimize to rail <small class="text-muted">— vertical header instead of collapse</small>{/snippet}
 	<p class="mb-3">
 		Opt in by putting <code>data-pa-splitter-minimize</code> on the pane you want collapsible (here,
 		the first pane). The gutter's collapse action (double-click, <kbd>Enter</kbd>/<kbd>Space</kbd>, or
@@ -276,7 +276,7 @@ console.log(greet('Pure Admin'));`;
 					<li>📄 splitter.js</li>
 					<li>📄 README.md</li>
 				</BasicList>
-				<p class="text-sm text-secondary mt-3 mb-0">Click the chevron in the header to minimize. Click the rail to restore.</p>
+				<p class="text-sm text-muted mt-3 mb-0">Click the chevron in the header to minimize. Click the rail to restore.</p>
 			</Card>
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize or minimize file explorer" />
@@ -335,7 +335,7 @@ console.log(greet('Pure Admin'));`;
 
 <!-- Demo 4b — Progressive overflow -->
 <Card class="mb-4">
-	{#snippet title()}Progressive overflow <small class="text-secondary">— buttons drop into a "More" menu one at a time</small>{/snippet}
+	{#snippet title()}Progressive overflow <small class="text-muted">— buttons drop into a "More" menu one at a time</small>{/snippet}
 	<p class="mb-3">
 		A second collapse model, complementing <code>--responsive</code>. Mark the actions wrapper with
 		<code>pa-card__actions--overflow</code> and the JS module (<code>overflow.js</code>) measures each
@@ -389,7 +389,7 @@ console.log(greet('Pure Admin'));`;
 						<span>Run</span>
 					</button>
 				{/snippet}
-				<p class="text-sm text-secondary mb-0">
+				<p class="text-sm text-muted mb-0">
 					Shrink me — buttons collapse into the "..." menu by ascending priority. <code>Run</code> has
 					<code>data-pa-actions-priority="10"</code> and stays last.
 				</p>
@@ -398,7 +398,7 @@ console.log(greet('Pure Admin'));`;
 		<SplitterGutter ariaLabel="Resize editor" />
 		<SplitterPane style="padding: 0;">
 			<Card style="height: 100%; margin: 0; background: var(--pc-subtle-bg);">
-				<p class="text-sm text-secondary mb-0">Drag the gutter left/right to shrink and grow the editor card. Watch the action row in its header.</p>
+				<p class="text-sm text-muted mb-0">Drag the gutter left/right to shrink and grow the editor card. Watch the action row in its header.</p>
 			</Card>
 		</SplitterPane>
 	</Splitter>
@@ -406,7 +406,7 @@ console.log(greet('Pure Admin'));`;
 
 <!-- Demo 5 — Minimize end pane to rail -->
 <Card class="mb-4">
-	{#snippet title()}Minimize <em>end</em> pane to rail <small class="text-secondary">— right-edge inspector pattern</small>{/snippet}
+	{#snippet title()}Minimize <em>end</em> pane to rail <small class="text-muted">— right-edge inspector pattern</small>{/snippet}
 	<p class="mb-3">
 		Put <code>data-pa-splitter-minimize</code> on the last pane to collapse it to a vertical-title rail
 		on the right edge. Same restore paths as collapsing the first pane (rail click, toggle button,
@@ -441,7 +441,7 @@ console.log(greet('Pure Admin'));`;
 						<span class="pa-icon pa-icon--chevron-right" aria-hidden="true"></span>
 					</button>
 				{/snippet}
-				<p class="text-sm text-secondary mb-0">Properties, outlines, references, etc. live here. Click the chevron, double-click the gutter, or drag the gutter rightward to collapse.</p>
+				<p class="text-sm text-muted mb-0">Properties, outlines, references, etc. live here. Click the chevron, double-click the gutter, or drag the gutter rightward to collapse.</p>
 			</Card>
 		</SplitterPane>
 	</Splitter>
@@ -449,7 +449,7 @@ console.log(greet('Pure Admin'));`;
 
 <!-- Demo 6 — N-pane (configurable 3–6) -->
 <Card class="mb-4">
-	{#snippet title()}N panes <small class="text-secondary">— pick a count, both edges minimizable</small>{/snippet}
+	{#snippet title()}N panes <small class="text-muted">— pick a count, both edges minimizable</small>{/snippet}
 	{#snippet headerActions()}
 		<div style="display: flex; gap: 0.6rem; align-items: center;">
 			<label for="multiPaneCount" class="text-sm">Panes:</label>
@@ -512,7 +512,7 @@ console.log(greet('Pure Admin'));`;
 									<i class="fa-solid fa-window-minimize" aria-hidden="true"></i>
 								</button>
 							{/snippet}
-							<p class="text-secondary mb-2">Workspace {i} of {paneCount - 2}</p>
+							<p class="text-muted mb-2">Workspace {i} of {paneCount - 2}</p>
 							<CodeBlock>{`// Pane ${i + 1}\nconsole.log("hi");`}</CodeBlock>
 						</Card>
 					</SplitterPane>
@@ -530,7 +530,7 @@ console.log(greet('Pure Admin'));`;
 		your drag positions stick. Clear them with the button below.
 	</p>
 	<Button variant="secondary" onclick={clearSplitterStorage}>Clear saved splitter sizes</Button>
-	<div class="mt-3 text-sm text-secondary">{storageStatus}</div>
+	<div class="mt-3 text-sm text-muted">{storageStatus}</div>
 </Card>
 
 <div class="pc-row">

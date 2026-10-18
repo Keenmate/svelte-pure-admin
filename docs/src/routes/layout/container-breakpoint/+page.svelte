@@ -171,7 +171,7 @@
 							<Sparkline>
 								{#each trend as v}<SparklineBar value={v} />{/each}
 							</Sparkline>
-							<div class="text-secondary stage-note mt-1">Revenue · 12 weeks</div>
+							<div class="text-muted stage-note mt-1">Revenue · 12 weeks</div>
 						</div>
 						<div class="cq-narrow">
 							<Stat number="$847K" labelText="Revenue" changeText="+12.5%" changeDirection="positive" />

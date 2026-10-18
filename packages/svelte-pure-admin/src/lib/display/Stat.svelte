@@ -13,7 +13,7 @@
 	// there is no `pa-stat__icon--secondary` (verified absent in compiled CSS).
 	type StatIconVariant = 'primary' | 'success' | 'info' | 'warning' | 'danger';
 	// 5-step sentiment scale since core v2.6.0/2.7.0.
-	// `positive` / `negative` alias `--pc-success` / `--pc-danger`; `--very-*` are explicit darker stops.
+	// `positive` / `negative` alias `--pc-success-color` / `--pc-danger-color`; `--very-*` are explicit darker stops.
 	type ChangeDirection = 'very-positive' | 'positive' | 'neutral' | 'negative' | 'very-negative';
 
 	interface Props {

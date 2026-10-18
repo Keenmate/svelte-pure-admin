@@ -19,7 +19,7 @@ All `style="gap: ..."` converted to utility classes:
 All `style="font-size: ..."` converted to utility classes:
 - `font-size: 0.875rem` -> `text-sm` (14px)
 - Combined with margin: `font-size: 0.875rem; margin-top: 0.25rem;` -> `text-sm mt-1`
-- Combined with color: `font-size: 0.875rem; color: #666;` -> `text-sm text-secondary`
+- Combined with color: `font-size: 0.875rem; color: #666;` -> `text-sm text-muted`
 
 ### Spacing/Layout Utility Classes
 All convertible inline margin/padding/text-align converted:

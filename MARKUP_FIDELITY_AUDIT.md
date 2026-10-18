@@ -640,7 +640,7 @@ Loader*}.svelte`. Reference: `snippets/{callouts,tooltips,popconfirm,loaders}.ht
   animates child spans (dots = 3, bars/wave = 5), so they rendered nothing. → added the spans.
   (⚠️ These are **not exported** from the index — the public loader is `<Loader type=…>`, which
   already emits correct spans. Redundant with `Loader`; candidates for removal or export.)
-- **🔧 `Loader`** dropped `secondary` from its `color` union — no `text-secondary` utility exists
+- **🔧 `Loader`** dropped `secondary` from its `color` union — no `text-muted` utility exists
   (only `text-{primary,success,danger,warning,info}`), so it was a no-op class.
 - **✅ Faithful, no change:** `Popconfirm` (`__arrow`/`__content`/`__message`(+`__icon--*`)/
   `__actions`, `is-open` state class — all match), `Spinner` (`--xs` + variants; author already

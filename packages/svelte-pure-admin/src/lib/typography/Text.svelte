@@ -6,7 +6,7 @@
 	 */
 
 	// All semantic colours are flat `.text-*` utilities. `secondary` →
-	// `.text-secondary` is the muted/subdued colour (colour-only, so inline-safe).
+	// `.text-secondary` is the secondary ROLE colour; for muted text use `.text-muted`.
 	// Every variant maps straight to `text-{variant}`.
 	type TextVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 

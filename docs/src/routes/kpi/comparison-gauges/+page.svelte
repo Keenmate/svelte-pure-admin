@@ -17,7 +17,7 @@
 	<strong>label · value</strong> on top, <strong>bar with a target tick</strong> in the middle,
 	<strong>0 · tgt</strong> scale below. Bar fill is value/target, capped at 100% (overshoots are
 	signalled by colour, not by overflowing the bar). Colours: <Code>--pa-positive</Code> for "on
-	track", <Code>--pc-warning</Code> for "off-target / approaching limit",
+	track", <Code>--pc-warning-color</Code> for "off-target / approaching limit",
 	<Code>--pa-neutral</Code> for "no strong sentiment".
 </Paragraph>
 <Paragraph>

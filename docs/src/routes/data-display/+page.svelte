@@ -526,7 +526,7 @@
 	<Grid>
 		<Column size="1-3">
 			<Heading level={4}>Copy Button (always visible)</Heading>
-			<Paragraph class="text-secondary mb-2">Uses <code>copyMode="btn"</code></Paragraph>
+			<Paragraph class="text-muted mb-2">Uses <code>copyMode="btn"</code></Paragraph>
 			<Fields hasBorder={false}>
 				<Field labelText="Email" valueText="elena.petrova@example.com" copyMode="btn" />
 				<Field labelText="API Key" copyMode="btn" copyValue="sk_live_abc123xyz789">
@@ -536,7 +536,7 @@
 		</Column>
 		<Column size="1-3">
 			<Heading level={4}>Click Value to Copy</Heading>
-			<Paragraph class="text-secondary mb-2">Uses <code>copyMode="click"</code></Paragraph>
+			<Paragraph class="text-muted mb-2">Uses <code>copyMode="click"</code></Paragraph>
 			<Fields hasBorder={false}>
 				<Field labelText="Phone" valueText="+420 776 123 456" copyMode="click" />
 				<Field labelText="Order ID" valueText="#ORD-2026-00847" copyMode="click" />
@@ -544,7 +544,7 @@
 		</Column>
 		<Column size="1-3">
 			<Heading level={4}>Icon on Hover Only</Heading>
-			<Paragraph class="text-secondary mb-2">Uses <code>copyMode="hover"</code></Paragraph>
+			<Paragraph class="text-muted mb-2">Uses <code>copyMode="hover"</code></Paragraph>
 			<Fields hasBorder={false}>
 				<Field labelText="IBAN" valueText="CZ65 0800 0000 1920 0014 5399" copyMode="hover" />
 				<Field labelText="BIC/SWIFT" valueText="GIBACZPX" copyMode="hover" />
@@ -799,7 +799,7 @@
 							</Fields>
 						</FieldGroup>
 					{:else}
-						<Paragraph class="text-secondary">Click a table row to view order details here.</Paragraph>
+						<Paragraph class="text-muted">Click a table row to view order details here.</Paragraph>
 					{/if}
 				</div>
 				<div class="pa-detail-panel__footer">
@@ -906,7 +906,7 @@
 					</Fields>
 				</FieldGroup>
 			{:else}
-				<Paragraph class="text-secondary">Click a table row to view product details.</Paragraph>
+				<Paragraph class="text-muted">Click a table row to view product details.</Paragraph>
 			{/if}
 		</div>
 		<div class="pa-detail-panel__footer">
@@ -969,10 +969,6 @@
 	/* Text alignment helpers */
 	:global(.text-right) {
 		text-align: right;
-	}
-
-	:global(.text-secondary) {
-		color: var(--pc-text-muted, #6c757d);
 	}
 
 	/* Margin helpers */

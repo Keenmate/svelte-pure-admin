@@ -47,7 +47,7 @@
 			</Paragraph>
 			<div style="display: flex; flex-direction: column; gap: 4px;">
 				<Paragraph color="primary" class="m-0">Body text — the default (--pc-text-color-1)</Paragraph>
-				<Paragraph color="secondary" class="m-0">Secondary — muted / subdued (--pc-text-color-2)</Paragraph>
+				<Paragraph color="secondary" class="m-0">Muted — subdued (--pc-text-color-2)</Paragraph>
 			</div>
 		</Card>
 	</Column>
@@ -94,7 +94,7 @@
 		<Card titleText="Links">
 			<div style="display: flex; flex-direction: column; gap: 4px;">
 				<Link href="#">Default link</Link>
-				<Link href="#" class="text-secondary">Muted link</Link>
+				<Link href="#" class="text-muted">Muted link</Link>
 			</div>
 		</Card>
 	</Column>
@@ -115,7 +115,7 @@
 			</tr>
 			<tr>
 				<td>Colour</td>
-				<td><code>text-body</code>, <code>text-secondary</code>, <code>text-primary</code>, <code>text-success</code>, <code>text-danger</code>, <code>text-warning</code>, <code>text-info</code></td>
+				<td><code>text-body</code>, <code>text-muted</code>, <code>text-primary</code>, <code>text-secondary</code>, <code>text-success</code>, <code>text-danger</code>, <code>text-warning</code>, <code>text-info</code></td>
 			</tr>
 			<tr>
 				<td>Alignment</td>

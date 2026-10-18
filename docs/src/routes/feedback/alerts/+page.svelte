@@ -322,7 +322,7 @@ pa-alert--dismissible  — Adds inline-end padding for the close button
 pa-alert--multiline    — Opts out of default align-items: center; icon + multi-line
                          content stays top-aligned with the heading instead of
                          centring against the whole stack`}</CodeBlock>
-	<Paragraph class="text-secondary mt-2">
+	<Paragraph class="text-muted mt-2">
 		V steps <Code>0.5 → 0.75 → 1rem</Code>; H steps <Code>1 → 1.25 → 1.5rem</Code> — clean 0.25rem increments.
 		Themes can retune the scale via the <Code>$alert-padding-{'{v,h}'}</Code>,
 		<Code>$alert-padding-{'{sm,lg}-{v,h}'}</Code> and
@@ -340,7 +340,7 @@ pa-alert__actions       — Action button row, sits below a thin divider
                           (same separator pattern as pa-toast__actions)
 pa-alert__close         — Close button (absolutely positioned, inline-end)`}</CodeBlock>
 
-	<Paragraph class="text-secondary mt-2">
+	<Paragraph class="text-muted mt-2">
 		<strong>Layout note:</strong> the alert is <Code>display: flex; flex-wrap: wrap</Code>.
 		Structural children (<Code>__heading</Code>, <Code>__list</Code>, <Code>__actions</Code>,
 		top-level <Code>&lt;p&gt;</Code>, <Code>&lt;hr&gt;</Code>) get <Code>flex-basis: 100%</Code>

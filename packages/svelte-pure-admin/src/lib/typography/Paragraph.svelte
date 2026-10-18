@@ -7,7 +7,7 @@
 	import type { HorizontalAlignment, TextMode, Size } from '../types';
 
 	type SemanticStyle = 'default' | 'caption' | 'lead';
-	// Flat text-* colour utilities: `secondary` (→ text-secondary = muted/subdued),
+	// Flat text-* colour utilities: `secondary` (→ text-muted = muted/subdued),
 	// `primary` (→ text-body = default).
 	type TextColor = 'primary' | 'secondary';
 
@@ -23,7 +23,7 @@
 	interface Props {
 		/** Horizontal text alignment */
 		horizontalAlignment?: HorizontalAlignment;
-		/** Text colour — "secondary" (→ text-secondary = muted/subdued) or "primary" (→ text-body = default) */
+		/** Text colour — "secondary" (→ text-muted = muted/subdued) or "primary" (→ text-body = default) */
 		color?: TextColor;
 		/** Text color mode (muted) — legacy alias of color="secondary" */
 		mode?: TextMode;
@@ -53,9 +53,9 @@
 		if (size) base.push(sizeClassMap[size]);
 		if (horizontalAlignment) base.push(`text-${horizontalAlignment}`);
 		// Explicit colour wins; `mode="muted"` is kept as a legacy alias.
-		if (color === 'secondary') base.push('text-secondary');
+		if (color === 'secondary') base.push('text-muted');
 		else if (color === 'primary') base.push('text-body');
-		else if (mode === 'muted') base.push('text-secondary');
+		else if (mode === 'muted') base.push('text-muted');
 		if (semantic && semantic !== 'default') base.push(`text-${semantic}`);
 		if (className) base.push(className);
 		return base.length ? base.join(' ') : undefined;

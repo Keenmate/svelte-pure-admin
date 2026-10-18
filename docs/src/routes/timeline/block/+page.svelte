@@ -238,7 +238,7 @@
 
 <!-- Variant 4: Layout Modifiers -->
 <Heading level={2} class="mt-12">Layout Modifiers</Heading>
-<Paragraph class="text-secondary mb-6">Control alignment (start/center/end) and responsive behavior independently</Paragraph>
+<Paragraph class="text-muted mb-6">Control alignment (start/center/end) and responsive behavior independently</Paragraph>
 
 <Grid>
 	<Column size="100" lg="1-3">

@@ -31,7 +31,7 @@
 
 	const classes = $derived(() => {
 		const base = ['pa-data-bar'];
-		// `primary` is the base fill (var(--pc-primary)); there is no pa-data-bar--primary
+		// `primary` is the base fill (var(--pc-primary-color)); there is no pa-data-bar--primary
 		// in core CSS — emitting it would be a phantom modifier.
 		if (variant && variant !== 'primary') base.push(`pa-data-bar--${variant}`);
 		if (isNegative) base.push('pa-data-bar--negative');

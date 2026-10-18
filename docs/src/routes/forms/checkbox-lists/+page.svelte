@@ -527,7 +527,7 @@
 	</Table>
 
 	{#snippet footer()}
-		<div id="selection-info" class="text-sm text-secondary">
+		<div id="selection-info" class="text-sm text-muted">
 			{interactiveSelectedCount} item{interactiveSelectedCount !== 1 ? 's' : ''} selected
 		</div>
 	{/snippet}

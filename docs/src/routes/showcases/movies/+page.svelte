@@ -128,7 +128,7 @@
 <!-- Table Card -->
 <TableCard titleText="Movies Database">
 	{#snippet headerActions()}
-		<span class="text-secondary text-sm">{filtered.length} movies</span>
+		<span class="text-muted text-sm">{filtered.length} movies</span>
 	{/snippet}
 
 	<Table isStriped isHover>

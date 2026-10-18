@@ -24,7 +24,7 @@
 							<div>
 					<strong>Luna Bonifacio</strong> changed 2 attributes
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					Jan 21, 2021
 				</div>
 		</TimelineItem>
@@ -36,7 +36,7 @@
 							<div>
 					<strong>Yoan Almedia</strong> moved Eric Lubin to "Technical Test"
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					Jan 20, 2021
 				</div>
 		</TimelineItem>
@@ -48,11 +48,11 @@
 							<div>
 					<strong>Yoan Almedia</strong> commented on an assignment
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					Jan 20, 2021
 				</div>
 				<Callout variant="info" class="mt-3">
-					<Paragraph class="mb-0 text-sm text-secondary">
+					<Paragraph class="mb-0 text-sm text-muted">
 						"I've reviewed the candidate's technical test submission. The code quality is excellent and demonstrates strong understanding of React patterns. I recommend moving forward with the next interview stage."
 					</Paragraph>
 				</Callout>
@@ -65,7 +65,7 @@
 							<div>
 					<strong>Sarah Chen</strong> attached 3 files to project
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					Jan 19, 2021
 				</div>
 				<div class="d-flex flex-wrap gap-sm mt-3">
@@ -91,7 +91,7 @@
 							<div>
 					<strong>Mike Johnson</strong> completed "Design Review" task
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					Jan 18, 2021
 				</div>
 		</TimelineItem>
@@ -103,11 +103,11 @@
 							<div>
 					<strong>Emma Davis</strong> reported a critical bug
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					Jan 17, 2021
 				</div>
 				<Callout variant="danger" class="mt-3">
-					<Paragraph class="mb-0 text-sm text-secondary">
+					<Paragraph class="mb-0 text-sm text-muted">
 						<strong class="text-danger">URGENT:</strong> Payment processing fails when cart total exceeds $1000. Multiple customers affected. Needs immediate attention.
 					</Paragraph>
 				</Callout>
@@ -120,7 +120,7 @@
 							<div>
 					<strong>Alex Rodriguez</strong> created new branch "feature/user-profiles"
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					Jan 16, 2021
 				</div>
 		</TimelineItem>
@@ -138,7 +138,7 @@
 							<div>
 					<strong>John Doe</strong> started a new project
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					2 hours ago
 				</div>
 		</TimelineItem>
@@ -150,7 +150,7 @@
 							<div>
 					<strong>Jane Smith</strong> merged pull request #142
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					5 hours ago
 				</div>
 		</TimelineItem>
@@ -162,7 +162,7 @@
 							<div>
 					<strong>Bob Wilson</strong> requested code review
 				</div>
-				<div class="text-secondary text-sm mt-1">
+				<div class="text-muted text-sm mt-1">
 					1 day ago
 				</div>
 		</TimelineItem>
@@ -187,14 +187,14 @@
     &lt;div&gt;
       &lt;strong&gt;User Name&lt;/strong&gt; performed an action
     &lt;/div&gt;
-    &lt;div class="text-secondary"&gt;2 hours ago&lt;/div&gt;
+    &lt;div class="text-muted"&gt;2 hours ago&lt;/div&gt;
   &lt;/TimelineItem&gt;
 &lt;/Timeline&gt;</CodeBlock>
 
 	<Heading level={4}>With Comment/Additional Content</Heading>
 	<CodeBlock language="html" class="mb-4">&lt;TimelineItem avatarUrl="..." variant="info"&gt;
   &lt;div&gt;&lt;strong&gt;User&lt;/strong&gt; commented&lt;/div&gt;
-  &lt;div class="text-secondary"&gt;1 hour ago&lt;/div&gt;
+  &lt;div class="text-muted"&gt;1 hour ago&lt;/div&gt;
   &lt;div class="pa-callout pa-callout--info mt-3"&gt;
     Comment text here
   &lt;/div&gt;

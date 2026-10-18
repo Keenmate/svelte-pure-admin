@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING — `--pc-*` role colours end in `-color`; muted text is `.text-muted`
+
+- pure-css 2.0.0-rc02 renamed `--pc-primary[-hover|-active]` → `--pc-primary-color[-hover|-active]`
+  and `--pc-<role>` → `--pc-<role>-color`. Components (`DataBar`, `Gauge`, `Progress`,
+  `ProgressRing`, `Loader`, …) and the docs read the new names.
+- `<Paragraph color="secondary">` / `mode="muted"` now emit `.text-muted` (was `.text-secondary`,
+  which pure-css 2.0 made the secondary role colour). `<Text variant="secondary">` keeps
+  `.text-secondary` — the role colour, like its other variants. Docs use `.text-muted` for muted text.
+
 ### BREAKING — `<KpiBento layout>`: `'hero-right'` → `'hero-end'`
 
 - Follows core's rename of `.pa-kpi-bento__grid--hero-right` to `--hero-end`. The grid areas

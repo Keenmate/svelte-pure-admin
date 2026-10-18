@@ -226,7 +226,7 @@
 		</Timeline>
 	</div>
 
-	<Paragraph class="mt-4 text-secondary text-sm">
+	<Paragraph class="mt-4 text-muted text-sm">
 		<strong>Note:</strong> True virtual scrolling with <code>pa-virtual-scroll</code> component is not yet implemented.
 		This example uses regular scrolling with overflow.
 	</Paragraph>
