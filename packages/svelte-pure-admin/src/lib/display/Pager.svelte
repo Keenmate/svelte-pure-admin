@@ -36,6 +36,8 @@
 		disableNext?: boolean;
 		/** Custom info text */
 		infoText?: string;
+		/** Where the info sits relative to the controls: 'end' (default, after) or 'start' (before) */
+		infoPosition?: 'start' | 'end';
 		/** First-button label (default: i18n 'pager.first') */
 		firstText?: string;
 		/** Previous-button label (default: i18n 'pager.previous') */
@@ -66,6 +68,7 @@
 		disablePrevious = false,
 		disableNext = false,
 		infoText,
+		infoPosition = 'end',
 		firstText,
 		previousText,
 		nextText,
@@ -104,8 +107,32 @@
 	}
 </script>
 
+{#snippet infoBlock()}
+	{#if info}
+		{@render info()}
+	{:else if showInfo && showPageInput}
+		<div class="pa-pager__info">
+			<span class="pa-pager__text">{$_('pureAdmin.pager.page')}</span>
+			<input
+				type="number"
+				class="pa-input pa-input--sm pa-pager__input"
+				value={currentPage}
+				min="1"
+				max={totalPages}
+				onchange={handlePageInput}
+			/>
+			<span class="pa-pager__text">{$_('pureAdmin.pager.of')} {totalPages}</span>
+		</div>
+	{:else if infoText}
+		<span class="pa-pager__text">{infoText}</span>
+	{/if}
+{/snippet}
+
 <div class={classes()}>
 	<div class="pa-pager__container">
+		{#if infoPosition === 'start'}
+			{@render infoBlock()}
+		{/if}
 		{#if controls}
 			{@render controls()}
 		{:else}
@@ -129,23 +156,8 @@
 			</div>
 		{/if}
 
-		{#if info}
-			{@render info()}
-		{:else if showInfo && showPageInput}
-			<div class="pa-pager__info">
-				<span class="pa-pager__text">{$_('pureAdmin.pager.page')}</span>
-				<input
-					type="number"
-					class="pa-input pa-input--sm pa-pager__input"
-					value={currentPage}
-					min="1"
-					max={totalPages}
-					onchange={handlePageInput}
-				/>
-				<span class="pa-pager__text">{$_('pureAdmin.pager.of')} {totalPages}</span>
-			</div>
-		{:else if infoText}
-			<span class="pa-pager__text">{infoText}</span>
+		{#if infoPosition !== 'start'}
+			{@render infoBlock()}
 		{/if}
 	</div>
 </div>

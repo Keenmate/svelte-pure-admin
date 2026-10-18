@@ -33,7 +33,8 @@ export type TextMode = 'default' | 'muted';
 export type ValidationState = 'default' | 'success' | 'warning' | 'error';
 
 // Data visualization color variants
-export type DataVizVariant = 'success' | 'warning' | 'danger' | 'info';
+// 'primary' = the base fill (no modifier emitted — core has no --primary for these).
+export type DataVizVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
 
 // Theme colors (1-9)
 export type ThemeColor = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;

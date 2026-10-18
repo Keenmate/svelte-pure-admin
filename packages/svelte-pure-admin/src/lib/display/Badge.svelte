@@ -35,8 +35,8 @@
 		if (size) base.push(`pa-badge--${size}`);
 		if (isPill) base.push('pa-badge--pill');
 		if (isEllipsisStart) base.push('pa-badge--ellipsis-start');
-		// Core's blessed theme-slot badge (paints --pc-color-N bg AND a
-		// contrasting --pc-color-N-text label), not the generic pa-bg-color-N
+		// Core's blessed theme-slot badge (paints --pc-palette-N bg AND a
+		// contrasting --pc-on-palette-N-text-color label), not the generic pa-bg-color-N
 		// utility which only set the background — see pure-admin _badge-base.scss.
 		if (themeColor) base.push(`pa-badge--color-${themeColor}`);
 		if (className) base.push(className);

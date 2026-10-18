@@ -7,6 +7,69 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Docs — Expandable Filters uses `<FilterCard>`
+
+- The table-filters page hand-built the panel (`d-flex` + loose buttons, toggle LAST). It is now
+  `<FilterCard bind:isExpanded>` — toggle → clear → refresh like core's snippet and keen; search
+  icon is the masked `pa-icon--search`, the others the Lucide globe (were 🔍/🌐 emoji).
+
+### Docs — inline code uses the `<Code>` component
+
+- 1,280 raw `<code>` tags across the docs pages (+ the `OverflowToolbar` demo) are now `<Code>` —
+  the docs show the library's own components. The one real code sample containing `<code>` (inside a
+  template string on the Code page) is untouched; three `<code style="color: inherit">` on the colours
+  page stay raw (`Code` has no `style` prop). Scoped `.icon-ref code` / `.icon-cell code` rules became
+  `:global(code)` so they still reach the component's element.
+
+### Added — `<Pager infoPosition>`
+
+- `infoPosition="start"` renders the info before the controls (pure-admin's "Showing 1-25 of
+  247 items" pager — previously unreachable: the `controls` override didn't suppress the info).
+  Default `"end"` is unchanged. Docs: new "Pager with Item Count" card + props row.
+
+### Docs — Input Groups card matches pure-admin
+
+- Toggle Mode (Filter / Search + Go) now sits at half width before "Multiple Prepends & Appends"
+  (order was flipped); the link addon is a Lucide icon (was 🔗); the tip uses `text-muted`
+  (`<Text variant="secondary">` is the secondary role colour since pure-css 2.0).
+
+### Docs — theme-variables page lists real tokens
+
+- `/design/theme-variables` still listed pre-rename `--base-*` names (`--base-accent-color*`,
+  `--base-input-background*`, `--base-dropdown-background`, `--base-tooltip-background`,
+  `--base-primary-bg[-hover]`, `--base-input-color`, `--base-text-on-accent`), so its live
+  swatches rendered empty. Now the names the themes emit and the web components read
+  (`--base-primary-color*`, `--base-*-bg`, `--base-primary-bg-subtle[-hover]`,
+  `--base-input-text-color`, `--base-on-primary-text-color`).
+- Grid demo backgrounds used the removed `--base-primary-bg` (rendered transparent) and the
+  form demo used an invented `--pc-color-primary-bg-subtle`; both now `--pc-primary-bg-subtle`.
+
+### Fixed — `DataVizVariant` accepts `'primary'`; svelte-check clean
+
+- `DataBar` / `Gauge` / `Progress` / `ProgressRing` / `Sparkline` already treated
+  `variant="primary"` as the base fill (no modifier), but the shared `DataVizVariant` type
+  omitted it — so typed callers couldn't pass it and svelte-check flagged the guards as
+  unreachable (5 errors). The type is now `'primary' | 'success' | 'warning' | 'danger' | 'info'`
+  (additive).
+- Docs: the validation page put `required` on `<FormField>` (prop removed in the attribute-driven
+  required-marker change), so 13 fields showed no asterisk — `required` now sits on the control.
+  Six pages still passed the removed `<Table isHover>` (hover is built in) — dropped.
+  `npm run check` is now 0 errors for both lib and docs.
+
+### Docs — detail-panel / colour-slot token names
+
+- The detail-panel token table listed `--pc-detail-*` / `--pc-local-detail-panel-*`; the real
+  tokens are `--pa-detail-*` / `--pa-local-detail-panel-*`. The colours page and inputs page
+  labelled theme slots `--pc-color-N`; they are `--pc-palette-N` (text:
+  `--pc-on-palette-N-text-color`). `Badge` comment updated likewise.
+
+### Docs — no invented font variables
+
+- Demo pages used `var(--pc-font-size-sm|xs, …)` / `var(--pc-font-family-mono, …)` /
+  `var(--pc-font-mono, …)` — variables that never existed (they always rendered their
+  fallback). Replaced with the `text-sm` / `text-xs` / `font-family-mono` / `text-muted`
+  utilities on the elements.
+
 ### BREAKING — `--pc-*` role colours end in `-color`; muted text is `.text-muted`
 
 - pure-css 2.0.0-rc02 renamed `--pc-primary[-hover|-active]` → `--pc-primary-color[-hover|-active]`
