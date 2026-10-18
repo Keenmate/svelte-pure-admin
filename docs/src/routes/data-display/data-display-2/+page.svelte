@@ -18,7 +18,8 @@
 		Banded,
 		BandedRow,
 		AccentGrid,
-		AccentGridItem
+		AccentGridItem,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -57,7 +58,7 @@
 <Grid>
 	<Column size="1-2">
 		<Card titleText="1c. Descriptions Table — Fixed + Truncate">
-			{#snippet description()}<code>--fixed</code> locks label columns to 14rem. <code>--truncate</code> clips long values with ellipsis.{/snippet}
+			{#snippet description()}<Code>--fixed</Code> locks label columns to 14rem. <Code>--truncate</Code> clips long values with ellipsis.{/snippet}
 			<DescTable cols={2} isFixed isTruncate hasContainerQuery>
 				<DescTableItem labelText="Company" valueText="Novak & Partners International Consulting Group s.r.o." />
 				<DescTableItem labelText="Reg. No." valueText="CZ48207497" />
@@ -68,7 +69,7 @@
 	</Column>
 	<Column size="1-2">
 		<Card titleText="1d. Descriptions Table — Custom Label Width">
-			{#snippet description()}<code>--fixed</code> with <code>--label-width: 20rem</code> via CSS custom property.{/snippet}
+			{#snippet description()}<Code>--fixed</Code> with <Code>--label-width: 20rem</Code> via CSS custom property.{/snippet}
 			<DescTable cols={2} isFixed labelWidth="20rem" hasContainerQuery>
 				<DescTableItem labelText="Full Legal Name" valueText="Elena Petrova" />
 				<DescTableItem labelText="Date of Birth" valueText="14 March 1992" />
@@ -197,7 +198,7 @@
 <Grid>
 	<Column size="1-3">
 		<Card titleText="7b. Banded — Narrow" hasPadding={false}>
-			{#snippet description()}<code>pa-banded--narrow</code> — 10rem label band.{/snippet}
+			{#snippet description()}<Code>pa-banded--narrow</Code> — 10rem label band.{/snippet}
 			<Banded width="narrow" hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
@@ -218,7 +219,7 @@
 	</Column>
 	<Column size="1-3">
 		<Card titleText="7d. Banded — Wide" hasPadding={false}>
-			{#snippet description()}<code>pa-banded--wide</code> — 20rem label band.{/snippet}
+			{#snippet description()}<Code>pa-banded--wide</Code> — 20rem label band.{/snippet}
 			<Banded width="wide" hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
@@ -233,7 +234,7 @@
 <Grid>
 	<Column size="1-2">
 		<Card titleText="7e. Banded — Truncate" hasPadding={false}>
-			{#snippet description()}<code>--truncate</code> clips long values with ellipsis.{/snippet}
+			{#snippet description()}<Code>--truncate</Code> clips long values with ellipsis.{/snippet}
 			<Banded isTruncate hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-gateway-eu-west-01.internal.novakpartners.cz" />
 				<BandedRow labelText="Path" valueText="/var/lib/docker/containers/a1b2c3d4e5f6/config.v2.json" />
@@ -244,8 +245,8 @@
 	</Column>
 	<Column size="1-2">
 		<Card hasPadding={false}>
-			{#snippet title()}7f. Banded — <code>wr-*</code> Utility Width{/snippet}
-			{#snippet description()}Label width set per-label with <code>wr-8</code> utility class (8rem).{/snippet}
+			{#snippet title()}7f. Banded — <Code>wr-*</Code> Utility Width{/snippet}
+			{#snippet description()}Label width set per-label with <Code>wr-8</Code> utility class (8rem).{/snippet}
 			<Banded isTruncate hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-gateway-eu-west-01.internal.novakpartners.cz" labelClass="wr-8" />
 				<BandedRow labelText="Path" valueText="/var/lib/docker/containers/a1b2c3d4e5f6/config.v2.json" labelClass="wr-8" />
@@ -270,8 +271,8 @@
 	</Column>
 	<Column size="1-2">
 		<Card hasPadding={false}>
-			{#snippet title()}7h. Banded — Multiline + <code>--middle</code>{/snippet}
-			{#snippet description()}<code>pa-banded--middle</code> vertically centers labels against wrapped values.{/snippet}
+			{#snippet title()}7h. Banded — Multiline + <Code>--middle</Code>{/snippet}
+			{#snippet description()}<Code>pa-banded--middle</Code> vertically centers labels against wrapped values.{/snippet}
 			<Banded isMiddle hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="Description" valueText="Primary API gateway for Central European region. Handles authentication, rate limiting, and request routing to downstream microservices." />
@@ -296,7 +297,7 @@
 	</Column>
 	<Column size="1-2">
 		<Card>
-			{#snippet title()}1f. Desc Table — Multiline + <code>--middle</code>{/snippet}
+			{#snippet title()}1f. Desc Table — Multiline + <Code>--middle</Code>{/snippet}
 			{#snippet description()}Cells stretch to fill the row, content centered inside. Label backgrounds fill the full row height.{/snippet}
 			<DescTable cols={2} isMiddle hasContainerQuery>
 				<DescTableItem labelText="Company" valueText="Novak & Partners s.r.o." />
@@ -321,7 +322,7 @@
 	</Column>
 	<Column size="1-3">
 		<Card hasPadding={false}>
-			{#snippet title()}Banded — <code>--label-end</code>{/snippet}
+			{#snippet title()}Banded — <Code>--label-end</Code>{/snippet}
 			<Banded isLabelEnd hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
@@ -331,7 +332,7 @@
 	</Column>
 	<Column size="1-3">
 		<Card hasPadding={false}>
-			{#snippet title()}Banded — <code>--label-center</code>{/snippet}
+			{#snippet title()}Banded — <Code>--label-center</Code>{/snippet}
 			<Banded isLabelCenter hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
@@ -353,7 +354,7 @@
 	</Column>
 	<Column size="1-3">
 		<Card>
-			{#snippet title()}Desc Table — <code>--label-end</code>{/snippet}
+			{#snippet title()}Desc Table — <Code>--label-end</Code>{/snippet}
 			<DescTable cols={2} isFixed isLabelEnd hasContainerQuery>
 				<DescTableItem labelText="Server" valueText="prod-api-01" />
 				<DescTableItem labelText="IP Address" valueText="10.0.12.45" />
@@ -363,7 +364,7 @@
 	</Column>
 	<Column size="1-3">
 		<Card>
-			{#snippet title()}Desc Table — <code>--label-center</code>{/snippet}
+			{#snippet title()}Desc Table — <Code>--label-center</Code>{/snippet}
 			<DescTable cols={2} isFixed isLabelCenter hasContainerQuery>
 				<DescTableItem labelText="Server" valueText="prod-api-01" />
 				<DescTableItem labelText="IP Address" valueText="10.0.12.45" />
@@ -391,7 +392,7 @@
 	</Column>
 	<Column size="1-2">
 		<Card isGhost titleText="Ghost Card + Accent-Bar">
-			{#snippet description()}<code>pa-card--ghost</code> — same sizing, no visible container.{/snippet}
+			{#snippet description()}<Code>pa-card--ghost</Code> — same sizing, no visible container.{/snippet}
 			<AccentGrid>
 				<AccentGridItem labelText="Order ID" valueText="#ORD-2026-00847" />
 				<AccentGridItem labelText="Status" valueText="Delivered" variant="success" />
@@ -427,7 +428,7 @@
 	<Grid>
 		<Column size="1-3">
 			<Heading level={4} class="mb-2">Copy Button (always visible)</Heading>
-			<Paragraph class="text-muted mb-2"><code>copyMode="btn"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><Code>copyMode="btn"</Code></Paragraph>
 			<Banded>
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" copyMode="btn" />
 				<BandedRow labelText="Hash" valueText="sha256:e3b0c44298fc1c" copyMode="btn" />
@@ -435,7 +436,7 @@
 		</Column>
 		<Column size="1-3">
 			<Heading level={4} class="mb-2">Click Value to Copy</Heading>
-			<Paragraph class="text-muted mb-2"><code>copyMode="click"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><Code>copyMode="click"</Code></Paragraph>
 			<Banded>
 				<BandedRow labelText="Server" valueText="prod-api-01" copyMode="click" />
 				<BandedRow labelText="OS" valueText="Ubuntu 22.04 LTS" copyMode="click" />
@@ -443,7 +444,7 @@
 		</Column>
 		<Column size="1-3">
 			<Heading level={4} class="mb-2">Icon on Hover Only</Heading>
-			<Paragraph class="text-muted mb-2"><code>copyMode="hover"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><Code>copyMode="hover"</Code></Paragraph>
 			<Banded>
 				<BandedRow labelText="IBAN" valueText="CZ65 0800 0000 1920 0014 5399" copyMode="hover" />
 				<BandedRow labelText="BIC/SWIFT" valueText="GIBACZPX" copyMode="hover" />
@@ -454,7 +455,7 @@
 	<Grid class="mt-8">
 		<Column size="1-2">
 			<Heading level={4} class="mb-2">Property Card — Hover Copy</Heading>
-			<Paragraph class="text-muted mb-2"><code>copyMode="hover"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><Code>copyMode="hover"</Code></Paragraph>
 			<PropCard headerText="Order Details">
 				<PropCardRow labelText="Order ID" valueText="#ORD-2026-00847" copyMode="hover" />
 				<PropCardRow labelText="Date" valueText="28 January 2026" />
@@ -464,7 +465,7 @@
 		</Column>
 		<Column size="1-2">
 			<Heading level={4} class="mb-2">Descriptions Table — Copy Button</Heading>
-			<Paragraph class="text-muted mb-2"><code>copyMode="btn"</code></Paragraph>
+			<Paragraph class="text-muted mb-2"><Code>copyMode="btn"</Code></Paragraph>
 			<DescTable cols={2} hasContainerQuery>
 				<DescTableItem labelText="Reg. No." valueText="CZ48207497" copyMode="btn" />
 				<DescTableItem labelText="VAT ID" valueText="CZ48207497" copyMode="btn" />
@@ -578,87 +579,87 @@
 		</thead>
 		<tbody>
 			<tr><td colspan="2"><strong>Descriptions Table</strong></td></tr>
-			<tr><td><code>.pa-desc-table</code></td><td>CSS Grid with 3 label-value pairs per row (default). Label cells get tinted background.</td></tr>
-			<tr><td><code>.pa-desc-table--cols-2</code></td><td>2 label-value pairs per row</td></tr>
-			<tr><td><code>.pa-desc-table--fixed</code></td><td>Fixed-width label columns (default 14rem, override with <code>--label-width</code> CSS property)</td></tr>
-			<tr><td><code>.pa-desc-table--middle</code></td><td>Vertically center labels and values</td></tr>
-			<tr><td><code>.pa-desc-table--label-end</code></td><td>Right-align labels</td></tr>
-			<tr><td><code>.pa-desc-table--label-center</code></td><td>Center-align labels</td></tr>
-			<tr><td><code>.pa-desc-table--truncate</code></td><td>Single-line ellipsis on labels and values</td></tr>
-			<tr><td><code>.pa-desc-table__label</code></td><td>Label cell (tinted background, colon appended via CSS)</td></tr>
-			<tr><td><code>.pa-desc-table__value</code></td><td>Value cell</td></tr>
-			<tr><td><code>.pa-desc-table__value--full</code></td><td>Value spans all remaining columns</td></tr>
-			<tr><td><code>.pa-desc-container</code></td><td>Container query wrapper — desc-tables collapse to single column when parent is narrow</td></tr>
+			<tr><td><Code>.pa-desc-table</Code></td><td>CSS Grid with 3 label-value pairs per row (default). Label cells get tinted background.</td></tr>
+			<tr><td><Code>.pa-desc-table--cols-2</Code></td><td>2 label-value pairs per row</td></tr>
+			<tr><td><Code>.pa-desc-table--fixed</Code></td><td>Fixed-width label columns (default 14rem, override with <Code>--label-width</Code> CSS property)</td></tr>
+			<tr><td><Code>.pa-desc-table--middle</Code></td><td>Vertically center labels and values</td></tr>
+			<tr><td><Code>.pa-desc-table--label-end</Code></td><td>Right-align labels</td></tr>
+			<tr><td><Code>.pa-desc-table--label-center</Code></td><td>Center-align labels</td></tr>
+			<tr><td><Code>.pa-desc-table--truncate</Code></td><td>Single-line ellipsis on labels and values</td></tr>
+			<tr><td><Code>.pa-desc-table__label</Code></td><td>Label cell (tinted background, colon appended via CSS)</td></tr>
+			<tr><td><Code>.pa-desc-table__value</Code></td><td>Value cell</td></tr>
+			<tr><td><Code>.pa-desc-table__value--full</Code></td><td>Value spans all remaining columns</td></tr>
+			<tr><td><Code>.pa-desc-container</Code></td><td>Container query wrapper — desc-tables collapse to single column when parent is narrow</td></tr>
 
 			<tr><td colspan="2"><strong>Dot Leaders</strong></td></tr>
-			<tr><td><code>.pa-dot-leaders</code></td><td>Flex column container for leader items</td></tr>
-			<tr><td><code>.pa-dot-leaders__item</code></td><td>Single row with label, dotted leader, and value</td></tr>
-			<tr><td><code>.pa-dot-leaders__item--total</code></td><td>Total row with top border and bold text</td></tr>
-			<tr><td><code>.pa-dot-leaders__label</code></td><td>Left-aligned label text</td></tr>
-			<tr><td><code>.pa-dot-leaders__leader</code></td><td>Dotted line filling space between label and value</td></tr>
-			<tr><td><code>.pa-dot-leaders__value</code></td><td>Right-aligned value text (tabular-nums)</td></tr>
+			<tr><td><Code>.pa-dot-leaders</Code></td><td>Flex column container for leader items</td></tr>
+			<tr><td><Code>.pa-dot-leaders__item</Code></td><td>Single row with label, dotted leader, and value</td></tr>
+			<tr><td><Code>.pa-dot-leaders__item--total</Code></td><td>Total row with top border and bold text</td></tr>
+			<tr><td><Code>.pa-dot-leaders__label</Code></td><td>Left-aligned label text</td></tr>
+			<tr><td><Code>.pa-dot-leaders__leader</Code></td><td>Dotted line filling space between label and value</td></tr>
+			<tr><td><Code>.pa-dot-leaders__value</Code></td><td>Right-aligned value text (tabular-nums)</td></tr>
 
 			<tr><td colspan="2"><strong>Property Card</strong></td></tr>
-			<tr><td><code>.pa-prop-card</code></td><td>Bordered card with optional header and label-value rows</td></tr>
-			<tr><td><code>.pa-prop-card__header</code></td><td>Uppercase section header with tinted background</td></tr>
-			<tr><td><code>.pa-prop-card__row</code></td><td>Flex row with label and value</td></tr>
-			<tr><td><code>.pa-prop-card__label</code></td><td>Left-aligned label</td></tr>
-			<tr><td><code>.pa-prop-card__value</code></td><td>Right-aligned value</td></tr>
-			<tr><td><code>.pa-prop-card__value--bold</code></td><td>Bold value text</td></tr>
+			<tr><td><Code>.pa-prop-card</Code></td><td>Bordered card with optional header and label-value rows</td></tr>
+			<tr><td><Code>.pa-prop-card__header</Code></td><td>Uppercase section header with tinted background</td></tr>
+			<tr><td><Code>.pa-prop-card__row</Code></td><td>Flex row with label and value</td></tr>
+			<tr><td><Code>.pa-prop-card__label</Code></td><td>Left-aligned label</td></tr>
+			<tr><td><Code>.pa-prop-card__value</Code></td><td>Right-aligned value</td></tr>
+			<tr><td><Code>.pa-prop-card__value--bold</Code></td><td>Bold value text</td></tr>
 
 			<tr><td colspan="2"><strong>Banded Rows</strong></td></tr>
-			<tr><td><code>.pa-banded</code></td><td>Rows with fixed-width tinted label column (default 14rem)</td></tr>
-			<tr><td><code>.pa-banded--narrow</code></td><td>Narrow label column (10rem)</td></tr>
-			<tr><td><code>.pa-banded--wide</code></td><td>Wide label column (20rem)</td></tr>
-			<tr><td><code>.pa-banded--middle</code></td><td>Vertically center labels and values</td></tr>
-			<tr><td><code>.pa-banded--label-end</code></td><td>Right-align labels</td></tr>
-			<tr><td><code>.pa-banded--label-center</code></td><td>Center-align labels</td></tr>
-			<tr><td><code>.pa-banded--truncate</code></td><td>Single-line ellipsis on labels and values</td></tr>
-			<tr><td><code>.pa-banded__row</code></td><td>Flex row container</td></tr>
-			<tr><td><code>.pa-banded__label</code></td><td>Fixed-width tinted label (use <code>wr-*</code> utilities to override width)</td></tr>
-			<tr><td><code>.pa-banded__value</code></td><td>Flexible value area</td></tr>
-			<tr><td><code>.pa-banded-container</code></td><td>Container query wrapper — rows stack vertically when parent is narrow</td></tr>
+			<tr><td><Code>.pa-banded</Code></td><td>Rows with fixed-width tinted label column (default 14rem)</td></tr>
+			<tr><td><Code>.pa-banded--narrow</Code></td><td>Narrow label column (10rem)</td></tr>
+			<tr><td><Code>.pa-banded--wide</Code></td><td>Wide label column (20rem)</td></tr>
+			<tr><td><Code>.pa-banded--middle</Code></td><td>Vertically center labels and values</td></tr>
+			<tr><td><Code>.pa-banded--label-end</Code></td><td>Right-align labels</td></tr>
+			<tr><td><Code>.pa-banded--label-center</Code></td><td>Center-align labels</td></tr>
+			<tr><td><Code>.pa-banded--truncate</Code></td><td>Single-line ellipsis on labels and values</td></tr>
+			<tr><td><Code>.pa-banded__row</Code></td><td>Flex row container</td></tr>
+			<tr><td><Code>.pa-banded__label</Code></td><td>Fixed-width tinted label (use <Code>wr-*</Code> utilities to override width)</td></tr>
+			<tr><td><Code>.pa-banded__value</Code></td><td>Flexible value area</td></tr>
+			<tr><td><Code>.pa-banded-container</Code></td><td>Container query wrapper — rows stack vertically when parent is narrow</td></tr>
 
 			<tr><td colspan="2"><strong>Fields Modifiers</strong></td></tr>
-			<tr><td><code>.pa-fields--linear</code></td><td>Minimal side-by-side layout with fixed-width labels</td></tr>
-			<tr><td><code>.pa-fields--chips</code></td><td>Inline flow with pill-styled values</td></tr>
-			<tr><td><code>.pa-field__value--success</code></td><td>Green chip color (use with <code>--chips</code>)</td></tr>
-			<tr><td><code>.pa-field__value--warning</code></td><td>Orange chip color</td></tr>
-			<tr><td><code>.pa-field__value--danger</code></td><td>Red chip color</td></tr>
-			<tr><td><code>.pa-fields-container</code></td><td>Container query wrapper for responsive field layouts</td></tr>
+			<tr><td><Code>.pa-fields--linear</Code></td><td>Minimal side-by-side layout with fixed-width labels</td></tr>
+			<tr><td><Code>.pa-fields--chips</Code></td><td>Inline flow with pill-styled values</td></tr>
+			<tr><td><Code>.pa-field__value--success</Code></td><td>Green chip color (use with <Code>--chips</Code>)</td></tr>
+			<tr><td><Code>.pa-field__value--warning</Code></td><td>Orange chip color</td></tr>
+			<tr><td><Code>.pa-field__value--danger</Code></td><td>Red chip color</td></tr>
+			<tr><td><Code>.pa-fields-container</Code></td><td>Container query wrapper for responsive field layouts</td></tr>
 
 			<tr><td colspan="2"><strong>Accent Grid</strong></td></tr>
-			<tr><td><code>.pa-accent-grid</code></td><td>Auto-fill grid of items with color-coded left borders</td></tr>
-			<tr><td><code>.pa-accent-grid__item</code></td><td>Grid item with accent border</td></tr>
-			<tr><td><code>.pa-accent-grid__item--success</code></td><td>Green border</td></tr>
-			<tr><td><code>.pa-accent-grid__item--warning</code></td><td>Orange border</td></tr>
-			<tr><td><code>.pa-accent-grid__item--danger</code></td><td>Red border</td></tr>
-			<tr><td><code>.pa-accent-grid__item--info</code></td><td>Blue border</td></tr>
-			<tr><td><code>.pa-accent-grid__label</code></td><td>Small uppercase label</td></tr>
-			<tr><td><code>.pa-accent-grid__value</code></td><td>Prominent value text</td></tr>
+			<tr><td><Code>.pa-accent-grid</Code></td><td>Auto-fill grid of items with color-coded left borders</td></tr>
+			<tr><td><Code>.pa-accent-grid__item</Code></td><td>Grid item with accent border</td></tr>
+			<tr><td><Code>.pa-accent-grid__item--success</Code></td><td>Green border</td></tr>
+			<tr><td><Code>.pa-accent-grid__item--warning</Code></td><td>Orange border</td></tr>
+			<tr><td><Code>.pa-accent-grid__item--danger</Code></td><td>Red border</td></tr>
+			<tr><td><Code>.pa-accent-grid__item--info</Code></td><td>Blue border</td></tr>
+			<tr><td><Code>.pa-accent-grid__label</Code></td><td>Small uppercase label</td></tr>
+			<tr><td><Code>.pa-accent-grid__value</Code></td><td>Prominent value text</td></tr>
 
 			<tr><td colspan="2"><strong>Copyable (Banded)</strong></td></tr>
-			<tr><td><code>copyMode="btn"</code></td><td>Always-visible copy button on banded row</td></tr>
-			<tr><td><code>copyMode="hover"</code></td><td>Copy button appears on row hover</td></tr>
-			<tr><td><code>copyMode="click"</code></td><td>Click value to copy, shows hint on hover</td></tr>
+			<tr><td><Code>copyMode="btn"</Code></td><td>Always-visible copy button on banded row</td></tr>
+			<tr><td><Code>copyMode="hover"</Code></td><td>Copy button appears on row hover</td></tr>
+			<tr><td><Code>copyMode="click"</Code></td><td>Click value to copy, shows hint on hover</td></tr>
 
 			<tr><td colspan="2"><strong>Copyable (Property Card)</strong></td></tr>
-			<tr><td><code>copyMode="btn"</code></td><td>Always-visible copy button on prop card row</td></tr>
-			<tr><td><code>copyMode="hover"</code></td><td>Copy button appears on row hover</td></tr>
-			<tr><td><code>copyMode="click"</code></td><td>Click value to copy</td></tr>
+			<tr><td><Code>copyMode="btn"</Code></td><td>Always-visible copy button on prop card row</td></tr>
+			<tr><td><Code>copyMode="hover"</Code></td><td>Copy button appears on row hover</td></tr>
+			<tr><td><Code>copyMode="click"</Code></td><td>Click value to copy</td></tr>
 
 			<tr><td colspan="2"><strong>Copyable (Descriptions Table)</strong></td></tr>
-			<tr><td><code>copyMode="btn"</code></td><td>Always-visible copy button on desc table value</td></tr>
-			<tr><td><code>copyMode="hover"</code></td><td>Copy button appears on value hover</td></tr>
-			<tr><td><code>copyMode="click"</code></td><td>Click value to copy, shows hint on hover</td></tr>
+			<tr><td><Code>copyMode="btn"</Code></td><td>Always-visible copy button on desc table value</td></tr>
+			<tr><td><Code>copyMode="hover"</Code></td><td>Copy button appears on value hover</td></tr>
+			<tr><td><Code>copyMode="click"</Code></td><td>Click value to copy, shows hint on hover</td></tr>
 
 			<tr><td colspan="2"><strong>Copyable (Accent Grid)</strong></td></tr>
-			<tr><td><code>copyMode="btn"</code></td><td>Always-visible copy button on accent grid item</td></tr>
-			<tr><td><code>copyMode="hover"</code></td><td>Copy button appears on item hover</td></tr>
-			<tr><td><code>copyMode="click"</code></td><td>Click value to copy, shows hint on hover</td></tr>
+			<tr><td><Code>copyMode="btn"</Code></td><td>Always-visible copy button on accent grid item</td></tr>
+			<tr><td><Code>copyMode="hover"</Code></td><td>Copy button appears on item hover</td></tr>
+			<tr><td><Code>copyMode="click"</Code></td><td>Click value to copy, shows hint on hover</td></tr>
 
 			<tr><td colspan="2"><strong>Utilities</strong></td></tr>
-			<tr><td><code>.pa-cq</code></td><td>General-purpose container query wrapper (<code>container-type: inline-size</code>)</td></tr>
+			<tr><td><Code>.pa-cq</Code></td><td>General-purpose container query wrapper (<Code>container-type: inline-size</Code>)</td></tr>
 		</tbody>
 	</Table>
 </Card>

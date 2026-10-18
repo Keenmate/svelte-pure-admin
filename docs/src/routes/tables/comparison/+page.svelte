@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Badge, Button, ButtonGroup, CodeBlock } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Badge, Button, ButtonGroup, CodeBlock, Code } from '@keenmate/svelte-pure-admin';
 </script>
 
 <svelte:head>
@@ -321,7 +321,7 @@
 <!-- Solid Background Variant -->
 <Card hasPadding={false} class="mt-8" titleText="Version Detail (Solid Background Variant)">
 	{#snippet description()}
-		Using <code>pa-comparison-table__changed--solid</code> for uniform background highlighting without left border accent
+		Using <Code>pa-comparison-table__changed--solid</Code> for uniform background highlighting without left border accent
 	{/snippet}
 
 	<table class="pa-table pa-comparison-table">
@@ -401,15 +401,15 @@
 <Card titleText="Implementation Notes" class="mt-8">
 	<Heading level={4}>Component Classes</Heading>
 	<ul>
-		<li><code>pa-comparison-table</code> - Apply to table element</li>
-		<li><code>pa-comparison-table__label</code> - Field name column</li>
-		<li><code>pa-comparison-table__value</code> - Wrapper for value + copy button</li>
-		<li><code>pa-comparison-table__copy</code> - Copy button styling</li>
-		<li><code>pa-comparison-table__changed</code> - Pink highlight for changed values (light bg + left border)</li>
-		<li><code>pa-comparison-table__changed--solid</code> - Solid pink background (no left border accent)</li>
-		<li><code>pa-comparison-table__conflict</code> - Orange highlight for merge conflicts</li>
-		<li><code>pa-comparison-table__conflict--solid</code> - Solid orange background (no left border accent)</li>
-		<li><code>pa-comparison-table__section</code> - Section header row</li>
+		<li><Code>pa-comparison-table</Code> - Apply to table element</li>
+		<li><Code>pa-comparison-table__label</Code> - Field name column</li>
+		<li><Code>pa-comparison-table__value</Code> - Wrapper for value + copy button</li>
+		<li><Code>pa-comparison-table__copy</Code> - Copy button styling</li>
+		<li><Code>pa-comparison-table__changed</Code> - Pink highlight for changed values (light bg + left border)</li>
+		<li><Code>pa-comparison-table__changed--solid</Code> - Solid pink background (no left border accent)</li>
+		<li><Code>pa-comparison-table__conflict</Code> - Orange highlight for merge conflicts</li>
+		<li><Code>pa-comparison-table__conflict--solid</Code> - Solid orange background (no left border accent)</li>
+		<li><Code>pa-comparison-table__section</Code> - Section header row</li>
 	</ul>
 
 	<Heading level={4} class="mt-4">Features</Heading>

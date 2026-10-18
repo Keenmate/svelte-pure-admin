@@ -717,7 +717,7 @@
 
 <!-- Top-Aligned Modal -->
 <Modal bind:show={showTop} position="top" titleText="Top-Aligned Modal">
-	<Paragraph>This modal uses the <code>position="top"</code> prop to position it near the top of the viewport.</Paragraph>
+	<Paragraph>This modal uses the <Code>position="top"</Code> prop to position it near the top of the viewport.</Paragraph>
 	<Paragraph>This is useful for:</Paragraph>
 	<BasicList>
 		<li>Search interfaces (similar to command palette)</li>

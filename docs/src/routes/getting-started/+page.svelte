@@ -6,7 +6,7 @@
 <Card titleText="Welcome to Svelte Pure Admin">
 	<Paragraph>
 		<strong>@keenmate/svelte-pure-admin</strong> is a Svelte 5 component library that wraps the Pure Admin CSS framework
-		(<code>@keenmate/pure-admin-core</code>) into type-safe, reactive Svelte components.
+		(<Code>@keenmate/pure-admin-core</Code>) into type-safe, reactive Svelte components.
 	</Paragraph>
 	<Paragraph>
 		Built using modern Svelte 5 features (runes, snippets), this library provides ready-to-use components
@@ -56,7 +56,7 @@
 <!-- SettingsPanel Note -->
 <Card titleText="About SettingsPanel">
 	<Paragraph>
-		The <code>SettingsPanel</code> component (gear icon in the corner) is primarily a <strong>demo and development tool</strong>
+		The <Code>SettingsPanel</Code> component (gear icon in the corner) is primarily a <strong>demo and development tool</strong>
 		to showcase what's possible with pure-admin-core. It's not typically something you'd expose to end users in production.
 	</Paragraph>
 
@@ -71,7 +71,7 @@
 	</Callout>
 
 	<Callout variant="info" headingText="Wiring Up Reactive Settings">
-		<p>If you do need runtime settings that affect Svelte components (like ProfilePanel), use the <code>onsettingschange</code> prop to pass settings as reactive props:</p>
+		<p>If you do need runtime settings that affect Svelte components (like ProfilePanel), use the <Code>onsettingschange</Code> prop to pass settings as reactive props:</p>
 		<CodeBlock>{`${'<'}script>
   let profileHasAvatar = $state(true);
   let profileIconOnlyTabs = $state(false);
@@ -115,7 +115,7 @@ yarn add @keenmate/svelte-pure-admin @keenmate/pure-admin-theme-audi`}</CodeBloc
 <!-- Basic Setup -->
 <Card titleText="Basic Setup">
 	<Paragraph>
-		After installation, import your chosen theme CSS and wrap your app in the <code>PureAdminProvider</code> component.
+		After installation, import your chosen theme CSS and wrap your app in the <Code>PureAdminProvider</Code> component.
 	</Paragraph>
 
 	<Heading level={4}>1. Import the theme (in your root layout)</Heading>
@@ -168,14 +168,14 @@ ${'<'}/script>
 <!-- PureAdminProvider -->
 <Card titleText="What is PureAdminProvider?">
 	<Paragraph>
-		<code>PureAdminProvider</code> is a context provider that wraps your application and provides two main features:
+		<Code>PureAdminProvider</Code> is a context provider that wraps your application and provides two main features:
 	</Paragraph>
 
 	<Grid>
 		<Column size="100" md="1-2">
 			<Heading level={4}>1. Application Configuration</Heading>
 			<Paragraph>
-				Provides a shared configuration context accessible to all child components via <code>usePureAdminConfig()</code>.
+				Provides a shared configuration context accessible to all child components via <Code>usePureAdminConfig()</Code>.
 				This includes app metadata, default values, UI preferences, and feature flags.
 			</Paragraph>
 			<CodeBlock>{`interface PureAdminConfig {

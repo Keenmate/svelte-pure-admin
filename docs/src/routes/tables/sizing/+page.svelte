@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Paragraph, Card, Table, TableCard, TableContainer, ButtonGroup, Button } from '@keenmate/svelte-pure-admin';
+	import { Paragraph, Card, Table, TableCard, TableContainer, ButtonGroup, Button, Code } from '@keenmate/svelte-pure-admin';
 </script>
 
 <Paragraph>Table size variants synchronized with button/input sizes. Each variant provides enough space for buttons and inputs of the same size.</Paragraph>
 
 <!-- XS Size Table -->
 <Card>
-	{#snippet title()}XS Size <code>pa-table--xs</code>{/snippet}
+	{#snippet title()}XS Size <Code>pa-table--xs</Code>{/snippet}
 	<Paragraph>Compact rows - fits button/input XS. Best for dense data grids.</Paragraph>
 	<TableContainer>
 		<Table size="xs">
@@ -63,7 +63,7 @@
 
 <!-- Default Size Table -->
 <Card>
-	{#snippet title()}Default Size <code>pa-table</code>{/snippet}
+	{#snippet title()}Default Size <Code>pa-table</Code>{/snippet}
 	<Paragraph>Standard rows - fits button/input SM and default sizes.</Paragraph>
 	<TableContainer>
 		<Table>
@@ -120,7 +120,7 @@
 
 <!-- SM Size Table -->
 <Card>
-	{#snippet title()}SM Size <code>pa-table--sm</code>{/snippet}
+	{#snippet title()}SM Size <Code>pa-table--sm</Code>{/snippet}
 	<Paragraph>Slightly wider horizontal padding than default.</Paragraph>
 	<TableContainer>
 		<Table size="sm">
@@ -177,7 +177,7 @@
 
 <!-- LG Size Table -->
 <Card>
-	{#snippet title()}LG Size <code>pa-table--lg</code>{/snippet}
+	{#snippet title()}LG Size <Code>pa-table--lg</Code>{/snippet}
 	<Paragraph>Spacious rows - fits button/input LG. Good for forms in tables.</Paragraph>
 	<TableContainer>
 		<Table size="lg">
@@ -234,7 +234,7 @@
 
 <!-- XL Size Table -->
 <Card>
-	{#snippet title()}XL Size <code>pa-table--xl</code>{/snippet}
+	{#snippet title()}XL Size <Code>pa-table--xl</Code>{/snippet}
 	<Paragraph>Extra spacious rows - fits button/input XL. Best for presentation tables.</Paragraph>
 	<TableContainer>
 		<Table size="xl">
@@ -303,31 +303,31 @@
 		<tbody>
 			<tr>
 				<td>XS</td>
-				<td><code>pa-table--xs</code></td>
+				<td><Code>pa-table--xs</Code></td>
 				<td>0.6rem 0.8rem</td>
 				<td>Dense data grids, logs</td>
 			</tr>
 			<tr>
 				<td>Default</td>
-				<td><code>pa-table</code></td>
+				<td><Code>pa-table</Code></td>
 				<td>0.8rem 0.8rem</td>
 				<td>Standard tables</td>
 			</tr>
 			<tr>
 				<td>SM</td>
-				<td><code>pa-table--sm</code></td>
+				<td><Code>pa-table--sm</Code></td>
 				<td>0.8rem 1rem</td>
 				<td>Slightly wider spacing</td>
 			</tr>
 			<tr>
 				<td>LG</td>
-				<td><code>pa-table--lg</code></td>
+				<td><Code>pa-table--lg</Code></td>
 				<td>0.8rem 1.4rem</td>
 				<td>Forms in tables</td>
 			</tr>
 			<tr>
 				<td>XL</td>
-				<td><code>pa-table--xl</code></td>
+				<td><Code>pa-table--xl</Code></td>
 				<td>0.8rem 1.6rem</td>
 				<td>Presentation tables</td>
 			</tr>

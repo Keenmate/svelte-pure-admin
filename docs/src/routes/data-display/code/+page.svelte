@@ -6,9 +6,9 @@
 
 <!-- Inline Code -->
 <Card titleText="Inline Code">
-	<Paragraph>Use the <code>&lt;code&gt;</code> element for isInline code references like <code>npm install</code> or <code>const myVariable = true</code>.</Paragraph>
-	<Paragraph>Configure the server using <code>config.json</code> and set <code>port: 3000</code> in the configuration file.</Paragraph>
-	<Paragraph>Import components with <code>import {`{ Button }`} from 'react'</code> syntax.</Paragraph>
+	<Paragraph>Use the <Code>&lt;code&gt;</Code> element for isInline code references like <Code>npm install</Code> or <Code>const myVariable = true</Code>.</Paragraph>
+	<Paragraph>Configure the server using <Code>config.json</Code> and set <Code>port: 3000</Code> in the configuration file.</Paragraph>
+	<Paragraph>Import components with <Code>import {`{ Button }`} from 'react'</Code> syntax.</Paragraph>
 </Card>
 
 <!-- Basic Code Blocks -->
@@ -116,7 +116,7 @@ ORDER BY orders.total DESC;`}</Code>
 
 <!-- Compact Code Blocks -->
 <Card titleText="Compact Variant">
-	<Paragraph>Use <code>.pa-code--compact</code> for smaller code snippets.</Paragraph>
+	<Paragraph>Use <Code>.pa-code--compact</Code> for smaller code snippets.</Paragraph>
 	<CodeBlock language="python" isCompact>{`def fibonacci(n):
     if n <= 1:
         return n

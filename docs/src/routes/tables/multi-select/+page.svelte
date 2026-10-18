@@ -11,7 +11,8 @@
 		SplitButton,
 		SplitButtonItem,
 		Heading,
-		Paragraph
+		Paragraph,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	// --- Mock data ---
@@ -232,7 +233,7 @@
 				<li>Shows selection count and bulk action buttons (Delete, Export, Clear)</li>
 				<li>"Show Details" button to expand full list (collapsed by default)</li>
 				<li>Prevents unwanted content shifting when checking items</li>
-				<li>Uses <code>pa-alert pa-alert--primary</code> for visual consistency</li>
+				<li>Uses <Code>pa-alert pa-alert--primary</Code> for visual consistency</li>
 			</ul>
 		</li>
 		<li>

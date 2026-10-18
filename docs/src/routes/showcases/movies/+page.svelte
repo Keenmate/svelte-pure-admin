@@ -131,7 +131,7 @@
 		<span class="text-muted text-sm">{filtered.length} movies</span>
 	{/snippet}
 
-	<Table isStriped isHover>
+	<Table isStriped>
 		<thead>
 			<tr>
 				<th></th>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, Button, ButtonGroup, Table, Badge, Popconfirm, Toast, ToastContainer, Grid, Column, Heading, CodeBlock, Callout, BasicList } from '@keenmate/svelte-pure-admin';
+	import { Card, Button, ButtonGroup, Table, Badge, Popconfirm, Toast, ToastContainer, Grid, Column, Heading, CodeBlock, Callout, BasicList, Code } from '@keenmate/svelte-pure-admin';
 	import { onMount } from 'svelte';
 	import '@keenmate/web-grid/css';
 
@@ -542,9 +542,9 @@
 
 	<Heading level={4} class="mt-4">Key Points</Heading>
 	<BasicList>
-		<li><strong>Single instance</strong> — one <code>&lt;Popconfirm&gt;</code> for all rows, driven by reactive state</li>
-		<li><strong>Shadow DOM</strong> — web-grid toolbar buttons live inside Shadow DOM; the <code>triggerElement</code> from the event detail is passed directly and positioning works automatically</li>
-		<li><strong>Dynamic callback</strong> — store the delete callback in state so <code>onconfirm</code> calls the right handler per row</li>
+		<li><strong>Single instance</strong> — one <Code>&lt;Popconfirm&gt;</Code> for all rows, driven by reactive state</li>
+		<li><strong>Shadow DOM</strong> — web-grid toolbar buttons live inside Shadow DOM; the <Code>triggerElement</Code> from the event detail is passed directly and positioning works automatically</li>
+		<li><strong>Dynamic callback</strong> — store the delete callback in state so <Code>onconfirm</Code> calls the right handler per row</li>
 		<li><strong>No extra config</strong> — the Shadow DOM proxy (v1.5.1) creates a light-DOM mirror element for Floating UI positioning</li>
 	</BasicList>
 </Card>

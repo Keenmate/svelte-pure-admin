@@ -11,7 +11,8 @@
 		Paragraph,
 		Grid,
 		Column,
-		Alert
+		Alert,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	// === Pager Demos ===
@@ -136,7 +137,7 @@
 
 <!-- Alignment Variants -->
 <Card titleText="Alignment Variants">
-	<Paragraph>Pagers can be aligned to <code>start</code>, <code>center</code> (default), or <code>end</code>. All use logical directions for RTL support.</Paragraph>
+	<Paragraph>Pagers can be aligned to <Code>start</Code>, <Code>center</Code> (default), or <Code>end</Code>. All use logical directions for RTL support.</Paragraph>
 
 	<Heading level={4}>Start-Aligned with First/Last Buttons</Heading>
 	<Pager
@@ -256,9 +257,24 @@
 	</Grid>
 </Card>
 
+<!-- Pager with Item Count -->
+<Card titleText="Pager with Item Count">
+	<Paragraph>
+		<Code>infoPosition="start"</Code> puts the info text before the controls.
+	</Paragraph>
+	<Pager
+		currentPage={1}
+		totalPages={10}
+		showPageInput={false}
+		showInfo={false}
+		infoPosition="start"
+		infoText="Showing 1-25 of 247 items"
+	/>
+</Card>
+
 <!-- Custom Controls -->
 <Card titleText="Custom Controls (Snippet)">
-	<Paragraph>Use the <code>controls</code> snippet to fully customize the pager buttons. Use the <code>info</code> snippet to customize the info section.</Paragraph>
+	<Paragraph>Use the <Code>controls</Code> snippet to fully customize the pager buttons. Use the <Code>info</Code> snippet to customize the info section.</Paragraph>
 
 	<Pager
 		currentPage={4}
@@ -287,7 +303,7 @@
 
 <!-- Load More Alignment -->
 <Card titleText="Load More Alignment">
-	<Paragraph>Load More buttons support <code>start</code>, <code>center</code> (default), and <code>end</code> alignment.</Paragraph>
+	<Paragraph>Load More buttons support <Code>start</Code>, <Code>center</Code> (default), and <Code>end</Code> alignment.</Paragraph>
 
 	<Grid>
 		<Column md="1-3">
@@ -387,92 +403,98 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><code>currentPage</code></td>
-						<td><code>number</code></td>
-						<td><code>1</code></td>
+						<td><Code>currentPage</Code></td>
+						<td><Code>number</Code></td>
+						<td><Code>1</Code></td>
 						<td>Current page number (bindable)</td>
 					</tr>
 					<tr>
-						<td><code>totalPages</code></td>
-						<td><code>number</code></td>
-						<td><code>1</code></td>
+						<td><Code>totalPages</Code></td>
+						<td><Code>number</Code></td>
+						<td><Code>1</Code></td>
 						<td>Total number of pages</td>
 					</tr>
 					<tr>
-						<td><code>align</code></td>
-						<td><code>'start' | 'center' | 'end'</code></td>
-						<td><code>'center'</code></td>
+						<td><Code>align</Code></td>
+						<td><Code>'start' | 'center' | 'end'</Code></td>
+						<td><Code>'center'</Code></td>
 						<td>Pager alignment (RTL-aware)</td>
 					</tr>
 					<tr>
-						<td><code>showPageInput</code></td>
-						<td><code>boolean</code></td>
-						<td><code>true</code></td>
+						<td><Code>showPageInput</Code></td>
+						<td><Code>boolean</Code></td>
+						<td><Code>true</Code></td>
 						<td>Show the page number input</td>
 					</tr>
 					<tr>
-						<td><code>showInfo</code></td>
-						<td><code>boolean</code></td>
-						<td><code>true</code></td>
+						<td><Code>showInfo</Code></td>
+						<td><Code>boolean</Code></td>
+						<td><Code>true</Code></td>
 						<td>Show the info section</td>
 					</tr>
 					<tr>
-						<td><code>infoText</code></td>
-						<td><code>string</code></td>
+						<td><Code>infoText</Code></td>
+						<td><Code>string</Code></td>
 						<td>-</td>
 						<td>Custom info text (e.g., "Showing 1-25 of 250")</td>
 					</tr>
 					<tr>
-						<td><code>disablePrevious</code></td>
-						<td><code>boolean</code></td>
-						<td><code>false</code></td>
+						<td><Code>infoPosition</Code></td>
+						<td><Code>'start' | 'end'</Code></td>
+						<td><Code>'end'</Code></td>
+						<td>Info before (<Code>start</Code>) or after (<Code>end</Code>) the controls</td>
+					</tr>
+					<tr>
+						<td><Code>disablePrevious</Code></td>
+						<td><Code>boolean</Code></td>
+						<td><Code>false</Code></td>
 						<td>Disable previous/first buttons</td>
 					</tr>
 					<tr>
-						<td><code>disableNext</code></td>
-						<td><code>boolean</code></td>
-						<td><code>false</code></td>
+						<td><Code>disableNext</Code></td>
+						<td><Code>boolean</Code></td>
+						<td><Code>false</Code></td>
 						<td>Disable next/last buttons</td>
 					</tr>
 					<tr>
-						<td><code>onprevious</code></td>
-						<td><code>(e: MouseEvent) => void</code></td>
+						<td><Code>onprevious</Code></td>
+						<td><Code>(e: MouseEvent) => void</Code></td>
 						<td>-</td>
 						<td>Previous button click handler</td>
 					</tr>
 					<tr>
-						<td><code>onnext</code></td>
-						<td><code>(e: MouseEvent) => void</code></td>
+						<td><Code>onnext</Code></td>
+						<td><Code>(e: MouseEvent) => void</Code></td>
 						<td>-</td>
 						<td>Next button click handler</td>
 					</tr>
 					<tr>
-						<td><code>onfirst</code></td>
-						<td><code>(e: MouseEvent) => void</code></td>
+						<td><Code>onfirst</Code></td>
+						<td><Code>(e: MouseEvent) => void</Code></td>
 						<td>-</td>
 						<td>First button click handler (shows button when provided)</td>
 					</tr>
 					<tr>
-						<td><code>onlast</code></td>
-						<td><code>(e: MouseEvent) => void</code></td>
+						<td><Code>onlast</Code></td>
+						<td><Code>(e: MouseEvent) => void</Code></td>
 						<td>-</td>
 						<td>Last button click handler (shows button when provided)</td>
 					</tr>
 					<tr>
-						<td><code>onpagechange</code></td>
-						<td><code>(page: number) => void</code></td>
+						<td><Code>onpagechange</Code></td>
+						<td><Code>(page: number) => void</Code></td>
 						<td>-</td>
 						<td>Fires when page changes via input</td>
 					</tr>
 					<tr>
-						<td><code>controls</code></td>
-						<td><code>Snippet</code></td>
+						<td><Code>controls</Code></td>
+						<td><Code>Snippet</Code></td>
 						<td>-</td>
 						<td>Custom controls snippet (replaces default buttons)</td>
 					</tr>
 					<tr>
-						<td><code>info</code></td>
-						<td><code>Snippet</code></td>
+						<td><Code>info</Code></td>
+						<td><Code>Snippet</Code></td>
 						<td>-</td>
 						<td>Custom info snippet (replaces default info section)</td>
 					</tr>
@@ -496,44 +518,44 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><code>align</code></td>
-						<td><code>'start' | 'center' | 'end'</code></td>
-						<td><code>'center'</code></td>
+						<td><Code>align</Code></td>
+						<td><Code>'start' | 'center' | 'end'</Code></td>
+						<td><Code>'center'</Code></td>
 						<td>Button alignment (RTL-aware)</td>
 					</tr>
 					<tr>
-						<td><code>isLoading</code></td>
-						<td><code>boolean</code></td>
-						<td><code>false</code></td>
+						<td><Code>isLoading</Code></td>
+						<td><Code>boolean</Code></td>
+						<td><Code>false</Code></td>
 						<td>Show loading spinner</td>
 					</tr>
 					<tr>
-						<td><code>text</code></td>
-						<td><code>string</code></td>
-						<td><code>'Load More'</code></td>
+						<td><Code>text</Code></td>
+						<td><Code>string</Code></td>
+						<td><Code>'Load More'</Code></td>
 						<td>Button text</td>
 					</tr>
 					<tr>
-						<td><code>count</code></td>
-						<td><code>string</code></td>
+						<td><Code>count</Code></td>
+						<td><Code>string</Code></td>
 						<td>-</td>
 						<td>Count text (e.g., "25 of 250")</td>
 					</tr>
 					<tr>
-						<td><code>shouldShowCount</code></td>
-						<td><code>boolean</code></td>
-						<td><code>false</code></td>
+						<td><Code>shouldShowCount</Code></td>
+						<td><Code>boolean</Code></td>
+						<td><Code>false</Code></td>
 						<td>Show the count text</td>
 					</tr>
 					<tr>
-						<td><code>onclick</code></td>
-						<td><code>(e: MouseEvent) => void</code></td>
+						<td><Code>onclick</Code></td>
+						<td><Code>(e: MouseEvent) => void</Code></td>
 						<td>-</td>
 						<td>Button click handler</td>
 					</tr>
 					<tr>
-						<td><code>children</code></td>
-						<td><code>Snippet</code></td>
+						<td><Code>children</Code></td>
+						<td><Code>Snippet</Code></td>
 						<td>-</td>
 						<td>Custom button content</td>
 					</tr>

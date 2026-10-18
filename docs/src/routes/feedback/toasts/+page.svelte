@@ -9,7 +9,8 @@
 		ButtonGroup,
 		ToastContainer,
 		CodeBlock,
-		toastService
+		toastService,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	type Variant = 'primary' | 'success' | 'danger' | 'warning' | 'info';
@@ -112,8 +113,8 @@
 
 <Paragraph>
 	Temporary notification messages with auto-dismiss and smooth animations. Drive them
-	imperatively via <code>toastService</code> — mount one <code>&lt;ToastContainer /&gt;</code>
-	in your layout and call <code>toastService.show({'{ ... }'})</code> from anywhere.
+	imperatively via <Code>toastService</Code> — mount one <Code>&lt;ToastContainer /&gt;</Code>
+	in your layout and call <Code>toastService.show({'{ ... }'})</Code> from anywhere.
 </Paragraph>
 
 <!-- 1. The basics -->
@@ -146,8 +147,8 @@ toastService.dismiss(id);
 toastService.dismissAll();`}</CodeBlock>
 
 	<Paragraph class="mt-4">
-		Sugar methods (<code>success</code>, <code>danger</code>, <code>warning</code>,
-		<code>info</code>, <code>primary</code>) accept either a string (just the message) or
+		Sugar methods (<Code>success</Code>, <Code>danger</Code>, <Code>warning</Code>,
+		<Code>info</Code>, <Code>primary</Code>) accept either a string (just the message) or
 		a partial options object.
 	</Paragraph>
 </Card>
@@ -155,8 +156,8 @@ toastService.dismissAll();`}</CodeBlock>
 <!-- 2. Toast Positions -->
 <Card titleText="Positions">
 	<Paragraph>
-		Each toast can target a position via the <code>position</code> option. Mount a
-		<code>&lt;ToastContainer position="..." /&gt;</code> for every position you intend to use.
+		Each toast can target a position via the <Code>position</Code> option. Mount a
+		<Code>&lt;ToastContainer position="..." /&gt;</Code> for every position you intend to use.
 	</Paragraph>
 	<Grid class="mt-4">
 		<Column size="100" md="1-3">
@@ -233,7 +234,7 @@ toastService.dismissAll();`}</CodeBlock>
 	</ButtonGroup>
 
 	<Paragraph color="secondary" class="mt-4">
-		Progress bar shows time remaining before auto-dismiss (default 5s — pass <code>duration</code> to change it).
+		Progress bar shows time remaining before auto-dismiss (default 5s — pass <Code>duration</Code> to change it).
 	</Paragraph>
 </Card>
 
@@ -257,8 +258,8 @@ toastService.dismissAll();`}</CodeBlock>
 		</Column>
 	</Grid>
 	<Paragraph color="secondary" class="mt-4">
-		<code>duration: 0</code> stays until manually closed. Capture the id from
-		<code>show()</code> to dismiss programmatically (<code>toastService.dismiss(id)</code>).
+		<Code>duration: 0</Code> stays until manually closed. Capture the id from
+		<Code>show()</Code> to dismiss programmatically (<Code>toastService.dismiss(id)</Code>).
 	</Paragraph>
 </Card>
 

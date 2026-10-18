@@ -29,16 +29,16 @@
 	<CodeBlock class="mb-3">{`_variables.scss          themes/express.scss           Output CSS
 ────────────────        ─────────────────────        ─────────────
 $base-accent-color:     $base-accent-color:          :root {
-  #3b82f6 !default;  →    #dc2626;               →    --base-accent-color: #dc2626;
+  #3b82f6 !default;  →    #dc2626;               →    --base-primary-color: #dc2626;
                         @include output-base-vars;     ...
                                                      }`}</CodeBlock>
 
 	<h3 class="mb-2">Web Component Consumption</h3>
 	<CodeBlock>{`/* In web component CSS */
 :host {
-    --ms-accent-color: var(--base-accent-color, #3b82f6);
+    --ms-accent-color: var(--base-primary-color, #3b82f6);
     --ms-text-color: var(--base-text-color-1, #333);
-    --ms-input-bg: var(--base-input-background, #fff);
+    --ms-input-bg: var(--base-input-bg, #fff);
 }`}</CodeBlock>
 </Card>
 
@@ -57,13 +57,13 @@ $base-accent-color:     $base-accent-color:          :root {
 				<td><strong>Colors</strong></td>
 				<td>11</td>
 				<td>
-					<Code>--base-accent-color</Code>,
-					<Code>--base-accent-color-hover</Code>,
-					<Code>--base-accent-color-active</Code>,
-					<Code>--base-primary-bg</Code>,
-					<Code>--base-primary-bg-hover</Code>,
+					<Code>--base-primary-color</Code>,
+					<Code>--base-primary-color-hover</Code>,
+					<Code>--base-primary-color-active</Code>,
+					<Code>--base-primary-bg-subtle</Code>,
+					<Code>--base-primary-bg-subtle-hover</Code>,
 					<Code>--base-text-color-1</Code> to <Code>--base-text-color-4</Code>,
-					<Code>--base-text-on-accent</Code>,
+					<Code>--base-on-primary-text-color</Code>,
 					<Code>--base-border-color</Code>
 				</td>
 			</tr>
@@ -71,13 +71,13 @@ $base-accent-color:     $base-accent-color:          :root {
 				<td><strong>Input Fields</strong></td>
 				<td>7</td>
 				<td>
-					<Code>--base-input-background</Code>,
-					<Code>--base-input-color</Code>,
+					<Code>--base-input-bg</Code>,
+					<Code>--base-input-text-color</Code>,
 					<Code>--base-input-border</Code>,
 					<Code>--base-input-border-hover</Code>,
 					<Code>--base-input-border-focus</Code>,
 					<Code>--base-input-placeholder-color</Code>,
-					<Code>--base-input-background-disabled</Code>
+					<Code>--base-input-bg-disabled</Code>
 				</td>
 			</tr>
 			<tr>
@@ -96,7 +96,7 @@ $base-accent-color:     $base-accent-color:          :root {
 				<td><strong>Dropdown</strong></td>
 				<td>3</td>
 				<td>
-					<Code>--base-dropdown-background</Code>,
+					<Code>--base-dropdown-bg</Code>,
 					<Code>--base-dropdown-border</Code>,
 					<Code>--base-dropdown-box-shadow</Code>
 				</td>
@@ -105,7 +105,7 @@ $base-accent-color:     $base-accent-color:          :root {
 				<td><strong>Tooltip</strong></td>
 				<td>2</td>
 				<td>
-					<Code>--base-tooltip-background</Code>,
+					<Code>--base-tooltip-bg</Code>,
 					<Code>--base-tooltip-text-color</Code>
 				</td>
 			</tr>
@@ -152,16 +152,16 @@ $base-accent-color:     $base-accent-color:          :root {
 		<Column size="50" md="25">
 			<h4 class="mb-1">Colors</h4>
 			<div class="d-flex align-items-center gap-8 mb-2">
-				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-accent-color); border: 1px solid var(--base-border-color);"></div>
-				<Code>--base-accent-color</Code>
+				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-primary-color); border: 1px solid var(--base-border-color);"></div>
+				<Code>--base-primary-color</Code>
 			</div>
 			<div class="d-flex align-items-center gap-8 mb-2">
-				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-accent-color-hover); border: 1px solid var(--base-border-color);"></div>
-				<Code>--base-accent-color-hover</Code>
+				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-primary-color-hover); border: 1px solid var(--base-border-color);"></div>
+				<Code>--base-primary-color-hover</Code>
 			</div>
 			<div class="d-flex align-items-center gap-8 mb-2">
-				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-primary-bg); border: 1px solid var(--base-border-color);"></div>
-				<Code>--base-primary-bg</Code>
+				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-primary-bg-subtle); border: 1px solid var(--base-border-color);"></div>
+				<Code>--base-primary-bg-subtle</Code>
 			</div>
 			<div class="d-flex align-items-center gap-8 mb-2">
 				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-border-color); border: 1px solid var(--base-border-color);"></div>
@@ -190,16 +190,16 @@ $base-accent-color:     $base-accent-color:          :root {
 		<Column size="50" md="25">
 			<h4 class="mb-1">Input Fields</h4>
 			<div class="d-flex align-items-center gap-8 mb-2">
-				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-input-background); border: 1px solid var(--base-border-color);"></div>
-				<Code>--base-input-background</Code>
+				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-input-bg); border: 1px solid var(--base-border-color);"></div>
+				<Code>--base-input-bg</Code>
 			</div>
 			<div class="d-flex align-items-center gap-8 mb-2">
-				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-dropdown-background); border: 1px solid var(--base-border-color);"></div>
-				<Code>--base-dropdown-background</Code>
+				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-dropdown-bg); border: 1px solid var(--base-border-color);"></div>
+				<Code>--base-dropdown-bg</Code>
 			</div>
 			<div class="d-flex align-items-center gap-8 mb-2">
-				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-tooltip-background); border: 1px solid var(--base-border-color);"></div>
-				<Code>--base-tooltip-background</Code>
+				<div style="width: 2.4rem; height: 2.4rem; border-radius: 0.4rem; background: var(--base-tooltip-bg); border: 1px solid var(--base-border-color);"></div>
+				<Code>--base-tooltip-bg</Code>
 			</div>
 		</Column>
 		<Column size="50" md="25">

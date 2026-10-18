@@ -1,5 +1,5 @@
 <script lang="ts">
-			import { Heading, Paragraph, Card, Timeline, TimelineItem, Button, Alert, BasicList, CodeBlock } from '@keenmate/svelte-pure-admin';
+			import { Heading, Paragraph, Card, Timeline, TimelineItem, Button, Alert, BasicList, CodeBlock, Code } from '@keenmate/svelte-pure-admin';
 	import type { TimelineItemVariant } from '@keenmate/svelte-pure-admin';
 
 	// Example: System log data from API/database
@@ -169,8 +169,8 @@
 	<Alert variant="success">
 		<small>
 			<strong>Callbacks = Simple Transformations:</strong> Use
-			<code>getVariantCallback</code> to map your data's status field to timeline colors. Use
-			<code>getContentCallback</code> to transform messages (like adding prefixes). For complex
+			<Code>getVariantCallback</Code> to map your data's status field to timeline colors. Use
+			<Code>getContentCallback</Code> to transform messages (like adding prefixes). For complex
 			rendering, use templates instead!
 		</small>
 	</Alert>
@@ -227,7 +227,7 @@
 	</div>
 
 	<Paragraph class="mt-4 text-muted text-sm">
-		<strong>Note:</strong> True virtual scrolling with <code>pa-virtual-scroll</code> component is not yet implemented.
+		<strong>Note:</strong> True virtual scrolling with <Code>pa-virtual-scroll</Code> component is not yet implemented.
 		This example uses regular scrolling with overflow.
 	</Paragraph>
 </Card>
@@ -252,11 +252,11 @@
 
 	<Heading level={4}>Available Variants</Heading>
 	<BasicList>
-		<li><code>variant="primary"</code> - Blue (default system events)</li>
-		<li><code>variant="secondary"</code> - Gray (routine events)</li>
-		<li><code>variant="success"</code> - Green (successful operations)</li>
-		<li><code>variant="info"</code> - Cyan (informational messages)</li>
-		<li><code>variant="warning"</code> - Orange (warnings)</li>
-		<li><code>variant="danger"</code> - Red (errors/critical events)</li>
+		<li><Code>variant="primary"</Code> - Blue (default system events)</li>
+		<li><Code>variant="secondary"</Code> - Gray (routine events)</li>
+		<li><Code>variant="success"</Code> - Green (successful operations)</li>
+		<li><Code>variant="info"</Code> - Cyan (informational messages)</li>
+		<li><Code>variant="warning"</Code> - Orange (warnings)</li>
+		<li><Code>variant="danger"</Code> - Red (errors/critical events)</li>
 	</BasicList>
 </Card>

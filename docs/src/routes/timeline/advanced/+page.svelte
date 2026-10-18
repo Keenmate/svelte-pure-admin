@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Timeline, TimelineItem, CodeBlock } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Timeline, TimelineItem, CodeBlock, Code } from '@keenmate/svelte-pure-admin';
 </script>
 
 <Paragraph>
 	The <strong>advanced</strong> (alternating) timeline zig-zags items left/right of a central spine, each with a
-	date and an icon marker. Pass <code>date</code> + <code>iconText</code> on each <code>&lt;TimelineItem&gt;</code>
-	and <code>variant="alternating"</code> on the <code>&lt;Timeline&gt;</code>. Use <code>alignment</code> to force a
-	side, or <code>isSingleColumn</code> to collapse to one column.
+	date and an icon marker. Pass <Code>date</Code> + <Code>iconText</Code> on each <Code>&lt;TimelineItem&gt;</Code>
+	and <Code>variant="alternating"</Code> on the <Code>&lt;Timeline&gt;</Code>. Use <Code>alignment</Code> to force a
+	side, or <Code>isSingleColumn</Code> to collapse to one column.
 </Paragraph>
 
 <Card titleText="Alternating timeline">
@@ -31,7 +31,7 @@
 
 <Card titleText="Forced to one side (alignment)">
 	{#snippet description()}
-		Set <code>alignment="start"</code> to keep every item on the start side instead of zig-zagging.
+		Set <Code>alignment="start"</Code> to keep every item on the start side instead of zig-zagging.
 	{/snippet}
 	<Timeline variant="alternating" alignment="start">
 		<TimelineItem variant="primary" date="09:00" iconText="1">Stand-up and sprint planning.</TimelineItem>

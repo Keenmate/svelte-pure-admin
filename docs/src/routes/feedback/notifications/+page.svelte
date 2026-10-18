@@ -6,7 +6,8 @@
 		Button,
 		NotificationsPanel,
 		CodeBlock,
-		type NotificationItem
+		type NotificationItem,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	const items: NotificationItem[] = [
@@ -54,7 +55,7 @@
 </script>
 
 <Paragraph>
-	<code>&lt;NotificationsPanel&gt;</code> renders Pure Admin's <code>.pa-notifications</code> list in two modes: a
+	<Code>&lt;NotificationsPanel&gt;</Code> renders Pure Admin's <Code>.pa-notifications</Code> list in two modes: a
 	<strong>dropdown panel</strong> (mounted beside a bell button) and a <strong>page view</strong> — a bare list
 	with optional bulk-select checkboxes and hover-revealed per-item actions.
 </Paragraph>
@@ -77,7 +78,7 @@
 
 <Card titleText="Page view — with bulk-select + actions">
 	{#snippet description()}
-		Full-width list (<code>isPageView</code>) with selection checkboxes and per-item actions.
+		Full-width list (<Code>isPageView</Code>) with selection checkboxes and per-item actions.
 	{/snippet}
 	<NotificationsPanel {items} isPageView shouldShowCheckboxes>
 		{#snippet itemActions(item)}

@@ -98,7 +98,7 @@
 	<Card titleText="Cast" hasPadding={false}>
 		<DetailView bind:show={showActorPanel} isOverlay={false} onclose={closeActorPanel}>
 			{#snippet main()}
-				<Table isHover>
+				<Table>
 					<thead>
 						<tr>
 							<th>Actor</th>

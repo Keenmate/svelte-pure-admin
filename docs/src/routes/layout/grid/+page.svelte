@@ -256,23 +256,23 @@
 	<h4>Horizontal Alignment</h4>
 
 	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--center</Code></Paragraph>
-	<Grid justify="center" class="mb-2" style="background: var(--base-primary-bg);">
+	<Grid justify="center" class="mb-2" style="background: var(--pc-primary-bg-subtle);">
 		<Column size="30"><div class="grid-demo-cell">Centered</div></Column>
 	</Grid>
 
 	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--end</Code></Paragraph>
-	<Grid justify="end" class="mb-2" style="background: var(--base-primary-bg);">
+	<Grid justify="end" class="mb-2" style="background: var(--pc-primary-bg-subtle);">
 		<Column size="30"><div class="grid-demo-cell">Right aligned</div></Column>
 	</Grid>
 
 	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--between</Code></Paragraph>
-	<Grid justify="between" class="mb-2" style="background: var(--base-primary-bg);">
+	<Grid justify="between" class="mb-2" style="background: var(--pc-primary-bg-subtle);">
 		<Column size="20"><div class="grid-demo-cell">Left</div></Column>
 		<Column size="20"><div class="grid-demo-cell">Right</div></Column>
 	</Grid>
 
 	<Paragraph color="secondary" class="mb-2"><Code>.pc-row--around</Code></Paragraph>
-	<Grid justify="around" class="mb-4" style="background: var(--base-primary-bg);">
+	<Grid justify="around" class="mb-4" style="background: var(--pc-primary-bg-subtle);">
 		<Column size="20"><div class="grid-demo-cell">A</div></Column>
 		<Column size="20"><div class="grid-demo-cell">B</div></Column>
 		<Column size="20"><div class="grid-demo-cell">C</div></Column>
@@ -282,21 +282,21 @@
 	<Grid>
 		<Column size="100" md="1-3">
 			<Paragraph color="secondary" class="mb-2"><Code>.pc-row--top</Code></Paragraph>
-			<Grid align="top" style="background: var(--base-primary-bg); min-height: 100px;">
+			<Grid align="top" style="background: var(--pc-primary-bg-subtle); min-height: 100px;">
 				<Column><div class="grid-demo-cell">Top</div></Column>
 				<Column><div class="grid-demo-cell">Top</div></Column>
 			</Grid>
 		</Column>
 		<Column size="100" md="1-3">
 			<Paragraph color="secondary" class="mb-2"><Code>.pc-row--middle</Code></Paragraph>
-			<Grid align="middle" style="background: var(--base-primary-bg); min-height: 100px;">
+			<Grid align="middle" style="background: var(--pc-primary-bg-subtle); min-height: 100px;">
 				<Column><div class="grid-demo-cell">Middle</div></Column>
 				<Column><div class="grid-demo-cell">Middle</div></Column>
 			</Grid>
 		</Column>
 		<Column size="100" md="1-3">
 			<Paragraph color="secondary" class="mb-2"><Code>.pc-row--bottom</Code></Paragraph>
-			<Grid align="bottom" style="background: var(--base-primary-bg); min-height: 100px;">
+			<Grid align="bottom" style="background: var(--pc-primary-bg-subtle); min-height: 100px;">
 				<Column><div class="grid-demo-cell">Bottom</div></Column>
 				<Column><div class="grid-demo-cell">Bottom</div></Column>
 			</Grid>
@@ -360,7 +360,7 @@
 			<div class="grid-demo-cell">1/3</div>
 		</Column>
 		<Column size="2-3">
-			<div style="background: var(--base-primary-bg); padding: 0.8rem; border-radius: 4px;">
+			<div style="background: var(--pc-primary-bg-subtle); padding: 0.8rem; border-radius: 4px;">
 				<Paragraph color="secondary" class="mb-2">Nested grid inside 2/3 column:</Paragraph>
 				<Grid>
 					<Column size="1-2"><div class="grid-demo-cell" style="background: var(--base-text-color-2);">Nested 1/2</div></Column>

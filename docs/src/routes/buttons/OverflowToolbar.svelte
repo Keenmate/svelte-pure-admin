@@ -20,7 +20,7 @@
 	 * it at eval time, so we import them only after mount (browser-only).
 	 */
 	import { onMount } from 'svelte';
-	import { Paragraph, Text } from '@keenmate/svelte-pure-admin';
+	import { Paragraph, Text, Code } from '@keenmate/svelte-pure-admin';
 
 	let hostEl: HTMLDivElement;
 
@@ -65,12 +65,12 @@
 <div bind:this={hostEl} class="pa-card">
 	<div class="pa-card__header">
 		<div class="pa-card__title">
-			<h3 class="pa-card__title-text">Overflow Toolbar (<code>.pa-overflow</code>)</h3>
+			<h3 class="pa-card__title-text">Overflow Toolbar (<Code>.pa-overflow</Code>)</h3>
 		</div>
-		<p>A <code>.pa-overflow</code> row auto-appends a dedicated <code>[⋮]</code> "more" trigger; when the row runs out of horizontal space, overflowing children collapse into that menu, and pop back out as room returns. A <code>.pa-btn-split</code> child collapses as an atomic labeled group — its primary action and its own menu items stay together, nothing foreign mixes in.</p>
+		<p>A <Code>.pa-overflow</Code> row auto-appends a dedicated <Code>[⋮]</Code> "more" trigger; when the row runs out of horizontal space, overflowing children collapse into that menu, and pop back out as room returns. A <Code>.pa-btn-split</Code> child collapses as an atomic labeled group — its primary action and its own menu items stay together, nothing foreign mixes in.</p>
 	</div>
 	<div class="pa-card__body">
-		<Paragraph color="secondary" class="mb-1">Drag the resize handle in the bottom-right of the box below to shrink the bar. Lowest <code>data-pa-actions-priority</code> (default <code>0</code>) drops first; ties broken by DOM order. Pin "Publish" with <code>data-pa-actions-priority="10"</code>, and keep the split button visible longest with <code>data-pa-actions-priority="20"</code>. Drag all the way in and even the split button collapses into the <code>[⋮]</code> menu — it lands as an atomic <strong>RUN</strong> group (its primary plus its own options), not scattered loose.</Paragraph>
+		<Paragraph color="secondary" class="mb-1">Drag the resize handle in the bottom-right of the box below to shrink the bar. Lowest <Code>data-pa-actions-priority</Code> (default <Code>0</Code>) drops first; ties broken by DOM order. Pin "Publish" with <Code>data-pa-actions-priority="10"</Code>, and keep the split button visible longest with <Code>data-pa-actions-priority="20"</Code>. Drag all the way in and even the split button collapses into the <Code>[⋮]</Code> menu — it lands as an atomic <strong>RUN</strong> group (its primary plus its own options), not scattered loose.</Paragraph>
 		<div class="resizable-wrapper" style="overflow: auto; resize: horizontal; min-width: 64px; max-width: 100%; padding: 1rem; border: 1px dashed var(--pc-border-color); border-radius: var(--pc-border-radius);">
 			<div class="pa-overflow">
 				<button class="pa-btn pa-btn--secondary" onclick={() => act('Save')}>
@@ -158,12 +158,12 @@
 			{#if lastAction}
 				{lastAction} <Text variant="secondary">· {actionCount} click{actionCount === 1 ? '' : 's'}</Text>
 			{:else}
-				<Text variant="secondary">nothing yet — click any button, including after it collapses into the <code>[⋮]</code> menu</Text>
+				<Text variant="secondary">nothing yet — click any button, including after it collapses into the <Code>[⋮]</Code> menu</Text>
 			{/if}
 		</p>
 
 		<h4 class="mt-4">Drop direction</h4>
-		<Paragraph color="secondary" class="mb-1">Default <code>data-pa-actions-overflow-from="end"</code> collapses the rightmost child first. Set <code>data-pa-actions-overflow-from="start"</code> on the <code>.pa-overflow</code> container to collapse the leftmost child first instead.</Paragraph>
+		<Paragraph color="secondary" class="mb-1">Default <Code>data-pa-actions-overflow-from="end"</Code> collapses the rightmost child first. Set <Code>data-pa-actions-overflow-from="start"</Code> on the <Code>.pa-overflow</Code> container to collapse the leftmost child first instead.</Paragraph>
 		<div class="resizable-wrapper" style="overflow: auto; resize: horizontal; min-width: 200px; max-width: 100%; padding: 1rem; border: 1px dashed var(--pc-border-color); border-radius: var(--pc-border-radius);">
 			<div class="pa-overflow" data-pa-actions-overflow-from="start">
 				<button class="pa-btn pa-btn--outline-info" onclick={() => act('Filter')}>
@@ -211,7 +211,7 @@
 		</div>
 
 		<h4 class="mt-4">In card headers</h4>
-		<Paragraph color="secondary" class="mb-1">In a card header, use the card-flavored alias <code>.pa-card__actions--overflow</code> on the <code>.pa-card__actions</code> slot itself — the buttons and split button become its direct children (no inner wrapper). It auto-inits like a standalone <code>.pa-overflow</code>, appending its own <code>[⋮]</code> more-menu, and the header title yields before the actions collapse. Laid out three-up (<code>pc-col-lg-1-3</code>) so each card is already narrow — resize the browser window to watch each toolbar consume and spit out action buttons live, each collapsing at its own breakpoint.</Paragraph>
+		<Paragraph color="secondary" class="mb-1">In a card header, use the card-flavored alias <Code>.pa-card__actions--overflow</Code> on the <Code>.pa-card__actions</Code> slot itself — the buttons and split button become its direct children (no inner wrapper). It auto-inits like a standalone <Code>.pa-overflow</Code>, appending its own <Code>[⋮]</Code> more-menu, and the header title yields before the actions collapse. Laid out three-up (<Code>pc-col-lg-1-3</Code>) so each card is already narrow — resize the browser window to watch each toolbar consume and spit out action buttons live, each collapsing at its own breakpoint.</Paragraph>
 
 		<div class="pc-row mt-2">
 			<div class="pc-col-100 pc-col-lg-1-3">
@@ -261,7 +261,7 @@
 						</div>
 					</div>
 					<div class="pa-card__body">
-						<Paragraph color="secondary">Card body. The actions bar in the header carries the overflow behavior — narrow the window to watch Configure, Filter, and Refresh fold into the <code>[⋮]</code> menu in that order (lowest priority first; Export is pinned, the split button survives longest).</Paragraph>
+						<Paragraph color="secondary">Card body. The actions bar in the header carries the overflow behavior — narrow the window to watch Configure, Filter, and Refresh fold into the <Code>[⋮]</Code> menu in that order (lowest priority first; Export is pinned, the split button survives longest).</Paragraph>
 					</div>
 				</div>
 			</div>
@@ -369,7 +369,7 @@
 						</div>
 					</div>
 					<div class="pa-card__body">
-						<Paragraph color="secondary">Six children here — Invite is pinned with priority 5, so it survives the first wave of collapses but still folds away before the pinned Add-user split button. The title yields first (truncating to a min-width floor) so the action bar keeps its buttons; only when the header is genuinely tiny does the split button itself collapse into the <code>[⋮]</code> menu.</Paragraph>
+						<Paragraph color="secondary">Six children here — Invite is pinned with priority 5, so it survives the first wave of collapses but still folds away before the pinned Add-user split button. The title yields first (truncating to a min-width floor) so the action bar keeps its buttons; only when the header is genuinely tiny does the split button itself collapse into the <Code>[⋮]</Code> menu.</Paragraph>
 					</div>
 				</div>
 			</div>
@@ -377,12 +377,12 @@
 
 		<h4 class="mt-4">How it works</h4>
 		<ul class="text-muted">
-			<li><code>.pa-overflow</code> is the row; it provides <code>min-width: 0; overflow: hidden; flex-shrink: 1</code>. Works standalone in any flex context; in a card header use the alias <code>.pa-card__actions--overflow</code> on the actions slot itself. Both auto-init — no JS wiring needed.</li>
-			<li><code>overflow.js</code> appends a dedicated <code>[⋮]</code> "more" trigger and, on resize, walks the lowest-priority children (<code>data-pa-actions-priority</code>, default <code>0</code>) into that trigger's menu until the row fits; higher-priority children survive longer.</li>
-			<li>A <code>.pa-btn-split</code> child collapses atomically — its primary action and its own menu items drop into the more-menu together under a section label, nothing foreign mixes in. Give it a high priority (e.g. <code>20</code>) so it stays visible longest.</li>
-			<li>Plain items get their class swapped to <code>pa-btn-split__item</code> while collapsed; the original classList is stashed on the element and restored on the way back out.</li>
-			<li>Drop direction is controlled by <code>data-pa-actions-overflow-from</code> on the container: <code>"end"</code> (default — rightmost first) or <code>"start"</code> (leftmost first).</li>
-			<li>Click handlers survive — the DOM node moves but is preserved. Every button above updates the <strong>Last click</strong> readout, so you can confirm it still fires after collapsing into <code>[⋮]</code> (the per-member delete buttons included).</li>
+			<li><Code>.pa-overflow</Code> is the row; it provides <Code>min-width: 0; overflow: hidden; flex-shrink: 1</Code>. Works standalone in any flex context; in a card header use the alias <Code>.pa-card__actions--overflow</Code> on the actions slot itself. Both auto-init — no JS wiring needed.</li>
+			<li><Code>overflow.js</Code> appends a dedicated <Code>[⋮]</Code> "more" trigger and, on resize, walks the lowest-priority children (<Code>data-pa-actions-priority</Code>, default <Code>0</Code>) into that trigger's menu until the row fits; higher-priority children survive longer.</li>
+			<li>A <Code>.pa-btn-split</Code> child collapses atomically — its primary action and its own menu items drop into the more-menu together under a section label, nothing foreign mixes in. Give it a high priority (e.g. <Code>20</Code>) so it stays visible longest.</li>
+			<li>Plain items get their class swapped to <Code>pa-btn-split__item</Code> while collapsed; the original classList is stashed on the element and restored on the way back out.</li>
+			<li>Drop direction is controlled by <Code>data-pa-actions-overflow-from</Code> on the container: <Code>"end"</Code> (default — rightmost first) or <Code>"start"</Code> (leftmost first).</li>
+			<li>Click handlers survive — the DOM node moves but is preserved. Every button above updates the <strong>Last click</strong> readout, so you can confirm it still fires after collapsing into <Code>[⋮]</Code> (the per-member delete buttons included).</li>
 		</ul>
 	</div>
 </div>

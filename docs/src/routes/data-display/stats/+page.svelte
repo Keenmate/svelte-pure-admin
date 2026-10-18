@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Grid, Column, Stat, KpiGrid, CodeBlock } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Grid, Column, Stat, KpiGrid, CodeBlock, Code } from '@keenmate/svelte-pure-admin';
 </script>
 
 <Paragraph>
-	<code>&lt;Stat&gt;</code> renders Pure Admin's <code>.pa-stat</code> metric card. The default variant pairs an
+	<Code>&lt;Stat&gt;</Code> renders Pure Admin's <Code>.pa-stat</Code> metric card. The default variant pairs an
 	optional icon with a number + label; the <strong>hero</strong> variants add a change indicator; the
 	<strong>square</strong> variant is a compact KPI tile (optionally with a currency/unit symbol), laid out
-	flush inside a <code>&lt;KpiGrid&gt;</code>.
+	flush inside a <Code>&lt;KpiGrid&gt;</Code>.
 </Paragraph>
 
 <Card titleText="Default — icon + number + label">
@@ -61,7 +61,7 @@
 
 <Card titleText="Square — compact KPI tiles (KpiGrid)">
 	{#snippet description()}
-		Square tiles with a trailing unit symbol, or a prefixed currency symbol via <code>isSymbolPrefix</code>.
+		Square tiles with a trailing unit symbol, or a prefixed currency symbol via <Code>isSymbolPrefix</Code>.
 	{/snippet}
 	<KpiGrid>
 		<Stat variant="square" color="primary" number="847" symbolText="K" labelText="Impressions" />

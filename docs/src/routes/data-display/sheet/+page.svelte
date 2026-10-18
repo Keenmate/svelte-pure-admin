@@ -20,15 +20,16 @@
 		SheetSign,
 		SheetLegal,
 		SheetPageno,
-		SheetPrintButton
+		SheetPrintButton,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
 <Paragraph>
-	<code>&lt;Sheet&gt;</code> is a printable A4 "paper" document shell for invoices, orders, quotes and receipts.
-	It composes the framework's other blocks — line items use <code>&lt;TableContainer&gt;</code> +
-	<code>&lt;Table&gt;</code>, reg/VAT pairs use <code>&lt;Fields&gt;</code> — and adds the invoice-shaped regions
-	(masthead, parties, meta, totals, notes, footer). <code>&lt;SheetPrintButton&gt;</code> prints a single sheet in
+	<Code>&lt;Sheet&gt;</Code> is a printable A4 "paper" document shell for invoices, orders, quotes and receipts.
+	It composes the framework's other blocks — line items use <Code>&lt;TableContainer&gt;</Code> +
+	<Code>&lt;Table&gt;</Code>, reg/VAT pairs use <Code>&lt;Fields&gt;</Code> — and adds the invoice-shaped regions
+	(masthead, parties, meta, totals, notes, footer). <Code>&lt;SheetPrintButton&gt;</Code> prints a single sheet in
 	isolation via the core print helper.
 </Paragraph>
 

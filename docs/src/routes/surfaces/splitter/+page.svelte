@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Splitter, SplitterPane, SplitterGutter, Card, Button, BasicList, CodeBlock } from '@keenmate/svelte-pure-admin';
+	import { Splitter, SplitterPane, SplitterGutter, Card, Button, BasicList, CodeBlock, Code } from '@keenmate/svelte-pure-admin';
 
 	// --- Demo 4: mirror toggle ---
 	let mirror = $state(false);
@@ -111,9 +111,9 @@ console.log(greet('Pure Admin'));`;
 <Card class="mb-4">
 	{#snippet title()}Horizontal split <small class="text-muted">— side-by-side, vertical gutter</small>{/snippet}
 	<p class="mb-3">
-		Sidebar + main content. Start pane is constrained to <code>min: 200px</code> and
-		<code>max: 60%</code>, with a default of <code>280px</code>. Size persists to
-		<code>localStorage</code> under the id <code>demo-horizontal</code>.
+		Sidebar + main content. Start pane is constrained to <Code>min: 200px</Code> and
+		<Code>max: 60%</Code>, with a default of <Code>280px</Code>. Size persists to
+		<Code>localStorage</Code> under the id <Code>demo-horizontal</Code>.
 	</p>
 
 	<Splitter
@@ -151,8 +151,8 @@ console.log(greet('Pure Admin'));`;
 <Card class="mb-4">
 	{#snippet title()}Vertical split <small class="text-muted">— stacked, horizontal gutter</small>{/snippet}
 	<p class="mb-3">
-		Editor over console. Constraints: <code>min: 80px</code>, <code>max: 80%</code>, default
-		<code>60%</code>. Persists under <code>demo-vertical</code>.
+		Editor over console. Constraints: <Code>min: 80px</Code>, <Code>max: 80%</Code>, default
+		<Code>60%</Code>. Persists under <Code>demo-vertical</Code>.
 	</p>
 
 	<Splitter
@@ -165,9 +165,9 @@ console.log(greet('Pure Admin'));`;
 			<CodeBlock>{codeEditorJs}</CodeBlock>
 		</SplitterPane>
 		<SplitterGutter ariaLabel="Resize editor" />
-		<SplitterPane
-			style="background: var(--pc-subtle-bg); padding: 1.6rem; font-family: var(--pc-font-mono, monospace); font-size: 1.3rem;"
-		>
+		<SplitterPane class="text-sm font-family-mono"
+		
+		 style="background: var(--pc-subtle-bg); padding: 1.6rem">
 			<div class="mb-2" style="opacity: 0.6;">$ node demo.js</div>
 			<div>Hello, Pure Admin!</div>
 			<div class="mb-2" style="opacity: 0.6;">$ npm test</div>
@@ -182,9 +182,9 @@ console.log(greet('Pure Admin'));`;
 <Card class="mb-4">
 	{#snippet title()}Spaced cards <small class="text-muted">— gutter with breathing room</small>{/snippet}
 	<p class="mb-3">
-		Use native <code>gap</code> on the splitter root to add space between the panes and the gutter —
+		Use native <Code>gap</Code> on the splitter root to add space between the panes and the gutter —
 		the JS subtracts it from the available space so percent constraints stay accurate. A thicker
-		gutter is opt-in via <code>--pa-splitter-gutter-size</code>.
+		gutter is opt-in via <Code>--pa-splitter-gutter-size</Code>.
 	</p>
 
 	<Splitter
@@ -195,7 +195,7 @@ console.log(greet('Pure Admin'));`;
 		<SplitterPane size="40%" min="25%" max="75%" style="padding: 0;">
 			<Card titleText="Left card" style="height: 100%; margin: 0;">
 				<p class="mb-0">
-					This pane holds a card. The flex <code>gap</code> on the splitter keeps the card from
+					This pane holds a card. The flex <Code>gap</Code> on the splitter keeps the card from
 					touching the gutter — no per-pane padding hack needed.
 				</p>
 			</Card>
@@ -205,7 +205,7 @@ console.log(greet('Pure Admin'));`;
 			<Card titleText="Right card" style="height: 100%; margin: 0;">
 				<p class="mb-0">
 					Drag the gutter — both cards reflow. The 10px gutter is set inline via
-					<code>--pa-splitter-gutter-size</code>; the default is 6px.
+					<Code>--pa-splitter-gutter-size</Code>; the default is 6px.
 				</p>
 			</Card>
 		</SplitterPane>
@@ -216,28 +216,28 @@ console.log(greet('Pure Admin'));`;
 <Card class="mb-4">
 	{#snippet title()}Minimize to rail <small class="text-muted">— vertical header instead of collapse</small>{/snippet}
 	<p class="mb-3">
-		Opt in by putting <code>data-pa-splitter-minimize</code> on the pane you want collapsible (here,
+		Opt in by putting <Code>data-pa-splitter-minimize</Code> on the pane you want collapsible (here,
 		the first pane). The gutter's collapse action (double-click, <kbd>Enter</kbd>/<kbd>Space</kbd>, or
 		the toggle button in the header) toggles the pane to a thin rail with a vertical card title —
 		instead of disappearing. Click the rail to restore. Rail width is configurable via
-		<code>data-pa-splitter-rail-size</code> (default 40px). <strong>You can also just drag the gutter
+		<Code>data-pa-splitter-rail-size</Code> (default 40px). <strong>You can also just drag the gutter
 		inward</strong> — once the requested width drops below 40% of the minimized side's natural min
-		(configurable via <code>data-pa-splitter-minimize-threshold</code>) it snaps to rail; dragging back
+		(configurable via <Code>data-pa-splitter-minimize-threshold</Code>) it snaps to rail; dragging back
 		outward across the same threshold pops it back to min. <strong>Dragging the gutter inward while the
 		pane is already rail'd is inert</strong> — only outward drags (the direction that would grow the
 		pane) release the rail.
 	</p>
 
 	<p class="mb-3 text-sm">
-		<strong>Bonus:</strong> the Editor card's actions use the <code>pa-card__actions--responsive</code>
+		<strong>Bonus:</strong> the Editor card's actions use the <Code>pa-card__actions--responsive</Code>
 		pattern — drag the gutter rightward to shrink the Editor pane, and once the header drops below
-		<code>$card-actions-collapse-at</code> (28rem ≈ 280px) the spread buttons collapse into a single
+		<Code>$card-actions-collapse-at</Code> (28rem ≈ 280px) the spread buttons collapse into a single
 		split button. Pure CSS container query, no JS observer.
 	</p>
 
 	<label class="mb-3" style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
 		<input type="checkbox" bind:checked={mirror} />
-		<span>Mirror title (apply <code>transform: scale(-1, -1)</code> to the heading)</span>
+		<span>Mirror title (apply <Code>transform: scale(-1, -1)</Code> to the heading)</span>
 	</label>
 
 	<Splitter
@@ -337,15 +337,15 @@ console.log(greet('Pure Admin'));`;
 <Card class="mb-4">
 	{#snippet title()}Progressive overflow <small class="text-muted">— buttons drop into a "More" menu one at a time</small>{/snippet}
 	<p class="mb-3">
-		A second collapse model, complementing <code>--responsive</code>. Mark the actions wrapper with
-		<code>pa-card__actions--overflow</code> and the JS module (<code>overflow.js</code>) measures each
-		button on init. A <code>ResizeObserver</code> watches the wrapper; when the row can't fit, the
-		lowest-priority button moves into a "..." menu (appended to <code>&lt;body&gt;</code> so card
-		<code>overflow: hidden</code> can't clip it).
+		A second collapse model, complementing <Code>--responsive</Code>. Mark the actions wrapper with
+		<Code>pa-card__actions--overflow</Code> and the JS module (<Code>overflow.js</Code>) measures each
+		button on init. A <Code>ResizeObserver</Code> watches the wrapper; when the row can't fit, the
+		lowest-priority button moves into a "..." menu (appended to <Code>&lt;body&gt;</Code> so card
+		<Code>overflow: hidden</Code> can't clip it).
 	</p>
 	<ul class="mb-3">
-		<li>Priority via <code>data-pa-actions-priority="N"</code> — higher stays longer.</li>
-		<li>Tiebreak direction via <code>data-pa-actions-overflow-from="end"</code> (default — rightmost drops first) or <code>"start"</code> (leftmost drops first).</li>
+		<li>Priority via <Code>data-pa-actions-priority="N"</Code> — higher stays longer.</li>
+		<li>Tiebreak direction via <Code>data-pa-actions-overflow-from="end"</Code> (default — rightmost drops first) or <Code>"start"</Code> (leftmost drops first).</li>
 	</ul>
 
 	<label class="mb-3" style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
@@ -390,8 +390,8 @@ console.log(greet('Pure Admin'));`;
 					</button>
 				{/snippet}
 				<p class="text-sm text-muted mb-0">
-					Shrink me — buttons collapse into the "..." menu by ascending priority. <code>Run</code> has
-					<code>data-pa-actions-priority="10"</code> and stays last.
+					Shrink me — buttons collapse into the "..." menu by ascending priority. <Code>Run</Code> has
+					<Code>data-pa-actions-priority="10"</Code> and stays last.
 				</p>
 			</Card>
 		</SplitterPane>
@@ -408,7 +408,7 @@ console.log(greet('Pure Admin'));`;
 <Card class="mb-4">
 	{#snippet title()}Minimize <em>end</em> pane to rail <small class="text-muted">— right-edge inspector pattern</small>{/snippet}
 	<p class="mb-3">
-		Put <code>data-pa-splitter-minimize</code> on the last pane to collapse it to a vertical-title rail
+		Put <Code>data-pa-splitter-minimize</Code> on the last pane to collapse it to a vertical-title rail
 		on the right edge. Same restore paths as collapsing the first pane (rail click, toggle button,
 		dblclick, <kbd>Enter</kbd>/<kbd>Space</kbd>, or drag the gutter outward past the threshold). Useful
 		for inspector / detail / properties panels.
@@ -462,8 +462,8 @@ console.log(greet('Pure Admin'));`;
 		</div>
 	{/snippet}
 	<p class="mb-3">
-		Per-pane <code>data-pa-splitter-size</code> / <code>-min</code> / <code>-max</code> drive sizing;
-		any pane with <code>data-pa-splitter-minimize</code> can collapse to a rail. Drag any gutter and
+		Per-pane <Code>data-pa-splitter-size</Code> / <Code>-min</Code> / <Code>-max</Code> drive sizing;
+		any pane with <Code>data-pa-splitter-minimize</Code> can collapse to a rail. Drag any gutter and
 		either neighbour will snap to rail below the threshold. Each pane count remembers its own layout in
 		localStorage.
 	</p>
@@ -526,7 +526,7 @@ console.log(greet('Pure Admin'));`;
 <Card class="mb-4">
 	{#snippet title()}localStorage persistence{/snippet}
 	<p class="mb-3">
-		Both demos above persist their size under <code>pa-splitter:&lt;id&gt;</code>. Reload the page —
+		Both demos above persist their size under <Code>pa-splitter:&lt;id&gt;</Code>. Reload the page —
 		your drag positions stick. Clear them with the button below.
 	</p>
 	<Button variant="secondary" onclick={clearSplitterStorage}>Clear saved splitter sizes</Button>
@@ -541,10 +541,10 @@ console.log(greet('Pure Admin'));`;
 			<CodeBlock>{codeMarkup}</CodeBlock>
 			<p class="text-sm mt-3 mb-0">
 				Any N ≥ 2. Panes and gutters must alternate. Each pane carries its own
-				<code>data-pa-splitter-size</code> / <code>-min</code> / <code>-max</code>. Any pane with
-				<code>data-pa-splitter-minimize</code> can collapse to a rail — first / last panes dock against
+				<Code>data-pa-splitter-size</Code> / <Code>-min</Code> / <Code>-max</Code>. Any pane with
+				<Code>data-pa-splitter-minimize</Code> can collapse to a rail — first / last panes dock against
 				the container edge; middle panes collapse in place and split released slack between both
-				neighbours. Panes without an explicit <code>data-pa-splitter-size</code> share leftover space
+				neighbours. Panes without an explicit <Code>data-pa-splitter-size</Code> share leftover space
 				equally.
 			</p>
 		</Card>
@@ -560,11 +560,11 @@ console.log(greet('Pure Admin'));`;
 					<tr><th>Attribute</th><th>Default</th><th>Description</th></tr>
 				</thead>
 				<tbody>
-					<tr><td><code>data-pa-splitter</code></td><td>—</td><td>Marker. Required.</td></tr>
-					<tr><td><code>data-pa-splitter-id</code></td><td>none</td><td>Enables persistence under <code>pa-splitter:&lt;id&gt;</code></td></tr>
-					<tr><td><code>data-pa-splitter-step</code></td><td><code>10</code></td><td>Keyboard step in px</td></tr>
-					<tr><td><code>data-pa-splitter-rail-size</code></td><td><code>40</code></td><td>Rail width in px (minimized state)</td></tr>
-					<tr><td><code>data-pa-splitter-minimize-threshold</code></td><td><code>0.40</code></td><td>Drag snaps to rail below this fraction of the minimized side's natural min</td></tr>
+					<tr><td><Code>data-pa-splitter</Code></td><td>—</td><td>Marker. Required.</td></tr>
+					<tr><td><Code>data-pa-splitter-id</Code></td><td>none</td><td>Enables persistence under <Code>pa-splitter:&lt;id&gt;</Code></td></tr>
+					<tr><td><Code>data-pa-splitter-step</Code></td><td><Code>10</Code></td><td>Keyboard step in px</td></tr>
+					<tr><td><Code>data-pa-splitter-rail-size</Code></td><td><Code>40</Code></td><td>Rail width in px (minimized state)</td></tr>
+					<tr><td><Code>data-pa-splitter-minimize-threshold</Code></td><td><Code>0.40</Code></td><td>Drag snaps to rail below this fraction of the minimized side's natural min</td></tr>
 				</tbody>
 			</table>
 
@@ -574,15 +574,15 @@ console.log(greet('Pure Admin'));`;
 					<tr><th>Attribute</th><th>Default</th><th>Description</th></tr>
 				</thead>
 				<tbody>
-					<tr><td><code>data-pa-splitter-size</code></td><td>shared</td><td>Initial size (<code>px</code> or <code>%</code>). Unsized panes split the leftover.</td></tr>
-					<tr><td><code>data-pa-splitter-min</code></td><td><code>0</code></td><td><code>px</code> or <code>%</code></td></tr>
-					<tr><td><code>data-pa-splitter-max</code></td><td>available</td><td><code>px</code> or <code>%</code></td></tr>
-					<tr><td><code>data-pa-splitter-minimize</code></td><td>—</td><td>Marker. Pane can collapse to a rail (first / last dock at the edge; middle panes collapse in place).</td></tr>
+					<tr><td><Code>data-pa-splitter-size</Code></td><td>shared</td><td>Initial size (<Code>px</Code> or <Code>%</Code>). Unsized panes split the leftover.</td></tr>
+					<tr><td><Code>data-pa-splitter-min</Code></td><td><Code>0</Code></td><td><Code>px</Code> or <Code>%</Code></td></tr>
+					<tr><td><Code>data-pa-splitter-max</Code></td><td>available</td><td><Code>px</Code> or <Code>%</Code></td></tr>
+					<tr><td><Code>data-pa-splitter-minimize</Code></td><td>—</td><td>Marker. Pane can collapse to a rail (first / last dock at the edge; middle panes collapse in place).</td></tr>
 				</tbody>
 			</table>
 
 			<p class="text-sm mt-3 mb-2"><strong>Accordion mode (auto):</strong></p>
-			<p class="text-sm mb-0">When the container is too narrow to fit all panes at their minimums AND there are 2+ minimizable panes, the splitter switches to single-pane-expanded mode — restoring one pane auto-rails the others. Engages and disengages automatically as the container resizes; adds <code>pa-splitter--accordion</code> to the root as a styling hook.</p>
+			<p class="text-sm mb-0">When the container is too narrow to fit all panes at their minimums AND there are 2+ minimizable panes, the splitter switches to single-pane-expanded mode — restoring one pane auto-rails the others. Engages and disengages automatically as the container resizes; adds <Code>pa-splitter--accordion</Code> to the root as a styling hook.</p>
 		</Card>
 
 		<Card class="mb-4">
@@ -603,10 +603,10 @@ console.log(greet('Pure Admin'));`;
 		<Card class="mb-4">
 			{#snippet title()}Svelte components{/snippet}
 			<p class="mb-2">
-				<code>&lt;Splitter&gt;</code> renders the root and drives the framework's
-				<code>splitter.js</code>. Place <code>&lt;SplitterPane&gt;</code> children with a
-				<code>&lt;SplitterGutter&gt;</code> between each pair. Root events are surfaced as
-				<code>onresize</code> / <code>oncollapse</code> / <code>onexpand</code> callbacks.
+				<Code>&lt;Splitter&gt;</Code> renders the root and drives the framework's
+				<Code>splitter.js</Code>. Place <Code>&lt;SplitterPane&gt;</Code> children with a
+				<Code>&lt;SplitterGutter&gt;</Code> between each pair. Root events are surfaced as
+				<Code>onresize</Code> / <Code>oncollapse</Code> / <Code>onexpand</Code> callbacks.
 			</p>
 			<CodeBlock>{`<Splitter orientation="horizontal" splitterId="my-id"
           onresize={(d) => console.log(d)}>

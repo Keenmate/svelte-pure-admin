@@ -289,7 +289,7 @@
 
 	<Column size="100" md="50">
 		<Card titleText="Digital Ad Performance">
-			<Table isStriped isHover size="xs">
+			<Table isStriped size="xs">
 				<thead>
 					<tr>
 						<th>Channel</th>

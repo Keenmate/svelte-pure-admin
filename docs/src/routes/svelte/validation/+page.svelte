@@ -21,7 +21,8 @@
 		Alert,
 		Callout,
 		BasicList,
-		Link
+		Link,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 	import { HighlightedCode } from '$lib/components';
 	import { createForm } from 'felte';
@@ -416,7 +417,6 @@ const { form, errors, touched, data } = createForm<z.infer<typeof schema>>({
 	const codeFelteTemplate = `<form use:form>
   <FormField
     labelText="Email"
-    required
     helpText="Enter your email"
     successMessage="Valid email"
     errors={$errors.email}
@@ -424,7 +424,7 @@ const { form, errors, touched, data } = createForm<z.infer<typeof schema>>({
     hasValue={!!$data.email}
   >
     {#snippet children({ errors, touched })}
-      <Input name="email" {errors} {touched} />
+      <Input required name="email" {errors} {touched} />
     {/snippet}
   </FormField>
   <Button type="submit">Save</Button>
@@ -454,8 +454,8 @@ password: z.string()
 
 <Callout variant="info" class="mb-4">
 	<strong>svelte-pure-admin's form components are validation-agnostic.</strong> They take plain data
-	props (<code>errors</code>, <code>touched</code>, <code>state</code>) and depend on
-	<strong>no</strong> validation library — there is no <code>felte</code> or <code>zod</code> in the
+	props (<Code>errors</Code>, <Code>touched</Code>, <Code>state</Code>) and depend on
+	<strong>no</strong> validation library — there is no <Code>felte</Code> or <Code>zod</Code> in the
 	package. Bring whatever you like: a schema library, server-side errors, or a few lines of
 	hand-rolled logic.
 </Callout>
@@ -463,7 +463,7 @@ password: z.string()
 <Paragraph class="mb-4">
 	The tests below use <a href="https://felte.dev">Felte</a> + <a href="https://zod.dev">Zod</a> as
 	<em>one</em> convenient, type-safe example — it eliminates boilerplate, and its
-	<code>errors</code> / <code>touched</code> output maps straight onto the props these components
+	<Code>errors</Code> / <Code>touched</Code> output maps straight onto the props these components
 	expect. But it's entirely optional. Jump to the
 	<strong>Bring Your Own Validation</strong> section at the bottom to see the exact same components
 	driven by a plain function, with no library at all.
@@ -506,7 +506,6 @@ password: z.string()
 	<form use:form1>
 		<FormField
 			labelText="Email Address"
-			required
 			helpText="Enter a valid email address"
 			successMessage="Valid email address"
 			errors={$errors1.email}
@@ -514,7 +513,7 @@ password: z.string()
 			hasValue={!!$data1?.email}
 		>
 			{#snippet children({ errors, touched })}
-				<Input type="email" name="email" id="test1-email" placeholder="Enter your email" {errors} {touched} />
+				<Input required type="email" name="email" id="test1-email" placeholder="Enter your email" {errors} {touched} />
 			{/snippet}
 		</FormField>
 
@@ -538,24 +537,22 @@ password: z.string()
 			<Column size="100" md="1-3">
 				<FormField
 					labelText="Name"
-					required
 					errors={$errors2.name}
 					touched={$touched2.name ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Input name="name" id="test2-name" placeholder="Your name" {errors} {touched} />
+						<Input required name="name" id="test2-name" placeholder="Your name" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
 			<Column size="100" md="1-3">
 				<FormField
 					labelText="Age"
-					required
 					errors={$errors2.age}
 					touched={$touched2.age ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<NumberInput name="age" id="test2-age" placeholder="Your age" {errors} {touched} />
+						<NumberInput required name="age" id="test2-age" placeholder="Your age" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -584,7 +581,7 @@ password: z.string()
 <Card titleText="Test 3: Touched Behavior">
 	<Paragraph class="mb-4">
 		Both inputs have the same error, but only the touched one shows error styling.
-		This demonstrates how <code>touched</code> controls error visibility.
+		This demonstrates how <Code>touched</Code> controls error visibility.
 	</Paragraph>
 
 	<Grid>
@@ -631,12 +628,11 @@ password: z.string()
 			<Column size="100" md="50">
 				<FormField
 					labelText="Country"
-					required
 					errors={$errors4.country}
 					touched={$touched4.country ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Select name="country" id="test4-country" {errors} {touched}>
+						<Select required name="country" id="test4-country" {errors} {touched}>
 							<option value="">Select a country...</option>
 							<option value="us">United States</option>
 							<option value="uk">United Kingdom</option>
@@ -650,12 +646,11 @@ password: z.string()
 			<Column size="100" md="50">
 				<FormField
 					labelText="Birth Date (not in future)"
-					required
 					errors={$errors4.birthDate}
 					touched={$touched4.birthDate ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<DateInput name="birthDate" id="test4-birthDate" {errors} {touched} />
+						<DateInput required name="birthDate" id="test4-birthDate" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -678,7 +673,7 @@ password: z.string()
 
 	<Paragraph class="mb-4">
 		Password requires: 8+ characters, uppercase letter, and a number. Uses Zod's
-		<code>.refine()</code> for cross-field validation.
+		<Code>.refine()</Code> for cross-field validation.
 	</Paragraph>
 
 	<form use:form5>
@@ -686,7 +681,6 @@ password: z.string()
 			<Column size="100" md="50">
 				<FormField
 					labelText="Password"
-					required
 					helpText="Min 8 chars, 1 uppercase, 1 number"
 					successMessage="Password meets requirements"
 					errors={$errors5.password}
@@ -694,21 +688,20 @@ password: z.string()
 					hasValue={!!$data5.password}
 				>
 					{#snippet children({ errors, touched })}
-						<Input type="password" name="password" id="test5-password" placeholder="Enter password" {errors} {touched} />
+						<Input required type="password" name="password" id="test5-password" placeholder="Enter password" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
 			<Column size="100" md="50">
 				<FormField
 					labelText="Confirm Password"
-					required
 					successMessage="Passwords match!"
 					errors={$errors5.confirm}
 					touched={$touched5.confirm ?? false}
 					hasValue={!!$data5.confirm}
 				>
 					{#snippet children({ errors, touched })}
-						<Input type="password" name="confirm" id="test5-confirm" placeholder="Confirm password" {errors} {touched} />
+						<Input required type="password" name="confirm" id="test5-confirm" placeholder="Confirm password" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -725,7 +718,7 @@ password: z.string()
 <Card titleText="Real Use Case: Create User Form">
 	<Callout variant="info" class="mb-4">
 		This demonstrates a realistic form with async API submission, loading states, and server-side error handling.
-		Try submitting with <code>admin@example.com</code> to see a server-side validation error.
+		Try submitting with <Code>admin@example.com</Code> to see a server-side validation error.
 	</Callout>
 
 	{#if createUserSuccess && createdUser}
@@ -750,24 +743,22 @@ password: z.string()
 			<Column size="100" md="50">
 				<FormField
 					labelText="First Name"
-					required
 					errors={$createUserErrors.firstName}
 					touched={$createUserTouched.firstName ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Input name="firstName" id="create-user-firstName" placeholder="John" {errors} {touched} />
+						<Input required name="firstName" id="create-user-firstName" placeholder="John" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
 			<Column size="100" md="50">
 				<FormField
 					labelText="Last Name"
-					required
 					errors={$createUserErrors.lastName}
 					touched={$createUserTouched.lastName ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Input name="lastName" id="create-user-lastName" placeholder="Doe" {errors} {touched} />
+						<Input required name="lastName" id="create-user-lastName" placeholder="Doe" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -775,13 +766,12 @@ password: z.string()
 
 		<FormField
 			labelText="Email"
-			required
 			helpText="Use admin@example.com to test server-side validation error"
 			errors={$createUserErrors.email}
 			touched={$createUserTouched.email ?? false}
 		>
 			{#snippet children({ errors, touched })}
-				<Input type="email" name="email" id="create-user-email" placeholder="john.doe@company.com" {errors} {touched} />
+				<Input required type="email" name="email" id="create-user-email" placeholder="john.doe@company.com" {errors} {touched} />
 			{/snippet}
 		</FormField>
 
@@ -789,12 +779,11 @@ password: z.string()
 			<Column size="100" md="50">
 				<FormField
 					labelText="Role"
-					required
 					errors={$createUserErrors.role}
 					touched={$createUserTouched.role ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Select name="role" id="create-user-role" {errors} {touched}>
+						<Select required name="role" id="create-user-role" {errors} {touched}>
 							<option value="">Select a role...</option>
 							<option value="Developer">Developer</option>
 							<option value="Designer">Designer</option>
@@ -807,12 +796,11 @@ password: z.string()
 			<Column size="100" md="50">
 				<FormField
 					labelText="Department"
-					required
 					errors={$createUserErrors.department}
 					touched={$createUserTouched.department ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Select name="department" id="create-user-department" {errors} {touched}>
+						<Select required name="department" id="create-user-department" {errors} {touched}>
 							<option value="">Select a department...</option>
 							<option value="Engineering">Engineering</option>
 							<option value="Product">Product</option>
@@ -848,7 +836,7 @@ password: z.string()
 <!-- Test 6: State Override -->
 <Card titleText="Test 6: Manual State Override">
 	<Paragraph class="mb-4">
-		The <code>state</code> prop takes precedence over auto-derived state from <code>errors</code>.
+		The <Code>state</Code> prop takes precedence over auto-derived state from <Code>errors</Code>.
 		This is useful when you need manual control.
 	</Paragraph>
 
@@ -884,7 +872,7 @@ password: z.string()
 <!-- Aria-Invalid Check -->
 <Card titleText="Test 7: Accessibility (aria-invalid)">
 	<Paragraph class="mb-4">
-		Open browser DevTools and inspect these inputs to verify <code>aria-invalid</code> attribute.
+		Open browser DevTools and inspect these inputs to verify <Code>aria-invalid</Code> attribute.
 	</Paragraph>
 
 	<Grid>
@@ -917,15 +905,15 @@ password: z.string()
 
 <Callout variant="success" class="mb-4">
 	Everything below uses <Strong>no validation library</Strong> — no Felte, no Zod. The form
-	components take plain <code>errors</code> / <code>touched</code> / <code>state</code> props, so a
-	plain function and a little <code>$state</code> is all you need. Swap in your own rules, a
+	components take plain <Code>errors</Code> / <Code>touched</Code> / <Code>state</Code> props, so a
+	plain function and a little <Code>$state</Code> is all you need. Swap in your own rules, a
 	different schema library, or server-side errors exactly the same way.
 </Callout>
 
 <Card titleText="Hand-rolled validation with FormField">
 	<Paragraph class="mb-4">
-		Type an email. Validation runs on every keystroke via a plain <code>$derived</code> function and
-		feeds its result straight into <code>FormField</code>'s <code>errors</code> prop — the very same
+		Type an email. Validation runs on every keystroke via a plain <Code>$derived</Code> function and
+		feeds its result straight into <Code>FormField</Code>'s <Code>errors</Code> prop — the very same
 		prop Felte would populate. Nothing else is different.
 	</Paragraph>
 
@@ -961,8 +949,8 @@ password: z.string()
 
 <Card titleText="Even lower level — FormGroup + FormHelp, no FormField">
 	<Paragraph class="mb-4">
-		You don't even need <code>FormField</code>. Drop to <code>FormGroup</code>,
-		<code>FormHelp</code> and <code>Input</code> and set the <code>state</code> and message
+		You don't even need <Code>FormField</Code>. Drop to <Code>FormGroup</Code>,
+		<Code>FormHelp</Code> and <Code>Input</Code> and set the <Code>state</Code> and message
 		yourself. Type at least 8 characters to see it flip to success.
 	</Paragraph>
 

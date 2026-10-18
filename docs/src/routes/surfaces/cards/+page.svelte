@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, CardTab, CardTabContent, Button, ButtonGroup, Badge, Grid, Column, Section, Table, Stat, List, ListItem, BasicList } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, CardTab, CardTabContent, Button, ButtonGroup, Badge, Grid, Column, Section, Table, Stat, List, ListItem, BasicList, Code } from '@keenmate/svelte-pure-admin';
 
 	// Local type matching Card component's variant prop (primary/success/warning/
 	// danger + the color-1..9 theme slots — no `info`, which Card doesn't support).
@@ -35,7 +35,7 @@
 
 <!-- Same Height Cards -->
 <Section titleText="Same Height Cards">
-	<Paragraph class="mb-2">Use <code>sameHeight</code> on Grid to make all cards in a isRow match the height of the tallest card.</Paragraph>
+	<Paragraph class="mb-2">Use <Code>sameHeight</Code> on Grid to make all cards in a isRow match the height of the tallest card.</Paragraph>
 	<Grid sameHeight>
 		<Column size="100" md="1-3">
 			<Card titleText="Short Card">
@@ -45,7 +45,7 @@
 		<Column size="100" md="1-3">
 			<Card titleText="Tall Card">
 				<Paragraph>This card has much more content than the others, making it naturally taller.</Paragraph>
-				<Paragraph>All sibling cards will stretch to match this height thanks to the <code>sameHeight</code> prop on Grid.</Paragraph>
+				<Paragraph>All sibling cards will stretch to match this height thanks to the <Code>sameHeight</Code> prop on Grid.</Paragraph>
 				<Paragraph>This is useful for dashboard layouts where visual consistency matters.</Paragraph>
 			</Card>
 		</Column>
@@ -129,7 +129,7 @@
 						<Button variant="primary" size="sm">Generate</Button>
 					</ButtonGroup>
 				{/snippet}
-				<Paragraph>Multiple buttons can be grouped with <code>ButtonGroup</code>. The group stays fixed and won't shrink.</Paragraph>
+				<Paragraph>Multiple buttons can be grouped with <Code>ButtonGroup</Code>. The group stays fixed and won't shrink.</Paragraph>
 			</Card>
 		</Column>
 
@@ -149,7 +149,7 @@
 						<Button variant="danger" isOutline size="sm">Clear</Button>
 					</ButtonGroup>
 				{/snippet}
-				<Paragraph>Title + actions without description. The gap keeps them separated, and <code>justify-content: space-between</code> pushes actions to the right.</Paragraph>
+				<Paragraph>Title + actions without description. The gap keeps them separated, and <Code>justify-content: space-between</Code> pushes actions to the right.</Paragraph>
 			</Card>
 		</Column>
 	</Grid>
@@ -182,7 +182,7 @@
 	</Grid>
 
 	<Heading level={4} class="mt-4">With Tooltip for Full Description</Heading>
-	<Paragraph class="mb-2">Add <code>pa-tooltip pa-tooltip--multiline</code> to the description paragraph to show the full text on hover.</Paragraph>
+	<Paragraph class="mb-2">Add <Code>pa-tooltip pa-tooltip--multiline</Code> to the description paragraph to show the full text on hover.</Paragraph>
 
 	<Grid>
 		<Column size="100" lg="1-2">
@@ -222,7 +222,7 @@
 	</Grid>
 
 	<Heading level={4} class="mt-4">Wrap Modifier</Heading>
-	<Paragraph class="mb-2">Use <code>headerWrap</code> when you need the description to wrap onto its own line (useful for mobile or when full description visibility is important).</Paragraph>
+	<Paragraph class="mb-2">Use <Code>headerWrap</Code> when you need the description to wrap onto its own line (useful for mobile or when full description visibility is important).</Paragraph>
 
 	<Grid>
 		<Column size="100" lg="1-2">
@@ -233,7 +233,7 @@
 						<Button variant="primary" size="sm">View</Button>
 					</ButtonGroup>
 				{/snippet}
-				<Paragraph>With <code>headerWrap</code>, the description moves to a new line (via <code>flex-basis: 100%</code> and <code>order: 1</code>) and can display multiple lines.</Paragraph>
+				<Paragraph>With <Code>headerWrap</Code>, the description moves to a new line (via <Code>flex-basis: 100%</Code> and <Code>order: 1</Code>) and can display multiple lines.</Paragraph>
 			</Card>
 		</Column>
 
@@ -322,7 +322,7 @@
 
 <!-- Underlined Headers -->
 <Section titleText="Underlined Headers">
-	<Paragraph class="mb-4">Add <code>isHeaderUnderlined</code> for an accent border under the heading. Combine with <code>headerUnderlineColor</code> for semantic colors or <code>headerUnderlineThemeColor</code> for theme color slots.</Paragraph>
+	<Paragraph class="mb-4">Add <Code>isHeaderUnderlined</Code> for an accent border under the heading. Combine with <Code>headerUnderlineColor</Code> for semantic colors or <Code>headerUnderlineThemeColor</Code> for theme color slots.</Paragraph>
 	<Grid>
 		<Column size="100" sm="50" lg="1-4">
 			<Card isHeaderUnderlined titleText="Default Accent">
@@ -606,57 +606,57 @@
 <Card titleText="CSS Classes Reference">
 	<Heading level={4}>Card Base & Sections</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-card</code> - Base card container</li>
-		<li><code>pa-card__header</code> - Card header with title/tools</li>
-		<li><code>pa-card__body</code> - Card body content area</li>
-		<li><code>pa-card__body--no-padding</code> - Remove body padding (for tables)</li>
-		<li><code>pa-card__footer</code> - Card footer with actions/meta</li>
+		<li><Code>pa-card</Code> - Base card container</li>
+		<li><Code>pa-card__header</Code> - Card header with title/tools</li>
+		<li><Code>pa-card__body</Code> - Card body content area</li>
+		<li><Code>pa-card__body--no-padding</Code> - Remove body padding (for tables)</li>
+		<li><Code>pa-card__footer</Code> - Card footer with actions/meta</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Header Elements</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-card__header</code> - Flexbox header with gap between children</li>
-		<li><code>pa-card__header--wrap</code> - Allow description to wrap to new line</li>
-		<li><code>h1-h6</code> (direct child) - Title, fixed width, won't shrink</li>
-		<li><code>p</code> (direct child) - Description, flexible, truncates with ellipsis</li>
-		<li><code>pa-card__title</code> - Title container with icon support</li>
-		<li><code>pa-card__title-icon</code> - Icon before title</li>
-		<li><code>pa-card__title-text</code> - Title text (auto-truncates)</li>
-		<li><code>pa-card__tools</code> - Tool buttons container (right side)</li>
-		<li><code>pa-card__actions</code> - Actions container, fixed width</li>
-		<li><code>pa-btn-group</code> - Button group in header, fixed width</li>
+		<li><Code>pa-card__header</Code> - Flexbox header with gap between children</li>
+		<li><Code>pa-card__header--wrap</Code> - Allow description to wrap to new line</li>
+		<li><Code>h1-h6</Code> (direct child) - Title, fixed width, won't shrink</li>
+		<li><Code>p</Code> (direct child) - Description, flexible, truncates with ellipsis</li>
+		<li><Code>pa-card__title</Code> - Title container with icon support</li>
+		<li><Code>pa-card__title-icon</Code> - Icon before title</li>
+		<li><Code>pa-card__title-text</Code> - Title text (auto-truncates)</li>
+		<li><Code>pa-card__tools</Code> - Tool buttons container (right side)</li>
+		<li><Code>pa-card__actions</Code> - Actions container, fixed width</li>
+		<li><Code>pa-btn-group</Code> - Button group in header, fixed width</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Footer Elements</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-card__actions</code> - Action buttons container</li>
-		<li><code>pa-card__meta</code> - Meta text (timestamps, etc.)</li>
+		<li><Code>pa-card__actions</Code> - Action buttons container</li>
+		<li><Code>pa-card__meta</Code> - Meta text (timestamps, etc.)</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Color Variants</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-card--primary</code> - Primary color header</li>
-		<li><code>pa-card--success</code> - Success color header</li>
-		<li><code>pa-card--warning</code> - Warning color header</li>
-		<li><code>pa-card--danger</code> - Danger color header</li>
-		<li><code>pa-card--color-1</code> through <code>pa-card--color-9</code> - Theme color slots with automatic contrast text</li>
-		<li><code>pa-card--stat</code> - Compact padding for stat cards</li>
-		<li><code>pa-card--ghost</code> - Invisible container (no background, border, or shadow)</li>
+		<li><Code>pa-card--primary</Code> - Primary color header</li>
+		<li><Code>pa-card--success</Code> - Success color header</li>
+		<li><Code>pa-card--warning</Code> - Warning color header</li>
+		<li><Code>pa-card--danger</Code> - Danger color header</li>
+		<li><Code>pa-card--color-1</Code> through <Code>pa-card--color-9</Code> - Theme color slots with automatic contrast text</li>
+		<li><Code>pa-card--stat</Code> - Compact padding for stat cards</li>
+		<li><Code>pa-card--ghost</Code> - Invisible container (no background, border, or shadow)</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Card Tabs</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-card__tabs</code> - Tab navigation container</li>
-		<li><code>pa-card__tabs--inline</code> - Inline tabs in header (same height as regular header)</li>
-		<li><code>pa-card__tab</code> - Individual tab button</li>
-		<li><code>pa-card__tab--active</code> - Active tab state</li>
-		<li><code>pa-card__tab-content</code> - Tab content panel</li>
-		<li><code>pa-card__tab-content--active</code> - Active content panel</li>
+		<li><Code>pa-card__tabs</Code> - Tab navigation container</li>
+		<li><Code>pa-card__tabs--inline</Code> - Inline tabs in header (same height as regular header)</li>
+		<li><Code>pa-card__tab</Code> - Individual tab button</li>
+		<li><Code>pa-card__tab--active</Code> - Active tab state</li>
+		<li><Code>pa-card__tab-content</Code> - Tab content panel</li>
+		<li><Code>pa-card__tab-content--active</Code> - Active content panel</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Section Helpers</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-section</code> - Page section with margin</li>
-		<li><code>pa-section-title</code> - Standalone section title with accent border</li>
+		<li><Code>pa-section</Code> - Page section with margin</li>
+		<li><Code>pa-section-title</Code> - Standalone section title with accent border</li>
 	</BasicList>
 </Card>

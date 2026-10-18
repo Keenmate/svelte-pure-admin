@@ -17,7 +17,8 @@
 		Field,
 		Fields,
 		Alert,
-		BasicList
+		BasicList,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	// Product data for Load More demo
@@ -212,7 +213,7 @@
 
 <!-- XS Size Table -->
 <Card titleText="XS Size">
-	<Paragraph>Compact rows - fits button/input XS. Best for dense data grids. Use <code>size="xs"</code>.</Paragraph>
+	<Paragraph>Compact rows - fits button/input XS. Best for dense data grids. Use <Code>size="xs"</Code>.</Paragraph>
 	<TableContainer>
 		<Table size="xs">
 			{#snippet children()}
@@ -328,7 +329,7 @@
 
 <!-- SM Size Table -->
 <Card titleText="SM Size">
-	<Paragraph>Slightly wider horizontal padding than default. Use <code>size="sm"</code>.</Paragraph>
+	<Paragraph>Slightly wider horizontal padding than default. Use <Code>size="sm"</Code>.</Paragraph>
 	<TableContainer>
 		<Table size="sm">
 			{#snippet children()}
@@ -386,7 +387,7 @@
 
 <!-- LG Size Table -->
 <Card titleText="LG Size">
-	<Paragraph>Spacious rows - fits button/input LG. Good for forms in tables. Use <code>size="lg"</code>.</Paragraph>
+	<Paragraph>Spacious rows - fits button/input LG. Good for forms in tables. Use <Code>size="lg"</Code>.</Paragraph>
 	<TableContainer>
 		<Table size="lg">
 			{#snippet children()}
@@ -444,7 +445,7 @@
 
 <!-- XL Size Table -->
 <Card titleText="XL Size">
-	<Paragraph>Extra spacious rows - fits button/input XL. Best for presentation tables. Use <code>size="xl"</code>.</Paragraph>
+	<Paragraph>Extra spacious rows - fits button/input XL. Best for presentation tables. Use <Code>size="xl"</Code>.</Paragraph>
 	<TableContainer>
 		<Table size="xl">
 			{#snippet children()}
@@ -515,7 +516,7 @@
 			<tbody>
 				<tr>
 					<td>XS</td>
-					<td><code>size="xs"</code></td>
+					<td><Code>size="xs"</Code></td>
 					<td>0.6rem 0.8rem</td>
 					<td>Dense data grids, logs</td>
 				</tr>
@@ -527,19 +528,19 @@
 				</tr>
 				<tr>
 					<td>SM</td>
-					<td><code>size="sm"</code></td>
+					<td><Code>size="sm"</Code></td>
 					<td>0.8rem 1rem</td>
 					<td>Slightly wider spacing</td>
 				</tr>
 				<tr>
 					<td>LG</td>
-					<td><code>size="lg"</code></td>
+					<td><Code>size="lg"</Code></td>
 					<td>0.8rem 1.4rem</td>
 					<td>Forms in tables</td>
 				</tr>
 				<tr>
 					<td>XL</td>
-					<td><code>size="xl"</code></td>
+					<td><Code>size="xl"</Code></td>
 					<td>0.8rem 1.6rem</td>
 					<td>Presentation tables</td>
 				</tr>
@@ -553,10 +554,10 @@
 
 <Card titleText="Plain ruled table (isPlain)">
 	<Paragraph>
-		<code>isPlain</code> (<code>pa-table--plain</code>) strips the themed header fill and
+		<Code>isPlain</Code> (<Code>pa-table--plain</Code>) strips the themed header fill and
 		body/stripe backgrounds so the table reads as a plain ruled grid — for paper forms,
 		printouts and embedded sheet grids. Backgrounds go transparent, so it inherits whatever
-		surface it sits on; pair it with <code>isBordered</code> for the cell rules.
+		surface it sits on; pair it with <Code>isBordered</Code> for the cell rules.
 	</Paragraph>
 	<TableContainer>
 		<Table isPlain isBordered>
@@ -594,8 +595,8 @@
 		</Table>
 	</TableContainer>
 	<Paragraph class="mt-4">
-		The <strong>two-line cell</strong> — <code>pa-table__item-title</code> plus muted-italic
-		<code>pa-table__item-desc</code> stacked in a single <code>&lt;td&gt;</code> — is plain cell
+		The <strong>two-line cell</strong> — <Code>pa-table__item-title</Code> plus muted-italic
+		<Code>pa-table__item-desc</Code> stacked in a single <Code>&lt;td&gt;</Code> — is plain cell
 		content (a primary name over a secondary description, e.g. line-item name + spec, or a name
 		+ email), so it needs no Table prop: just drop the two spans into the cell.
 	</Paragraph>
@@ -806,7 +807,7 @@
 
 <!-- Panel Tables -->
 <Heading level={2} class="mt-8">Panel Tables</Heading>
-<Paragraph>Tables with card-like visual containment using the TableContainer with <code>isPanel</code> prop. Use when tables need to stand alongside cards without being wrapped in one.</Paragraph>
+<Paragraph>Tables with card-like visual containment using the TableContainer with <Code>isPanel</Code> prop. Use when tables need to stand alongside cards without being wrapped in one.</Paragraph>
 
 <Card titleText="Panel Tables">
 	<Heading level={4}>Basic Panel Table (no header)</Heading>
@@ -848,7 +849,7 @@
 </TableContainer>
 
 <Card titleText="Panel Table with Header" class="mt-4">
-	<Paragraph>Use the <code>title</code> and <code>headerActions</code> props to add a header.</Paragraph>
+	<Paragraph>Use the <Code>title</Code> and <Code>headerActions</Code> props to add a header.</Paragraph>
 </Card>
 
 <TableContainer isPanel titleText="Recent Orders">
@@ -1027,7 +1028,7 @@
 
 <!-- Color Variants -->
 <Heading level={3} class="mt-6">Color Variants</Heading>
-<Paragraph>Table cards support the same color variants as regular cards: <code>variant="primary"</code>, <code>variant="success"</code>, <code>variant="warning"</code>, <code>variant="danger"</code>, and theme colors <code>color={'{1-9}'}</code>.</Paragraph>
+<Paragraph>Table cards support the same color variants as regular cards: <Code>variant="primary"</Code>, <Code>variant="success"</Code>, <Code>variant="warning"</Code>, <Code>variant="danger"</Code>, and theme colors <Code>color={'{1-9}'}</Code>.</Paragraph>
 
 <Grid>
 	<Column md="50">
@@ -1144,7 +1145,7 @@
 
 <!-- Plain Table Cards -->
 <Heading level={3} class="mt-6">Plain Table Cards</Heading>
-<Paragraph>Use <code>isPlain</code> prop to remove the card visual styling (border, shadow, background) while keeping grid behavior. Tables work side by side with proper gaps.</Paragraph>
+<Paragraph>Use <Code>isPlain</Code> prop to remove the card visual styling (border, shadow, background) while keeping grid behavior. Tables work side by side with proper gaps.</Paragraph>
 
 <Grid>
 	<Column md="50">
@@ -1219,7 +1220,7 @@
 
 <!-- Bordered Tables -->
 <Heading level={3} class="mt-6">Bordered Tables</Heading>
-<Paragraph>Use the <code>isBordered</code> prop to add full cell borders on all sides.</Paragraph>
+<Paragraph>Use the <Code>isBordered</Code> prop to add full cell borders on all sides.</Paragraph>
 
 <Grid>
 	<Column md="50">
@@ -1453,7 +1454,7 @@
 
 <!-- Scrollable TableCard -->
 <Heading level={2} class="mt-8">Scrollable Tables</Heading>
-<Paragraph>Use the <code>isScrollable</code> prop on TableCard to enable horizontal scrolling for wide tables.</Paragraph>
+<Paragraph>Use the <Code>isScrollable</Code> prop on TableCard to enable horizontal scrolling for wide tables.</Paragraph>
 
 <TableCard titleText="Wide Data Table" isScrollable>
 	{#snippet headerActions()}
@@ -1532,7 +1533,7 @@
 
 <!-- Theme Color Variants -->
 <Heading level={3} class="mt-6">Theme Color Variants</Heading>
-<Paragraph>Use the <code>color</code> prop with values 1-9 for theme-based colors.</Paragraph>
+<Paragraph>Use the <Code>color</Code> prop with values 1-9 for theme-based colors.</Paragraph>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 	<TableCard titleText="Color 1" color={1}>
@@ -1594,58 +1595,58 @@
 <Card titleText="CSS Classes Reference" class="mt-8">
 	<Heading level={4}>Tables</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-table-container</code> - Scrollable table wrapper with border</li>
-		<li><code>pa-table-container--panel</code> - Card-like containment with shadow and margin</li>
-		<li><code>pa-table-container__header</code> - Header row for panel tables</li>
-		<li><code>pa-table-container__title</code> - Title text in header</li>
-		<li><code>pa-table-container__actions</code> - Actions container in header</li>
-		<li><code>pa-table</code> - Base table class</li>
-		<li><code>pa-table--striped</code> - Zebra striping on rows</li>
-		<li><code>pa-table--bordered</code> - Full cell borders on all sides</li>
-		<li><code>pa-table--xs</code> - Extra small padding</li>
-		<li><code>pa-table--sm</code> - Small padding</li>
-		<li><code>pa-table--lg</code> - Large padding</li>
-		<li><code>pa-table--xl</code> - Extra large padding</li>
-		<li><code>pa-table--responsive</code> - Stacks into cards on mobile</li>
-		<li><code>pa-table--responsive-grid</code> - CSS grid layout on mobile</li>
-		<li><code>.col-auto</code> - Auto-width column (shrinks to content)</li>
+		<li><Code>pa-table-container</Code> - Scrollable table wrapper with border</li>
+		<li><Code>pa-table-container--panel</Code> - Card-like containment with shadow and margin</li>
+		<li><Code>pa-table-container__header</Code> - Header row for panel tables</li>
+		<li><Code>pa-table-container__title</Code> - Title text in header</li>
+		<li><Code>pa-table-container__actions</Code> - Actions container in header</li>
+		<li><Code>pa-table</Code> - Base table class</li>
+		<li><Code>pa-table--striped</Code> - Zebra striping on rows</li>
+		<li><Code>pa-table--bordered</Code> - Full cell borders on all sides</li>
+		<li><Code>pa-table--xs</Code> - Extra small padding</li>
+		<li><Code>pa-table--sm</Code> - Small padding</li>
+		<li><Code>pa-table--lg</Code> - Large padding</li>
+		<li><Code>pa-table--xl</Code> - Extra large padding</li>
+		<li><Code>pa-table--responsive</Code> - Stacks into cards on mobile</li>
+		<li><Code>pa-table--responsive-grid</Code> - CSS grid layout on mobile</li>
+		<li><Code>.col-auto</Code> - Auto-width column (shrinks to content)</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Pager</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-pager</code> - Pagination container (default: centered)</li>
-		<li><code>pa-pager--start</code> - Start-aligned</li>
-		<li><code>pa-pager--center</code> - Center-aligned</li>
-		<li><code>pa-pager--end</code> - End-aligned</li>
-		<li><code>pa-pager__container</code> - Inner wrapper (flex)</li>
-		<li><code>pa-pager__controls</code> - Navigation buttons</li>
-		<li><code>pa-pager__info</code> - Page input and text</li>
-		<li><code>pa-pager__input</code> - Page number input</li>
-		<li><code>pa-pager__text</code> - "/ X pages" text</li>
+		<li><Code>pa-pager</Code> - Pagination container (default: centered)</li>
+		<li><Code>pa-pager--start</Code> - Start-aligned</li>
+		<li><Code>pa-pager--center</Code> - Center-aligned</li>
+		<li><Code>pa-pager--end</Code> - End-aligned</li>
+		<li><Code>pa-pager__container</Code> - Inner wrapper (flex)</li>
+		<li><Code>pa-pager__controls</Code> - Navigation buttons</li>
+		<li><Code>pa-pager__info</Code> - Page input and text</li>
+		<li><Code>pa-pager__input</Code> - Page number input</li>
+		<li><Code>pa-pager__text</Code> - "/ X pages" text</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Load More</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-load-more</code> - Load more container (default: centered)</li>
-		<li><code>pa-load-more--start</code> - Start-aligned</li>
-		<li><code>pa-load-more--center</code> - Center-aligned</li>
-		<li><code>pa-load-more--end</code> - End-aligned</li>
-		<li><code>pa-load-more__button</code> - The button element</li>
-		<li><code>pa-load-more__button--loading</code> - Loading state</li>
-		<li><code>pa-load-more__spinner</code> - Spinner element</li>
-		<li><code>pa-load-more__text</code> - Button text</li>
-		<li><code>pa-load-more__count</code> - Count display (e.g., "3 of 150")</li>
+		<li><Code>pa-load-more</Code> - Load more container (default: centered)</li>
+		<li><Code>pa-load-more--start</Code> - Start-aligned</li>
+		<li><Code>pa-load-more--center</Code> - Center-aligned</li>
+		<li><Code>pa-load-more--end</Code> - End-aligned</li>
+		<li><Code>pa-load-more__button</Code> - The button element</li>
+		<li><Code>pa-load-more__button--loading</Code> - Loading state</li>
+		<li><Code>pa-load-more__spinner</Code> - Spinner element</li>
+		<li><Code>pa-load-more__text</Code> - Button text</li>
+		<li><Code>pa-load-more__count</Code> - Count display (e.g., "3 of 150")</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Table Card</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-table-card</code> - Card container for tables</li>
-		<li><code>pa-table-card--plain</code> - Removes card styling (no border, shadow, background)</li>
-		<li><code>pa-table-card--primary</code>, <code>--success</code>, <code>--warning</code>, <code>--danger</code> - Semantic color variants</li>
-		<li><code>pa-table-card--color-1</code> through <code>--color-9</code> - Theme colors</li>
-		<li><code>pa-table-card__header</code> - Header with title and actions</li>
-		<li><code>pa-table-card__body</code> - Body container for table</li>
-		<li><code>pa-table-card__body--scrollable</code> - Enables horizontal scroll</li>
-		<li><code>pa-table-card__footer</code> - Footer for pagination/summary</li>
+		<li><Code>pa-table-card</Code> - Card container for tables</li>
+		<li><Code>pa-table-card--plain</Code> - Removes card styling (no border, shadow, background)</li>
+		<li><Code>pa-table-card--primary</Code>, <Code>--success</Code>, <Code>--warning</Code>, <Code>--danger</Code> - Semantic color variants</li>
+		<li><Code>pa-table-card--color-1</Code> through <Code>--color-9</Code> - Theme colors</li>
+		<li><Code>pa-table-card__header</Code> - Header with title and actions</li>
+		<li><Code>pa-table-card__body</Code> - Body container for table</li>
+		<li><Code>pa-table-card__body--scrollable</Code> - Enables horizontal scroll</li>
+		<li><Code>pa-table-card__footer</Code> - Footer for pagination/summary</li>
 	</BasicList>
 </Card>

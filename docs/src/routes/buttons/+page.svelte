@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Button, ButtonGroup, Card, Grid, Column, BasicList, Tooltip, SplitButton, SplitButtonItem, Popconfirm } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Button, ButtonGroup, Card, Grid, Column, BasicList, Tooltip, SplitButton, SplitButtonItem, Popconfirm, Code } from '@keenmate/svelte-pure-admin';
 	import { onMount } from 'svelte';
 	import OverflowToolbar from './OverflowToolbar.svelte';
 
@@ -249,42 +249,42 @@
 	<Column size="100" lg="1-2">
 		<Card titleText="Button Groups - Gap Sizes">
 			<Heading level={4}>Semantic Gap Classes</Heading>
-			<Paragraph color="secondary" class="mb-1"><code>gap-xs</code> (4px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><Code>gap-xs</Code> (4px)</Paragraph>
 			<ButtonGroup class="gap-xs mb-1">
 				<Button variant="primary">A</Button>
 				<Button variant="primary">B</Button>
 				<Button variant="primary">C</Button>
 				<Button variant="primary">D</Button>
 			</ButtonGroup>
-			<Paragraph color="secondary" class="mb-1"><code>gap-sm</code> (8px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><Code>gap-sm</Code> (8px)</Paragraph>
 			<ButtonGroup class="gap-sm mb-1">
 				<Button variant="secondary">A</Button>
 				<Button variant="secondary">B</Button>
 				<Button variant="secondary">C</Button>
 				<Button variant="secondary">D</Button>
 			</ButtonGroup>
-			<Paragraph color="secondary" class="mb-1"><code>gap-md</code> (12px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><Code>gap-md</Code> (12px)</Paragraph>
 			<ButtonGroup class="gap-md mb-1">
 				<Button variant="success">A</Button>
 				<Button variant="success">B</Button>
 				<Button variant="success">C</Button>
 				<Button variant="success">D</Button>
 			</ButtonGroup>
-			<Paragraph color="secondary" class="mb-1"><code>gap-base</code> (16px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><Code>gap-base</Code> (16px)</Paragraph>
 			<ButtonGroup class="gap-base mb-1">
 				<Button variant="info">A</Button>
 				<Button variant="info">B</Button>
 				<Button variant="info">C</Button>
 				<Button variant="info">D</Button>
 			</ButtonGroup>
-			<Paragraph color="secondary" class="mb-1"><code>gap-lg</code> (24px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><Code>gap-lg</Code> (24px)</Paragraph>
 			<ButtonGroup class="gap-lg mb-1">
 				<Button variant="warning">A</Button>
 				<Button variant="warning">B</Button>
 				<Button variant="warning">C</Button>
 				<Button variant="warning">D</Button>
 			</ButtonGroup>
-			<Paragraph color="secondary" class="mb-1"><code>gap-xl</code> (32px)</Paragraph>
+			<Paragraph color="secondary" class="mb-1"><Code>gap-xl</Code> (32px)</Paragraph>
 			<ButtonGroup class="gap-xl">
 				<Button variant="danger">A</Button>
 				<Button variant="danger">B</Button>
@@ -300,10 +300,10 @@
 	<!-- Vertical Alignment -->
 	<Column size="100" lg="1-2">
 		<Card titleText="Vertical Alignment">
-			<Paragraph color="secondary" class="mb-md">Use semantic gap classes (<code>gap-sm</code>, <code>gap-md</code>, <code>gap-lg</code>, <code>gap-xl</code>) to control vertical spacing between buttons.</Paragraph>
+			<Paragraph color="secondary" class="mb-md">Use semantic gap classes (<Code>gap-sm</Code>, <Code>gap-md</Code>, <Code>gap-lg</Code>, <Code>gap-xl</Code>) to control vertical spacing between buttons.</Paragraph>
 			<Grid>
 				<Column size="50" xl="25">
-					<Heading level={4}>Start <code>gap-sm</code></Heading>
+					<Heading level={4}>Start <Code>gap-sm</Code></Heading>
 					<ButtonGroup vertical class="gap-sm">
 						<Button variant="secondary" shouldTruncateText>Short</Button>
 						<Button variant="secondary" shouldTruncateText>Medium Btn</Button>
@@ -311,7 +311,7 @@
 					</ButtonGroup>
 				</Column>
 				<Column size="50" xl="25">
-					<Heading level={4}>Center <code>gap-md</code></Heading>
+					<Heading level={4}>Center <Code>gap-md</Code></Heading>
 					<ButtonGroup vertical align="center" class="gap-md">
 						<Button variant="secondary" shouldTruncateText>Short</Button>
 						<Button variant="secondary" shouldTruncateText>Medium Btn</Button>
@@ -319,7 +319,7 @@
 					</ButtonGroup>
 				</Column>
 				<Column size="50" xl="25">
-					<Heading level={4}>End <code>gap-lg</code></Heading>
+					<Heading level={4}>End <Code>gap-lg</Code></Heading>
 					<ButtonGroup vertical align="end" class="gap-lg">
 						<Button variant="secondary" shouldTruncateText>Short</Button>
 						<Button variant="secondary" shouldTruncateText>Medium Btn</Button>
@@ -327,7 +327,7 @@
 					</ButtonGroup>
 				</Column>
 				<Column size="50" xl="25">
-					<Heading level={4}>Stretch <code>gap-xl</code></Heading>
+					<Heading level={4}>Stretch <Code>gap-xl</Code></Heading>
 					<ButtonGroup vertical align="stretch" class="gap-xl">
 						<Button variant="primary" shouldTruncateText>Save</Button>
 						<Button variant="secondary" shouldTruncateText>Cancel</Button>
@@ -359,10 +359,10 @@
 
 			<Heading level={4} class="mt-2">Class Reference</Heading>
 			<BasicList class="text-sm">
-				<li><code>--sm-vertical</code> / <code>--sm-horizontal</code> at 576px</li>
-				<li><code>--md-vertical</code> / <code>--md-horizontal</code> at 768px</li>
-				<li><code>--lg-vertical</code> / <code>--lg-horizontal</code> at 992px</li>
-				<li><code>--xl-vertical</code> / <code>--xl-horizontal</code> at 1200px</li>
+				<li><Code>--sm-vertical</Code> / <Code>--sm-horizontal</Code> at 576px</li>
+				<li><Code>--md-vertical</Code> / <Code>--md-horizontal</Code> at 768px</li>
+				<li><Code>--lg-vertical</Code> / <Code>--lg-horizontal</Code> at 992px</li>
+				<li><Code>--xl-vertical</Code> / <Code>--xl-horizontal</Code> at 1200px</li>
 			</BasicList>
 		</Card>
 	</Column>
@@ -453,7 +453,7 @@
 
 	<!-- Upward Placement -->
 	<Heading level={4} class="mt-4">Upward Placement</Heading>
-	<Paragraph color="secondary" class="mb-2">Use <code>data-placement="top-end"</code> to open the menu upward. Floating UI will auto-flip if there's not enough space.</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Use <Code>data-placement="top-end"</Code> to open the menu upward. Floating UI will auto-flip if there's not enough space.</Paragraph>
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" placement="top-end" onclick={() => {}}>
 			Upload
@@ -476,7 +476,7 @@
 
 	<!-- Custom Icons -->
 	<Heading level={4} class="mt-4">Custom Icons (no rotation)</Heading>
-	<Paragraph color="secondary" class="mb-2">Omit <code>pa-btn-split__chevron</code> from the icon for static icons that don't rotate on open.</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Omit <Code>pa-btn-split__chevron</Code> from the icon for static icons that don't rotate on open.</Paragraph>
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => alert('Share')}>
 			Share
@@ -508,7 +508,7 @@
 
 	<!-- Items with Actions -->
 	<Heading level={4} class="mt-4">Items with Actions</Heading>
-	<Paragraph color="secondary" class="mb-2">Two patterns. <strong>Bookmarks</strong> and <strong>Recent</strong> use an inline action button (a <code>.pa-btn-split__item-row</code> delete) — a row-action isn't the item itself, so clicking it removes the row and the menu stays open on its own. <strong>Members</strong> instead confirms on the item: the item carries <code>data-pa-keep-open</code> so clicking it (a real menu item, which would otherwise close the menu) keeps it open while the popconfirm is anchored — and the primary button adds a new member.</Paragraph>
+	<Paragraph color="secondary" class="mb-2">Two patterns. <strong>Bookmarks</strong> and <strong>Recent</strong> use an inline action button (a <Code>.pa-btn-split__item-row</Code> delete) — a row-action isn't the item itself, so clicking it removes the row and the menu stays open on its own. <strong>Members</strong> instead confirms on the item: the item carries <Code>data-pa-keep-open</Code> so clicking it (a real menu item, which would otherwise close the menu) keeps it open while the popconfirm is anchored — and the primary button adds a new member.</Paragraph>
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => {}}>
 			{#snippet icon()}<i class="fas fa-bookmark"></i>{/snippet}
@@ -578,7 +578,7 @@
 
 <!-- Text Truncation -->
 <Card titleText="Text Truncation">
-	<Paragraph color="secondary" class="mb-1">Give the button a fixed width (<code>.wr-*</code>) and set <code>shouldTruncateText</code> to truncate long text with ellipsis</Paragraph>
+	<Paragraph color="secondary" class="mb-1">Give the button a fixed width (<Code>.wr-*</Code>) and set <Code>shouldTruncateText</Code> to truncate long text with ellipsis</Paragraph>
 	<div class="component-showcase">
 		<Tooltip text="This is a very long button text that will be truncated with ellipsis" position="bottom" multiline>
 			<Button variant="secondary" class="wr-15" shouldTruncateText>
@@ -686,7 +686,7 @@
 <!-- Fixed Width Buttons -->
 <Card titleText="Fixed Width Buttons">
 	<Paragraph class="mb-1">
-		Use <code>minwr-*</code> + <code>maxwr-*</code> to constrain width. Set <code>shouldTruncateText</code> for ellipsis:
+		Use <Code>minwr-*</Code> + <Code>maxwr-*</Code> to constrain width. Set <Code>shouldTruncateText</Code> for ellipsis:
 	</Paragraph>
 	<div class="d-flex flex-column align-items-start gap-sm">
 		<Button variant="primary" class="minwr-10 maxwr-10" shouldTruncateText>
@@ -703,7 +703,7 @@
 		</Button>
 	</div>
 
-	<Heading level={4} class="mt-6">Different Widths (<code>minwr-8</code> to <code>minwr-20</code>)</Heading>
+	<Heading level={4} class="mt-6">Different Widths (<Code>minwr-8</Code> to <Code>minwr-20</Code>)</Heading>
 	<div class="d-flex flex-column align-items-start gap-sm">
 		<Button variant="primary" class="minwr-8">minwr-8</Button>
 		<Button variant="primary" class="minwr-10">minwr-10</Button>
@@ -896,13 +896,13 @@
 <Card titleText="Usage Guide">
 	<Heading level={4}>Ripple Effect</Heading>
 	<Paragraph>
-		Add <code>pa-btn--ripple</code> class and <code>data-ripple</code> attribute to any button for
+		Add <Code>pa-btn--ripple</Code> class and <Code>data-ripple</Code> attribute to any button for
 		click animation feedback.
 	</Paragraph>
 
 	<Heading level={4}>Loading States</Heading>
 	<Paragraph>
-		Use <code>pa-btn--loading</code> class to show spinner. JavaScript can toggle this class during
+		Use <Code>pa-btn--loading</Code> class to show spinner. JavaScript can toggle this class during
 		async operations.
 	</Paragraph>
 
@@ -924,113 +924,113 @@
 <Card titleText="CSS Classes Reference">
 	<Heading level={4}>Button Base</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn</code> - Base button styling</li>
+		<li><Code>pa-btn</Code> - Base button styling</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Button Variants (Colors)</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn--primary</code> - Primary accent color</li>
-		<li><code>pa-btn--secondary</code> - Secondary/neutral color</li>
-		<li><code>pa-btn--success</code> - Success/green color</li>
-		<li><code>pa-btn--warning</code> - Warning/yellow color</li>
-		<li><code>pa-btn--danger</code> - Danger/red color</li>
-		<li><code>pa-btn--info</code> - Info/blue color</li>
-		<li><code>pa-btn--light</code> - Light background</li>
-		<li><code>pa-btn--dark</code> - Dark background</li>
+		<li><Code>pa-btn--primary</Code> - Primary accent color</li>
+		<li><Code>pa-btn--secondary</Code> - Secondary/neutral color</li>
+		<li><Code>pa-btn--success</Code> - Success/green color</li>
+		<li><Code>pa-btn--warning</Code> - Warning/yellow color</li>
+		<li><Code>pa-btn--danger</Code> - Danger/red color</li>
+		<li><Code>pa-btn--info</Code> - Info/blue color</li>
+		<li><Code>pa-btn--light</Code> - Light background</li>
+		<li><Code>pa-btn--dark</Code> - Dark background</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Outline Variants</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn--outline-primary</code> - Outline primary</li>
-		<li><code>pa-btn--outline-secondary</code> - Outline secondary</li>
-		<li><code>pa-btn--outline-success</code> - Outline success</li>
-		<li><code>pa-btn--outline-warning</code> - Outline warning</li>
-		<li><code>pa-btn--outline-danger</code> - Outline danger</li>
-		<li><code>pa-btn--outline-info</code> - Outline info</li>
-		<li><code>pa-btn--color-{'{1-9}'}</code> - Theme color slots</li>
-		<li><code>pa-btn--outline-color-{'{1-9}'}</code> - Outline theme color slots</li>
+		<li><Code>pa-btn--outline-primary</Code> - Outline primary</li>
+		<li><Code>pa-btn--outline-secondary</Code> - Outline secondary</li>
+		<li><Code>pa-btn--outline-success</Code> - Outline success</li>
+		<li><Code>pa-btn--outline-warning</Code> - Outline warning</li>
+		<li><Code>pa-btn--outline-danger</Code> - Outline danger</li>
+		<li><Code>pa-btn--outline-info</Code> - Outline info</li>
+		<li><Code>pa-btn--color-{'{1-9}'}</Code> - Theme color slots</li>
+		<li><Code>pa-btn--outline-color-{'{1-9}'}</Code> - Outline theme color slots</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Button Sizes</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn--xs</code> - Extra small button</li>
-		<li><code>pa-btn--sm</code> - Small button</li>
-		<li><code>pa-btn--lg</code> - Large button</li>
-		<li><code>pa-btn--xl</code> - Extra large button</li>
+		<li><Code>pa-btn--xs</Code> - Extra small button</li>
+		<li><Code>pa-btn--sm</Code> - Small button</li>
+		<li><Code>pa-btn--lg</Code> - Large button</li>
+		<li><Code>pa-btn--xl</Code> - Extra large button</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Button States & Modifiers</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn--loading</code> - Loading state with spinner</li>
-		<li><code>pa-btn--ripple</code> - Enable ripple click effect</li>
-		<li><code>pa-btn--block</code> - Full width isBlock button</li>
-		<li><code>pa-btn--icon-only</code> - Square icon-only button</li>
+		<li><Code>pa-btn--loading</Code> - Loading state with spinner</li>
+		<li><Code>pa-btn--ripple</Code> - Enable ripple click effect</li>
+		<li><Code>pa-btn--block</Code> - Full width isBlock button</li>
+		<li><Code>pa-btn--icon-only</Code> - Square icon-only button</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Content Alignment</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn--align-start</code> - Inline-start align content (RTL: right)</li>
-		<li><code>pa-btn--align-end</code> - Inline-end align content (RTL: left)</li>
-		<li><code>pa-btn--align-center</code> - Center-align content (the default since core rc06; explicit)</li>
-		<li><code>pa-btn--align-justify</code> - Space-between content</li>
+		<li><Code>pa-btn--align-start</Code> - Inline-start align content (RTL: right)</li>
+		<li><Code>pa-btn--align-end</Code> - Inline-end align content (RTL: left)</li>
+		<li><Code>pa-btn--align-center</Code> - Center-align content (the default since core rc06; explicit)</li>
+		<li><Code>pa-btn--align-justify</Code> - Space-between content</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Button Elements</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn__icon</code> - Icon container with fixed width</li>
-		<li><code>pa-btn__spinner</code> - Loading spinner element</li>
+		<li><Code>pa-btn__icon</Code> - Icon container with fixed width</li>
+		<li><Code>pa-btn__spinner</Code> - Loading spinner element</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Button Groups</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn-group</code> - Container for grouped buttons</li>
-		<li><code>pa-btn-group--vertical</code> - Vertical stacking</li>
-		<li><code>pa-btn-group--nowrap</code> - Prevent wrapping</li>
+		<li><Code>pa-btn-group</Code> - Container for grouped buttons</li>
+		<li><Code>pa-btn-group--vertical</Code> - Vertical stacking</li>
+		<li><Code>pa-btn-group--nowrap</Code> - Prevent wrapping</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Button Group Alignment (vertical only)</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn-group--center</code> - Center-align buttons</li>
-		<li><code>pa-btn-group--end</code> - End-align buttons</li>
-		<li><code>pa-btn-group--stretch</code> - Full width buttons</li>
+		<li><Code>pa-btn-group--center</Code> - Center-align buttons</li>
+		<li><Code>pa-btn-group--end</Code> - End-align buttons</li>
+		<li><Code>pa-btn-group--stretch</Code> - Full width buttons</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Responsive Button Groups</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn-group--sm-vertical</code> - Vertical at 576px+</li>
-		<li><code>pa-btn-group--sm-horizontal</code> - Horizontal at 576px+</li>
-		<li><code>pa-btn-group--md-vertical</code> - Vertical at 768px+</li>
-		<li><code>pa-btn-group--md-horizontal</code> - Horizontal at 768px+</li>
-		<li><code>pa-btn-group--lg-vertical</code> - Vertical at 992px+</li>
-		<li><code>pa-btn-group--lg-horizontal</code> - Horizontal at 992px+</li>
-		<li><code>pa-btn-group--xl-vertical</code> - Vertical at 1200px+</li>
-		<li><code>pa-btn-group--xl-horizontal</code> - Horizontal at 1200px+</li>
+		<li><Code>pa-btn-group--sm-vertical</Code> - Vertical at 576px+</li>
+		<li><Code>pa-btn-group--sm-horizontal</Code> - Horizontal at 576px+</li>
+		<li><Code>pa-btn-group--md-vertical</Code> - Vertical at 768px+</li>
+		<li><Code>pa-btn-group--md-horizontal</Code> - Horizontal at 768px+</li>
+		<li><Code>pa-btn-group--lg-vertical</Code> - Vertical at 992px+</li>
+		<li><Code>pa-btn-group--lg-horizontal</Code> - Horizontal at 992px+</li>
+		<li><Code>pa-btn-group--xl-vertical</Code> - Vertical at 1200px+</li>
+		<li><Code>pa-btn-group--xl-horizontal</Code> - Horizontal at 1200px+</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Split Buttons</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-btn-split</code> - Container for split button</li>
-		<li><code>pa-btn-split__toggle</code> - Toggle button (fixed square width)</li>
-		<li><code>pa-btn-split__chevron</code> - On the icon to opt-in to 180deg rotation on open (omit for static icons)</li>
-		<li><code>pa-btn-split__menu</code> - Dropdown menu panel (outer, overflow hidden)</li>
-		<li><code>pa-btn-split__menu-inner</code> - Inner wrapper for menu items (padding, flex layout)</li>
-		<li><code>pa-btn-split__menu--open</code> - Show dropdown menu</li>
-		<li><code>pa-btn-split__item</code> - Menu item button</li>
-		<li><code>pa-btn-split__item--danger</code> - Destructive action styling</li>
-		<li><code>pa-btn-split__item-row</code> - Menu row wrapping an item + a trailing action button (e.g. delete)</li>
-		<li><code>data-placement="top-end"</code> - Open menu upward (on container)</li>
-		<li><code>data-pa-keep-open</code> - On an item (or ancestor): keep the menu open on click, for actions that spawn their own popover</li>
+		<li><Code>pa-btn-split</Code> - Container for split button</li>
+		<li><Code>pa-btn-split__toggle</Code> - Toggle button (fixed square width)</li>
+		<li><Code>pa-btn-split__chevron</Code> - On the icon to opt-in to 180deg rotation on open (omit for static icons)</li>
+		<li><Code>pa-btn-split__menu</Code> - Dropdown menu panel (outer, overflow hidden)</li>
+		<li><Code>pa-btn-split__menu-inner</Code> - Inner wrapper for menu items (padding, flex layout)</li>
+		<li><Code>pa-btn-split__menu--open</Code> - Show dropdown menu</li>
+		<li><Code>pa-btn-split__item</Code> - Menu item button</li>
+		<li><Code>pa-btn-split__item--danger</Code> - Destructive action styling</li>
+		<li><Code>pa-btn-split__item-row</Code> - Menu row wrapping an item + a trailing action button (e.g. delete)</li>
+		<li><Code>data-placement="top-end"</Code> - Open menu upward (on container)</li>
+		<li><Code>data-pa-keep-open</Code> - On an item (or ancestor): keep the menu open on click, for actions that spawn their own popover</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Overflow Toolbar</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-overflow</code> - Progressive-collapse flex row; auto-appends a <code>[⋮]</code> "more" trigger and walks overflowing children into it</li>
-		<li><code>pa-card__actions--overflow</code> - Card-header alias of <code>pa-overflow</code> on the <code>pa-card__actions</code> slot</li>
-		<li><code>pa-overflow__trigger</code> - The auto-created <code>[⋮]</code> button (retheming hook; ships as a standard <code>pa-btn--secondary</code>)</li>
-		<li><code>data-pa-overflow-trigger="ghost"</code> - Make the trigger chromeless instead of bordered (on the container)</li>
-		<li><code>data-pa-actions-priority</code> - Drop order per child (default <code>0</code>; higher survives longer)</li>
-		<li><code>data-pa-actions-overflow-from</code> - <code>end</code> (default, rightmost first) or <code>start</code> (leftmost first)</li>
-		<li><code>data-pa-overflow-label</code> - Override the section label for a collapsed split-button group</li>
-		<li><code>pa-btn-split--in-overflow</code> / <code>pa-btn-split__group-label</code> - Applied by <code>overflow.js</code> when a split button collapses as an atomic labeled group (not authored by hand)</li>
+		<li><Code>pa-overflow</Code> - Progressive-collapse flex row; auto-appends a <Code>[⋮]</Code> "more" trigger and walks overflowing children into it</li>
+		<li><Code>pa-card__actions--overflow</Code> - Card-header alias of <Code>pa-overflow</Code> on the <Code>pa-card__actions</Code> slot</li>
+		<li><Code>pa-overflow__trigger</Code> - The auto-created <Code>[⋮]</Code> button (retheming hook; ships as a standard <Code>pa-btn--secondary</Code>)</li>
+		<li><Code>data-pa-overflow-trigger="ghost"</Code> - Make the trigger chromeless instead of bordered (on the container)</li>
+		<li><Code>data-pa-actions-priority</Code> - Drop order per child (default <Code>0</Code>; higher survives longer)</li>
+		<li><Code>data-pa-actions-overflow-from</Code> - <Code>end</Code> (default, rightmost first) or <Code>start</Code> (leftmost first)</li>
+		<li><Code>data-pa-overflow-label</Code> - Override the section label for a collapsed split-button group</li>
+		<li><Code>pa-btn-split--in-overflow</Code> / <Code>pa-btn-split__group-label</Code> - Applied by <Code>overflow.js</Code> when a split button collapses as an atomic labeled group (not authored by hand)</li>
 	</BasicList>
 </Card>

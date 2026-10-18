@@ -9,7 +9,8 @@
 		Badge,
 		CodeBlock,
 		BasicList,
-		Callout
+		Callout,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -206,7 +207,7 @@
 
 	<Heading level={4}>Best Practices</Heading>
 	<BasicList>
-		<li>Use <code>variant="feed"</code> for social activity feeds and audit logs</li>
+		<li>Use <Code>variant="feed"</Code> for social activity feeds and audit logs</li>
 		<li>Include user avatars for better visual identification</li>
 		<li>Show relative timestamps (2 hours ago, 1 day ago) for recent activity</li>
 		<li>Use color variants to indicate action types (success for completions, warning for reviews, danger for errors)</li>

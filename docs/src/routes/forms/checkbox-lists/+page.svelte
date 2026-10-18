@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Checkbox, CheckboxGroup, CheckboxBox, CheckboxList, CheckboxListItem, Button, ButtonGroup, Table, Badge, Alert, Grid, Column, BasicList } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Checkbox, CheckboxGroup, CheckboxBox, CheckboxList, CheckboxListItem, Button, ButtonGroup, Table, Badge, Alert, Grid, Column, BasicList, Code } from '@keenmate/svelte-pure-admin';
 													
 	// ===== Card 1: Custom Tri-State Checkbox =====
 	let uncheckedDemo = $state(false);
@@ -240,7 +240,7 @@
 				<Checkbox id="cg-dot" isIndeterminate labelText="Indeterminate → dot glyph" />
 				<Checkbox id="cg-off" labelText="Unchecked (unaffected)" />
 			</CheckboxGroup>
-			<Paragraph color="secondary" class="mt-3">Both children inherit the wrapper's <code>--base-icon-*</code> — exactly how a theme would re-skin every checkbox at once.</Paragraph>
+			<Paragraph color="secondary" class="mt-3">Both children inherit the wrapper's <Code>--base-icon-*</Code> — exactly how a theme would re-skin every checkbox at once.</Paragraph>
 		</Column>
 	</Grid>
 </Card>
@@ -293,7 +293,7 @@
 				</BasicList>
 			</Alert>
 			<Paragraph color="secondary" class="mt-5">
-				<code>checkbox.indeterminate = true</code> is set via JavaScript. The CSS <code>:indeterminate</code> pseudo-class handles the styling.
+				<Code>checkbox.indeterminate = true</Code> is set via JavaScript. The CSS <Code>:indeterminate</Code> pseudo-class handles the styling.
 			</Paragraph>
 		</Column>
 	</Grid>
@@ -537,51 +537,51 @@
 <Card titleText="CSS Classes Reference">
 	<Heading level={4}>Custom Checkbox Component</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-checkbox</code> - Base custom checkbox (wraps input + box + label)</li>
-		<li><code>pa-checkbox__box</code> - Visual checkbox element</li>
-		<li><code>pa-checkbox__label</code> - Label text</li>
-		<li><code>pa-checkbox--xs</code> - Extra small size</li>
-		<li><code>pa-checkbox--sm</code> - Small size</li>
-		<li><code>pa-checkbox--lg</code> - Large size</li>
-		<li><code>pa-checkbox--xl</code> - Extra large size</li>
-		<li><code>pa-checkbox--x</code> - X mark instead of checkmark</li>
-		<li><code>pa-checkbox--disabled</code> - Disabled appearance</li>
+		<li><Code>pa-checkbox</Code> - Base custom checkbox (wraps input + box + label)</li>
+		<li><Code>pa-checkbox__box</Code> - Visual checkbox element</li>
+		<li><Code>pa-checkbox__label</Code> - Label text</li>
+		<li><Code>pa-checkbox--xs</Code> - Extra small size</li>
+		<li><Code>pa-checkbox--sm</Code> - Small size</li>
+		<li><Code>pa-checkbox--lg</Code> - Large size</li>
+		<li><Code>pa-checkbox--xl</Code> - Extra large size</li>
+		<li><Code>pa-checkbox--x</Code> - X mark instead of checkmark</li>
+		<li><Code>pa-checkbox--disabled</Code> - Disabled appearance</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Checkbox List Container</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-checkbox-list</code> - Base list container (vertical)</li>
-		<li><code>pa-checkbox-list--compact</code> - Reduced padding</li>
-		<li><code>pa-checkbox-list--bordered</code> - Border around list</li>
-		<li><code>pa-checkbox-list--striped</code> - Zebra striping</li>
-		<li><code>pa-checkbox-list--inline</code> - Horizontal wrapping layout</li>
-		<li><code>pa-checkbox-list--grid</code> - Auto-fill grid layout</li>
-		<li><code>pa-checkbox-list--2col</code> - Two-column grid</li>
-		<li><code>pa-checkbox-list--3col</code> - Three-column grid</li>
+		<li><Code>pa-checkbox-list</Code> - Base list container (vertical)</li>
+		<li><Code>pa-checkbox-list--compact</Code> - Reduced padding</li>
+		<li><Code>pa-checkbox-list--bordered</Code> - Border around list</li>
+		<li><Code>pa-checkbox-list--striped</Code> - Zebra striping</li>
+		<li><Code>pa-checkbox-list--inline</Code> - Horizontal wrapping layout</li>
+		<li><Code>pa-checkbox-list--grid</Code> - Auto-fill grid layout</li>
+		<li><Code>pa-checkbox-list--2col</Code> - Two-column grid</li>
+		<li><Code>pa-checkbox-list--3col</Code> - Three-column grid</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Checkbox List Items</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-checkbox-list__item</code> - List item</li>
-		<li><code>pa-checkbox-list__item--selected</code> - Selected state</li>
-		<li><code>pa-checkbox-list__item--disabled</code> - Disabled (feature unavailable)</li>
-		<li><code>pa-checkbox-list__item--locked</code> - Locked (requires permission)</li>
-		<li><code>pa-checkbox-list__label</code> - Clickable label wrapper</li>
-		<li><code>pa-checkbox-list__text</code> - Text content</li>
-		<li><code>pa-checkbox-list__description</code> - Secondary description</li>
-		<li><code>pa-checkbox-list__actions</code> - Action buttons container</li>
+		<li><Code>pa-checkbox-list__item</Code> - List item</li>
+		<li><Code>pa-checkbox-list__item--selected</Code> - Selected state</li>
+		<li><Code>pa-checkbox-list__item--disabled</Code> - Disabled (feature unavailable)</li>
+		<li><Code>pa-checkbox-list__item--locked</Code> - Locked (requires permission)</li>
+		<li><Code>pa-checkbox-list__label</Code> - Clickable label wrapper</li>
+		<li><Code>pa-checkbox-list__text</Code> - Text content</li>
+		<li><Code>pa-checkbox-list__description</Code> - Secondary description</li>
+		<li><Code>pa-checkbox-list__actions</Code> - Action buttons container</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Table Checkboxes</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>pa-table__checkbox-col</code> - Checkbox column (minimal width)</li>
-		<li><code>pa-table__row--selected</code> - Selected row highlight</li>
+		<li><Code>pa-table__checkbox-col</Code> - Checkbox column (minimal width)</li>
+		<li><Code>pa-table__row--selected</Code> - Selected row highlight</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Checkbox States (via input)</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><code>:checked</code> - Checked state (checkmark)</li>
-		<li><code>:indeterminate</code> - Indeterminate state (dash) - set via JS</li>
-		<li><code>:disabled</code> - Disabled state</li>
+		<li><Code>:checked</Code> - Checked state (checkmark)</li>
+		<li><Code>:indeterminate</Code> - Indeterminate state (dash) - set via JS</li>
+		<li><Code>:disabled</Code> - Disabled state</li>
 	</BasicList>
 </Card>

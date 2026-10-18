@@ -6,15 +6,16 @@
 		Document,
 		DocumentSection,
 		DocumentText,
-		CodeBlock
+		CodeBlock,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
 <Paragraph>
-	<code>&lt;Document&gt;</code> is a Word-style hierarchical, auto-numbered document. Nest
-	<code>&lt;DocumentSection&gt;</code> inside one another and the outline number (1, 1.1, 1.1.1 …) is generated
+	<Code>&lt;Document&gt;</Code> is a Word-style hierarchical, auto-numbered document. Nest
+	<Code>&lt;DocumentSection&gt;</Code> inside one another and the outline number (1, 1.1, 1.1.1 …) is generated
 	by CSS counters — you never write it, so reordering or inserting a section renumbers everything
-	automatically (up to six levels). Body copy goes in <code>&lt;DocumentText&gt;</code>.
+	automatically (up to six levels). Body copy goes in <Code>&lt;DocumentText&gt;</Code>.
 </Paragraph>
 
 <Card titleText="Auto-numbered (default)">
@@ -43,8 +44,8 @@
 
 <Card titleText="Manual numbering">
 	{#snippet description()}
-		Set <code>isManual</code> on the container and author each number via the section's
-		<code>number</code> prop — useful for appendices or non-decimal schemes.
+		Set <Code>isManual</Code> on the container and author each number via the section's
+		<Code>number</Code> prop — useful for appendices or non-decimal schemes.
 	{/snippet}
 	<Document isManual>
 		<DocumentSection heading="Appendix" number="A">
@@ -59,7 +60,7 @@
 
 <Card titleText="Flush — no indentation">
 	{#snippet description()}
-		With <code>isFlush</code> the per-level indentation is dropped; the number chain still conveys depth.
+		With <Code>isFlush</Code> the per-level indentation is dropped; the number chain still conveys depth.
 	{/snippet}
 	<Document isFlush>
 		<DocumentSection heading="Requirements">

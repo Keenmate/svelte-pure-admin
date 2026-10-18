@@ -20,7 +20,8 @@
 		TabItem,
 		FieldGroup,
 		Fields,
-		Field
+		Field,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	// ----------------------------------------------------------------
@@ -344,7 +345,7 @@
 				<Fields cols={2}>
 					<Field labelText="Name" valueText={config.name} />
 					<Field labelText="Code">
-						{#snippet valueSnippet()}<code>{config.code}</code>{/snippet}
+						{#snippet valueSnippet()}<Code>{config.code}</Code>{/snippet}
 					</Field>
 					<Field labelText="Status">
 						{#snippet valueSnippet()}<Badge variant="success">Active</Badge>{/snippet}
@@ -373,7 +374,7 @@
 
 <Card class="mb-4" hasPadding={false} titleText="Inline Split-View">
 	{#snippet description()}
-		Click a row to open the detail panel alongside the table. The table shrinks to make room. Uses <code>isOverlay=&#123;false&#125;</code>.
+		Click a row to open the detail panel alongside the table. The table shrinks to make room. Uses <Code>isOverlay=&#123;false&#125;</Code>.
 	{/snippet}
 
 	<DetailView bind:show={inlineShow} isOverlay={false} onclose={() => inlineShow = false}>
@@ -445,7 +446,7 @@
 
 <Card class="mb-4" hasPadding={false} titleText="Tabbed Detail Panel">
 	{#snippet description()}
-		Detail panel with tabs inside, like the profile panel. Click a row, then switch between Details, Activity and Notes. Uses the <code>tabs</code> snippet prop on <code>DetailPanel</code>.
+		Detail panel with tabs inside, like the profile panel. Click a row, then switch between Details, Activity and Notes. Uses the <Code>tabs</Code> snippet prop on <Code>DetailPanel</Code>.
 	{/snippet}
 
 	<DetailView bind:show={tabbedShow} shouldShowBackdrop={false} onclose={() => tabbedShow = false}>
@@ -512,7 +513,7 @@
 
 <Card class="mb-4" hasPadding={false} titleText="Header Actions — No Footer">
 	{#snippet description()}
-		Icon buttons live in the header next to the close button via the <code>actions</code> snippet. No footer, like a compact card.
+		Icon buttons live in the header next to the close button via the <Code>actions</Code> snippet. No footer, like a compact card.
 	{/snippet}
 
 	<DetailView bind:show={headerActionsShow} shouldShowBackdrop={false} onclose={() => headerActionsShow = false}>
@@ -632,7 +633,7 @@
 	</DetailView>
 
 	{#snippet footer()}
-		<span class="text-muted text-sm">Using <code>TableCard</code> with <code>DetailView</code></span>
+		<span class="text-muted text-sm">Using <Code>TableCard</Code> with <Code>DetailView</Code></span>
 	{/snippet}
 </TableCard>
 
@@ -716,7 +717,7 @@
 
 <Card class="mb-4" titleText="Full-Screen Overlay">
 	{#snippet description()}
-		Click a row to open an overlay panel that slides in from the right, using <code>SlidePanel</code> + <code>DetailPanel</code>.
+		Click a row to open an overlay panel that slides in from the right, using <Code>SlidePanel</Code> + <Code>DetailPanel</Code>.
 	{/snippet}
 
 	<Table isStriped>
@@ -764,38 +765,38 @@
 <Card class="mb-4" titleText="Usage">
 	<Heading level={4}>Inline Split-View Mode</Heading>
 	<Callout variant="info" class="mb-3">
-		Use <code>DetailView</code> with <code>isOverlay=&#123;false&#125;</code>. The table shrinks and the panel appears alongside it.
+		Use <Code>DetailView</Code> with <Code>isOverlay=&#123;false&#125;</Code>. The table shrinks and the panel appears alongside it.
 		No backdrop is rendered in this mode.
 	</Callout>
 
 	<Heading level={4} class="mt-4">Card Overlay Mode</Heading>
 	<Callout variant="info" class="mb-3">
-		Use <code>DetailView</code> + <code>DetailPanel</code> together. The table goes in the <code>main</code> snippet,
-		the panel content goes as children. Toggle <code>shouldShowBackdrop</code> to control whether a backdrop appears.
+		Use <Code>DetailView</Code> + <Code>DetailPanel</Code> together. The table goes in the <Code>main</Code> snippet,
+		the panel content goes as children. Toggle <Code>shouldShowBackdrop</Code> to control whether a backdrop appears.
 	</Callout>
 
 	<Heading level={4} class="mt-4">Tabbed Panel</Heading>
 	<Callout variant="info" class="mb-3">
-		Use the <code>tabs</code> snippet prop on <code>DetailPanel</code> to render tabs between the header and body.
-		Place a <code>Tabs</code> component with <code>TabItem</code> children inside the snippet.
+		Use the <Code>tabs</Code> snippet prop on <Code>DetailPanel</Code> to render tabs between the header and body.
+		Place a <Code>Tabs</Code> component with <Code>TabItem</Code> children inside the snippet.
 	</Callout>
 
 	<Heading level={4} class="mt-4">Header Actions</Heading>
 	<Callout variant="info" class="mb-3">
-		Use the <code>actions</code> snippet on <code>DetailPanel</code> for buttons in <code>.pa-detail-panel__actions</code>,
-		between the title and the close button. Primary confirm/cancel buttons belong in <code>footer</code>.
+		Use the <Code>actions</Code> snippet on <Code>DetailPanel</Code> for buttons in <Code>.pa-detail-panel__actions</Code>,
+		between the title and the close button. Primary confirm/cancel buttons belong in <Code>footer</Code>.
 	</Callout>
 
 	<Heading level={4} class="mt-4">Full-Screen Overlay Mode</Heading>
 	<Callout variant="info" class="mb-3">
-		Use <code>SlidePanel</code> + <code>DetailPanel</code> together. The <code>SlidePanel</code> handles the fixed
-		overlay positioning, escape key, and backdrop. The <code>DetailPanel</code> is the same content shell used in card mode.
+		Use <Code>SlidePanel</Code> + <Code>DetailPanel</Code> together. The <Code>SlidePanel</Code> handles the fixed
+		overlay positioning, escape key, and backdrop. The <Code>DetailPanel</Code> is the same content shell used in card mode.
 	</Callout>
 
 	<Heading level={4} class="mt-4">Resize</Heading>
 	<Callout variant="info">
 		Resizable panels include a drag handle on the left edge (min 28rem, max 64rem). Disable with
-		<code>isResizable=&#123;false&#125;</code> on <code>DetailPanel</code>.
+		<Code>isResizable=&#123;false&#125;</Code> on <Code>DetailPanel</Code>.
 	</Callout>
 </Card>
 
@@ -815,13 +816,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>show</code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
-			<tr><td><code>shouldShowBackdrop</code></td><td>boolean</td><td>true</td><td>Show backdrop overlay behind panel</td></tr>
-			<tr><td><code>isOverlay</code></td><td>boolean</td><td>true</td><td>Use overlay mode. When false, panel appears inline (split-view)</td></tr>
-			<tr><td><code>main</code></td><td>Snippet</td><td>-</td><td>Main content area (table, list, etc.)</td></tr>
-			<tr><td><code>children</code></td><td>Snippet</td><td>-</td><td>Panel content (DetailPanel)</td></tr>
-			<tr><td><code>onclose</code></td><td>() =&gt; void</td><td>-</td><td>Called on backdrop click or escape key</td></tr>
-			<tr><td><code>class</code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>
+			<tr><td><Code>show</Code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
+			<tr><td><Code>shouldShowBackdrop</Code></td><td>boolean</td><td>true</td><td>Show backdrop overlay behind panel</td></tr>
+			<tr><td><Code>isOverlay</Code></td><td>boolean</td><td>true</td><td>Use overlay mode. When false, panel appears inline (split-view)</td></tr>
+			<tr><td><Code>main</Code></td><td>Snippet</td><td>-</td><td>Main content area (table, list, etc.)</td></tr>
+			<tr><td><Code>children</Code></td><td>Snippet</td><td>-</td><td>Panel content (DetailPanel)</td></tr>
+			<tr><td><Code>onclose</Code></td><td>() =&gt; void</td><td>-</td><td>Called on backdrop click or escape key</td></tr>
+			<tr><td><Code>class</Code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>
 		</tbody>
 	</Table>
 
@@ -836,16 +837,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>titleText</code></td><td>string</td><td>''</td><td>Panel title text (blessed header shape)</td></tr>
-			<tr><td><code>actions</code></td><td>Snippet</td><td>-</td><td>Header action buttons, between the title and the close button</td></tr>
-			<tr><td><code>tabs</code></td><td>Snippet</td><td>-</td><td>Tabs content rendered between header and body</td></tr>
-			<tr><td><code>children</code></td><td>Snippet</td><td>-</td><td>Body content</td></tr>
-			<tr><td><code>footer</code></td><td>Snippet</td><td>-</td><td>Footer content (confirm/cancel buttons)</td></tr>
-			<tr><td><code>isBordered</code></td><td>boolean</td><td>false</td><td>Add top/bottom borders to the content wrapper</td></tr>
-			<tr><td><code>isResizable</code></td><td>boolean</td><td>true</td><td>Enable drag-to-resize handle</td></tr>
-			<tr><td><code>onclose</code></td><td>() =&gt; void</td><td>-</td><td>Called when the close button is clicked</td></tr>
-			<tr><td><code>header</code></td><td>Snippet</td><td>-</td><td>Legacy: raw header override. Prefer <code>titleText</code> + <code>actions</code>.</td></tr>
-			<tr><td><code>class</code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>
+			<tr><td><Code>titleText</Code></td><td>string</td><td>''</td><td>Panel title text (blessed header shape)</td></tr>
+			<tr><td><Code>actions</Code></td><td>Snippet</td><td>-</td><td>Header action buttons, between the title and the close button</td></tr>
+			<tr><td><Code>tabs</Code></td><td>Snippet</td><td>-</td><td>Tabs content rendered between header and body</td></tr>
+			<tr><td><Code>children</Code></td><td>Snippet</td><td>-</td><td>Body content</td></tr>
+			<tr><td><Code>footer</Code></td><td>Snippet</td><td>-</td><td>Footer content (confirm/cancel buttons)</td></tr>
+			<tr><td><Code>isBordered</Code></td><td>boolean</td><td>false</td><td>Add top/bottom borders to the content wrapper</td></tr>
+			<tr><td><Code>isResizable</Code></td><td>boolean</td><td>true</td><td>Enable drag-to-resize handle</td></tr>
+			<tr><td><Code>onclose</Code></td><td>() =&gt; void</td><td>-</td><td>Called when the close button is clicked</td></tr>
+			<tr><td><Code>header</Code></td><td>Snippet</td><td>-</td><td>Legacy: raw header override. Prefer <Code>titleText</Code> + <Code>actions</Code>.</td></tr>
+			<tr><td><Code>class</Code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>
 		</tbody>
 	</Table>
 
@@ -860,10 +861,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>show</code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
-			<tr><td><code>onclose</code></td><td>() =&gt; void</td><td>-</td><td>Called on escape key or backdrop click</td></tr>
-			<tr><td><code>children</code></td><td>Snippet</td><td>-</td><td>Panel content</td></tr>
-			<tr><td><code>class</code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>
+			<tr><td><Code>show</Code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
+			<tr><td><Code>onclose</Code></td><td>() =&gt; void</td><td>-</td><td>Called on escape key or backdrop click</td></tr>
+			<tr><td><Code>children</Code></td><td>Snippet</td><td>-</td><td>Panel content</td></tr>
+			<tr><td><Code>class</Code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>
 		</tbody>
 	</Table>
 </Card>
@@ -881,24 +882,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>.pa-detail-view</code></td><td>Flex wrapper for inline split-view mode (table + panel side by side)</td></tr>
-			<tr><td><code>.pa-detail-view__main</code></td><td>Left side container (table area), <code>flex: 1</code></td></tr>
-			<tr><td><code>.pa-detail-view__panel</code></td><td>Right side panel container, hidden by default (<code>width: 0</code>)</td></tr>
-			<tr><td><code>.pa-detail-view__panel--open</code></td><td>Shows the inline panel with configured width</td></tr>
-			<tr><td><code>.pa-detail-view--overlay</code></td><td>Card overlay modifier: panel overlays the table within the card instead of pushing it</td></tr>
-			<tr><td><code>.pa-detail-view__overlay</code></td><td>Backdrop overlay for card overlay mode (click to close)</td></tr>
-			<tr><td><code>.pa-detail-view__overlay--visible</code></td><td>Shows the card overlay backdrop</td></tr>
-			<tr><td><code>.pa-detail-panel--overlay</code></td><td>Full-screen overlay mode wrapper (fixed position, like profile panel)</td></tr>
-			<tr><td><code>.pa-detail-panel--open</code></td><td>Makes the overlay panel visible with slide-in transition</td></tr>
-			<tr><td><code>.pa-detail-panel__content</code></td><td>Panel content wrapper (flex column: header/body/footer)</td></tr>
-			<tr><td><code>.pa-detail-panel__header</code></td><td>Panel header with title and close button</td></tr>
-			<tr><td><code>.pa-detail-panel__title</code></td><td>Truncated panel title</td></tr>
-			<tr><td><code>.pa-detail-panel__close</code></td><td>Close button in header</td></tr>
-			<tr><td><code>.pa-detail-panel__body</code></td><td>Scrollable body area (<code>flex: 1; overflow-y: auto</code>)</td></tr>
-			<tr><td><code>.pa-detail-panel__footer</code></td><td>Fixed footer with action buttons</td></tr>
-			<tr><td><code>.pa-detail-panel__overlay</code></td><td>Backdrop overlay (overlay mode only, click to close)</td></tr>
-			<tr><td><code>.pa-detail-panel-resize</code></td><td>Drag handle on left edge of panel for resizing</td></tr>
-			<tr><td><code>.is-selected</code></td><td>Applied to <code>tr</code> elements to highlight the selected row</td></tr>
+			<tr><td><Code>.pa-detail-view</Code></td><td>Flex wrapper for inline split-view mode (table + panel side by side)</td></tr>
+			<tr><td><Code>.pa-detail-view__main</Code></td><td>Left side container (table area), <Code>flex: 1</Code></td></tr>
+			<tr><td><Code>.pa-detail-view__panel</Code></td><td>Right side panel container, hidden by default (<Code>width: 0</Code>)</td></tr>
+			<tr><td><Code>.pa-detail-view__panel--open</Code></td><td>Shows the inline panel with configured width</td></tr>
+			<tr><td><Code>.pa-detail-view--overlay</Code></td><td>Card overlay modifier: panel overlays the table within the card instead of pushing it</td></tr>
+			<tr><td><Code>.pa-detail-view__overlay</Code></td><td>Backdrop overlay for card overlay mode (click to close)</td></tr>
+			<tr><td><Code>.pa-detail-view__overlay--visible</Code></td><td>Shows the card overlay backdrop</td></tr>
+			<tr><td><Code>.pa-detail-panel--overlay</Code></td><td>Full-screen overlay mode wrapper (fixed position, like profile panel)</td></tr>
+			<tr><td><Code>.pa-detail-panel--open</Code></td><td>Makes the overlay panel visible with slide-in transition</td></tr>
+			<tr><td><Code>.pa-detail-panel__content</Code></td><td>Panel content wrapper (flex column: header/body/footer)</td></tr>
+			<tr><td><Code>.pa-detail-panel__header</Code></td><td>Panel header with title and close button</td></tr>
+			<tr><td><Code>.pa-detail-panel__title</Code></td><td>Truncated panel title</td></tr>
+			<tr><td><Code>.pa-detail-panel__close</Code></td><td>Close button in header</td></tr>
+			<tr><td><Code>.pa-detail-panel__body</Code></td><td>Scrollable body area (<Code>flex: 1; overflow-y: auto</Code>)</td></tr>
+			<tr><td><Code>.pa-detail-panel__footer</Code></td><td>Fixed footer with action buttons</td></tr>
+			<tr><td><Code>.pa-detail-panel__overlay</Code></td><td>Backdrop overlay (overlay mode only, click to close)</td></tr>
+			<tr><td><Code>.pa-detail-panel-resize</Code></td><td>Drag handle on left edge of panel for resizing</td></tr>
+			<tr><td><Code>.is-selected</Code></td><td>Applied to <Code>tr</Code> elements to highlight the selected row</td></tr>
 		</tbody>
 	</Table>
 </TableCard>
@@ -917,16 +918,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>$detail-panel-width</code></td><td><code>40rem</code></td><td>Default panel width</td></tr>
-			<tr><td><code>$detail-panel-min-width</code></td><td><code>28rem</code></td><td>Minimum panel width</td></tr>
-			<tr><td><code>$detail-panel-max-width</code></td><td><code>64rem</code></td><td>Maximum panel width</td></tr>
-			<tr><td><code>$detail-panel-mobile-width</code></td><td><code>90vw</code></td><td>Panel width on mobile (overlay mode)</td></tr>
-			<tr><td><code>$detail-panel-overlay-bg</code></td><td><code>rgba(0,0,0,0.3)</code></td><td>Backdrop overlay background</td></tr>
-			<tr><td><code>$detail-panel-z-index</code></td><td><code>4500</code></td><td>Z-index (below profile panel, above header)</td></tr>
-			<tr><td><code>$detail-panel-shadow</code></td><td><code>$shadow-profile-panel</code></td><td>Box shadow for overlay mode</td></tr>
-			<tr><td><code>$detail-panel-close-size</code></td><td><code>3.2rem</code></td><td>Close button size</td></tr>
-			<tr><td><code>$detail-panel-resize-handle-width</code></td><td><code>6px</code></td><td>Width of the resize drag handle</td></tr>
-			<tr><td><code>$detail-panel-selected-bg</code></td><td><code>rgba($accent-color, 0.08)</code></td><td>Background color of selected table rows</td></tr>
+			<tr><td><Code>$detail-panel-width</Code></td><td><Code>40rem</Code></td><td>Default panel width</td></tr>
+			<tr><td><Code>$detail-panel-min-width</Code></td><td><Code>28rem</Code></td><td>Minimum panel width</td></tr>
+			<tr><td><Code>$detail-panel-max-width</Code></td><td><Code>64rem</Code></td><td>Maximum panel width</td></tr>
+			<tr><td><Code>$detail-panel-mobile-width</Code></td><td><Code>90vw</Code></td><td>Panel width on mobile (overlay mode)</td></tr>
+			<tr><td><Code>$detail-panel-overlay-bg</Code></td><td><Code>rgba(0,0,0,0.3)</Code></td><td>Backdrop overlay background</td></tr>
+			<tr><td><Code>$detail-panel-z-index</Code></td><td><Code>4500</Code></td><td>Z-index (below profile panel, above header)</td></tr>
+			<tr><td><Code>$detail-panel-shadow</Code></td><td><Code>$shadow-profile-panel</Code></td><td>Box shadow for overlay mode</td></tr>
+			<tr><td><Code>$detail-panel-close-size</Code></td><td><Code>3.2rem</Code></td><td>Close button size</td></tr>
+			<tr><td><Code>$detail-panel-resize-handle-width</Code></td><td><Code>6px</Code></td><td>Width of the resize drag handle</td></tr>
+			<tr><td><Code>$detail-panel-selected-bg</Code></td><td><Code>rgba($accent-color, 0.08)</Code></td><td>Background color of selected table rows</td></tr>
 		</tbody>
 	</Table>
 </TableCard>
@@ -944,10 +945,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><code>--pc-local-detail-panel-width</code></td><td>Runtime panel width (set by JS resize handle). Default: <code>40rem</code></td></tr>
-			<tr><td><code>--pc-local-detail-panel-max-width</code></td><td>Runtime max width. Default: <code>64rem</code></td></tr>
-			<tr><td><code>--pc-detail-panel-overlay-bg</code></td><td>Backdrop overlay color (themeable via CSS variables)</td></tr>
-			<tr><td><code>--pc-detail-panel-selected-bg</code></td><td>Selected row highlight color (themeable via CSS variables)</td></tr>
+			<tr><td><Code>--pa-local-detail-panel-width</Code></td><td>Runtime panel width (set by JS resize handle). Default: <Code>40rem</Code></td></tr>
+			<tr><td><Code>--pa-local-detail-panel-max-width</Code></td><td>Runtime max width. Default: <Code>64rem</Code></td></tr>
+			<tr><td><Code>--pa-detail-panel-overlay-bg</Code></td><td>Backdrop overlay color (themeable via CSS variables)</td></tr>
+			<tr><td><Code>--pa-detail-panel-selected-bg</Code></td><td>Selected row highlight color (themeable via CSS variables)</td></tr>
 		</tbody>
 	</Table>
 </TableCard>

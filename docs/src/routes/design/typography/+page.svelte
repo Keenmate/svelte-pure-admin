@@ -8,7 +8,8 @@
 		Em,
 		Card,
 		Grid,
-		Column
+		Column,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -111,23 +112,23 @@
 		<tbody>
 			<tr>
 				<td>Font size</td>
-				<td><code>text-2xs</code>, <code>text-xs</code>, <code>text-sm</code>, <code>text-base</code>, <code>text-lg</code>, <code>text-xl</code>, <code>text-2xl</code></td>
+				<td><Code>text-2xs</Code>, <Code>text-xs</Code>, <Code>text-sm</Code>, <Code>text-base</Code>, <Code>text-lg</Code>, <Code>text-xl</Code>, <Code>text-2xl</Code></td>
 			</tr>
 			<tr>
 				<td>Colour</td>
-				<td><code>text-body</code>, <code>text-muted</code>, <code>text-primary</code>, <code>text-secondary</code>, <code>text-success</code>, <code>text-danger</code>, <code>text-warning</code>, <code>text-info</code></td>
+				<td><Code>text-body</Code>, <Code>text-muted</Code>, <Code>text-primary</Code>, <Code>text-secondary</Code>, <Code>text-success</Code>, <Code>text-danger</Code>, <Code>text-warning</Code>, <Code>text-info</Code></td>
 			</tr>
 			<tr>
 				<td>Alignment</td>
-				<td><code>text-start</code>, <code>text-center</code>, <code>text-end</code></td>
+				<td><Code>text-start</Code>, <Code>text-center</Code>, <Code>text-end</Code></td>
 			</tr>
 			<tr>
 				<td>Wrapping</td>
-				<td><code>text-nowrap</code>, <code>text-truncate</code></td>
+				<td><Code>text-nowrap</Code>, <Code>text-truncate</Code></td>
 			</tr>
 			<tr>
 				<td>Semantic</td>
-				<td><code>text-caption</code>, <code>text-lead</code></td>
+				<td><Code>text-caption</Code>, <Code>text-lead</Code></td>
 			</tr>
 		</tbody>
 	</table>

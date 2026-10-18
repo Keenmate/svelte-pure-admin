@@ -16,8 +16,8 @@
 	// Color slots 1-9
 	const colorSlots = Array.from({ length: 9 }, (_, i) => ({
 		name: `Color ${i + 1}`,
-		variable: `--pc-color-${i + 1}`,
-		text: `--pc-color-${i + 1}-text`,
+		variable: `--pc-palette-${i + 1}`,
+		text: `--pc-on-palette-${i + 1}-text-color`,
 		num: i + 1
 	}));
 

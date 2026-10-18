@@ -28,7 +28,8 @@
 		Table,
 		Input,
 		Grid,
-		Column
+		Column,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	import type { SearchResult } from '@keenmate/svelte-pure-admin';
@@ -127,8 +128,8 @@
 
 <Heading level={1}>Events & Callbacks</Heading>
 <Paragraph>
-	Interactive test page for every component that exposes <code>on*</code> event handlers
-	or <code>*Callback</code> props. Click through each component and watch events
+	Interactive test page for every component that exposes <Code>on*</Code> event handlers
+	or <Code>*Callback</Code> props. Click through each component and watch events
 	appear in the log.
 </Paragraph>
 
@@ -140,7 +141,7 @@
 
 		<!-- 1. ALERT -->
 		<Card titleText="Alert">
-			<Paragraph>Events: <code>ondismiss</code></Paragraph>
+			<Paragraph>Events: <Code>ondismiss</Code></Paragraph>
 
 			{#key alertKey}
 				<Alert
@@ -148,7 +149,7 @@
 					isDismissible
 					ondismiss={() => log('Alert', 'ondismiss', 'Warning alert dismissed')}
 				>
-					Dismissible alert. Click close to fire <code>ondismiss</code>.
+					Dismissible alert. Click close to fire <Code>ondismiss</Code>.
 				</Alert>
 			{/key}
 
@@ -159,7 +160,7 @@
 
 		<!-- 2. MODAL -->
 		<Card titleText="Modal">
-			<Paragraph>Events: <code>onclose</code> &middot; Callbacks: <code>beforeCloseCallback</code></Paragraph>
+			<Paragraph>Events: <Code>onclose</Code> &middot; Callbacks: <Code>beforeCloseCallback</Code></Paragraph>
 
 			<Button onclick={() => { showModal = true; confirmClose = false; }}>Open Modal</Button>
 
@@ -187,7 +188,7 @@
 
 		<!-- 3. TOAST -->
 		<Card titleText="Toast">
-			<Paragraph>Events: <code>onclose</code></Paragraph>
+			<Paragraph>Events: <Code>onclose</Code></Paragraph>
 
 			<Button onclick={() => { showToast = true; }}>Show Toast</Button>
 
@@ -207,7 +208,7 @@
 
 		<!-- 4. POPCONFIRM -->
 		<Card titleText="Popconfirm">
-			<Paragraph>Events: <code>onconfirm</code> &middot; <code>oncancel</code></Paragraph>
+			<Paragraph>Events: <Code>onconfirm</Code> &middot; <Code>oncancel</Code></Paragraph>
 
 			<button
 				class="pa-btn pa-btn--danger"
@@ -230,7 +231,7 @@
 
 		<!-- 5. PAGER -->
 		<Card titleText="Pager">
-			<Paragraph>Events: <code>onprevious</code> &middot; <code>onnext</code> &middot; <code>onpagechange</code> &middot; <code>onfirst</code> &middot; <code>onlast</code></Paragraph>
+			<Paragraph>Events: <Code>onprevious</Code> &middot; <Code>onnext</Code> &middot; <Code>onpagechange</Code> &middot; <Code>onfirst</Code> &middot; <Code>onlast</Code></Paragraph>
 
 			<Pager
 				bind:currentPage={pagerPage}
@@ -247,7 +248,7 @@
 
 		<!-- 6. CHECKBOX LIST ITEM -->
 		<Card titleText="CheckboxListItem">
-			<Paragraph>Events: <code>onchange</code></Paragraph>
+			<Paragraph>Events: <Code>onchange</Code></Paragraph>
 
 			<ul class="pa-checkbox-list">
 				<CheckboxListItem
@@ -267,7 +268,7 @@
 
 		<!-- 7. COMPOSITE BADGE -->
 		<Card titleText="CompositeBadge">
-			<Paragraph>Events: <code>onlabelclick</code> &middot; <code>onbuttonclick</code></Paragraph>
+			<Paragraph>Events: <Code>onlabelclick</Code> &middot; <Code>onbuttonclick</Code></Paragraph>
 
 			<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
 				<CompositeBadge
@@ -291,7 +292,7 @@
 
 		<!-- 8. BADGE GROUP -->
 		<Card titleText="BadgeGroup">
-			<Paragraph>Events: <code>onbadgeclick</code></Paragraph>
+			<Paragraph>Events: <Code>onbadgeclick</Code></Paragraph>
 
 			<BadgeGroup
 				data={badgeData}
@@ -302,7 +303,7 @@
 
 		<!-- 9. COMPOSITE BADGE GROUP -->
 		<Card titleText="CompositeBadgeGroup">
-			<Paragraph>Events: <code>onlabelclick</code> &middot; <code>onbuttonclick</code></Paragraph>
+			<Paragraph>Events: <Code>onlabelclick</Code> &middot; <Code>onbuttonclick</Code></Paragraph>
 
 			<CompositeBadgeGroup
 				data={compositeBadgeData}
@@ -313,7 +314,7 @@
 
 		<!-- 10. TIMELINE -->
 		<Card titleText="Timeline">
-			<Paragraph>Events: <code>onitemclick</code></Paragraph>
+			<Paragraph>Events: <Code>onitemclick</Code></Paragraph>
 
 			<Timeline
 				data={timelineData}
@@ -324,7 +325,7 @@
 
 		<!-- 11. FILTER CARD -->
 		<Card titleText="FilterCard">
-			<Paragraph>Events: <code>onclear</code> &middot; <code>onrefresh</code> &middot; <code>onapply</code> &middot; <code>ontoggle</code></Paragraph>
+			<Paragraph>Events: <Code>onclear</Code> &middot; <Code>onrefresh</Code> &middot; <Code>onapply</Code> &middot; <Code>ontoggle</Code></Paragraph>
 
 			<FilterCard
 				bind:isExpanded={filterExpanded}
@@ -346,7 +347,7 @@
 
 		<!-- 12. FIELD -->
 		<Card titleText="Field">
-			<Paragraph>Events: <code>oncopy</code> &middot; Callbacks: <code>copyValueCallback</code></Paragraph>
+			<Paragraph>Events: <Code>oncopy</Code> &middot; Callbacks: <Code>copyValueCallback</Code></Paragraph>
 
 			<Fields cols={2}>
 				<Field
@@ -371,7 +372,7 @@
 
 		<!-- 13. DETAIL PANEL + DETAIL VIEW (card overlay) -->
 		<Card titleText="DetailPanel + DetailView">
-			<Paragraph>Events: <code>onclose</code> (card overlay mode)</Paragraph>
+			<Paragraph>Events: <Code>onclose</Code> (card overlay mode)</Paragraph>
 
 			<DetailView
 				bind:show={showDetailView}
@@ -398,7 +399,7 @@
 
 		<!-- 14. SLIDE PANEL + DETAIL PANEL (full overlay) -->
 		<Card titleText="SlidePanel + DetailPanel">
-			<Paragraph>Events: <code>onclose</code> (slide overlay mode)</Paragraph>
+			<Paragraph>Events: <Code>onclose</Code> (slide overlay mode)</Paragraph>
 
 			<Button onclick={() => { showSlidePanel = true; }}>Open Slide Panel</Button>
 
@@ -421,7 +422,7 @@
 
 		<!-- 15. PROFILE PANEL -->
 		<Card titleText="ProfilePanel">
-			<Paragraph>Events: <code>onclose</code></Paragraph>
+			<Paragraph>Events: <Code>onclose</Code></Paragraph>
 
 			<Button onclick={() => { showProfilePanel = true; }}>Open Profile Panel</Button>
 
@@ -436,7 +437,7 @@
 
 		<!-- 16. PROFILE PANEL FAVORITE ITEM -->
 		<Card titleText="ProfilePanelFavoriteItem">
-			<Paragraph>Events: <code>onclick</code> &middot; <code>onremove</code></Paragraph>
+			<Paragraph>Events: <Code>onclick</Code> &middot; <Code>onremove</Code></Paragraph>
 
 			<ul class="pa-profile-panel__favorites-list" style="list-style:none;padding:0;">
 				<ProfilePanelFavoriteItem
@@ -454,7 +455,7 @@
 
 		<!-- 17. COMMAND PALETTE -->
 		<Card titleText="CommandPalette">
-			<Paragraph>Events: <code>onglobalselect</code></Paragraph>
+			<Paragraph>Events: <Code>onglobalselect</Code></Paragraph>
 
 			<Button onclick={() => { showCommandPalette = true; }}>Open Command Palette</Button>
 			<span style="color:var(--pc-text-color-2);margin-left:0.5rem;">(or Ctrl+K)</span>
@@ -502,9 +503,9 @@
 						{:else}
 							{#each logEntries as entry (entry.id)}
 								<tr>
-									<td><code>{entry.time}</code></td>
+									<td><Code>{entry.time}</Code></td>
 									<td><strong>{entry.component}</strong></td>
-									<td><code>{entry.event}</code></td>
+									<td><Code>{entry.event}</Code></td>
 									<td>{entry.detail ?? ''}</td>
 								</tr>
 							{/each}

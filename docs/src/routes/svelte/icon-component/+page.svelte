@@ -118,7 +118,7 @@ const tabler: IconProvider = (name, ctx) => {
 		{#each affordances as name}
 			<div class="icon-cell">
 				<Icon {name} />
-				<code>{name}</code>
+				<Code>{name}</Code>
 			</div>
 		{/each}
 	</div>
@@ -139,7 +139,7 @@ const tabler: IconProvider = (name, ctx) => {
 		{#each providerGlyphs as name}
 			<div class="icon-cell">
 				<Icon {name} />
-				<code>{name}</code>
+				<Code>{name}</Code>
 			</div>
 		{/each}
 	</div>
@@ -248,7 +248,7 @@ const tabler: IconProvider = (name, ctx) => {
 		--pa-icon-size: 1.6rem;
 		color: var(--pc-text-color-1);
 	}
-	.icon-cell code {
+	.icon-cell :global(code) {
 		font-size: 1.15rem;
 		color: var(--pc-text-color-2);
 	}

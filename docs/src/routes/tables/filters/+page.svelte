@@ -18,14 +18,11 @@
 		Column,
 		Callout,
 		Heading,
-		Paragraph
+		Paragraph,
+		FilterCard
 	} from '@keenmate/svelte-pure-admin';
 
 	let expanded = $state(false);
-
-	function toggleFilters() {
-		expanded = !expanded;
-	}
 </script>
 
 <svelte:head>
@@ -92,127 +89,107 @@
 	</Table>
 </TableCard>
 
-<!-- Search with More Filters Button (Expandable Filters) -->
-<Card titleText="Expandable Filters" descriptionText="Search with expandable advanced filters">
-	<div class="d-flex gap-5 align-items-center flex-wrap">
-		<!-- Search by rule -->
-		<InputGroup style="flex: 1; min-width: 200px;">
-			<InputGroupPrepend>🔍</InputGroupPrepend>
+<!-- Expandable Filters — <FilterCard> (toggle → custom → clear → refresh, as core + keen) -->
+<FilterCard bind:isExpanded={expanded}>
+	{#snippet filters()}
+		<InputGroup>
+			<InputGroupPrepend><span class="pa-icon pa-icon--search" aria-hidden="true"></span></InputGroupPrepend>
 			<Input placeholder="Search by rule" />
 		</InputGroup>
-
-		<!-- Filter by data source -->
-		<InputGroup style="flex: 1; min-width: 200px;">
-			<InputGroupPrepend>🌐</InputGroupPrepend>
+		<InputGroup>
+			<InputGroupPrepend><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></InputGroupPrepend>
 			<Input placeholder="Filter by data source" />
 		</InputGroup>
-
-		<!-- Filter by Organization tree -->
-		<InputGroup style="flex: 1; min-width: 200px;">
-			<InputGroupPrepend>🌐</InputGroupPrepend>
+		<InputGroup>
+			<InputGroupPrepend><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></InputGroupPrepend>
 			<Input placeholder="Filter by Organization tree" />
 		</InputGroup>
+	{/snippet}
 
-		<!-- Action buttons -->
-		<Button variant="secondary" isIconOnly titleText="Clear all filters"><span class="pa-icon pa-icon--clear" aria-hidden="true"></span></Button>
-		<Button variant="primary" isIconOnly titleText="Refresh"><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></Button>
-		<Button variant="primary" isIconOnly titleText={expanded ? 'Hide filters' : 'More filters'} onclick={toggleFilters}>
-			<span class="pa-icon {expanded ? 'pa-icon--chevron-up' : 'pa-icon--chevron-down'}" aria-hidden="true"></span>
-		</Button>
-	</div>
+	{#snippet advancedFilters()}
+		<Grid>
+			<Column size="100" md="1-3">
+				<FormGroup>
+					<FormLabel>Category</FormLabel>
+					<div class="pa-input-wrapper">
+						<Select>
+							<option>All Categories</option>
+							<option>Electronics</option>
+							<option>Clothing</option>
+							<option>Books</option>
+						</Select>
+						<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
+					</div>
+				</FormGroup>
+			</Column>
+			<Column size="100" md="1-3">
+				<FormGroup>
+					<FormLabel>Price Range</FormLabel>
+					<div class="pa-input-wrapper">
+						<Select>
+							<option>Any Price</option>
+							<option>Under $50</option>
+							<option>$50 - $100</option>
+							<option>$100 - $500</option>
+							<option>Over $500</option>
+						</Select>
+						<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
+					</div>
+				</FormGroup>
+			</Column>
+			<Column size="100" md="1-3">
+				<FormGroup>
+					<FormLabel>Status</FormLabel>
+					<div class="pa-input-wrapper">
+						<Select>
+							<option>All Statuses</option>
+							<option>In Stock</option>
+							<option>Out of Stock</option>
+							<option>Pre-order</option>
+						</Select>
+						<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
+					</div>
+				</FormGroup>
+			</Column>
+		</Grid>
 
-	<!-- Advanced Filters (Hidden by default) -->
-	{#if expanded}
-		<div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--base-border-color);">
-			<Grid>
-				<Column size="100" md="1-3">
-					<FormGroup>
-						<FormLabel>Category</FormLabel>
-						<div class="pa-input-wrapper">
-							<Select>
-								<option>All Categories</option>
-								<option>Electronics</option>
-								<option>Clothing</option>
-								<option>Books</option>
-							</Select>
-							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
-						</div>
-					</FormGroup>
-				</Column>
-				<Column size="100" md="1-3">
-					<FormGroup>
-						<FormLabel>Price Range</FormLabel>
-						<div class="pa-input-wrapper">
-							<Select>
-								<option>Any Price</option>
-								<option>Under $50</option>
-								<option>$50 - $100</option>
-								<option>$100 - $500</option>
-								<option>Over $500</option>
-							</Select>
-							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
-						</div>
-					</FormGroup>
-				</Column>
-				<Column size="100" md="1-3">
-					<FormGroup>
-						<FormLabel>Status</FormLabel>
-						<div class="pa-input-wrapper">
-							<Select>
-								<option>All Statuses</option>
-								<option>In Stock</option>
-								<option>Out of Stock</option>
-								<option>Pre-order</option>
-							</Select>
-							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
-						</div>
-					</FormGroup>
-				</Column>
-			</Grid>
-
-			<Grid>
-				<Column size="100" md="50">
-					<FormGroup>
-						<FormLabel>Date Range</FormLabel>
-						<Grid>
-							<Column size="100" md="50">
-								<div class="pa-input-wrapper">
-									<DateInput />
-									<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
-								</div>
-							</Column>
-							<Column size="100" md="50">
-								<div class="pa-input-wrapper">
-									<DateInput />
-									<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
-								</div>
-							</Column>
-						</Grid>
-					</FormGroup>
-				</Column>
-				<Column size="100" md="50">
-					<FormGroup>
-						<FormLabel>Supplier</FormLabel>
-						<div class="pa-input-wrapper">
-							<Select>
-								<option>All Suppliers</option>
-								<option>Supplier A</option>
-								<option>Supplier B</option>
-								<option>Supplier C</option>
-							</Select>
-							<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
-						</div>
-					</FormGroup>
-				</Column>
-			</Grid>
-
-			<div style="text-align: right; margin-top: 0.5rem;">
-				<Button variant="secondary">Clear Filters</Button>
-				<Button variant="primary">Apply Filters</Button>
-			</div>
-		</div>
-	{/if}
-</Card>
+		<Grid>
+			<Column size="100" md="50">
+				<FormGroup>
+					<FormLabel>Date Range</FormLabel>
+					<Grid>
+						<Column size="100" md="50">
+							<div class="pa-input-wrapper">
+								<DateInput />
+								<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
+							</div>
+						</Column>
+						<Column size="100" md="50">
+							<div class="pa-input-wrapper">
+								<DateInput />
+								<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
+							</div>
+						</Column>
+					</Grid>
+				</FormGroup>
+			</Column>
+			<Column size="100" md="50">
+				<FormGroup>
+					<FormLabel>Supplier</FormLabel>
+					<div class="pa-input-wrapper">
+						<Select>
+							<option>All Suppliers</option>
+							<option>Supplier A</option>
+							<option>Supplier B</option>
+							<option>Supplier C</option>
+						</Select>
+						<button class="pa-input-wrapper__clear" type="button" aria-label="Clear"><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
+					</div>
+				</FormGroup>
+			</Column>
+		</Grid>
+	{/snippet}
+</FilterCard>
 
 <TableCard isScrollable>
 	<Table isStriped>

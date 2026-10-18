@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Badge, Callout, FitContainer, FitSlot, Table } from '@keenmate/svelte-pure-admin';
+	import { Badge, Callout, FitContainer, FitSlot, Table, Code } from '@keenmate/svelte-pure-admin';
 	import { HighlightedCode } from '$lib/components';
 
 	// §2 live relocate demo — the slider drives the stage width; the fit engine's
@@ -56,7 +56,7 @@
 
 <div class="pa-page-content">
 	<h1>Responsivity — how it works</h1>
-	<p class="resp-legend mb-4">
+	<p class="resp-legend mb-4 text-sm">
 		Two small JavaScript engines let a component react to <strong
 			>the space it is actually given</strong
 		> — not the size of the window. That is the difference between a media query (asks the viewport)
@@ -80,8 +80,8 @@
 			<thead>
 				<tr>
 					<th>&nbsp;</th>
-					<th>Fit <code>fit.js</code></th>
-					<th>Container Breakpoint <code>container-breakpoint.js</code></th>
+					<th>Fit <Code>fit.js</Code></th>
+					<th>Container Breakpoint <Code>container-breakpoint.js</Code></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -93,7 +93,7 @@
 				<tr>
 					<td><strong>Output</strong></td>
 					<td>Degrades slots one at a time (hide / step-down / relocate)</td>
-					<td>One named <code>mode</code> reflected to <code>[data-mode]</code></td>
+					<td>One named <Code>mode</Code> reflected to <Code>[data-mode]</Code></td>
 				</tr>
 				<tr>
 					<td><strong>Best for</strong></td>
@@ -102,8 +102,8 @@
 				</tr>
 				<tr>
 					<td><strong>Event</strong></td>
-					<td><code>pc:fit-relocate</code> (on a relocated slot)</td>
-					<td><code>pc:breakpoint</code> (on mode flip)</td>
+					<td><Code>pc:fit-relocate</Code> (on a relocated slot)</td>
+					<td><Code>pc:breakpoint</Code> (on mode flip)</td>
 				</tr>
 			</tbody>
 		</Table>
@@ -117,24 +117,24 @@
 		Fit watches a horizontal container and, when the content can't fit, degrades the <strong
 			>lowest-priority slot first</strong
 		>, restoring as space returns. The navbar auto-inits; wrap any other flex row in a
-		<code>FitContainer</code> and mark participants with attributes (or wrap them in a
-		<code>FitSlot</code>):
+		<Code>FitContainer</Code> and mark participants with attributes (or wrap them in a
+		<Code>FitSlot</Code>):
 	</p>
 
 	<HighlightedCode language="html" code={codeFitToolbar} />
 
-	<ul class="resp-legend mb-4">
-		<li><code>data-pc-fit="hide"</code> — remove the slot when it must yield.</li>
+	<ul class="resp-legend mb-4 text-sm">
+		<li><Code>data-pc-fit="hide"</Code> — remove the slot when it must yield.</li>
 		<li>
-			<code>data-pc-fit="steps"</code> — show the largest ranked variant that fits (logo → wordmark →
+			<Code>data-pc-fit="steps"</Code> — show the largest ranked variant that fits (logo → wordmark →
 			monogram).
 		</li>
 		<li>
-			<code>data-pc-fit="relocate"</code> — move the slot somewhere else entirely (next section).
+			<Code>data-pc-fit="relocate"</Code> — move the slot somewhere else entirely (next section).
 		</li>
 		<li>
-			<code>data-pc-fit-priority</code> — lower degrades first; <code>data-pc-fit-auto</code> folds in
-			every child of a container; <code>data-pc-fit-ignore</code> pins one out.
+			<Code>data-pc-fit-priority</Code> — lower degrades first; <Code>data-pc-fit-auto</Code> folds in
+			every child of a container; <Code>data-pc-fit-ignore</Code> pins one out.
 		</li>
 	</ul>
 
@@ -143,31 +143,31 @@
 	     ============================================================ -->
 	<h2 class="mt-4 mb-2">2 · Relocation — fit decides, a <em>sink</em> places</h2>
 	<p>
-		A <code>relocate</code> slot doesn't just hide — it <strong>moves out of the row</strong> into a
+		A <Code>relocate</Code> slot doesn't just hide — it <strong>moves out of the row</strong> into a
 		named destination and comes back on widen. Crucially, the Fit engine only
 		<strong>decides</strong>
 		a slot must yield; <em>where</em> it goes is a pluggable <strong>sink</strong> named by
-		<code>target</code>. Two sinks ship built-in:
+		<Code>target</Code>. Two sinks ship built-in:
 	</p>
-	<ul class="resp-legend mb-3">
+	<ul class="resp-legend mb-3 text-sm">
 		<li>
-			<code>target="floating-menu"</code> — folds into a "•••" flyout panel. Self-contained; needs no
+			<Code>target="floating-menu"</Code> — folds into a "•••" flyout panel. Self-contained; needs no
 			sidebar.
 		</li>
-		<li><code>target="sidebar"</code> — rebuilds the slot as a sidebar list item.</li>
+		<li><Code>target="sidebar"</Code> — rebuilds the slot as a sidebar list item.</li>
 		<li>
-			<em>your own</em> — <code>pureAdmin.components.fit.registerSink('name', &#123; out, in &#125;)</code
+			<em>your own</em> — <Code>pureAdmin.components.fit.registerSink('name', &#123; out, in &#125;)</Code
 			>.
 		</li>
 	</ul>
 
-	<p class="resp-legend">
-		<strong>Live — drag to narrow the bar.</strong> The badge cluster is one <code>relocate</code>
-		slot targeting <code>floating-menu</code>; when the bar runs out of room it folds into the "•••"
-		panel, and returns when you widen. "New" is pinned with <code>data-pc-fit-ignore</code>.
+	<p class="resp-legend text-sm">
+		<strong>Live — drag to narrow the bar.</strong> The badge cluster is one <Code>relocate</Code>
+		slot targeting <Code>floating-menu</Code>; when the bar runs out of room it folds into the "•••"
+		panel, and returns when you widen. "New" is pinned with <Code>data-pc-fit-ignore</Code>.
 	</p>
 
-	<div class="resp-slider-row">
+	<div class="resp-slider-row text-sm">
 		<span>Bar width</span>
 		<input type="range" min="240" max="720" bind:value={barWidth} aria-label="Relocate demo width" />
 		<output>{barWidth}px</output>
@@ -200,25 +200,25 @@
 	     ============================================================ -->
 	<h2 class="mt-4 mb-2">3 · The event &amp; hands-off mode (Svelte / Phoenix)</h2>
 	<p>
-		Before it moves anything, Fit fires a cancelable <code>pc:fit-relocate</code> event on the slot
-		(<code>detail = &#123; action: 'out' | 'in', target, container &#125;</code>). A plain HTML page
+		Before it moves anything, Fit fires a cancelable <Code>pc:fit-relocate</Code> event on the slot
+		(<Code>detail = &#123; action: 'out' | 'in', target, container &#125;</Code>). A plain HTML page
 		lets the built-in sink do the DOM move. A reactive framework does the opposite: it
 		<strong>owns placement itself</strong>.
 	</p>
 	<p>
-		Set <code>managed</code> (the <code>data-pc-fit-managed</code> attribute — or call
-		<code>preventDefault()</code>) and Fit performs <strong>no DOM surgery</strong>; it only hides the
-		slot in-row and hands you the flip through <code>onrelocate</code>. The framework then re-renders
+		Set <Code>managed</Code> (the <Code>data-pc-fit-managed</Code> attribute — or call
+		<Code>preventDefault()</Code>) and Fit performs <strong>no DOM surgery</strong>; it only hides the
+		slot in-row and hands you the flip through <Code>onrelocate</Code>. The framework then re-renders
 		the block in its new home <em>from state</em>. That solves the staleness trap: a moved DOM node
-		keeps its old <code>Users: 123</code>; a re-render is bound to the live store, so the relocated
+		keeps its old <Code>Users: 123</Code>; a re-render is bound to the live store, so the relocated
 		copy is always fresh.
 	</p>
 
 	<HighlightedCode language="svelte" code={codeManaged} />
 
 	<Callout variant="info" class="mb-4">
-		Same contract in Phoenix LiveView: the hook forwards <code>pc:fit-relocate</code> with
-		<code>pushEvent</code>, the server assigns the mode, and only the branch for the current
+		Same contract in Phoenix LiveView: the hook forwards <Code>pc:fit-relocate</Code> with
+		<Code>pushEvent</Code>, the server assigns the mode, and only the branch for the current
 		placement is rendered — never a stale off-screen copy.
 	</Callout>
 
@@ -229,24 +229,24 @@
 	<p>
 		When a component restyles <em>wholesale</em> at set sizes — not a row shedding pieces, but a card
 		that becomes a grid, then tabs, then icons — declare width thresholds and let the engine name the
-		band. It's the JS counterpart to a CSS <code>@container</code> query, for the cases CSS can't reach
+		band. It's the JS counterpart to a CSS <Code>@container</Code> query, for the cases CSS can't reach
 		(mount a chart, push to the server).
 	</p>
 
 	<HighlightedCode language="svelte" code={codeBreakpoints} />
 
-	<ul class="resp-legend mb-3">
+	<ul class="resp-legend mb-3 text-sm">
 		<li>
-			Thresholds are <strong>rem</strong> by default (root font is 10px, so <code>34</code> = 340px,
-			<code>64</code> = 640px); add <code>unit="px"</code> for pixels.
+			Thresholds are <strong>rem</strong> by default (root font is 10px, so <Code>34</Code> = 340px,
+			<Code>64</Code> = 640px); add <Code>unit="px"</Code> for pixels.
 		</li>
 		<li>
-			The engine reflects the band to <code>[data-mode]</code> (CSS can key off it) and mounts only the
-			branch for the current <code>mode</code>.
+			The engine reflects the band to <Code>[data-mode]</Code> (CSS can key off it) and mounts only the
+			branch for the current <Code>mode</Code>.
 		</li>
 		<li>
-			It fires <code>pc:breakpoint</code> only on a flip — the hook for "mount on demand" (build the chart
-			in <code>grid</code>, destroy it otherwise).
+			It fires <Code>pc:breakpoint</Code> only on a flip — the hook for "mount on demand" (build the chart
+			in <Code>grid</Code>, destroy it otherwise).
 		</li>
 		<li>
 			A small <strong>hysteresis</strong> dead-band stops flip-flopping right at a threshold — important,
@@ -256,7 +256,7 @@
 
 	<Callout variant="info" class="mb-4">
 		See it live on the <a href="/layout/container-breakpoint">Fit to Size</a> page — Example 4 builds a
-		chart instance only once the card reaches <code>grid</code> mode and destroys it below, logging
+		chart instance only once the card reaches <Code>grid</Code> mode and destroys it below, logging
 		every flip.
 	</Callout>
 
@@ -269,12 +269,12 @@
 		/>
 		<strong>One component that reshapes at set widths?</strong> Container Breakpoint — it names the band
 		and you style/mount per mode.<br />
-		<strong>Purely cosmetic swap with no mount/DOM move?</strong> A plain CSS <code>@container</code>
+		<strong>Purely cosmetic swap with no mount/DOM move?</strong> A plain CSS <Code>@container</Code>
 		query — no JS at all. Reach for an engine only when a move needs JavaScript: relocating a node, or
 		mounting/destroying on demand.
 	</Callout>
 
-	<p class="resp-legend">
+	<p class="resp-legend text-sm">
 		Ready to see Fit degrade real cards and toolbars across several strategies? Head to
 		<a href="/layout/container-breakpoint">Fit to Size</a> for the worked, slider-driven examples.
 	</p>
@@ -282,7 +282,6 @@
 
 <style>
 	.resp-legend {
-		font-size: var(--pc-font-size-sm, 1.4rem);
 		color: var(--pc-text-color-2);
 	}
 
@@ -301,7 +300,6 @@
 		align-items: center;
 		gap: 0.75rem;
 		margin-top: 1rem;
-		font-size: var(--pc-font-size-sm, 1.4rem);
 		color: var(--pc-text-color-2);
 	}
 	.resp-slider-row input[type='range'] {

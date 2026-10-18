@@ -7,7 +7,8 @@
 		SearchResults,
 		NavbarSearchInput,
 		Pager,
-		LoadMore
+		LoadMore,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 	import type { SearchResult, SearchGroup } from '@keenmate/svelte-pure-admin';
 
@@ -120,9 +121,9 @@
 	<h1>Search</h1>
 	<Paragraph>
 		This is the landing page for the <strong>type-and-go</strong> search variants
-		(<code>NavbarSearchInput</code> / <code>SidebarSearch action="/search"</code>). They submit here
-		with a native <code>&lt;form method="get"&gt;</code>, so Enter navigates to
-		<code>/search?q=…</code> with no JavaScript. A real app would run the query — this demo just
+		(<Code>NavbarSearchInput</Code> / <Code>SidebarSearch action="/search"</Code>). They submit here
+		with a native <Code>&lt;form method="get"&gt;</Code>, so Enter navigates to
+		<Code>/search?q=…</Code> with no JavaScript. A real app would run the query — this demo just
 		echoes it.
 	</Paragraph>
 
@@ -136,7 +137,7 @@
 	{#if hasQuery}
 		<Paragraph class="mb-4">
 			A real backend would return matches here. For the demo, these are placeholder rows echoing your
-			query, rendered in each of the four <code>SearchResults</code> presets so you can compare them
+			query, rendered in each of the four <Code>SearchResults</Code> presets so you can compare them
 			side by side.
 		</Paragraph>
 
@@ -154,9 +155,9 @@
 
 		<Card titleText="Detailed" descriptionText="variant=&quot;detailed&quot;" class="mb-4">
 			<Paragraph class="mb-4">
-				The matched fragment is wrapped in <code>&lt;mark class="pa-search-results__mark"&gt;</code> —
+				The matched fragment is wrapped in <Code>&lt;mark class="pa-search-results__mark"&gt;</Code> —
 				the same shape a backend returns (Elasticsearch highlight, Postgres
-				<code>ts_headline</code>), re-skinned off the browser yellow onto a themed accent tint.
+				<Code>ts_headline</Code>), re-skinned off the browser yellow onto a themed accent tint.
 			</Paragraph>
 			<SearchResults results={detailed} variant="detailed" allowHtml />
 			<Pager currentPage={1} totalPages={43} showPageInput disablePrevious />

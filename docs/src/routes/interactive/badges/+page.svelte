@@ -1,5 +1,5 @@
 <script lang="ts">
-			import { Heading, Paragraph, Badge, Label, BadgeGroup, CompositeBadge, CompositeBadgeGroup, Card, TableCard, Grid, Column, Alert, Tooltip, Table } from '@keenmate/svelte-pure-admin';
+			import { Heading, Paragraph, Badge, Label, BadgeGroup, CompositeBadge, CompositeBadgeGroup, Card, TableCard, Grid, Column, Alert, Tooltip, Table, Code } from '@keenmate/svelte-pure-admin';
 
 	// Badge data for interactive groups
 	const projectTags = [
@@ -162,35 +162,35 @@
 		<tbody>
 			<tr>
 				<td><strong>XS</strong></td>
-				<td><code>.pa-badge--xs</code></td>
+				<td><Code>.pa-badge--xs</Code></td>
 				<td>1rem (10px)</td>
 				<td>0.2rem 0.4rem</td>
 				<td><Badge size="xs" variant="primary">Extra Small</Badge></td>
 			</tr>
 			<tr>
 				<td><strong>SM</strong></td>
-				<td><code>.pa-badge--sm</code></td>
+				<td><Code>.pa-badge--sm</Code></td>
 				<td>1.2rem (12px)</td>
 				<td>0.25rem 0.5rem</td>
 				<td><Badge size="sm" variant="primary">Small Badge</Badge></td>
 			</tr>
 			<tr>
 				<td><strong>Default</strong></td>
-				<td><code>.pa-badge</code></td>
+				<td><Code>.pa-badge</Code></td>
 				<td>1.2rem (12px)</td>
 				<td>0.4rem 0.8rem</td>
 				<td><Badge variant="primary">Default Badge</Badge></td>
 			</tr>
 			<tr>
 				<td><strong>LG</strong></td>
-				<td><code>.pa-badge--lg</code></td>
+				<td><Code>.pa-badge--lg</Code></td>
 				<td>1.4rem (14px)</td>
 				<td>0.5rem 1rem</td>
 				<td><Badge size="lg" variant="primary">Large Badge</Badge></td>
 			</tr>
 			<tr>
 				<td><strong>XL</strong></td>
-				<td><code>.pa-badge--xl</code></td>
+				<td><Code>.pa-badge--xl</Code></td>
 				<td>1.6rem (16px)</td>
 				<td>0.6rem 1.2rem</td>
 				<td><Badge size="xl" variant="primary">Extra Large</Badge></td>
@@ -311,35 +311,35 @@
 		<tbody>
 			<tr>
 				<td><strong>XS</strong></td>
-				<td><code>.pa-label--xs</code></td>
+				<td><Code>.pa-label--xs</Code></td>
 				<td>1rem (10px)</td>
 				<td>0.2rem 0.4rem</td>
 				<td><Label size="xs" variant="primary">Extra Small</Label></td>
 			</tr>
 			<tr>
 				<td><strong>SM</strong></td>
-				<td><code>.pa-label--sm</code></td>
+				<td><Code>.pa-label--sm</Code></td>
 				<td>1.2rem (12px)</td>
 				<td>0.25rem 0.5rem</td>
 				<td><Label size="sm" variant="primary">Small Label</Label></td>
 			</tr>
 			<tr>
 				<td><strong>Default</strong></td>
-				<td><code>.pa-label</code></td>
+				<td><Code>.pa-label</Code></td>
 				<td>1.2rem (12px)</td>
 				<td>0.4rem 0.8rem</td>
 				<td><Label variant="primary">Default Label</Label></td>
 			</tr>
 			<tr>
 				<td><strong>LG</strong></td>
-				<td><code>.pa-label--lg</code></td>
+				<td><Code>.pa-label--lg</Code></td>
 				<td>1.4rem (14px)</td>
 				<td>0.5rem 1rem</td>
 				<td><Label size="lg" variant="primary">Large Label</Label></td>
 			</tr>
 			<tr>
 				<td><strong>XL</strong></td>
-				<td><code>.pa-label--xl</code></td>
+				<td><Code>.pa-label--xl</Code></td>
 				<td>1.6rem (16px)</td>
 				<td>0.6rem 1.2rem</td>
 				<td><Label size="xl" variant="primary">Extra Large</Label></td>
@@ -400,7 +400,7 @@
 
 	<Alert variant="info" class="mt-4">
 		<small
-			><strong>Interactive Badge Groups:</strong> Click "» N more" to expand all badges. Click "« Collapse" to return to limited view. The visible limit defaults to 5 badges but can be customized with the <code>limit</code> prop (e.g., <code>&lt;BadgeGroup limit={10}&gt;</code>).</small
+			><strong>Interactive Badge Groups:</strong> Click "» N more" to expand all badges. Click "« Collapse" to return to limited view. The visible limit defaults to 5 badges but can be customized with the <Code>limit</Code> prop (e.g., <Code>&lt;BadgeGroup limit={10}&gt;</Code>).</small
 		>
 	</Alert>
 
@@ -521,10 +521,10 @@
 
 	<Alert variant="success" class="mt-4">
 		<small
-			><strong>KeenMate Pattern:</strong> Use <code>displayValueMember</code>,
-			<code>variantMember</code>, <code>pillMember</code>, <code>sizeMember</code> to map
-			properties, or use callbacks like <code>getDisplayValueCallback</code> for custom logic.
-			Add <code>onbadgeclick</code> to handle clicks and get the full data item back! Works with
+			><strong>KeenMate Pattern:</strong> Use <Code>displayValueMember</Code>,
+			<Code>variantMember</Code>, <Code>pillMember</Code>, <Code>sizeMember</Code> to map
+			properties, or use callbacks like <Code>getDisplayValueCallback</Code> for custom logic.
+			Add <Code>onbadgeclick</Code> to handle clicks and get the full data item back! Works with
 			any data structure from your API/database.</small
 		>
 	</Alert>
@@ -657,8 +657,8 @@
 		<Alert variant="info" class="mt-3">
 			<small
 				><strong>Note:</strong> Custom tooltips show full text on hover. Use utility width classes like
-				<code>wr-3</code> to <code>wr-10</code> combined with <code>text-truncate</code> for fixed-width badges.
-				Use <code>isEllipsisStart</code> prop to truncate from the left side instead.</small
+				<Code>wr-3</Code> to <Code>wr-10</Code> combined with <Code>text-truncate</Code> for fixed-width badges.
+				Use <Code>isEllipsisStart</Code> prop to truncate from the left side instead.</small
 			>
 		</Alert>
 </Card>
@@ -689,7 +689,7 @@
 	<Alert variant="info" class="mt-4">
 		<small
 			><strong>Composite Badges:</strong> Perfect for items with two parts - a label and a
-			count/action. Use <code>onlabelclick</code> and <code>onbuttonclick</code> to handle
+			count/action. Use <Code>onlabelclick</Code> and <Code>onbuttonclick</Code> to handle
 			interactions separately. Works with any data structure!</small
 		>
 	</Alert>

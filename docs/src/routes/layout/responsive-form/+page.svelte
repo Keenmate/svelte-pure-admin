@@ -16,13 +16,14 @@
 		Select,
 		Textarea,
 		Button,
-		CodeBlock
+		CodeBlock,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
 <Paragraph>
-	A responsive form that adapts to <strong>its own width</strong>, not the viewport. <code>&lt;ContainerBreakpoint&gt;</code>
-	maps the container's inline size to a named <code>mode</code> (compact / comfy / wide); <code>&lt;Breaker&gt;</code>
+	A responsive form that adapts to <strong>its own width</strong>, not the viewport. <Code>&lt;ContainerBreakpoint&gt;</Code>
+	maps the container's inline size to a named <Code>mode</Code> (compact / comfy / wide); <Code>&lt;Breaker&gt;</Code>
 	shows or hides secondary fields per mode while keeping them mounted, so field state survives a resize. Drag the
 	splitter / resize the window and watch fields appear and disappear.
 </Paragraph>

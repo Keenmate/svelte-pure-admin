@@ -18,7 +18,8 @@
 		NavItem,
 		NavbarSearchField,
 		SearchResults,
-		CodeBlock
+		CodeBlock,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 	import type { Command, SearchContext, SearchResult, SearchGroup } from '@keenmate/svelte-pure-admin';
 
@@ -457,8 +458,8 @@
 
 		<div class="mt-3">
 			<Alert variant="info">
-				<strong>Usage:</strong> The <code>NavbarSearch</code> component shows a search input with a keyboard shortcut hint.
-				When clicked, it calls your <code>onclick</code> handler to open the command palette.
+				<strong>Usage:</strong> The <Code>NavbarSearch</Code> component shows a search input with a keyboard shortcut hint.
+				When clicked, it calls your <Code>onclick</Code> handler to open the command palette.
 			</Alert>
 		</div>
 	</Card>
@@ -468,9 +469,9 @@
 			<h3>Inline Live Search (NavbarSearchField)</h3>
 			<p>
 				A live search box with its own anchored results dropdown — distinct from the pill that
-				opens the palette. Type e.g. <code>a</code> or <code>pro</code>: one
-				<code>globalSearch</code> call returns a flat result set where each row is tagged with a
-				<code>group</code> (the server's "group column"), and the field buckets them into
+				opens the palette. Type e.g. <Code>a</Code> or <Code>pro</Code>: one
+				<Code>globalSearch</Code> call returns a flat result set where each row is tagged with a
+				<Code>group</Code> (the server's "group column"), and the field buckets them into
 				<strong>Products / Users / Pages</strong> sections (top&nbsp;5 each). No per-group requests.
 			</p>
 
@@ -499,9 +500,9 @@
 			<div class="mt-3">
 				<Alert variant="info">
 					<strong>Single round-trip:</strong> the grouped sections come from one
-					<code>globalSearch(query)</code> returning <code>SearchResult[]</code> with a
-					<code>group</code> field — not three separate queries. Pass
-					<code>groups</code> to control each section's label, order and cap.
+					<Code>globalSearch(query)</Code> returning <Code>SearchResult[]</Code> with a
+					<Code>group</Code> field — not three separate queries. Pass
+					<Code>groups</Code> to control each section's label, order and cap.
 				</Alert>
 			</div>
 		</div>
@@ -512,9 +513,9 @@
 			<h3>Search Results Page (SearchResults)</h3>
 			<p>
 				The page-level results list a search <em>navigates to</em> (distinct from the live
-				dropdown). One item tree, four presets — switch below. The <code>grouped</code> preset
-				buckets by each row's <code>group</code>; <code>detailed</code> adds the snippet and
-				meta trail. Backend <code>&lt;mark&gt;</code> highlight renders with <code>allowHtml</code>.
+				dropdown). One item tree, four presets — switch below. The <Code>grouped</Code> preset
+				buckets by each row's <Code>group</Code>; <Code>detailed</Code> adds the snippet and
+				meta trail. Backend <Code>&lt;mark&gt;</Code> highlight renders with <Code>allowHtml</Code>.
 			</p>
 
 			<ButtonGroup class="mb-3">
@@ -535,9 +536,9 @@
 			<div class="mt-3">
 				<Alert variant="info">
 					<strong>Type-and-go:</strong> for a plain "submit → results page" box (no dropdown,
-					no palette), use <code>NavbarSearchInput</code> in a navbar zone or
-					<code>SidebarSearch</code> with an <code>action</code> — a native GET form that lands
-					on your <code>SearchResults</code> page.
+					no palette), use <Code>NavbarSearchInput</Code> in a navbar zone or
+					<Code>SidebarSearch</Code> with an <Code>action</Code> — a native GET form that lands
+					on your <Code>SearchResults</Code> page.
 				</Alert>
 			</div>
 
@@ -586,7 +587,7 @@
 				</div>
 
 				<Alert variant="primary" class="mb-4">
-					<strong>Try it!</strong> Type <code>/</code> for commands or <code>:</code> for search contexts.
+					<strong>Try it!</strong> Type <Code>/</Code> for commands or <Code>:</Code> for search contexts.
 				</Alert>
 
 				<h4 class="mb-2">Commands (/)</h4>
@@ -602,8 +603,8 @@
 					<tbody>
 						{#each commands as cmd}
 							<tr>
-								<td><code>{cmd.shortcut}</code></td>
-								<td>{#if cmd.aliases}{#each cmd.aliases as alias}<code>{alias}</code> {/each}{:else}—{/if}</td>
+								<td><Code>{cmd.shortcut}</Code></td>
+								<td>{#if cmd.aliases}{#each cmd.aliases as alias}<Code>{alias}</Code> {/each}{:else}—{/if}</td>
 								<td>{cmd.description}</td>
 								<td>{cmd.steps.map(s => s.id).join(' → ')}</td>
 							</tr>
@@ -615,7 +616,7 @@
 			<!-- Search Contexts -->
 			<Card class="mb-4" titleText="Search Contexts (:)">
 
-				<p class="mb-3">Use <code>:</code> prefix to search within a specific context:</p>
+				<p class="mb-3">Use <Code>:</Code> prefix to search within a specific context:</p>
 
 				<Table isCompact>
 					<thead>
@@ -628,16 +629,16 @@
 					<tbody>
 						{#each contexts as ctx}
 							<tr>
-								<td><code>{ctx.shortcut}</code></td>
+								<td><Code>{ctx.shortcut}</Code></td>
 								<td>{ctx.name}</td>
-								<td><code>{ctx.shortcut} search term</code></td>
+								<td><Code>{ctx.shortcut} search term</Code></td>
 							</tr>
 						{/each}
 					</tbody>
 				</Table>
 
 				<Alert variant="success" class="mt-3">
-					<strong>Tip:</strong> Aliases work too! Try <code>:products</code> or <code>:users</code>.
+					<strong>Tip:</strong> Aliases work too! Try <Code>:products</Code> or <Code>:users</Code>.
 				</Alert>
 			</Card>
 		</Column>
@@ -652,7 +653,7 @@
 				<div class="mb-3">
 					<h4 class="mb-2">Example: /deploy (2 steps)</h4>
 					<OrderedList>
-						<li>Type <code>/deploy</code> and press Space</li>
+						<li>Type <Code>/deploy</Code> and press Space</li>
 						<li>Select environment (Development, Staging, Production)</li>
 						<li>" branch " is auto-added</li>
 						<li>Select or type a branch name</li>
@@ -663,7 +664,7 @@
 				<div class="mb-3">
 					<h4 class="mb-2">Example: /assign (2 steps)</h4>
 					<OrderedList>
-						<li>Type <code>/assign</code> and press Space</li>
+						<li>Type <Code>/assign</Code> and press Space</li>
 						<li>Select an item (bug, feature, task)</li>
 						<li>" to " is auto-added</li>
 						<li>Select a team member</li>
@@ -674,7 +675,7 @@
 				<div class="mb-3">
 					<h4 class="mb-2">Example: /go (free text)</h4>
 					<OrderedList>
-						<li>Type <code>/go</code> and press Space</li>
+						<li>Type <Code>/go</Code> and press Space</li>
 						<li>Select a page or type a custom path</li>
 						<li>Press Enter to navigate</li>
 					</OrderedList>

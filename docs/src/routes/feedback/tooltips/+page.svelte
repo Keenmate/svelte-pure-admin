@@ -1,5 +1,5 @@
 <script lang="ts">
-			import { Heading, Paragraph, Grid, Column, Card, Button, ButtonGroup, Tooltip, Popover, BasicList } from '@keenmate/svelte-pure-admin';
+			import { Heading, Paragraph, Grid, Column, Card, Button, ButtonGroup, Tooltip, Popover, BasicList, Code } from '@keenmate/svelte-pure-admin';
 </script>
 
 <svelte:head>
@@ -143,7 +143,7 @@
 			<!-- Multiline Tooltips -->
 			<Card titleText="Multiline Tooltips" class="mb-4">
 				<Paragraph class="mb-3 text-sm">
-					Use <code>multiline</code> prop for longer text (20rem width, left-aligned):
+					Use <Code>multiline</Code> prop for longer text (20rem width, left-aligned):
 				</Paragraph>
 				<div class="text-center">
 					<ButtonGroup>
@@ -223,7 +223,7 @@
 						<label class="text-sm">
 							Large
 							<Popover titleText="Documentation" placement="bottom" size="lg">
-								<Paragraph>Use <code>size="lg"</code> prop for wider content (up to 28rem).</Paragraph>
+								<Paragraph>Use <Code>size="lg"</Code> prop for wider content (up to 28rem).</Paragraph>
 								<Paragraph>
 									Perfect for detailed explanations and <a href="/components">documentation</a>.
 								</Paragraph>
@@ -234,7 +234,7 @@
 						<label class="text-sm">
 							Small
 							<Popover titleText="Tip" placement="bottom" size="sm">
-								<Paragraph>Brief hints use <code>size="sm"</code>.</Paragraph>
+								<Paragraph>Brief hints use <Code>size="sm"</Code>.</Paragraph>
 							</Popover>
 						</label>
 					</Column>
@@ -259,7 +259,7 @@
 						<label class="text-sm">
 							Center
 							<Popover titleText="Centered" placement="bottom" alignment="center">
-								<Paragraph>Use <code>alignment="center"</code> prop.</Paragraph>
+								<Paragraph>Use <Code>alignment="center"</Code> prop.</Paragraph>
 								<Paragraph>Good for short messages or confirmations.</Paragraph>
 							</Popover>
 						</label>
@@ -268,7 +268,7 @@
 						<label class="text-sm">
 							End
 							<Popover titleText="End Aligned" placement="bottom" alignment="end">
-								<Paragraph>Use <code>alignment="end"</code> prop.</Paragraph>
+								<Paragraph>Use <Code>alignment="end"</Code> prop.</Paragraph>
 								<Paragraph>For RTL or special layouts.</Paragraph>
 							</Popover>
 						</label>

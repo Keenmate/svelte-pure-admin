@@ -15,7 +15,8 @@
 		Stat,
 		TabItem,
 		Tabs,
-		Text
+		Text,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 	import MountLog from './MountLog.svelte';
 
@@ -72,24 +73,24 @@
 	<Paragraph color="secondary">
 		Three ways to make a component adapt to the space it is given — and the
 		point of this page is <em>which one to reach for</em>. A CSS
-		<code>@container</code> query costs nothing and should be the default.
-		<code>FitContainer</code> / <code>FitSlot</code> fold a <strong>1-D row</strong>
+		<Code>@container</Code> query costs nothing and should be the default.
+		<Code>FitContainer</Code> / <Code>FitSlot</Code> fold a <strong>1-D row</strong>
 		whose overflow depends on measured content, not a threshold you can name up
-		front. <code>ContainerBreakpoint</code> maps width to a named <em>mode</em> so
-		you <code>{'{#if}'}</code> on it and Svelte <strong>mounts only the branch that
+		front. <Code>ContainerBreakpoint</Code> maps width to a named <em>mode</em> so
+		you <Code>{'{#if}'}</Code> on it and Svelte <strong>mounts only the branch that
 		shows</strong> — the one thing CSS cannot do, because a hidden branch is still
 		built. §3 and §4 are deliberately the <strong>same card</strong>, done both ways.
 	</Paragraph>
 
 	<Callout variant="info" class="mb-4">
 		<strong>The vocabulary.</strong> Under the hood these wrap core's
-		<code>fit.js</code> and <code>container-breakpoint.js</code> (v2.9.0-rc17).
-		<code>FitSlot</code> makes an element a slot (<code>strategy="hide|steps|sidebar"</code>
-		→ <code>data-pc-fit</code>) and <code>priority</code> orders them — lower folds
-		first. <code>FitContainer</code> sets <code>data-pc-fit-auto</code>, so
+		<Code>fit.js</Code> and <Code>container-breakpoint.js</Code> (v2.9.0-rc17).
+		<Code>FitSlot</Code> makes an element a slot (<Code>strategy="hide|steps|sidebar"</Code>
+		→ <Code>data-pc-fit</Code>) and <Code>priority</Code> orders them — lower folds
+		first. <Code>FitContainer</Code> sets <Code>data-pc-fit-auto</Code>, so
 		<em>every</em> direct child folds without tagging each, and its
-		<code>defaultPriority</code> is the fallback rank; a child pins itself out
-		with <code>data-pc-fit-ignore</code>. <strong>Drag the sliders</strong> — or
+		<Code>defaultPriority</Code> is the fallback rank; a child pins itself out
+		with <Code>data-pc-fit-ignore</Code>. <strong>Drag the sliders</strong> — or
 		open this page on a narrow phone — to watch each stage fold.
 	</Callout>
 
@@ -98,13 +99,13 @@
 	     ============================================================ -->
 	<h2 class="mt-5">1 · Card toolbar — shrink, don't lose</h2>
 	<Paragraph color="secondary">
-		A <code>steps</code> slot degrades <strong>full label → icon-only → gone</strong>
+		A <Code>steps</Code> slot degrades <strong>full label → icon-only → gone</strong>
 		instead of vanishing outright, so an action stays reachable as an icon before
 		it is dropped. <strong>Save</strong> is pinned full
-		(<code>data-pc-fit-ignore</code>); <strong>Duplicate</strong> and
+		(<Code>data-pc-fit-ignore</Code>); <strong>Duplicate</strong> and
 		<strong>Export</strong> shrink to icons (higher priority survives longer);
 		<strong>Delete</strong> is untagged, so it inherits the container's
-		<code>defaultPriority={20}</code> and drops first.
+		<Code>defaultPriority={20}</Code> and drops first.
 	</Paragraph>
 
 	<div class="stage-slider">
@@ -129,7 +130,7 @@
 				</FitSlot>
 				<button class="pa-btn"><span class="pa-btn__icon">🗑️</span> Delete</button>
 			</FitContainer>
-			<p class="stage-note">
+			<p class="stage-note text-sm">
 				Drag left: Delete drops → Export shrinks to its icon, then drops →
 				Duplicate shrinks → only Save remains, always full.
 			</p>
@@ -145,8 +146,8 @@
 		for a compact <strong>KPI</strong> is a 2-D layout change, not a 1-D row fold —
 		so this one is a plain CSS <strong>container query</strong> on the card, with
 		<em>no engine at all</em>. The left half stays product identity; the right half
-		shows the trend while there is room and swaps to a <code>Stat</code> once the
-		card narrows past <code>45rem</code> (450px).
+		shows the trend while there is room and swaps to a <Code>Stat</Code> once the
+		card narrows past <Code>45rem</Code> (450px).
 	</Paragraph>
 
 	<div class="stage-slider">
@@ -162,7 +163,7 @@
 					<div class="prod__ident">
 						<Badge themeColor={3}>Beverages</Badge>
 						<h4 class="prod__title">Arabica Cold Brew</h4>
-						<div class="prod__meta"><code>SKU-4471</code> · 1 L bottle</div>
+						<div class="prod__meta text-sm"><Code>SKU-4471</Code> · 1 L bottle</div>
 					</div>
 					<div class="prod__figure">
 						<!-- Both branches exist in the DOM; the query only reveals one.
@@ -171,7 +172,7 @@
 							<Sparkline>
 								{#each trend as v}<SparklineBar value={v} />{/each}
 							</Sparkline>
-							<div class="text-muted stage-note mt-1">Revenue · 12 weeks</div>
+							<div class="text-muted stage-note mt-1 text-sm">Revenue · 12 weeks</div>
 						</div>
 						<div class="cq-narrow">
 							<Stat number="$847K" labelText="Revenue" changeText="+12.5%" changeDirection="positive" />
@@ -192,8 +193,8 @@
 		panels (<strong>Orders · Stock · Sales</strong>) collapse from a
 		<strong>3-column grid</strong> into <strong>tabs</strong>, then the tab labels
 		drop to <strong>icons only</strong>; in step, the header sheds its supplier,
-		then its packaging line and trend badge. Every visible piece — <code>Badge</code>,
-		<code>Stat</code>, <code>Tabs</code>, <code>DotLeaders</code> — is a real
+		then its packaging line and trend badge. Every visible piece — <Code>Badge</Code>,
+		<Code>Stat</Code>, <Code>Tabs</Code>, <Code>DotLeaders</Code> — is a real
 		component; only the layout switches.
 	</Paragraph>
 
@@ -210,8 +211,8 @@
 					<div style="min-width:0">
 						<Badge themeColor={3}>Beverages</Badge>
 						<h4 class="prod__title">Arabica Cold Brew</h4>
-						<div class="prod__meta">
-							<code>SKU-4471</code><span class="cq-pkg"> · 1 L bottle · 12 per case</span
+						<div class="prod__meta text-sm">
+							<Code>SKU-4471</Code><span class="cq-pkg"> · 1 L bottle · 12 per case</span
 							><span class="cq-sup"> · Yirgacheffe Co-op</span>
 						</div>
 					</div>
@@ -263,23 +264,23 @@
 	<h2 class="mt-5">4 · The same card, on the engine — with a chart it builds on demand</h2>
 	<Paragraph color="secondary">
 		This is §3's card again — the same three-level degrade, the same header
-		trimming — but driven by <code>ContainerBreakpoint</code> instead of a CSS
-		<code>@container</code>. Why bother, if CSS already did it? Because in §3
+		trimming — but driven by <Code>ContainerBreakpoint</Code> instead of a CSS
+		<Code>@container</Code>. Why bother, if CSS already did it? Because in §3
 		<strong>every branch is in the DOM at every width</strong>. Here the branches
-		are <code>{'{#if}'}</code>-gated, so Svelte constructs only the one on screen:
+		are <Code>{'{#if}'}</Code>-gated, so Svelte constructs only the one on screen:
 		the grid-only <strong>revenue chart</strong> is <em>built when the card
-		reaches <code>grid</code> and destroyed when it leaves</em>. Watch the log.
+		reaches <Code>grid</Code> and destroyed when it leaves</em>. Watch the log.
 	</Paragraph>
 
 	<Callout variant="info" class="mb-3">
-		<strong>What the numbers mean.</strong> The values in <code>steps</code> are
+		<strong>What the numbers mean.</strong> The values in <Code>steps</Code> are
 		<strong>rem</strong> — minimum widths of the <em>card itself</em> (its content-box
 		inline size), not the viewport and not percentages. pure-admin's root
-		font-size is <code>10px</code>, so <code>34</code> = 340px and <code>64</code> =
-		640px — the same numbers as §3's <code>@container</code> breakpoints. The engine
+		font-size is <Code>10px</Code>, so <Code>34</Code> = 340px and <Code>64</Code> =
+		640px — the same numbers as §3's <Code>@container</Code> breakpoints. The engine
 		picks the <strong>largest</strong> mode whose width the card has passed
-		(700px → <code>grid</code>, 500px → <code>tabs</code>). Prefer pixels? Pass
-		<code>unit="px"</code> and write <code>{'{ icons: 0, tabs: 340, grid: 640 }'}</code> —
+		(700px → <Code>grid</Code>, 500px → <Code>tabs</Code>). Prefer pixels? Pass
+		<Code>unit="px"</Code> and write <Code>{'{ icons: 0, tabs: 340, grid: 640 }'}</Code> —
 		identical behaviour. Percent is deliberately not a unit: "does this layout fit"
 		is an absolute-pixel question (label widths, gaps, padding); for
 		viewport-relative rules reach for a CSS media query instead.
@@ -304,8 +305,8 @@
 						<div style="min-width:0">
 							<Badge themeColor={3}>Beverages</Badge>
 							<h4 class="prod__title">Arabica Cold Brew</h4>
-							<div class="prod__meta">
-								<code>SKU-4471</code>{#if mode !== 'icons'}<span> · 1 L bottle · 12 per case</span
+							<div class="prod__meta text-sm">
+								<Code>SKU-4471</Code>{#if mode !== 'icons'}<span> · 1 L bottle · 12 per case</span
 									>{/if}{#if mode === 'grid'}<span> · Yirgacheffe Co-op</span>{/if}
 							</div>
 						</div>
@@ -354,7 +355,7 @@
 
 	<Card class="mt-2">
 		<strong>Mount log</strong>
-		<ul class="mount-log">
+		<ul class="mount-log font-family-mono">
 			{#each logs as line, i (i + line)}<li>{line}</li>{/each}
 		</ul>
 	</Card>
@@ -362,11 +363,11 @@
 	<Callout variant="info" class="mt-4">
 		<strong>Cheap, stateful pieces?</strong> When you just want to show/hide content by
 		mode — and keep its state (form field values, scroll position) — wrap it in
-		<code>&lt;Breaker {'{mode}'} show="comfy wide"&gt;</code> instead of an
-		<code>{'{#if}'}</code>. It stays mounted and toggles <code>.d-none</code>, so nothing
-		is lost when a block leaves and re-enters view. Reach for <code>{'{#if mode === …}'}</code>
+		<Code>&lt;Breaker {'{mode}'} show="comfy wide"&gt;</Code> instead of an
+		<Code>{'{#if}'}</Code>. It stays mounted and toggles <Code>.d-none</Code>, so nothing
+		is lost when a block leaves and re-enters view. Reach for <Code>{'{#if mode === …}'}</Code>
 		only when you want to avoid <em>building</em> an expensive branch off-screen (§4). Both
-		read the same reactive <code>mode</code> from <code>ContainerBreakpoint</code>'s snippet.
+		read the same reactive <Code>mode</Code> from <Code>ContainerBreakpoint</Code>'s snippet.
 	</Callout>
 </div>
 
@@ -396,12 +397,10 @@
 	.stage-note {
 		margin: 0.8rem 0 0;
 		color: var(--pc-text-color-2);
-		font-size: var(--pc-font-size-sm, 1.4rem);
 	}
 	.mount-log {
 		margin: 0.4rem 0 0;
 		padding-inline-start: 1.6rem;
-		font-family: var(--pc-font-family-mono, monospace);
 		font-size: 1.2rem;
 	}
 
@@ -419,7 +418,6 @@
 	}
 	.prod__meta {
 		color: var(--pc-text-color-2);
-		font-size: var(--pc-font-size-sm, 1.4rem);
 	}
 	.prod__split,
 	.prod__header {

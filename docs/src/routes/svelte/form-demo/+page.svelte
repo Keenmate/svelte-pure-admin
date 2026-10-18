@@ -589,7 +589,7 @@
 			No submissions yet. Fill in the form above and click <strong>Save Entry</strong>.
 		</Callout>
 	{:else}
-		<Table isStriped isHover>
+		<Table isStriped>
 			<thead>
 				<tr>
 					<th style="width:88px"></th>
@@ -758,6 +758,6 @@
 	}
 
 	.is-editing {
-		background-color: var(--pc-color-primary-bg-subtle, rgba(0, 123, 255, 0.08));
+		background-color: var(--pc-primary-bg-subtle);
 	}
 </style>

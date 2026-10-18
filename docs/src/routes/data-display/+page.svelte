@@ -16,7 +16,8 @@
 		Paragraph,
 		Heading,
 		Alert,
-		BasicList
+		BasicList,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	// Order data for Detail Panel Integration
@@ -215,7 +216,7 @@
 	<Column size="1-2">
 		<Card titleText="Multiple pa-fields Blocks">
 			{#snippet description()}
-				Consecutive <code>Fields</code> blocks get automatic spacing via <code>.pa-fields + .pa-fields</code>.
+				Consecutive <Code>Fields</Code> blocks get automatic spacing via <Code>.pa-fields + .pa-fields</Code>.
 			{/snippet}
 
 			<Fields isRow>
@@ -236,7 +237,7 @@
 	<Column size="1-2">
 		<Card titleText="Multi-Column Grid">
 			{#snippet description()}
-				Uses <code>cols={2|3|4}</code>. Use <code>full</code> prop to span all columns.
+				Uses <Code>cols={2|3|4}</Code>. Use <Code>full</Code> prop to span all columns.
 			{/snippet}
 
 			<Fields cols={2}>
@@ -256,7 +257,7 @@
 
 <Card titleText="Field Groups">
 	{#snippet description()}
-		Labeled sections using <code>FieldGroup</code> with title prop.
+		Labeled sections using <Code>FieldGroup</Code> with title prop.
 	{/snippet}
 
 	<Grid>
@@ -295,7 +296,7 @@
 	<Column size="1-3">
 		<Card titleText="Horizontal">
 			{#snippet description()}
-				Uses <code>horizontal</code> prop.
+				Uses <Code>horizontal</Code> prop.
 			{/snippet}
 
 			<Fields isHorizontal>
@@ -309,7 +310,7 @@
 	<Column size="1-3">
 		<Card titleText="Table-Style Bordered">
 			{#snippet description()}
-				Uses <code>table bordered</code> props.
+				Uses <Code>table bordered</Code> props.
 			{/snippet}
 
 			<Fields isTable isBordered>
@@ -327,7 +328,7 @@
 	<Column size="1-3">
 		<Card titleText="Striped">
 			{#snippet description()}
-				Uses <code>striped</code> prop.
+				Uses <Code>striped</Code> prop.
 			{/snippet}
 
 			<Fields isStriped>
@@ -348,7 +349,7 @@
 	<Column size="1-4">
 		<Card titleText="Compact">
 			{#snippet description()}
-				<code>compact</code>
+				<Code>compact</Code>
 			{/snippet}
 
 			<Fields isCompact>
@@ -361,7 +362,7 @@
 	<Column size="1-4">
 		<Card titleText="Inline">
 			{#snippet description()}
-				<code>inline</code>
+				<Code>inline</Code>
 			{/snippet}
 
 			<Fields isInline>
@@ -374,7 +375,7 @@
 	<Column size="1-4">
 		<Card titleText="Row">
 			{#snippet description()}
-				<code>row</code>
+				<Code>row</Code>
 			{/snippet}
 
 			<Fields isRow>
@@ -387,7 +388,7 @@
 	<Column size="1-4">
 		<Card titleText="Relaxed">
 			{#snippet description()}
-				<code>relaxed</code>
+				<Code>relaxed</Code>
 			{/snippet}
 
 			<Fields isRelaxed>
@@ -406,7 +407,7 @@
 	<Column size="3-4">
 		<Card titleText="Filled Fields">
 			{#snippet description()}
-				Subtle background to distinguish data blocks. Uses <code>filled</code> prop.
+				Subtle background to distinguish data blocks. Uses <Code>filled</Code> prop.
 			{/snippet}
 
 			<Grid>
@@ -450,7 +451,7 @@
 
 <Card titleText="Color Variants">
 	{#snippet description()}
-		Theme colors for border and isFilled background. Uses <code>color={1-9}</code>. Combine with <code>filled</code> for tinted backgrounds. Use <code>noBorder</code> to remove the border.
+		Theme colors for border and isFilled background. Uses <Code>color={1-9}</Code>. Combine with <Code>filled</Code> for tinted backgrounds. Use <Code>noBorder</Code> to remove the border.
 	{/snippet}
 
 	<Heading level={4}>Border Colors</Heading>
@@ -526,17 +527,17 @@
 	<Grid>
 		<Column size="1-3">
 			<Heading level={4}>Copy Button (always visible)</Heading>
-			<Paragraph class="text-muted mb-2">Uses <code>copyMode="btn"</code></Paragraph>
+			<Paragraph class="text-muted mb-2">Uses <Code>copyMode="btn"</Code></Paragraph>
 			<Fields hasBorder={false}>
 				<Field labelText="Email" valueText="elena.petrova@example.com" copyMode="btn" />
 				<Field labelText="API Key" copyMode="btn" copyValue="sk_live_abc123xyz789">
-					<code>sk_live_abc123xyz789</code>
+					<Code>sk_live_abc123xyz789</Code>
 				</Field>
 			</Fields>
 		</Column>
 		<Column size="1-3">
 			<Heading level={4}>Click Value to Copy</Heading>
-			<Paragraph class="text-muted mb-2">Uses <code>copyMode="click"</code></Paragraph>
+			<Paragraph class="text-muted mb-2">Uses <Code>copyMode="click"</Code></Paragraph>
 			<Fields hasBorder={false}>
 				<Field labelText="Phone" valueText="+420 776 123 456" copyMode="click" />
 				<Field labelText="Order ID" valueText="#ORD-2026-00847" copyMode="click" />
@@ -544,7 +545,7 @@
 		</Column>
 		<Column size="1-3">
 			<Heading level={4}>Icon on Hover Only</Heading>
-			<Paragraph class="text-muted mb-2">Uses <code>copyMode="hover"</code></Paragraph>
+			<Paragraph class="text-muted mb-2">Uses <Code>copyMode="hover"</Code></Paragraph>
 			<Fields hasBorder={false}>
 				<Field labelText="IBAN" valueText="CZ65 0800 0000 1920 0014 5399" copyMode="hover" />
 				<Field labelText="BIC/SWIFT" valueText="GIBACZPX" copyMode="hover" />
@@ -559,7 +560,7 @@
 
 <Card titleText="Real-World: Invoice Layout">
 	{#snippet description()}
-		Customer (full width) + Receipt/Delivery addresses (50/50). Combines <code>FieldGroup</code> with <code>Grid</code>/<code>Column</code>.
+		Customer (full width) + Receipt/Delivery addresses (50/50). Combines <Code>FieldGroup</Code> with <Code>Grid</Code>/<Code>Column</Code>.
 	{/snippet}
 
 	<FieldGroup titleText="Customer">
@@ -672,48 +673,48 @@
 				<Column size="1-2">
 					<Heading level={4}>Field Elements</Heading>
 					<BasicList spacing="compact">
-						<li><code>pa-field</code> - Label-value pair</li>
-						<li><code>pa-field__label</code> - Label element</li>
-						<li><code>pa-field__value</code> - Value element</li>
-						<li><code>pa-field--full</code> - Span all grid columns</li>
+						<li><Code>pa-field</Code> - Label-value pair</li>
+						<li><Code>pa-field__label</Code> - Label element</li>
+						<li><Code>pa-field__value</Code> - Value element</li>
+						<li><Code>pa-field--full</Code> - Span all grid columns</li>
 					</BasicList>
 
 					<Heading level={4} class="mt-4">Container & Groups</Heading>
 					<BasicList spacing="compact">
-						<li><code>pa-fields</code> - Field container</li>
-						<li><code>pa-field-group</code> - Section wrapper</li>
-						<li><code>pa-field-group__title</code> - Section title</li>
+						<li><Code>pa-fields</Code> - Field container</li>
+						<li><Code>pa-field-group</Code> - Section wrapper</li>
+						<li><Code>pa-field-group__title</Code> - Section title</li>
 					</BasicList>
 
 					<Heading level={4} class="mt-4">Grid Columns</Heading>
 					<BasicList spacing="compact">
-						<li><code>pa-fields--cols-2</code> - 2 columns</li>
-						<li><code>pa-fields--cols-3</code> - 3 columns</li>
-						<li><code>pa-fields--cols-4</code> - 4 columns</li>
+						<li><Code>pa-fields--cols-2</Code> - 2 columns</li>
+						<li><Code>pa-fields--cols-3</Code> - 3 columns</li>
+						<li><Code>pa-fields--cols-4</Code> - 4 columns</li>
 					</BasicList>
 				</Column>
 				<Column size="1-2">
 					<Heading level={4}>Layout Modifiers</Heading>
 					<BasicList spacing="compact">
-						<li><code>pa-fields--horizontal</code> - Label left, value right</li>
-						<li><code>pa-fields--table</code> - Table-like widths</li>
-						<li><code>pa-fields--bordered</code> - Row separators</li>
-						<li><code>pa-fields--striped</code> - Alternating bg</li>
-						<li><code>pa-fields--compact</code> - Tighter spacing</li>
-						<li><code>pa-fields--relaxed</code> - Larger spacing</li>
-						<li><code>pa-fields--inline</code> - Inline flow</li>
-						<li><code>pa-fields--row</code> - Equal-width columns</li>
-						<li><code>pa-fields--filled</code> - Background panel</li>
-						<li><code>pa-fields--color-&#123;1-9&#125;</code> - Border color</li>
-						<li><code>pa-fields--no-border</code> - Remove border</li>
+						<li><Code>pa-fields--horizontal</Code> - Label left, value right</li>
+						<li><Code>pa-fields--table</Code> - Table-like widths</li>
+						<li><Code>pa-fields--bordered</Code> - Row separators</li>
+						<li><Code>pa-fields--striped</Code> - Alternating bg</li>
+						<li><Code>pa-fields--compact</Code> - Tighter spacing</li>
+						<li><Code>pa-fields--relaxed</Code> - Larger spacing</li>
+						<li><Code>pa-fields--inline</Code> - Inline flow</li>
+						<li><Code>pa-fields--row</Code> - Equal-width columns</li>
+						<li><Code>pa-fields--filled</Code> - Background panel</li>
+						<li><Code>pa-fields--color-&#123;1-9&#125;</Code> - Border color</li>
+						<li><Code>pa-fields--no-border</Code> - Remove border</li>
 					</BasicList>
 
 					<Heading level={4} class="mt-4">Combining</Heading>
 					<BasicList spacing="compact">
-						<li><code>table bordered</code></li>
-						<li><code>horizontal compact</code></li>
-						<li><code>filled cols=&#123;2&#125;</code></li>
-						<li><code>filled color=&#123;1&#125;</code> (tinted bg)</li>
+						<li><Code>table bordered</Code></li>
+						<li><Code>horizontal compact</Code></li>
+						<li><Code>filled cols=&#123;2&#125;</Code></li>
+						<li><Code>filled color=&#123;1&#125;</Code> (tinted bg)</li>
 					</BasicList>
 				</Column>
 			</Grid>
@@ -727,7 +728,7 @@
 
 <Card bodyClass="p-0" titleText="Detail Panel Integration">
 	{#snippet description()}
-		Headerless detail panel with floating close button. Click a row to view order data using <code>Fields</code> components.
+		Headerless detail panel with floating close button. Click a row to view order data using <Code>Fields</Code> components.
 	{/snippet}
 
 	<div class="pa-detail-view" class:pa-detail-view--panel-open={detailPanelOpen}>
@@ -869,7 +870,7 @@
 				<FieldGroup titleText="Product">
 					<Fields isFilled>
 						<Field labelText="SKU">
-							<code>{product.sku}</code>
+							<Code>{product.sku}</Code>
 						</Field>
 						<Field labelText="Name">
 							<strong>{product.name}</strong>

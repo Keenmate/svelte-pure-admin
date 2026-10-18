@@ -22,7 +22,8 @@
 		HeatmapCell,
 		HeatmapLegend,
 		TableCard,
-		Text
+		Text,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -138,7 +139,7 @@
 
 <Card titleText="3. Progress Rings">
 	{#snippet description()}
-		Circular progress indicators using CSS <code>conic-gradient</code>. Set value via <code>style="--value: 72"</code> (0-100).
+		Circular progress indicators using CSS <Code>conic-gradient</Code>. Set value via <Code>style="--value: 72"</Code> (0-100).
 	{/snippet}
 
 	<!-- Default rings -->
@@ -167,7 +168,7 @@
 
 <Card titleText="4. Dashboard Gauges">
 	{#snippet description()}
-		Semi-circle gauge indicators. Set value via <code>style="--value: 72"</code> (0-100).
+		Semi-circle gauge indicators. Set value via <Code>style="--value: 72"</Code> (0-100).
 	{/snippet}
 
 	<div class="d-flex gap-xl flex-wrap align-items-end">
@@ -196,7 +197,7 @@
 	descriptionText="Inline bar visualization inside table cells for quick comparison."
 	isScrollable
 >
-	<Table isStriped isHover>
+	<Table isStriped>
 		<thead>
 			<tr>
 				<th style="width: 5%">#</th>
@@ -259,7 +260,7 @@
 
 <Card titleText="6. Activity Heatmap">
 	{#snippet description()}
-		GitHub contribution-style activity grid. Each cell uses <code>data-level="0-4"</code> for intensity.
+		GitHub contribution-style activity grid. Each cell uses <Code>data-level="0-4"</Code> for intensity.
 	{/snippet}
 
 	<div style="overflow-x: auto">

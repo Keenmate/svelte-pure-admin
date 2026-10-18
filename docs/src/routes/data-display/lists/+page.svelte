@@ -216,40 +216,40 @@
 
 	<Heading level={5} class="mt-4">Unordered Lists (ul)</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-list-basic</code> - Base unordered list</li>
-		<li><code>pa-list-basic--compact</code> - Reduced spacing</li>
-		<li><code>pa-list-basic--spacious</code> - Increased spacing</li>
-		<li><code>pa-list-basic--unstyled</code> - No bullets, no padding</li>
-		<li><code>pa-list-basic--inline</code> - Horizontal layout</li>
-		<li><code>pa-list-basic--bordered</code> - Border between items</li>
-		<li><code>pa-list-basic--striped</code> - Zebra striping</li>
-		<li><code>pa-list-basic--icon</code> - Checkmarks (success)</li>
-		<li><code>pa-list-basic--icon pa-list-basic--danger</code> - X marks</li>
-		<li><code>pa-list-basic--icon pa-list-basic--info</code> - Arrows</li>
-		<li><code>pa-list-basic--icon pa-list-basic--warning</code> - Exclamation marks</li>
+		<li><Code>pa-list-basic</Code> - Base unordered list</li>
+		<li><Code>pa-list-basic--compact</Code> - Reduced spacing</li>
+		<li><Code>pa-list-basic--spacious</Code> - Increased spacing</li>
+		<li><Code>pa-list-basic--unstyled</Code> - No bullets, no padding</li>
+		<li><Code>pa-list-basic--inline</Code> - Horizontal layout</li>
+		<li><Code>pa-list-basic--bordered</Code> - Border between items</li>
+		<li><Code>pa-list-basic--striped</Code> - Zebra striping</li>
+		<li><Code>pa-list-basic--icon</Code> - Checkmarks (success)</li>
+		<li><Code>pa-list-basic--icon pa-list-basic--danger</Code> - X marks</li>
+		<li><Code>pa-list-basic--icon pa-list-basic--info</Code> - Arrows</li>
+		<li><Code>pa-list-basic--icon pa-list-basic--warning</Code> - Exclamation marks</li>
 	</BasicList>
 
 	<Heading level={5} class="mt-4">Ordered Lists (ol)</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-list-ordered</code> - Base ordered list (numeric)</li>
-		<li><code>pa-list-ordered--roman</code> - Roman numerals (I, II, III)</li>
-		<li><code>pa-list-ordered--alpha</code> - Lowercase letters (a, b, c)</li>
+		<li><Code>pa-list-ordered</Code> - Base ordered list (numeric)</li>
+		<li><Code>pa-list-ordered--roman</Code> - Roman numerals (I, II, III)</li>
+		<li><Code>pa-list-ordered--alpha</Code> - Lowercase letters (a, b, c)</li>
 	</BasicList>
 
 	<Heading level={5} class="mt-4">Definition Lists (dl)</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-list-definition</code> - Standard definition list</li>
-		<li><code>pa-list-definition--inline</code> - Horizontal key-value pairs</li>
+		<li><Code>pa-list-definition</Code> - Standard definition list</li>
+		<li><Code>pa-list-definition--inline</Code> - Horizontal key-value pairs</li>
 	</BasicList>
 
 	<Heading level={5} class="mt-4">Complex Lists</Heading>
 	<BasicList spacing="compact">
-		<li><code>pa-list</code> - Container for complex list items</li>
-		<li><code>pa-list__item</code> - Individual list item with avatar/content</li>
-		<li><code>pa-list__avatar</code> - Avatar/icon container</li>
-		<li><code>pa-list__content</code> - Content wrapper</li>
-		<li><code>pa-list__title</code> - Primary text</li>
-		<li><code>pa-list__subtitle</code> - Secondary text</li>
-		<li><code>pa-list__meta</code> - Metadata text</li>
+		<li><Code>pa-list</Code> - Container for complex list items</li>
+		<li><Code>pa-list__item</Code> - Individual list item with avatar/content</li>
+		<li><Code>pa-list__avatar</Code> - Avatar/icon container</li>
+		<li><Code>pa-list__content</Code> - Content wrapper</li>
+		<li><Code>pa-list__title</Code> - Primary text</li>
+		<li><Code>pa-list__subtitle</Code> - Secondary text</li>
+		<li><Code>pa-list__meta</Code> - Metadata text</li>
 	</BasicList>
 </Card>

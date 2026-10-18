@@ -18,7 +18,8 @@
 		Pager,
 		FormLabel,
 		Input,
-		Select
+		Select,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 	import { MOVIE_DATA, getRatingBadgeVariant, type Movie } from '$lib/data/movies';
 
@@ -100,7 +101,7 @@
 	}
 </script>
 
-<p>Movies list with inline detail panel. Uses <code>minhr-25</code> for minimum height and <code>pa-detail-panel__content--bordered</code> for top/bottom borders. Click a row to view movie details in the panel.</p>
+<p>Movies list with inline detail panel. Uses <Code>minhr-25</Code> for minimum height and <Code>pa-detail-panel__content--bordered</Code> for top/bottom borders. Click a row to view movie details in the panel.</p>
 
 <!-- Filter Card -->
 <Card>
@@ -143,7 +144,7 @@
 
 	<DetailView bind:show={showPanel} isOverlay={true} onclose={closePanel}>
 		{#snippet main()}
-			<Table isStriped isHover>
+			<Table isStriped>
 				<thead>
 					<tr>
 						<th class="text-nowrap">Title</th>

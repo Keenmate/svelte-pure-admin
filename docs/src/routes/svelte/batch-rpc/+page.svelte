@@ -18,7 +18,8 @@
 		BasicList,
 		createBatch,
 		pureDataConfig,
-		commonResponseConfig
+		commonResponseConfig,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 	import type {
 		BatchResult,
@@ -709,7 +710,7 @@ const transport = createPhoenixTransport(channel, {
 			<tbody>
 				{#each demo2Results as result}
 					<tr>
-						<td><code>{result.method}</code></td>
+						<td><Code>{result.method}</Code></td>
 						<td>
 							<Badge variant={result.success ? 'success' : 'danger'}>
 								{result.success ? 'Success' : 'Error'}
@@ -735,15 +736,15 @@ const transport = createPhoenixTransport(channel, {
 <!-- Transforming Results -->
 <Card titleText="Transforming Results">
 	<Paragraph>
-		Use standard Promise <code>.then()</code> chaining to transform results before awaiting.
+		Use standard Promise <Code>.then()</Code> chaining to transform results before awaiting.
 		This is useful when endpoints return arrays for single items or nested response structures.
 	</Paragraph>
 
 	<HighlightedCode language="typescript" code={codeTransformResults} />
 
 	<Callout variant="info" class="mt-4">
-		<strong>Tip:</strong> Since <code>batch.add()</code> returns a Promise, you can use any Promise method:
-		<code>.then()</code>, <code>.catch()</code>, <code>.finally()</code>, or combine with <code>Promise.all()</code>.
+		<strong>Tip:</strong> Since <Code>batch.add()</Code> returns a Promise, you can use any Promise method:
+		<Code>.then()</Code>, <Code>.catch()</Code>, <Code>.finally()</Code>, or combine with <Code>Promise.all()</Code>.
 	</Callout>
 </Card>
 
@@ -772,7 +773,7 @@ const transport = createPhoenixTransport(channel, {
 
 	<Heading level={4} class="mt-4">HTTP: Dynamic Headers & Cookies</Heading>
 	<Paragraph class="small">
-		Use <code>getHeaders</code> callback for tokens that may change, and <code>fetchOptions.credentials</code> for cookies.
+		Use <Code>getHeaders</Code> callback for tokens that may change, and <Code>fetchOptions.credentials</Code> for cookies.
 	</Paragraph>
 	<HighlightedCode language="typescript" code={codeHttpDynamicAuth} />
 
@@ -803,7 +804,7 @@ const transport = createPhoenixTransport(channel, {
 <!-- Request Metadata -->
 <Card titleText="Request Metadata (Session ID, Tenant ID, etc.)">
 	<Paragraph>
-		Use <code>getRequestMetadata</code> to add contextual data to every batch request body.
+		Use <Code>getRequestMetadata</Code> to add contextual data to every batch request body.
 		This is useful for session tracking, multi-tenancy, or debugging.
 	</Paragraph>
 
@@ -817,8 +818,8 @@ const transport = createPhoenixTransport(channel, {
 	<HighlightedCode language="typescript" code={codeSessionSetup} />
 
 	<Callout variant="info" class="mt-4">
-		<strong>All transports support this:</strong> <code>getRequestMetadata</code> is available on
-		<code>createHttpTransport</code>, <code>createSignalRTransport</code>, and <code>createPhoenixTransport</code>.
+		<strong>All transports support this:</strong> <Code>getRequestMetadata</Code> is available on
+		<Code>createHttpTransport</Code>, <Code>createSignalRTransport</Code>, and <Code>createPhoenixTransport</Code>.
 	</Callout>
 </Card>
 
@@ -883,19 +884,19 @@ const transport = createPhoenixTransport(channel, {
 		</thead>
 		<tbody>
 			<tr>
-				<td><code>add&lt;T&gt;(method, params?)</code></td>
-				<td>Add a call to the batch. Returns <code>Promise&lt;T&gt;</code> that resolves after execute().</td>
+				<td><Code>add&lt;T&gt;(method, params?)</Code></td>
+				<td>Add a call to the batch. Returns <Code>Promise&lt;T&gt;</Code> that resolves after execute().</td>
 			</tr>
 			<tr>
-				<td><code>execute()</code></td>
-				<td>Send all queued calls as a single request. Returns <code>Promise&lt;void&gt;</code>.</td>
+				<td><Code>execute()</Code></td>
+				<td>Send all queued calls as a single request. Returns <Code>Promise&lt;void&gt;</Code>.</td>
 			</tr>
 			<tr>
-				<td><code>size</code></td>
+				<td><Code>size</Code></td>
 				<td>Number of calls currently in the batch (readonly).</td>
 			</tr>
 			<tr>
-				<td><code>executed</code></td>
+				<td><Code>executed</Code></td>
 				<td>Whether the batch has been executed (readonly).</td>
 			</tr>
 		</tbody>
@@ -908,15 +909,15 @@ const transport = createPhoenixTransport(channel, {
 		</thead>
 		<tbody>
 			<tr>
-				<td><code>createSignalRTransport(connection, config)</code></td>
+				<td><Code>createSignalRTransport(connection, config)</Code></td>
 				<td>Create transport for ASP.NET SignalR hubs.</td>
 			</tr>
 			<tr>
-				<td><code>createPhoenixTransport(channel, config)</code></td>
+				<td><Code>createPhoenixTransport(channel, config)</Code></td>
 				<td>Create transport for Elixir Phoenix channels.</td>
 			</tr>
 			<tr>
-				<td><code>createHttpTransport(url, config, options?)</code></td>
+				<td><Code>createHttpTransport(url, config, options?)</Code></td>
 				<td>Create transport for REST API endpoints.</td>
 			</tr>
 		</tbody>
@@ -929,23 +930,23 @@ const transport = createPhoenixTransport(channel, {
 		</thead>
 		<tbody>
 			<tr>
-				<td><code>parseResponse</code></td>
-				<td><code>(raw) =&gt; BatchResponse</code></td>
+				<td><Code>parseResponse</Code></td>
+				<td><Code>(raw) =&gt; BatchResponse</Code></td>
 				<td>Parse raw transport response into BatchResponse format.</td>
 			</tr>
 			<tr>
-				<td><code>parseCallResult?</code></td>
-				<td><code>(raw) =&gt; unknown</code></td>
+				<td><Code>parseCallResult?</Code></td>
+				<td><Code>(raw) =&gt; unknown</Code></td>
 				<td>Unwrap individual call results (e.g., CommonResponse.data).</td>
 			</tr>
 			<tr>
-				<td><code>isError?</code></td>
-				<td><code>(result) =&gt; boolean</code></td>
+				<td><Code>isError?</Code></td>
+				<td><Code>(result) =&gt; boolean</Code></td>
 				<td>Determine if a result is an error. Default: checks for error field.</td>
 			</tr>
 			<tr>
-				<td><code>parseError?</code></td>
-				<td><code>(result) =&gt; RpcError</code></td>
+				<td><Code>parseError?</Code></td>
+				<td><Code>(result) =&gt; RpcError</Code></td>
 				<td>Extract error details from a failed result.</td>
 			</tr>
 		</tbody>
@@ -958,43 +959,43 @@ const transport = createPhoenixTransport(channel, {
 		</thead>
 		<tbody>
 			<tr>
-				<td><code>headers?</code></td>
-				<td><code>Record&lt;string, string&gt;</code></td>
+				<td><Code>headers?</Code></td>
+				<td><Code>Record&lt;string, string&gt;</Code></td>
 				<td>Static headers to include with each request.</td>
 			</tr>
 			<tr>
-				<td><code>getHeaders?</code></td>
-				<td><code>() =&gt; Record | Promise</code></td>
+				<td><Code>getHeaders?</Code></td>
+				<td><Code>() =&gt; Record | Promise</Code></td>
 				<td>Dynamic headers callback - called before each request. Use for auth tokens.</td>
 			</tr>
 			<tr>
-				<td><code>getRequestMetadata?</code></td>
-				<td><code>() =&gt; Record | Promise</code></td>
-				<td>Request metadata callback - adds <code>meta</code> field to request body (sessionId, tenantId, etc.).</td>
+				<td><Code>getRequestMetadata?</Code></td>
+				<td><Code>() =&gt; Record | Promise</Code></td>
+				<td>Request metadata callback - adds <Code>meta</Code> field to request body (sessionId, tenantId, etc.).</td>
 			</tr>
 			<tr>
-				<td><code>onBeforeRequest?</code></td>
-				<td><code>(request, init) =&gt; void</code></td>
+				<td><Code>onBeforeRequest?</Code></td>
+				<td><Code>(request, init) =&gt; void</Code></td>
 				<td>Request interceptor - called before each request is sent.</td>
 			</tr>
 			<tr>
-				<td><code>onAfterResponse?</code></td>
-				<td><code>(response) =&gt; void</code></td>
+				<td><Code>onAfterResponse?</Code></td>
+				<td><Code>(response) =&gt; void</Code></td>
 				<td>Response interceptor - handle status codes, logging, etc.</td>
 			</tr>
 			<tr>
-				<td><code>fetchOptions?</code></td>
-				<td><code>RequestInit</code></td>
-				<td>Additional fetch options (e.g., <code>credentials: 'include'</code>).</td>
+				<td><Code>fetchOptions?</Code></td>
+				<td><Code>RequestInit</Code></td>
+				<td>Additional fetch options (e.g., <Code>credentials: 'include'</Code>).</td>
 			</tr>
 			<tr>
-				<td><code>fetchFn?</code></td>
-				<td><code>typeof fetch</code></td>
+				<td><Code>fetchFn?</Code></td>
+				<td><Code>typeof fetch</Code></td>
 				<td>Custom fetch function. Default: globalThis.fetch.</td>
 			</tr>
 			<tr>
-				<td><code>timeout?</code></td>
-				<td><code>number</code></td>
+				<td><Code>timeout?</Code></td>
+				<td><Code>number</Code></td>
 				<td>Request timeout in milliseconds. Default: 30000.</td>
 			</tr>
 		</tbody>
@@ -1007,18 +1008,18 @@ const transport = createPhoenixTransport(channel, {
 		</thead>
 		<tbody>
 			<tr>
-				<td><code>methodName?</code> / <code>eventName?</code></td>
-				<td><code>string</code></td>
+				<td><Code>methodName?</Code> / <Code>eventName?</Code></td>
+				<td><Code>string</Code></td>
 				<td>Hub method or channel event name. Default: "BatchInvoke" / "batch_invoke".</td>
 			</tr>
 			<tr>
-				<td><code>getRequestMetadata?</code></td>
-				<td><code>() =&gt; Record | Promise</code></td>
-				<td>Request metadata callback - adds <code>meta</code> field to request body.</td>
+				<td><Code>getRequestMetadata?</Code></td>
+				<td><Code>() =&gt; Record | Promise</Code></td>
+				<td>Request metadata callback - adds <Code>meta</Code> field to request body.</td>
 			</tr>
 			<tr>
-				<td><code>timeout?</code></td>
-				<td><code>number</code></td>
+				<td><Code>timeout?</Code></td>
+				<td><Code>number</Code></td>
 				<td>Request timeout in milliseconds (Phoenix only). Default: 30000.</td>
 			</tr>
 		</tbody>

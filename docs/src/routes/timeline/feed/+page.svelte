@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, Timeline, TimelineItem, Button, BasicList } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, Timeline, TimelineItem, Button, BasicList, Code } from '@keenmate/svelte-pure-admin';
 	import { HighlightedCode } from '$lib/components';
 
 	// Example: Activity feed data from API/database
@@ -264,7 +264,7 @@
 
 	<Heading level={4}>Best Practices</Heading>
 	<BasicList>
-		<li>Use <code>variant="feed"</code> for activity feeds and social timelines</li>
+		<li>Use <Code>variant="feed"</Code> for activity feeds and social timelines</li>
 		<li>Include avatar images for better user recognition</li>
 		<li>Use date headers to organize activities by day</li>
 		<li>Add time prefixes for precise timestamps</li>

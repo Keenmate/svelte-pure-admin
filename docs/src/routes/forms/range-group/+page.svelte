@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, RangeGroup, BasicList, CodeBlock, type RangeGroupRow, type RangeGroupValues, type QsAdapter } from '@keenmate/svelte-pure-admin';
+	import { Card, RangeGroup, BasicList, CodeBlock, type RangeGroupRow, type RangeGroupValues, type QsAdapter, Code } from '@keenmate/svelte-pure-admin';
 	import { replaceState } from '$app/navigation';
 	import { page } from '$app/stores';
 
@@ -217,14 +217,14 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	{#snippet title()}Range Group{/snippet}
 	{#snippet description()}
 		A compact multi-range filter. One toggle summarises several numeric range filters inline
-		(<code>Age / Salary / Children</code>) and expands into a floating panel with one slider per
+		(<Code>Age / Salary / Children</Code>) and expands into a floating panel with one slider per
 		dimension — instead of spreading three separate sliders across a filter bar. Each row is dual-thumb
-		(min–max) or single-thumb (a <code>&ge;</code> / <code>&le;</code> threshold), configured per-row.
+		(min–max) or single-thumb (a <Code>&ge;</Code> / <Code>&le;</Code> threshold), configured per-row.
 	{/snippet}
 
 	<!-- ============ In a filter card ============ -->
 	<h4>In a filter bar</h4>
-	<p class="text-muted">The range group drops into a <code>.pa-filter-card__filters</code> row as a single control standing in for three sliders. Open it, drag, and Apply.</p>
+	<p class="text-muted">The range group drops into a <Code>.pa-filter-card__filters</Code> row as a single control standing in for three sliders. Open it, drag, and Apply.</p>
 
 	<div class="pa-card pa-filter-card mt-2">
 		<div class="pa-card__body">
@@ -263,9 +263,9 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	<!-- Event output -->
 	<h4 class="mt-4">Emitted values</h4>
 	<p class="text-muted">
-		The group dispatches <code>pa-range-group:change</code> live and
-		<code>pa-range-group:apply</code> / <code>:reset</code> on the buttons. Payload is keyed by
-		<code>data-key</code>; a bound at its extent reports <code>null</code> (i.e. “Any”).
+		The group dispatches <Code>pa-range-group:change</Code> live and
+		<Code>pa-range-group:apply</Code> / <Code>:reset</Code> on the buttons. Payload is keyed by
+		<Code>data-key</Code>; a bound at its extent reports <Code>null</Code> (i.e. “Any”).
 	</p>
 	<CodeBlock isCompact>{output}</CodeBlock>
 </Card>
@@ -274,8 +274,8 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <Card class="mt-4">
 	{#snippet title()}Single-thumb thresholds{/snippet}
 	{#snippet description()}
-		Set <code>mode: 'single'</code> for a one-handle threshold. <code>bound: 'gte'</code> reads as
-		“<code>value+</code>”, <code>bound: 'lte'</code> as “<code>&le; value</code>”.
+		Set <Code>mode: 'single'</Code> for a one-handle threshold. <Code>bound: 'gte'</Code> reads as
+		“<Code>value+</Code>”, <Code>bound: 'lte'</Code> as “<Code>&le; value</Code>”.
 	{/snippet}
 	<RangeGroup rows={thresholdRows} ariaLabel="Threshold filters" onchange={(v) => (thresholdValues = v)} />
 	{@render valueBox(thresholdValues)}
@@ -285,9 +285,9 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <Card class="mt-4">
 	{#snippet title()}Handle shapes{/snippet}
 	{#snippet description()}
-		Add a <code>handleShape</code> to any row to restyle its handles. Purely cosmetic (no JS), so you
-		can mix shapes per row. Open the filter to compare — <code>circle</code> (default),
-		<code>rect</code>, <code>bar</code>, <code>arrow</code>, and <code>needle</code> (a downward
+		Add a <Code>handleShape</Code> to any row to restyle its handles. Purely cosmetic (no JS), so you
+		can mix shapes per row. Open the filter to compare — <Code>circle</Code> (default),
+		<Code>rect</Code>, <Code>bar</Code>, <Code>arrow</Code>, and <Code>needle</Code> (a downward
 		triangle balancing its point on the track).
 	{/snippet}
 	<RangeGroup rows={handleRows} ariaLabel="Handle shapes" onchange={(v) => (handleValues = v)} />
@@ -298,12 +298,12 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <Card class="mt-4">
 	{#snippet title()}Ticks &amp; click-to-seek{/snippet}
 	{#snippet description()}
-		Add <code>ticks</code> (major interval) and optionally <code>ticksMinor</code> to draw tick marks
-		along the track; add <code>tickLabels</code> to print the major values beneath. Marks sit behind the
+		Add <Code>ticks</Code> (major interval) and optionally <Code>ticksMinor</Code> to draw tick marks
+		along the track; add <Code>tickLabels</Code> to print the major values beneath. Marks sit behind the
 		track so only their ends show — major ticks reach further out than minor. On every row the track is
 		<strong>click-to-seek</strong>: press anywhere off the handles and the nearest thumb jumps there and
-		keeps following the pointer. Add <code>snapTicks</code> to make the thumbs settle on the nearest tick
-		instead of the (possibly finer) <code>step</code> grid — drag the <em>Level</em> row and it snaps to
+		keeps following the pointer. Add <Code>snapTicks</Code> to make the thumbs settle on the nearest tick
+		instead of the (possibly finer) <Code>step</Code> grid — drag the <em>Level</em> row and it snaps to
 		0, 10, 20…
 	{/snippet}
 	<RangeGroup rows={tickRows} ariaLabel="Ticked filters" onchange={(v) => (tickValues = v)} />
@@ -313,12 +313,12 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 <!-- ============ Custom tokens ============ -->
 <Card class="mt-4">
-	{#snippet title()}Theming with <code>--pa-range-*</code> tokens{/snippet}
+	{#snippet title()}Theming with <Code>--pa-range-*</Code> tokens{/snippet}
 	{#snippet description()}
 		Every colour and key dimension is a runtime token that falls back to the shared cascade, so a theme
-		or a per-instance <code>panelStyle</code> can retint/resize a slider with no recompile. This group
-		overrides the fill, thumb, track thickness, and handle size — set on the <code>__panel</code> (it
-		reparents to <code>&lt;body&gt;</code> when open, so tokens on the group root wouldn't reach the
+		or a per-instance <Code>panelStyle</Code> can retint/resize a slider with no recompile. This group
+		overrides the fill, thumb, track thickness, and handle size — set on the <Code>__panel</Code> (it
+		reparents to <Code>&lt;body&gt;</Code> when open, so tokens on the group root wouldn't reach the
 		sliders).
 	{/snippet}
 	<RangeGroup rows={themedRows} ariaLabel="Themed filters" panelStyle={themedPanelStyle} onchange={(v) => (themedValues = v)} />
@@ -328,13 +328,13 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 <!-- ============ URL / querystring sync ============ -->
 <Card class="mt-4">
-	{#snippet title()}Sync with the URL (<code>qsKey</code>){/snippet}
+	{#snippet title()}Sync with the URL (<Code>qsKey</Code>){/snippet}
 	{#snippet description()}
-		Set <code>qsKey</code> and the group reads its initial state from that URL param and writes back
+		Set <Code>qsKey</Code> and the group reads its initial state from that URL param and writes back
 		as you drag — bookmarkable, shareable, and back/forward-aware. The whole group packs into one
-		param via the built-in codec (override with <code>codec</code>). Only user changes are written,
+		param via the built-in codec (override with <Code>codec</Code>). Only user changes are written,
 		so the URL starts empty; drag a slider and watch the address bar update. This demo also sets
-		<code>debounce={'{200}'}</code>, so sliding back and forth coalesces into a single write when you
+		<Code>debounce={'{200}'}</Code>, so sliding back and forth coalesces into a single write when you
 		settle — the URL (and any fetch/filter you wire to it) never thrashes.
 	{/snippet}
 
@@ -349,14 +349,14 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	<h4 class="mt-4">Live URL</h4>
 	<CodeBlock isCompact>{$page.url.search || '(no query yet — drag a slider)'}</CodeBlock>
 
-	<h4 class="mt-4">Bound values (<code>bind:values</code>)</h4>
+	<h4 class="mt-4">Bound values (<Code>bind:values</Code>)</h4>
 	<CodeBlock isCompact>{JSON.stringify(urlValues, null, 2)}</CodeBlock>
 
 	<p class="text-muted mt-2">
-		This docs site is SvelteKit, so it passes a ~10-line <code>QsAdapter</code> built on
-		<code>replaceState</code>. A plain Vite / History app needs no adapter at all — just
-		<code>qsKey</code>. For a hash SPA (<code>@keenmate/svelte-spa-router</code>), use the
-		<code>createSpaRouterAdapter</code> factory. All three are below.
+		This docs site is SvelteKit, so it passes a ~10-line <Code>QsAdapter</Code> built on
+		<Code>replaceState</Code>. A plain Vite / History app needs no adapter at all — just
+		<Code>qsKey</Code>. For a hash SPA (<Code>@keenmate/svelte-spa-router</Code>), use the
+		<Code>createSpaRouterAdapter</Code> factory. All three are below.
 	</p>
 
 	<h4 class="mt-4">Usage</h4>
@@ -365,12 +365,12 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 
 <!-- ============ Operation modes: immediate vs apply ============ -->
 <Card class="mt-4">
-	{#snippet title()}Operation modes — <code>mode="apply"</code>{/snippet}
+	{#snippet title()}Operation modes — <Code>mode="apply"</Code>{/snippet}
 	{#snippet description()}
-		The URL demo above runs in the default <code>immediate</code> mode (live, debounced). Set
-		<code>mode="apply"</code> to hold the committed state until the <strong>Apply</strong> button:
-		<code>bind:values</code> (and any <code>qsKey</code> write) update only on Apply, while
-		<code>onchange</code> keeps firing live — handy for an "N results" preview before committing.
+		The URL demo above runs in the default <Code>immediate</Code> mode (live, debounced). Set
+		<Code>mode="apply"</Code> to hold the committed state until the <strong>Apply</strong> button:
+		<Code>bind:values</Code> (and any <Code>qsKey</Code> write) update only on Apply, while
+		<Code>onchange</Code> keeps firing live — handy for an "N results" preview before committing.
 	{/snippet}
 
 	<div class="pa-card pa-filter-card mt-2">
@@ -387,8 +387,8 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</div>
 
 	<p class="text-muted mt-2">
-		Live <code>onchange</code> has fired <strong>{applyChangeCount}</strong> time(s) — but the
-		committed <code>bind:values</code> below only changes when you press <strong>Apply</strong>.
+		Live <Code>onchange</Code> has fired <strong>{applyChangeCount}</strong> time(s) — but the
+		committed <Code>bind:values</Code> below only changes when you press <strong>Apply</strong>.
 	</p>
 	<CodeBlock isCompact>{JSON.stringify(applyValues, null, 2)}</CodeBlock>
 
@@ -399,10 +399,10 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <Card class="mt-4">
 	{#snippet title()}Svelte usage{/snippet}
 	{#snippet description()}
-		The <code>&lt;RangeGroup&gt;</code> wrapper renders the whole structure from a <code>rows</code>
-		array. For the common case, <code>bind:values</code> gives you the live payload (keyed by
-		<code>key</code>) with no event wiring; <code>onchange</code> / <code>onapply</code> /
-		<code>onreset</code> remain for side effects, and <code>qsKey</code> (above) for URL sync.
+		The <Code>&lt;RangeGroup&gt;</Code> wrapper renders the whole structure from a <Code>rows</Code>
+		array. For the common case, <Code>bind:values</Code> gives you the live payload (keyed by
+		<Code>key</Code>) with no event wiring; <Code>onchange</Code> / <Code>onapply</Code> /
+		<Code>onreset</Code> remain for side effects, and <Code>qsKey</Code> (above) for URL sync.
 	{/snippet}
 	<CodeBlock>{codeSvelte}</CodeBlock>
 </Card>
@@ -422,66 +422,66 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	{#snippet title()}CSS Classes Reference{/snippet}
 	<h4>Compact control</h4>
 	<BasicList spacing="compact">
-		<li><code>pa-range-group</code> - Root wrapper (toggle + floating panel)</li>
-		<li><code>pa-range-group__toggle</code> - The button summarising the filters</li>
-		<li><code>pa-range-group__summary</code> - Single-line "LABEL value / …" readout host</li>
-		<li><code>pa-range-group__seg-label</code> - A dimension's label in the summary</li>
-		<li><code>pa-range-group__seg-value</code> - A dimension's value in the summary</li>
-		<li><code>pa-range-group__seg-value--empty</code> - Muted "Any" value</li>
-		<li><code>pa-range-group__seg-sep</code> - The " / " separator</li>
-		<li><code>pa-range-group__caret</code> - Dropdown chevron (rotates when open)</li>
-		<li><code>pa-range-group--open</code> - State: panel open (on the root)</li>
+		<li><Code>pa-range-group</Code> - Root wrapper (toggle + floating panel)</li>
+		<li><Code>pa-range-group__toggle</Code> - The button summarising the filters</li>
+		<li><Code>pa-range-group__summary</Code> - Single-line "LABEL value / …" readout host</li>
+		<li><Code>pa-range-group__seg-label</Code> - A dimension's label in the summary</li>
+		<li><Code>pa-range-group__seg-value</Code> - A dimension's value in the summary</li>
+		<li><Code>pa-range-group__seg-value--empty</Code> - Muted "Any" value</li>
+		<li><Code>pa-range-group__seg-sep</Code> - The " / " separator</li>
+		<li><Code>pa-range-group__caret</Code> - Dropdown chevron (rotates when open)</li>
+		<li><Code>pa-range-group--open</Code> - State: panel open (on the root)</li>
 	</BasicList>
 
 	<h4 class="mt-4">Floating panel</h4>
 	<BasicList spacing="compact">
-		<li><code>pa-range-group__panel</code> - The floating panel (reparented to body when open)</li>
-		<li><code>pa-range-group__panel--open</code> - State: shown</li>
-		<li><code>pa-range-group__row</code> - One dimension (head + slider)</li>
-		<li><code>pa-range-group__row-head</code> - Row label + value line</li>
-		<li><code>pa-range-group__row-label</code> - Row label</li>
-		<li><code>pa-range-group__row-value</code> - Row value readout</li>
-		<li><code>pa-range-group__row-value--empty</code> - Muted "Any" readout</li>
-		<li><code>pa-range-group__actions</code> - Reset / Apply footer</li>
+		<li><Code>pa-range-group__panel</Code> - The floating panel (reparented to body when open)</li>
+		<li><Code>pa-range-group__panel--open</Code> - State: shown</li>
+		<li><Code>pa-range-group__row</Code> - One dimension (head + slider)</li>
+		<li><Code>pa-range-group__row-head</Code> - Row label + value line</li>
+		<li><Code>pa-range-group__row-label</Code> - Row label</li>
+		<li><Code>pa-range-group__row-value</Code> - Row value readout</li>
+		<li><Code>pa-range-group__row-value--empty</Code> - Muted "Any" readout</li>
+		<li><Code>pa-range-group__actions</Code> - Reset / Apply footer</li>
 	</BasicList>
 
 	<h4 class="mt-4">Slider primitive</h4>
 	<BasicList spacing="compact">
-		<li><code>pa-range</code> - Slider (dual-thumb by default)</li>
-		<li><code>pa-range__rail</code> - Inner rail the thumbs travel along</li>
-		<li><code>pa-range__track</code> - Full track</li>
-		<li><code>pa-range__fill</code> - Selected-range fill</li>
-		<li><code>pa-range__thumb</code> - A handle</li>
-		<li><code>pa-range__thumb--min</code> / <code>--max</code> - Low / high handle</li>
-		<li><code>pa-range--single</code> - Single-thumb (threshold) mode</li>
-		<li><code>pa-range--disabled</code> - Non-interactive state</li>
+		<li><Code>pa-range</Code> - Slider (dual-thumb by default)</li>
+		<li><Code>pa-range__rail</Code> - Inner rail the thumbs travel along</li>
+		<li><Code>pa-range__track</Code> - Full track</li>
+		<li><Code>pa-range__fill</Code> - Selected-range fill</li>
+		<li><Code>pa-range__thumb</Code> - A handle</li>
+		<li><Code>pa-range__thumb--min</Code> / <Code>--max</Code> - Low / high handle</li>
+		<li><Code>pa-range--single</Code> - Single-thumb (threshold) mode</li>
+		<li><Code>pa-range--disabled</Code> - Non-interactive state</li>
 	</BasicList>
 
 	<h4 class="mt-4">Handle shapes</h4>
 	<BasicList spacing="compact">
-		<li><code>pa-range--handle-rect</code> - Rounded rectangle handles</li>
-		<li><code>pa-range--handle-bar</code> - Thin vertical bar handles</li>
-		<li><code>pa-range--handle-arrow</code> - Chevron handles</li>
-		<li><code>pa-range--handle-needle</code> - Downward-triangle "needle" handles</li>
+		<li><Code>pa-range--handle-rect</Code> - Rounded rectangle handles</li>
+		<li><Code>pa-range--handle-bar</Code> - Thin vertical bar handles</li>
+		<li><Code>pa-range--handle-arrow</Code> - Chevron handles</li>
+		<li><Code>pa-range--handle-needle</Code> - Downward-triangle "needle" handles</li>
 	</BasicList>
 
 	<h4 class="mt-4">Tick marks</h4>
 	<BasicList spacing="compact">
-		<li><code>pa-range__ticks</code> - Tick container (built by JS from <code>data-ticks</code>)</li>
-		<li><code>pa-range__tick</code> - A minor tick mark</li>
-		<li><code>pa-range__tick--major</code> - A major tick mark (longer)</li>
-		<li><code>pa-range__tick-labels</code> - Container for the value labels</li>
-		<li><code>pa-range__tick-label</code> - A single major-tick label</li>
-		<li><code>pa-range--ticks-labeled</code> - Row modifier reserving the label band</li>
+		<li><Code>pa-range__ticks</Code> - Tick container (built by JS from <Code>data-ticks</Code>)</li>
+		<li><Code>pa-range__tick</Code> - A minor tick mark</li>
+		<li><Code>pa-range__tick--major</Code> - A major tick mark (longer)</li>
+		<li><Code>pa-range__tick-labels</Code> - Container for the value labels</li>
+		<li><Code>pa-range__tick-label</Code> - A single major-tick label</li>
+		<li><Code>pa-range--ticks-labeled</Code> - Row modifier reserving the label band</li>
 	</BasicList>
 
 	<h4 class="mt-4">Theming tokens (CSS variables)</h4>
 	<BasicList spacing="compact">
-		<li><code>--pa-range-track</code> / <code>-fill</code> - Track / fill colour</li>
-		<li><code>--pa-range-thumb-bg</code> / <code>-thumb-border</code> / <code>-thumb-border-hover</code> - Handle colours</li>
-		<li><code>--pa-range-focus-ring</code> - Thumb focus / active ring</li>
-		<li><code>--pa-range-tick</code> / <code>-tick-major</code> - Minor / major tick colour</li>
-		<li><code>--pa-range-track-height</code> / <code>-thumb-size</code> - Structural sizes</li>
-		<li><code>--pa-range-group-panel-min-width</code> - Floating panel width</li>
+		<li><Code>--pa-range-track</Code> / <Code>-fill</Code> - Track / fill colour</li>
+		<li><Code>--pa-range-thumb-bg</Code> / <Code>-thumb-border</Code> / <Code>-thumb-border-hover</Code> - Handle colours</li>
+		<li><Code>--pa-range-focus-ring</Code> - Thumb focus / active ring</li>
+		<li><Code>--pa-range-tick</Code> / <Code>-tick-major</Code> - Minor / major tick colour</li>
+		<li><Code>--pa-range-track-height</Code> / <Code>-thumb-size</Code> - Structural sizes</li>
+		<li><Code>--pa-range-group-panel-min-width</Code> - Floating panel width</li>
 	</BasicList>
 </Card>

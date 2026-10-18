@@ -11,7 +11,8 @@
 		Grid,
 		Column,
 		Spinner,
-		CodeBlock
+		CodeBlock,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 
 	type BlockItem = { date: string; icon: string; title: string; content: string };
@@ -244,7 +245,7 @@
 	<Column size="100" lg="1-3">
 		<Card titleText="Start Aligned">
 			{#snippet headerActions()}
-				<code>--start</code>
+				<Code>--start</Code>
 			{/snippet}
 			<Timeline variant="alternating" alignment="start">
 				{#each modifierItems as item (item.title)}
@@ -261,7 +262,7 @@
 	<Column size="100" lg="1-3">
 		<Card titleText="End Aligned">
 			{#snippet headerActions()}
-				<code>--end</code>
+				<Code>--end</Code>
 			{/snippet}
 			<Timeline variant="alternating" alignment="end">
 				{#each modifierItems as item (item.title)}
@@ -278,7 +279,7 @@
 	<Column size="100" lg="1-3">
 		<Card titleText="Keep Layout">
 			{#snippet headerActions()}
-				<code>--keep-layout</code>
+				<Code>--keep-layout</Code>
 			{/snippet}
 			<Timeline variant="alternating" shouldKeepLayout>
 				<TimelineItem date="Jan">
@@ -306,7 +307,7 @@
 	<Column size="100" lg="50">
 		<Card titleText="Start + Keep Layout">
 			{#snippet headerActions()}
-				<code>--start --keep-layout</code>
+				<Code>--start --keep-layout</Code>
 			{/snippet}
 			<Timeline variant="alternating" alignment="start" shouldKeepLayout>
 				{#each combinationItems as item (item.title)}
@@ -323,7 +324,7 @@
 	<Column size="100" lg="50">
 		<Card titleText="End + Keep Layout">
 			{#snippet headerActions()}
-				<code>--end --keep-layout</code>
+				<Code>--end --keep-layout</Code>
 			{/snippet}
 			<Timeline variant="alternating" alignment="end" shouldKeepLayout>
 				{#each combinationItems as item (item.title)}
@@ -364,10 +365,10 @@
 
 	<Heading level={4}>Best Practices</Heading>
 	<BasicList>
-		<li>Use <code>variant="alternating"</code> for project roadmaps and milestone timelines</li>
+		<li>Use <Code>variant="alternating"</Code> for project roadmaps and milestone timelines</li>
 		<li>Add emojis or icons to timeline headers for visual interest</li>
-		<li>Use <code>alignment="start"</code>/<code>"end"</code> for narrow cards where zig-zag would feel cramped</li>
-		<li>Use <code>shouldKeepLayout</code> when the design must hold its alternating shape across breakpoints</li>
-		<li>For long lists, pair <code>pa-timeline__scroll-container</code> with an IntersectionObserver for lazy loading</li>
+		<li>Use <Code>alignment="start"</Code>/<Code>"end"</Code> for narrow cards where zig-zag would feel cramped</li>
+		<li>Use <Code>shouldKeepLayout</Code> when the design must hold its alternating shape across breakpoints</li>
+		<li>For long lists, pair <Code>pa-timeline__scroll-container</Code> with an IntersectionObserver for lazy loading</li>
 	</BasicList>
 </Card>

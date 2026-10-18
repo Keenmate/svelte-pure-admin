@@ -10,7 +10,8 @@
 		Sidebar,
 		SidebarItem,
 		SidebarSection,
-		SidebarDivider
+		SidebarDivider,
+		Code
 	} from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -151,9 +152,9 @@
 	<Column size="100" md="50">
 		<Card titleText="Sidebar sections + divider">
 			<Paragraph>
-				<code>&lt;SidebarSection&gt;</code> is a flat, non-interactive group heading;
-				<code>&lt;SidebarDivider&gt;</code> draws a thin rule between groups. Both are
-				<code>&lt;li&gt;</code> siblings to <code>&lt;SidebarItem&gt;</code> in the same list.
+				<Code>&lt;SidebarSection&gt;</Code> is a flat, non-interactive group heading;
+				<Code>&lt;SidebarDivider&gt;</Code> draws a thin rule between groups. Both are
+				<Code>&lt;li&gt;</Code> siblings to <Code>&lt;SidebarItem&gt;</Code> in the same list.
 			</Paragraph>
 			<Sidebar>
 				<SidebarSection labelText="Project" />
@@ -192,10 +193,10 @@
 
 			<h4 class="mb-2 mt-4">Zones: compose start / center / end</h4>
 			<Paragraph>
-				<code>Navbar</code> mirrors core's universal schema — a fixed burger plus three
+				<Code>Navbar</Code> mirrors core's universal schema — a fixed burger plus three
 				open zones. It prescribes no fixed brand / nav / search / profile slots: compose
-				each zone from <code>AppHeader</code>, <code>NavMenu</code>, <code>PageHeader</code>,
-				<code>NavbarSearch</code>, <code>ProfileButton</code>, … in any order you like.
+				each zone from <Code>AppHeader</Code>, <Code>NavMenu</Code>, <Code>PageHeader</Code>,
+				<Code>NavbarSearch</Code>, <Code>ProfileButton</Code>, … in any order you like.
 			</Paragraph>
 			<CodeBlock>{`<Navbar showBurger onburgerclick={toggle}>
   {#snippet start()}
@@ -208,10 +209,10 @@
 
 			<h4 class="mb-2 mt-4">NavMenu: active state + responsive collapse</h4>
 			<Paragraph>
-				Mark the current section with <code>isActive</code> on a <code>NavItem</code>. Opt a
-				<code>NavMenu</code> into progressive collapse with <code>collapse</code> — its
+				Mark the current section with <Code>isActive</Code> on a <Code>NavItem</Code>. Opt a
+				<Code>NavMenu</Code> into progressive collapse with <Code>collapse</Code> — its
 				lowest-priority items fold out as the header narrows (per-item order via
-				<code>navPriority</code>; <code>navCollapse="hide"</code> to just hide one). Touch
+				<Code>navPriority</Code>; <Code>navCollapse="hide"</Code> to just hide one). Touch
 				support for hover dropdowns is wired automatically.
 			</Paragraph>
 			<CodeBlock>{`<NavMenu collapse="menu" moreLabel="More">
@@ -225,16 +226,16 @@
 
 			<h4 class="mb-2 mt-4">Navbar Fit: priority-driven header degradation (rc12–rc14)</h4>
 			<Paragraph>
-				Where <code>navCollapse</code> only folds nav <em>items</em>, Navbar Fit degrades
+				Where <Code>navCollapse</Code> only folds nav <em>items</em>, Navbar Fit degrades
 				<em>every</em> header slot — brand wordmark, version tag, page title, search box —
 				one at a time, <strong>lowest priority first</strong>, until the row fits, then
 				restores as space returns (no blanket mobile breakpoint). It's pure composition:
-				nothing fit-aware is baked into <code>Navbar</code> — wrap a slot in a
-				<code>FitSlot</code> to opt it in. <code>strategy="hide"</code> drops the slot;
-				<code>strategy="steps"</code> holds a ladder of <code>FitStep</code> variants
-				(widest first) that shrinks <code>Svelte Pure Admin → SPA → gone</code>. FitStep
+				nothing fit-aware is baked into <Code>Navbar</Code> — wrap a slot in a
+				<Code>FitSlot</Code> to opt it in. <Code>strategy="hide"</Code> drops the slot;
+				<Code>strategy="steps"</Code> holds a ladder of <Code>FitStep</Code> variants
+				(widest first) that shrinks <Code>Svelte Pure Admin → SPA → gone</Code>. FitStep
 				auto-numbers the ladder and hides the non-first steps for a correct first paint —
-				no <code>data-pc-fit-step</code> or <code>pc-fit-hidden</code> to hand-author.
+				no <Code>data-pc-fit-step</Code> or <Code>pc-fit-hidden</Code> to hand-author.
 			</Paragraph>
 			<CodeBlock>{`<Navbar>
   {#snippet start()}

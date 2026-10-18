@@ -86,7 +86,7 @@
 
 		<!-- Theme Color Variants -->
 		<Column size="100" class="mt-4">
-			<FormLabel class="mb-2"><strong>Theme Color Variants</strong> (using --pc-color-* CSS variables)</FormLabel>
+			<FormLabel class="mb-2"><strong>Theme Color Variants</strong> (using --pc-palette-* CSS variables)</FormLabel>
 		</Column>
 		<Column size="100" md="1-3">
 			<FormGroup>
@@ -160,22 +160,8 @@
 			</FormGroup>
 		</Column>
 
-		<!-- Multiple Prepends/Appends -->
-		<Column size="100">
-			<FormGroup>
-				<FormLabel>Multiple Prepends & Appends</FormLabel>
-				<InputGroup>
-					<InputGroupPrepend>https://</InputGroupPrepend>
-					<InputGroupPrepend>www.</InputGroupPrepend>
-					<Input placeholder="example" />
-					<InputGroupAppend>.com</InputGroupAppend>
-					<InputGroupAppend>🔗</InputGroupAppend>
-				</InputGroup>
-			</FormGroup>
-		</Column>
-
 		<!-- Toggle Mode Button (Filter / Search) + Go -->
-		<Column size="100">
+		<Column size="100" md="50">
 			<FormGroup>
 				<FormLabel>Toggle Mode Button (Filter / Search) + Go</FormLabel>
 				<InputGroup>
@@ -194,9 +180,23 @@
 			</FormGroup>
 		</Column>
 
+		<!-- Multiple Prepends/Appends -->
+		<Column size="100">
+			<FormGroup>
+				<FormLabel>Multiple Prepends & Appends</FormLabel>
+				<InputGroup>
+					<InputGroupPrepend>https://</InputGroupPrepend>
+					<InputGroupPrepend>www.</InputGroupPrepend>
+					<Input placeholder="example" />
+					<InputGroupAppend>.com</InputGroupAppend>
+					<InputGroupAppend><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></InputGroupAppend>
+				</InputGroup>
+			</FormGroup>
+		</Column>
+
 		<!-- Tip -->
 		<Column size="100" class="mt-3">
-			<Text variant="secondary" class="text-sm"><strong>Tip:</strong> Use width utilities (<Code>wr-*</Code> for rem-based, <Code>w-*</Code> for percentage-based) on prepend/append elements to control their width.</Text>
+			<Text class="text-sm text-muted"><strong>Tip:</strong> Use width utilities (<Code>wr-*</Code> for rem-based, <Code>w-*</Code> for percentage-based) on prepend/append elements to control their width.</Text>
 		</Column>
 	</Grid>
 </Card>
