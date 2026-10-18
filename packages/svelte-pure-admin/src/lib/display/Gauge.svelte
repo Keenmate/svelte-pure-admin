@@ -50,7 +50,7 @@
 		if (isZones) {
 			base.push('pa-gauge--zones');
 		} else if (variant && variant !== 'primary') {
-			// primary is the BASE fill (var(--pc-accent)); there is no
+			// primary is the BASE fill (var(--pc-primary)); there is no
 			// pa-gauge--primary in the CSS — don't emit a phantom modifier.
 			base.push(`pa-gauge--${variant}`);
 		}

@@ -12,7 +12,7 @@
 	// Core blesses NO pa-loader-{type}--{color} modifier — loaders theme via
 	// `currentColor`, set on the wrapper. The core snippet documents this as an
 	// inline `style="color: var(--…)"`, so colour is emitted off-class (matching
-	// keen's loader/1). primary→--pc-accent, secondary→--pc-text-color-2,
+	// keen's loader/1). primary→--pc-primary, secondary→--pc-text-color-2,
 	// success/danger/warning/info→--pa-{color}-bg (no --pa-primary-bg/-secondary-bg).
 	export type LoaderColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 
@@ -40,7 +40,7 @@
 	// Colour → CSS custom property. Loaders paint from currentColor, so colour is
 	// an inline `color:` on the wrapper, never a modifier class.
 	const colorVar: Record<LoaderColor, string> = {
-		primary: '--pc-accent',
+		primary: '--pc-primary',
 		secondary: '--pc-text-color-2',
 		success: '--pa-success-bg',
 		danger: '--pa-danger-bg',

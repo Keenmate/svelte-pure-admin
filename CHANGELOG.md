@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING — `<KpiBento layout>`: `'hero-right'` → `'hero-end'`
+
+- Follows core's rename of `.pa-kpi-bento__grid--hero-right` to `--hero-end`. The grid areas
+  mirror under `dir="rtl"`, so the old "right" tile rendered on the left in RTL. Same layout,
+  new value: `<KpiBento layout="hero-end">`. `KpiBentoLayout` is now `'hero-end' | '5-tile'`.
+
+### Fixed — `<Loader color="primary">` was uncoloured
+
+- It wrote `color: var(--pc-accent)`, a token removed in the accent → primary rename, so the
+  loader fell back to the inherited text colour. Now `var(--pc-primary)` (matches core's fixture).
+
+### Docs — logical spacing classes; dead accent tokens
+
+- Demo pages use `ms-*` / `me-*` instead of `ml-*` / `mr-*` (removed in pure-css 2.0.0-rc02);
+  the data-display page's local `:global(.ml-auto)` patch is gone (pure-css ships `.ms-auto`).
+  Colours / icons / detail-panel / movie demos use `--pc-primary` / `--pc-primary-bg-subtle`
+  instead of the removed `--pc-accent` / `--pc-accent-light` (the colours page swatch is now
+  "Primary").
+
+
 ### Timeline Block demo — alternating item titles use `<h3>`
 
 - **The Timeline Block demo's alternating item titles now use `<Heading level={3}>` (`<h3>`)**

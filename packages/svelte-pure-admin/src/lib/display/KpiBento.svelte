@@ -1,11 +1,11 @@
 <script lang="ts" module>
 	/**
 	 * Bento grid layout modifier. Maps to `pa-kpi-bento__grid--<value>`.
-	 * Default (omitted) is the 6-tile hero-left layout. `'hero-right'` mirrors
+	 * Default (omitted) is the 6-tile hero-start layout. `'hero-end'` mirrors
 	 * it (hero on the right, still 6 tiles). `'5-tile'` is a hero + 4-supporting
 	 * composition — pass exactly 5 tiles for it (a 6th breaks the layout).
 	 */
-	export type KpiBentoLayout = 'hero-right' | '5-tile';
+	export type KpiBentoLayout = 'hero-end' | '5-tile';
 </script>
 
 <script lang="ts">
@@ -28,8 +28,8 @@
 		/** Footer caption (plain string). Override via the `footer` snippet for richer markup. */
 		footerText?: string;
 		/**
-		 * Grid layout modifier. Default (omitted) is the 6-tile hero-left layout.
-		 * `'hero-right'` mirrors it; `'5-tile'` is hero + 4 supporting (pass exactly
+		 * Grid layout modifier. Default (omitted) is the 6-tile hero-start layout.
+		 * `'hero-end'` mirrors it (hero at the end — right in LTR, left in RTL); `'5-tile'` is hero + 4 supporting (pass exactly
 		 * 5 tiles). Tile source order is unchanged across layouts (1st = hero).
 		 */
 		layout?: KpiBentoLayout;

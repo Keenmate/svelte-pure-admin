@@ -336,7 +336,7 @@
 				Delete
 			</Button>
 		</ButtonGroup>
-		<ButtonGroup class="ml-auto">
+		<ButtonGroup class="ms-auto">
 			<Button variant="secondary">Cancel</Button>
 			<Button variant="success">
 				{#snippet icon()}✓{/snippet}

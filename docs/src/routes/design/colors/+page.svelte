@@ -8,7 +8,7 @@
 		{ name: 'Warning', variable: '--pc-warning', text: '--pa-btn-warning-text' },
 		{ name: 'Danger', variable: '--pc-danger', text: '--pa-btn-danger-text' },
 		{ name: 'Info', variable: '--pc-info', text: '--pa-btn-info-text' },
-		{ name: 'Accent', variable: '--pc-accent', text: '--pa-btn-primary-text' },
+		{ name: 'Primary', variable: '--pc-primary', text: '--pa-btn-primary-text' },
 		{ name: 'Main BG', variable: '--pc-main-bg', text: '--pc-text-color-1' },
 		{ name: 'Page BG', variable: '--pc-page-bg', text: '--pc-text-color-1' }
 	];

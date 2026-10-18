@@ -807,7 +807,7 @@
 						{#snippet icon()}<span class="pa-icon pa-icon--edit" aria-hidden="true"></span>{/snippet}
 						Edit
 					</Button>
-					<Button variant="secondary" size="sm" class="ml-auto" onclick={closeOrderDetail}>
+					<Button variant="secondary" size="sm" class="ms-auto" onclick={closeOrderDetail}>
 						Close
 					</Button>
 				</div>
@@ -918,7 +918,7 @@
 				{#snippet icon()}<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>{/snippet}
 				Delete
 			</Button>
-			<Button variant="secondary" size="sm" class="ml-auto" onclick={closeProductOverlay}>
+			<Button variant="secondary" size="sm" class="ms-auto" onclick={closeProductOverlay}>
 				Close
 			</Button>
 		</div>
@@ -986,9 +986,5 @@
 
 	:global(.mb-2) {
 		margin-bottom: 0.5rem;
-	}
-
-	:global(.ml-auto) {
-		margin-left: auto;
 	}
 </style>

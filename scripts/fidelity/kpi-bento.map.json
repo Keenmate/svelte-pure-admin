@@ -4,7 +4,7 @@
   "features": {
     "title":      { "prop": "titleText",  "kind": "string" },
     "live":       { "prop": "isLive",     "kind": "bool" },
-    "layout":     { "prop": "layout",     "kind": "enum",   "values": ["hero-right", "5-tile"] },
+    "layout":     { "prop": "layout",     "kind": "enum",   "values": ["hero-end", "5-tile"] },
     "body":       { "prop": "children",   "kind": "slot" },
     "footer":     { "prop": "footerText", "kind": "string" },
     "extraClass": { "prop": "class",      "kind": "string" }

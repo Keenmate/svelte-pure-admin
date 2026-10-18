@@ -259,7 +259,7 @@
 					onchange={handleSelectAllFruits}
 					class="font-weight-500"
 				/>
-				<div class="d-flex flex-column gap-8 ml-10">
+				<div class="d-flex flex-column gap-8 ms-10">
 					<Checkbox id="fruit-apple" bind:checked={fruits.apple}>
 						{#snippet labelSnippet()}
 							🍎 Apple

@@ -87,7 +87,7 @@
 		{#each primitiveSizes as size}
 			<span class="pa-icon pa-icon--search" style="--pa-icon-size: {size};" aria-hidden="true"></span>
 		{/each}
-		<span class="pa-icon pa-icon--search" style="--pa-icon-size: 2.4rem; color: var(--pc-accent);" aria-hidden="true"></span>
+		<span class="pa-icon pa-icon--search" style="--pa-icon-size: 2.4rem; color: var(--pc-primary);" aria-hidden="true"></span>
 		<span class="pa-icon pa-icon--search" style="--pa-icon-size: 2.4rem; color: var(--pc-danger);" aria-hidden="true"></span>
 	</div>
 	<Paragraph class="text-secondary mt-3">
@@ -100,7 +100,7 @@
 
 <!-- sized + coloured -->
 <span class="pa-icon pa-icon--search"
-      style="--pa-icon-size: 2.4rem; color: var(--pc-accent);"></span>`}</CodeBlock>
+      style="--pa-icon-size: 2.4rem; color: var(--pc-primary);"></span>`}</CodeBlock>
 </Card>
 
 <!-- ============================================================ -->

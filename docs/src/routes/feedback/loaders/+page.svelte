@@ -68,15 +68,15 @@
 <Card titleText="Inline Spinners" class="mb-6">
 
 	<Paragraph class="mb-4">
-		<Spinner size="xs" variant="primary" class="d-inline-block mr-2" />
+		<Spinner size="xs" variant="primary" class="d-inline-block me-2" />
 		Loading inline content...
 	</Paragraph>
 	<Paragraph class="mb-4">
-		<Spinner variant="success" class="d-inline-block mr-2" />
+		<Spinner variant="success" class="d-inline-block me-2" />
 		Processing your request...
 	</Paragraph>
 	<Paragraph>
-		<Spinner variant="info" class="d-inline-block mr-2" />
+		<Spinner variant="info" class="d-inline-block me-2" />
 		Fetching data from server...
 	</Paragraph>
 </Card>

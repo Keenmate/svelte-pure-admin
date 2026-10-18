@@ -130,20 +130,20 @@
 <br />
 
 <!-- ============================================================
-     Layout variant · hero-right (mirror of default, 6 tiles)
+     Layout variant · hero-end (mirror of default, 6 tiles)
      ============================================================ -->
-<Heading level={3}>Layout variant · <Code>pa-kpi-bento__grid--hero-right</Code></Heading>
+<Heading level={3}>Layout variant · <Code>pa-kpi-bento__grid--hero-end</Code></Heading>
 <Paragraph>
 	Mirror of the default layout — hero spans the right half × 2 rows, two stacked supporting tiles on
 	the left of rows 1-2, three equal tiles below. Same 6-tile contract; source order is unchanged
-	(1st = hero). Only the named-area template flips via <Code>layout="hero-right"</Code>.
+	(1st = hero). Only the named-area template flips via <Code>layout="hero-end"</Code>.
 </Paragraph>
 
 <KpiBento
 	titleText="Key Performance Indicators"
 	isLive
-	layout="hero-right"
-	footerText="Bento layout · --hero-right — Hero on the right, mirror of the default 6-tile composition."
+	layout="hero-end"
+	footerText="Bento layout · --hero-end — Hero at the end (right in LTR), mirror of the default 6-tile composition."
 >
 	<KpiBentoTile isHero variant="positive" labelText="Monthly Revenue" prefix="$" valueText="849" unit="K" deltaText="+12.8%" detailTitleText="Monthly Revenue · 12MO" previousValueText="$753K" targetText="$900K">
 		{#snippet chart()}<Sparkline data={sparks.revenue} type="area" height="100%" />{/snippet}
