@@ -32,7 +32,7 @@
 		/** Subtle background panel */
 		isFilled?: boolean;
 		/** Theme color for left border (1-9) */
-		color?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+		themeColor?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 		/** Show left border (set false to remove) */
 		hasBorder?: boolean;
 		/** Wrap in pa-fields-container for CSS container query responsive behavior */
@@ -56,7 +56,7 @@
 		isLinear = false,
 		isChips = false,
 		isFilled = false,
-		color,
+		themeColor,
 		hasBorder = true,
 		hasContainerQuery = false,
 		class: className = '',
@@ -88,7 +88,7 @@
 		if (isRelaxed) base.push('pa-fields--relaxed');
 
 		// Color variant
-		if (color) base.push(`pa-fields--color-${color}`);
+		if (themeColor) base.push(`pa-fields--color-${themeColor}`);
 
 		// Border removal
 		if (!hasBorder) base.push('pa-fields--no-border');

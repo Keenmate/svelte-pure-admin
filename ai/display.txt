@@ -201,7 +201,7 @@ and border-radius properly.
 Props:
   titleText?     string - Card title
   variant?       'primary' | 'success' | 'warning' | 'danger'
-  color?         1-9 (theme color)
+  themeColor?    1-9 (theme color)
   isScrollable?  boolean (false) - Horizontal scrolling for wide tables
   isPlain?       boolean (false) - Remove card styling (border, shadow, bg)
   class?         string

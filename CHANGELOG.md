@@ -49,6 +49,7 @@ plain-text values `*Text`, a single actions area is `actions`. No aliases for th
   `KpiTerminalTile` `valueUnit` / `valuePrefix` → `unitText` / `prefixText`.
 - `TableCard` / `TableContainer` `headerActions` snippet → `actions` (one actions area; `Card` keeps
   `headerActions` / `footerActions` because it has two).
+- `Fields` / `TableCard` `color` (theme slot 1-9) → `themeColor`, like every other component.
 - Docs, `ai/` reference and fidelity maps updated.
 
 ### Added — `<Card>` responsive header actions (`headerActionsCollapsed`)

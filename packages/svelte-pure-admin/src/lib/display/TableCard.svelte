@@ -20,7 +20,7 @@
 		/** Semantic color variant */
 		variant?: SemanticVariant;
 		/** Theme color variant (1-9) */
-		color?: ThemeColor;
+		themeColor?: ThemeColor;
 		/** Enable horizontal scrolling for wide tables */
 		isScrollable?: boolean;
 		/** Plain variant - removes card styling (border, shadow, background) */
@@ -41,7 +41,7 @@
 		titleText,
 		descriptionText,
 		variant,
-		color,
+		themeColor,
 		isScrollable = false,
 		isPlain = false,
 		class: className = '',
@@ -55,7 +55,7 @@
 	const classes = $derived(() => {
 		const base = ['pa-table-card'];
 		if (variant) base.push(`pa-table-card--${variant}`);
-		if (color) base.push(`pa-table-card--color-${color}`);
+		if (themeColor) base.push(`pa-table-card--color-${themeColor}`);
 		if (isPlain) base.push('pa-table-card--plain');
 		if (className) base.push(className);
 		return base.join(' ');

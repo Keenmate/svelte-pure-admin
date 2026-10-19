@@ -457,17 +457,17 @@
 	<Heading level={4}>Border Colors</Heading>
 	<Grid>
 		<Column size="1-3">
-			<Fields color={1}>
+			<Fields themeColor={1}>
 				<Field labelText="Color 1" valueText="Red / Primary" />
 			</Fields>
 		</Column>
 		<Column size="1-3">
-			<Fields color={4}>
+			<Fields themeColor={4}>
 				<Field labelText="Color 4" valueText="Green / Success" />
 			</Fields>
 		</Column>
 		<Column size="1-3">
-			<Fields color={7}>
+			<Fields themeColor={7}>
 				<Field labelText="Color 7" valueText="Blue / Info" />
 			</Fields>
 		</Column>
@@ -476,7 +476,7 @@
 	<Heading level={4} class="mt-4">Filled + Color (Tinted Background)</Heading>
 	<Grid>
 		<Column size="1-3">
-			<Fields isFilled color={1}>
+			<Fields isFilled themeColor={1}>
 				<Field labelText="Status">
 					<Badge variant="danger">Error</Badge>
 				</Field>
@@ -484,7 +484,7 @@
 			</Fields>
 		</Column>
 		<Column size="1-3">
-			<Fields isFilled color={4}>
+			<Fields isFilled themeColor={4}>
 				<Field labelText="Status">
 					<Badge variant="success">Success</Badge>
 				</Field>
@@ -492,7 +492,7 @@
 			</Fields>
 		</Column>
 		<Column size="1-3">
-			<Fields isFilled color={3}>
+			<Fields isFilled themeColor={3}>
 				<Field labelText="Status">
 					<Badge variant="warning">Warning</Badge>
 				</Field>
@@ -773,7 +773,7 @@
 					{#if selectedOrderId && orderData[selectedOrderId]}
 						{@const order = orderData[selectedOrderId]}
 						<FieldGroup titleText="Order Info">
-							<Fields isFilled color={order.statusColor}>
+							<Fields isFilled themeColor={order.statusColor}>
 								<Field labelText="Order ID" valueText={order.id} />
 								<Field labelText="Date" valueText={order.date} />
 								<Field labelText="Status">

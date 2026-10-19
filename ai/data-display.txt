@@ -106,7 +106,7 @@ Props:
   isLinear?          boolean (false) - Ultra-clean side-by-side, weight+color only
   isChips?           boolean (false) - Notion-style inline pills
   isFilled?          boolean (false) - Subtle background panel
-  color?             1-9 - Theme color for left border
+  themeColor?        1-9 - Theme color for left border
   hasBorder?         boolean (true) - Show left border (false to remove)
   hasContainerQuery? boolean (false) - Wrap for CSS container query responsiveness
   class?             string
@@ -174,7 +174,7 @@ Chips layout (Notion-style inline pills):
 
 Filled background panel with color accent:
 
-<Fields isFilled color={3}>
+<Fields isFilled themeColor={3}>
   <Field labelText="Plan" valueText="Enterprise" />
   <Field labelText="Users" valueText="Unlimited" />
   <Field labelText="Support" valueText="24/7 Priority" />

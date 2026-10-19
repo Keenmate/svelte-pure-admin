@@ -246,7 +246,7 @@ Standard pattern props for visual appearance:
   variant        -- Color/style variant (primary, success, danger, warning, info, etc.)
   size           -- Size variant (xs, sm, lg, xl)
   type           -- Structural type (button type, input type)
-  color          -- Theme color (1-9) for numbered color schemes
+  themeColor     -- Theme color slot (1-9) for numbered color schemes
   position       -- Placement (top-end, bottom-start, center, etc.)
 
 Examples:
@@ -254,7 +254,7 @@ Examples:
   <Button variant="primary" size="lg">Big Button</Button>
   <Badge variant="success" size="sm" isPill>Active</Badge>
   <Toast variant="danger" titleText="Error" messageText="Failed" />
-  <Fields color={3} cols={2}>...</Fields>
+  <Fields themeColor={3} cols={2}>...</Fields>
   <ToastContainer position="top-end">...</ToastContainer>
 
 

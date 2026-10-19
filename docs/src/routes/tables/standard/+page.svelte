@@ -1536,7 +1536,7 @@
 <Paragraph>Use the <Code>color</Code> prop with values 1-9 for theme-based colors.</Paragraph>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-	<TableCard titleText="Color 1" color={1}>
+	<TableCard titleText="Color 1" themeColor={1}>
 		<Table size="sm">
 			{#snippet children()}
 				<thead><tr><th>Item</th><th>Value</th></tr></thead>
@@ -1545,7 +1545,7 @@
 		</Table>
 	</TableCard>
 
-	<TableCard titleText="Color 2" color={2}>
+	<TableCard titleText="Color 2" themeColor={2}>
 		<Table size="sm">
 			{#snippet children()}
 				<thead><tr><th>Item</th><th>Value</th></tr></thead>
@@ -1554,7 +1554,7 @@
 		</Table>
 	</TableCard>
 
-	<TableCard titleText="Color 3" color={3}>
+	<TableCard titleText="Color 3" themeColor={3}>
 		<Table size="sm">
 			{#snippet children()}
 				<thead><tr><th>Item</th><th>Value</th></tr></thead>
@@ -1563,7 +1563,7 @@
 		</Table>
 	</TableCard>
 
-	<TableCard titleText="Color 4" color={4}>
+	<TableCard titleText="Color 4" themeColor={4}>
 		<Table size="sm">
 			{#snippet children()}
 				<thead><tr><th>Item</th><th>Value</th></tr></thead>
@@ -1572,7 +1572,7 @@
 		</Table>
 	</TableCard>
 
-	<TableCard titleText="Color 5" color={5}>
+	<TableCard titleText="Color 5" themeColor={5}>
 		<Table size="sm">
 			{#snippet children()}
 				<thead><tr><th>Item</th><th>Value</th></tr></thead>
@@ -1581,7 +1581,7 @@
 		</Table>
 	</TableCard>
 
-	<TableCard titleText="Color 6" color={6}>
+	<TableCard titleText="Color 6" themeColor={6}>
 		<Table size="sm">
 			{#snippet children()}
 				<thead><tr><th>Item</th><th>Value</th></tr></thead>
