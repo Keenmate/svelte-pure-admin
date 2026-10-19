@@ -314,7 +314,7 @@
 	</Grid>
 
 	<Heading level={4}>No Gutter</Heading>
-	<Grid noGutter>
+	<Grid isNoGutter>
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
 		<Column size="1-3"><div class="grid-demo-cell">1/3</div></Column>
@@ -441,10 +441,10 @@
 <Grid align="middle">...</Grid>
 
 <!-- Same height columns -->
-<Grid sameHeight>...</Grid>
+<Grid isSameHeight>...</Grid>
 
 <!-- No gutter -->
-<Grid noGutter>...</Grid>`}</CodeBlock>
+<Grid isNoGutter>...</Grid>`}</CodeBlock>
 		</Column>
 		<Column size="100" md="50">
 			<Heading level={4} class="mb-2">Column Props</Heading>

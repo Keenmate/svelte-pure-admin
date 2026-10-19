@@ -37,9 +37,9 @@
 		isHero
 		variant="up-strong"
 		labelText="Monthly Revenue"
-		prefix="$"
+		prefixText="$"
 		valueText="871"
-		unit="K"
+		unitText="K"
 		deltaText="+15.8%"
 		detailTitleText="Monthly Revenue · 12MO"
 		previousValueText="$752K"
@@ -54,7 +54,7 @@
 		variant="positive"
 		labelText="Completion Rate"
 		valueText="87.9"
-		unit="%"
+		unitText="%"
 		deltaText="+4.4%"
 		detailTitleText="Completion Rate · 30D"
 		targetText="90.0%"
@@ -68,7 +68,7 @@
 		variant="negative"
 		labelText="Server Temp"
 		valueText="25.0"
-		unit="°C"
+		unitText="°C"
 		deltaText="+1.9%"
 		detailTitleText="Server Temp · 24H"
 		targetText="≤ 25°C"
@@ -82,7 +82,7 @@
 		variant="up-strong"
 		labelText="Server Capacity"
 		valueText="86.8"
-		unit="%"
+		unitText="%"
 		deltaText="+22.2%"
 		detailTitleText="Server Capacity · 7D"
 		targetText="80.0%"
@@ -96,7 +96,7 @@
 		variant="up-strong"
 		labelText="Error Rate"
 		valueText="0.28"
-		unit="%"
+		unitText="%"
 		deltaText="-32.6%"
 		detailTitleText="Error Rate · 24H"
 		targetText="≤ 0.50%"
@@ -109,9 +109,9 @@
 	<KpiBentoTile
 		variant="positive"
 		labelText="Tokyo Office"
-		prefix="¥"
+		prefixText="¥"
 		valueText="12.1"
-		unit="M"
+		unitText="M"
 		deltaText="+8.5%"
 		detailTitleText="Tokyo Office · 12MO"
 		targetText="¥13.0M"
@@ -143,22 +143,22 @@
 	layout="hero-end"
 	footerText="Bento layout · --hero-end — Hero at the end (right in LTR), mirror of the default 6-tile composition."
 >
-	<KpiBentoTile isHero variant="positive" labelText="Monthly Revenue" prefix="$" valueText="849" unit="K" deltaText="+12.8%" detailTitleText="Monthly Revenue · 12MO" previousValueText="$753K" targetText="$900K">
+	<KpiBentoTile isHero variant="positive" labelText="Monthly Revenue" prefixText="$" valueText="849" unitText="K" deltaText="+12.8%" detailTitleText="Monthly Revenue · 12MO" previousValueText="$753K" targetText="$900K">
 		{#snippet chart()}<Sparkline data={sparks.revenue} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="positive" labelText="Completion Rate" valueText="86.5" unit="%" deltaText="+2.8%" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
+	<KpiBentoTile variant="positive" labelText="Completion Rate" valueText="86.5" unitText="%" deltaText="+2.8%" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
 		{#snippet chart()}<Sparkline data={sparks.completion} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="up-strong" labelText="Server Capacity" valueText="85.9" unit="%" deltaText="+21.0%" detailTitleText="Server Capacity · 7D" previousValueText="71.0%" targetText="80.0%">
+	<KpiBentoTile variant="up-strong" labelText="Server Capacity" valueText="85.9" unitText="%" deltaText="+21.0%" detailTitleText="Server Capacity · 7D" previousValueText="71.0%" targetText="80.0%">
 		{#snippet chart()}<Sparkline data={sparks.capacity} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="negative" labelText="Server Temp" valueText="24.0" unit="°C" deltaText="-2.1%" detailTitleText="Server Temp · 24H" previousValueText="24.5°C" targetText="≤ 25°C">
+	<KpiBentoTile variant="negative" labelText="Server Temp" valueText="24.0" unitText="°C" deltaText="-2.1%" detailTitleText="Server Temp · 24H" previousValueText="24.5°C" targetText="≤ 25°C">
 		{#snippet chart()}<Sparkline data={sparks.serverTemp} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="up-strong" labelText="Error Rate" valueText="0.28" unit="%" deltaText="-30.9%" detailTitleText="Error Rate · 24H" previousValueText="0.41%" targetText="≤ 0.50%">
+	<KpiBentoTile variant="up-strong" labelText="Error Rate" valueText="0.28" unitText="%" deltaText="-30.9%" detailTitleText="Error Rate · 24H" previousValueText="0.41%" targetText="≤ 0.50%">
 		{#snippet chart()}<Sparkline data={sparks.errorRate} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="positive" labelText="Tokyo Office" prefix="¥" valueText="12.1" unit="M" deltaText="+8.1%" detailTitleText="Tokyo Office · 12MO" previousValueText="¥11.2M" targetText="¥13.0M">
+	<KpiBentoTile variant="positive" labelText="Tokyo Office" prefixText="¥" valueText="12.1" unitText="M" deltaText="+8.1%" detailTitleText="Tokyo Office · 12MO" previousValueText="¥11.2M" targetText="¥13.0M">
 		{#snippet chart()}<Sparkline data={sparks.tokyo} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
 </KpiBento>
@@ -179,19 +179,19 @@
 	layout="5-tile"
 	footerText="Bento layout · --5-tile — Five-tile variant for cases without a 6th supporting KPI."
 >
-	<KpiBentoTile isHero variant="positive" labelText="Monthly Revenue" prefix="$" valueText="849" unit="K" deltaText="+12.8%" detailTitleText="Monthly Revenue · 12MO" previousValueText="$753K" targetText="$900K">
+	<KpiBentoTile isHero variant="positive" labelText="Monthly Revenue" prefixText="$" valueText="849" unitText="K" deltaText="+12.8%" detailTitleText="Monthly Revenue · 12MO" previousValueText="$753K" targetText="$900K">
 		{#snippet chart()}<Sparkline data={sparks.revenue} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="positive" labelText="Completion Rate" valueText="86.5" unit="%" deltaText="+2.8%" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
+	<KpiBentoTile variant="positive" labelText="Completion Rate" valueText="86.5" unitText="%" deltaText="+2.8%" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
 		{#snippet chart()}<Sparkline data={sparks.completion} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="up-strong" labelText="Server Capacity" valueText="85.9" unit="%" deltaText="+21.0%" detailTitleText="Server Capacity · 7D" previousValueText="71.0%" targetText="80.0%">
+	<KpiBentoTile variant="up-strong" labelText="Server Capacity" valueText="85.9" unitText="%" deltaText="+21.0%" detailTitleText="Server Capacity · 7D" previousValueText="71.0%" targetText="80.0%">
 		{#snippet chart()}<Sparkline data={sparks.capacity} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="negative" labelText="Server Temp" valueText="24.0" unit="°C" deltaText="-2.1%" detailTitleText="Server Temp · 24H" previousValueText="24.5°C" targetText="≤ 25°C">
+	<KpiBentoTile variant="negative" labelText="Server Temp" valueText="24.0" unitText="°C" deltaText="-2.1%" detailTitleText="Server Temp · 24H" previousValueText="24.5°C" targetText="≤ 25°C">
 		{#snippet chart()}<Sparkline data={sparks.serverTemp} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
-	<KpiBentoTile variant="up-strong" labelText="Error Rate" valueText="0.28" unit="%" deltaText="-30.9%" detailTitleText="Error Rate · 24H" previousValueText="0.41%" targetText="≤ 0.50%">
+	<KpiBentoTile variant="up-strong" labelText="Error Rate" valueText="0.28" unitText="%" deltaText="-30.9%" detailTitleText="Error Rate · 24H" previousValueText="0.41%" targetText="≤ 0.50%">
 		{#snippet chart()}<Sparkline data={sparks.errorRate} type="area" height="100%" />{/snippet}
 	</KpiBentoTile>
 </KpiBento>

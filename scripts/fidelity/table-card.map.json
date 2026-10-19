@@ -8,7 +8,7 @@
     "scrollable":  { "prop": "isScrollable",    "kind": "bool" },
     "title":       { "prop": "titleText",       "kind": "string" },
     "description": { "prop": "descriptionText", "kind": "string" },
-    "actions":     { "prop": "headerActions",   "kind": "slot" },
+    "actions":     { "prop": "actions",         "kind": "slot" },
     "body":        { "prop": "children",        "kind": "slot" },
     "footer":      { "prop": "footer",          "kind": "slot" },
     "extraClass":  { "prop": "class",           "kind": "string" }

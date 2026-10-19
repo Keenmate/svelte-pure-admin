@@ -568,7 +568,7 @@
 
 <!-- Stored Submissions -->
 <TableCard titleText="Stored Submissions" isScrollable>
-	{#snippet headerActions()}
+	{#snippet actions()}
 		<Badge variant="secondary">{entries.length} total</Badge>
 		{#if entries.length > 0}
 			<Button

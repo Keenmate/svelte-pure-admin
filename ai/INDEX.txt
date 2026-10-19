@@ -245,7 +245,7 @@ Navbar -> layout.txt, getting-started.txt
 NavbarSearch -> navigation.txt
 NavDropdown -> navigation.txt
 NavItem -> navigation.txt
-noGutter (Grid) -> layout.txt
+isNoGutter (Grid) -> layout.txt
 NotificationsPanel -> feedback.txt
 NumberInput -> forms.txt
 
@@ -305,7 +305,7 @@ Runes (Svelte 5) -> common-patterns.txt, getting-started.txt
 
 S
 -
-sameHeight (Grid) -> layout.txt
+isSameHeight (Grid) -> layout.txt
 SearchContext -> navigation.txt, typescript-types.txt
 SearchResult -> navigation.txt, typescript-types.txt
 Section -> layout.txt

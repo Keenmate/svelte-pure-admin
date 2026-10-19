@@ -33,7 +33,7 @@
 </Paragraph>
 <Paragraph>
 	Two list-level modifiers are independently composable: <Code>isChartFirst</Code> flips the value/chart
-	stacking order at narrow widths, and <Code>noDelta</Code> drops the rightmost (Δ%) column when the
+	stacking order at narrow widths, and <Code>isNoDelta</Code> drops the rightmost (Δ%) column when the
 	sparkline's slope already conveys direction. Source markup stays the same; pick modifiers per instance.
 </Paragraph>
 
@@ -47,7 +47,7 @@
 		variant="up"
 		labelText="Completion Rate"
 		valueText="87.9"
-		unit="%"
+		unitText="%"
 		deltaText="+4.4%"
 		deltaVariant="positive"
 		detailTitleText="Completion Rate · 30D"
@@ -63,9 +63,9 @@
 	<KpiSparklineRow
 		variant="up"
 		labelText="Monthly Revenue"
-		prefix="$"
+		prefixText="$"
 		valueText="862"
-		unit="K"
+		unitText="K"
 		deltaText="+14.7%"
 		deltaVariant="positive"
 		detailTitleText="Monthly Revenue · 12MO"
@@ -82,7 +82,7 @@
 		variant="down"
 		labelText="Server Temp"
 		valueText="23.8"
-		unit="°C"
+		unitText="°C"
 		deltaText="-2.7%"
 		deltaVariant="negative"
 		detailTitleText="Server Temp · 24H"
@@ -99,7 +99,7 @@
 		variant="up"
 		labelText="Server Capacity"
 		valueText="83.1"
-		unit="%"
+		unitText="%"
 		deltaText="+17.1%"
 		deltaVariant="positive"
 		detailTitleText="Server Capacity · 7D"
@@ -116,7 +116,7 @@
 		variant="up-strong"
 		labelText="Error Rate"
 		valueText="0.25"
-		unit="%"
+		unitText="%"
 		deltaText="-38.1%"
 		deltaVariant="very-positive"
 		detailTitleText="Error Rate · 24H"
@@ -132,9 +132,9 @@
 	<KpiSparklineRow
 		variant="up"
 		labelText="Tokyo Office"
-		prefix="¥"
+		prefixText="¥"
 		valueText="11.6"
-		unit="M"
+		unitText="M"
 		deltaText="+3.6%"
 		deltaVariant="positive"
 		detailTitleText="Tokyo Office · 12MO"
@@ -154,10 +154,10 @@
 </KpiSparklineList>
 
 <!-- ============================================================
-     2. Layout variant: noDelta (3-col rows)
+     2. Layout variant: isNoDelta (3-col rows)
      ============================================================ -->
 
-<Heading class="mt-xl" level={3}>Layout variant · <Code>noDelta</Code></Heading>
+<Heading class="mt-xl" level={3}>Layout variant · <Code>isNoDelta</Code></Heading>
 <Paragraph>
 	Drops the rightmost (Δ%) column — each row reads as <strong>label · sparkline · value</strong>. Useful
 	when the sparkline's slope already conveys direction and the percentage delta would be redundant chrome.
@@ -169,14 +169,14 @@
 <KpiSparklineList
 	titleText="Key Performance Indicators"
 	isLive
-	noDelta
-	footerText="Sparkline list · noDelta — Drops the Δ% column; the sparkline carries direction."
+	isNoDelta
+	footerText="Sparkline list · isNoDelta — Drops the Δ% column; the sparkline carries direction."
 >
 	<KpiSparklineRow
 		variant="up"
 		labelText="Completion Rate"
 		valueText="87.9"
-		unit="%"
+		unitText="%"
 		deltaText="+4.4%"
 		deltaVariant="positive"
 		detailTitleText="Completion Rate · 30D"
@@ -192,9 +192,9 @@
 	<KpiSparklineRow
 		variant="up"
 		labelText="Monthly Revenue"
-		prefix="$"
+		prefixText="$"
 		valueText="862"
-		unit="K"
+		unitText="K"
 		deltaText="+14.7%"
 		deltaVariant="positive"
 		detailTitleText="Monthly Revenue · 12MO"
@@ -211,7 +211,7 @@
 		variant="down"
 		labelText="Server Temp"
 		valueText="23.8"
-		unit="°C"
+		unitText="°C"
 		deltaText="-2.7%"
 		deltaVariant="negative"
 		detailTitleText="Server Temp · 24H"
@@ -228,7 +228,7 @@
 		variant="up-strong"
 		labelText="Error Rate"
 		valueText="0.25"
-		unit="%"
+		unitText="%"
 		deltaText="-38.1%"
 		deltaVariant="very-positive"
 		detailTitleText="Error Rate · 24H"
@@ -242,7 +242,7 @@
 	</KpiSparklineRow>
 
 	{#snippet footer()}
-		<span><strong>Sparkline list · <Code>noDelta</Code></strong> — Drops the Δ% column; the sparkline carries direction.</span>
+		<span><strong>Sparkline list · <Code>isNoDelta</Code></strong> — Drops the Δ% column; the sparkline carries direction.</span>
 		<span>Δ% row left in markup so the same data shows on hover</span>
 	{/snippet}
 </KpiSparklineList>
@@ -257,12 +257,12 @@
 <Grid>
 	<Column size="100" md="1-3">
 		<KpiSparklineList>
-			<KpiSparklineRow variant="up" labelText="Completion Rate" valueText="87.9" unit="%" deltaText="+4.4%" deltaVariant="positive" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
+			<KpiSparklineRow variant="up" labelText="Completion Rate" valueText="87.9" unitText="%" deltaText="+4.4%" deltaVariant="positive" detailTitleText="Completion Rate · 30D" previousValueText="84.2%" targetText="90.0%">
 				{#snippet chart()}
 					<Sparkline data={sparklines.completion} type="area" showEndDot />
 				{/snippet}
 			</KpiSparklineRow>
-			<KpiSparklineRow variant="up" labelText="Monthly Revenue" prefix="$" valueText="862" unit="K" deltaText="+14.7%" deltaVariant="positive" detailTitleText="Monthly Revenue · 12MO" previousValueText="$752K" targetText="$900K">
+			<KpiSparklineRow variant="up" labelText="Monthly Revenue" prefixText="$" valueText="862" unitText="K" deltaText="+14.7%" deltaVariant="positive" detailTitleText="Monthly Revenue · 12MO" previousValueText="$752K" targetText="$900K">
 				{#snippet chart()}
 					<Sparkline data={sparklines.revenue} type="area" showEndDot />
 				{/snippet}
@@ -272,12 +272,12 @@
 
 	<Column size="100" md="1-3">
 		<KpiSparklineList isChartFirst>
-			<KpiSparklineRow variant="down" labelText="Server Temp" valueText="23.8" unit="°C" deltaText="-2.7%" deltaVariant="negative" detailTitleText="Server Temp · 24H" previousValueText="24.5°C">
+			<KpiSparklineRow variant="down" labelText="Server Temp" valueText="23.8" unitText="°C" deltaText="-2.7%" deltaVariant="negative" detailTitleText="Server Temp · 24H" previousValueText="24.5°C">
 				{#snippet chart()}
 					<Sparkline data={sparklines.serverTemp} type="area" showEndDot />
 				{/snippet}
 			</KpiSparklineRow>
-			<KpiSparklineRow variant="up" labelText="Server Capacity" valueText="83.1" unit="%" deltaText="+17.1%" deltaVariant="positive" detailTitleText="Server Capacity · 7D">
+			<KpiSparklineRow variant="up" labelText="Server Capacity" valueText="83.1" unitText="%" deltaText="+17.1%" deltaVariant="positive" detailTitleText="Server Capacity · 7D">
 				{#snippet chart()}
 					<Sparkline data={sparklines.capacity} type="area" showEndDot />
 				{/snippet}
@@ -287,12 +287,12 @@
 
 	<Column size="100" md="1-3">
 		<KpiSparklineList>
-			<KpiSparklineRow variant="up-strong" labelText="Error Rate" valueText="0.25" unit="%" deltaText="-38.1%" deltaVariant="very-positive" detailTitleText="Error Rate · 24H">
+			<KpiSparklineRow variant="up-strong" labelText="Error Rate" valueText="0.25" unitText="%" deltaText="-38.1%" deltaVariant="very-positive" detailTitleText="Error Rate · 24H">
 				{#snippet chart()}
 					<Sparkline data={sparklines.errorRate} type="area" showEndDot />
 				{/snippet}
 			</KpiSparklineRow>
-			<KpiSparklineRow variant="up" labelText="Tokyo Office" prefix="¥" valueText="11.6" unit="M" deltaText="+3.6%" deltaVariant="positive" detailTitleText="Tokyo Office · 12MO">
+			<KpiSparklineRow variant="up" labelText="Tokyo Office" prefixText="¥" valueText="11.6" unitText="M" deltaText="+3.6%" deltaVariant="positive" detailTitleText="Tokyo Office · 12MO">
 				{#snippet chart()}
 					<Sparkline data={sparklines.tokyo} type="area" showEndDot />
 				{/snippet}
@@ -347,7 +347,7 @@
 			has room for label+value+delta on one line at that width.
 		</li>
 		<li>
-			<Code>noDelta</Code> — drops the rightmost Δ% column. At wide widths the row shrinks from 4 cols
+			<Code>isNoDelta</Code> — drops the rightmost Δ% column. At wide widths the row shrinks from 4 cols
 			to 3 (<Code>label · chart · value</Code>); at mid-narrow the top row becomes <Code>label value</Code>
 			only; at very-narrow the bottom row becomes a single full-width value cell. The delta element is
 			hidden via <Code>display: none</Code>, so the same markup keeps the value available for the popover
@@ -355,7 +355,7 @@
 		</li>
 	</BasicList>
 	<Paragraph>
-		Composing both (<Code>isChartFirst</Code> + <Code>noDelta</Code>) at mid-narrow gives a clean 3-row
+		Composing both (<Code>isChartFirst</Code> + <Code>isNoDelta</Code>) at mid-narrow gives a clean 3-row
 		single-column stack: <Code>label / chart / value</Code>.
 	</Paragraph>
 </Card>
@@ -367,7 +367,7 @@
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
 		<li><Code>isChartFirst</Code> — apply <Code>pa-kpi-spark-list--chart-first</Code> modifier (rotates the narrow-card layout to label-on-top / chart-middle / value+delta-bottom).</li>
-		<li><Code>noDelta</Code> — apply <Code>pa-kpi-spark-list--no-delta</Code> modifier (drops the Δ% column; composes with <Code>isChartFirst</Code>).</li>
+		<li><Code>isNoDelta</Code> — apply <Code>pa-kpi-spark-list--no-delta</Code> modifier (drops the Δ% column; composes with <Code>isChartFirst</Code>).</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiSparklineRow props</Heading>

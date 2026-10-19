@@ -392,7 +392,7 @@
 	<!-- Simulated toast preview -->
 	<Card class="mt-4 bg-light" hasPadding>
 		<Paragraph color="secondary" class="mb-2"><Em>Toast preview (normally appears in corner):</Em></Paragraph>
-		<Toast variant="danger" titleText="Validation Failed" messageText="Invalid credentials. Please check your email and password." show={true} duration={0} />
+		<Toast variant="danger" titleText="Validation Failed" messageText="Invalid credentials. Please check your email and password." isVisible={true} duration={0} />
 	</Card>
 
 	<Callout variant="warning" class="mt-4">
@@ -622,5 +622,5 @@
 </Card>
 
 <ToastContainer position="top-end">
-	<Toast variant="danger" titleText="Validation Failed" messageText="Invalid credentials. Please check your email and password." bind:show={showToast} duration={4000} />
+	<Toast variant="danger" titleText="Validation Failed" messageText="Invalid credentials. Please check your email and password." bind:isVisible={showToast} duration={4000} />
 </ToastContainer>

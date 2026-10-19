@@ -6,7 +6,7 @@
 
 	interface Props {
 		/** Whether this tab is active */
-		active?: boolean;
+		isActive?: boolean;
 		/** Click handler */
 		onclick?: (event: MouseEvent) => void;
 		/** Additional CSS classes */
@@ -15,11 +15,11 @@
 		children?: import('svelte').Snippet;
 	}
 
-	let { active = false, onclick, class: className = '', children }: Props = $props();
+	let { isActive = false, onclick, class: className = '', children }: Props = $props();
 
 	const classes = $derived(() => {
 		const base = ['pa-card__tab'];
-		if (active) base.push('pa-card__tab--active');
+		if (isActive) base.push('pa-card__tab--active');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

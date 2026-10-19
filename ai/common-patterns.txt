@@ -113,7 +113,7 @@ Toast show binding:
 <Button onclick={() => showToast = true}>Show Notification</Button>
 <ToastContainer position="top-end">
   {#if showToast}
-    <Toast variant="success" titleText="Done" messageText="Saved." bind:show={showToast} />
+    <Toast variant="success" titleText="Done" messageText="Saved." bind:isVisible={showToast} />
   {/if}
 </ToastContainer>
 
@@ -268,7 +268,7 @@ Four-column stat cards:
 
 Equal height cards:
 
-<Grid gap="md" sameHeight>
+<Grid gap="md" isSameHeight>
   <Column md="1-3"><Card titleText="Short">Content</Card></Column>
   <Column md="1-3"><Card titleText="Tall">Lots of content here...</Card></Column>
   <Column md="1-3"><Card titleText="Medium">Some content</Card></Column>
@@ -558,7 +558,7 @@ Basic toast setup:
       variant={toast.variant}
       titleText={toast.title}
       messageText={toast.message}
-      bind:show={toast.show}
+      bind:isVisible={toast.show}
       onclose={() => removeToast(toast.id)}
     />
   {/each}

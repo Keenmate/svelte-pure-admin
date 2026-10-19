@@ -241,7 +241,7 @@
 				<div class="cq-tabs">
 					<Tabs>
 						{#each panelKeys as key (key)}
-							<TabItem active={tab3 === key} onclick={() => (tab3 = key)}>
+							<TabItem isActive={tab3 === key} onclick={() => (tab3 = key)}>
 								{#snippet icon()}<i class="fa-solid {panels[key].icon}"></i>{/snippet}
 								<span class="cq-tablabel">{panels[key].label}</span>
 							</TabItem>
@@ -335,7 +335,7 @@
 					{:else}
 						<Tabs>
 							{#each panelKeys as key (key)}
-								<TabItem active={tab4 === key} onclick={() => (tab4 = key)}>
+								<TabItem isActive={tab4 === key} onclick={() => (tab4 = key)}>
 									{#snippet icon()}<i class="fa-solid {panels[key].icon}"></i>{/snippet}
 									{#if mode === 'tabs'}<span>{panels[key].label}</span>{/if}
 								</TabItem>

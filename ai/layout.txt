@@ -193,7 +193,7 @@ Content pieces (place inside the zones):
   PageHeader   <div class="pa-page-header"> — page-title wrapper. children, class.
   NavItem      one menu item. href, hasDropdown, isActive, navPriority,
                navCollapse="hide", navIcon; `dropdown` snippet -> NavDropdown.
-  NavDropdown  <ul class="pa-navmenu__dropdown"> submenu. level2, class.
+  NavDropdown  <ul class="pa-navmenu__dropdown"> submenu. isLevel2, class.
   NavbarSearch search pill that opens the command palette. placeholder, size, onclick.
   NavbarSearchField inline LIVE search box (.pa-navbar-search--field) with its own
                anchored .pa-search-autocomplete dropdown. ONE globalSearch(query) call
@@ -474,10 +474,10 @@ Row container for the column grid system. Renders <div class="pc-row">.
 Uses CSS flexbox with modifier classes for alignment, gutters, and gap.
 
 Props:
-  noGutter?: boolean                        Remove spacing between columns (default: false)
+  isNoGutter?: boolean                        Remove spacing between columns (default: false)
   justify?: 'center' | 'end' | 'between' | 'around'    Horizontal alignment
   align?: 'top' | 'middle' | 'bottom'      Vertical alignment
-  sameHeight?: boolean                      Force all columns to equal height (default: false)
+  isSameHeight?: boolean                      Force all columns to equal height (default: false)
   gap?: '0' | 'xs' | 'sm' | 'md' | 'base' | 'lg' | 'xl' | '2xl' | number
                                             Gap between items (semantic name or numeric 1-20)
   class?: string                            Additional CSS classes
@@ -507,14 +507,14 @@ Centered content with gap:
 
 No gutters:
 
-<Grid noGutter={true}>
+<Grid isNoGutter={true}>
   <Column size="50">Flush left</Column>
   <Column size="50">Flush right</Column>
 </Grid>
 
 Same-height columns (for card grids):
 
-<Grid sameHeight={true} gap="lg">
+<Grid isSameHeight={true} gap="lg">
   <Column size="1-3"><Card>Short</Card></Column>
   <Column size="1-3"><Card>Tall card with more content</Card></Column>
   <Column size="1-3"><Card>Medium</Card></Column>
@@ -629,7 +629,7 @@ Responsive offsets:
 
 Dashboard layout example:
 
-<Grid gap="md" sameHeight={true}>
+<Grid gap="md" isSameHeight={true}>
   <Column size="100" md="50" xl="25">
     <Card>Metric 1</Card>
   </Column>
@@ -857,7 +857,7 @@ RESPONSIVE GRID PATTERNS
 
 Stats row (4 cards, responsive):
 
-<Grid gap="md" sameHeight={true}>
+<Grid gap="md" isSameHeight={true}>
   <Column size="100" sm="50" xl="25"><Card>Revenue</Card></Column>
   <Column size="100" sm="50" xl="25"><Card>Users</Card></Column>
   <Column size="100" sm="50" xl="25"><Card>Orders</Card></Column>
@@ -905,7 +905,7 @@ CRITICAL REMINDERS
 - Snippets use {#snippet name()} ... {/snippet} syntax, NOT <slot>
 - navStart and navEnd render inside <ul>, so provide <li> elements
 - Footer uses logical directions (start/end) for RTL support
-- Grid sameHeight is useful for card grids where cards have different content lengths
+- Grid isSameHeight is useful for card grids where cards have different content lengths
 - Column with no size prop and no responsive sizes renders as pc-col (auto width)
 - All components accept class prop for custom CSS classes
 

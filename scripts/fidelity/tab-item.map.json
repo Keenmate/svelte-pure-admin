@@ -3,6 +3,6 @@
   "component": "tab-item",
   "features": {
     "label":  { "prop": "children", "kind": "slot" },
-    "active": { "prop": "active",   "kind": "bool" }
+    "active": { "prop": "isActive", "kind": "bool" }
   }
 }

@@ -75,7 +75,7 @@
 			<KpiSparklineRow
 				variant="up-strong"
 				labelText="Product Epsilon"
-				prefix="$"
+				prefixText="$"
 				valueText="9,847"
 				deltaText="+15.2%"
 				deltaVariant="very-positive"
@@ -91,7 +91,7 @@
 			<KpiSparklineRow
 				variant="up"
 				labelText="Product Alpha"
-				prefix="$"
+				prefixText="$"
 				valueText="24,532"
 				deltaText="+12.1%"
 				deltaVariant="positive"
@@ -107,7 +107,7 @@
 			<KpiSparklineRow
 				variant="up"
 				labelText="Product Delta"
-				prefix="$"
+				prefixText="$"
 				valueText="12,234"
 				deltaText="+8.3%"
 				deltaVariant="positive"
@@ -123,7 +123,7 @@
 			<KpiSparklineRow
 				variant="up"
 				labelText="Product Beta"
-				prefix="$"
+				prefixText="$"
 				valueText="18,940"
 				deltaText="+5.4%"
 				deltaVariant="positive"
@@ -139,7 +139,7 @@
 			<KpiSparklineRow
 				variant="down"
 				labelText="Product Gamma"
-				prefix="$"
+				prefixText="$"
 				valueText="15,677"
 				deltaText="-3.1%"
 				deltaVariant="negative"
@@ -157,9 +157,9 @@
 			<KpiHeroMain
 				variant="up-strong"
 				labelText="Monthly Revenue"
-				prefix="$"
+				prefixText="$"
 				valueText="847"
-				unit="K"
+				unitText="K"
 				deltaText="+12.5%"
 				periodText="vs last month"
 				targetText="tgt $900K"
@@ -178,9 +178,9 @@
 				<KpiHeroSide
 					variant="positive"
 					labelText="YTD Revenue"
-					prefix="$"
+					prefixText="$"
 					valueText="9.2"
-					unit="M"
+					unitText="M"
 					deltaText="+18.4% vs LY"
 					detailTitleText="YTD Revenue"
 					targetText="$11.1M"
@@ -188,9 +188,9 @@
 				<KpiHeroSide
 					variant="positive"
 					labelText="Q4 Actual"
-					prefix="$"
+					prefixText="$"
 					valueText="2.4"
-					unit="M"
+					unitText="M"
 					deltaText="+9.1% vs Q3"
 					detailTitleText="Q4 Revenue"
 					targetText="$2.7M"
@@ -198,9 +198,9 @@
 				<KpiHeroSide
 					variant="neutral"
 					labelText="Forecast EOY"
-					prefix="$"
+					prefixText="$"
 					valueText="11.1"
-					unit="M"
+					unitText="M"
 					deltaText="on track"
 					detailTitleText="Forecast EOY"
 					targetText="$11.0M"
@@ -391,7 +391,7 @@
 	</Column>
 	<Column size="100" md="1-3">
 		<Card titleText="Quick Actions">
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" isBlock>New Order</Button>
 				<Button variant="secondary" isBlock>Add Customer</Button>
 				<Button variant="secondary" isBlock>Generate Report</Button>

@@ -28,9 +28,9 @@
 		/** Focal numeric value. */
 		valueText?: string | number;
 		/** Unit suffix appended after the number ("%", "°C", "M", "K"). */
-		unit?: string;
+		unitText?: string;
 		/** Currency / scale prefix rendered before the number ("$", "¥", "€"). */
-		prefix?: string;
+		prefixText?: string;
 		/** Δ% text shown in the meta row (e.g. "+15.8%"). */
 		deltaText?: string;
 		/** Period label in the meta row (e.g. "vs last month"). */
@@ -78,8 +78,8 @@
 		variant,
 		labelText,
 		valueText,
-		unit,
-		prefix,
+		unitText,
+		prefixText,
 		deltaText,
 		periodText,
 		targetText,
@@ -97,9 +97,9 @@
 	}: Props = $props();
 
 	const autoDetailRows = $derived(buildAutoDetailRows({
-		prefix,
+		prefix: prefixText,
 		valueText,
-		unit,
+		unit: unitText,
 		previousValueText,
 		deltaAbsoluteText,
 		deltaAbsoluteSentiment: deltaAbsoluteVariant,
@@ -128,9 +128,9 @@
 		<div class="pa-kpi-hero-main__value">{@render value()}</div>
 	{:else}
 		<div class="pa-kpi-hero-main__value">
-			{#if prefix}<span class="pa-kpi-hero-main__unit">{prefix}</span>{/if}
+			{#if prefixText}<span class="pa-kpi-hero-main__unit">{prefixText}</span>{/if}
 			<span class="pa-kpi-hero-main__num">{valueText ?? ''}</span>
-			{#if unit}<span class="pa-kpi-hero-main__unit">{unit}</span>{/if}
+			{#if unitText}<span class="pa-kpi-hero-main__unit">{unitText}</span>{/if}
 		</div>
 	{/if}
 

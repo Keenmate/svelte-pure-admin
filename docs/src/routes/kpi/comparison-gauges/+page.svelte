@@ -39,7 +39,7 @@
 		variant="warning"
 		labelText="Completion Rate"
 		valueText="88.1"
-		unit="%"
+		unitText="%"
 		barPercent={97.9}
 		scaleEndText="tgt 90.0%"
 		detailTitleText="Completion Rate · 30D"
@@ -51,9 +51,9 @@
 	<KpiGauge
 		variant="positive"
 		labelText="Monthly Revenue"
-		prefix="$"
+		prefixText="$"
 		valueText="859"
-		unit="K"
+		unitText="K"
 		barPercent={95.4}
 		scaleEndText="tgt $900K"
 		detailTitleText="Monthly Revenue · 12MO"
@@ -65,7 +65,7 @@
 		variant="positive"
 		labelText="Server Temp"
 		valueText="23.8"
-		unit="°C"
+		unitText="°C"
 		barPercent={95.2}
 		scaleEndText="tgt 25.0°C"
 		detailTitleText="Server Temp · 24H"
@@ -78,7 +78,7 @@
 		variant="warning"
 		labelText="Server Capacity"
 		valueText="84.5"
-		unit="%"
+		unitText="%"
 		barPercent={84.5}
 		tickPosition="80%"
 		scaleEndText="100% · tgt 80%"
@@ -92,7 +92,7 @@
 		variant="positive"
 		labelText="Error Rate"
 		valueText="0.27"
-		unit="%"
+		unitText="%"
 		barPercent={54}
 		scaleEndText="tgt 0.50%"
 		detailTitleText="Error Rate · 24H"
@@ -103,9 +103,9 @@
 	<KpiGauge
 		variant="neutral"
 		labelText="Tokyo Office"
-		prefix="¥"
+		prefixText="¥"
 		valueText="11.7"
-		unit="M"
+		unitText="M"
 		barPercent={90}
 		scaleEndText="tgt ¥13.0M"
 		detailTitleText="Tokyo Office · 12MO"
@@ -133,22 +133,22 @@
 <Grid>
 	<Column size="100" md="1-3">
 		<KpiGaugeList>
-			<KpiGauge variant="warning" labelText="Completion Rate" valueText="88.1" unit="%" barPercent={97.9} scaleEndText="tgt 90.0%" detailTitleText="Completion Rate · 30D" targetText="90.0%" />
-			<KpiGauge variant="positive" labelText="Monthly Revenue" prefix="$" valueText="859" unit="K" barPercent={95.4} scaleEndText="tgt $900K" detailTitleText="Monthly Revenue · 12MO" targetText="$900K" />
+			<KpiGauge variant="warning" labelText="Completion Rate" valueText="88.1" unitText="%" barPercent={97.9} scaleEndText="tgt 90.0%" detailTitleText="Completion Rate · 30D" targetText="90.0%" />
+			<KpiGauge variant="positive" labelText="Monthly Revenue" prefixText="$" valueText="859" unitText="K" barPercent={95.4} scaleEndText="tgt $900K" detailTitleText="Monthly Revenue · 12MO" targetText="$900K" />
 		</KpiGaugeList>
 	</Column>
 
 	<Column size="100" md="1-3">
 		<KpiGaugeList>
-			<KpiGauge variant="positive" labelText="Server Temp" valueText="23.8" unit="°C" barPercent={95.2} scaleEndText="tgt 25.0°C" detailTitleText="Server Temp · 24H" targetText="25.0°C" />
-			<KpiGauge variant="warning" labelText="Server Capacity" valueText="84.5" unit="%" barPercent={100} scaleEndText="tgt 80.0%" detailTitleText="Server Capacity · 7D" targetText="80.0%" />
+			<KpiGauge variant="positive" labelText="Server Temp" valueText="23.8" unitText="°C" barPercent={95.2} scaleEndText="tgt 25.0°C" detailTitleText="Server Temp · 24H" targetText="25.0°C" />
+			<KpiGauge variant="warning" labelText="Server Capacity" valueText="84.5" unitText="%" barPercent={100} scaleEndText="tgt 80.0%" detailTitleText="Server Capacity · 7D" targetText="80.0%" />
 		</KpiGaugeList>
 	</Column>
 
 	<Column size="100" md="1-3">
 		<KpiGaugeList>
-			<KpiGauge variant="positive" labelText="Error Rate" valueText="0.27" unit="%" barPercent={54} scaleEndText="tgt 0.50%" detailTitleText="Error Rate · 24H" targetText="0.50%" />
-			<KpiGauge variant="neutral" labelText="Tokyo Office" prefix="¥" valueText="11.7" unit="M" barPercent={90} scaleEndText="tgt ¥13.0M" detailTitleText="Tokyo Office · 12MO" targetText="¥13.0M" />
+			<KpiGauge variant="positive" labelText="Error Rate" valueText="0.27" unitText="%" barPercent={54} scaleEndText="tgt 0.50%" detailTitleText="Error Rate · 24H" targetText="0.50%" />
+			<KpiGauge variant="neutral" labelText="Tokyo Office" prefixText="¥" valueText="11.7" unitText="M" barPercent={90} scaleEndText="tgt ¥13.0M" detailTitleText="Tokyo Office · 12MO" targetText="¥13.0M" />
 		</KpiGaugeList>
 	</Column>
 </Grid>
@@ -167,17 +167,17 @@
 <Grid>
 	<Column size="100" md="25">
 		<KpiGaugeList>
-			<KpiGauge variant="warning" labelText="Completion Rate" valueText="88.1" unit="%" barPercent={97.9} scaleEndText="tgt 90.0%" detailTitleText="Completion Rate · 30D" targetText="90.0%" />
-			<KpiGauge variant="positive" labelText="Server Temp" valueText="23.8" unit="°C" barPercent={95.2} scaleEndText="tgt 25.0°C" detailTitleText="Server Temp · 24H" targetText="25.0°C" />
-			<KpiGauge variant="positive" labelText="Error Rate" valueText="0.27" unit="%" barPercent={54} scaleEndText="tgt 0.50%" detailTitleText="Error Rate · 24H" targetText="0.50%" />
+			<KpiGauge variant="warning" labelText="Completion Rate" valueText="88.1" unitText="%" barPercent={97.9} scaleEndText="tgt 90.0%" detailTitleText="Completion Rate · 30D" targetText="90.0%" />
+			<KpiGauge variant="positive" labelText="Server Temp" valueText="23.8" unitText="°C" barPercent={95.2} scaleEndText="tgt 25.0°C" detailTitleText="Server Temp · 24H" targetText="25.0°C" />
+			<KpiGauge variant="positive" labelText="Error Rate" valueText="0.27" unitText="%" barPercent={54} scaleEndText="tgt 0.50%" detailTitleText="Error Rate · 24H" targetText="0.50%" />
 		</KpiGaugeList>
 	</Column>
 
 	<Column size="100" md="45">
 		<KpiGaugeList>
-			<KpiGauge variant="positive" labelText="Monthly Revenue" prefix="$" valueText="859" unit="K" barPercent={95.4} scaleEndText="tgt $900K" detailTitleText="Monthly Revenue · 12MO" targetText="$900K" />
-			<KpiGauge variant="warning" labelText="Server Capacity" valueText="84.5" unit="%" barPercent={100} scaleEndText="tgt 80.0%" detailTitleText="Server Capacity · 7D" targetText="80.0%" />
-			<KpiGauge variant="neutral" labelText="Tokyo Office" prefix="¥" valueText="11.7" unit="M" barPercent={90} scaleEndText="tgt ¥13.0M" detailTitleText="Tokyo Office · 12MO" targetText="¥13.0M" />
+			<KpiGauge variant="positive" labelText="Monthly Revenue" prefixText="$" valueText="859" unitText="K" barPercent={95.4} scaleEndText="tgt $900K" detailTitleText="Monthly Revenue · 12MO" targetText="$900K" />
+			<KpiGauge variant="warning" labelText="Server Capacity" valueText="84.5" unitText="%" barPercent={100} scaleEndText="tgt 80.0%" detailTitleText="Server Capacity · 7D" targetText="80.0%" />
+			<KpiGauge variant="neutral" labelText="Tokyo Office" prefixText="¥" valueText="11.7" unitText="M" barPercent={90} scaleEndText="tgt ¥13.0M" detailTitleText="Tokyo Office · 12MO" targetText="¥13.0M" />
 		</KpiGaugeList>
 	</Column>
 </Grid>

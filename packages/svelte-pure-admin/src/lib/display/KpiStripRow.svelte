@@ -29,9 +29,9 @@
 		/** Focal "now" numeric value. */
 		valueText?: string | number;
 		/** Unit suffix appended after the number ("%", "°C", "M", "K", "k"). */
-		unit?: string;
+		unitText?: string;
 		/** Currency / scale prefix rendered before the number ("$", "¥", "€"). */
-		prefix?: string;
+		prefixText?: string;
 		/** Previous-period value (omit when noPreviousValue on parent). */
 		previousValueText?: string;
 		/** Δ% text shown in the delta column. */
@@ -78,8 +78,8 @@
 	let {
 		metricText,
 		valueText,
-		unit,
-		prefix,
+		unitText,
+		prefixText,
 		previousValueText,
 		deltaText,
 		deltaVariant,
@@ -116,9 +116,9 @@
 	);
 
 	const autoDetailRows = $derived(buildAutoDetailRows({
-		prefix,
+		prefix: prefixText,
 		valueText,
-		unit,
+		unit: unitText,
 		previousValueText,
 		deltaAbsoluteText,
 		deltaAbsoluteSentiment: deltaAbsoluteVariant,
@@ -143,9 +143,9 @@
 		<div class="pa-kpi-strip__now">{@render now()}</div>
 	{:else}
 		<div class="pa-kpi-strip__now">
-			{#if prefix}<span class="pa-kpi-strip__unit">{prefix}</span>{/if}
+			{#if prefixText}<span class="pa-kpi-strip__unit">{prefixText}</span>{/if}
 			<span class="pa-kpi-strip__num">{valueText ?? ''}</span>
-			{#if unit}<span class="pa-kpi-strip__unit">{unit}</span>{/if}
+			{#if unitText}<span class="pa-kpi-strip__unit">{unitText}</span>{/if}
 		</div>
 	{/if}
 

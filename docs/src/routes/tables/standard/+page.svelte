@@ -853,7 +853,7 @@
 </Card>
 
 <TableContainer isPanel titleText="Recent Orders">
-	{#snippet headerActions()}
+	{#snippet actions()}
 		<Button variant="secondary" size="sm">Export</Button>
 		<Button variant="primary" size="sm">Add Order</Button>
 	{/snippet}
@@ -978,7 +978,7 @@
 <Heading level={3} class="mt-6">Basic Table Card with Header Actions</Heading>
 
 <TableCard titleText="Recent Orders">
-	{#snippet headerActions()}
+	{#snippet actions()}
 		<Button variant="secondary" size="sm">Export</Button>
 		<Button variant="primary" size="sm">Add Order</Button>
 	{/snippet}
@@ -1033,7 +1033,7 @@
 <Grid>
 	<Column md="50">
 		<TableCard titleText="Primary Table Card" variant="primary">
-			{#snippet headerActions()}
+			{#snippet actions()}
 				<Button variant="light" size="sm">Refresh</Button>
 			{/snippet}
 
@@ -1064,7 +1064,7 @@
 	</Column>
 	<Column md="50">
 		<TableCard titleText="Success Table Card" variant="success">
-			{#snippet headerActions()}
+			{#snippet actions()}
 				<Button variant="light" size="sm">Export</Button>
 			{/snippet}
 
@@ -1300,7 +1300,7 @@
 
 <!-- Plain Table with Pagers -->
 <TableCard titleText="Plain Table with Pagers" isPlain class="mt-4">
-	{#snippet headerActions()}
+	{#snippet actions()}
 		<div class="pa-pager pa-pager--end">
 			<div class="pa-pager__container">
 				<span class="pa-pager__text">Showing 1-10 of 156</span>
@@ -1457,7 +1457,7 @@
 <Paragraph>Use the <Code>isScrollable</Code> prop on TableCard to enable horizontal scrolling for wide tables.</Paragraph>
 
 <TableCard titleText="Wide Data Table" isScrollable>
-	{#snippet headerActions()}
+	{#snippet actions()}
 		<Button variant="secondary" size="sm">Download CSV</Button>
 	{/snippet}
 

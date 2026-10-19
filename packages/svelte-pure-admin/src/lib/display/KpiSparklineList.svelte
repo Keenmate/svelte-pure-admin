@@ -29,7 +29,7 @@
 		 * `isChartFirst`. The delta element is hidden via `display: none` — leave
 		 * `deltaText` set on rows so the popover still surfaces the value on hover.
 		 */
-		noDelta?: boolean;
+		isNoDelta?: boolean;
 		/** Additional CSS classes appended to the card. */
 		class?: string;
 		/** Row content (KpiSparklineRow instances). */
@@ -43,7 +43,7 @@
 		isLive = false,
 		footerText,
 		isChartFirst = false,
-		noDelta = false,
+		isNoDelta = false,
 		class: className = '',
 		children,
 		footer
@@ -52,7 +52,7 @@
 	const classes = $derived(() => {
 		const base = ['pa-card', 'pa-kpi-spark-list'];
 		if (isChartFirst) base.push('pa-kpi-spark-list--chart-first');
-		if (noDelta) base.push('pa-kpi-spark-list--no-delta');
+		if (isNoDelta) base.push('pa-kpi-spark-list--no-delta');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

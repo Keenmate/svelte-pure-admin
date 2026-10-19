@@ -13,7 +13,7 @@ Sync with `@keenmate/pure-admin-core` **v2.7.2 → v2.9.0-rc16** — a universal
 - **`FitSlot` + `FitStep` — composable Navbar Fit.** Wrap any header slot to opt it into priority-driven degradation: when the row can't fit, slots hide / step down / relocate to the sidebar lowest-priority-first, then restore as space returns. **`NavMenu`** adds responsive item collapse (`collapse="menu" | "sidebar"`).
 - **A full search suite** — page-level **`SearchResults`**, inline live-search **`NavbarSearchField`** (single round-trip, grouped autocomplete), type-and-go **`NavbarSearchInput`** / **`SidebarSearch`**, plus **`CommandPalette`** size presets + runtime resize. New **`SidebarSection`** headings, **`SidebarDivider`** rules, and `NavItem` active state.
 - **`Sidebar` drag-to-resize** now drives core's shipped `sidebar-resize.js` — fixing a dead handle in the tablet band — and the `SettingsPanel` "Resizable" toggle is now functional.
-- **BREAKING — required is now attribute-driven.** Mark the control (`<Input required>`); core draws the asterisk. The `required` / `isRequired` props on `FormLabel` / `FormField` / `FormGroup` are **removed**. `Tabs` gains **`wrapLabels`** for multi-line, height-levelled tab titles.
+- **BREAKING — required is now attribute-driven.** Mark the control (`<Input required>`); core draws the asterisk. The `required` / `isRequired` props on `FormLabel` / `FormField` / `FormGroup` are **removed**. `Tabs` gains **`isWrapLabels`** for multi-line, height-levelled tab titles.
 - **BREAKING — full contract audit.** Every emitted class was verified against core; invented `pa-*` phantom classes were cleared library-wide and **four fully-phantom components removed** (`MetricList` / `StatusList` / `ActivityFeed` / `QuickActions` → use `Fields`/`Table`, `Badge`, `List`/`Timeline`, `ButtonGroup`). `Badge` `themeColor` now emits the real `pa-badge--color-N`.
 
 See [CHANGELOG.md](./CHANGELOG.md) for the full list and behavior-change notes.
@@ -195,7 +195,7 @@ npm install @keenmate/svelte-pure-admin @keenmate/pure-admin-core
 | `DefinitionList` | Definition list (dt/dd) |
 | `DetailView` | Detail panel wrapper with overlay/inline split-view modes |
 | `DetailPanel` | Detail panel content shell (header, tabs, body, footer) |
-| `Timeline` | Timeline container — simple/alternating/feed variants, `alignment` (start/end), `shouldKeepLayout` |
+| `Timeline` | Timeline container — simple/alternating/feed variants, `alignment` (start/end), `isKeepLayout` |
 | `TimelineItem` | Timeline entry with avatar, time, content |
 | `Code` | Inline code |
 | `CodeBlock` | Code block with optional compact mode |

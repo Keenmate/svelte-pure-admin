@@ -209,7 +209,7 @@
 
 <!-- 4. Block Buttons -->
 <Card titleText="Block Buttons">
-	<ButtonGroup vertical>
+	<ButtonGroup isVertical>
 		<Button variant="primary" isBlock>Block Level Button</Button>
 		<Button variant="secondary" isBlock>Another Block Button</Button>
 	</ButtonGroup>
@@ -228,14 +228,14 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-2">Vertical</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="secondary">Top</Button>
 				<Button variant="secondary">Middle</Button>
 				<Button variant="secondary">Bottom</Button>
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-2">No-Wrap (prevents line breaks)</Heading>
-			<ButtonGroup nowrap>
+			<ButtonGroup isNowrap>
 				<Button variant="primary">One</Button>
 				<Button variant="primary">Two</Button>
 				<Button variant="primary">Three</Button>
@@ -304,7 +304,7 @@
 			<Grid>
 				<Column size="50" xl="25">
 					<Heading level={4}>Start <Code>gap-sm</Code></Heading>
-					<ButtonGroup vertical class="gap-sm">
+					<ButtonGroup isVertical class="gap-sm">
 						<Button variant="secondary" shouldTruncateText>Short</Button>
 						<Button variant="secondary" shouldTruncateText>Medium Btn</Button>
 						<Button variant="secondary" shouldTruncateText>Long Button</Button>
@@ -312,7 +312,7 @@
 				</Column>
 				<Column size="50" xl="25">
 					<Heading level={4}>Center <Code>gap-md</Code></Heading>
-					<ButtonGroup vertical align="center" class="gap-md">
+					<ButtonGroup isVertical align="center" class="gap-md">
 						<Button variant="secondary" shouldTruncateText>Short</Button>
 						<Button variant="secondary" shouldTruncateText>Medium Btn</Button>
 						<Button variant="secondary" shouldTruncateText>Long Button</Button>
@@ -320,7 +320,7 @@
 				</Column>
 				<Column size="50" xl="25">
 					<Heading level={4}>End <Code>gap-lg</Code></Heading>
-					<ButtonGroup vertical align="end" class="gap-lg">
+					<ButtonGroup isVertical align="end" class="gap-lg">
 						<Button variant="secondary" shouldTruncateText>Short</Button>
 						<Button variant="secondary" shouldTruncateText>Medium Btn</Button>
 						<Button variant="secondary" shouldTruncateText>Long Button</Button>
@@ -328,7 +328,7 @@
 				</Column>
 				<Column size="50" xl="25">
 					<Heading level={4}>Stretch <Code>gap-xl</Code></Heading>
-					<ButtonGroup vertical align="stretch" class="gap-xl">
+					<ButtonGroup isVertical align="stretch" class="gap-xl">
 						<Button variant="primary" shouldTruncateText>Save</Button>
 						<Button variant="secondary" shouldTruncateText>Cancel</Button>
 						<Button variant="danger" shouldTruncateText>DELETE</Button>
@@ -351,7 +351,7 @@
 
 			<Heading level={4} class="mt-2">Vertical → Horizontal at lg (992px)</Heading>
 			<Paragraph color="secondary" class="mb-1">Starts vertical, becomes horizontal on large screens</Paragraph>
-			<ButtonGroup vertical lgHorizontal>
+			<ButtonGroup isVertical lgHorizontal>
 				<Button variant="success">Approve</Button>
 				<Button variant="warning">Review</Button>
 				<Button variant="danger">Reject</Button>
@@ -720,7 +720,7 @@
 			<Paragraph class="mb-1">Control text alignment within fixed-width buttons. Note the varied text lengths to show the effect:</Paragraph>
 
 			<Heading level={4}>Inline Start Aligned</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="start">
 					{#snippet icon()}✓{/snippet}
 					OK
@@ -736,7 +736,7 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-6">Inline End Aligned</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="end" iconPosition="end">
 					{#snippet icon()}✓{/snippet}
 					OK
@@ -752,7 +752,7 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-6">Center Aligned</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="center">
 					{#snippet icon()}✓{/snippet}
 					OK
@@ -762,7 +762,7 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-6">Justified</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="justify">
 					{#snippet icon()}✓{/snippet}
 					OK
@@ -785,7 +785,7 @@
 			<Paragraph class="mb-1">Font Awesome icons with varied text lengths to show alignment:</Paragraph>
 
 			<Heading level={4}>Inline Start Aligned</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="start">
 					{#snippet icon()}<span class="pa-icon pa-icon--save" aria-hidden="true"></span>{/snippet}
 					Save
@@ -801,7 +801,7 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-6">Inline End Aligned</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="end" iconPosition="end">
 					{#snippet icon()}<span class="pa-icon pa-icon--save" aria-hidden="true"></span>{/snippet}
 					Save
@@ -817,7 +817,7 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-6">Center Aligned</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="center">
 					{#snippet icon()}<i class="fa-solid fa-upload"></i>{/snippet}
 					Upload
@@ -833,7 +833,7 @@
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-6">Justified</Heading>
-			<ButtonGroup vertical>
+			<ButtonGroup isVertical>
 				<Button variant="primary" class="wr-20" align="justify">
 					{#snippet icon()}<i class="fa-solid fa-user"></i>{/snippet}
 					Profile

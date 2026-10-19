@@ -47,11 +47,11 @@
 		/** Offset on extra large screens (≥1200px) */
 		offsetXl?: OffsetSize;
 		/** Remove the column's gutter padding (pc-col--no-padding) */
-		noPadding?: boolean;
+		isNoPadding?: boolean;
 		/** Grow to fill remaining space (pc-col--grow) */
-		grow?: boolean;
+		isGrow?: boolean;
 		/** Allow shrinking below content size (pc-col--shrink) */
-		shrink?: boolean;
+		isShrink?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Inline styles */
@@ -71,9 +71,9 @@
 		offsetMd,
 		offsetLg,
 		offsetXl,
-		noPadding = false,
-		grow = false,
-		shrink = false,
+		isNoPadding = false,
+		isGrow = false,
+		isShrink = false,
 		class: className = '',
 		style,
 		children
@@ -105,9 +105,9 @@
 		if (offsetXl) base.push(`pc-offset-xl-${offsetXl}`);
 
 		// Flex behavior modifiers
-		if (noPadding) base.push('pc-col--no-padding');
-		if (grow) base.push('pc-col--grow');
-		if (shrink) base.push('pc-col--shrink');
+		if (isNoPadding) base.push('pc-col--no-padding');
+		if (isGrow) base.push('pc-col--grow');
+		if (isShrink) base.push('pc-col--shrink');
 
 		// Custom classes
 		if (className) base.push(className);

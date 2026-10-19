@@ -42,7 +42,7 @@
 
 <!-- Tabs as Card Header (Same Height) -->
 <Heading level={3} class="mt-4 mb-4">Tabs as Card Header (Same Height)</Heading>
-<Grid sameHeight class="mb-4">
+<Grid isSameHeight class="mb-4">
 	<Column size="100" md="1-2">
 		<Card titleText="Normal Card">
 			<Paragraph>This is a regular card with a header. The header has a min-height of 40px.</Paragraph>
@@ -51,13 +51,13 @@
 	<Column size="100" md="1-2">
 		<TabsContainer isCard>
 			<Tabs>
-				<TabItem active={cardCompareActive === 'card-compare-1'} onclick={() => (cardCompareActive = 'card-compare-1')}>
+				<TabItem isActive={cardCompareActive === 'card-compare-1'} onclick={() => (cardCompareActive = 'card-compare-1')}>
 					Overview
 				</TabItem>
-				<TabItem active={cardCompareActive === 'card-compare-2'} onclick={() => (cardCompareActive = 'card-compare-2')}>
+				<TabItem isActive={cardCompareActive === 'card-compare-2'} onclick={() => (cardCompareActive = 'card-compare-2')}>
 					Details
 				</TabItem>
-				<TabItem active={cardCompareActive === 'card-compare-3'} onclick={() => (cardCompareActive = 'card-compare-3')}>
+				<TabItem isActive={cardCompareActive === 'card-compare-3'} onclick={() => (cardCompareActive = 'card-compare-3')}>
 					Settings
 				</TabItem>
 			</Tabs>
@@ -82,24 +82,24 @@
 		<!-- Card-Based Tabs -->
 		<Card titleText="Card Tabs (Built-in)">
 			{#snippet tabs()}
-				<CardTab active={cardTabsActive === 'card-tab-1'} onclick={() => (cardTabsActive = 'card-tab-1')}>Overview</CardTab>
-				<CardTab active={cardTabsActive === 'card-tab-2'} onclick={() => (cardTabsActive = 'card-tab-2')}>Details</CardTab>
-				<CardTab active={cardTabsActive === 'card-tab-3'} onclick={() => (cardTabsActive = 'card-tab-3')}>Settings</CardTab>
-				<CardTab active={cardTabsActive === 'card-tab-4'} onclick={() => (cardTabsActive = 'card-tab-4')}>Reports</CardTab>
+				<CardTab isActive={cardTabsActive === 'card-tab-1'} onclick={() => (cardTabsActive = 'card-tab-1')}>Overview</CardTab>
+				<CardTab isActive={cardTabsActive === 'card-tab-2'} onclick={() => (cardTabsActive = 'card-tab-2')}>Details</CardTab>
+				<CardTab isActive={cardTabsActive === 'card-tab-3'} onclick={() => (cardTabsActive = 'card-tab-3')}>Settings</CardTab>
+				<CardTab isActive={cardTabsActive === 'card-tab-4'} onclick={() => (cardTabsActive = 'card-tab-4')}>Reports</CardTab>
 			{/snippet}
-			<CardTabContent active={cardTabsActive === 'card-tab-1'} id="card-tab-1">
+			<CardTabContent isActive={cardTabsActive === 'card-tab-1'} id="card-tab-1">
 				<Heading level={4}>Overview</Heading>
 				<Paragraph>Card tabs integrate seamlessly.</Paragraph>
 			</CardTabContent>
-			<CardTabContent active={cardTabsActive === 'card-tab-2'} id="card-tab-2">
+			<CardTabContent isActive={cardTabsActive === 'card-tab-2'} id="card-tab-2">
 				<Heading level={4}>Details</Heading>
 				<Paragraph>Detailed information goes here.</Paragraph>
 			</CardTabContent>
-			<CardTabContent active={cardTabsActive === 'card-tab-3'} id="card-tab-3">
+			<CardTabContent isActive={cardTabsActive === 'card-tab-3'} id="card-tab-3">
 				<Heading level={4}>Settings</Heading>
 				<Paragraph>Configuration options here.</Paragraph>
 			</CardTabContent>
-			<CardTabContent active={cardTabsActive === 'card-tab-4'} id="card-tab-4">
+			<CardTabContent isActive={cardTabsActive === 'card-tab-4'} id="card-tab-4">
 				<Heading level={4}>Reports</Heading>
 				<Paragraph>Analytics data displayed here.</Paragraph>
 			</CardTabContent>
@@ -109,16 +109,16 @@
 		<!-- Standalone Tabs - Underline Style -->
 		<Card titleText="Standalone Tabs">
 			<Tabs>
-				<TabItem active={standaloneActive === 'tab-1'} onclick={() => (standaloneActive = 'tab-1')}>
+				<TabItem isActive={standaloneActive === 'tab-1'} onclick={() => (standaloneActive = 'tab-1')}>
 					Home
 				</TabItem>
-				<TabItem active={standaloneActive === 'tab-2'} onclick={() => (standaloneActive = 'tab-2')}>
+				<TabItem isActive={standaloneActive === 'tab-2'} onclick={() => (standaloneActive = 'tab-2')}>
 					Profile
 				</TabItem>
-				<TabItem active={standaloneActive === 'tab-3'} onclick={() => (standaloneActive = 'tab-3')}>
+				<TabItem isActive={standaloneActive === 'tab-3'} onclick={() => (standaloneActive = 'tab-3')}>
 					Messages
 				</TabItem>
-				<TabItem active={standaloneActive === 'tab-4'} onclick={() => (standaloneActive = 'tab-4')}>
+				<TabItem isActive={standaloneActive === 'tab-4'} onclick={() => (standaloneActive = 'tab-4')}>
 					Settings
 				</TabItem>
 			</Tabs>
@@ -150,25 +150,25 @@
 		<!-- Tabs with Icons -->
 		<Card titleText="Tabs with Icons">
 			<Tabs>
-				<TabItem active={iconsActive === 'icon-tab-1'} onclick={() => (iconsActive = 'icon-tab-1')}>
+				<TabItem isActive={iconsActive === 'icon-tab-1'} onclick={() => (iconsActive = 'icon-tab-1')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-house"></i>
 					{/snippet}
 					<span>Home</span>
 				</TabItem>
-				<TabItem active={iconsActive === 'icon-tab-2'} onclick={() => (iconsActive = 'icon-tab-2')}>
+				<TabItem isActive={iconsActive === 'icon-tab-2'} onclick={() => (iconsActive = 'icon-tab-2')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-user"></i>
 					{/snippet}
 					<span>Profile</span>
 				</TabItem>
-				<TabItem active={iconsActive === 'icon-tab-3'} onclick={() => (iconsActive = 'icon-tab-3')}>
+				<TabItem isActive={iconsActive === 'icon-tab-3'} onclick={() => (iconsActive = 'icon-tab-3')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-envelope"></i>
 					{/snippet}
 					<span>Messages</span>
 				</TabItem>
-				<TabItem active={iconsActive === 'icon-tab-4'} onclick={() => (iconsActive = 'icon-tab-4')}>
+				<TabItem isActive={iconsActive === 'icon-tab-4'} onclick={() => (iconsActive = 'icon-tab-4')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-gear"></i>
 					{/snippet}
@@ -196,18 +196,18 @@
 		<!-- Fixed Width Tabs -->
 		<Card titleText="Fixed Width Tabs">
 			<Alert variant="info">
-				<strong>Fixed widths:</strong> the <Code>width</Code> / <Code>height</Code> props (<Code>"1x"</Code>–<Code>"10x"</Code>) emit the rem min-size utilities <Code>minwr-1</Code>–<Code>minwr-10</Code> / <Code>minhr-1</Code>–<Code>minhr-10</Code> (1rem–10rem) on the tab button. Core has no <Code>pa-tabs__item--w-Nx</Code> modifier — the min-size utilities are the canonical per-tab width contract. For elastic sizing pass <Code>maxwr-*</Code> / <Code>wr-*</Code> via <Code>class</Code>, optionally with <Code>wrapLabels</Code> on <Code>&lt;Tabs&gt;</Code>.
+				<strong>Fixed widths:</strong> the <Code>width</Code> / <Code>height</Code> props (<Code>"1x"</Code>–<Code>"10x"</Code>) emit the rem min-size utilities <Code>minwr-1</Code>–<Code>minwr-10</Code> / <Code>minhr-1</Code>–<Code>minhr-10</Code> (1rem–10rem) on the tab button. Core has no <Code>pa-tabs__item--w-Nx</Code> modifier — the min-size utilities are the canonical per-tab width contract. For elastic sizing pass <Code>maxwr-*</Code> / <Code>wr-*</Code> via <Code>class</Code>, optionally with <Code>isWrapLabels</Code> on <Code>&lt;Tabs&gt;</Code>.
 			</Alert>
 
 			<Heading level={4}>6x Width (6rem each)</Heading>
 			<Tabs>
-				<TabItem active={fixed6xActive === 'fixed-tab-1'} onclick={() => (fixed6xActive = 'fixed-tab-1')} width="6x">
+				<TabItem isActive={fixed6xActive === 'fixed-tab-1'} onclick={() => (fixed6xActive = 'fixed-tab-1')} width="6x">
 					View
 				</TabItem>
-				<TabItem active={fixed6xActive === 'fixed-tab-2'} onclick={() => (fixed6xActive = 'fixed-tab-2')} width="6x">
+				<TabItem isActive={fixed6xActive === 'fixed-tab-2'} onclick={() => (fixed6xActive = 'fixed-tab-2')} width="6x">
 					Edit
 				</TabItem>
-				<TabItem active={fixed6xActive === 'fixed-tab-3'} onclick={() => (fixed6xActive = 'fixed-tab-3')} width="6x">
+				<TabItem isActive={fixed6xActive === 'fixed-tab-3'} onclick={() => (fixed6xActive = 'fixed-tab-3')} width="6x">
 					Delete
 				</TabItem>
 			</Tabs>
@@ -225,13 +225,13 @@
 
 			<Heading level={4} class="mt-6">8x Width (8rem each)</Heading>
 			<Tabs>
-				<TabItem active={fixed8xActive === 'fixed-8x-1'} onclick={() => (fixed8xActive = 'fixed-8x-1')} width="8x">
+				<TabItem isActive={fixed8xActive === 'fixed-8x-1'} onclick={() => (fixed8xActive = 'fixed-8x-1')} width="8x">
 					{#snippet icon()}
 						<i class="fa-solid fa-chart-line"></i>
 					{/snippet}
 					<span>Dashboard</span>
 				</TabItem>
-				<TabItem active={fixed8xActive === 'fixed-8x-2'} onclick={() => (fixed8xActive = 'fixed-8x-2')} width="8x">
+				<TabItem isActive={fixed8xActive === 'fixed-8x-2'} onclick={() => (fixed8xActive = 'fixed-8x-2')} width="8x">
 					{#snippet icon()}
 						<i class="fa-solid fa-chart-bar"></i>
 					{/snippet}
@@ -254,15 +254,15 @@
 <Heading level={3} class="mt-4 mb-4">Wrap Long Labels</Heading>
 <Card titleText="Wrap Long Labels">
 	<Alert variant="info">
-		<strong>The problem:</strong> an irregular label set like <em>Orders / Invoices / Delivery sheets / Complaints and missed items</em> looks bad both ways — <Code>align="full"</Code> stretches the short tabs into dead space, and plain auto width leaves the long one huge and the edge ragged. Set <Code>wrapLabels</Code> to let the long title wrap, and cap it with a <Code>maxwr-*</Code> utility (via <Code>class</Code>) to choose the wrap point. The row then keeps every tab as tall as the wrapped one — no zig-zag — via the flex row's default <Code>align-items: stretch</Code>.
+		<strong>The problem:</strong> an irregular label set like <em>Orders / Invoices / Delivery sheets / Complaints and missed items</em> looks bad both ways — <Code>align="full"</Code> stretches the short tabs into dead space, and plain auto width leaves the long one huge and the edge ragged. Set <Code>isWrapLabels</Code> to let the long title wrap, and cap it with a <Code>maxwr-*</Code> utility (via <Code>class</Code>) to choose the wrap point. The row then keeps every tab as tall as the wrapped one — no zig-zag — via the flex row's default <Code>align-items: stretch</Code>.
 	</Alert>
 
 	<Heading level={4}>Default (auto width, no wrap) — ragged, long tab dominates</Heading>
 	<Tabs>
-		<TabItem active={wlAutoActive === 'wl-auto-1'} onclick={() => (wlAutoActive = 'wl-auto-1')}>Orders</TabItem>
-		<TabItem active={wlAutoActive === 'wl-auto-2'} onclick={() => (wlAutoActive = 'wl-auto-2')}>Invoices</TabItem>
-		<TabItem active={wlAutoActive === 'wl-auto-3'} onclick={() => (wlAutoActive = 'wl-auto-3')}>Delivery sheets</TabItem>
-		<TabItem active={wlAutoActive === 'wl-auto-4'} onclick={() => (wlAutoActive = 'wl-auto-4')}>Complaints and missed items</TabItem>
+		<TabItem isActive={wlAutoActive === 'wl-auto-1'} onclick={() => (wlAutoActive = 'wl-auto-1')}>Orders</TabItem>
+		<TabItem isActive={wlAutoActive === 'wl-auto-2'} onclick={() => (wlAutoActive = 'wl-auto-2')}>Invoices</TabItem>
+		<TabItem isActive={wlAutoActive === 'wl-auto-3'} onclick={() => (wlAutoActive = 'wl-auto-3')}>Delivery sheets</TabItem>
+		<TabItem isActive={wlAutoActive === 'wl-auto-4'} onclick={() => (wlAutoActive = 'wl-auto-4')}>Complaints and missed items</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel active={wlAutoActive === 'wl-auto-1'} id="wl-auto-1"><Paragraph>Orders content.</Paragraph></TabPanel>
@@ -271,12 +271,12 @@
 		<TabPanel active={wlAutoActive === 'wl-auto-4'} id="wl-auto-4"><Paragraph>Complaints content.</Paragraph></TabPanel>
 	</TabsContent>
 
-	<Heading level={4} class="mt-6">With <Code>wrapLabels</Code> + <Code>maxwr-15</Code> on the long tab — tidy, level</Heading>
-	<Tabs wrapLabels>
-		<TabItem active={wlWrapActive === 'wl-wrap-1'} onclick={() => (wlWrapActive = 'wl-wrap-1')}>Orders</TabItem>
-		<TabItem active={wlWrapActive === 'wl-wrap-2'} onclick={() => (wlWrapActive = 'wl-wrap-2')}>Invoices</TabItem>
-		<TabItem active={wlWrapActive === 'wl-wrap-3'} onclick={() => (wlWrapActive = 'wl-wrap-3')}>Delivery sheets</TabItem>
-		<TabItem active={wlWrapActive === 'wl-wrap-4'} onclick={() => (wlWrapActive = 'wl-wrap-4')} class="maxwr-15">Complaints and missed items</TabItem>
+	<Heading level={4} class="mt-6">With <Code>isWrapLabels</Code> + <Code>maxwr-15</Code> on the long tab — tidy, level</Heading>
+	<Tabs isWrapLabels>
+		<TabItem isActive={wlWrapActive === 'wl-wrap-1'} onclick={() => (wlWrapActive = 'wl-wrap-1')}>Orders</TabItem>
+		<TabItem isActive={wlWrapActive === 'wl-wrap-2'} onclick={() => (wlWrapActive = 'wl-wrap-2')}>Invoices</TabItem>
+		<TabItem isActive={wlWrapActive === 'wl-wrap-3'} onclick={() => (wlWrapActive = 'wl-wrap-3')}>Delivery sheets</TabItem>
+		<TabItem isActive={wlWrapActive === 'wl-wrap-4'} onclick={() => (wlWrapActive = 'wl-wrap-4')} class="maxwr-15">Complaints and missed items</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel active={wlWrapActive === 'wl-wrap-1'} id="wl-wrap-1"><Paragraph>Orders content — the long tab wraps to two lines; the short tabs stretch to match its height.</Paragraph></TabPanel>
@@ -290,16 +290,16 @@
 <Heading level={3} class="mt-4 mb-4">Per-Tab Width — Real-World Example</Heading>
 <Card titleText="Per-Tab Width — Real-World Example">
 	<Alert variant="info">
-		A mixed label set like <em>User / Order / Invoice / Packages / Deliveries and returns</em> has a too-narrow first tab and a too-wide last one. Give every tab a <Code>minwr-*</Code> floor (the <Code>width</Code> prop, e.g. <Code>width="8x"</Code>) so the short ones stop looking cramped, and cap the long one with a <Code>maxwr-*</Code> utility (plus <Code>wrapLabels</Code> so it wraps) — the row then stays tidy and level.
+		A mixed label set like <em>User / Order / Invoice / Packages / Deliveries and returns</em> has a too-narrow first tab and a too-wide last one. Give every tab a <Code>minwr-*</Code> floor (the <Code>width</Code> prop, e.g. <Code>width="8x"</Code>) so the short ones stop looking cramped, and cap the long one with a <Code>maxwr-*</Code> utility (plus <Code>isWrapLabels</Code> so it wraps) — the row then stays tidy and level.
 	</Alert>
 
 	<Heading level={4}>Floor every tab at 8rem (<Code>width="8x"</Code>), cap + wrap the long one (<Code>maxwr-15</Code>)</Heading>
-	<Tabs wrapLabels>
-		<TabItem active={rwWrapActive === 'rw-tab-1'} onclick={() => (rwWrapActive = 'rw-tab-1')} width="8x">User</TabItem>
-		<TabItem active={rwWrapActive === 'rw-tab-2'} onclick={() => (rwWrapActive = 'rw-tab-2')} width="8x">Order</TabItem>
-		<TabItem active={rwWrapActive === 'rw-tab-3'} onclick={() => (rwWrapActive = 'rw-tab-3')} width="8x">Invoice</TabItem>
-		<TabItem active={rwWrapActive === 'rw-tab-4'} onclick={() => (rwWrapActive = 'rw-tab-4')} width="8x">Packages</TabItem>
-		<TabItem active={rwWrapActive === 'rw-tab-5'} onclick={() => (rwWrapActive = 'rw-tab-5')} width="8x" class="maxwr-15">Deliveries and returns</TabItem>
+	<Tabs isWrapLabels>
+		<TabItem isActive={rwWrapActive === 'rw-tab-1'} onclick={() => (rwWrapActive = 'rw-tab-1')} width="8x">User</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-2'} onclick={() => (rwWrapActive = 'rw-tab-2')} width="8x">Order</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-3'} onclick={() => (rwWrapActive = 'rw-tab-3')} width="8x">Invoice</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-4'} onclick={() => (rwWrapActive = 'rw-tab-4')} width="8x">Packages</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-5'} onclick={() => (rwWrapActive = 'rw-tab-5')} width="8x" class="maxwr-15">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel active={rwWrapActive === 'rw-tab-1'} id="rw-tab-1"><Heading level={4}>User</Heading><Paragraph>Account holder details.</Paragraph></TabPanel>
@@ -309,13 +309,13 @@
 		<TabPanel active={rwWrapActive === 'rw-tab-5'} id="rw-tab-5"><Heading level={4}>Deliveries and returns</Heading><Paragraph>Tracking, delivery attempts and returns — the long tab wraps to two lines while the short tabs hold their 8rem floor and stretch to match its height.</Paragraph></TabPanel>
 	</TabsContent>
 
-	<Heading level={4} class="mt-6">Prefer one line? Drop <Code>wrapLabels</Code> and let the long tab grow past the floor</Heading>
+	<Heading level={4} class="mt-6">Prefer one line? Drop <Code>isWrapLabels</Code> and let the long tab grow past the floor</Heading>
 	<Tabs>
-		<TabItem active={rwGrowActive === 'rw1-tab-1'} onclick={() => (rwGrowActive = 'rw1-tab-1')} width="8x">User</TabItem>
-		<TabItem active={rwGrowActive === 'rw1-tab-2'} onclick={() => (rwGrowActive = 'rw1-tab-2')} width="8x">Order</TabItem>
-		<TabItem active={rwGrowActive === 'rw1-tab-3'} onclick={() => (rwGrowActive = 'rw1-tab-3')} width="8x">Invoice</TabItem>
-		<TabItem active={rwGrowActive === 'rw1-tab-4'} onclick={() => (rwGrowActive = 'rw1-tab-4')} width="8x">Packages</TabItem>
-		<TabItem active={rwGrowActive === 'rw1-tab-5'} onclick={() => (rwGrowActive = 'rw1-tab-5')} width="8x">Deliveries and returns</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-1'} onclick={() => (rwGrowActive = 'rw1-tab-1')} width="8x">User</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-2'} onclick={() => (rwGrowActive = 'rw1-tab-2')} width="8x">Order</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-3'} onclick={() => (rwGrowActive = 'rw1-tab-3')} width="8x">Invoice</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-4'} onclick={() => (rwGrowActive = 'rw1-tab-4')} width="8x">Packages</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-5'} onclick={() => (rwGrowActive = 'rw1-tab-5')} width="8x">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel active={rwGrowActive === 'rw1-tab-1'} id="rw1-tab-1"><Paragraph>Same 8rem floor, no cap — the four short tabs are uniform and only “Deliveries and returns” grows to fit its text.</Paragraph></TabPanel>
@@ -326,12 +326,12 @@
 	</TabsContent>
 
 	<Heading level={4} class="mt-6">Center the label inside each tab — add <Code>justify-content-center</Code> via <Code>class</Code></Heading>
-	<Tabs wrapLabels>
-		<TabItem active={rwCenterActive === 'rwc-tab-1'} onclick={() => (rwCenterActive = 'rwc-tab-1')} width="8x" class="justify-content-center">User</TabItem>
-		<TabItem active={rwCenterActive === 'rwc-tab-2'} onclick={() => (rwCenterActive = 'rwc-tab-2')} width="8x" class="justify-content-center">Order</TabItem>
-		<TabItem active={rwCenterActive === 'rwc-tab-3'} onclick={() => (rwCenterActive = 'rwc-tab-3')} width="8x" class="justify-content-center">Invoice</TabItem>
-		<TabItem active={rwCenterActive === 'rwc-tab-4'} onclick={() => (rwCenterActive = 'rwc-tab-4')} width="8x" class="justify-content-center">Packages</TabItem>
-		<TabItem active={rwCenterActive === 'rwc-tab-5'} onclick={() => (rwCenterActive = 'rwc-tab-5')} width="8x" class="maxwr-15 justify-content-center">Deliveries and returns</TabItem>
+	<Tabs isWrapLabels>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-1'} onclick={() => (rwCenterActive = 'rwc-tab-1')} width="8x" class="justify-content-center">User</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-2'} onclick={() => (rwCenterActive = 'rwc-tab-2')} width="8x" class="justify-content-center">Order</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-3'} onclick={() => (rwCenterActive = 'rwc-tab-3')} width="8x" class="justify-content-center">Invoice</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-4'} onclick={() => (rwCenterActive = 'rwc-tab-4')} width="8x" class="justify-content-center">Packages</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-5'} onclick={() => (rwCenterActive = 'rwc-tab-5')} width="8x" class="maxwr-15 justify-content-center">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel active={rwCenterActive === 'rwc-tab-1'} id="rwc-tab-1"><Paragraph>Same floored tabs, but the label is centered within each tab instead of start-aligned.</Paragraph></TabPanel>
@@ -352,13 +352,13 @@
 		<!-- Pills Style Tabs -->
 		<Card titleText="Pills Style Tabs">
 			<Tabs style="pills">
-				<TabItem active={pillsActive === 'pills-tab-1'} onclick={() => (pillsActive = 'pills-tab-1')}>
+				<TabItem isActive={pillsActive === 'pills-tab-1'} onclick={() => (pillsActive = 'pills-tab-1')}>
 					Dashboard
 				</TabItem>
-				<TabItem active={pillsActive === 'pills-tab-2'} onclick={() => (pillsActive = 'pills-tab-2')}>
+				<TabItem isActive={pillsActive === 'pills-tab-2'} onclick={() => (pillsActive = 'pills-tab-2')}>
 					Analytics
 				</TabItem>
-				<TabItem active={pillsActive === 'pills-tab-3'} onclick={() => (pillsActive = 'pills-tab-3')}>
+				<TabItem isActive={pillsActive === 'pills-tab-3'} onclick={() => (pillsActive = 'pills-tab-3')}>
 					Reports
 				</TabItem>
 			</Tabs>
@@ -383,19 +383,19 @@
 		<!-- Pills with Icons -->
 		<Card titleText="Pills with Icons">
 			<Tabs style="pills">
-				<TabItem active={iconPillsActive === 'icon-pills-1'} onclick={() => (iconPillsActive = 'icon-pills-1')}>
+				<TabItem isActive={iconPillsActive === 'icon-pills-1'} onclick={() => (iconPillsActive = 'icon-pills-1')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-chart-line"></i>
 					{/snippet}
 					<span>Dashboard</span>
 				</TabItem>
-				<TabItem active={iconPillsActive === 'icon-pills-2'} onclick={() => (iconPillsActive = 'icon-pills-2')}>
+				<TabItem isActive={iconPillsActive === 'icon-pills-2'} onclick={() => (iconPillsActive = 'icon-pills-2')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-chart-bar"></i>
 					{/snippet}
 					<span>Analytics</span>
 				</TabItem>
-				<TabItem active={iconPillsActive === 'icon-pills-3'} onclick={() => (iconPillsActive = 'icon-pills-3')}>
+				<TabItem isActive={iconPillsActive === 'icon-pills-3'} onclick={() => (iconPillsActive = 'icon-pills-3')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-file-lines"></i>
 					{/snippet}
@@ -424,25 +424,25 @@
 		<Card titleText="Vertical Tabs">
 			<TabsVerticalLayout>
 				<Tabs style="vertical">
-					<TabItem active={verticalActive === 'vert-tab-1'} onclick={() => (verticalActive = 'vert-tab-1')}>
+					<TabItem isActive={verticalActive === 'vert-tab-1'} onclick={() => (verticalActive = 'vert-tab-1')}>
 						{#snippet icon()}
 							<i class="fa-solid fa-user"></i>
 						{/snippet}
 						<span>Account</span>
 					</TabItem>
-					<TabItem active={verticalActive === 'vert-tab-2'} onclick={() => (verticalActive = 'vert-tab-2')}>
+					<TabItem isActive={verticalActive === 'vert-tab-2'} onclick={() => (verticalActive = 'vert-tab-2')}>
 						{#snippet icon()}
 							<i class="fa-solid fa-lock"></i>
 						{/snippet}
 						<span>Security</span>
 					</TabItem>
-					<TabItem active={verticalActive === 'vert-tab-3'} onclick={() => (verticalActive = 'vert-tab-3')}>
+					<TabItem isActive={verticalActive === 'vert-tab-3'} onclick={() => (verticalActive = 'vert-tab-3')}>
 						{#snippet icon()}
 							<i class="fa-solid fa-bell"></i>
 						{/snippet}
 						<span>Notifications</span>
 					</TabItem>
-					<TabItem active={verticalActive === 'vert-tab-4'} onclick={() => (verticalActive = 'vert-tab-4')}>
+					<TabItem isActive={verticalActive === 'vert-tab-4'} onclick={() => (verticalActive = 'vert-tab-4')}>
 						{#snippet icon()}
 							<i class="fa-solid fa-palette"></i>
 						{/snippet}
@@ -475,13 +475,13 @@
 		<!-- Boxed Style Tabs -->
 		<Card titleText="Boxed Tabs">
 			<Tabs style="boxed">
-				<TabItem active={boxedActive === 'boxed-tab-1'} onclick={() => (boxedActive = 'boxed-tab-1')}>
+				<TabItem isActive={boxedActive === 'boxed-tab-1'} onclick={() => (boxedActive = 'boxed-tab-1')}>
 					Code
 				</TabItem>
-				<TabItem active={boxedActive === 'boxed-tab-2'} onclick={() => (boxedActive = 'boxed-tab-2')}>
+				<TabItem isActive={boxedActive === 'boxed-tab-2'} onclick={() => (boxedActive = 'boxed-tab-2')}>
 					Issues
 				</TabItem>
-				<TabItem active={boxedActive === 'boxed-tab-3'} onclick={() => (boxedActive = 'boxed-tab-3')}>
+				<TabItem isActive={boxedActive === 'boxed-tab-3'} onclick={() => (boxedActive = 'boxed-tab-3')}>
 					Pull Requests
 				</TabItem>
 			</Tabs>
@@ -504,13 +504,13 @@
 <Card titleText="Tab Sizes">
 	<Heading level={4}>Small Tabs</Heading>
 	<Tabs size="sm">
-		<TabItem active={sizeSmallActive === 'size-sm-1'} onclick={() => (sizeSmallActive = 'size-sm-1')}>
+		<TabItem isActive={sizeSmallActive === 'size-sm-1'} onclick={() => (sizeSmallActive = 'size-sm-1')}>
 			Tab 1
 		</TabItem>
-		<TabItem active={sizeSmallActive === 'size-sm-2'} onclick={() => (sizeSmallActive = 'size-sm-2')}>
+		<TabItem isActive={sizeSmallActive === 'size-sm-2'} onclick={() => (sizeSmallActive = 'size-sm-2')}>
 			Tab 2
 		</TabItem>
-		<TabItem active={sizeSmallActive === 'size-sm-3'} onclick={() => (sizeSmallActive = 'size-sm-3')}>
+		<TabItem isActive={sizeSmallActive === 'size-sm-3'} onclick={() => (sizeSmallActive = 'size-sm-3')}>
 			Tab 3
 		</TabItem>
 	</Tabs>
@@ -528,13 +528,13 @@
 
 	<Heading level={4} class="mt-6">Default Tabs</Heading>
 	<Tabs>
-		<TabItem active={sizeDefaultActive === 'size-def-1'} onclick={() => (sizeDefaultActive = 'size-def-1')}>
+		<TabItem isActive={sizeDefaultActive === 'size-def-1'} onclick={() => (sizeDefaultActive = 'size-def-1')}>
 			Tab 1
 		</TabItem>
-		<TabItem active={sizeDefaultActive === 'size-def-2'} onclick={() => (sizeDefaultActive = 'size-def-2')}>
+		<TabItem isActive={sizeDefaultActive === 'size-def-2'} onclick={() => (sizeDefaultActive = 'size-def-2')}>
 			Tab 2
 		</TabItem>
-		<TabItem active={sizeDefaultActive === 'size-def-3'} onclick={() => (sizeDefaultActive = 'size-def-3')}>
+		<TabItem isActive={sizeDefaultActive === 'size-def-3'} onclick={() => (sizeDefaultActive = 'size-def-3')}>
 			Tab 3
 		</TabItem>
 	</Tabs>
@@ -552,13 +552,13 @@
 
 	<Heading level={4} class="mt-6">Large Tabs</Heading>
 	<Tabs size="lg">
-		<TabItem active={sizeLargeActive === 'size-lg-1'} onclick={() => (sizeLargeActive = 'size-lg-1')}>
+		<TabItem isActive={sizeLargeActive === 'size-lg-1'} onclick={() => (sizeLargeActive = 'size-lg-1')}>
 			Tab 1
 		</TabItem>
-		<TabItem active={sizeLargeActive === 'size-lg-2'} onclick={() => (sizeLargeActive = 'size-lg-2')}>
+		<TabItem isActive={sizeLargeActive === 'size-lg-2'} onclick={() => (sizeLargeActive = 'size-lg-2')}>
 			Tab 2
 		</TabItem>
-		<TabItem active={sizeLargeActive === 'size-lg-3'} onclick={() => (sizeLargeActive = 'size-lg-3')}>
+		<TabItem isActive={sizeLargeActive === 'size-lg-3'} onclick={() => (sizeLargeActive = 'size-lg-3')}>
 			Tab 3
 		</TabItem>
 	</Tabs>
@@ -578,19 +578,19 @@
 <!-- Tabs with Badges -->
 <Card titleText="Tabs with Badges">
 	<Tabs>
-		<TabItem active={badgesActive === 'badge-tab-1'} onclick={() => (badgesActive = 'badge-tab-1')}>
+		<TabItem isActive={badgesActive === 'badge-tab-1'} onclick={() => (badgesActive = 'badge-tab-1')}>
 			<span>All</span>
 			<Badge size="sm">48</Badge>
 		</TabItem>
-		<TabItem active={badgesActive === 'badge-tab-2'} onclick={() => (badgesActive = 'badge-tab-2')}>
+		<TabItem isActive={badgesActive === 'badge-tab-2'} onclick={() => (badgesActive = 'badge-tab-2')}>
 			<span>Active</span>
 			<Badge variant="success" size="sm">12</Badge>
 		</TabItem>
-		<TabItem active={badgesActive === 'badge-tab-3'} onclick={() => (badgesActive = 'badge-tab-3')}>
+		<TabItem isActive={badgesActive === 'badge-tab-3'} onclick={() => (badgesActive = 'badge-tab-3')}>
 			<span>Pending</span>
 			<Badge variant="warning" size="sm">5</Badge>
 		</TabItem>
-		<TabItem active={badgesActive === 'badge-tab-4'} onclick={() => (badgesActive = 'badge-tab-4')}>
+		<TabItem isActive={badgesActive === 'badge-tab-4'} onclick={() => (badgesActive = 'badge-tab-4')}>
 			<span>Closed</span>
 			<Badge variant="secondary" size="sm">31</Badge>
 		</TabItem>
@@ -614,13 +614,13 @@
 <!-- Centered Tabs -->
 <Card titleText="Centered Tabs">
 	<Tabs align="centered">
-		<TabItem active={centeredActive === 'center-tab-1'} onclick={() => (centeredActive = 'center-tab-1')}>
+		<TabItem isActive={centeredActive === 'center-tab-1'} onclick={() => (centeredActive = 'center-tab-1')}>
 			Features
 		</TabItem>
-		<TabItem active={centeredActive === 'center-tab-2'} onclick={() => (centeredActive = 'center-tab-2')}>
+		<TabItem isActive={centeredActive === 'center-tab-2'} onclick={() => (centeredActive = 'center-tab-2')}>
 			Pricing
 		</TabItem>
-		<TabItem active={centeredActive === 'center-tab-3'} onclick={() => (centeredActive = 'center-tab-3')}>
+		<TabItem isActive={centeredActive === 'center-tab-3'} onclick={() => (centeredActive = 'center-tab-3')}>
 			Testimonials
 		</TabItem>
 	</Tabs>
@@ -640,19 +640,19 @@
 <!-- Full Width Tabs -->
 <Card titleText="Full Width Tabs">
 	<Tabs align="full">
-		<TabItem active={fullActive === 'full-tab-1'} onclick={() => (fullActive = 'full-tab-1')}>
+		<TabItem isActive={fullActive === 'full-tab-1'} onclick={() => (fullActive = 'full-tab-1')}>
 			{#snippet icon()}
 				<i class="fa-solid fa-mobile-screen"></i>
 			{/snippet}
 			<span>Mobile</span>
 		</TabItem>
-		<TabItem active={fullActive === 'full-tab-2'} onclick={() => (fullActive = 'full-tab-2')}>
+		<TabItem isActive={fullActive === 'full-tab-2'} onclick={() => (fullActive = 'full-tab-2')}>
 			{#snippet icon()}
 				<i class="fa-solid fa-tablet-screen-button"></i>
 			{/snippet}
 			<span>Tablet</span>
 		</TabItem>
-		<TabItem active={fullActive === 'full-tab-3'} onclick={() => (fullActive = 'full-tab-3')}>
+		<TabItem isActive={fullActive === 'full-tab-3'} onclick={() => (fullActive = 'full-tab-3')}>
 			{#snippet icon()}
 				<i class="fa-solid fa-desktop"></i>
 			{/snippet}
@@ -678,7 +678,7 @@
 		<Card titleText="Icon-Only Tabs - Horizontal">
 			<Tabs>
 				<TabItem
-					active={iconOnlyActive === 'icon-only-1'}
+					isActive={iconOnlyActive === 'icon-only-1'}
 					onclick={() => (iconOnlyActive = 'icon-only-1')}
 					class="pa-tooltip"
 					data-tooltip="Dashboard"
@@ -686,7 +686,7 @@
 					<i class="fa-solid fa-chart-line"></i>
 				</TabItem>
 				<TabItem
-					active={iconOnlyActive === 'icon-only-2'}
+					isActive={iconOnlyActive === 'icon-only-2'}
 					onclick={() => (iconOnlyActive = 'icon-only-2')}
 					class="pa-tooltip"
 					data-tooltip="Analytics"
@@ -694,7 +694,7 @@
 					<i class="fa-solid fa-chart-bar"></i>
 				</TabItem>
 				<TabItem
-					active={iconOnlyActive === 'icon-only-3'}
+					isActive={iconOnlyActive === 'icon-only-3'}
 					onclick={() => (iconOnlyActive = 'icon-only-3')}
 					class="pa-tooltip"
 					data-tooltip="Users"
@@ -702,7 +702,7 @@
 					<i class="fa-solid fa-users"></i>
 				</TabItem>
 				<TabItem
-					active={iconOnlyActive === 'icon-only-4'}
+					isActive={iconOnlyActive === 'icon-only-4'}
 					onclick={() => (iconOnlyActive = 'icon-only-4')}
 					class="pa-tooltip"
 					data-tooltip="Settings"
@@ -736,7 +736,7 @@
 			<TabsVerticalLayout>
 				<Tabs style="vertical" align="centered">
 					<TabItem
-						active={iconVertActive === 'icon-vert-1'}
+						isActive={iconVertActive === 'icon-vert-1'}
 						onclick={() => (iconVertActive = 'icon-vert-1')}
 						width="3x"
 						height="3x"
@@ -746,7 +746,7 @@
 						<i class="fa-solid fa-house"></i>
 					</TabItem>
 					<TabItem
-						active={iconVertActive === 'icon-vert-2'}
+						isActive={iconVertActive === 'icon-vert-2'}
 						onclick={() => (iconVertActive = 'icon-vert-2')}
 						width="3x"
 						height="3x"
@@ -756,7 +756,7 @@
 						<i class="fa-solid fa-user"></i>
 					</TabItem>
 					<TabItem
-						active={iconVertActive === 'icon-vert-3'}
+						isActive={iconVertActive === 'icon-vert-3'}
 						onclick={() => (iconVertActive = 'icon-vert-3')}
 						width="3x"
 						height="3x"
@@ -766,7 +766,7 @@
 						<i class="fa-solid fa-envelope"></i>
 					</TabItem>
 					<TabItem
-						active={iconVertActive === 'icon-vert-4'}
+						isActive={iconVertActive === 'icon-vert-4'}
 						onclick={() => (iconVertActive = 'icon-vert-4')}
 						width="3x"
 						height="3x"
@@ -803,13 +803,13 @@
 <Heading level={3} class="mt-8 mb-4">Standalone Tabs - No Card Required</Heading>
 
 <Tabs>
-	<TabItem active={standalonePageActive === 'standalone-1'} onclick={() => (standalonePageActive = 'standalone-1')}>
+	<TabItem isActive={standalonePageActive === 'standalone-1'} onclick={() => (standalonePageActive = 'standalone-1')}>
 		Overview
 	</TabItem>
-	<TabItem active={standalonePageActive === 'standalone-2'} onclick={() => (standalonePageActive = 'standalone-2')}>
+	<TabItem isActive={standalonePageActive === 'standalone-2'} onclick={() => (standalonePageActive = 'standalone-2')}>
 		Details
 	</TabItem>
-	<TabItem active={standalonePageActive === 'standalone-3'} onclick={() => (standalonePageActive = 'standalone-3')}>
+	<TabItem isActive={standalonePageActive === 'standalone-3'} onclick={() => (standalonePageActive = 'standalone-3')}>
 		Reports
 	</TabItem>
 </Tabs>
@@ -839,7 +839,7 @@
 <TabsVerticalLayout>
 	<Tabs style="vertical">
 		<TabItem
-			active={standaloneVertActive === 'standalone-vert-1'}
+			isActive={standaloneVertActive === 'standalone-vert-1'}
 			onclick={() => (standaloneVertActive = 'standalone-vert-1')}
 			height="3x"
 		>
@@ -849,7 +849,7 @@
 			<span>Dashboard</span>
 		</TabItem>
 		<TabItem
-			active={standaloneVertActive === 'standalone-vert-2'}
+			isActive={standaloneVertActive === 'standalone-vert-2'}
 			onclick={() => (standaloneVertActive = 'standalone-vert-2')}
 			height="3x"
 		>
@@ -859,7 +859,7 @@
 			<span>Analytics</span>
 		</TabItem>
 		<TabItem
-			active={standaloneVertActive === 'standalone-vert-3'}
+			isActive={standaloneVertActive === 'standalone-vert-3'}
 			onclick={() => (standaloneVertActive = 'standalone-vert-3')}
 			height="3x"
 		>
@@ -893,13 +893,13 @@
 <!-- Bordered Horizontal Tabs -->
 <TabsContainer isBordered>
 	<Tabs>
-		<TabItem active={borderedActive === 'bordered-1'} onclick={() => (borderedActive = 'bordered-1')}>
+		<TabItem isActive={borderedActive === 'bordered-1'} onclick={() => (borderedActive = 'bordered-1')}>
 			Dashboard
 		</TabItem>
-		<TabItem active={borderedActive === 'bordered-2'} onclick={() => (borderedActive = 'bordered-2')}>
+		<TabItem isActive={borderedActive === 'bordered-2'} onclick={() => (borderedActive = 'bordered-2')}>
 			Settings
 		</TabItem>
-		<TabItem active={borderedActive === 'bordered-3'} onclick={() => (borderedActive = 'bordered-3')}>
+		<TabItem isActive={borderedActive === 'bordered-3'} onclick={() => (borderedActive = 'bordered-3')}>
 			Profile
 		</TabItem>
 	</Tabs>
@@ -924,7 +924,7 @@
 <TabsVerticalLayout isBordered>
 	<Tabs style="vertical">
 		<TabItem
-			active={borderedVertActive === 'bordered-vert-1'}
+			isActive={borderedVertActive === 'bordered-vert-1'}
 			onclick={() => (borderedVertActive = 'bordered-vert-1')}
 			height="3x"
 		>
@@ -934,7 +934,7 @@
 			<span>Overview</span>
 		</TabItem>
 		<TabItem
-			active={borderedVertActive === 'bordered-vert-2'}
+			isActive={borderedVertActive === 'bordered-vert-2'}
 			onclick={() => (borderedVertActive = 'bordered-vert-2')}
 			height="3x"
 		>
@@ -944,7 +944,7 @@
 			<span>Reports</span>
 		</TabItem>
 		<TabItem
-			active={borderedVertActive === 'bordered-vert-3'}
+			isActive={borderedVertActive === 'bordered-vert-3'}
 			onclick={() => (borderedVertActive = 'bordered-vert-3')}
 			height="3x"
 		>
@@ -977,16 +977,16 @@
 	<Column size="100" md="1-3">
 		<Card titleText="Default (Wrap)">
 			<Tabs>
-				<TabItem active={longWrapActive === 'long-1'} onclick={() => (longWrapActive = 'long-1')}>
+				<TabItem isActive={longWrapActive === 'long-1'} onclick={() => (longWrapActive = 'long-1')}>
 					Organizations Tree
 				</TabItem>
-				<TabItem active={longWrapActive === 'long-2'} onclick={() => (longWrapActive = 'long-2')}>
+				<TabItem isActive={longWrapActive === 'long-2'} onclick={() => (longWrapActive = 'long-2')}>
 					User Management System
 				</TabItem>
-				<TabItem active={longWrapActive === 'long-3'} onclick={() => (longWrapActive = 'long-3')}>
+				<TabItem isActive={longWrapActive === 'long-3'} onclick={() => (longWrapActive = 'long-3')}>
 					Reports & Analytics
 				</TabItem>
-				<TabItem active={longWrapActive === 'long-4'} onclick={() => (longWrapActive = 'long-4')}>
+				<TabItem isActive={longWrapActive === 'long-4'} onclick={() => (longWrapActive = 'long-4')}>
 					Settings & Configuration
 				</TabItem>
 			</Tabs>
@@ -1011,7 +1011,7 @@
 		<Card titleText="Collapse Modifier">
 			<Tabs overflow="collapse">
 				<TabItem
-					active={longCollapseActive === 'collapse-1'}
+					isActive={longCollapseActive === 'collapse-1'}
 					onclick={() => (longCollapseActive = 'collapse-1')}
 					class="pa-tooltip"
 					data-tooltip="Organizations Tree"
@@ -1022,7 +1022,7 @@
 					<span>Organizations Tree</span>
 				</TabItem>
 				<TabItem
-					active={longCollapseActive === 'collapse-2'}
+					isActive={longCollapseActive === 'collapse-2'}
 					onclick={() => (longCollapseActive = 'collapse-2')}
 					class="pa-tooltip"
 					data-tooltip="User Management System"
@@ -1033,7 +1033,7 @@
 					<span>User Management System</span>
 				</TabItem>
 				<TabItem
-					active={longCollapseActive === 'collapse-3'}
+					isActive={longCollapseActive === 'collapse-3'}
 					onclick={() => (longCollapseActive = 'collapse-3')}
 					class="pa-tooltip"
 					data-tooltip="Reports & Analytics"
@@ -1044,7 +1044,7 @@
 					<span>Reports & Analytics</span>
 				</TabItem>
 				<TabItem
-					active={longCollapseActive === 'collapse-4'}
+					isActive={longCollapseActive === 'collapse-4'}
 					onclick={() => (longCollapseActive = 'collapse-4')}
 					class="pa-tooltip"
 					data-tooltip="Settings & Configuration"
@@ -1075,16 +1075,16 @@
 	<Column size="100" md="1-3">
 		<Card titleText="Scrollable Modifier">
 			<TabsScrollable>
-				<TabItem active={longScrollActive === 'long-boxed-1'} onclick={() => (longScrollActive = 'long-boxed-1')}>
+				<TabItem isActive={longScrollActive === 'long-boxed-1'} onclick={() => (longScrollActive = 'long-boxed-1')}>
 					Organizations Tree
 				</TabItem>
-				<TabItem active={longScrollActive === 'long-boxed-2'} onclick={() => (longScrollActive = 'long-boxed-2')}>
+				<TabItem isActive={longScrollActive === 'long-boxed-2'} onclick={() => (longScrollActive = 'long-boxed-2')}>
 					User Management System
 				</TabItem>
-				<TabItem active={longScrollActive === 'long-boxed-3'} onclick={() => (longScrollActive = 'long-boxed-3')}>
+				<TabItem isActive={longScrollActive === 'long-boxed-3'} onclick={() => (longScrollActive = 'long-boxed-3')}>
 					Reports & Analytics
 				</TabItem>
-				<TabItem active={longScrollActive === 'long-boxed-4'} onclick={() => (longScrollActive = 'long-boxed-4')}>
+				<TabItem isActive={longScrollActive === 'long-boxed-4'} onclick={() => (longScrollActive = 'long-boxed-4')}>
 					Settings & Configuration
 				</TabItem>
 			</TabsScrollable>
@@ -1109,21 +1109,21 @@
 <Heading level={3} class="mt-8 mb-4">Inline Tabs in Header (Same Height Alignment)</Heading>
 
 <!-- Inline Tabs Demo - Cards align when side by side -->
-<Grid sameHeight>
+<Grid isSameHeight>
 	<Column size="100" md="1-2">
 		<Card titleText="Card with Title + Inline Tabs" hasInlineTabs>
 			{#snippet tabs()}
-				<CardTab active={inlineTabsActive === 'inline-tab-1'} onclick={() => (inlineTabsActive = 'inline-tab-1')}>Active</CardTab>
-				<CardTab active={inlineTabsActive === 'inline-tab-2'} onclick={() => (inlineTabsActive = 'inline-tab-2')}>Pending</CardTab>
-				<CardTab active={inlineTabsActive === 'inline-tab-3'} onclick={() => (inlineTabsActive = 'inline-tab-3')}>Closed</CardTab>
+				<CardTab isActive={inlineTabsActive === 'inline-tab-1'} onclick={() => (inlineTabsActive = 'inline-tab-1')}>Active</CardTab>
+				<CardTab isActive={inlineTabsActive === 'inline-tab-2'} onclick={() => (inlineTabsActive = 'inline-tab-2')}>Pending</CardTab>
+				<CardTab isActive={inlineTabsActive === 'inline-tab-3'} onclick={() => (inlineTabsActive = 'inline-tab-3')}>Closed</CardTab>
 			{/snippet}
-			<CardTabContent active={inlineTabsActive === 'inline-tab-1'} id="inline-tab-1">
+			<CardTabContent isActive={inlineTabsActive === 'inline-tab-1'} id="inline-tab-1">
 				<Paragraph>Inline tabs sit in the header row, so this card has the same header height as the card next to it.</Paragraph>
 			</CardTabContent>
-			<CardTabContent active={inlineTabsActive === 'inline-tab-2'} id="inline-tab-2">
+			<CardTabContent isActive={inlineTabsActive === 'inline-tab-2'} id="inline-tab-2">
 				<Paragraph>Pending items content.</Paragraph>
 			</CardTabContent>
-			<CardTabContent active={inlineTabsActive === 'inline-tab-3'} id="inline-tab-3">
+			<CardTabContent isActive={inlineTabsActive === 'inline-tab-3'} id="inline-tab-3">
 				<Paragraph>Closed items content.</Paragraph>
 			</CardTabContent>
 		</Card>
@@ -1137,21 +1137,21 @@
 </Grid>
 
 <!-- Inline Tabs - Tabs Only in Header -->
-<Grid sameHeight>
+<Grid isSameHeight>
 	<Column size="100" md="1-2">
 		<Card hasInlineTabs>
 			{#snippet tabs()}
-				<CardTab active={inlineOnlyActive === 'inline-only-1'} onclick={() => (inlineOnlyActive = 'inline-only-1')}>Overview</CardTab>
-				<CardTab active={inlineOnlyActive === 'inline-only-2'} onclick={() => (inlineOnlyActive = 'inline-only-2')}>Details</CardTab>
-				<CardTab active={inlineOnlyActive === 'inline-only-3'} onclick={() => (inlineOnlyActive = 'inline-only-3')}>Settings</CardTab>
+				<CardTab isActive={inlineOnlyActive === 'inline-only-1'} onclick={() => (inlineOnlyActive = 'inline-only-1')}>Overview</CardTab>
+				<CardTab isActive={inlineOnlyActive === 'inline-only-2'} onclick={() => (inlineOnlyActive = 'inline-only-2')}>Details</CardTab>
+				<CardTab isActive={inlineOnlyActive === 'inline-only-3'} onclick={() => (inlineOnlyActive = 'inline-only-3')}>Settings</CardTab>
 			{/snippet}
-			<CardTabContent active={inlineOnlyActive === 'inline-only-1'} id="inline-only-1">
+			<CardTabContent isActive={inlineOnlyActive === 'inline-only-1'} id="inline-only-1">
 				<Paragraph>Tabs can also be used alone in the header without a title.</Paragraph>
 			</CardTabContent>
-			<CardTabContent active={inlineOnlyActive === 'inline-only-2'} id="inline-only-2">
+			<CardTabContent isActive={inlineOnlyActive === 'inline-only-2'} id="inline-only-2">
 				<Paragraph>Details content.</Paragraph>
 			</CardTabContent>
-			<CardTabContent active={inlineOnlyActive === 'inline-only-3'} id="inline-only-3">
+			<CardTabContent isActive={inlineOnlyActive === 'inline-only-3'} id="inline-only-3">
 				<Paragraph>Settings content.</Paragraph>
 			</CardTabContent>
 		</Card>

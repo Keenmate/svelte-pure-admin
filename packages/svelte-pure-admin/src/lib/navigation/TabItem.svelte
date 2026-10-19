@@ -12,7 +12,7 @@
 
 	interface Props extends HTMLButtonAttributes {
 		/** Active state */
-		active?: boolean;
+		isActive?: boolean;
 		/** Fixed width */
 		width?: TabWidth;
 		/** Fixed height */
@@ -28,7 +28,7 @@
 	}
 
 	let {
-		active = false,
+		isActive = false,
 		width,
 		height,
 		class: className = '',
@@ -43,7 +43,7 @@
 		const base = ['pa-tabs__item'];
 
 		// Active state
-		if (active) base.push('pa-tabs__item--active');
+		if (isActive) base.push('pa-tabs__item--active');
 
 		// Fixed width / height. Core has NO `pa-tabs__item--w-Nx` / `--h-Nx`
 		// (0 hits in the compiled CSS). The blessed "FIXED WIDTH TABS" shape in

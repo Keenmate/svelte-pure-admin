@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING — prop names follow the shared keen/svelte convention
+
+One nomenclature across both wrappers (core `fidelity/NAMING.md`, checked by
+`npm run fidelity:naming -w @keenmate/pure-admin-core`): booleans `is*`, show-a-part flags `has*`,
+plain-text values `*Text`, a single actions area is `actions`. No aliases for the old names.
+
+- Booleans → `is*`: `BadgeGroup` `showAll` → `isShowAll`; `ButtonGroup` `vertical` / `nowrap` →
+  `isVertical` / `isNowrap`; `TabItem` / `CardTab` / `CardTabContent` `active` → `isActive`;
+  `Column` `noPadding` / `grow` / `shrink` → `isNoPadding` / `isGrow` / `isShrink`; `Grid`
+  `noGutter` / `sameHeight` → `isNoGutter` / `isSameHeight`; `FilterCard` `disabled` →
+  `isDisabled`; `KpiSparklineList` `noDelta` → `isNoDelta`; `NavDropdown` `level2` → `isLevel2`;
+  `Tabs` `wrapLabels` → `isWrapLabels`; `Timeline` `shouldKeepLayout` → `isKeepLayout`; `Toast`
+  `show` → `isVisible` (still bindable).
+- Show flags → `has*`: `FilterCard` `shouldShowToggle` / `shouldShowClear` / `shouldShowRefresh` /
+  `shouldShowAdvancedActions` → `hasToggle` / `hasClear` / `hasRefresh` / `hasAdvancedActions`.
+- Text → `*Text`: `unit` / `prefix` → `unitText` / `prefixText` on `KpiBentoTile`,
+  `KpiEditorialTile`, `KpiGauge`, `KpiHeroMain`, `KpiHeroSide`, `KpiSparklineRow`, `KpiStripRow`;
+  `KpiTerminalTile` `valueUnit` / `valuePrefix` → `unitText` / `prefixText`.
+- `TableCard` / `TableContainer` `headerActions` snippet → `actions` (one actions area; `Card` keeps
+  `headerActions` / `footerActions` because it has two).
+- Docs, `ai/` reference and fidelity maps updated.
+
 ### Added — `<Card>` responsive header actions (`headerActionsCollapsed`)
 
 - New `headerActionsCollapsed` snippet: the compact fallback for `headerActions` (typically a

@@ -457,19 +457,19 @@
 		<DetailPanel titleText={tabbedUser.name} onclose={() => tabbedShow = false}>
 			{#snippet tabs()}
 				<Tabs align="full">
-					<TabItem active={activeTab === 'details'} onclick={() => (activeTab = 'details')}>
+					<TabItem isActive={activeTab === 'details'} onclick={() => (activeTab = 'details')}>
 						{#snippet icon()}
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
 						{/snippet}
 						Details
 					</TabItem>
-					<TabItem active={activeTab === 'activity'} onclick={() => (activeTab = 'activity')}>
+					<TabItem isActive={activeTab === 'activity'} onclick={() => (activeTab = 'activity')}>
 						{#snippet icon()}
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
 						{/snippet}
 						Activity
 					</TabItem>
-					<TabItem active={activeTab === 'notes'} onclick={() => (activeTab = 'notes')}>
+					<TabItem isActive={activeTab === 'notes'} onclick={() => (activeTab = 'notes')}>
 						{#snippet icon()}
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
 						{/snippet}
@@ -594,7 +594,7 @@
      ================================================================ -->
 
 <TableCard class="mb-4" titleText="Table Card + Detail View">
-	{#snippet headerActions()}
+	{#snippet actions()}
 		<Button variant="primary" size="sm">Add New</Button>
 	{/snippet}
 

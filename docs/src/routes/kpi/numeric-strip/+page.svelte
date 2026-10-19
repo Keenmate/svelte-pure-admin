@@ -33,7 +33,7 @@
 	<KpiStripRow
 		metricText="Completion Rate"
 		valueText="87.1"
-		unit="%"
+		unitText="%"
 		previousValueText="84.2%"
 		deltaText="+3.4%"
 		deltaVariant="positive"
@@ -45,9 +45,9 @@
 	/>
 	<KpiStripRow
 		metricText="Monthly Revenue"
-		prefix="$"
+		prefixText="$"
 		valueText="862"
-		unit="K"
+		unitText="K"
 		previousValueText="$752K"
 		deltaText="+14.6%"
 		deltaVariant="positive"
@@ -60,7 +60,7 @@
 	<KpiStripRow
 		metricText="Server Temp"
 		valueText="24.7"
-		unit="°C"
+		unitText="°C"
 		previousValueText="24.5°C"
 		deltaText="+0.8%"
 		deltaVariant="positive"
@@ -72,7 +72,7 @@
 	<KpiStripRow
 		metricText="Server Capacity"
 		valueText="86.1"
-		unit="%"
+		unitText="%"
 		previousValueText="71.0%"
 		deltaText="+21.3%"
 		deltaVariant="up-strong"
@@ -84,7 +84,7 @@
 	<KpiStripRow
 		metricText="Error Rate"
 		valueText="0.27"
-		unit="%"
+		unitText="%"
 		previousValueText="0.41%"
 		deltaText="-34.6%"
 		deltaVariant="up-strong"
@@ -95,9 +95,9 @@
 	/>
 	<KpiStripRow
 		metricText="Tokyo Office"
-		prefix="¥"
+		prefixText="¥"
 		valueText="12.2"
-		unit="M"
+		unitText="M"
 		previousValueText="¥11.2M"
 		deltaText="+8.5%"
 		deltaVariant="positive"
@@ -126,9 +126,9 @@
 		<KpiStrip titleText="Revenue" isLive noPreviousValue>
 			<KpiStripRow
 				metricText="MRR"
-				prefix="$"
+				prefixText="$"
 				valueText="862"
-				unit="K"
+				unitText="K"
 				deltaText="+14.6%"
 				deltaVariant="positive"
 				targetBarPercent={96}
@@ -138,9 +138,9 @@
 			/>
 			<KpiStripRow
 				metricText="Bookings"
-				prefix="€"
+				prefixText="€"
 				valueText="2.4"
-				unit="M"
+				unitText="M"
 				deltaText="+18%"
 				deltaVariant="up-strong"
 				targetBarPercent={92}
@@ -150,7 +150,7 @@
 			<KpiStripRow
 				metricText="Convert"
 				valueText="5.7"
-				unit="%"
+				unitText="%"
 				deltaText="+1.2%"
 				deltaVariant="positive"
 				targetBarPercent={81}
@@ -159,9 +159,9 @@
 			/>
 			<KpiStripRow
 				metricText="Tokyo"
-				prefix="¥"
+				prefixText="¥"
 				valueText="12.2"
-				unit="M"
+				unitText="M"
 				deltaText="+8.5%"
 				deltaVariant="positive"
 				targetBarPercent={93}
@@ -176,7 +176,7 @@
 			<KpiStripRow
 				metricText="Server Temp"
 				valueText="24.7"
-				unit="°C"
+				unitText="°C"
 				previousValueText="24.5°C"
 				deltaText="+0.8%"
 				deltaVariant="positive"
@@ -187,7 +187,7 @@
 			<KpiStripRow
 				metricText="Capacity"
 				valueText="86.1"
-				unit="%"
+				unitText="%"
 				previousValueText="71.0%"
 				deltaText="+21.3%"
 				deltaVariant="up-strong"
@@ -198,7 +198,7 @@
 			<KpiStripRow
 				metricText="Error Rate"
 				valueText="0.27"
-				unit="%"
+				unitText="%"
 				previousValueText="0.41%"
 				deltaText="-34.6%"
 				deltaVariant="up-strong"
@@ -209,7 +209,7 @@
 			<KpiStripRow
 				metricText="Uptime"
 				valueText="99.99"
-				unit="%"
+				unitText="%"
 				previousValueText="99.95%"
 				deltaText="+0.04%"
 				deltaVariant="up-strong"
@@ -235,7 +235,7 @@
 			<KpiStripRow
 				metricText="CSAT"
 				valueText="94.1"
-				unit="%"
+				unitText="%"
 				previousValueText="94.1%"
 				deltaText="±0.0%"
 				deltaVariant="neutral"
@@ -246,7 +246,7 @@
 			<KpiStripRow
 				metricText="DAU"
 				valueText="42.7"
-				unit="k"
+				unitText="k"
 				previousValueText="40.2k"
 				deltaText="+6.2%"
 				deltaVariant="positive"
@@ -257,7 +257,7 @@
 			<KpiStripRow
 				metricText="Churn"
 				valueText="3.1"
-				unit="%"
+				unitText="%"
 				previousValueText="2.7%"
 				deltaText="+0.4%"
 				deltaVariant="negative"
@@ -287,9 +287,9 @@
 		<KpiStrip titleText="4-col · noTargetBar" noTargetBar>
 			<KpiStripRow
 				metricText="Revenue"
-				prefix="$"
+				prefixText="$"
 				valueText="862"
-				unit="K"
+				unitText="K"
 				previousValueText="$752K"
 				deltaText="+14.6%"
 				deltaVariant="up-strong"
@@ -298,7 +298,7 @@
 			<KpiStripRow
 				metricText="Sessions"
 				valueText="48.2"
-				unit="K"
+				unitText="K"
 				previousValueText="44.0K"
 				deltaText="+9.5%"
 				deltaVariant="positive"
@@ -307,7 +307,7 @@
 			<KpiStripRow
 				metricText="Churn"
 				valueText="3.1"
-				unit="%"
+				unitText="%"
 				previousValueText="2.7%"
 				deltaText="+14.8%"
 				deltaVariant="negative"
@@ -320,9 +320,9 @@
 		<KpiStrip titleText="3-col · noPreviousValue + noDeltaPercent" noPreviousValue noDeltaPercent>
 			<KpiStripRow
 				metricText="Revenue"
-				prefix="$"
+				prefixText="$"
 				valueText="862"
-				unit="K"
+				unitText="K"
 				targetBarPercent={96}
 				targetPercentText="96%"
 				detailTitleText="Revenue"
@@ -333,7 +333,7 @@
 			<KpiStripRow
 				metricText="Sessions"
 				valueText="48.2"
-				unit="K"
+				unitText="K"
 				targetBarPercent={80}
 				targetPercentText="80%"
 				detailTitleText="Sessions"
@@ -344,7 +344,7 @@
 			<KpiStripRow
 				metricText="Churn"
 				valueText="3.1"
-				unit="%"
+				unitText="%"
 				targetBarPercent={62}
 				targetPercentText="62%"
 				detailTitleText="Churn"
@@ -359,9 +359,9 @@
 		<KpiStrip titleText="2-col · all three dropped" noPreviousValue noDeltaPercent noTargetBar>
 			<KpiStripRow
 				metricText="Revenue"
-				prefix="$"
+				prefixText="$"
 				valueText="862"
-				unit="K"
+				unitText="K"
 				detailTitleText="Revenue"
 				previousValueText="$752K"
 				deltaText="+14.6%"
@@ -371,7 +371,7 @@
 			<KpiStripRow
 				metricText="Sessions"
 				valueText="48.2"
-				unit="K"
+				unitText="K"
 				detailTitleText="Sessions"
 				previousValueText="44.0K"
 				deltaText="+9.5%"
@@ -380,7 +380,7 @@
 			<KpiStripRow
 				metricText="Churn"
 				valueText="3.1"
-				unit="%"
+				unitText="%"
 				detailTitleText="Churn"
 				previousValueText="2.7%"
 				deltaText="+14.8%"

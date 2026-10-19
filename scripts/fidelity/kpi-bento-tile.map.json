@@ -7,8 +7,8 @@
     "labelText":  { "prop": "labelText", "kind": "string" },
     "deltaText":  { "prop": "deltaText", "kind": "string" },
     "valueText":  { "prop": "valueText", "kind": "string" },
-    "unit":       { "prop": "unit",      "kind": "string" },
-    "prefix":     { "prop": "prefix",    "kind": "string" },
+    "unit":       { "prop": "unitText",  "kind": "string" },
+    "prefix":     { "prop": "prefixText", "kind": "string" },
     "extraClass": { "prop": "class",     "kind": "string" }
   }
 }

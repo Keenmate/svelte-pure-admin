@@ -562,5 +562,5 @@
 
 <!-- Toast notifications -->
 <ToastContainer position="top-end">
-	<Toast bind:show={showToast} variant="success" titleText="Success" messageText={toastMessage} />
+	<Toast bind:isVisible={showToast} variant="success" titleText="Success" messageText={toastMessage} />
 </ToastContainer>

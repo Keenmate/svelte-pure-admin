@@ -25,8 +25,8 @@
 		class?: string;
 		/** @deprecated Panel mode only — use `<TableCard>`'s `header` snippet instead. */
 		header?: import('svelte').Snippet;
-		/** @deprecated Panel mode only — use `<TableCard>`'s `headerActions` snippet instead. */
-		headerActions?: import('svelte').Snippet;
+		/** @deprecated Panel mode only — use `<TableCard>`'s `actions` snippet instead. */
+		actions?: import('svelte').Snippet;
 		/** Table content */
 		children?: import('svelte').Snippet;
 	}
@@ -36,7 +36,7 @@
 		titleText,
 		class: className = '',
 		header,
-		headerActions,
+		actions,
 		children
 	}: Props = $props();
 
@@ -49,7 +49,7 @@
 	});
 
 	// Determine if we should show header (only in panel mode)
-	const hasHeader = $derived(isPanel && (header || titleText || headerActions));
+	const hasHeader = $derived(isPanel && (header || titleText || actions));
 </script>
 
 <div class={classes()}>
@@ -61,9 +61,9 @@
 				{#if titleText}
 					<div class="pa-table-container__title">{titleText}</div>
 				{/if}
-				{#if headerActions}
+				{#if actions}
 					<div class="pa-table-container__actions">
-						{@render headerActions()}
+						{@render actions()}
 					</div>
 				{/if}
 			{/if}

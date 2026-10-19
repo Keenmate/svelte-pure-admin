@@ -29,9 +29,9 @@
 		/** Focal numeric value. */
 		valueText?: string | number;
 		/** Unit suffix appended after the number ("%", "°C", "M", "K"). */
-		unit?: string;
+		unitText?: string;
 		/** Currency / scale prefix rendered before the number ("$", "¥", "€"). */
-		prefix?: string;
+		prefixText?: string;
 		/** Bar fill as a percentage (0-100). Width set inline; values above 100 are NOT capped — overshoots are signalled by colour instead. */
 		barPercent?: number;
 		/** Tick position along the bar (e.g. `"80%"`). Default `"100%"` — the target sits at the right edge of the bar's 0→target scale. Override when the bar represents a wider scale and the target sits inside. */
@@ -76,8 +76,8 @@
 		variant,
 		labelText,
 		valueText,
-		unit,
-		prefix,
+		unitText,
+		prefixText,
 		barPercent,
 		tickPosition,
 		tickColor,
@@ -98,9 +98,9 @@
 	}: Props = $props();
 
 	const autoDetailRows = $derived(buildAutoDetailRows({
-		prefix,
+		prefix: prefixText,
 		valueText,
-		unit,
+		unit: unitText,
 		previousValueText,
 		deltaAbsoluteText,
 		deltaAbsoluteSentiment: deltaAbsoluteVariant,
@@ -144,9 +144,9 @@
 			<div class="pa-kpi-gauge__value">{@render value()}</div>
 		{:else}
 			<div class="pa-kpi-gauge__value">
-				{#if prefix}<span class="pa-kpi-gauge__unit">{prefix}</span>{/if}
+				{#if prefixText}<span class="pa-kpi-gauge__unit">{prefixText}</span>{/if}
 				<span class="pa-kpi-gauge__num">{valueText ?? ''}</span>
-				{#if unit}<span class="pa-kpi-gauge__unit">{unit}</span>{/if}
+				{#if unitText}<span class="pa-kpi-gauge__unit">{unitText}</span>{/if}
 			</div>
 		{/if}
 	</div>

@@ -11,15 +11,15 @@
 		/** Whether advanced filters are expanded */
 		isExpanded?: boolean;
 		/** Show the expand/collapse toggle button */
-		shouldShowToggle?: boolean;
+		hasToggle?: boolean;
 		/** Show the clear all button */
-		shouldShowClear?: boolean;
+		hasClear?: boolean;
 		/** Show the refresh button */
-		shouldShowRefresh?: boolean;
+		hasRefresh?: boolean;
 		/** Show Apply/Clear buttons in advanced section footer */
-		shouldShowAdvancedActions?: boolean;
+		hasAdvancedActions?: boolean;
 		/** Disable all filter inputs */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Loading state (disables inputs and shows loading indicator) */
 		isLoading?: boolean;
 		/** Additional CSS classes */
@@ -42,11 +42,11 @@
 
 	let {
 		isExpanded = $bindable(false),
-		shouldShowToggle = true,
-		shouldShowClear = true,
-		shouldShowRefresh = true,
-		shouldShowAdvancedActions = true,
-		disabled = false,
+		hasToggle = true,
+		hasClear = true,
+		hasRefresh = true,
+		hasAdvancedActions = true,
+		isDisabled = false,
 		isLoading = false,
 		class: className = '',
 		onclear,
@@ -83,7 +83,7 @@
 	const classes = $derived(() => {
 		const base = ['pa-card', 'pa-filter-card'];
 		if (isLoading) base.push('pa-filter-card--loading');
-		if (disabled) base.push('pa-filter-card--disabled');
+		if (isDisabled) base.push('pa-filter-card--disabled');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -104,13 +104,13 @@
 
 			<!-- Action buttons: toggle (left), clear, refresh (right) -->
 			<div class="pa-filter-card__actions">
-				{#if shouldShowToggle && hasAdvanced}
+				{#if hasToggle && hasAdvanced}
 					<Button
 						variant="primary"
 						isIconOnly
 						titleText={isExpanded ? $_('pureAdmin.buttons.hideFilters') : $_('pureAdmin.buttons.moreFilters')}
 						onclick={handleToggle}
-						{disabled}
+						disabled={isDisabled}
 					>
 						<span class="pa-icon" class:pa-icon--chevron-up={isExpanded} class:pa-icon--chevron-down={!isExpanded} aria-hidden="true"></span>
 					</Button>
@@ -120,25 +120,25 @@
 					{@render actions()}
 				{/if}
 
-				{#if shouldShowClear}
+				{#if hasClear}
 					<Button
 						variant="secondary"
 						isIconOnly
 						titleText={$_('pureAdmin.buttons.clearAll')}
 						onclick={handleClear}
-						{disabled}
+						disabled={isDisabled}
 					>
 						<span class="pa-icon pa-icon--clear" aria-hidden="true"></span>
 					</Button>
 				{/if}
 
-				{#if shouldShowRefresh}
+				{#if hasRefresh}
 					<Button
 						variant="primary"
 						isIconOnly
 						titleText={$_('pureAdmin.buttons.refresh')}
 						onclick={handleRefresh}
-						disabled={disabled || isLoading}
+						disabled={isDisabled || isLoading}
 					>
 						<span class="pa-icon pa-icon--refresh" aria-hidden="true"></span>
 					</Button>
@@ -151,12 +151,12 @@
 			<div class="pa-filter-card__advanced">
 				{@render advancedFilters?.()}
 
-				{#if shouldShowAdvancedActions}
+				{#if hasAdvancedActions}
 					<div class="pa-filter-card__advanced-actions">
-						<Button variant="secondary" onclick={handleClearAdvanced} {disabled}>
+						<Button variant="secondary" onclick={handleClearAdvanced} disabled={isDisabled}>
 							{$_('pureAdmin.buttons.clearFilters')}
 						</Button>
-						<Button variant="primary" onclick={handleApply} disabled={disabled || isLoading}>
+						<Button variant="primary" onclick={handleApply} disabled={isDisabled || isLoading}>
 							{$_('pureAdmin.buttons.applyFilters')}
 						</Button>
 					</div>

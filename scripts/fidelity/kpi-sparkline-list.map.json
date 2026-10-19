@@ -5,7 +5,7 @@
     "title":      { "prop": "titleText",    "kind": "string" },
     "live":       { "prop": "isLive",       "kind": "bool" },
     "footer":     { "prop": "footerText",   "kind": "string" },
-    "noDelta":    { "prop": "noDelta",      "kind": "bool" },
+    "noDelta":    { "prop": "isNoDelta",    "kind": "bool" },
     "chartFirst": { "prop": "isChartFirst", "kind": "bool" },
     "body":       { "prop": "children",     "kind": "slot" },
     "extraClass": { "prop": "class",        "kind": "string" }

@@ -35,8 +35,8 @@
 
 <!-- Same Height Cards -->
 <Section titleText="Same Height Cards">
-	<Paragraph class="mb-2">Use <Code>sameHeight</Code> on Grid to make all cards in a isRow match the height of the tallest card.</Paragraph>
-	<Grid sameHeight>
+	<Paragraph class="mb-2">Use <Code>isSameHeight</Code> on Grid to make all cards in a row match the height of the tallest card.</Paragraph>
+	<Grid isSameHeight>
 		<Column size="100" md="1-3">
 			<Card titleText="Short Card">
 				<Paragraph>This card has minimal content.</Paragraph>
@@ -45,7 +45,7 @@
 		<Column size="100" md="1-3">
 			<Card titleText="Tall Card">
 				<Paragraph>This card has much more content than the others, making it naturally taller.</Paragraph>
-				<Paragraph>All sibling cards will stretch to match this height thanks to the <Code>sameHeight</Code> prop on Grid.</Paragraph>
+				<Paragraph>All sibling cards will stretch to match this height thanks to the <Code>isSameHeight</Code> prop on Grid.</Paragraph>
 				<Paragraph>This is useful for dashboard layouts where visual consistency matters.</Paragraph>
 			</Card>
 		</Column>
@@ -457,17 +457,17 @@
 		<Column size="100" md="1-2">
 			<Card titleText="Card with Tabs">
 				{#snippet tabs()}
-					<CardTab active={activeTab === 'tab1'} onclick={() => showTab('tab1')}>Overview</CardTab>
-					<CardTab active={activeTab === 'tab2'} onclick={() => showTab('tab2')}>Details</CardTab>
-					<CardTab active={activeTab === 'tab3'} onclick={() => showTab('tab3')}>Settings</CardTab>
+					<CardTab isActive={activeTab === 'tab1'} onclick={() => showTab('tab1')}>Overview</CardTab>
+					<CardTab isActive={activeTab === 'tab2'} onclick={() => showTab('tab2')}>Details</CardTab>
+					<CardTab isActive={activeTab === 'tab3'} onclick={() => showTab('tab3')}>Settings</CardTab>
 				{/snippet}
-				<CardTabContent id="tab1" active={activeTab === 'tab1'}>
+				<CardTabContent id="tab1" isActive={activeTab === 'tab1'}>
 					<Paragraph>Overview content goes here. This is the default active tab.</Paragraph>
 				</CardTabContent>
-				<CardTabContent id="tab2" active={activeTab === 'tab2'}>
+				<CardTabContent id="tab2" isActive={activeTab === 'tab2'}>
 					<Paragraph>Detailed information is displayed in this tab.</Paragraph>
 				</CardTabContent>
-				<CardTabContent id="tab3" active={activeTab === 'tab3'}>
+				<CardTabContent id="tab3" isActive={activeTab === 'tab3'}>
 					<Paragraph>Settings and configuration options would be shown here.</Paragraph>
 				</CardTabContent>
 			</Card>

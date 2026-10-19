@@ -49,7 +49,7 @@
 		/** Limit of visible badges before showing "N more" (default: 5) */
 		limit?: number;
 		/** Show all badges without limit (for static display) */
-		showAll?: boolean;
+		isShowAll?: boolean;
 
 		// EVENTS
 		/** Callback when a badge is clicked (data mode) */
@@ -86,7 +86,7 @@
 
 		// Behavior
 		limit = 5,
-		showAll = false,
+		isShowAll = false,
 
 		// Events
 		onbadgeclick,
@@ -182,9 +182,9 @@
 		const base = ['pa-badge-group'];
 		// In data/array mode, always add show-all to prevent CSS hiding
 		// (we control visibility via slice() in Svelte). In snippet/manual mode
-		// honour the explicit `showAll` prop so children-driven groups can disable
+		// honour the explicit `isShowAll` prop so children-driven groups can disable
 		// the CSS overflow limit too (matches the core --show-all contract).
-		if (isDataMode || isLegacyMode || showAll) {
+		if (isDataMode || isLegacyMode || isShowAll) {
 			base.push('pa-badge-group--show-all');
 		}
 		if (className) base.push(className);

@@ -22,7 +22,7 @@
 		/** Toast message text */
 		messageText: string;
 		/** Show toast */
-		show?: boolean;
+		isVisible?: boolean;
 		/** Auto-dismiss duration (ms), 0 for persistent */
 		duration?: number;
 		/** Show progress bar */
@@ -47,7 +47,7 @@
 		isFilled = false,
 		titleText,
 		messageText,
-		show = $bindable(true),
+		isVisible = $bindable(true),
 		duration = 5000,
 		shouldShowProgress = false,
 		progressColor,
@@ -58,7 +58,7 @@
 		class: className = ''
 	}: Props = $props();
 
-	let visible = $state(show);
+	let visible = $state(isVisible);
 	let progressWidth = $state(100);
 
 	// Build class string
@@ -79,7 +79,7 @@
 
 	function handleClose() {
 		visible = false;
-		show = false;
+		isVisible = false;
 		if (onclose) onclose();
 	}
 
@@ -110,7 +110,7 @@
 	});
 
 	$effect(() => {
-		visible = show;
+		visible = isVisible;
 	});
 </script>
 

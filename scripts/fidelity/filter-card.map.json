@@ -3,12 +3,12 @@
   "component": "filter-card",
   "features": {
     "loading":             { "prop": "isLoading",                 "kind": "bool" },
-    "disabled":            { "prop": "disabled",                  "kind": "bool" },
+    "disabled":            { "prop": "isDisabled",                "kind": "bool" },
     "expanded":            { "prop": "isExpanded",                "kind": "bool" },
-    "showToggle":          { "prop": "shouldShowToggle",          "kind": "bool" },
-    "showClear":           { "prop": "shouldShowClear",           "kind": "bool" },
-    "showRefresh":         { "prop": "shouldShowRefresh",         "kind": "bool" },
-    "showAdvancedActions": { "prop": "shouldShowAdvancedActions", "kind": "bool" },
+    "showToggle":          { "prop": "hasToggle",                 "kind": "bool" },
+    "showClear":           { "prop": "hasClear",                  "kind": "bool" },
+    "showRefresh":         { "prop": "hasRefresh",                "kind": "bool" },
+    "showAdvancedActions": { "prop": "hasAdvancedActions",        "kind": "bool" },
     "filters":             { "prop": "filters",                   "kind": "slot" },
     "advancedFilters":     { "prop": "advancedFilters",           "kind": "slot" },
     "actions":             { "prop": "actions",                   "kind": "slot" }

@@ -32,7 +32,7 @@
 		 * with a `maxwr-*` / `wr-*` cap on the items to pick the wrap point.
 		 * Since core `pa-tabs--wrap-labels`.
 		 */
-		wrapLabels?: boolean;
+		isWrapLabels?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Tab items content */
@@ -45,7 +45,7 @@
 		align,
 		overflow,
 		isBorderTop = false,
-		wrapLabels = false,
+		isWrapLabels = false,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -72,7 +72,7 @@
 		if (isBorderTop) base.push('pa-tabs--border-top');
 
 		// Multi-line tab labels (opt-in; unified height via flex stretch)
-		if (wrapLabels) base.push('pa-tabs--wrap-labels');
+		if (isWrapLabels) base.push('pa-tabs--wrap-labels');
 
 		// Custom classes
 		if (className) base.push(className);

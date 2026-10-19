@@ -17,7 +17,7 @@
 
 	interface Props {
 		/** Vertical orientation */
-		vertical?: boolean;
+		isVertical?: boolean;
 		/** Vertical alignment (only for vertical groups): center, end, stretch */
 		align?: AlignVariant;
 		/**
@@ -35,7 +35,7 @@
 		/** @deprecated use `horizontalAt="lg"` — vertical on mobile/tablet, horizontal on lg+ */
 		lgHorizontal?: boolean;
 		/** Prevent wrapping (single line, may overflow) */
-		nowrap?: boolean;
+		isNowrap?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Children content */
@@ -43,14 +43,14 @@
 	}
 
 	let {
-		vertical = false,
+		isVertical = false,
 		align,
 		responsive,
 		verticalAt,
 		horizontalAt,
 		mdVertical = false,
 		lgHorizontal = false,
-		nowrap = false,
+		isNowrap = false,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -58,7 +58,7 @@
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-btn-group'];
-		if (vertical) base.push('pa-btn-group--vertical');
+		if (isVertical) base.push('pa-btn-group--vertical');
 		if (align) base.push(`pa-btn-group--${align}`);
 		// Responsive orientation: combined `responsive` token first, then the
 		// per-direction breakpoint props (fall back to the deprecated booleans).
@@ -67,7 +67,7 @@
 		const hAt = horizontalAt ?? (lgHorizontal ? 'lg' : undefined);
 		if (vAt) base.push(`pa-btn-group--${vAt}-vertical`);
 		if (hAt) base.push(`pa-btn-group--${hAt}-horizontal`);
-		if (nowrap) base.push('pa-btn-group--nowrap');
+		if (isNowrap) base.push('pa-btn-group--nowrap');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

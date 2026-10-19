@@ -4,8 +4,8 @@
   "features": {
     "labelText":    { "prop": "labelText",    "kind": "string" },
     "valueText":    { "prop": "valueText",    "kind": "string" },
-    "unit":         { "prop": "unit",         "kind": "string" },
-    "prefix":       { "prop": "prefix",       "kind": "string" },
+    "unit":         { "prop": "unitText",     "kind": "string" },
+    "prefix":       { "prop": "prefixText",   "kind": "string" },
     "deltaText":    { "prop": "deltaText",    "kind": "string" },
     "deltaVariant": { "prop": "deltaVariant", "kind": "enum", "values": ["positive", "negative", "neutral", "up-strong", "down-strong"] },
     "targetText":   { "prop": "targetText",   "kind": "string" },

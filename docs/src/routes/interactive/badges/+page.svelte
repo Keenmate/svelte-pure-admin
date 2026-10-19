@@ -418,7 +418,7 @@
 	<Grid>
 		<Column size="100" md="1-6">
 			<Heading level={4}>Wrapping Demo (Static)</Heading>
-			<BadgeGroup showAll>
+			<BadgeGroup isShowAll>
 					<Badge size="sm" variant="primary">React</Badge>
 					<Badge size="sm" variant="info">Vue</Badge>
 					<Badge size="sm" variant="success">Angular</Badge>
@@ -452,7 +452,7 @@
 			</Column>
 		<Column size="100" md="5-6">
 			<Heading level={4}>Full Width Comparison</Heading>
-			<BadgeGroup showAll>
+			<BadgeGroup isShowAll>
 					<Badge size="sm" variant="primary">React</Badge>
 					<Badge size="sm" variant="info">Vue</Badge>
 					<Badge size="sm" variant="success">Angular</Badge>

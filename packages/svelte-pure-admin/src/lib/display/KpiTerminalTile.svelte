@@ -51,9 +51,9 @@
 		/** Focal numeric / display text. */
 		valueText?: string | number;
 		/** Unit suffix (e.g. `%`, `°C`). */
-		valueUnit?: string;
+		unitText?: string;
 		/** Prefix (e.g. `$`, `¥`). */
-		valuePrefix?: string;
+		prefixText?: string;
 		/** Sentiment colour modifier for the focal value's number. */
 		valueVariant?: KpiSparklineDeltaVariant;
 
@@ -110,8 +110,8 @@
 		statusVariant,
 		labelText,
 		valueText,
-		valueUnit,
-		valuePrefix,
+		unitText,
+		prefixText,
 		valueVariant,
 		previousValueText,
 		deltaText,
@@ -132,9 +132,9 @@
 
 	const autoDetailRows = $derived(
 		buildAutoDetailRows({
-			prefix: valuePrefix,
+			prefix: prefixText,
 			valueText: valueText,
-			unit: valueUnit,
+			unit: unitText,
 			previousValueText,
 			deltaAbsoluteText,
 			deltaAbsoluteSentiment: deltaAbsoluteVariant,
@@ -172,7 +172,7 @@
 	});
 
 	const hasValue = $derived(
-		valueText !== undefined || valueUnit !== undefined || valuePrefix !== undefined
+		valueText !== undefined || unitText !== undefined || prefixText !== undefined
 	);
 </script>
 
@@ -200,9 +200,9 @@
 			{@render value()}
 		{:else if hasValue}
 			<span class={valueClasses()}>
-				{#if valuePrefix}<span class="pa-kpi-tile__unit">{valuePrefix}</span>{/if}
+				{#if prefixText}<span class="pa-kpi-tile__unit">{prefixText}</span>{/if}
 				<span class="pa-kpi-tile__num">{valueText ?? ''}</span>
-				{#if valueUnit}<span class="pa-kpi-tile__unit">{valueUnit}</span>{/if}
+				{#if unitText}<span class="pa-kpi-tile__unit">{unitText}</span>{/if}
 			</span>
 		{/if}
 	</div>

@@ -199,7 +199,7 @@
 						variant="success"
 						titleText="Success"
 						messageText="Operation completed"
-						bind:show={showToast}
+						bind:isVisible={showToast}
 						duration={4000}
 						onclose={() => log('Toast', 'onclose', 'Toast dismissed')}
 					/>
@@ -481,7 +481,7 @@
 	<Column size="1-2">
 		<div class="position-sticky overflow-y-auto max-h-screen">
 			<TableCard titleText="Event Log ({logEntries.length})">
-				{#snippet headerActions()}
+				{#snippet actions()}
 					<Button variant="secondary" size="sm" onclick={clearLog}>Clear</Button>
 				{/snippet}
 

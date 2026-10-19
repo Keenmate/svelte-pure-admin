@@ -7,7 +7,7 @@
     "align":      { "prop": "align",       "kind": "enum",   "values": ["centered", "full"] },
     "overflow":   { "prop": "overflow",    "kind": "enum",   "values": ["nowrap", "scrollable", "collapse"] },
     "borderTop":  { "prop": "isBorderTop", "kind": "bool" },
-    "wrapLabels": { "prop": "wrapLabels",  "kind": "bool" },
+    "wrapLabels": { "prop": "isWrapLabels", "kind": "bool" },
     "body":       { "prop": "children",    "kind": "slot" },
     "extraClass": { "prop": "class",       "kind": "string" }
   }

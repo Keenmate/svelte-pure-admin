@@ -475,13 +475,13 @@
 		{#snippet tabs()}
 			<Tabs align="full">
 				<TabItem
-					active={activeProfileTab === 'profile'}
+					isActive={activeProfileTab === 'profile'}
 					onclick={() => activeProfileTab = 'profile'}
 				>
 					<span class="pa-icon pa-icon--user" aria-hidden="true"></span> Profile
 				</TabItem>
 				<TabItem
-					active={activeProfileTab === 'favorites'}
+					isActive={activeProfileTab === 'favorites'}
 					onclick={() => activeProfileTab = 'favorites'}
 				>
 					<span class="pa-icon pa-icon--favorites" aria-hidden="true"></span> Favorites
@@ -595,7 +595,7 @@
 							<NavItem hasDropdown>
 								More ›
 								{#snippet dropdown()}
-									<NavDropdown level2>
+									<NavDropdown isLevel2>
 										<NavItem href="/interactive/badges">Badges</NavItem>
 										<NavItem href="/surfaces/modals">Modals</NavItem>
 										<NavItem href="/feedback/loaders">Loaders</NavItem>

@@ -233,7 +233,7 @@
 
 	<Heading level={4} class="mt-6">In tabs &amp; badges</Heading>
 	<Tabs class="mb-3">
-		<TabItem active>
+		<TabItem isActive>
 			{#snippet icon()}<span class="pa-icon pa-icon--user" aria-hidden="true"></span>{/snippet}
 			Profile
 		</TabItem>
@@ -328,7 +328,7 @@
 	</ButtonGroup>
 
 	<Tabs class="hover-fill-tabs">
-		<TabItem active>
+		<TabItem isActive>
 			{#snippet icon()}<span class="pa-icon demo-fill-bell" aria-hidden="true"></span>{/snippet}
 			Notifications
 		</TabItem>

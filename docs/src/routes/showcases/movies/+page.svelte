@@ -127,7 +127,7 @@
 
 <!-- Table Card -->
 <TableCard titleText="Movies Database">
-	{#snippet headerActions()}
+	{#snippet actions()}
 		<span class="text-muted text-sm">{filtered.length} movies</span>
 	{/snippet}
 

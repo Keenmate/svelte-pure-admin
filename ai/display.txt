@@ -104,10 +104,10 @@ Card with tabs:
 
 <Card hasInlineTabs>
   {#snippet tabs()}
-    <CardTab active={activeTab === 'overview'} onclick={() => activeTab = 'overview'}>
+    <CardTab isActive={activeTab === 'overview'} onclick={() => activeTab = 'overview'}>
       Overview
     </CardTab>
-    <CardTab active={activeTab === 'details'} onclick={() => activeTab = 'details'}>
+    <CardTab isActive={activeTab === 'details'} onclick={() => activeTab = 'details'}>
       Details
     </CardTab>
   {/snippet}
@@ -133,13 +133,13 @@ CARDTAB / CARDTABCONTENT
 Helper components for Card tabs.
 
 CardTab Props:
-  active?        boolean (false) - Whether this tab is active
+  isActive?      boolean (false) - Whether this tab is active
   onclick?       (event: MouseEvent) => void
   class?         string
   children?      Snippet
 
 CardTabContent Props:
-  active?        boolean (false) - Whether this tab content is visible
+  isActive?      boolean (false) - Whether this tab content is visible
   id?            string - Tab content ID
   class?         string
   children?      Snippet
@@ -152,11 +152,11 @@ Built on top of pa-card with pa-filter-card classes.
 
 Props:
   isExpanded?            boolean (false, bindable) - Advanced filters expanded
-  shouldShowToggle?      boolean (true) - Show expand/collapse button
-  shouldShowClear?       boolean (true) - Show clear all button
-  shouldShowRefresh?     boolean (true) - Show refresh button
-  shouldShowAdvancedActions? boolean (true) - Show Apply/Clear in advanced section
-  disabled?              boolean (false) - Disable all inputs
+  hasToggle?             boolean (true) - Show expand/collapse button
+  hasClear?              boolean (true) - Show clear all button
+  hasRefresh?            boolean (true) - Show refresh button
+  hasAdvancedActions?    boolean (true) - Show Apply/Clear in advanced section
+  isDisabled?            boolean (false) - Disable all inputs
   isLoading?             boolean (false) - Loading state
   class?                 string
   onclear?               () => void
@@ -441,7 +441,7 @@ Props:
   getDisplayValueCallback? (item: T) => string
   getVariantCallback?  (item: T) => BadgeVariant | undefined
   limit?               number (5) - Max visible before "N more"
-  showAll?             boolean (false) - Show all without limit
+  isShowAll?             boolean (false) - Show all without limit
   onbadgeclick?        (item: T, event: MouseEvent) => void
   class?               string
   children?            Snippet
@@ -1053,7 +1053,7 @@ CRITICAL REMINDERS
 - Content uses Snippets ({#snippet name()}...{/snippet}), NOT <slot>
 - Event handlers are lowercase: onclick, onclose, onchange (NOT onClick)
 - Boolean props use is* prefix: isGhost, isStriped, isHover
-- Behavior flags use should* prefix: shouldShowToggle, shouldShowCount
+- Show-a-part flags use has* prefix: hasToggle, hasClear; behaviour flags use should*: shouldCloseOnEscape
 - Class prop pattern: class?: string with let { class: className = '' } = $props()
 - Card body has padding by default (hasPadding=true), TableCard has none
 - TableCard is preferred over Card for tables (proper padding alignment)

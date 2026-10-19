@@ -6,8 +6,8 @@
     "label":        { "prop": "labelText",    "kind": "string" },
     "chart":        { "prop": "chart",        "kind": "slot" },
     "value":        { "prop": "valueText",    "kind": "string" },
-    "unit":         { "prop": "unit",         "kind": "string" },
-    "prefix":       { "prop": "prefix",       "kind": "string" },
+    "unit":         { "prop": "unitText",     "kind": "string" },
+    "prefix":       { "prop": "prefixText",   "kind": "string" },
     "delta":        { "prop": "deltaText",    "kind": "string" },
     "deltaVariant": { "prop": "deltaVariant", "kind": "enum", "values": ["very-positive", "positive", "neutral", "negative", "very-negative"] },
     "extraClass":   { "prop": "class",        "kind": "string" }

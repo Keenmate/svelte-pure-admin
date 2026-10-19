@@ -44,13 +44,13 @@ Basic usage with manual active state:
 </script>
 
 <Tabs>
-  <TabItem active={activeTab === 'overview'} onclick={() => activeTab = 'overview'}>
+  <TabItem isActive={activeTab === 'overview'} onclick={() => activeTab = 'overview'}>
     Overview
   </TabItem>
-  <TabItem active={activeTab === 'details'} onclick={() => activeTab = 'details'}>
+  <TabItem isActive={activeTab === 'details'} onclick={() => activeTab = 'details'}>
     Details
   </TabItem>
-  <TabItem active={activeTab === 'settings'} onclick={() => activeTab = 'settings'}>
+  <TabItem isActive={activeTab === 'settings'} onclick={() => activeTab = 'settings'}>
     Settings
   </TabItem>
 </Tabs>
@@ -84,7 +84,7 @@ Props:
 
 TabItem with icon:
 
-<TabItem active={activeTab === 'users'} onclick={() => activeTab = 'users'}>
+<TabItem isActive={activeTab === 'users'} onclick={() => activeTab = 'users'}>
   {#snippet icon()}
     <i class="fa-solid fa-users"></i>
   {/snippet}
@@ -93,7 +93,7 @@ TabItem with icon:
 
 TabItem with fixed width:
 
-<TabItem width="3x" active={true}>Dashboard</TabItem>
+<TabItem width="3x" isActive={true}>Dashboard</TabItem>
 
 
 TABS CONTENT AND TAB PANEL
@@ -116,45 +116,45 @@ TAB STYLE VARIANTS
 Pills style:
 
 <Tabs style="pills">
-  <TabItem active={true}>Tab 1</TabItem>
+  <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
 
 Boxed style:
 
 <Tabs style="boxed">
-  <TabItem active={true}>Tab 1</TabItem>
+  <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
 
 Centered alignment:
 
 <Tabs align="centered">
-  <TabItem active={true}>Tab 1</TabItem>
+  <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
 
 Full width (tabs fill container):
 
 <Tabs align="full">
-  <TabItem active={true}>Tab 1</TabItem>
+  <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
 
 Small and large sizes:
 
 <Tabs size="sm">
-  <TabItem active={true}>Small Tab</TabItem>
+  <TabItem isActive={true}>Small Tab</TabItem>
 </Tabs>
 
 <Tabs size="lg">
-  <TabItem active={true}>Large Tab</TabItem>
+  <TabItem isActive={true}>Large Tab</TabItem>
 </Tabs>
 
 Border on top (for profile panel usage):
 
 <Tabs isBorderTop={true}>
-  <TabItem active={true}>Tab 1</TabItem>
+  <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
 
@@ -173,8 +173,8 @@ Bordered tabs:
 
 <TabsContainer isBordered={true}>
   <Tabs>
-    <TabItem active={activeTab === 'one'} onclick={() => activeTab = 'one'}>Tab 1</TabItem>
-    <TabItem active={activeTab === 'two'} onclick={() => activeTab = 'two'}>Tab 2</TabItem>
+    <TabItem isActive={activeTab === 'one'} onclick={() => activeTab = 'one'}>Tab 1</TabItem>
+    <TabItem isActive={activeTab === 'two'} onclick={() => activeTab = 'two'}>Tab 2</TabItem>
   </Tabs>
   <TabsContent>
     <TabPanel active={activeTab === 'one'}>Content 1</TabPanel>
@@ -186,7 +186,7 @@ Card-style tabs (tabs act as the card header):
 
 <TabsContainer isCard={true}>
   <Tabs>
-    <TabItem active={true}>Overview</TabItem>
+    <TabItem isActive={true}>Overview</TabItem>
     <TabItem>Stats</TabItem>
   </Tabs>
   <TabsContent>
@@ -218,13 +218,13 @@ Complete vertical tabs example:
 
 <TabsVerticalLayout isBordered={true}>
   <Tabs style="vertical">
-    <TabItem active={activeTab === 'general'} onclick={() => activeTab = 'general'}>
+    <TabItem isActive={activeTab === 'general'} onclick={() => activeTab = 'general'}>
       General
     </TabItem>
-    <TabItem active={activeTab === 'security'} onclick={() => activeTab = 'security'}>
+    <TabItem isActive={activeTab === 'security'} onclick={() => activeTab = 'security'}>
       Security
     </TabItem>
-    <TabItem active={activeTab === 'billing'} onclick={() => activeTab = 'billing'}>
+    <TabItem isActive={activeTab === 'billing'} onclick={() => activeTab = 'billing'}>
       Billing
     </TabItem>
   </Tabs>
@@ -259,7 +259,7 @@ Scrollable tabs example:
 
 <TabsScrollable>
   {#each tabs as tab}
-    <TabItem active={activeTab === tab} onclick={() => activeTab = tab}>
+    <TabItem isActive={activeTab === tab} onclick={() => activeTab = tab}>
       {tab}
     </TabItem>
   {/each}
@@ -268,7 +268,7 @@ Scrollable tabs example:
 Scrollable pills:
 
 <TabsScrollable style="pills">
-  <TabItem active={true}>Dashboard</TabItem>
+  <TabItem isActive={true}>Dashboard</TabItem>
   <TabItem>Analytics</TabItem>
   <TabItem>Reports</TabItem>
   <TabItem>Users</TabItem>
@@ -309,14 +309,14 @@ Tabs with overflow dropdown:
 
 <Tabs>
   {#each visibleTabs as tab}
-    <TabItem active={activeTab === tab} onclick={() => activeTab = tab}>
+    <TabItem isActive={activeTab === tab} onclick={() => activeTab = tab}>
       {tab}
     </TabItem>
   {/each}
 
   <TabsOverflow hasActive={overflowTabs.includes(activeTab)}>
     {#each overflowTabs as tab}
-      <TabItem active={activeTab === tab} onclick={() => activeTab = tab}>
+      <TabItem isActive={activeTab === tab} onclick={() => activeTab = tab}>
         {tab}
       </TabItem>
     {/each}
@@ -654,15 +654,15 @@ COMPLETE EXAMPLE: TABS WITH CONTENT SWITCHING
 
   <TabsContainer isBordered={true}>
     <Tabs>
-      <TabItem active={activeTab === 'users'} onclick={() => activeTab = 'users'}>
+      <TabItem isActive={activeTab === 'users'} onclick={() => activeTab = 'users'}>
         {#snippet icon()}<i class="fa-solid fa-users"></i>{/snippet}
         Users
       </TabItem>
-      <TabItem active={activeTab === 'roles'} onclick={() => activeTab = 'roles'}>
+      <TabItem isActive={activeTab === 'roles'} onclick={() => activeTab = 'roles'}>
         {#snippet icon()}<i class="fa-solid fa-shield"></i>{/snippet}
         Roles
       </TabItem>
-      <TabItem active={activeTab === 'permissions'} onclick={() => activeTab = 'permissions'}>
+      <TabItem isActive={activeTab === 'permissions'} onclick={() => activeTab = 'permissions'}>
         {#snippet icon()}<i class="fa-solid fa-key"></i>{/snippet}
         Permissions
       </TabItem>

@@ -274,7 +274,7 @@
 
 <!-- Two Column Cards -->
 <Heading level={4}>Two Column Cards (50/50)</Heading>
-<Grid sameHeight>
+<Grid isSameHeight>
 	<Column size="100" md="50">
 		<Card titleText="Left Card">
 			<p>Half width card on the left side.</p>
@@ -289,7 +289,7 @@
 
 <!-- Three Column Cards -->
 <Heading level={4}>Three Column Cards (33/33/33)</Heading>
-<Grid sameHeight>
+<Grid isSameHeight>
 	<Column size="100" md="1-3">
 		<Card titleText="Card 1">
 			<p>First of three equal cards.</p>
@@ -309,7 +309,7 @@
 
 <!-- Sidebar + Main Cards -->
 <Heading level={4}>Sidebar + Main Cards (25/75)</Heading>
-<Grid sameHeight>
+<Grid isSameHeight>
 	<Column size="100" md="25">
 		<Card titleText="Sidebar Card">
 			<p>Narrow sidebar card for navigation or quick info.</p>
@@ -324,7 +324,7 @@
 
 <!-- Four Column Cards -->
 <Heading level={4}>Four Column Cards (25/25/25/25)</Heading>
-<Grid sameHeight>
+<Grid isSameHeight>
 	<Column size="100" md="25">
 		<Card titleText="Card A">
 			<p>Quarter width card.</p>
@@ -349,7 +349,7 @@
 
 <!-- Asymmetric Cards -->
 <Heading level={4}>Asymmetric Cards (67/33)</Heading>
-<Grid sameHeight>
+<Grid isSameHeight>
 	<Column size="100" md="2-3">
 		<Card titleText="Main Content Card">
 			<p>Larger card taking up 2/3 of the space for main content.</p>
@@ -389,7 +389,7 @@
 		<Column size="100" md="50">
 			<Heading level={4} class="mb-2">Cards in Grid</Heading>
 			<CodeBlock>{`<!-- Same height cards in grid -->
-<Grid sameHeight>
+<Grid isSameHeight>
   <Column size="100" md="1-3">
     <Card titleText="Card 1">
       <p>Short content</p>

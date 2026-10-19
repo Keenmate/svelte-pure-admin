@@ -30,7 +30,7 @@
 >
 	<KpiEditorialTile
 		valueText="86.9"
-		unit="%"
+		unitText="%"
 		deltaText="+3.3%"
 		deltaVariant="positive"
 		targetText="90.0%"
@@ -41,9 +41,9 @@
 	</KpiEditorialTile>
 
 	<KpiEditorialTile
-		prefix="$"
+		prefixText="$"
 		valueText="871"
-		unit="K"
+		unitText="K"
 		deltaText="+15.8%"
 		deltaVariant="up-strong"
 		targetText="$900K"
@@ -56,7 +56,7 @@
 
 	<KpiEditorialTile
 		valueText="25.0"
-		unit="°C"
+		unitText="°C"
 		deltaText="+1.9%"
 		deltaVariant="positive"
 		targetText="25.0°C"
@@ -68,7 +68,7 @@
 
 	<KpiEditorialTile
 		valueText="86.8"
-		unit="%"
+		unitText="%"
 		deltaText="+22.2%"
 		deltaVariant="up-strong"
 		targetText="80.0%"
@@ -80,7 +80,7 @@
 
 	<KpiEditorialTile
 		valueText="0.28"
-		unit="%"
+		unitText="%"
 		deltaText="-32.6%"
 		deltaVariant="up-strong"
 		targetText="0.50%"
@@ -91,9 +91,9 @@
 	</KpiEditorialTile>
 
 	<KpiEditorialTile
-		prefix="¥"
+		prefixText="¥"
 		valueText="12.1"
-		unit="M"
+		unitText="M"
 		deltaText="+8.5%"
 		deltaVariant="positive"
 		targetText="¥13.0M"
@@ -118,21 +118,21 @@
 <Grid>
 	<Column size="100" md="1-3">
 		<KpiEditorial titleText="Performance" isLive gridLayout="2col">
-			<KpiEditorialTile valueText="86.9" unit="%" deltaText="+3.3%" deltaVariant="positive" targetText="90.0%" detailTitleText="Completion Rate">
+			<KpiEditorialTile valueText="86.9" unitText="%" deltaText="+3.3%" deltaVariant="positive" targetText="90.0%" detailTitleText="Completion Rate">
 				{#snippet label()}Completion<br />Rate{/snippet}
 			</KpiEditorialTile>
-			<KpiEditorialTile labelText="Error Rate" valueText="0.28" unit="%" deltaText="-32.6%" deltaVariant="up-strong" targetText="0.50%" detailTitleText="Error Rate" />
-			<KpiEditorialTile labelText="Capacity" valueText="86.8" unit="%" deltaText="+22.2%" deltaVariant="up-strong" targetText="80.0%" detailTitleText="Capacity" />
-			<KpiEditorialTile labelText="Latency" valueText="142" unit="ms" deltaText="+8.0%" deltaVariant="negative" targetText="120ms" detailTitleText="Latency" />
+			<KpiEditorialTile labelText="Error Rate" valueText="0.28" unitText="%" deltaText="-32.6%" deltaVariant="up-strong" targetText="0.50%" detailTitleText="Error Rate" />
+			<KpiEditorialTile labelText="Capacity" valueText="86.8" unitText="%" deltaText="+22.2%" deltaVariant="up-strong" targetText="80.0%" detailTitleText="Capacity" />
+			<KpiEditorialTile labelText="Latency" valueText="142" unitText="ms" deltaText="+8.0%" deltaVariant="negative" targetText="120ms" detailTitleText="Latency" />
 		</KpiEditorial>
 	</Column>
 
 	<Column size="100" md="1-3">
 		<KpiEditorial titleText="Revenue" isLive gridLayout="2col">
-			<KpiEditorialTile labelText="MRR" prefix="$" valueText="871" unit="K" deltaText="+15.8%" deltaVariant="up-strong" targetText="$900K" detailTitleText="MRR" />
-			<KpiEditorialTile labelText="Bookings" prefix="€" valueText="2.4" unit="M" deltaText="+18.0%" deltaVariant="up-strong" targetText="€2.6M" detailTitleText="Bookings" />
-			<KpiEditorialTile labelText="Convert" valueText="5.7" unit="%" deltaText="+1.2%" deltaVariant="positive" targetText="7.0%" detailTitleText="Conversion" />
-			<KpiEditorialTile labelText="CAC" prefix="$" valueText="312" deltaText="-4.5%" deltaVariant="positive" targetText="$300" detailTitleText="CAC" />
+			<KpiEditorialTile labelText="MRR" prefixText="$" valueText="871" unitText="K" deltaText="+15.8%" deltaVariant="up-strong" targetText="$900K" detailTitleText="MRR" />
+			<KpiEditorialTile labelText="Bookings" prefixText="€" valueText="2.4" unitText="M" deltaText="+18.0%" deltaVariant="up-strong" targetText="€2.6M" detailTitleText="Bookings" />
+			<KpiEditorialTile labelText="Convert" valueText="5.7" unitText="%" deltaText="+1.2%" deltaVariant="positive" targetText="7.0%" detailTitleText="Conversion" />
+			<KpiEditorialTile labelText="CAC" prefixText="$" valueText="312" deltaText="-4.5%" deltaVariant="positive" targetText="$300" detailTitleText="CAC" />
 		</KpiEditorial>
 	</Column>
 
@@ -140,8 +140,8 @@
 		<KpiEditorial titleText="Customer" isLive gridLayout="2col">
 			<KpiEditorialTile labelText="NPS" valueText="62" deltaText="+4.0" deltaVariant="positive" targetText="65" detailTitleText="NPS" />
 			<KpiEditorialTile labelText="CSAT" valueText="4.7" deltaText="±0.0" deltaVariant="neutral" targetText="4.8" detailTitleText="CSAT" />
-			<KpiEditorialTile labelText="DAU" valueText="42.7" unit="k" deltaText="+6.2%" deltaVariant="positive" targetText="45k" detailTitleText="DAU" />
-			<KpiEditorialTile labelText="Churn" valueText="3.1" unit="%" deltaText="+0.4%" deltaVariant="negative" targetText="2.5%" detailTitleText="Churn" />
+			<KpiEditorialTile labelText="DAU" valueText="42.7" unitText="k" deltaText="+6.2%" deltaVariant="positive" targetText="45k" detailTitleText="DAU" />
+			<KpiEditorialTile labelText="Churn" valueText="3.1" unitText="%" deltaText="+0.4%" deltaVariant="negative" targetText="2.5%" detailTitleText="Churn" />
 		</KpiEditorial>
 	</Column>
 </Grid>
@@ -156,26 +156,26 @@
 <Grid>
 	<Column size="100" md="25">
 		<KpiEditorial titleText="Top line" isLive gridLayout="2col">
-			<KpiEditorialTile labelText="Revenue" prefix="$" valueText="871" unit="K" deltaText="+15.8%" deltaVariant="up-strong" targetText="$900K" detailTitleText="Revenue" />
-			<KpiEditorialTile labelText="Convert" valueText="5.7" unit="%" deltaText="+1.2%" deltaVariant="positive" targetText="7.0%" detailTitleText="Conversion" />
+			<KpiEditorialTile labelText="Revenue" prefixText="$" valueText="871" unitText="K" deltaText="+15.8%" deltaVariant="up-strong" targetText="$900K" detailTitleText="Revenue" />
+			<KpiEditorialTile labelText="Convert" valueText="5.7" unitText="%" deltaText="+1.2%" deltaVariant="positive" targetText="7.0%" detailTitleText="Conversion" />
 		</KpiEditorial>
 	</Column>
 
 	<Column size="100" md="45">
 		<KpiEditorial titleText="Operations" isLive>
-			<KpiEditorialTile labelText="Capacity" valueText="86.8" unit="%" deltaText="+22.2%" deltaVariant="up-strong" targetText="80.0%" detailTitleText="Capacity" />
-			<KpiEditorialTile labelText="Errors" valueText="0.28" unit="%" deltaText="-32.6%" deltaVariant="up-strong" targetText="0.50%" detailTitleText="Errors" />
-			<KpiEditorialTile labelText="Latency" valueText="142" unit="ms" deltaText="+8.0%" deltaVariant="negative" targetText="120ms" detailTitleText="Latency" />
-			<KpiEditorialTile labelText="Uptime" valueText="99.97" unit="%" deltaText="±0.00" deltaVariant="neutral" targetText="99.95%" detailTitleText="Uptime" />
-			<KpiEditorialTile labelText="Throughput" valueText="8.4" unit="k/s" deltaText="+11.2%" deltaVariant="positive" targetText="9k/s" detailTitleText="Throughput" />
-			<KpiEditorialTile labelText="Memory" valueText="62.4" unit="%" deltaText="+0.6%" deltaVariant="neutral" targetText="70%" detailTitleText="Memory" />
+			<KpiEditorialTile labelText="Capacity" valueText="86.8" unitText="%" deltaText="+22.2%" deltaVariant="up-strong" targetText="80.0%" detailTitleText="Capacity" />
+			<KpiEditorialTile labelText="Errors" valueText="0.28" unitText="%" deltaText="-32.6%" deltaVariant="up-strong" targetText="0.50%" detailTitleText="Errors" />
+			<KpiEditorialTile labelText="Latency" valueText="142" unitText="ms" deltaText="+8.0%" deltaVariant="negative" targetText="120ms" detailTitleText="Latency" />
+			<KpiEditorialTile labelText="Uptime" valueText="99.97" unitText="%" deltaText="±0.00" deltaVariant="neutral" targetText="99.95%" detailTitleText="Uptime" />
+			<KpiEditorialTile labelText="Throughput" valueText="8.4" unitText="k/s" deltaText="+11.2%" deltaVariant="positive" targetText="9k/s" detailTitleText="Throughput" />
+			<KpiEditorialTile labelText="Memory" valueText="62.4" unitText="%" deltaText="+0.6%" deltaVariant="neutral" targetText="70%" detailTitleText="Memory" />
 		</KpiEditorial>
 	</Column>
 
 	<Column size="100" md="30">
 		<KpiEditorial titleText="Customer" isLive gridLayout="2col">
 			<KpiEditorialTile labelText="NPS" valueText="62" deltaText="+4.0" deltaVariant="positive" targetText="65" detailTitleText="NPS" />
-			<KpiEditorialTile labelText="DAU" valueText="42.7" unit="k" deltaText="+6.2%" deltaVariant="positive" targetText="45k" detailTitleText="DAU" />
+			<KpiEditorialTile labelText="DAU" valueText="42.7" unitText="k" deltaText="+6.2%" deltaVariant="positive" targetText="45k" detailTitleText="DAU" />
 		</KpiEditorial>
 	</Column>
 </Grid>

@@ -32,9 +32,9 @@
 		/** Focal numeric value. */
 		valueText?: string | number;
 		/** Unit suffix appended after the number ("%", "°C", "M", "K"). */
-		unit?: string;
+		unitText?: string;
 		/** Currency / scale prefix rendered before the number ("$", "¥", "€"). */
-		prefix?: string;
+		prefixText?: string;
 		/** Δ% text. */
 		deltaText?: string;
 
@@ -81,8 +81,8 @@
 		isHero = false,
 		labelText,
 		valueText,
-		unit,
-		prefix,
+		unitText,
+		prefixText,
 		deltaText,
 		detailTitleText,
 		previousValueText,
@@ -99,9 +99,9 @@
 	}: Props = $props();
 
 	const autoDetailRows = $derived(buildAutoDetailRows({
-		prefix,
+		prefix: prefixText,
 		valueText,
-		unit,
+		unit: unitText,
 		previousValueText,
 		deltaAbsoluteText,
 		deltaAbsoluteSentiment: deltaAbsoluteVariant,
@@ -140,9 +140,9 @@
 		<div class="pa-kpi-bento-tile__value">{@render value()}</div>
 	{:else}
 		<div class="pa-kpi-bento-tile__value">
-			{#if prefix}<span class="pa-kpi-bento-tile__unit">{prefix}</span>{/if}
+			{#if prefixText}<span class="pa-kpi-bento-tile__unit">{prefixText}</span>{/if}
 			<span class="pa-kpi-bento-tile__num">{valueText ?? ''}</span>
-			{#if unit}<span class="pa-kpi-bento-tile__unit">{unit}</span>{/if}
+			{#if unitText}<span class="pa-kpi-bento-tile__unit">{unitText}</span>{/if}
 		</div>
 	{/if}
 

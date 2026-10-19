@@ -37,9 +37,9 @@
 		/** Focal numeric value. */
 		valueText?: string | number;
 		/** Unit suffix appended after the number ("%", "°C", "M", "K"). */
-		unit?: string;
+		unitText?: string;
 		/** Currency / scale prefix rendered before the number ("$", "¥", "€"). */
-		prefix?: string;
+		prefixText?: string;
 		/** Δ% text shown in the rightmost cell. */
 		deltaText?: string;
 		/** Sentiment colour for the delta cell. */
@@ -87,8 +87,8 @@
 		variant,
 		labelText,
 		valueText,
-		unit,
-		prefix,
+		unitText,
+		prefixText,
 		deltaText,
 		deltaVariant,
 		detailTitleText,
@@ -106,9 +106,9 @@
 	}: Props = $props();
 
 	const autoDetailRows = $derived(buildAutoDetailRows({
-		prefix,
+		prefix: prefixText,
 		valueText,
-		unit,
+		unit: unitText,
 		previousValueText,
 		deltaAbsoluteText,
 		deltaAbsoluteSentiment: deltaAbsoluteVariant,
@@ -150,9 +150,9 @@
 		<div class="pa-kpi-spark-row__value">{@render value()}</div>
 	{:else}
 		<div class="pa-kpi-spark-row__value">
-			{#if prefix}<span class="pa-kpi-spark-row__unit">{prefix}</span>{/if}
+			{#if prefixText}<span class="pa-kpi-spark-row__unit">{prefixText}</span>{/if}
 			<span class="pa-kpi-spark-row__num">{valueText ?? ''}</span>
-			{#if unit}<span class="pa-kpi-spark-row__unit">{unit}</span>{/if}
+			{#if unitText}<span class="pa-kpi-spark-row__unit">{unitText}</span>{/if}
 		</div>
 	{/if}
 
