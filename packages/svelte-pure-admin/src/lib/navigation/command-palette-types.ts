@@ -221,7 +221,7 @@ export interface SearchContext {
  */
 export interface CommandPaletteProps {
 	/** Show/hide the palette (bindable) */
-	show?: boolean;
+	isOpen?: boolean;
 
 	/** Available commands (triggered by /) */
 	commands?: Command[];

@@ -158,7 +158,7 @@ function applyThemeToDOM(resolvedMode: 'light' | 'dark') {
 	const codeUsageBasic = `// Using the SettingsPanel component
 <SettingsPanel
   availableThemes={themes}
-  onSettingsChange={(settings) => console.log(settings.themeMode)}
+  onsettingschange={(settings) => console.log(settings.themeMode)}
 />
 
 // The themeMode will be 'light', 'dark', or 'auto'`;
