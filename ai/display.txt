@@ -769,7 +769,7 @@ Code block with header:
 
 STAT
 ----
-Statistic display component with multiple variants.
+Statistic display component with several layouts (default, hero, hero-compact, square).
 
 Props:
   layout?        'hero' | 'hero-compact' | 'square'
@@ -780,11 +780,11 @@ Props:
   labelText?     string - Label text
   changeText?    string - Change indicator (e.g. "+12.5%")
   changeDirection? 'positive' | 'negative' | 'neutral'
-  symbolText?    string - Symbol (for square variant)
+  symbolText?    string - Symbol (for the square layout)
   class?         string
 
 Snippets:
-  icon?          Icon (for default variant)
+  icon?          Icon (for the default layout)
   children?      Custom layout
 
 Default stat (with icon):
@@ -1054,6 +1054,26 @@ Putting it all together: filter card + table card + pager + detail view.
     </Fields>
   </DetailPanel>
 </DetailView>
+
+
+HEADING / PARAGRAPH (typography)
+================================
+Plain <hN> / <p> with flat text-* utility classes (no BEM block).
+
+Heading props:
+  level?       1-6 (default 2) - renders <h1>..<h6>
+  textAlign?   'start' | 'center' | 'end' - text-start / text-center / text-end
+  class?       string
+
+Paragraph props:
+  isMuted?     boolean (false) - muted text (text-muted); default body colour emits no class
+  size?        'xs' | 'sm' | 'lg' | 'xl' - text-{size}
+  semantic?    'default' | 'caption' | 'lead'
+  textAlign?   'start' | 'center' | 'end'
+  class?       string
+
+<Heading level={3}>Section title</Heading>
+<Paragraph isMuted size="sm" textAlign="center">Small muted centred note.</Paragraph>
 
 
 CRITICAL REMINDERS

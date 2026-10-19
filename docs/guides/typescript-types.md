@@ -20,10 +20,10 @@ type Size = 'xs' | 'sm' | 'lg' | 'xl';
 type HorizontalAlignment = 'start' | 'center' | 'end';
 ```
 
-## Toast positions (logical, RTL-aware)
+## Toast placements (logical, RTL-aware)
 
 ```typescript
-type ToastPosition =
+type ToastPlacement =
   | 'top-end' | 'top-center' | 'top-start'
   | 'bottom-end' | 'bottom-center' | 'bottom-start';
 ```

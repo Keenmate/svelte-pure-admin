@@ -22,7 +22,7 @@ and `variant` always means the role colour. No aliases.
 - `Stat` `variant` (hero / hero-compact / square) → `layout`, and `color` (role colour, square
   layout) → `variant`.
 - `Paragraph` `color="secondary"` / `mode="muted"` → `isMuted`; `color="primary"` is gone (it only
-  re-stated the default body colour with `text-body`).
+  re-stated the default body colour with `text-body`). The now-unused `TextMode` type is removed.
 - `Card` `isStat`, `DataBar` `isNegative`, `Tabs` `isBorderTop`, `Fields` `hasBorder` already had
   the agreed shape — unchanged here (keen changed to match).
 

@@ -8,7 +8,6 @@ export type {
 	ExtendedSize,
 	HorizontalAlignment,
 	VerticalAlignment,
-	TextMode,
 	ValidationState,
 	DataVizVariant,
 	ThemeColor,

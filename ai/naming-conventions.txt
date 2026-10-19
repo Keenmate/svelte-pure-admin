@@ -104,7 +104,7 @@ The suffix tells you this is a displayable string, not a behavior flag.
   valueText        -- Field value, Progress value display
   messageText      -- Toast message, Alert message
   headingText      -- Heading content
-  symbolText       -- Symbol display (Stat square variant)
+  symbolText       -- Symbol display (Stat square layout)
   changeText       -- Change text like "+12.5%" (Stat)
   timeText         -- Time/date text
   minText          -- Minimum label (Gauge)

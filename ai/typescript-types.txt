@@ -38,10 +38,6 @@ Vertical alignment:
 
   type VerticalAlignment = 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 
-Text mode:
-
-  type TextMode = 'default' | 'muted';
-
 Form validation state:
 
   type ValidationState = 'default' | 'success' | 'warning' | 'error';
@@ -62,7 +58,6 @@ Import example:
     ExtendedSize,
     HorizontalAlignment,
     VerticalAlignment,
-    TextMode,
     ValidationState,
     DataVizVariant,
     ThemeColor
@@ -699,7 +694,7 @@ All exported types organized by category:
 // Core types
 import type {
   ColorVariant, Size, ExtendedSize, HorizontalAlignment,
-  VerticalAlignment, TextMode, ValidationState, DataVizVariant, ThemeColor
+  VerticalAlignment, ValidationState, DataVizVariant, ThemeColor
 } from '@keenmate/svelte-pure-admin';
 
 // Badge types

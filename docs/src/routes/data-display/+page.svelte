@@ -451,7 +451,7 @@
 
 <Card titleText="Color Variants">
 	{#snippet description()}
-		Theme colors for border and isFilled background. Uses <Code>color={1-9}</Code>. Combine with <Code>filled</Code> for tinted backgrounds. Use <Code>noBorder</Code> to remove the border.
+		Theme colors for border and isFilled background. Uses <Code>themeColor={1-9}</Code>. Combine with <Code>isFilled</Code> for tinted backgrounds. Use <Code>hasBorder={false}</Code> to remove the border.
 	{/snippet}
 
 	<Heading level={4}>Border Colors</Heading>

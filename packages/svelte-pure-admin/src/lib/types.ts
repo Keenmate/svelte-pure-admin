@@ -26,9 +26,6 @@ export type HorizontalAlignment = 'start' | 'center' | 'end';
 // Vertical alignment
 export type VerticalAlignment = 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 
-// Text mode
-export type TextMode = 'default' | 'muted';
-
 // Form validation state
 export type ValidationState = 'default' | 'success' | 'warning' | 'error';
 
