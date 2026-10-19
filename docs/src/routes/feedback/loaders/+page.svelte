@@ -87,7 +87,7 @@
 
 	<div class="hr-20 position-relative border border-dashed rounded">
 		<LoaderOverlay>
-			<Loader type="ring" size="lg" color="primary" />
+			<Loader type="ring" size="lg" variant="primary" />
 		</LoaderOverlay>
 	</div>
 </Card>
@@ -98,13 +98,13 @@
 	<Grid>
 		<Column size="100" md="1-2" class="mb-4">
 			<LoaderCenter class="hr-15 border border-dashed rounded">
-				<Loader type="ring" size="lg" color="primary" />
+				<Loader type="ring" size="lg" variant="primary" />
 				<Paragraph class="mt-4 text-muted">Loading data...</Paragraph>
 			</LoaderCenter>
 		</Column>
 		<Column size="100" md="1-2" class="mb-4">
 			<LoaderCenter class="hr-15 border border-dashed rounded">
-				<Loader type="ring" size="lg" color="success" />
+				<Loader type="ring" size="lg" variant="success" />
 				<Paragraph class="mt-4 text-muted">Processing...</Paragraph>
 			</LoaderCenter>
 		</Column>
@@ -118,13 +118,13 @@
 		<Column size="100" md="1-3" class="mb-4">
 			<Card bodyClass="hr-15 position-relative" titleText="Loading Card">
 				<LoaderOverlay>
-					<Loader type="ring" size="lg" color="primary" />
+					<Loader type="ring" size="lg" variant="primary" />
 				</LoaderOverlay>
 			</Card>
 		</Column>
 		<Column size="100" md="1-3" class="mb-4">
 			<Card bodyClass="pa-loader-center hr-15" titleText="Loading with Text">
-				<Loader type="ring" size="lg" color="info" />
+				<Loader type="ring" size="lg" variant="info" />
 				<Paragraph class="mt-4 text-muted">Fetching data...</Paragraph>
 			</Card>
 		</Column>
@@ -143,56 +143,56 @@
 	<Grid>
 		<!-- Dots Loader -->
 		<Column size="100" md="1-3" class="text-center mb-6">
-			<Loader type="dots" size="lg" color="primary" />
+			<Loader type="dots" size="lg" variant="primary" />
 			<Paragraph class="mt-2 text-muted"><strong>Dots Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-dots</Code></Paragraph>
 		</Column>
 
 		<!-- Bars Loader -->
 		<Column size="100" md="1-3" class="text-center mb-6">
-			<Loader type="bars" size="lg" color="success" />
+			<Loader type="bars" size="lg" variant="success" />
 			<Paragraph class="mt-2 text-muted"><strong>Bars Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-bars</Code></Paragraph>
 		</Column>
 
 		<!-- Pulse Loader -->
 		<Column size="100" md="1-3" class="text-center mb-6">
-			<Loader type="pulse" size="lg" color="danger" />
+			<Loader type="pulse" size="lg" variant="danger" />
 			<Paragraph class="mt-2 text-muted"><strong>Pulse Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-pulse</Code></Paragraph>
 		</Column>
 
 		<!-- Ring Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
-			<Loader type="ring" size="lg" color="warning" />
+			<Loader type="ring" size="lg" variant="warning" />
 			<Paragraph class="mt-2 text-muted"><strong>Ring Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-ring</Code></Paragraph>
 		</Column>
 
 		<!-- Wave Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
-			<Loader type="wave" size="lg" color="info" />
+			<Loader type="wave" size="lg" variant="info" />
 			<Paragraph class="mt-2 text-muted"><strong>Wave Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-wave</Code></Paragraph>
 		</Column>
 
 		<!-- Grid Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
-			<Loader type="grid" size="lg" color="primary" />
+			<Loader type="grid" size="lg" variant="primary" />
 			<Paragraph class="mt-2 text-muted"><strong>Grid Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-grid</Code></Paragraph>
 		</Column>
 
 		<!-- Ripple Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
-			<Loader type="ripple" size="lg" color="success" />
+			<Loader type="ripple" size="lg" variant="success" />
 			<Paragraph class="mt-2 text-muted"><strong>Ripple Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-ripple</Code></Paragraph>
 		</Column>
 
 		<!-- Dual Ring Loader -->
 		<Column size="100" md="1-3" class="text-center mb-4">
-			<Loader type="dual-ring" size="lg" color="danger" />
+			<Loader type="dual-ring" size="lg" variant="danger" />
 			<Paragraph class="mt-2 text-muted"><strong>Dual Ring Loader</strong></Paragraph>
 			<Paragraph class="mt-2"><Code>.pa-loader-dual-ring</Code></Paragraph>
 		</Column>
@@ -220,22 +220,22 @@
 
 	<Heading level={4} class="mb-2">Centered Loader with Overlay</Heading>
 	<CodeBlock class="mb-4">{`<LoaderOverlay>
-  <Loader type="ring" size="lg" color="primary" />
+  <Loader type="ring" size="lg" variant="primary" />
 </LoaderOverlay>`}</CodeBlock>
 
 	<Heading level={4} class="mb-2">Centered Loader with Text</Heading>
 	<CodeBlock class="mb-4">{`<LoaderCenter>
-  <Loader type="ring" size="lg" color="primary" />
+  <Loader type="ring" size="lg" variant="primary" />
   <Paragraph class="mt-4">Loading...</Paragraph>
 </LoaderCenter>`}</CodeBlock>
 
 	<Heading level={4} class="mb-2">Loader Types</Heading>
-	<CodeBlock class="mb-4">{`<Loader type="dots" size="lg" color="primary" />
-<Loader type="bars" size="lg" color="success" />
-<Loader type="pulse" size="lg" color="danger" />
-<Loader type="ring" size="lg" color="warning" />
-<Loader type="wave" size="lg" color="info" />
-<Loader type="grid" size="lg" color="primary" />
-<Loader type="ripple" size="lg" color="success" />
-<Loader type="dual-ring" size="lg" color="danger" />`}</CodeBlock>
+	<CodeBlock class="mb-4">{`<Loader type="dots" size="lg" variant="primary" />
+<Loader type="bars" size="lg" variant="success" />
+<Loader type="pulse" size="lg" variant="danger" />
+<Loader type="ring" size="lg" variant="warning" />
+<Loader type="wave" size="lg" variant="info" />
+<Loader type="grid" size="lg" variant="primary" />
+<Loader type="ripple" size="lg" variant="success" />
+<Loader type="dual-ring" size="lg" variant="danger" />`}</CodeBlock>
 </Card>

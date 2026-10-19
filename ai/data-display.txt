@@ -452,7 +452,7 @@ Full-width rows with a fixed-width tinted label column. Clear visual anchor for
 label-value data. Best for detail views, system info, configuration displays.
 
 Banded Props:
-  width?             'narrow' | 'wide' - Label column width
+  labelWidth?        'narrow' | 'wide' - Label column width
   isMiddle?          boolean (false) - Vertically center labels and values
   isLabelEnd?        boolean (false) - Right-align labels
   isLabelCenter?     boolean (false) - Center-align labels
@@ -484,14 +484,14 @@ Basic banded layout:
 
 Narrow label column:
 
-<Banded width="narrow">
+<Banded labelWidth="narrow">
   <BandedRow labelText="Key" valueText="Value" />
   <BandedRow labelText="Port" valueText="8080" />
 </Banded>
 
 Wide label column:
 
-<Banded width="wide">
+<Banded labelWidth="wide">
   <BandedRow labelText="Configuration Parameter" valueText="max_connections" />
   <BandedRow labelText="Default Value" valueText="100" />
   <BandedRow labelText="Current Value" valueText="500" />

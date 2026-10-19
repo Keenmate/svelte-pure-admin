@@ -111,7 +111,7 @@ Toast show binding:
 </script>
 
 <Button onclick={() => showToast = true}>Show Notification</Button>
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
   {#if showToast}
     <Toast variant="success" titleText="Done" messageText="Saved." bind:isVisible={showToast} />
   {/if}
@@ -253,16 +253,16 @@ Four-column stat cards:
 
 <Grid gap="md">
   <Column sm="1-2" lg="1-4">
-    <Card isStat><Stat variant="hero" labelText="Total Users" number="12,345" changeText="+2.5%" changeDirection="positive" /></Card>
+    <Card isStat><Stat layout="hero" labelText="Total Users" number="12,345" changeText="+2.5%" changeDirection="positive" /></Card>
   </Column>
   <Column sm="1-2" lg="1-4">
-    <Card isStat><Stat variant="hero" labelText="Active Now" number="1,234" changeText="+15" changeDirection="positive" /></Card>
+    <Card isStat><Stat layout="hero" labelText="Active Now" number="1,234" changeText="+15" changeDirection="positive" /></Card>
   </Column>
   <Column sm="1-2" lg="1-4">
-    <Card isStat><Stat variant="hero" labelText="Revenue" number="$89,432" changeText="+8.3%" changeDirection="positive" /></Card>
+    <Card isStat><Stat layout="hero" labelText="Revenue" number="$89,432" changeText="+8.3%" changeDirection="positive" /></Card>
   </Column>
   <Column sm="1-2" lg="1-4">
-    <Card isStat><Stat variant="hero" labelText="Bounce Rate" number="24.5%" changeText="+1.2%" changeDirection="negative" /></Card>
+    <Card isStat><Stat layout="hero" labelText="Bounce Rate" number="24.5%" changeText="+1.2%" changeDirection="negative" /></Card>
   </Column>
 </Grid>
 
@@ -350,12 +350,12 @@ Hero stats (big numbers with change indicators):
 <Grid gap="md">
   <Column sm="1-2" lg="1-4">
     <Card isStat>
-      <Stat variant="hero" labelText="Total Users" number="12,345" changeText="+2.5%" changeDirection="positive" />
+      <Stat layout="hero" labelText="Total Users" number="12,345" changeText="+2.5%" changeDirection="positive" />
     </Card>
   </Column>
   <Column sm="1-2" lg="1-4">
     <Card isStat>
-      <Stat variant="hero" labelText="Revenue" number="$89,432" changeText="+8.3%" changeDirection="positive" />
+      <Stat layout="hero" labelText="Revenue" number="$89,432" changeText="+8.3%" changeDirection="positive" />
     </Card>
   </Column>
 </Grid>
@@ -377,12 +377,12 @@ Square stat variant:
 <Grid gap="md">
   <Column md="1-4">
     <Card isStat>
-      <Stat variant="square" color="primary" number="42" symbolText="%" labelText="Completion" />
+      <Stat layout="square" variant="primary" number="42" symbolText="%" labelText="Completion" />
     </Card>
   </Column>
   <Column md="1-4">
     <Card isStat>
-      <Stat variant="square" color="success" number="98" symbolText="%" labelText="Uptime" />
+      <Stat layout="square" variant="success" number="98" symbolText="%" labelText="Uptime" />
     </Card>
   </Column>
 </Grid>
@@ -552,7 +552,7 @@ Basic toast setup:
 
 <Button onclick={() => addToast('success', 'Saved', 'Changes saved.')}>Show Toast</Button>
 
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
   {#each toasts as toast (toast.id)}
     <Toast
       variant={toast.variant}
@@ -574,14 +574,14 @@ Toast with progress bar:
   duration={10000}
 />
 
-Toast positions:
+Toast placements:
 
-<ToastContainer position="top-end">...</ToastContainer>      <!-- Top right (LTR) -->
-<ToastContainer position="top-start">...</ToastContainer>    <!-- Top left (LTR) -->
-<ToastContainer position="top-center">...</ToastContainer>   <!-- Top center -->
-<ToastContainer position="bottom-end">...</ToastContainer>   <!-- Bottom right (LTR) -->
-<ToastContainer position="bottom-start">...</ToastContainer> <!-- Bottom left (LTR) -->
-<ToastContainer position="bottom-center">...</ToastContainer><!-- Bottom center -->
+<ToastContainer placement="top-end">...</ToastContainer>      <!-- Top right (LTR) -->
+<ToastContainer placement="top-start">...</ToastContainer>    <!-- Top left (LTR) -->
+<ToastContainer placement="top-center">...</ToastContainer>   <!-- Top center -->
+<ToastContainer placement="bottom-end">...</ToastContainer>   <!-- Bottom right (LTR) -->
+<ToastContainer placement="bottom-start">...</ToastContainer> <!-- Bottom left (LTR) -->
+<ToastContainer placement="bottom-center">...</ToastContainer><!-- Bottom center -->
 
 
 11. DIALOG SERVICE (PROGRAMMATIC)
@@ -817,22 +817,22 @@ Bar list:
         <Grid gap="md">
           <Column sm="1-2" lg="1-4">
             <Card isStat>
-              <Stat variant="hero" labelText="Users" number="1,234" changeText="+12%" changeDirection="positive" />
+              <Stat layout="hero" labelText="Users" number="1,234" changeText="+12%" changeDirection="positive" />
             </Card>
           </Column>
           <Column sm="1-2" lg="1-4">
             <Card isStat>
-              <Stat variant="hero" labelText="Revenue" number="$45K" changeText="+8%" changeDirection="positive" />
+              <Stat layout="hero" labelText="Revenue" number="$45K" changeText="+8%" changeDirection="positive" />
             </Card>
           </Column>
           <Column sm="1-2" lg="1-4">
             <Card isStat>
-              <Stat variant="hero" labelText="Orders" number="567" changeText="-3%" changeDirection="negative" />
+              <Stat layout="hero" labelText="Orders" number="567" changeText="-3%" changeDirection="negative" />
             </Card>
           </Column>
           <Column sm="1-2" lg="1-4">
             <Card isStat>
-              <Stat variant="hero" labelText="Uptime" number="99.9%" changeText="0%" changeDirection="neutral" />
+              <Stat layout="hero" labelText="Uptime" number="99.9%" changeText="0%" changeDirection="neutral" />
             </Card>
           </Column>
         </Grid>
@@ -891,7 +891,7 @@ Bar list:
   </LayoutInner>
 </Layout>
 
-<ToastContainer position="top-end" />
+<ToastContainer placement="top-end" />
 
 
 15. DETAIL VIEW / PROFILE PAGE

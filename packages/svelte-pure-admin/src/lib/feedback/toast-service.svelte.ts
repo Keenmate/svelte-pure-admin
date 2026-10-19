@@ -21,14 +21,14 @@
  *   toastService.dismiss(id);
  *
  * Mount once in your layout:
- *   <ToastContainer position="top-end" />
+ *   <ToastContainer placement="top-end" />
  */
 
 import type { ThemeColor } from '../types';
 
 export type ToastVariant = 'primary' | 'success' | 'danger' | 'warning' | 'info';
 
-export type ToastPosition =
+export type ToastPlacement =
 	| 'top-end'
 	| 'top-center'
 	| 'top-start'
@@ -36,8 +36,8 @@ export type ToastPosition =
 	| 'bottom-center'
 	| 'bottom-start';
 
-/** Default position used when a toast or container doesn't specify one. */
-export const DEFAULT_TOAST_POSITION: ToastPosition = 'top-end';
+/** Default placement used when a toast or container doesn't specify one. */
+export const DEFAULT_TOAST_PLACEMENT: ToastPlacement = 'top-end';
 
 export interface ToastAction {
 	/** Button label */
@@ -88,9 +88,9 @@ export interface ToastOptions {
 	class?: string;
 	/**
 	 * Which container this toast routes to. Defaults to 'top-end'.
-	 * Mount one `<ToastContainer position="..." />` per position you intend to use.
+	 * Mount one `<ToastContainer placement="..." />` per placement you intend to use.
 	 */
-	position?: ToastPosition;
+	placement?: ToastPlacement;
 }
 
 export interface ToastState extends ToastOptions {

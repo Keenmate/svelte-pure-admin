@@ -73,11 +73,11 @@
 <!-- Alerts with Additional Content -->
 <Card
 	titleText="Alerts with Additional Content"
-	descriptionText="Pair headingText with the list and actions snippets to build full-bleed alerts. Add isHeadingLarge for the punchy, deliberate-read presentation."
+	descriptionText="Pair headingText with the list and actions snippets to build full-bleed alerts. Add headingSize='lg' for the punchy, deliberate-read presentation."
 >
 	<Grid>
 		<Column size="100" md="1-2">
-			<Alert variant="success" headingText="Success!" isHeadingLarge>
+			<Alert variant="success" headingText="Success!" headingSize="lg">
 				<Paragraph>
 					Aww yeah, you successfully read this important alert message. This example text is
 					going to run a bit longer so that you can see how spacing within an alert works with
@@ -91,7 +91,7 @@
 		</Column>
 
 		<Column size="100" md="1-2">
-			<Alert variant="warning" headingText="Storage running low" isHeadingLarge>
+			<Alert variant="warning" headingText="Storage running low" headingSize="lg">
 				<Paragraph>
 					Your account is approaching the quota limit. The next sync will fail unless you
 					free space:
@@ -108,8 +108,8 @@
 
 <!-- Heading size: default vs lg (NEW in v2.5.0) -->
 <Card
-	titleText="Heading size: default vs. isHeadingLarge"
-	descriptionText="Same markup either way. Default sits at the alert's body font-size for compact status banners (Validation failed, Saved, Connection lost). Add isHeadingLarge when the alert needs deliberate attention (blocking errors, system updates, quota warnings)."
+	titleText="Heading size: default vs. headingSize='lg'"
+	descriptionText="Same markup either way. Default sits at the alert's body font-size for compact status banners (Validation failed, Saved, Connection lost). Add headingSize='lg' when the alert needs deliberate attention (blocking errors, system updates, quota warnings)."
 >
 	<Grid>
 		<Column size="100" md="1-2">
@@ -123,11 +123,11 @@
 		</Column>
 
 		<Column size="100" md="1-2">
-			<Heading level={4}>With <Code>isHeadingLarge</Code></Heading>
-			<Alert variant="danger" headingText="Validation failed" isHeadingLarge>
+			<Heading level={4}>With <Code>headingSize="lg"</Code></Heading>
+			<Alert variant="danger" headingText="Validation failed" headingSize="lg">
 				<Paragraph class="mb-0">Please fix the errors below.</Paragraph>
 			</Alert>
-			<Alert variant="success" headingText="Saved" isHeadingLarge>
+			<Alert variant="success" headingText="Saved" headingSize="lg">
 				<Paragraph class="mb-0">Changes synced 2 seconds ago.</Paragraph>
 			</Alert>
 		</Column>
@@ -141,7 +141,7 @@
 >
 	<Grid>
 		<Column size="100" md="1-2">
-			<Alert variant="info" headingText="System update" isHeadingLarge>
+			<Alert variant="info" headingText="System update" headingSize="lg">
 				<Paragraph>A new version of the application is available. This update includes:</Paragraph>
 				{#snippet list()}
 					<li>Performance improvements</li>
@@ -156,7 +156,7 @@
 		</Column>
 
 		<Column size="100" md="1-2">
-			<Alert variant="danger" headingText="Sync failed" isHeadingLarge>
+			<Alert variant="danger" headingText="Sync failed" headingSize="lg">
 				<Paragraph class="mb-0">We couldn't reach the server. Check your connection and try again.</Paragraph>
 				{#snippet actions()}
 					<Button variant="danger" size="sm">Retry sync</Button>
@@ -247,7 +247,7 @@
 	<Grid>
 		<Column size="100" md="1-2">
 			<Heading level={4}>With <Code>isMultiline</Code></Heading>
-			<Alert variant="info" headingText="Heads up" isHeadingLarge isMultiline>
+			<Alert variant="info" headingText="Heads up" headingSize="lg" isMultiline>
 				{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 				<Paragraph class="mb-0">
 					This alert spans several lines, so we want the info icon to sit at the top with
@@ -258,7 +258,7 @@
 
 		<Column size="100" md="1-2">
 			<Heading level={4}>Without (default centring)</Heading>
-			<Alert variant="info" headingText="Heads up" isHeadingLarge>
+			<Alert variant="info" headingText="Heads up" headingSize="lg">
 				{#snippet icon()}<span class="pa-icon pa-icon--info" aria-hidden="true"></span>{/snippet}
 				<Paragraph class="mb-0">
 					This alert spans several lines, so we want the info icon to sit at the top with
@@ -334,7 +334,7 @@ pa-alert--multiline    — Opts out of default align-items: center; icon + multi
 	<CodeBlock>{`pa-alert__icon          — Leading icon (flex-shrink: 0, font-size-base)
 pa-alert__content       — Content wrapper (flex: 1; min-width: 0)
 pa-alert__heading       — Title (h4); body font-size + semibold by default
-pa-alert__heading--lg   — Heading bumped to font-size-lg (use isHeadingLarge prop)
+pa-alert__heading--lg   — Heading bumped to font-size-lg (use headingSize="lg")
 pa-alert__list          — <ul> inside the alert
 pa-alert__actions       — Action button row, sits below a thin divider
                           (same separator pattern as pa-toast__actions)
@@ -356,7 +356,7 @@ pa-alert__close         — Close button (absolutely positioned, inline-end)`}</
 	themeColor?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;     // takes priority over variant
 	isOutline?: boolean;
 	isDismissible?: boolean;
-	isHeadingLarge?: boolean;   // applies pa-alert__heading--lg (since v1.7.0)
+	headingSize?: 'lg';      // applies pa-alert__heading--lg (since v1.7.0)
 	isMultiline?: boolean;      // applies pa-alert--multiline (since v1.7.0)
 	headingText?: string;
 	class?: string;

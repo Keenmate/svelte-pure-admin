@@ -194,7 +194,7 @@
 			<Button onclick={() => { showToast = true; }}>Show Toast</Button>
 
 			{#if showToast}
-				<ToastContainer position="bottom-end">
+				<ToastContainer placement="bottom-end">
 					<Toast
 						variant="success"
 						titleText="Success"

@@ -264,14 +264,14 @@ Source: packages/svelte-pure-admin/src/lib/feedback/dialog-service.svelte.ts
 
   type DialogSize = 'sm' | 'md' | 'lg' | 'xl';
 
-  type DialogPosition = 'center' | 'top';
+  type DialogPlacement = 'center' | 'top';
 
   interface BaseDialogOptions {
     title?: string;
     message?: string;
     variant?: DialogVariant;
     size?: DialogSize;
-    position?: DialogPosition;
+    placement?: DialogPlacement;
     closeOnBackdrop?: boolean;
     class?: string;
     bodyClass?: string;
@@ -328,7 +328,7 @@ Import example:
   import type {
     DialogVariant,
     DialogSize,
-    DialogPosition,
+    DialogPlacement,
     ConfirmDialogOptions,
     AlertDialogOptions,
     PromptDialogOptions,
@@ -621,11 +621,11 @@ Source: packages/svelte-pure-admin/src/lib/feedback/Loader.svelte
 
   type LoaderType = 'dots' | 'bars' | 'pulse' | 'ring' | 'wave';
   type LoaderSize = 'sm' | 'lg';
-  type LoaderColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light';
+  type LoaderVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light';
 
 Import example:
 
-  import type { LoaderType, LoaderSize, LoaderColor } from '@keenmate/svelte-pure-admin';
+  import type { LoaderType, LoaderSize, LoaderVariant } from '@keenmate/svelte-pure-admin';
 
 
 COMPONENT-SPECIFIC TYPES (NOT EXPORTED, FOR REFERENCE)
@@ -641,14 +641,14 @@ Button:
 Modal:
   type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw';
   type ModalVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
-  type ModalPosition = 'center' | 'top';
+  type ModalPlacement = 'center' | 'top';
 
 Toast:
   type ToastVariant = 'primary' | 'success' | 'danger' | 'warning' | 'info';
 
 ToastContainer:
-  type ToastPosition = 'top-end' | 'top-center' | 'top-start'
-                     | 'bottom-end' | 'bottom-center' | 'bottom-start';
+  type ToastPlacement = 'top-end' | 'top-center' | 'top-start'
+                      | 'bottom-end' | 'bottom-center' | 'bottom-start';
 
 Card:
   type CardVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info'
@@ -656,8 +656,8 @@ Card:
     | 'color-6' | 'color-7' | 'color-8' | 'color-9';
 
 Stat:
-  type StatVariant = 'hero' | 'hero-compact' | 'square';
-  type StatColor = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger';
+  type StatLayout = 'hero' | 'hero-compact' | 'square';
+  type StatVariant = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger';
   type ChangeDirection = 'positive' | 'negative' | 'neutral';
 
 Table:
@@ -720,7 +720,7 @@ import type {
 
 // Dialog types
 import type {
-  DialogVariant, DialogSize, DialogPosition,
+  DialogVariant, DialogSize, DialogPlacement,
   ConfirmDialogOptions, AlertDialogOptions,
   PromptDialogOptions, CustomDialogOptions, DialogButton
 } from '@keenmate/svelte-pure-admin';
@@ -738,7 +738,7 @@ import type {
 } from '@keenmate/svelte-pure-admin';
 
 // Loader types
-import type { LoaderType, LoaderSize, LoaderColor } from '@keenmate/svelte-pure-admin';
+import type { LoaderType, LoaderSize, LoaderVariant } from '@keenmate/svelte-pure-admin';
 
 // RPC types
 import type {
@@ -766,7 +766,7 @@ CRITICAL REMINDERS
 - Size has 4 values: xs, sm, lg, xl (no 'md' -- that is the default)
 - ThemeColor is a number 1-9, not a string
 - HorizontalAlignment uses logical start/end (not left/right) for RTL support
-- ToastPosition uses logical start/end (top-end, not top-right) for RTL support
+- ToastPlacement uses logical start/end (top-end, not top-right) for RTL support
 - DialogButton value is generic <T> -- can be any type
 - Command palette supports both sync and async getOptions/onSearch (Promise | direct)
 - Batch.add<T>() is generic -- specify the expected return type for type safety

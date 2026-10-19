@@ -199,7 +199,7 @@
 	<Column size="1-3">
 		<Card titleText="7b. Banded — Narrow" hasPadding={false}>
 			{#snippet description()}<Code>pa-banded--narrow</Code> — 10rem label band.{/snippet}
-			<Banded width="narrow" hasContainerQuery>
+			<Banded labelWidth="narrow" hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
 				<BandedRow labelText="OS" valueText="Ubuntu 22.04 LTS" />
@@ -220,7 +220,7 @@
 	<Column size="1-3">
 		<Card titleText="7d. Banded — Wide" hasPadding={false}>
 			{#snippet description()}<Code>pa-banded--wide</Code> — 20rem label band.{/snippet}
-			<Banded width="wide" hasContainerQuery>
+			<Banded labelWidth="wide" hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
 				<BandedRow labelText="OS" valueText="Ubuntu 22.04 LTS" />

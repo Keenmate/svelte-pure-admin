@@ -5,7 +5,7 @@
     "id":         { "prop": "id",               "kind": "string" },
     "variant":    { "prop": "variant",         "kind": "enum",   "values": ["primary", "success", "warning", "danger", "info"] },
     "banded":     { "prop": "isBanded",         "kind": "bool" },
-    "top":        { "prop": "position",         "kind": "const",  "value": "top" },
+    "placement":  { "prop": "placement",        "kind": "enum",   "values": ["top"] },
     "size":       { "prop": "size",             "kind": "enum",   "values": ["sm", "lg", "xl", "xxl", "fw"] },
     "scrollable": { "prop": "isScrollable",     "kind": "bool" },
     "static":     { "prop": "isStatic",         "kind": "bool" },

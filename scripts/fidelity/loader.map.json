@@ -4,7 +4,7 @@
   "features": {
     "type":  { "prop": "type",  "kind": "enum",   "values": ["dots", "bars", "pulse", "ring", "wave", "grid", "ripple", "dual-ring"] },
     "size":  { "prop": "size",  "kind": "enum",   "values": ["lg"] },
-    "color": { "prop": "color", "kind": "enum",   "values": ["primary", "secondary", "success", "danger", "warning", "info"] },
+    "variant": { "prop": "variant", "kind": "enum",   "values": ["primary", "secondary", "success", "danger", "warning", "info"] },
     "class": { "prop": "class", "kind": "string" }
   }
 }

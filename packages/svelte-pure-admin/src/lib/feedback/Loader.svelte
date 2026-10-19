@@ -14,20 +14,20 @@
 	// inline `style="color: var(--…)"`, so colour is emitted off-class (matching
 	// keen's loader/1). primary→--pc-primary-color, secondary→--pc-text-color-2,
 	// success/danger/warning/info→--pa-{color}-bg (no --pa-primary-bg/-secondary-bg).
-	export type LoaderColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
+	export type LoaderVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 
 	interface Props {
 		/** Loader type */
 		type?: LoaderType;
 		/** Loader size */
 		size?: LoaderSize;
-		/** Loader color (set on the wrapper as inline currentColor — see note above) */
-		color?: LoaderColor;
+		/** Role colour (set on the wrapper as inline currentColor — see note above) */
+		variant?: LoaderVariant;
 		/** Additional CSS classes */
 		class?: string;
 	}
 
-	let { type = 'dots', size, color, class: className = '' }: Props = $props();
+	let { type = 'dots', size, variant, class: className = '' }: Props = $props();
 
 	// Build class string
 	const classes = $derived(() => {
@@ -39,7 +39,7 @@
 
 	// Colour → CSS custom property. Loaders paint from currentColor, so colour is
 	// an inline `color:` on the wrapper, never a modifier class.
-	const colorVar: Record<LoaderColor, string> = {
+	const colorVar: Record<LoaderVariant, string> = {
 		primary: '--pc-primary-color',
 		secondary: '--pc-text-color-2',
 		success: '--pa-success-bg',
@@ -47,7 +47,7 @@
 		warning: '--pa-warning-bg',
 		info: '--pa-info-bg'
 	};
-	const style = $derived(color ? `color: var(${colorVar[color]})` : undefined);
+	const style = $derived(variant ? `color: var(${colorVar[variant]})` : undefined);
 </script>
 
 {#if type === 'dots'}

@@ -355,7 +355,7 @@ Full admin dashboard:
     </LayoutInner>
   </Layout>
   <DialogContainer />
-  <ToastContainer position="top-end" />
+  <ToastContainer placement="top-end" />
 </PureAdminProvider>
 
 With i18n:

@@ -289,7 +289,7 @@
 			<tr><td><Code>show</Code></td><td>boolean (bindable)</td><td>false</td><td>Show/hide the modal</td></tr>
 			<tr><td><Code>size</Code></td><td>'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw'</td><td>'md'</td><td>Modal width</td></tr>
 			<tr><td><Code>variant</Code></td><td>'primary' | 'success' | 'warning' | 'danger' | 'info'</td><td>-</td><td>Full modal theming (header colour inherits via the root)</td></tr>
-			<tr><td><Code>position</Code></td><td>'center' | 'top'</td><td>'center'</td><td>Vertical position</td></tr>
+			<tr><td><Code>placement</Code></td><td>'center' | 'top'</td><td>'center'</td><td>Where the dialog sits</td></tr>
 			<tr><td><Code>isScrollable</Code></td><td>boolean</td><td>false</td><td>Scrollable body content</td></tr>
 			<tr><td><Code>isStatic</Code></td><td>boolean</td><td>false</td><td>Prevents ESC/backdrop close</td></tr>
 			<tr><td><Code>titleText</Code></td><td>string</td><td>-</td><td>Modal title</td></tr>
@@ -716,8 +716,8 @@
 </Modal>
 
 <!-- Top-Aligned Modal -->
-<Modal bind:show={showTop} position="top" titleText="Top-Aligned Modal">
-	<Paragraph>This modal uses the <Code>position="top"</Code> prop to position it near the top of the viewport.</Paragraph>
+<Modal bind:show={showTop} placement="top" titleText="Top-Aligned Modal">
+	<Paragraph>This modal uses the <Code>placement="top"</Code> prop to place it near the top of the viewport.</Paragraph>
 	<Paragraph>This is useful for:</Paragraph>
 	<BasicList>
 		<li>Search interfaces (similar to command palette)</li>

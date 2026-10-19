@@ -28,10 +28,10 @@
 		/** Outline style */
 		isOutline?: boolean;
 		/**
-		 * Use the punchy/large heading variant (pa-alert__heading--lg).
+		 * Heading size — "lg" is the punchy/large heading (pa-alert__heading--lg).
 		 * Pre-v2.5.0 default; opt-in since core v2.5.0 made the body-sized heading the default.
 		 */
-		isHeadingLarge?: boolean;
+		headingSize?: 'lg';
 		/**
 		 * Stack icon at the top of multi-line content (pa-alert--multiline).
 		 * Default alignment is centred; flip this on when icon + heading + body sit beside each other.
@@ -61,7 +61,7 @@
 		themeColor,
 		isDismissible = false,
 		isOutline = false,
-		isHeadingLarge = false,
+		headingSize,
 		isMultiline = false,
 		headingText,
 		heading,
@@ -113,7 +113,7 @@
 
 {#snippet body()}
 	{#if heading || headingText}
-		<h4 class={isHeadingLarge ? 'pa-alert__heading pa-alert__heading--lg' : 'pa-alert__heading'}>{#if heading}{@render heading()}{:else}{headingText}{/if}</h4>
+		<h4 class={headingSize ? `pa-alert__heading pa-alert__heading--${headingSize}` : 'pa-alert__heading'}>{#if heading}{@render heading()}{:else}{headingText}{/if}</h4>
 	{/if}
 	{@render children?.()}
 	{#if list}

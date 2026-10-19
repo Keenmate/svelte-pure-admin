@@ -147,7 +147,7 @@
 		isBanded={options.isBanded ?? false}
 		shouldShowClose={false}
 		shouldCloseOnBackdrop={options.closeOnBackdrop !== false}
-		position={options.position || 'center'}
+		placement={options.placement || 'center'}
 		titleText={options.title}
 		titleIcon={resolveTitleIcon(options)}
 		class={options.class}

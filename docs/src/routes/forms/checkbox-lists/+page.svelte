@@ -240,7 +240,7 @@
 				<Checkbox id="cg-dot" isIndeterminate labelText="Indeterminate → dot glyph" />
 				<Checkbox id="cg-off" labelText="Unchecked (unaffected)" />
 			</CheckboxGroup>
-			<Paragraph color="secondary" class="mt-3">Both children inherit the wrapper's <Code>--base-icon-*</Code> — exactly how a theme would re-skin every checkbox at once.</Paragraph>
+			<Paragraph isMuted class="mt-3">Both children inherit the wrapper's <Code>--base-icon-*</Code> — exactly how a theme would re-skin every checkbox at once.</Paragraph>
 		</Column>
 	</Grid>
 </Card>
@@ -292,7 +292,7 @@
 					<li>When <strong>all</strong> are selected → "Select All" is checked</li>
 				</BasicList>
 			</Alert>
-			<Paragraph color="secondary" class="mt-5">
+			<Paragraph isMuted class="mt-5">
 				<Code>checkbox.indeterminate = true</Code> is set via JavaScript. The CSS <Code>:indeterminate</Code> pseudo-class handles the styling.
 			</Paragraph>
 		</Column>

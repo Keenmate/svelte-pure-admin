@@ -1,9 +1,9 @@
 {
-  "//": "Capability manifest for <Paragraph> — svelte-pure-admin. See label.map.json for the flat-element-with-modifiers model. Paragraph.svelte renders `<p class=\"pa-text ...\">` with size/color/align/semantic modifiers + a class passthrough + children slot. `textAlign` maps to the component's `textAlign` prop; `color` is the explicit primary|secondary colour prop (the legacy `mode=\"muted\"` alias is not mapped here).",
+  "//": "Capability manifest for <Paragraph> — svelte-pure-admin. See label.map.json for the flat-element-with-modifiers model. Paragraph.svelte renders `<p class=\"pa-text ...\">` with size/muted/align/semantic utilities + a class passthrough + children slot. `textAlign` maps to the component's `textAlign` prop; `isMuted` emits text-muted (the old color / mode props are gone).",
   "component": "paragraph",
   "features": {
     "size":       { "prop": "size",                "kind": "enum",   "values": ["xs", "sm", "lg", "xl"] },
-    "color":      { "prop": "color",               "kind": "enum",   "values": ["primary", "secondary"] },
+    "isMuted":    { "prop": "isMuted",             "kind": "bool" },
     "textAlign":  { "prop": "textAlign",           "kind": "enum",   "values": ["start", "center", "end"] },
     "semantic":   { "prop": "semantic",            "kind": "enum",   "values": ["caption", "lead"] },
     "content":    { "prop": "children",            "kind": "slot" },

@@ -7,9 +7,9 @@
 	import { onMount, tick } from 'svelte';
 	import { loadCoreJs } from '../internal/core-js';
 
-	type StatVariant = 'hero' | 'hero-compact' | 'square';
-	type StatColor = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger';
-	// The default variant's icon tile ships only these five (`_statistics.scss`);
+	type StatLayout = 'hero' | 'hero-compact' | 'square';
+	type StatVariant = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger';
+	// The default layout's icon tile ships only these five (`_statistics.scss`);
 	// there is no `pa-stat__icon--secondary` (verified absent in compiled CSS).
 	type StatIconVariant = 'primary' | 'success' | 'info' | 'warning' | 'danger';
 	// 5-step sentiment scale since core v2.6.0/2.7.0.
@@ -17,21 +17,21 @@
 	type ChangeDirection = 'very-positive' | 'positive' | 'neutral' | 'negative' | 'very-negative';
 
 	interface Props {
-		/** Stat variant */
+		/** Layout: hero, hero-compact or square (absent = default icon + content layout) */
+		layout?: StatLayout;
+		/** Role colour (square layout only) */
 		variant?: StatVariant;
-		/** Color for square variant */
-		color?: StatColor;
-		/** Icon variant for icon (default variant only; no `secondary`) */
+		/** Icon variant for icon (default layout only; no `secondary`) */
 		iconVariant?: StatIconVariant;
 		/** Number/value to display */
 		number?: string | number;
 		/** Label text */
 		labelText?: string;
-		/** Change text (e.g., "+12.5%") - for hero variant */
+		/** Change text (e.g., "+12.5%") - for hero layouts */
 		changeText?: string;
 		/** Change direction - determines color (positive=green, negative=red, neutral=gray) */
 		changeDirection?: ChangeDirection;
-		/** Symbol text (for square variant) */
+		/** Symbol text (for the square layout) */
 		symbolText?: string;
 		/** Render symbol BEFORE number (prefix currencies: `$847K`, `¥12.4M`). Default false (suffix: `87%`, `23°C`). Since core v2.6.0. */
 		isSymbolPrefix?: boolean;
@@ -41,15 +41,15 @@
 		contextText?: string;
 		/** Additional CSS classes */
 		class?: string;
-		/** Icon snippet (for default variant) */
+		/** Icon snippet (for the default layout) */
 		icon?: import('svelte').Snippet;
 		/** Children content (for custom layouts) */
 		children?: import('svelte').Snippet;
 	}
 
 	let {
+		layout,
 		variant,
-		color,
 		iconVariant = 'primary',
 		number,
 		labelText,
@@ -67,8 +67,8 @@
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-stat'];
-		if (variant) base.push(`pa-stat--${variant}`);
-		if (variant === 'square' && color) base.push(`pa-stat--${color}`);
+		if (layout) base.push(`pa-stat--${layout}`);
+		if (layout === 'square' && variant) base.push(`pa-stat--${variant}`);
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -83,7 +83,7 @@
 	// Fit mode (square only) — pa-stat-fit.js wraps the flat children into
 	// slot/group/meta and fits the number to the box. Init on a display:contents
 	// host so its descendant scan finds the tile without adding a layout box.
-	const useFit = $derived(variant === 'square' && isFit);
+	const useFit = $derived(layout === 'square' && isFit);
 	let fitHostEl = $state<HTMLDivElement | undefined>(undefined);
 	let squareEl = $state<HTMLDivElement | undefined>(undefined);
 
@@ -106,7 +106,7 @@
 	<div class={classes()}>
 		{@render children()}
 	</div>
-{:else if variant === 'hero' || variant === 'hero-compact'}
+{:else if layout === 'hero' || layout === 'hero-compact'}
 	<div class={classes()}>
 		<div class="pa-stat__label">{labelText}</div>
 		<div class="pa-stat__value">{number}</div>
@@ -114,7 +114,7 @@
 			<div class={changeClass}>{changeText}</div>
 		{/if}
 	</div>
-{:else if variant === 'square' && useFit}
+{:else if layout === 'square' && useFit}
 	<div bind:this={fitHostEl} style="display: contents;">
 		<div bind:this={squareEl} class={classes()} data-pa-stat-fit>
 			{#if isSymbolPrefix && symbolText}
@@ -135,7 +135,7 @@
 			{/if}
 		</div>
 	</div>
-{:else if variant === 'square'}
+{:else if layout === 'square'}
 	<div class={classes()}>
 		{#if isSymbolPrefix && symbolText}
 			<div class="pa-stat__symbol">{symbolText}</div>

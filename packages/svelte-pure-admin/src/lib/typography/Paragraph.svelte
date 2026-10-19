@@ -4,12 +4,9 @@
 	 * Based on @keenmate/pure-admin-core typography utilities
 	 */
 
-	import type { HorizontalAlignment, TextMode, Size } from '../types';
+	import type { HorizontalAlignment, Size } from '../types';
 
 	type SemanticStyle = 'default' | 'caption' | 'lead';
-	// Flat text-* colour utilities: `secondary` (→ text-muted = muted/subdued),
-	// `primary` (→ text-body = default).
-	type TextColor = 'primary' | 'secondary';
 
 	// `size` maps DIRECTLY to the same-named flat text-* utility. With no size, a
 	// paragraph is a plain <p> at the body default (16px = text-base, = a bare <p>).
@@ -23,10 +20,8 @@
 	interface Props {
 		/** Horizontal text alignment */
 		textAlign?: HorizontalAlignment;
-		/** Text colour — "secondary" (→ text-muted = muted/subdued) or "primary" (→ text-body = default) */
-		color?: TextColor;
-		/** Text color mode (muted) — legacy alias of color="secondary" */
-		mode?: TextMode;
+		/** Muted / subdued text (text-muted); default is the body colour, no class */
+		isMuted?: boolean;
 		/** Text size variant */
 		size?: Size;
 		/** Semantic text style (caption for small labels, lead for introductory text) */
@@ -39,8 +34,7 @@
 
 	let {
 		textAlign,
-		color,
-		mode,
+		isMuted = false,
 		size,
 		semantic,
 		class: className = '',
@@ -52,10 +46,7 @@
 		const base: string[] = [];
 		if (size) base.push(sizeClassMap[size]);
 		if (textAlign) base.push(`text-${textAlign}`);
-		// Explicit colour wins; `mode="muted"` is kept as a legacy alias.
-		if (color === 'secondary') base.push('text-muted');
-		else if (color === 'primary') base.push('text-body');
-		else if (mode === 'muted') base.push('text-muted');
+		if (isMuted) base.push('text-muted');
 		if (semantic && semantic !== 'default') base.push(`text-${semantic}`);
 		if (className) base.push(className);
 		return base.length ? base.join(' ') : undefined;

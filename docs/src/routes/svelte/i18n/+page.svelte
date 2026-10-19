@@ -456,19 +456,19 @@ import type {
 	<Grid class="mt-3">
 		<Column size="100" md="50" lg="25">
 			<Badge variant="primary" class="mb-2">dialog.*</Badge>
-			<Paragraph color="secondary" class="small">Dialog service (confirm, alert, prompt)</Paragraph>
+			<Paragraph isMuted class="small">Dialog service (confirm, alert, prompt)</Paragraph>
 		</Column>
 		<Column size="100" md="50" lg="25">
 			<Badge variant="primary" class="mb-2">popconfirm.*</Badge>
-			<Paragraph color="secondary" class="small">Popconfirm component</Paragraph>
+			<Paragraph isMuted class="small">Popconfirm component</Paragraph>
 		</Column>
 		<Column size="100" md="50" lg="25">
 			<Badge variant="primary" class="mb-2">shortcuts.*</Badge>
-			<Paragraph color="secondary" class="small">Shortcut help dialog</Paragraph>
+			<Paragraph isMuted class="small">Shortcut help dialog</Paragraph>
 		</Column>
 		<Column size="100" md="50" lg="25">
 			<Badge variant="primary" class="mb-2">commandPalette.*</Badge>
-			<Paragraph color="secondary" class="small">Command palette component</Paragraph>
+			<Paragraph isMuted class="small">Command palette component</Paragraph>
 		</Column>
 	</Grid>
 </Card>

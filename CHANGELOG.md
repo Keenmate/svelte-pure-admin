@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING — one flag per option, `variant` is the role colour (keen parity, batch 2)
+
+Combinable options are booleans, mutually exclusive ones a single enum named for what it controls,
+and `variant` always means the role colour. No aliases.
+
+- `Alert` `isHeadingLarge` → `headingSize` (`'lg'`).
+- `Banded` `width` → `labelWidth` (`'narrow' | 'wide'` — it sizes the label column).
+- `Modal` `position` → `placement` (`'center' | 'top'`); `dialogService` options `position` →
+  `placement`; types `ModalPosition` / `DialogPosition` → `ModalPlacement` / `DialogPlacement`.
+- `ToastContainer` `position` and the `toastService.show()` option `position` → `placement`;
+  `ToastPosition` → `ToastPlacement`, `DEFAULT_TOAST_POSITION` → `DEFAULT_TOAST_PLACEMENT`.
+- `Loader` `color` → `variant` (`LoaderColor` → `LoaderVariant`).
+- `Stat` `variant` (hero / hero-compact / square) → `layout`, and `color` (role colour, square
+  layout) → `variant`.
+- `Paragraph` `color="secondary"` / `mode="muted"` → `isMuted`; `color="primary"` is gone (it only
+  re-stated the default body colour with `text-body`).
+- `Card` `isStat`, `DataBar` `isNegative`, `Tabs` `isBorderTop`, `Fields` `hasBorder` already had
+  the agreed shape — unchanged here (keen changed to match).
+
 ### BREAKING — layout/placement props are named after the CSS they drive (keen parity)
 
 A prop that drives a CSS property takes that property's name (`justify` = `justify-content`,

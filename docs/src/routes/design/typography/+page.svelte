@@ -28,7 +28,7 @@
 </Card>
 
 <Card titleText="Paragraph Sizes">
-	<Paragraph color="secondary" class="mb-4">
+	<Paragraph isMuted class="mb-4">
 		No size is the body default (16px). Each size maps directly to the same-named text-* utility.
 	</Paragraph>
 	<div style="display: flex; flex-direction: column; gap: 4px;">
@@ -43,18 +43,18 @@
 <Grid>
 	<Column size="100" md="50">
 		<Card titleText="Text Colour">
-			<Paragraph color="secondary" class="mb-2">
+			<Paragraph isMuted class="mb-2">
 				Neutral text hierarchy. Role colours are in the Inline Text section.
 			</Paragraph>
 			<div style="display: flex; flex-direction: column; gap: 4px;">
-				<Paragraph color="primary" class="m-0">Body text — the default (--pc-text-color-1)</Paragraph>
-				<Paragraph color="secondary" class="m-0">Muted — subdued (--pc-text-color-2)</Paragraph>
+				<Paragraph class="m-0">Body text — the default (--pc-text-color-1)</Paragraph>
+				<Paragraph isMuted class="m-0">Muted — subdued (--pc-text-color-2)</Paragraph>
 			</div>
 		</Card>
 	</Column>
 	<Column size="100" md="50">
 		<Card titleText="Alignment">
-			<Paragraph color="secondary" class="mb-2">Logical, RTL-aware.</Paragraph>
+			<Paragraph isMuted class="mb-2">Logical, RTL-aware.</Paragraph>
 			<div style="display: flex; flex-direction: column; gap: 4px;">
 				<Paragraph textAlign="start" class="m-0">Start — leading edge</Paragraph>
 				<Paragraph textAlign="center" class="m-0">Center</Paragraph>
@@ -65,7 +65,7 @@
 </Grid>
 
 <Card titleText="Semantic Text">
-	<Paragraph color="secondary" class="mb-2">Compound shorthands.</Paragraph>
+	<Paragraph isMuted class="mb-2">Compound shorthands.</Paragraph>
 	<div style="display: flex; flex-direction: column; gap: 8px;">
 		<Paragraph semantic="lead" class="m-0">
 			Lead — an introductory paragraph at 16px with relaxed line-height, for the opening sentence of a

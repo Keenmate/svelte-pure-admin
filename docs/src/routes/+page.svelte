@@ -40,7 +40,7 @@
 <!-- Dashboard Header -->
 <Grid>
 	<Column size="100">
-		<Paragraph color="secondary">Real-time overview of key performance metrics</Paragraph>
+		<Paragraph isMuted>Real-time overview of key performance metrics</Paragraph>
 	</Column>
 </Grid>
 
@@ -48,22 +48,22 @@
 <Grid>
 	<Column size="100" md="25">
 		<Card>
-			<Stat variant="hero" labelText="Total Revenue" number="$847,392" changeText="▲ 12.5% vs last month" changeDirection="positive" />
+			<Stat layout="hero" labelText="Total Revenue" number="$847,392" changeText="▲ 12.5% vs last month" changeDirection="positive" />
 		</Card>
 	</Column>
 	<Column size="100" md="25">
 		<Card>
-			<Stat variant="hero" labelText="Active Users" number="24,583" changeText="▲ 8.3% vs last month" changeDirection="positive" />
+			<Stat layout="hero" labelText="Active Users" number="24,583" changeText="▲ 8.3% vs last month" changeDirection="positive" />
 		</Card>
 	</Column>
 	<Column size="100" md="25">
 		<Card>
-			<Stat variant="hero" labelText="Conversion Rate" number="3.47%" changeText="▼ 2.1% vs last month" changeDirection="negative" />
+			<Stat layout="hero" labelText="Conversion Rate" number="3.47%" changeText="▼ 2.1% vs last month" changeDirection="negative" />
 		</Card>
 	</Column>
 	<Column size="100" md="25">
 		<Card>
-			<Stat variant="hero" labelText="Avg Order Value" number="$134.52" changeText="▲ 5.7% vs last month" changeDirection="positive" />
+			<Stat layout="hero" labelText="Avg Order Value" number="$134.52" changeText="▲ 5.7% vs last month" changeDirection="positive" />
 		</Card>
 	</Column>
 </Grid>
@@ -219,22 +219,22 @@
 			{/snippet}
 			<Grid class="pa-kpi-grid">
 				<Column size="100" xl="50">
-					<Stat variant="square" color="primary" isFit class="hr-15" number={87} symbolText="%" labelText="Completion Rate" changeText="▲ 4.2% vs last week" contextText="Updated 2 min ago" />
+					<Stat layout="square" variant="primary" isFit class="hr-15" number={87} symbolText="%" labelText="Completion Rate" changeText="▲ 4.2% vs last week" contextText="Updated 2 min ago" />
 				</Column>
 				<Column size="100" xl="50">
-					<Stat variant="square" color="success" isFit class="hr-15" isSymbolPrefix symbolText="$" number="847K" labelText="Monthly Revenue" changeText="▲ 12.5% vs last month" contextText="FY2026 · Q2" />
+					<Stat layout="square" variant="success" isFit class="hr-15" isSymbolPrefix symbolText="$" number="847K" labelText="Monthly Revenue" changeText="▲ 12.5% vs last month" contextText="FY2026 · Q2" />
 				</Column>
 				<Column size="100" xl="50">
-					<Stat variant="square" color="info" isFit class="hr-15" number={23} symbolText="°C" labelText="Server Temp" changeText="▼ 1.1°C vs 1h ago" contextText="Rack A · sensor 3" />
+					<Stat layout="square" variant="info" isFit class="hr-15" number={23} symbolText="°C" labelText="Server Temp" changeText="▼ 1.1°C vs 1h ago" contextText="Rack A · sensor 3" />
 				</Column>
 				<Column size="100" xl="50">
-					<Stat variant="square" color="warning" isFit class="hr-15" number={78} symbolText="%" labelText="Server Capacity" changeText="▲ 6.0% vs last week" contextText="12 of 16 nodes active" />
+					<Stat layout="square" variant="warning" isFit class="hr-15" number={78} symbolText="%" labelText="Server Capacity" changeText="▲ 6.0% vs last week" contextText="12 of 16 nodes active" />
 				</Column>
 				<Column size="100" xl="50">
-					<Stat variant="square" color="danger" isFit class="hr-15" number={23} symbolText="%" labelText="Error Rate" changeText="▼ 0.4% vs yesterday" contextText="last 24h · 5xx only" />
+					<Stat layout="square" variant="danger" isFit class="hr-15" number={23} symbolText="%" labelText="Error Rate" changeText="▼ 0.4% vs yesterday" contextText="last 24h · 5xx only" />
 				</Column>
 				<Column size="100" xl="50">
-					<Stat variant="square" color="secondary" isFit class="hr-15" isSymbolPrefix symbolText="¥" number="12.4M" labelText="Tokyo Office" changeText="▲ 3.1% vs last month" contextText="JPY · region APAC" />
+					<Stat layout="square" variant="secondary" isFit class="hr-15" isSymbolPrefix symbolText="¥" number="12.4M" labelText="Tokyo Office" changeText="▲ 3.1% vs last month" contextText="JPY · region APAC" />
 				</Column>
 			</Grid>
 		</Card>
@@ -246,12 +246,12 @@
 			{#snippet title()}
 				Key Performance Indicators <Badge variant="info">fit mode</Badge>
 			{/snippet}
-			<Stat variant="square" color="primary" isFit class="hr-15" number={87} symbolText="%" labelText="Completion Rate" changeText="▲ 4.2% vs last week" contextText="Updated 2 min ago" />
-			<Stat variant="square" color="success" isFit class="hr-15" isSymbolPrefix symbolText="$" number="847K" labelText="Monthly Revenue" changeText="▲ 12.5% vs last month" contextText="FY2026 · Q2" />
-			<Stat variant="square" color="info" isFit class="hr-15" number={23} symbolText="°C" labelText="Server Temp" changeText="▼ 1.1°C vs 1h ago" contextText="Rack A · sensor 3" />
-			<Stat variant="square" color="warning" isFit class="hr-15" number={78} symbolText="%" labelText="Server Capacity" changeText="▲ 6.0% vs last week" contextText="12 of 16 nodes active" />
-			<Stat variant="square" color="danger" isFit class="hr-15" number={23} symbolText="%" labelText="Error Rate" changeText="▼ 0.4% vs yesterday" contextText="last 24h · 5xx only" />
-			<Stat variant="square" color="secondary" isFit class="hr-15" isSymbolPrefix symbolText="¥" number="12.4M" labelText="Tokyo Office" changeText="▲ 3.1% vs last month" contextText="JPY · region APAC" />
+			<Stat layout="square" variant="primary" isFit class="hr-15" number={87} symbolText="%" labelText="Completion Rate" changeText="▲ 4.2% vs last week" contextText="Updated 2 min ago" />
+			<Stat layout="square" variant="success" isFit class="hr-15" isSymbolPrefix symbolText="$" number="847K" labelText="Monthly Revenue" changeText="▲ 12.5% vs last month" contextText="FY2026 · Q2" />
+			<Stat layout="square" variant="info" isFit class="hr-15" number={23} symbolText="°C" labelText="Server Temp" changeText="▼ 1.1°C vs 1h ago" contextText="Rack A · sensor 3" />
+			<Stat layout="square" variant="warning" isFit class="hr-15" number={78} symbolText="%" labelText="Server Capacity" changeText="▲ 6.0% vs last week" contextText="12 of 16 nodes active" />
+			<Stat layout="square" variant="danger" isFit class="hr-15" number={23} symbolText="%" labelText="Error Rate" changeText="▼ 0.4% vs yesterday" contextText="last 24h · 5xx only" />
+			<Stat layout="square" variant="secondary" isFit class="hr-15" isSymbolPrefix symbolText="¥" number="12.4M" labelText="Tokyo Office" changeText="▲ 3.1% vs last month" contextText="JPY · region APAC" />
 		</Card>
 
 		<Card titleText="Traffic Sources" hasPadding={false}>

@@ -1,5 +1,5 @@
 {
-  "//": "Capability manifest for <Alert> — svelte-pure-admin. See button.map.json / card.map.json for the model. Maps each NEUTRAL alert feature to this wrapper's prop, kind, and (for enums) the option set THIS component declares. `headingLarge` → isHeadingLarge; the icon slot presence drives the pa-alert__content wrap.",
+  "//": "Capability manifest for <Alert> — svelte-pure-admin. See button.map.json / card.map.json for the model. Maps each NEUTRAL alert feature to this wrapper's prop, kind, and (for enums) the option set THIS component declares. `headingSize` → headingSize ('lg'); the icon slot presence drives the pa-alert__content wrap.",
   "component": "alert",
   "features": {
     "variant":      { "prop": "variant",        "kind": "enum",   "values": ["primary", "secondary", "success", "warning", "danger", "info", "light", "dark"] },
@@ -9,7 +9,7 @@
     "dismissible":  { "prop": "isDismissible",   "kind": "bool" },
     "multiline":    { "prop": "isMultiline",     "kind": "bool" },
     "heading":      { "prop": "headingText",     "kind": "string" },
-    "headingLarge": { "prop": "isHeadingLarge",  "kind": "bool" },
+    "headingSize":  { "prop": "headingSize",     "kind": "enum",   "values": ["lg"] },
     "icon":         { "prop": "icon",            "kind": "slot" },
     "body":         { "prop": "children",        "kind": "slot" },
     "list":         { "prop": "list",            "kind": "slot" },

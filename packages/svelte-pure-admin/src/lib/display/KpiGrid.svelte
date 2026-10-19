@@ -9,8 +9,8 @@
 	 *
 	 * Usage:
 	 *   <KpiGrid>
-	 *     <Stat variant="square" themeColor="primary" ... />
-	 *     <Stat variant="square" themeColor="success" ... />
+	 *     <Stat layout="square" themeColor="primary" ... />
+	 *     <Stat layout="square" themeColor="success" ... />
 	 *   </KpiGrid>
 	 */
 

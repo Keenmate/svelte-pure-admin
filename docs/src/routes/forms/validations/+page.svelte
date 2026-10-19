@@ -391,7 +391,7 @@
 
 	<!-- Simulated toast preview -->
 	<Card class="mt-4 bg-light" hasPadding>
-		<Paragraph color="secondary" class="mb-2"><Em>Toast preview (normally appears in corner):</Em></Paragraph>
+		<Paragraph isMuted class="mb-2"><Em>Toast preview (normally appears in corner):</Em></Paragraph>
 		<Toast variant="danger" titleText="Validation Failed" messageText="Invalid credentials. Please check your email and password." isVisible={true} duration={0} />
 	</Card>
 
@@ -548,7 +548,7 @@
 		</Column>
 		<Column size="1-3" class="text-center">
 			<Badge size="lg" class="pa-badge--default">3</Badge>
-			<Paragraph color="secondary" class="mt-2">Confirm</Paragraph>
+			<Paragraph isMuted class="mt-2">Confirm</Paragraph>
 		</Column>
 	</Grid>
 
@@ -621,6 +621,6 @@
 	</BasicList>
 </Card>
 
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
 	<Toast variant="danger" titleText="Validation Failed" messageText="Invalid credentials. Please check your email and password." bind:isVisible={showToast} duration={4000} />
 </ToastContainer>

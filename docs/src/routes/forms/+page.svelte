@@ -937,7 +937,7 @@
 	</Form>
 
 	{#snippet footer()}
-		<Paragraph size="sm" color="secondary" class="m-0">
+		<Paragraph size="sm" isMuted class="m-0">
 			<strong>Layout pattern:</strong> Each field uses <Code>.pa-form-group--horizontal</Code> (label left, input right) inside <Code>pc-col-*</Code> columns.
 			Line 1: equal widths (1/3 each).
 			Line 2: varying sizes (1/4 + 5/12 + 1/3).

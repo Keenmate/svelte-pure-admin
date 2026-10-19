@@ -124,7 +124,7 @@ Stat card (inside a Grid):
 <Grid>
   <Column md="1-4">
     <Card isStat titleText="Total Revenue">
-      <Stat number="$48,200" labelText="Revenue" changeText="+12.5%" changeDirection="positive" variant="hero" />
+      <Stat number="$48,200" labelText="Revenue" changeText="+12.5%" changeDirection="positive" layout="hero" />
     </Card>
   </Column>
 </Grid>
@@ -772,10 +772,10 @@ STAT
 Statistic display component with multiple variants.
 
 Props:
-  variant?       'hero' | 'hero-compact' | 'square'
-  color?         'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger'
-                 (for square variant)
-  iconVariant?   Same as color (default: 'primary') - Icon color
+  layout?        'hero' | 'hero-compact' | 'square'
+  variant?       'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger'
+                 (square layout only)
+  iconVariant?   Same values as variant (default: 'primary') - Icon color
   number?        string | number - Value to display
   labelText?     string - Label text
   changeText?    string - Change indicator (e.g. "+12.5%")
@@ -797,30 +797,30 @@ Default stat (with icon):
 
 Hero stat (large, prominent):
 
-<Stat variant="hero" number="$48,200" labelText="Revenue" changeText="+12.5%" changeDirection="positive" />
+<Stat layout="hero" number="$48,200" labelText="Revenue" changeText="+12.5%" changeDirection="positive" />
 
 Hero compact stat:
 
-<Stat variant="hero-compact" number="842" labelText="Active Sessions" changeText="-3.2%" changeDirection="negative" />
+<Stat layout="hero-compact" number="842" labelText="Active Sessions" changeText="-3.2%" changeDirection="negative" />
 
 Square stat:
 
-<Stat variant="square" color="success" number="99.9%" symbolText="%" labelText="Uptime" />
+<Stat layout="square" variant="success" number="99.9%" symbolText="%" labelText="Uptime" />
 
 Stats in a grid:
 
 <Grid>
   <Column md="1-4">
-    <Stat variant="hero-compact" number="12,450" labelText="Users" changeText="+8%" changeDirection="positive" />
+    <Stat layout="hero-compact" number="12,450" labelText="Users" changeText="+8%" changeDirection="positive" />
   </Column>
   <Column md="1-4">
-    <Stat variant="hero-compact" number="$84K" labelText="Revenue" changeText="+23%" changeDirection="positive" />
+    <Stat layout="hero-compact" number="$84K" labelText="Revenue" changeText="+23%" changeDirection="positive" />
   </Column>
   <Column md="1-4">
-    <Stat variant="hero-compact" number="342" labelText="Orders" changeText="-2%" changeDirection="negative" />
+    <Stat layout="hero-compact" number="342" labelText="Orders" changeText="-2%" changeDirection="negative" />
   </Column>
   <Column md="1-4">
-    <Stat variant="hero-compact" number="98.5%" labelText="Uptime" changeText="0%" changeDirection="neutral" />
+    <Stat layout="hero-compact" number="98.5%" labelText="Uptime" changeText="0%" changeDirection="neutral" />
   </Column>
 </Grid>
 

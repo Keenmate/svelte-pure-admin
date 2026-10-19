@@ -70,7 +70,7 @@
 		<p>A <Code>.pa-overflow</Code> row auto-appends a dedicated <Code>[⋮]</Code> "more" trigger; when the row runs out of horizontal space, overflowing children collapse into that menu, and pop back out as room returns. A <Code>.pa-btn-split</Code> child collapses as an atomic labeled group — its primary action and its own menu items stay together, nothing foreign mixes in.</p>
 	</div>
 	<div class="pa-card__body">
-		<Paragraph color="secondary" class="mb-1">Drag the resize handle in the bottom-right of the box below to shrink the bar. Lowest <Code>data-pa-actions-priority</Code> (default <Code>0</Code>) drops first; ties broken by DOM order. Pin "Publish" with <Code>data-pa-actions-priority="10"</Code>, and keep the split button visible longest with <Code>data-pa-actions-priority="20"</Code>. Drag all the way in and even the split button collapses into the <Code>[⋮]</Code> menu — it lands as an atomic <strong>RUN</strong> group (its primary plus its own options), not scattered loose.</Paragraph>
+		<Paragraph isMuted class="mb-1">Drag the resize handle in the bottom-right of the box below to shrink the bar. Lowest <Code>data-pa-actions-priority</Code> (default <Code>0</Code>) drops first; ties broken by DOM order. Pin "Publish" with <Code>data-pa-actions-priority="10"</Code>, and keep the split button visible longest with <Code>data-pa-actions-priority="20"</Code>. Drag all the way in and even the split button collapses into the <Code>[⋮]</Code> menu — it lands as an atomic <strong>RUN</strong> group (its primary plus its own options), not scattered loose.</Paragraph>
 		<div class="resizable-wrapper" style="overflow: auto; resize: horizontal; min-width: 64px; max-width: 100%; padding: 1rem; border: 1px dashed var(--pc-border-color); border-radius: var(--pc-border-radius);">
 			<div class="pa-overflow">
 				<button class="pa-btn pa-btn--secondary" onclick={() => act('Save')}>
@@ -163,7 +163,7 @@
 		</p>
 
 		<Heading level={4} class="mt-4">Drop direction</Heading>
-		<Paragraph color="secondary" class="mb-1">Default <Code>data-pa-actions-overflow-from="end"</Code> collapses the rightmost child first. Set <Code>data-pa-actions-overflow-from="start"</Code> on the <Code>.pa-overflow</Code> container to collapse the leftmost child first instead.</Paragraph>
+		<Paragraph isMuted class="mb-1">Default <Code>data-pa-actions-overflow-from="end"</Code> collapses the rightmost child first. Set <Code>data-pa-actions-overflow-from="start"</Code> on the <Code>.pa-overflow</Code> container to collapse the leftmost child first instead.</Paragraph>
 		<div class="resizable-wrapper" style="overflow: auto; resize: horizontal; min-width: 200px; max-width: 100%; padding: 1rem; border: 1px dashed var(--pc-border-color); border-radius: var(--pc-border-radius);">
 			<div class="pa-overflow" data-pa-actions-overflow-from="start">
 				<button class="pa-btn pa-btn--outline-info" onclick={() => act('Filter')}>
@@ -211,7 +211,7 @@
 		</div>
 
 		<Heading level={4} class="mt-4">In card headers</Heading>
-		<Paragraph color="secondary" class="mb-1">In a card header, use the card-flavored alias <Code>.pa-card__actions--overflow</Code> on the <Code>.pa-card__actions</Code> slot itself — the buttons and split button become its direct children (no inner wrapper). It auto-inits like a standalone <Code>.pa-overflow</Code>, appending its own <Code>[⋮]</Code> more-menu, and the header title yields before the actions collapse. Laid out three-up (<Code>pc-col-lg-1-3</Code>) so each card is already narrow — resize the browser window to watch each toolbar consume and spit out action buttons live, each collapsing at its own breakpoint.</Paragraph>
+		<Paragraph isMuted class="mb-1">In a card header, use the card-flavored alias <Code>.pa-card__actions--overflow</Code> on the <Code>.pa-card__actions</Code> slot itself — the buttons and split button become its direct children (no inner wrapper). It auto-inits like a standalone <Code>.pa-overflow</Code>, appending its own <Code>[⋮]</Code> more-menu, and the header title yields before the actions collapse. Laid out three-up (<Code>pc-col-lg-1-3</Code>) so each card is already narrow — resize the browser window to watch each toolbar consume and spit out action buttons live, each collapsing at its own breakpoint.</Paragraph>
 
 		<div class="pc-row mt-2">
 			<div class="pc-col-100 pc-col-lg-1-3">
@@ -261,7 +261,7 @@
 						</div>
 					</div>
 					<div class="pa-card__body">
-						<Paragraph color="secondary">Card body. The actions bar in the header carries the overflow behavior — narrow the window to watch Configure, Filter, and Refresh fold into the <Code>[⋮]</Code> menu in that order (lowest priority first; Export is pinned, the split button survives longest).</Paragraph>
+						<Paragraph isMuted>Card body. The actions bar in the header carries the overflow behavior — narrow the window to watch Configure, Filter, and Refresh fold into the <Code>[⋮]</Code> menu in that order (lowest priority first; Export is pinned, the split button survives longest).</Paragraph>
 					</div>
 				</div>
 			</div>
@@ -313,7 +313,7 @@
 						</div>
 					</div>
 					<div class="pa-card__body">
-						<Paragraph color="secondary">No pinning on the plain buttons — they collapse in default order (rightmost first: Rollback &rarr; Backup &rarr; Validate); the Deploy split button is pinned highest so it stays inline longest.</Paragraph>
+						<Paragraph isMuted>No pinning on the plain buttons — they collapse in default order (rightmost first: Rollback &rarr; Backup &rarr; Validate); the Deploy split button is pinned highest so it stays inline longest.</Paragraph>
 					</div>
 				</div>
 			</div>
@@ -369,7 +369,7 @@
 						</div>
 					</div>
 					<div class="pa-card__body">
-						<Paragraph color="secondary">Six children here — Invite is pinned with priority 5, so it survives the first wave of collapses but still folds away before the pinned Add-user split button. The title yields first (truncating to a min-width floor) so the action bar keeps its buttons; only when the header is genuinely tiny does the split button itself collapse into the <Code>[⋮]</Code> menu.</Paragraph>
+						<Paragraph isMuted>Six children here — Invite is pinned with priority 5, so it survives the first wave of collapses but still folds away before the pinned Add-user split button. The title yields first (truncating to a min-width floor) so the action bar keeps its buttons; only when the header is genuinely tiny does the split button itself collapse into the <Code>[⋮]</Code> menu.</Paragraph>
 					</div>
 				</div>
 			</div>

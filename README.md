@@ -130,7 +130,7 @@ npm install @keenmate/svelte-pure-admin @keenmate/pure-admin-core
 | `Callout` | Informational callout boxes with heading |
 | `Modal` | Modal dialog with sizes, themes, and beforeClose callback |
 | `Toast` | Toast notifications with auto-dismiss and progress bar |
-| `ToastContainer` | Container for positioning toasts (logical positions: top-end, etc.) |
+| `ToastContainer` | Container that places toasts (`placement`: logical top-end, bottom-start, …) |
 | `Spinner` | Loading spinner with sizes and colors |
 | `Loader` | Loading indicator (dots, bars, pulse, ring, wave) |
 | `LoaderCenter` | Utility wrapper that centers loader content |

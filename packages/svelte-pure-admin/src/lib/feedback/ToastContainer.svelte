@@ -12,27 +12,27 @@
 	 * Resets when the container becomes empty.
 	 *
 	 * Mount once in your app root for the service API:
-	 *   <ToastContainer position="top-end" />
+	 *   <ToastContainer placement="top-end" />
 	 */
 
 	import Toast from './Toast.svelte';
-	import { toastStore, DEFAULT_TOAST_POSITION, type ToastPosition } from './toast-service.svelte';
+	import { toastStore, DEFAULT_TOAST_PLACEMENT, type ToastPlacement } from './toast-service.svelte';
 
 	interface Props {
-		/** Container position (logical, RTL-aware). Default: 'top-end' */
-		position?: ToastPosition;
+		/** Container placement (logical, RTL-aware). Default: 'top-end' */
+		placement?: ToastPlacement;
 		/** Additional CSS classes */
 		class?: string;
 		/** Children content (declarative toasts) */
 		children?: import('svelte').Snippet;
 	}
 
-	let { position = DEFAULT_TOAST_POSITION, class: className = '', children }: Props = $props();
+	let { placement = DEFAULT_TOAST_PLACEMENT, class: className = '', children }: Props = $props();
 
-	// Service toasts are routed to the container whose `position` matches
-	// the toast's `position` (defaults to DEFAULT_TOAST_POSITION when unset).
+	// Service toasts are routed to the container whose `placement` matches
+	// the toast's `placement` (defaults to DEFAULT_TOAST_PLACEMENT when unset).
 	const serviceToasts = $derived(
-		toastStore.toasts.filter(t => (t.position ?? DEFAULT_TOAST_POSITION) === position)
+		toastStore.toasts.filter(t => (t.placement ?? DEFAULT_TOAST_PLACEMENT) === placement)
 	);
 
 	function runAction(toastId: string, action: { onclick?: (id: string) => void; keepOpen?: boolean }) {
@@ -78,7 +78,7 @@
 
 	// Build class string
 	const classes = $derived(() => {
-		const base = ['pa-toast-container', `pa-toast-container--${position}`];
+		const base = ['pa-toast-container', `pa-toast-container--${placement}`];
 		if (className) base.push(className);
 		return base.join(' ');
 	});

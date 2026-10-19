@@ -9,7 +9,7 @@
 
 	interface Props {
 		/** Label column width variant */
-		width?: 'narrow' | 'wide';
+		labelWidth?: 'narrow' | 'wide';
 		/** Vertically center labels and values */
 		isMiddle?: boolean;
 		/** Right-align labels */
@@ -31,7 +31,7 @@
 	}
 
 	let {
-		width,
+		labelWidth,
 		isMiddle = false,
 		isLabelEnd = false,
 		isLabelCenter = false,
@@ -45,7 +45,7 @@
 
 	const classes = $derived(() => {
 		const base = ['pa-banded'];
-		if (width) base.push(`pa-banded--${width}`);
+		if (labelWidth) base.push(`pa-banded--${labelWidth}`);
 		if (isMiddle) base.push('pa-banded--middle');
 		if (isLabelEnd) base.push('pa-banded--label-end');
 		if (isLabelCenter) base.push('pa-banded--label-center');

@@ -71,7 +71,7 @@
 
 <div class="pa-page-content">
 	<Heading level={1}>Fit to Size</Heading>
-	<Paragraph color="secondary">
+	<Paragraph isMuted>
 		Three ways to make a component adapt to the space it is given — and the
 		point of this page is <em>which one to reach for</em>. A CSS
 		<Code>@container</Code> query costs nothing and should be the default.
@@ -99,7 +99,7 @@
 	     §1 — Toolbar row: fit.js (content-measured, 1-D)
 	     ============================================================ -->
 	<Heading level={2} class="mt-5">1 · Card toolbar — shrink, don't lose</Heading>
-	<Paragraph color="secondary">
+	<Paragraph isMuted>
 		A <Code>steps</Code> slot degrades <strong>full label → icon-only → gone</strong>
 		instead of vanishing outright, so an action stays reachable as an icon before
 		it is dropped. <strong>Save</strong> is pinned full
@@ -142,7 +142,7 @@
 	     §2 — chart ↔ KPI: pure CSS container query, no JS
 	     ============================================================ -->
 	<Heading level={2} class="mt-5">2 · Product card — chart ↔ KPI</Heading>
-	<Paragraph color="secondary">
+	<Paragraph isMuted>
 		A different job needs a different tool. Swapping a <strong>sparkline</strong>
 		for a compact <strong>KPI</strong> is a 2-D layout change, not a 1-D row fold —
 		so this one is a plain CSS <strong>container query</strong> on the card, with
@@ -188,7 +188,7 @@
 	     §3 — rich card, three levels: still pure CSS
 	     ============================================================ -->
 	<Heading level={2} class="mt-5">3 · Rich product card — degrade on multiple levels</Heading>
-	<Paragraph color="secondary">
+	<Paragraph isMuted>
 		The real power shows when one card restyles on <strong>several axes at once</strong>.
 		A single container query with three widths: as it narrows, the three data
 		panels (<strong>Orders · Stock · Sales</strong>) collapse from a
@@ -263,7 +263,7 @@
 	     §4 — the same card on the engine: mount on demand
 	     ============================================================ -->
 	<Heading level={2} class="mt-5">4 · The same card, on the engine — with a chart it builds on demand</Heading>
-	<Paragraph color="secondary">
+	<Paragraph isMuted>
 		This is §3's card again — the same three-level degrade, the same header
 		trimming — but driven by <Code>ContainerBreakpoint</Code> instead of a CSS
 		<Code>@container</Code>. Why bother, if CSS already did it? Because in §3

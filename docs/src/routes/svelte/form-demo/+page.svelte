@@ -730,7 +730,7 @@
 </Card>
 
 <!-- Toast container with undo toasts -->
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
 	{#each undoToasts as toast (toast.id)}
 		<Toast
 			variant="info"

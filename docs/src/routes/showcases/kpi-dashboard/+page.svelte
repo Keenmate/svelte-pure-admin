@@ -126,7 +126,7 @@
 	{#each ghostTiles as tile, i}
 		<Column size="100" sm="50" md="1-3" lg="1-6">
 			<Card isGhost isStat liveState={ghostLiveStates[i]}>
-				<Stat variant="hero-compact"
+				<Stat layout="hero-compact"
 					labelText={tile.label}
 					number={tile.value}
 					changeText="{tile.changeUp ? '\u25B2' : '\u25BC'} {tile.changeText}"
@@ -142,7 +142,7 @@
 	{#each regularTiles as tile, i}
 		<Column size="100" sm="50" md="1-3" lg="1-6">
 			<Card isStat liveState={regularLiveStates[i]}>
-				<Stat variant="hero-compact"
+				<Stat layout="hero-compact"
 					labelText={tile.label}
 					number={tile.value}
 					changeText="{tile.changeUp ? '\u25B2' : '\u25BC'} {tile.changeText}"
@@ -157,7 +157,7 @@
 <Grid>
 	<Column size="100" md="1-3">
 		<Card titleText="Branded Search">
-			<Stat variant="hero-compact" labelText="Last 30 days" number="41,582"
+			<Stat layout="hero-compact" labelText="Last 30 days" number="41,582"
 				changeText="&#9650; 14.2% vs prev. period" changeDirection="positive" />
 			<div class="mt-sm">
 				<Sparkline size="sm">
@@ -180,7 +180,7 @@
 
 	<Column size="100" md="1-3">
 		<Card titleText="Brand Mentions">
-			<Stat variant="hero-compact" labelText="Social + press" number="8,714"
+			<Stat layout="hero-compact" labelText="Social + press" number="8,714"
 				changeText="&#9650; 23.1% vs prev. period" changeDirection="positive" />
 			<div class="mt-sm">
 				<Sparkline size="sm" variant="success">
@@ -215,12 +215,12 @@
 <Grid>
 	<Column size="100" md="1-3">
 		<Card titleText="Customers">
-			<Stat variant="hero-compact" labelText="Total active" number="156,340"
+			<Stat layout="hero-compact" labelText="Total active" number="156,340"
 				changeText="&#9650; 6.8% vs last month" changeDirection="positive" />
 		</Card>
 
 		<Card titleText="Customer Lifetime Value" class="mt-base">
-			<Stat variant="hero-compact" labelText="Average CLV" number="$2,847"
+			<Stat layout="hero-compact" labelText="Average CLV" number="$2,847"
 				changeText="&#9650; 4.3% vs prev. quarter" changeDirection="positive" />
 		</Card>
 	</Column>
@@ -252,7 +252,7 @@
 		</Card>
 
 		<Card titleText="Web Conversion Rate" class="mt-base">
-			<Stat variant="hero-compact" labelText="Visitor to lead" number="3.84%"
+			<Stat layout="hero-compact" labelText="Visitor to lead" number="3.84%"
 				changeText="&#9650; 0.52pp vs prev. month" changeDirection="positive" />
 		</Card>
 	</Column>
@@ -264,10 +264,10 @@
 		<Card titleText="Campaign Budget (Q1)">
 			<Grid class="mb-base">
 				<Column size="100" md="50">
-					<Stat variant="hero-compact" labelText="Total budget" number="$250,000" />
+					<Stat layout="hero-compact" labelText="Total budget" number="$250,000" />
 				</Column>
 				<Column size="100" md="50">
-					<Stat variant="hero-compact" labelText="Spent to date" number="$187,450"
+					<Stat layout="hero-compact" labelText="Spent to date" number="$187,450"
 						changeText="75% utilised" />
 				</Column>
 			</Grid>

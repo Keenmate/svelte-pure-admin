@@ -16,7 +16,7 @@
 			title: 'Centered Dialog',
 			message: 'This dialog is centered in the viewport (default behavior).',
 			variant: 'primary',
-			position: 'center'
+			placement: 'center'
 		});
 	}
 
@@ -25,7 +25,7 @@
 			title: 'Top Position',
 			message: 'This dialog appears near the top of the viewport. Useful for less intrusive notifications.',
 			variant: 'primary',
-			position: 'top'
+			placement: 'top'
 		});
 	}
 
@@ -35,14 +35,14 @@
 			message: 'Enter a value:',
 			placeholder: 'Type here...',
 			variant: 'success',
-			position: 'top'
+			placement: 'top'
 		});
 		if (result !== null) {
 			await dialogService.alert({
 				title: 'You entered',
 				message: result || '(empty)',
 				variant: 'success',
-				position: 'top'
+				placement: 'top'
 			});
 		}
 	}
@@ -52,7 +52,7 @@
 			title: 'Delete Item?',
 			message: 'This action cannot be undone.',
 			variant: 'danger',
-			position: 'top',
+			placement: 'top',
 			confirmText: 'Delete',
 			cancelText: 'Cancel'
 		});
@@ -342,18 +342,18 @@ if (name !== null) {
   console.log('User entered:', name);
 }`;
 
-	const positionCode = `// Center position (default)
+	const positionCode = `// Centred placement (default)
 await dialogService.alert({
   title: 'Centered',
   message: 'This dialog is centered.',
-  position: 'center'  // default
+  placement: 'center'  // default
 });
 
-// Top position
+// Top placement
 await dialogService.prompt({
   title: 'Top Position',
   message: 'This dialog appears near the top.',
-  position: 'top'
+  placement: 'top'
 });`;
 
 	const sequentialCode = `async function sequentialDialogs() {
@@ -421,7 +421,7 @@ switch (result) {
 			message: 'Someone else updated this document. Reload their version? Your unsaved changes will be lost.',
 			variant: 'warning',
 			isBanded: true,
-			position: 'top',
+			placement: 'top',
 			confirmText: 'Reload theirs',
 			cancelText: 'Keep mine'
 		});
@@ -452,7 +452,7 @@ switch (result) {
 const reload = await dialogService.confirm({
   title: 'Document changed',
   message: 'Someone else updated this document. Reload their version?',
-  variant: 'warning', isBanded: true, position: 'top',   // isBanded: new
+  variant: 'warning', isBanded: true, placement: 'top',   // isBanded: new
   confirmText: 'Reload theirs', cancelText: 'Keep mine'
 });
 reload
@@ -645,10 +645,10 @@ await dialogService.confirm({ closeOnBackdrop: false, confirmText: 'Yes', cancel
 				<td>Modal size: sm, md, lg, xl</td>
 			</tr>
 			<tr>
-				<td><Code>position</Code></td>
+				<td><Code>placement</Code></td>
 				<td>string</td>
 				<td>'center'</td>
-				<td>Vertical position: center, top</td>
+				<td>Where the dialog sits: center, top</td>
 			</tr>
 			<tr>
 				<td><Code>closeOnBackdrop</Code></td>
@@ -702,10 +702,10 @@ await dialogService.confirm({ closeOnBackdrop: false, confirmText: 'Yes', cancel
 				<td>Modal size</td>
 			</tr>
 			<tr>
-				<td><Code>position</Code></td>
+				<td><Code>placement</Code></td>
 				<td>string</td>
 				<td>'center'</td>
-				<td>Vertical position: center, top</td>
+				<td>Where the dialog sits: center, top</td>
 			</tr>
 		</tbody>
 	</Table>
@@ -777,10 +777,10 @@ await dialogService.confirm({ closeOnBackdrop: false, confirmText: 'Yes', cancel
 				<td>Modal size</td>
 			</tr>
 			<tr>
-				<td><Code>position</Code></td>
+				<td><Code>placement</Code></td>
 				<td>string</td>
 				<td>'center'</td>
-				<td>Vertical position: center, top</td>
+				<td>Where the dialog sits: center, top</td>
 			</tr>
 		</tbody>
 	</Table>
@@ -834,10 +834,10 @@ await dialogService.confirm({ closeOnBackdrop: false, confirmText: 'Yes', cancel
 				<td>Modal size: sm, md, lg, xl</td>
 			</tr>
 			<tr>
-				<td><Code>position</Code></td>
+				<td><Code>placement</Code></td>
 				<td>string</td>
 				<td>'center'</td>
-				<td>Vertical position: center, top</td>
+				<td>Where the dialog sits: center, top</td>
 			</tr>
 			<tr>
 				<td><Code>class</Code></td>
@@ -913,4 +913,4 @@ await dialogService.confirm({ closeOnBackdrop: false, confirmText: 'Yes', cancel
 </Card>
 
 <!-- Renders the toasts raised by the "Outcome → Toast" card above. -->
-<ToastContainer position="top-end" />
+<ToastContainer placement="top-end" />

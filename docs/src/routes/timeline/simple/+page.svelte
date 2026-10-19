@@ -199,7 +199,7 @@
 		</div>
 	{:else}
 		<div class="mt-4 text-center">
-			<Paragraph color="secondary" class="text-sm">
+			<Paragraph isMuted class="text-sm">
 				All activities loaded
 			</Paragraph>
 		</div>

@@ -102,14 +102,14 @@
 	}
 </script>
 
-<!-- One container per position so the demo can show all 6 simultaneously.
+<!-- One container per placement so the demo can show all 6 simultaneously.
      In a real app you typically mount only one. -->
-<ToastContainer position="top-end" />
-<ToastContainer position="top-center" />
-<ToastContainer position="top-start" />
-<ToastContainer position="bottom-end" />
-<ToastContainer position="bottom-center" />
-<ToastContainer position="bottom-start" />
+<ToastContainer placement="top-end" />
+<ToastContainer placement="top-center" />
+<ToastContainer placement="top-start" />
+<ToastContainer placement="bottom-end" />
+<ToastContainer placement="bottom-center" />
+<ToastContainer placement="bottom-start" />
 
 <Paragraph>
 	Temporary notification messages with auto-dismiss and smooth animations. Drive them
@@ -122,7 +122,7 @@
 	<CodeBlock>{`import { toastService, ToastContainer } from '@keenmate/svelte-pure-admin';
 
 // Mount once in your root layout:
-//   <ToastContainer position="top-end" />
+//   <ToastContainer placement="top-end" />
 
 // Anywhere in your app:
 toastService.success('Saved!');
@@ -156,39 +156,39 @@ toastService.dismissAll();`}</CodeBlock>
 <!-- 2. Toast Positions -->
 <Card titleText="Positions">
 	<Paragraph>
-		Each toast can target a position via the <Code>position</Code> option. Mount a
-		<Code>&lt;ToastContainer position="..." /&gt;</Code> for every position you intend to use.
+		Each toast can target a placement via the <Code>placement</Code> option. Mount a
+		<Code>&lt;ToastContainer placement="..." /&gt;</Code> for every placement you intend to use.
 	</Paragraph>
 	<Grid class="mt-4">
 		<Column size="100" md="1-3">
-			<Button variant="primary" isBlock onclick={() => fire('warning', { position: 'top-start' })}>
+			<Button variant="primary" isBlock onclick={() => fire('warning', { placement: 'top-start' })}>
 				Top Start
 			</Button>
 		</Column>
 		<Column size="100" md="1-3">
-			<Button variant="primary" isBlock onclick={() => fire('info',    { position: 'top-center' })}>
+			<Button variant="primary" isBlock onclick={() => fire('info',    { placement: 'top-center' })}>
 				Top Center
 			</Button>
 		</Column>
 		<Column size="100" md="1-3">
-			<Button variant="primary" isBlock onclick={() => fire('success', { position: 'top-end' })}>
+			<Button variant="primary" isBlock onclick={() => fire('success', { placement: 'top-end' })}>
 				Top End (default)
 			</Button>
 		</Column>
 	</Grid>
 	<Grid class="mt-4">
 		<Column size="100" md="1-3">
-			<Button variant="secondary" isBlock onclick={() => fire('success', { position: 'bottom-start' })}>
+			<Button variant="secondary" isBlock onclick={() => fire('success', { placement: 'bottom-start' })}>
 				Bottom Start
 			</Button>
 		</Column>
 		<Column size="100" md="1-3">
-			<Button variant="secondary" isBlock onclick={() => fire('primary', { position: 'bottom-center' })}>
+			<Button variant="secondary" isBlock onclick={() => fire('primary', { placement: 'bottom-center' })}>
 				Bottom Center
 			</Button>
 		</Column>
 		<Column size="100" md="1-3">
-			<Button variant="secondary" isBlock onclick={() => fire('danger',  { position: 'bottom-end' })}>
+			<Button variant="secondary" isBlock onclick={() => fire('danger',  { placement: 'bottom-end' })}>
 				Bottom End
 			</Button>
 		</Column>
@@ -233,7 +233,7 @@ toastService.dismissAll();`}</CodeBlock>
 		<Button variant="info"    onclick={() => fire('info',    { shouldShowProgress: true, progressColor: '#14b8a6' })}>Teal progress</Button>
 	</ButtonGroup>
 
-	<Paragraph color="secondary" class="mt-4">
+	<Paragraph isMuted class="mt-4">
 		Progress bar shows time remaining before auto-dismiss (default 5s — pass <Code>duration</Code> to change it).
 	</Paragraph>
 </Card>
@@ -257,7 +257,7 @@ toastService.dismissAll();`}</CodeBlock>
 			</Button>
 		</Column>
 	</Grid>
-	<Paragraph color="secondary" class="mt-4">
+	<Paragraph isMuted class="mt-4">
 		<Code>duration: 0</Code> stays until manually closed. Capture the id from
 		<Code>show()</Code> to dismiss programmatically (<Code>toastService.dismiss(id)</Code>).
 	</Paragraph>
@@ -290,7 +290,7 @@ toastService.dismissAll();`}</CodeBlock>
 <!-- 7. Stacking -->
 <Card titleText="Multiple toasts (stacking)">
 	<Button variant="primary" onclick={showStackingDemo}>Show 3 Toasts</Button>
-	<Paragraph color="secondary" class="mt-4">
+	<Paragraph isMuted class="mt-4">
 		Toasts automatically stack vertically in the container. Container width ratchets up
 		to the widest toast and resets when empty.
 	</Paragraph>
@@ -367,7 +367,7 @@ pa-toast--filled-color-1 through --filled-color-9`}</CodeBlock>
 <!-- 12. Service API -->
 <Card titleText="Service API">
 	<CodeBlock>{`type ToastVariant  = 'primary' | 'success' | 'danger' | 'warning' | 'info';
-type ToastPosition = 'top-end' | 'top-center' | 'top-start'
+type ToastPlacement = 'top-end' | 'top-center' | 'top-start'
                    | 'bottom-end' | 'bottom-center' | 'bottom-start';
 
 interface ToastAction {
@@ -391,7 +391,7 @@ interface ToastOptions {
 	actions?: ToastAction[];
 	iconClass?: string;         // FontAwesome class
 	class?: string;
-	position?: ToastPosition;   // default 'top-end'
+	placement?: ToastPlacement; // default 'top-end'
 }
 
 toastService.show(options): string         // returns toast id

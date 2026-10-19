@@ -16,7 +16,7 @@ import { _ } from '../i18n';
 // Types
 export type DialogVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
 export type DialogSize = 'sm' | 'md' | 'lg' | 'xl';
-export type DialogPosition = 'center' | 'top';
+export type DialogPlacement = 'center' | 'top';
 
 export interface BaseDialogOptions {
 	title?: string;
@@ -37,7 +37,7 @@ export interface BaseDialogOptions {
 	 */
 	icon?: string | false;
 	size?: DialogSize;
-	position?: DialogPosition;
+	placement?: DialogPlacement;
 	closeOnBackdrop?: boolean;
 	class?: string;
 	bodyClass?: string;
@@ -146,7 +146,7 @@ export const dialogService = {
 			cancelText: t('pureAdmin.buttons.cancel'),
 			variant: 'primary',
 			size: 'sm',
-			position: 'center',
+			placement: 'center',
 			closeOnBackdrop: true,
 			...options
 		};
@@ -164,7 +164,7 @@ export const dialogService = {
 			okText: t('pureAdmin.buttons.ok'),
 			variant: 'primary',
 			size: 'sm',
-			position: 'center',
+			placement: 'center',
 			closeOnBackdrop: true,
 			...options
 		};
@@ -185,7 +185,7 @@ export const dialogService = {
 			cancelText: t('pureAdmin.buttons.cancel'),
 			variant: 'primary',
 			size: 'sm',
-			position: 'center',
+			placement: 'center',
 			closeOnBackdrop: false, // Always false for prompts
 			...options
 		};
@@ -202,7 +202,7 @@ export const dialogService = {
 			message: '',
 			variant: 'primary',
 			size: 'sm',
-			position: 'center',
+			placement: 'center',
 			closeOnBackdrop: true,
 			...options
 		};

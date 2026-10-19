@@ -8,7 +8,7 @@
 
 	type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw';
 	type ModalVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
-	type ModalPosition = 'center' | 'top';
+	type ModalPlacement = 'center' | 'top';
 
 	interface Props {
 		/** Optional id on the modal root — the open/close JS target hook the core
@@ -23,8 +23,8 @@
 		variant?: ModalVariant;
 		/** Banded variant — header AND footer wear the role colour as filled bands. Compose with `variant` for the colour (success/warning/danger/info). Since core v2.7.0. */
 		isBanded?: boolean;
-		/** Modal position */
-		position?: ModalPosition;
+		/** Where the dialog sits: centred (default) or near the top */
+		placement?: ModalPlacement;
 		/** Scrollable body content */
 		isScrollable?: boolean;
 		/** Static modal - prevents closing via ESC key or backdrop click */
@@ -75,7 +75,7 @@
 		size = 'md',
 		variant,
 		isBanded = false,
-		position = 'center',
+		placement = 'center',
 		isScrollable = false,
 		isStatic = false,
 		titleText,
@@ -99,7 +99,7 @@
 		if (show) base.push('pa-modal--show');
 		if (variant) base.push(`pa-modal--${variant}`);
 		if (isBanded) base.push('pa-modal--banded');
-		if (position === 'top') base.push('pa-modal--top');
+		if (placement === 'top') base.push('pa-modal--top');
 		// `isStatic` is behavioural only (blocks backdrop/Esc close below); core has
 		// no `pa-modal--static` style, so we don't emit a class for it.
 		if (className) base.push(className);

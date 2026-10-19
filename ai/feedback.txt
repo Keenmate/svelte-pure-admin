@@ -53,6 +53,7 @@ PROPS:
   isDismissible?: boolean    -- Shows close button (default: false)
   isOutline?: boolean        -- Outline style (default: false)
   headingText?: string       -- Alert heading text
+  headingSize?: 'lg'         -- 'lg' = large heading (pa-alert__heading--lg)
   class?: string             -- Additional CSS classes
   icon?: Snippet             -- Icon snippet (enables complex layout with pa-alert__content wrapper)
   children?: Snippet         -- Alert body content
@@ -194,7 +195,7 @@ PROPS:
                                 -- Full modal theming
   headerVariant?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
                                 -- Header-only theming
-  position?: 'center' | 'top'  -- Modal position (default: 'center')
+  placement?: 'center' | 'top' -- Where the dialog sits (default: 'center')
   isScrollable?: boolean        -- Scrollable body (default: false)
   isStatic?: boolean            -- Prevents ESC/backdrop close (default: false)
   titleText?: string            -- Modal title text
@@ -356,7 +357,7 @@ CUSTOM HEADER:
 
 TOP-POSITIONED MODAL:
 
-<Modal bind:show={showTop} titleText="Quick Action" position="top" size="sm">
+<Modal bind:show={showTop} titleText="Quick Action" placement="top" size="sm">
   Modal appears near the top of the viewport.
   {#snippet footer()}
     <Button variant="primary" onclick={() => showTop = false}>OK</Button>
@@ -393,7 +394,7 @@ This ensures correct positioning in RTL layouts. 'top-end' = top-right in LTR.
 
 BASIC USAGE:
 
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
   <Toast
     variant="success"
     titleText="Saved"
@@ -403,7 +404,7 @@ BASIC USAGE:
 
 WITH PROGRESS BAR:
 
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
   <Toast
     variant="info"
     titleText="Uploading"
@@ -453,7 +454,7 @@ COMPLETE TOAST SYSTEM:
   Show Error Toast
 </Button>
 
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
   {#each toasts as toast (toast.id)}
     <Toast
       variant={toast.variant}
@@ -468,12 +469,12 @@ COMPLETE TOAST SYSTEM:
 
 POSITION VARIANTS:
 
-<ToastContainer position="top-end">...</ToastContainer>
-<ToastContainer position="top-center">...</ToastContainer>
-<ToastContainer position="top-start">...</ToastContainer>
-<ToastContainer position="bottom-end">...</ToastContainer>
-<ToastContainer position="bottom-center">...</ToastContainer>
-<ToastContainer position="bottom-start">...</ToastContainer>
+<ToastContainer placement="top-end">...</ToastContainer>
+<ToastContainer placement="top-center">...</ToastContainer>
+<ToastContainer placement="top-start">...</ToastContainer>
+<ToastContainer placement="bottom-end">...</ToastContainer>
+<ToastContainer placement="bottom-center">...</ToastContainer>
+<ToastContainer placement="bottom-start">...</ToastContainer>
 
 
 =====================================================================
@@ -528,8 +529,8 @@ PROPS:
   type?: 'dots' | 'bars' | 'pulse' | 'ring' | 'wave'
                               -- Loader animation type (default: 'dots')
   size?: 'default' | 'lg'    -- Loader size
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
-                              -- Loader color (uses text-* utility classes)
+  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
+                              -- Role colour (set on the wrapper as currentColor)
   class?: string              -- Additional CSS classes
 
 BASIC USAGE:
@@ -543,13 +544,13 @@ BASIC USAGE:
 LARGE SIZE:
 
 <Loader type="dots" size="lg" />
-<Loader type="wave" size="lg" color="primary" />
+<Loader type="wave" size="lg" variant="primary" />
 
 COLOR VARIANTS:
 
-<Loader type="bars" color="success" />
-<Loader type="pulse" color="danger" />
-<Loader type="ring" color="warning" />
+<Loader type="bars" variant="success" />
+<Loader type="pulse" variant="danger" />
+<Loader type="ring" variant="warning" />
 
 NOTE: 'dots' renders 3 spans, 'bars' and 'wave' render 5 spans,
 'pulse' and 'ring' are CSS-only (no child spans).
@@ -576,7 +577,7 @@ USAGE:
 WITH CUSTOM HEIGHT:
 
 <LoaderCenter style="min-height: 400px;">
-  <Loader type="dots" size="lg" color="primary" />
+  <Loader type="dots" size="lg" variant="primary" />
 </LoaderCenter>
 
 
@@ -607,7 +608,7 @@ TABLE WITH OVERLAY:
   </table>
   {#if isLoadingTable}
     <LoaderOverlay>
-      <Loader type="dots" size="lg" color="primary" />
+      <Loader type="dots" size="lg" variant="primary" />
     </LoaderOverlay>
   {/if}
 </div>
@@ -1100,7 +1101,7 @@ EXAMPLE 2: CRUD OPERATIONS WITH TOAST NOTIFICATIONS
   }
 </script>
 
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
   {#each toasts as toast (toast.id)}
     <Toast
       variant={toast.variant}
@@ -1131,7 +1132,7 @@ EXAMPLE 3: FULL PAGE WITH LOADING STATES
 
 {#if isPageLoading}
   <LoaderCenter style="min-height: 60vh;">
-    <Loader type="dots" size="lg" color="primary" />
+    <Loader type="dots" size="lg" variant="primary" />
     <p>Loading dashboard...</p>
   </LoaderCenter>
 {:else}
@@ -1154,7 +1155,7 @@ EXAMPLE 3: FULL PAGE WITH LOADING STATES
 
       {#if isTableLoading}
         <LoaderOverlay>
-          <Loader type="bars" color="primary" />
+          <Loader type="bars" variant="primary" />
         </LoaderOverlay>
       {/if}
     </div>
@@ -1290,7 +1291,7 @@ For a complete feedback system, add these to your root +layout.svelte:
 <slot />
 
 <!-- Global containers (render once at root level) -->
-<ToastContainer position="top-end">
+<ToastContainer placement="top-end">
   <!-- Managed by your toast store -->
 </ToastContainer>
 <DialogContainer />
@@ -1307,7 +1308,7 @@ DO:
   - Use bind:show for two-way binding on Modal, Toast, Popconfirm
   - Use beforeCloseCallback to prevent modal close (return false)
   - Use dialogService for programmatic confirm/alert/prompt (await the result)
-  - Use logical positions for ToastContainer (top-end, bottom-start, etc.)
+  - Use logical placements for ToastContainer (top-end, bottom-start, etc.)
   - Load Floating UI globally for Tooltip, Popover, Popconfirm positioning
 
 DO NOT:

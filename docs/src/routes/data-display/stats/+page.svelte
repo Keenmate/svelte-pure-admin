@@ -3,9 +3,9 @@
 </script>
 
 <Paragraph>
-	<Code>&lt;Stat&gt;</Code> renders Pure Admin's <Code>.pa-stat</Code> metric card. The default variant pairs an
-	optional icon with a number + label; the <strong>hero</strong> variants add a change indicator; the
-	<strong>square</strong> variant is a compact KPI tile (optionally with a currency/unit symbol), laid out
+	<Code>&lt;Stat&gt;</Code> renders Pure Admin's <Code>.pa-stat</Code> metric card. The default layout pairs an
+	optional icon with a number + label; the <strong>hero</strong> layouts (<Code>layout="hero"</Code>) add a change indicator; the
+	<strong>square</strong> layout is a compact KPI tile, coloured with <Code>variant</Code> (optionally with a currency/unit symbol), laid out
 	flush inside a <Code>&lt;KpiGrid&gt;</Code>.
 </Paragraph>
 
@@ -37,13 +37,13 @@
 <Card titleText="Hero — number with change indicator">
 	<Grid gap="base">
 		<Column size="100" md="1-3">
-			<Stat variant="hero" number="$84,200" labelText="Monthly Revenue" changeText="+12.5% vs last month" changeDirection="very-positive" />
+			<Stat layout="hero" number="$84,200" labelText="Monthly Revenue" changeText="+12.5% vs last month" changeDirection="very-positive" />
 		</Column>
 		<Column size="100" md="1-3">
-			<Stat variant="hero" number="3,120" labelText="New Signups" changeText="+4.2%" changeDirection="positive" />
+			<Stat layout="hero" number="3,120" labelText="New Signups" changeText="+4.2%" changeDirection="positive" />
 		</Column>
 		<Column size="100" md="1-3">
-			<Stat variant="hero" number="1.8%" labelText="Churn Rate" changeText="-0.3%" changeDirection="negative" />
+			<Stat layout="hero" number="1.8%" labelText="Churn Rate" changeText="-0.3%" changeDirection="negative" />
 		</Column>
 	</Grid>
 </Card>
@@ -51,10 +51,10 @@
 <Card titleText="Hero compact">
 	<Grid gap="base">
 		<Column size="100" md="1-2">
-			<Stat variant="hero-compact" number="98.9%" labelText="Uptime" changeText="+0.1%" changeDirection="positive" />
+			<Stat layout="hero-compact" number="98.9%" labelText="Uptime" changeText="+0.1%" changeDirection="positive" />
 		</Column>
 		<Column size="100" md="1-2">
-			<Stat variant="hero-compact" number="312ms" labelText="Avg Response" changeText="-18ms" changeDirection="very-positive" />
+			<Stat layout="hero-compact" number="312ms" labelText="Avg Response" changeText="-18ms" changeDirection="very-positive" />
 		</Column>
 	</Grid>
 </Card>
@@ -64,11 +64,11 @@
 		Square tiles with a trailing unit symbol, or a prefixed currency symbol via <Code>isSymbolPrefix</Code>.
 	{/snippet}
 	<KpiGrid>
-		<Stat variant="square" color="primary" number="847" symbolText="K" labelText="Impressions" />
-		<Stat variant="square" color="success" number="92" symbolText="%" labelText="Satisfaction" />
-		<Stat variant="square" color="warning" number="23" symbolText="°C" labelText="Server Temp" />
-		<Stat variant="square" color="danger" number="12.4" symbolText="$" isSymbolPrefix labelText="Cost / lead" />
-		<Stat variant="square" color="info" number="4.8" symbolText="★" labelText="Avg Rating" />
+		<Stat layout="square" variant="primary" number="847" symbolText="K" labelText="Impressions" />
+		<Stat layout="square" variant="success" number="92" symbolText="%" labelText="Satisfaction" />
+		<Stat layout="square" variant="warning" number="23" symbolText="°C" labelText="Server Temp" />
+		<Stat layout="square" variant="danger" number="12.4" symbolText="$" isSymbolPrefix labelText="Cost / lead" />
+		<Stat layout="square" variant="info" number="4.8" symbolText="★" labelText="Avg Rating" />
 	</KpiGrid>
 </Card>
 
@@ -80,7 +80,7 @@
 
 	<Heading level={4}>Hero with change direction</Heading>
 	<CodeBlock language="html" class="mb-4">{`<Stat
-  variant="hero"
+  layout="hero"
   number="$84,200"
   labelText="Monthly Revenue"
   changeText="+12.5%"
@@ -89,7 +89,7 @@
 
 	<Heading level={4}>Square KPI tiles</Heading>
 	<CodeBlock language="html">{`<KpiGrid>
-  <Stat variant="square" color="primary" number="847" symbolText="K" labelText="Impressions" />
-  <Stat variant="square" color="danger" number="12.4" symbolText="$" isSymbolPrefix labelText="Cost / lead" />
+  <Stat layout="square" variant="primary" number="847" symbolText="K" labelText="Impressions" />
+  <Stat layout="square" variant="danger" number="12.4" symbolText="$" isSymbolPrefix labelText="Cost / lead" />
 </KpiGrid>`}</CodeBlock>
 </Card>

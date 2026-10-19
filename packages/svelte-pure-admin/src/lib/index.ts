@@ -157,7 +157,7 @@ export { default as Toast } from './feedback/Toast.svelte';
 export { default as ToastContainer } from './feedback/ToastContainer.svelte';
 export { default as Spinner } from './feedback/Spinner.svelte';
 export { default as Loader } from './feedback/Loader.svelte';
-export type { LoaderType, LoaderSize, LoaderColor } from './feedback/Loader.svelte';
+export type { LoaderType, LoaderSize, LoaderVariant } from './feedback/Loader.svelte';
 export { default as LoaderCenter } from './feedback/LoaderCenter.svelte';
 export { default as LoaderOverlay } from './feedback/LoaderOverlay.svelte';
 export { default as Tooltip } from './feedback/Tooltip.svelte';
@@ -352,7 +352,7 @@ export { dialogService, dialogStore } from './feedback/dialog-service.svelte';
 export type {
 	DialogVariant,
 	DialogSize,
-	DialogPosition,
+	DialogPlacement,
 	ConfirmDialogOptions,
 	AlertDialogOptions,
 	PromptDialogOptions,
@@ -361,10 +361,10 @@ export type {
 } from './feedback/dialog-service.svelte';
 
 // Toast service — pairs with <ToastContainer />
-export { toastService, toastStore, DEFAULT_TOAST_POSITION } from './feedback/toast-service.svelte';
+export { toastService, toastStore, DEFAULT_TOAST_PLACEMENT } from './feedback/toast-service.svelte';
 export type {
 	ToastVariant,
-	ToastPosition,
+	ToastPlacement,
 	ToastAction,
 	ToastOptions,
 	ToastState
