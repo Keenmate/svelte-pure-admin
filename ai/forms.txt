@@ -108,7 +108,6 @@ The children snippet receives context: { errors: string[], touched: boolean, val
 
 Props:
   labelText?: string            Field label text
-  required?: boolean            Show required indicator (*) on label (default: false)
   helpText?: string             Default help text (shown when no errors)
   successMessage?: string       Success message (shown when touched, no errors, has value)
   errors?: string[] | null      Error messages from validation
@@ -121,9 +120,9 @@ Props:
 
 Basic usage:
 
-<FormField labelText="Email" required>
+<FormField labelText="Email">
   {#snippet children()}
-    <Input type="email" bind:value={email} />
+    <Input isRequired type="email" bind:value={email} />
   {/snippet}
 </FormField>
 
@@ -131,7 +130,6 @@ With validation:
 
 <FormField
   labelText="Username"
-  required
   errors={usernameErrors}
   touched={usernameTouched}
   hasValue={username.length > 0}
@@ -139,7 +137,7 @@ With validation:
   helpText="Choose a unique username"
 >
   {#snippet children({ errors, touched })}
-    <Input bind:value={username} {errors} {touched} />
+    <Input isRequired bind:value={username} {errors} {touched} />
   {/snippet}
 </FormField>
 
@@ -158,19 +156,14 @@ Form label element. Renders <label class="pa-form-label">.
 
 Props:
   for?: string             HTML for attribute (input ID)
-  required?: boolean       Show asterisk indicator (default: false)
   class?: string           Additional CSS classes
   children?: Snippet       Label text content
 
 <FormLabel>Username</FormLabel>
 
-With required indicator:
+With for attribute (the required asterisk comes from the control: <Input id="email-input" isRequired>):
 
-<FormLabel required>Email Address</FormLabel>
-
-With for attribute:
-
-<FormLabel for="email-input" required>Email</FormLabel>
+<FormLabel for="email-input">Email</FormLabel>
 
 
 FORM HELP
@@ -698,8 +691,8 @@ HOW IT WORKS:
 </script>
 
 <FormGroup validation={emailTouched && emailErrors().length > 0 ? 'error' : undefined}>
-  <FormLabel required>Email</FormLabel>
-  <Input
+  <FormLabel>Email</FormLabel>
+  <Input isRequired
     type="email"
     bind:value={email}
     errors={emailErrors()}
@@ -716,7 +709,6 @@ SIMPLIFIED WITH FORM FIELD:
 
 <FormField
   labelText="Email"
-  required
   errors={emailErrors()}
   touched={emailTouched}
   hasValue={email.length > 0}
@@ -724,7 +716,7 @@ SIMPLIFIED WITH FORM FIELD:
   helpText="We'll never share your email"
 >
   {#snippet children({ errors, touched })}
-    <Input
+    <Input isRequired
       type="email"
       bind:value={email}
       {errors}
@@ -838,14 +830,13 @@ COMPLETE FORM EXAMPLE
     <Column size="100" md="50">
       <FormField
         labelText="First Name"
-        required
         errors={getFirstNameErrors()}
         touched={firstNameTouched}
         hasValue={firstName.length > 0}
         successMessage="Looks good"
       >
         {#snippet children({ errors, touched })}
-          <Input
+          <Input isRequired
             id="firstName"
             bind:value={firstName}
             {errors}
@@ -860,13 +851,12 @@ COMPLETE FORM EXAMPLE
     <Column size="100" md="50">
       <FormField
         labelText="Last Name"
-        required
         errors={getLastNameErrors()}
         touched={lastNameTouched}
         hasValue={lastName.length > 0}
       >
         {#snippet children({ errors, touched })}
-          <Input
+          <Input isRequired
             id="lastName"
             bind:value={lastName}
             {errors}
@@ -881,14 +871,13 @@ COMPLETE FORM EXAMPLE
 
   <FormField
     labelText="Email Address"
-    required
     errors={getEmailErrors()}
     touched={emailTouched}
     hasValue={email.length > 0}
     helpText="We'll never share your email"
   >
     {#snippet children({ errors, touched })}
-      <Input
+      <Input isRequired
         id="email"
         type="email"
         bind:value={email}
@@ -904,13 +893,12 @@ COMPLETE FORM EXAMPLE
     <Column size="100" md="50">
       <FormField
         labelText="Age"
-        required
         errors={getAgeErrors()}
         touched={ageTouched}
         hasValue={age !== null}
       >
         {#snippet children({ errors, touched })}
-          <NumberInput
+          <NumberInput isRequired
             id="age"
             bind:value={age}
             min={0}
@@ -933,13 +921,12 @@ COMPLETE FORM EXAMPLE
 
   <FormField
     labelText="Role"
-    required
     errors={getRoleErrors()}
     touched={roleTouched}
     hasValue={role.length > 0}
   >
     {#snippet children({ errors, touched })}
-      <Select
+      <Select isRequired
         id="role"
         bind:value={role}
         {errors}
@@ -1011,9 +998,9 @@ Use horizontal prop on FormGroup or FormField for label-left layout.
 
 Or with FormField:
 
-<FormField labelText="Username" required horizontal>
+<FormField labelText="Username" horizontal>
   {#snippet children()}
-    <Input bind:value={username} />
+    <Input isRequired bind:value={username} />
   {/snippet}
 </FormField>
 

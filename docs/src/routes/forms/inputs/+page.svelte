@@ -614,10 +614,10 @@
 </CheckboxGroup>
 
 <!-- Radio group -->
-<RadioGroup name="demo">
-  <Radio labelText="Option A" checked />
-  <Radio labelText="Option B" />
-  <Radio labelText="Disabled" isDisabled />
+<RadioGroup>
+  <Radio name="demo" value="a" bind:group={choice} labelText="Option A" />
+  <Radio name="demo" value="b" bind:group={choice} labelText="Option B" />
+  <Radio name="demo" value="c" bind:group={choice} labelText="Disabled" isDisabled />
 </RadioGroup>
 
 <!-- Sizes: xs, sm, (default), lg, xl -->

@@ -609,7 +609,7 @@
 								<Button
 									variant="danger"
 									size="xs"
-									title="Delete entry"
+									titleText="Delete entry"
 									onclick={() => deleteEntry(e)}
 								>
 									<span class="pa-icon pa-icon--remove" aria-hidden="true"></span>
@@ -617,7 +617,7 @@
 								<Button
 									variant="secondary"
 									size="xs"
-									title="Edit entry"
+									titleText="Edit entry"
 									onclick={() => enterEditMode(e)}
 								>
 									<span class="pa-icon pa-icon--edit" aria-hidden="true"></span>
