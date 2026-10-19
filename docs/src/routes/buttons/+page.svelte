@@ -737,15 +737,15 @@
 
 			<Heading level={4} class="mt-6">Inline End Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" justify="end" iconPosition="end">
+				<Button variant="primary" class="wr-20" justify="end" iconPlacement="end">
 					{#snippet icon()}✓{/snippet}
 					OK
 				</Button>
-				<Button variant="success" class="wr-20" justify="end" iconPosition="end">
+				<Button variant="success" class="wr-20" justify="end" iconPlacement="end">
 					{#snippet icon()}→{/snippet}
 					Continue
 				</Button>
-				<Button variant="secondary" class="wr-20" justify="end" iconPosition="end">
+				<Button variant="secondary" class="wr-20" justify="end" iconPlacement="end">
 					{#snippet icon()}×{/snippet}
 					Discard All Changes
 				</Button>
@@ -802,15 +802,15 @@
 
 			<Heading level={4} class="mt-6">Inline End Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" justify="end" iconPosition="end">
+				<Button variant="primary" class="wr-20" justify="end" iconPlacement="end">
 					{#snippet icon()}<span class="pa-icon pa-icon--save" aria-hidden="true"></span>{/snippet}
 					Save
 				</Button>
-				<Button variant="success" class="wr-20" justify="end" iconPosition="end">
+				<Button variant="success" class="wr-20" justify="end" iconPlacement="end">
 					{#snippet icon()}<i class="fa-solid fa-arrow-right"></i>{/snippet}
 					Approve Request
 				</Button>
-				<Button variant="secondary" class="wr-20" justify="end" iconPosition="end">
+				<Button variant="secondary" class="wr-20" justify="end" iconPlacement="end">
 					{#snippet icon()}<i class="fa-solid fa-gear"></i>{/snippet}
 					Delete Selected Items
 				</Button>

@@ -1,9 +1,9 @@
 {
-  "//": "Capability manifest for <Radio> (the .pa-radio control) — svelte-pure-admin. Radio.svelte renders <label class=\"pa-radio {size} {label-pos} {class}\"><input type=radio bind:group value name disabled required/><span pa-radio__label>{labelText}</span></label>. `name` + `value` are REQUIRED props. The label text prop is `labelText`. size→--{size}, labelPosition→--label-{pos}. isDisabled/isRequired emit the native disabled/required <input> attributes. CHECKED is not modeled (svelte derives it from bind:group, not a boolean prop); svelte has no `id` prop — both are prose-deferred in the oracle.",
+  "//": "Capability manifest for <Radio> (the .pa-radio control) — svelte-pure-admin. Radio.svelte renders <label class=\"pa-radio {size} {label-pos} {class}\"><input type=radio bind:group value name disabled required/><span pa-radio__label>{labelText}</span></label>. `name` + `value` are REQUIRED props. The label text prop is `labelText`. size→--{size}, labelPlacement→--label-{pos}. isDisabled/isRequired emit the native disabled/required <input> attributes. CHECKED is not modeled (svelte derives it from bind:group, not a boolean prop); svelte has no `id` prop — both are prose-deferred in the oracle.",
   "component": "radio",
   "features": {
     "size":          { "prop": "size",          "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
-    "labelPosition": { "prop": "labelPosition", "kind": "enum", "values": ["end", "start", "top"] },
+    "labelPlacement": { "prop": "labelPlacement", "kind": "enum", "values": ["end", "start", "top"] },
     "label":         { "prop": "labelText",      "kind": "string" },
     "name":          { "prop": "name",           "kind": "string" },
     "value":         { "prop": "value",          "kind": "string" },

@@ -662,16 +662,16 @@
 			<Grid>
 				<Column size="100" md="1-2">
 					<CheckboxGroup>
-						<Checkbox id="lp-ce-1" labelPosition="end" labelText="End · Option 1" isChecked />
-						<Checkbox id="lp-ce-2" labelPosition="end" labelText="End · Option 2" />
-						<Checkbox id="lp-ce-3" labelPosition="end" labelText="End · Option 3" isChecked />
+						<Checkbox id="lp-ce-1" labelPlacement="end" labelText="End · Option 1" isChecked />
+						<Checkbox id="lp-ce-2" labelPlacement="end" labelText="End · Option 2" />
+						<Checkbox id="lp-ce-3" labelPlacement="end" labelText="End · Option 3" isChecked />
 					</CheckboxGroup>
 				</Column>
 				<Column size="100" md="1-2">
 					<CheckboxGroup>
-						<Checkbox id="lp-cs-1" labelPosition="start" labelText="Start · Option 1" isChecked />
-						<Checkbox id="lp-cs-2" labelPosition="start" labelText="Start · Option 2" />
-						<Checkbox id="lp-cs-3" labelPosition="start" labelText="Start · Option 3" isChecked />
+						<Checkbox id="lp-cs-1" labelPlacement="start" labelText="Start · Option 1" isChecked />
+						<Checkbox id="lp-cs-2" labelPlacement="start" labelText="Start · Option 2" />
+						<Checkbox id="lp-cs-3" labelPlacement="start" labelText="Start · Option 3" isChecked />
 					</CheckboxGroup>
 				</Column>
 			</Grid>
@@ -680,12 +680,12 @@
 		<FormGroup class="mb-2xl">
 			<FormLabel>Checkbox · label top (auto-flow grid, 6 options)</FormLabel>
 			<CheckboxGroup layout="grid">
-				<Checkbox id="lp-ct-1" labelPosition="top" labelText="Top · Option 1" isChecked />
-				<Checkbox id="lp-ct-2" labelPosition="top" labelText="Top · Option 2" />
-				<Checkbox id="lp-ct-3" labelPosition="top" labelText="Top · Option 3" isChecked />
-				<Checkbox id="lp-ct-4" labelPosition="top" labelText="Top · Option 4" />
-				<Checkbox id="lp-ct-5" labelPosition="top" labelText="Top · Option 5" isChecked />
-				<Checkbox id="lp-ct-6" labelPosition="top" labelText="Top · Option 6" />
+				<Checkbox id="lp-ct-1" labelPlacement="top" labelText="Top · Option 1" isChecked />
+				<Checkbox id="lp-ct-2" labelPlacement="top" labelText="Top · Option 2" />
+				<Checkbox id="lp-ct-3" labelPlacement="top" labelText="Top · Option 3" isChecked />
+				<Checkbox id="lp-ct-4" labelPlacement="top" labelText="Top · Option 4" />
+				<Checkbox id="lp-ct-5" labelPlacement="top" labelText="Top · Option 5" isChecked />
+				<Checkbox id="lp-ct-6" labelPlacement="top" labelText="Top · Option 6" />
 			</CheckboxGroup>
 		</FormGroup>
 
@@ -694,16 +694,16 @@
 			<Grid>
 				<Column size="100" md="1-2">
 					<RadioGroup>
-						<Radio name="rl-end" value="1" labelPosition="end" bind:group={rlEnd} labelText="End · Option 1" />
-						<Radio name="rl-end" value="2" labelPosition="end" bind:group={rlEnd} labelText="End · Option 2" />
-						<Radio name="rl-end" value="3" labelPosition="end" bind:group={rlEnd} labelText="End · Option 3" />
+						<Radio name="rl-end" value="1" labelPlacement="end" bind:group={rlEnd} labelText="End · Option 1" />
+						<Radio name="rl-end" value="2" labelPlacement="end" bind:group={rlEnd} labelText="End · Option 2" />
+						<Radio name="rl-end" value="3" labelPlacement="end" bind:group={rlEnd} labelText="End · Option 3" />
 					</RadioGroup>
 				</Column>
 				<Column size="100" md="1-2">
 					<RadioGroup>
-						<Radio name="rl-start" value="1" labelPosition="start" bind:group={rlStart} labelText="Start · Option 1" />
-						<Radio name="rl-start" value="2" labelPosition="start" bind:group={rlStart} labelText="Start · Option 2" />
-						<Radio name="rl-start" value="3" labelPosition="start" bind:group={rlStart} labelText="Start · Option 3" />
+						<Radio name="rl-start" value="1" labelPlacement="start" bind:group={rlStart} labelText="Start · Option 1" />
+						<Radio name="rl-start" value="2" labelPlacement="start" bind:group={rlStart} labelText="Start · Option 2" />
+						<Radio name="rl-start" value="3" labelPlacement="start" bind:group={rlStart} labelText="Start · Option 3" />
 					</RadioGroup>
 				</Column>
 			</Grid>
@@ -712,12 +712,12 @@
 		<FormGroup>
 			<FormLabel>Radio · label top (auto-flow grid, 6 options)</FormLabel>
 			<RadioGroup layout="grid">
-				<Radio name="rl-top" value="1" labelPosition="top" bind:group={rlTop} labelText="Top · Option 1" />
-				<Radio name="rl-top" value="2" labelPosition="top" bind:group={rlTop} labelText="Top · Option 2" />
-				<Radio name="rl-top" value="3" labelPosition="top" bind:group={rlTop} labelText="Top · Option 3" />
-				<Radio name="rl-top" value="4" labelPosition="top" bind:group={rlTop} labelText="Top · Option 4" />
-				<Radio name="rl-top" value="5" labelPosition="top" bind:group={rlTop} labelText="Top · Option 5" />
-				<Radio name="rl-top" value="6" labelPosition="top" bind:group={rlTop} labelText="Top · Option 6" />
+				<Radio name="rl-top" value="1" labelPlacement="top" bind:group={rlTop} labelText="Top · Option 1" />
+				<Radio name="rl-top" value="2" labelPlacement="top" bind:group={rlTop} labelText="Top · Option 2" />
+				<Radio name="rl-top" value="3" labelPlacement="top" bind:group={rlTop} labelText="Top · Option 3" />
+				<Radio name="rl-top" value="4" labelPlacement="top" bind:group={rlTop} labelText="Top · Option 4" />
+				<Radio name="rl-top" value="5" labelPlacement="top" bind:group={rlTop} labelText="Top · Option 5" />
+				<Radio name="rl-top" value="6" labelPlacement="top" bind:group={rlTop} labelText="Top · Option 6" />
 			</RadioGroup>
 		</FormGroup>
 	</Form>

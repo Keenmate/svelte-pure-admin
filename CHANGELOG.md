@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### BREAKING — text vs rich slot, every boolean is `is*`/`has*`/`should*`, icon names (keen parity, batch 3)
 
+- **Where a part sits is `<part>Placement`.** `Checkbox` / `Radio` `labelPosition` → `labelPlacement`
+  (type `CheckboxLabelPlacement` / `RadioLabelPlacement`), `Button` `iconPosition` → `iconPlacement`,
+  `Pager` `infoPosition` → `infoPlacement`. `TabItem` gains `isDisabled` and `titleText`.
+
 The bare name is the rich snippet and the plain-text form is `*Text`; every boolean prop — native
 HTML ones included — follows `is*`/`has*`/`should*`; an icon passed by name is `iconName` (rendered
 through `<Icon>`, so the configured icon providers resolve it) beside the `icon` snippet; `type` is

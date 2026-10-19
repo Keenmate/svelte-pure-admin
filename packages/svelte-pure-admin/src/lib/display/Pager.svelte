@@ -37,7 +37,7 @@
 		/** Custom info text */
 		infoText?: string;
 		/** Where the info sits relative to the controls: 'end' (default, after) or 'start' (before) */
-		infoPosition?: 'start' | 'end';
+		infoPlacement?: 'start' | 'end';
 		/** First-button label (default: i18n 'pager.first') */
 		firstText?: string;
 		/** Previous-button label (default: i18n 'pager.previous') */
@@ -76,7 +76,7 @@
 		disablePrevious = false,
 		disableNext = false,
 		infoText,
-		infoPosition = 'end',
+		infoPlacement = 'end',
 		firstText,
 		previousText,
 		nextText,
@@ -142,7 +142,7 @@
 
 <div class={classes()}>
 	<div class="pa-pager__container">
-		{#if infoPosition === 'start'}
+		{#if infoPlacement === 'start'}
 			{@render infoBlock()}
 		{/if}
 		{#if controls}
@@ -168,7 +168,7 @@
 			</div>
 		{/if}
 
-		{#if infoPosition !== 'start'}
+		{#if infoPlacement !== 'start'}
 			{@render infoBlock()}
 		{/if}
 	</div>

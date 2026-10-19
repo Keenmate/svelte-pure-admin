@@ -41,7 +41,7 @@
 		/** Button content alignment */
 		justify?: ButtonJustify;
 		/** Icon position relative to children text */
-		iconPosition?: 'start' | 'end';
+		iconPlacement?: 'start' | 'end';
 		/**
 		 * Truncate the label with an ellipsis when it exceeds the button's width.
 		 * Combine with a fixed-width utility class (e.g. `wr-10`, `maxwr-10`) — the
@@ -89,7 +89,7 @@
 		isLoading = false,
 		isRipple = false,
 		justify,
-		iconPosition = 'start',
+		iconPlacement = 'start',
 		shouldTruncateText = false,
 		isInputGroupButton = false,
 		isDisabled = false,
@@ -166,7 +166,7 @@
 		{#if isLoading}
 			<span class="pa-btn__spinner"></span>
 		{/if}
-		{#if (icon || iconName) && iconPosition !== 'end'}
+		{#if (icon || iconName) && iconPlacement !== 'end'}
 			<span class="pa-btn__icon">
 				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
@@ -183,7 +183,7 @@
 				<span class={labelWrapClass}>{@render children()}</span>
 			{/if}
 		{/if}
-		{#if (icon || iconName) && iconPosition === 'end'}
+		{#if (icon || iconName) && iconPlacement === 'end'}
 			<span class="pa-btn__icon">
 				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
@@ -202,7 +202,7 @@
 		{#if isLoading}
 			<span class="pa-btn__spinner"></span>
 		{/if}
-		{#if (icon || iconName) && iconPosition !== 'end'}
+		{#if (icon || iconName) && iconPlacement !== 'end'}
 			<span class="pa-btn__icon">
 				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
@@ -219,7 +219,7 @@
 				<span class={labelWrapClass}>{@render children()}</span>
 			{/if}
 		{/if}
-		{#if (icon || iconName) && iconPosition === 'end'}
+		{#if (icon || iconName) && iconPlacement === 'end'}
 			<span class="pa-btn__icon">
 				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>

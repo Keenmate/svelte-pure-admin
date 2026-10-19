@@ -79,6 +79,8 @@ Props:
   class?: string
   icon?: Snippet             (icon rendered before children text)
   iconName?: string          (icon name rendered through <Icon>; the icon snippet wins)
+  isDisabled?: boolean       (emits native disabled, default: false)
+  titleText?: string         (tooltip text, renders the native title attribute)
   children?: Snippet
   onclick?: (event: MouseEvent) => void
   ...restProps               (extends HTMLButtonAttributes)

@@ -24,6 +24,10 @@
 		icon?: import('svelte').Snippet;
 		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
 		iconName?: string;
+		/** Disabled (emits native `disabled`) */
+		isDisabled?: boolean;
+		/** Tooltip text (renders the native `title` attribute) */
+		titleText?: string;
 		/** Tab content */
 		children?: import('svelte').Snippet;
 		/** Click handler */
@@ -37,6 +41,8 @@
 		class: className = '',
 		icon,
 		iconName,
+		isDisabled = false,
+		titleText,
 		children,
 		onclick,
 		...restProps
@@ -65,7 +71,7 @@
 	});
 </script>
 
-<button class={classes()} {onclick} {...restProps}>
+<button class={classes()} {onclick} disabled={isDisabled} title={titleText} {...restProps}>
 	{#if icon || iconName}
 		{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 	{/if}

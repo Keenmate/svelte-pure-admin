@@ -177,7 +177,7 @@ i18n -> i18n.txt
 I18nConfig -> getting-started.txt, i18n.txt
 I18nInitOptions -> i18n.txt, typescript-types.txt
 Icon (Button) -> display.txt, common-patterns.txt
-iconPosition (Button) -> display.txt
+iconPlacement (Button) -> display.txt
 initI18n -> i18n.txt
 Input -> forms.txt
 InputGroup -> forms.txt

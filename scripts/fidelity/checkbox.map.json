@@ -1,9 +1,9 @@
 {
-  "//": "Capability manifest for <Checkbox> (the .pa-checkbox tri-state checkbox) — svelte-pure-admin. Checkbox.svelte renders <label class=\"pa-checkbox {size} {x} {label-pos} {disabled} {class}\"><input type=checkbox .../><span pa-checkbox__box/><span pa-checkbox__label>{labelText}</span></label>. `id` is a REQUIRED prop (label association) so every scenario supplies it. The label text prop is `labelText` (not `label`). isXMark→--x, labelPosition→--label-{pos}, isDisabled→--disabled + native disabled. isChecked/isRequired emit the native checked/required; value/name are native <input> props. Indeterminate is JS-only (not modeled).",
+  "//": "Capability manifest for <Checkbox> (the .pa-checkbox tri-state checkbox) — svelte-pure-admin. Checkbox.svelte renders <label class=\"pa-checkbox {size} {x} {label-pos} {disabled} {class}\"><input type=checkbox .../><span pa-checkbox__box/><span pa-checkbox__label>{labelText}</span></label>. `id` is a REQUIRED prop (label association) so every scenario supplies it. The label text prop is `labelText` (not `label`). isXMark→--x, labelPlacement→--label-{pos}, isDisabled→--disabled + native disabled. isChecked/isRequired emit the native checked/required; value/name are native <input> props. Indeterminate is JS-only (not modeled).",
   "component": "checkbox",
   "features": {
     "size":          { "prop": "size",          "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
-    "labelPosition": { "prop": "labelPosition", "kind": "enum", "values": ["end", "start", "top"] },
+    "labelPlacement": { "prop": "labelPlacement", "kind": "enum", "values": ["end", "start", "top"] },
     "isXMark":       { "prop": "isXMark",        "kind": "bool" },
     "isDisabled":      { "prop": "isDisabled",       "kind": "bool" },
     "label":         { "prop": "labelText",      "kind": "string" },

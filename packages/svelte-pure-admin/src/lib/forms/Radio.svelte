@@ -13,7 +13,7 @@
 	 */
 
 	type RadioSize = 'xs' | 'sm' | 'lg' | 'xl';
-	type RadioLabelPosition = 'end' | 'start' | 'top';
+	type RadioLabelPlacement = 'end' | 'start' | 'top';
 
 	interface Props {
 		/** Radio group value (bindable) */
@@ -33,7 +33,7 @@
 		 * `end` is the visual default; leave unset for a classless default, or set
 		 * it explicitly to emit the (redundant but valid) `--label-end` modifier.
 		 */
-		labelPosition?: RadioLabelPosition;
+		labelPlacement?: RadioLabelPlacement;
 		/** Label text */
 		labelText?: string;
 		/** Additional CSS classes for wrapper */
@@ -51,7 +51,7 @@
 		isRequired = false,
 		name,
 		size,
-		labelPosition,
+		labelPlacement,
 		labelText,
 		class: className = '',
 		label,
@@ -64,8 +64,8 @@
 		if (size) base.push(`pa-radio--${size}`);
 		// All three positions exist in core (`--label-end` is the default, so it's
 		// redundant but valid); emit whichever is explicitly set. A radio with no
-		// `labelPosition` stays classless (= end).
-		if (labelPosition) base.push(`pa-radio--label-${labelPosition}`);
+		// `labelPlacement` stays classless (= end).
+		if (labelPlacement) base.push(`pa-radio--label-${labelPlacement}`);
 		// Core has no `.pa-radio--disabled` (only size modifiers) — the native
 		// `disabled` attribute on the <input> is the disabled contract
 		// (snippets/forms.html). Checkbox has --disabled; radio does not.

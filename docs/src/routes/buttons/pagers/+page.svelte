@@ -260,14 +260,14 @@
 <!-- Pager with Item Count -->
 <Card titleText="Pager with Item Count">
 	<Paragraph>
-		<Code>infoPosition="start"</Code> puts the info text before the controls.
+		<Code>infoPlacement="start"</Code> puts the info text before the controls.
 	</Paragraph>
 	<Pager
 		currentPage={1}
 		totalPages={10}
 		showPageInput={false}
 		showInfo={false}
-		infoPosition="start"
+		infoPlacement="start"
 		infoText="Showing 1-25 of 247 items"
 	/>
 </Card>
@@ -439,7 +439,7 @@
 						<td>Custom info text (e.g., "Showing 1-25 of 250")</td>
 					</tr>
 					<tr>
-						<td><Code>infoPosition</Code></td>
+						<td><Code>infoPlacement</Code></td>
 						<td><Code>'start' | 'end'</Code></td>
 						<td><Code>'end'</Code></td>
 						<td>Info before (<Code>start</Code>) or after (<Code>end</Code>) the controls</td>

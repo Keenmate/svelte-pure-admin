@@ -13,7 +13,7 @@
 	 */
 
 	type CheckboxSize = 'xs' | 'sm' | 'lg' | 'xl';
-	type CheckboxLabelPosition = 'end' | 'start' | 'top';
+	type CheckboxLabelPlacement = 'end' | 'start' | 'top';
 
 	interface Props {
 		/** Checkbox checked state */
@@ -33,7 +33,7 @@
 		 * `end` is the visual default; leave unset for a classless default, or set
 		 * it explicitly to emit the (redundant but valid) `--label-end` modifier.
 		 */
-		labelPosition?: CheckboxLabelPosition;
+		labelPlacement?: CheckboxLabelPlacement;
 		/** Checkbox ID (required for label association) */
 		id: string;
 		/** Checkbox name */
@@ -59,7 +59,7 @@
 		isRequired = false,
 		isXMark = false,
 		size,
-		labelPosition,
+		labelPlacement,
 		id,
 		name,
 		value,
@@ -86,8 +86,8 @@
 		if (isXMark) base.push('pa-checkbox--x');
 		// All three positions exist in core (`--label-end` is the default, so it's
 		// redundant but valid); emit whichever is explicitly set. A checkbox with no
-		// `labelPosition` stays classless (= end).
-		if (labelPosition) base.push(`pa-checkbox--label-${labelPosition}`);
+		// `labelPlacement` stays classless (= end).
+		if (labelPlacement) base.push(`pa-checkbox--label-${labelPlacement}`);
 		if (isDisabled) base.push('pa-checkbox--disabled');
 		if (className) base.push(className);
 		return base.join(' ');
