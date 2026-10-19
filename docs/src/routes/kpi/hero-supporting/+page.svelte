@@ -286,7 +286,7 @@
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — accent colour: <Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> / <Code>up-strong</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
-		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — headline value cell.</li>
+		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — headline value cell.</li>
 		<li><Code>deltaText</Code> + <Code>periodText</Code> + <Code>targetText</Code> — meta row.</li>
 		<li><Code>chart</Code> — snippet for the sparkline (wrap SVG in <Code>{`<div class="pa-kpi-hero-main__chart-svg">`}</Code>).</li>
 		<li><Code>detailTitleText</Code> + <Code>previousValueText</Code> + <Code>deltaAbsoluteText</Code> — popover (auto-generated). <Code>targetText</Code> is also fed into the popover.</li>
@@ -297,7 +297,7 @@
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — accent colour (same 4-step scale as hero).</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
-		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — value cell.</li>
+		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — value cell.</li>
 		<li><Code>deltaText</Code> — Δ% text (coloured by <Code>variant</Code>).</li>
 		<li><Code>detailTitleText</Code> + <Code>previousValueText</Code> + <Code>targetText</Code> + <Code>deltaAbsoluteText</Code> — popover (auto-generated).</li>
 	</BasicList>

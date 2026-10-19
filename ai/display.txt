@@ -121,10 +121,12 @@ Card with tabs:
 
 Stat card (inside a Grid):
 
-<Grid cols={4}>
-  <Card isStat titleText="Total Revenue">
-    <Stat number="$48,200" labelText="Revenue" changeText="+12.5%" changeDirection="positive" variant="hero" />
-  </Card>
+<Grid>
+  <Column md="1-4">
+    <Card isStat titleText="Total Revenue">
+      <Stat number="$48,200" labelText="Revenue" changeText="+12.5%" changeDirection="positive" variant="hero" />
+    </Card>
+  </Column>
 </Grid>
 
 
@@ -807,11 +809,19 @@ Square stat:
 
 Stats in a grid:
 
-<Grid cols={4}>
-  <Stat variant="hero-compact" number="12,450" labelText="Users" changeText="+8%" changeDirection="positive" />
-  <Stat variant="hero-compact" number="$84K" labelText="Revenue" changeText="+23%" changeDirection="positive" />
-  <Stat variant="hero-compact" number="342" labelText="Orders" changeText="-2%" changeDirection="negative" />
-  <Stat variant="hero-compact" number="98.5%" labelText="Uptime" changeText="0%" changeDirection="neutral" />
+<Grid>
+  <Column md="1-4">
+    <Stat variant="hero-compact" number="12,450" labelText="Users" changeText="+8%" changeDirection="positive" />
+  </Column>
+  <Column md="1-4">
+    <Stat variant="hero-compact" number="$84K" labelText="Revenue" changeText="+23%" changeDirection="positive" />
+  </Column>
+  <Column md="1-4">
+    <Stat variant="hero-compact" number="342" labelText="Orders" changeText="-2%" changeDirection="negative" />
+  </Column>
+  <Column md="1-4">
+    <Stat variant="hero-compact" number="98.5%" labelText="Uptime" changeText="0%" changeDirection="neutral" />
+  </Column>
 </Grid>
 
 

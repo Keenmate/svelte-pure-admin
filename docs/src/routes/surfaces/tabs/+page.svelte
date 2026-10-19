@@ -62,13 +62,13 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={cardCompareActive === 'card-compare-1'} id="card-compare-1">
+				<TabPanel isActive={cardCompareActive === 'card-compare-1'} id="card-compare-1">
 					<Paragraph>Tabs replace the header using <Code>TabsContainer card</Code>. The tabs isRow has the same height (40px) as a card header.</Paragraph>
 				</TabPanel>
-				<TabPanel active={cardCompareActive === 'card-compare-2'} id="card-compare-2">
+				<TabPanel isActive={cardCompareActive === 'card-compare-2'} id="card-compare-2">
 					<Paragraph>Details content.</Paragraph>
 				</TabPanel>
-				<TabPanel active={cardCompareActive === 'card-compare-3'} id="card-compare-3">
+				<TabPanel isActive={cardCompareActive === 'card-compare-3'} id="card-compare-3">
 					<Paragraph>Settings content.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -123,19 +123,19 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={standaloneActive === 'tab-1'} id="tab-1">
+				<TabPanel isActive={standaloneActive === 'tab-1'} id="tab-1">
 					<Heading level={4}>Home</Heading>
 					<Paragraph>Standalone tabs work anywhere.</Paragraph>
 				</TabPanel>
-				<TabPanel active={standaloneActive === 'tab-2'} id="tab-2">
+				<TabPanel isActive={standaloneActive === 'tab-2'} id="tab-2">
 					<Heading level={4}>Profile</Heading>
 					<Paragraph>User profile information here.</Paragraph>
 				</TabPanel>
-				<TabPanel active={standaloneActive === 'tab-3'} id="tab-3">
+				<TabPanel isActive={standaloneActive === 'tab-3'} id="tab-3">
 					<Heading level={4}>Messages</Heading>
 					<Paragraph>Messages and conversations.</Paragraph>
 				</TabPanel>
-				<TabPanel active={standaloneActive === 'tab-4'} id="tab-4">
+				<TabPanel isActive={standaloneActive === 'tab-4'} id="tab-4">
 					<Heading level={4}>Settings</Heading>
 					<Paragraph>Application settings here.</Paragraph>
 				</TabPanel>
@@ -176,16 +176,16 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={iconsActive === 'icon-tab-1'} id="icon-tab-1">
+				<TabPanel isActive={iconsActive === 'icon-tab-1'} id="icon-tab-1">
 					<Paragraph>Home with icons.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconsActive === 'icon-tab-2'} id="icon-tab-2">
+				<TabPanel isActive={iconsActive === 'icon-tab-2'} id="icon-tab-2">
 					<Paragraph>Profile with icons.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconsActive === 'icon-tab-3'} id="icon-tab-3">
+				<TabPanel isActive={iconsActive === 'icon-tab-3'} id="icon-tab-3">
 					<Paragraph>Messages with icons.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconsActive === 'icon-tab-4'} id="icon-tab-4">
+				<TabPanel isActive={iconsActive === 'icon-tab-4'} id="icon-tab-4">
 					<Paragraph>Settings with icons.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -212,13 +212,13 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={fixed6xActive === 'fixed-tab-1'} id="fixed-tab-1">
+				<TabPanel isActive={fixed6xActive === 'fixed-tab-1'} id="fixed-tab-1">
 					<Paragraph>Fixed width tabs maintain consistent sizing.</Paragraph>
 				</TabPanel>
-				<TabPanel active={fixed6xActive === 'fixed-tab-2'} id="fixed-tab-2">
+				<TabPanel isActive={fixed6xActive === 'fixed-tab-2'} id="fixed-tab-2">
 					<Paragraph>Edit content here.</Paragraph>
 				</TabPanel>
-				<TabPanel active={fixed6xActive === 'fixed-tab-3'} id="fixed-tab-3">
+				<TabPanel isActive={fixed6xActive === 'fixed-tab-3'} id="fixed-tab-3">
 					<Paragraph>Delete operations here.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -239,10 +239,10 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={fixed8xActive === 'fixed-8x-1'} id="fixed-8x-1">
+				<TabPanel isActive={fixed8xActive === 'fixed-8x-1'} id="fixed-8x-1">
 					<Paragraph>Dashboard data.</Paragraph>
 				</TabPanel>
-				<TabPanel active={fixed8xActive === 'fixed-8x-2'} id="fixed-8x-2">
+				<TabPanel isActive={fixed8xActive === 'fixed-8x-2'} id="fixed-8x-2">
 					<Paragraph>Analytics data.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -265,10 +265,10 @@
 		<TabItem isActive={wlAutoActive === 'wl-auto-4'} onclick={() => (wlAutoActive = 'wl-auto-4')}>Complaints and missed items</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={wlAutoActive === 'wl-auto-1'} id="wl-auto-1"><Paragraph>Orders content.</Paragraph></TabPanel>
-		<TabPanel active={wlAutoActive === 'wl-auto-2'} id="wl-auto-2"><Paragraph>Invoices content.</Paragraph></TabPanel>
-		<TabPanel active={wlAutoActive === 'wl-auto-3'} id="wl-auto-3"><Paragraph>Delivery sheets content.</Paragraph></TabPanel>
-		<TabPanel active={wlAutoActive === 'wl-auto-4'} id="wl-auto-4"><Paragraph>Complaints content.</Paragraph></TabPanel>
+		<TabPanel isActive={wlAutoActive === 'wl-auto-1'} id="wl-auto-1"><Paragraph>Orders content.</Paragraph></TabPanel>
+		<TabPanel isActive={wlAutoActive === 'wl-auto-2'} id="wl-auto-2"><Paragraph>Invoices content.</Paragraph></TabPanel>
+		<TabPanel isActive={wlAutoActive === 'wl-auto-3'} id="wl-auto-3"><Paragraph>Delivery sheets content.</Paragraph></TabPanel>
+		<TabPanel isActive={wlAutoActive === 'wl-auto-4'} id="wl-auto-4"><Paragraph>Complaints content.</Paragraph></TabPanel>
 	</TabsContent>
 
 	<Heading level={4} class="mt-6">With <Code>isWrapLabels</Code> + <Code>maxwr-15</Code> on the long tab — tidy, level</Heading>
@@ -279,10 +279,10 @@
 		<TabItem isActive={wlWrapActive === 'wl-wrap-4'} onclick={() => (wlWrapActive = 'wl-wrap-4')} class="maxwr-15">Complaints and missed items</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={wlWrapActive === 'wl-wrap-1'} id="wl-wrap-1"><Paragraph>Orders content — the long tab wraps to two lines; the short tabs stretch to match its height.</Paragraph></TabPanel>
-		<TabPanel active={wlWrapActive === 'wl-wrap-2'} id="wl-wrap-2"><Paragraph>Invoices content.</Paragraph></TabPanel>
-		<TabPanel active={wlWrapActive === 'wl-wrap-3'} id="wl-wrap-3"><Paragraph>Delivery sheets content.</Paragraph></TabPanel>
-		<TabPanel active={wlWrapActive === 'wl-wrap-4'} id="wl-wrap-4"><Paragraph>Complaints content.</Paragraph></TabPanel>
+		<TabPanel isActive={wlWrapActive === 'wl-wrap-1'} id="wl-wrap-1"><Paragraph>Orders content — the long tab wraps to two lines; the short tabs stretch to match its height.</Paragraph></TabPanel>
+		<TabPanel isActive={wlWrapActive === 'wl-wrap-2'} id="wl-wrap-2"><Paragraph>Invoices content.</Paragraph></TabPanel>
+		<TabPanel isActive={wlWrapActive === 'wl-wrap-3'} id="wl-wrap-3"><Paragraph>Delivery sheets content.</Paragraph></TabPanel>
+		<TabPanel isActive={wlWrapActive === 'wl-wrap-4'} id="wl-wrap-4"><Paragraph>Complaints content.</Paragraph></TabPanel>
 	</TabsContent>
 </Card>
 
@@ -302,11 +302,11 @@
 		<TabItem isActive={rwWrapActive === 'rw-tab-5'} onclick={() => (rwWrapActive = 'rw-tab-5')} width="8x" class="maxwr-15">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={rwWrapActive === 'rw-tab-1'} id="rw-tab-1"><Heading level={4}>User</Heading><Paragraph>Account holder details.</Paragraph></TabPanel>
-		<TabPanel active={rwWrapActive === 'rw-tab-2'} id="rw-tab-2"><Heading level={4}>Order</Heading><Paragraph>Order summary and line items.</Paragraph></TabPanel>
-		<TabPanel active={rwWrapActive === 'rw-tab-3'} id="rw-tab-3"><Heading level={4}>Invoice</Heading><Paragraph>Billing and payment status.</Paragraph></TabPanel>
-		<TabPanel active={rwWrapActive === 'rw-tab-4'} id="rw-tab-4"><Heading level={4}>Packages</Heading><Paragraph>Parcels in this shipment.</Paragraph></TabPanel>
-		<TabPanel active={rwWrapActive === 'rw-tab-5'} id="rw-tab-5"><Heading level={4}>Deliveries and returns</Heading><Paragraph>Tracking, delivery attempts and returns — the long tab wraps to two lines while the short tabs hold their 8rem floor and stretch to match its height.</Paragraph></TabPanel>
+		<TabPanel isActive={rwWrapActive === 'rw-tab-1'} id="rw-tab-1"><Heading level={4}>User</Heading><Paragraph>Account holder details.</Paragraph></TabPanel>
+		<TabPanel isActive={rwWrapActive === 'rw-tab-2'} id="rw-tab-2"><Heading level={4}>Order</Heading><Paragraph>Order summary and line items.</Paragraph></TabPanel>
+		<TabPanel isActive={rwWrapActive === 'rw-tab-3'} id="rw-tab-3"><Heading level={4}>Invoice</Heading><Paragraph>Billing and payment status.</Paragraph></TabPanel>
+		<TabPanel isActive={rwWrapActive === 'rw-tab-4'} id="rw-tab-4"><Heading level={4}>Packages</Heading><Paragraph>Parcels in this shipment.</Paragraph></TabPanel>
+		<TabPanel isActive={rwWrapActive === 'rw-tab-5'} id="rw-tab-5"><Heading level={4}>Deliveries and returns</Heading><Paragraph>Tracking, delivery attempts and returns — the long tab wraps to two lines while the short tabs hold their 8rem floor and stretch to match its height.</Paragraph></TabPanel>
 	</TabsContent>
 
 	<Heading level={4} class="mt-6">Prefer one line? Drop <Code>isWrapLabels</Code> and let the long tab grow past the floor</Heading>
@@ -318,11 +318,11 @@
 		<TabItem isActive={rwGrowActive === 'rw1-tab-5'} onclick={() => (rwGrowActive = 'rw1-tab-5')} width="8x">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={rwGrowActive === 'rw1-tab-1'} id="rw1-tab-1"><Paragraph>Same 8rem floor, no cap — the four short tabs are uniform and only “Deliveries and returns” grows to fit its text.</Paragraph></TabPanel>
-		<TabPanel active={rwGrowActive === 'rw1-tab-2'} id="rw1-tab-2"><Paragraph>Order.</Paragraph></TabPanel>
-		<TabPanel active={rwGrowActive === 'rw1-tab-3'} id="rw1-tab-3"><Paragraph>Invoice.</Paragraph></TabPanel>
-		<TabPanel active={rwGrowActive === 'rw1-tab-4'} id="rw1-tab-4"><Paragraph>Packages.</Paragraph></TabPanel>
-		<TabPanel active={rwGrowActive === 'rw1-tab-5'} id="rw1-tab-5"><Paragraph>Deliveries and returns.</Paragraph></TabPanel>
+		<TabPanel isActive={rwGrowActive === 'rw1-tab-1'} id="rw1-tab-1"><Paragraph>Same 8rem floor, no cap — the four short tabs are uniform and only “Deliveries and returns” grows to fit its text.</Paragraph></TabPanel>
+		<TabPanel isActive={rwGrowActive === 'rw1-tab-2'} id="rw1-tab-2"><Paragraph>Order.</Paragraph></TabPanel>
+		<TabPanel isActive={rwGrowActive === 'rw1-tab-3'} id="rw1-tab-3"><Paragraph>Invoice.</Paragraph></TabPanel>
+		<TabPanel isActive={rwGrowActive === 'rw1-tab-4'} id="rw1-tab-4"><Paragraph>Packages.</Paragraph></TabPanel>
+		<TabPanel isActive={rwGrowActive === 'rw1-tab-5'} id="rw1-tab-5"><Paragraph>Deliveries and returns.</Paragraph></TabPanel>
 	</TabsContent>
 
 	<Heading level={4} class="mt-6">Center the label inside each tab — add <Code>justify-content-center</Code> via <Code>class</Code></Heading>
@@ -334,11 +334,11 @@
 		<TabItem isActive={rwCenterActive === 'rwc-tab-5'} onclick={() => (rwCenterActive = 'rwc-tab-5')} width="8x" class="maxwr-15 justify-content-center">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={rwCenterActive === 'rwc-tab-1'} id="rwc-tab-1"><Paragraph>Same floored tabs, but the label is centered within each tab instead of start-aligned.</Paragraph></TabPanel>
-		<TabPanel active={rwCenterActive === 'rwc-tab-2'} id="rwc-tab-2"><Paragraph>Order.</Paragraph></TabPanel>
-		<TabPanel active={rwCenterActive === 'rwc-tab-3'} id="rwc-tab-3"><Paragraph>Invoice.</Paragraph></TabPanel>
-		<TabPanel active={rwCenterActive === 'rwc-tab-4'} id="rwc-tab-4"><Paragraph>Packages.</Paragraph></TabPanel>
-		<TabPanel active={rwCenterActive === 'rwc-tab-5'} id="rwc-tab-5"><Paragraph>Deliveries and returns.</Paragraph></TabPanel>
+		<TabPanel isActive={rwCenterActive === 'rwc-tab-1'} id="rwc-tab-1"><Paragraph>Same floored tabs, but the label is centered within each tab instead of start-aligned.</Paragraph></TabPanel>
+		<TabPanel isActive={rwCenterActive === 'rwc-tab-2'} id="rwc-tab-2"><Paragraph>Order.</Paragraph></TabPanel>
+		<TabPanel isActive={rwCenterActive === 'rwc-tab-3'} id="rwc-tab-3"><Paragraph>Invoice.</Paragraph></TabPanel>
+		<TabPanel isActive={rwCenterActive === 'rwc-tab-4'} id="rwc-tab-4"><Paragraph>Packages.</Paragraph></TabPanel>
+		<TabPanel isActive={rwCenterActive === 'rwc-tab-5'} id="rwc-tab-5"><Paragraph>Deliveries and returns.</Paragraph></TabPanel>
 	</TabsContent>
 
 	<Alert variant="info" class="mt-4">
@@ -363,15 +363,15 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={pillsActive === 'pills-tab-1'} id="pills-tab-1">
+				<TabPanel isActive={pillsActive === 'pills-tab-1'} id="pills-tab-1">
 					<Heading level={4}>Dashboard</Heading>
 					<Paragraph>Key metrics overview.</Paragraph>
 				</TabPanel>
-				<TabPanel active={pillsActive === 'pills-tab-2'} id="pills-tab-2">
+				<TabPanel isActive={pillsActive === 'pills-tab-2'} id="pills-tab-2">
 					<Heading level={4}>Analytics</Heading>
 					<Paragraph>Detailed insights.</Paragraph>
 				</TabPanel>
-				<TabPanel active={pillsActive === 'pills-tab-3'} id="pills-tab-3">
+				<TabPanel isActive={pillsActive === 'pills-tab-3'} id="pills-tab-3">
 					<Heading level={4}>Reports</Heading>
 					<Paragraph>Generated summaries.</Paragraph>
 				</TabPanel>
@@ -403,13 +403,13 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={iconPillsActive === 'icon-pills-1'} id="icon-pills-1">
+				<TabPanel isActive={iconPillsActive === 'icon-pills-1'} id="icon-pills-1">
 					<Paragraph>Dashboard pills.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconPillsActive === 'icon-pills-2'} id="icon-pills-2">
+				<TabPanel isActive={iconPillsActive === 'icon-pills-2'} id="icon-pills-2">
 					<Paragraph>Analytics pills.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconPillsActive === 'icon-pills-3'} id="icon-pills-3">
+				<TabPanel isActive={iconPillsActive === 'icon-pills-3'} id="icon-pills-3">
 					<Paragraph>Reports pills.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -450,19 +450,19 @@
 					</TabItem>
 				</Tabs>
 				<TabsContent class="flex-grow-1">
-					<TabPanel active={verticalActive === 'vert-tab-1'} id="vert-tab-1">
+					<TabPanel isActive={verticalActive === 'vert-tab-1'} id="vert-tab-1">
 						<Heading level={4}>Account Settings</Heading>
 						<Paragraph>Manage your account information and preferences.</Paragraph>
 					</TabPanel>
-					<TabPanel active={verticalActive === 'vert-tab-2'} id="vert-tab-2">
+					<TabPanel isActive={verticalActive === 'vert-tab-2'} id="vert-tab-2">
 						<Heading level={4}>Security Settings</Heading>
 						<Paragraph>Configure password and two-factor authentication.</Paragraph>
 					</TabPanel>
-					<TabPanel active={verticalActive === 'vert-tab-3'} id="vert-tab-3">
+					<TabPanel isActive={verticalActive === 'vert-tab-3'} id="vert-tab-3">
 						<Heading level={4}>Notification Preferences</Heading>
 						<Paragraph>Control how and when you receive notifications.</Paragraph>
 					</TabPanel>
-					<TabPanel active={verticalActive === 'vert-tab-4'} id="vert-tab-4">
+					<TabPanel isActive={verticalActive === 'vert-tab-4'} id="vert-tab-4">
 						<Heading level={4}>Appearance Options</Heading>
 						<Paragraph>Customize the look and feel of your interface.</Paragraph>
 					</TabPanel>
@@ -486,13 +486,13 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={boxedActive === 'boxed-tab-1'} id="boxed-tab-1">
+				<TabPanel isActive={boxedActive === 'boxed-tab-1'} id="boxed-tab-1">
 					<Paragraph>Code repository and file browser.</Paragraph>
 				</TabPanel>
-				<TabPanel active={boxedActive === 'boxed-tab-2'} id="boxed-tab-2">
+				<TabPanel isActive={boxedActive === 'boxed-tab-2'} id="boxed-tab-2">
 					<Paragraph>Issue tracker and bug reports.</Paragraph>
 				</TabPanel>
-				<TabPanel active={boxedActive === 'boxed-tab-3'} id="boxed-tab-3">
+				<TabPanel isActive={boxedActive === 'boxed-tab-3'} id="boxed-tab-3">
 					<Paragraph>Pull request reviews and merges.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -515,13 +515,13 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={sizeSmallActive === 'size-sm-1'} id="size-sm-1">
+		<TabPanel isActive={sizeSmallActive === 'size-sm-1'} id="size-sm-1">
 			<Paragraph>Small tabs content - isCompact and space-efficient.</Paragraph>
 		</TabPanel>
-		<TabPanel active={sizeSmallActive === 'size-sm-2'} id="size-sm-2">
+		<TabPanel isActive={sizeSmallActive === 'size-sm-2'} id="size-sm-2">
 			<Paragraph>Small tabs - Tab 2</Paragraph>
 		</TabPanel>
-		<TabPanel active={sizeSmallActive === 'size-sm-3'} id="size-sm-3">
+		<TabPanel isActive={sizeSmallActive === 'size-sm-3'} id="size-sm-3">
 			<Paragraph>Small tabs - Tab 3</Paragraph>
 		</TabPanel>
 	</TabsContent>
@@ -539,13 +539,13 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={sizeDefaultActive === 'size-def-1'} id="size-def-1">
+		<TabPanel isActive={sizeDefaultActive === 'size-def-1'} id="size-def-1">
 			<Paragraph>Default size tabs content - standard spacing.</Paragraph>
 		</TabPanel>
-		<TabPanel active={sizeDefaultActive === 'size-def-2'} id="size-def-2">
+		<TabPanel isActive={sizeDefaultActive === 'size-def-2'} id="size-def-2">
 			<Paragraph>Default tabs - Tab 2</Paragraph>
 		</TabPanel>
-		<TabPanel active={sizeDefaultActive === 'size-def-3'} id="size-def-3">
+		<TabPanel isActive={sizeDefaultActive === 'size-def-3'} id="size-def-3">
 			<Paragraph>Default tabs - Tab 3</Paragraph>
 		</TabPanel>
 	</TabsContent>
@@ -563,13 +563,13 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={sizeLargeActive === 'size-lg-1'} id="size-lg-1">
+		<TabPanel isActive={sizeLargeActive === 'size-lg-1'} id="size-lg-1">
 			<Paragraph>Large tabs content - more generous spacing.</Paragraph>
 		</TabPanel>
-		<TabPanel active={sizeLargeActive === 'size-lg-2'} id="size-lg-2">
+		<TabPanel isActive={sizeLargeActive === 'size-lg-2'} id="size-lg-2">
 			<Paragraph>Large tabs - Tab 2</Paragraph>
 		</TabPanel>
-		<TabPanel active={sizeLargeActive === 'size-lg-3'} id="size-lg-3">
+		<TabPanel isActive={sizeLargeActive === 'size-lg-3'} id="size-lg-3">
 			<Paragraph>Large tabs - Tab 3</Paragraph>
 		</TabPanel>
 	</TabsContent>
@@ -596,16 +596,16 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={badgesActive === 'badge-tab-1'} id="badge-tab-1">
+		<TabPanel isActive={badgesActive === 'badge-tab-1'} id="badge-tab-1">
 			<Paragraph>All items (48 total).</Paragraph>
 		</TabPanel>
-		<TabPanel active={badgesActive === 'badge-tab-2'} id="badge-tab-2">
+		<TabPanel isActive={badgesActive === 'badge-tab-2'} id="badge-tab-2">
 			<Paragraph>Active items (12 items).</Paragraph>
 		</TabPanel>
-		<TabPanel active={badgesActive === 'badge-tab-3'} id="badge-tab-3">
+		<TabPanel isActive={badgesActive === 'badge-tab-3'} id="badge-tab-3">
 			<Paragraph>Pending items (5 items).</Paragraph>
 		</TabPanel>
-		<TabPanel active={badgesActive === 'badge-tab-4'} id="badge-tab-4">
+		<TabPanel isActive={badgesActive === 'badge-tab-4'} id="badge-tab-4">
 			<Paragraph>Closed items (31 items).</Paragraph>
 		</TabPanel>
 	</TabsContent>
@@ -625,13 +625,13 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={centeredActive === 'center-tab-1'} id="center-tab-1">
+		<TabPanel isActive={centeredActive === 'center-tab-1'} id="center-tab-1">
 			<Paragraph class="text-center">Feature highlights and capabilities.</Paragraph>
 		</TabPanel>
-		<TabPanel active={centeredActive === 'center-tab-2'} id="center-tab-2">
+		<TabPanel isActive={centeredActive === 'center-tab-2'} id="center-tab-2">
 			<Paragraph class="text-center">Pricing plans and options.</Paragraph>
 		</TabPanel>
-		<TabPanel active={centeredActive === 'center-tab-3'} id="center-tab-3">
+		<TabPanel isActive={centeredActive === 'center-tab-3'} id="center-tab-3">
 			<Paragraph class="text-center">Customer testimonials and reviews.</Paragraph>
 		</TabPanel>
 	</TabsContent>
@@ -660,13 +660,13 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={fullActive === 'full-tab-1'} id="full-tab-1">
+		<TabPanel isActive={fullActive === 'full-tab-1'} id="full-tab-1">
 			<Paragraph>Mobile view and responsive design.</Paragraph>
 		</TabPanel>
-		<TabPanel active={fullActive === 'full-tab-2'} id="full-tab-2">
+		<TabPanel isActive={fullActive === 'full-tab-2'} id="full-tab-2">
 			<Paragraph>Tablet view and layout.</Paragraph>
 		</TabPanel>
-		<TabPanel active={fullActive === 'full-tab-3'} id="full-tab-3">
+		<TabPanel isActive={fullActive === 'full-tab-3'} id="full-tab-3">
 			<Paragraph>Desktop view and features.</Paragraph>
 		</TabPanel>
 	</TabsContent>
@@ -711,19 +711,19 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={iconOnlyActive === 'icon-only-1'} id="icon-only-1">
+				<TabPanel isActive={iconOnlyActive === 'icon-only-1'} id="icon-only-1">
 					<Heading level={4}>Dashboard</Heading>
 					<Paragraph>Icon-only tabs save space.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconOnlyActive === 'icon-only-2'} id="icon-only-2">
+				<TabPanel isActive={iconOnlyActive === 'icon-only-2'} id="icon-only-2">
 					<Heading level={4}>Analytics</Heading>
 					<Paragraph>Analytics data here.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconOnlyActive === 'icon-only-3'} id="icon-only-3">
+				<TabPanel isActive={iconOnlyActive === 'icon-only-3'} id="icon-only-3">
 					<Heading level={4}>Users</Heading>
 					<Paragraph>User management here.</Paragraph>
 				</TabPanel>
-				<TabPanel active={iconOnlyActive === 'icon-only-4'} id="icon-only-4">
+				<TabPanel isActive={iconOnlyActive === 'icon-only-4'} id="icon-only-4">
 					<Heading level={4}>Settings</Heading>
 					<Paragraph>Settings here.</Paragraph>
 				</TabPanel>
@@ -777,19 +777,19 @@
 					</TabItem>
 				</Tabs>
 				<TabsContent class="flex-grow-1">
-					<TabPanel active={iconVertActive === 'icon-vert-1'} id="icon-vert-1">
+					<TabPanel isActive={iconVertActive === 'icon-vert-1'} id="icon-vert-1">
 						<Heading level={4}>Home</Heading>
 						<Paragraph>Vertical icon-only tabs with centered icons.</Paragraph>
 					</TabPanel>
-					<TabPanel active={iconVertActive === 'icon-vert-2'} id="icon-vert-2">
+					<TabPanel isActive={iconVertActive === 'icon-vert-2'} id="icon-vert-2">
 						<Heading level={4}>Profile</Heading>
 						<Paragraph>Profile settings.</Paragraph>
 					</TabPanel>
-					<TabPanel active={iconVertActive === 'icon-vert-3'} id="icon-vert-3">
+					<TabPanel isActive={iconVertActive === 'icon-vert-3'} id="icon-vert-3">
 						<Heading level={4}>Messages</Heading>
 						<Paragraph>Message inbox.</Paragraph>
 					</TabPanel>
-					<TabPanel active={iconVertActive === 'icon-vert-4'} id="icon-vert-4">
+					<TabPanel isActive={iconVertActive === 'icon-vert-4'} id="icon-vert-4">
 						<Heading level={4}>Settings</Heading>
 						<Paragraph>Application settings.</Paragraph>
 					</TabPanel>
@@ -814,19 +814,19 @@
 	</TabItem>
 </Tabs>
 <TabsContent>
-	<TabPanel active={standalonePageActive === 'standalone-1'} id="standalone-1">
+	<TabPanel isActive={standalonePageActive === 'standalone-1'} id="standalone-1">
 		<Card>
 			<Heading level={4}>Overview Section</Heading>
 			<Paragraph>Tabs can exist outside of cards for page-level navigation. Each tab can contain cards or any other content.</Paragraph>
 		</Card>
 	</TabPanel>
-	<TabPanel active={standalonePageActive === 'standalone-2'} id="standalone-2">
+	<TabPanel isActive={standalonePageActive === 'standalone-2'} id="standalone-2">
 		<Card>
 			<Heading level={4}>Details Section</Heading>
 			<Paragraph>This pattern is useful for organizing page content into sections.</Paragraph>
 		</Card>
 	</TabPanel>
-	<TabPanel active={standalonePageActive === 'standalone-3'} id="standalone-3">
+	<TabPanel isActive={standalonePageActive === 'standalone-3'} id="standalone-3">
 		<Card>
 			<Heading level={4}>Reports Section</Heading>
 			<Paragraph>The tab content can include multiple cards or complex layouts.</Paragraph>
@@ -870,17 +870,17 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent class="flex-grow-1">
-		<TabPanel active={standaloneVertActive === 'standalone-vert-1'} id="standalone-vert-1">
+		<TabPanel isActive={standaloneVertActive === 'standalone-vert-1'} id="standalone-vert-1">
 			<Card titleText="Dashboard">
 				<Paragraph>Vertical tabs work great for sidebar-style navigation outside of cards.</Paragraph>
 			</Card>
 		</TabPanel>
-		<TabPanel active={standaloneVertActive === 'standalone-vert-2'} id="standalone-vert-2">
+		<TabPanel isActive={standaloneVertActive === 'standalone-vert-2'} id="standalone-vert-2">
 			<Card titleText="Analytics">
 				<Paragraph>Analytics content goes here.</Paragraph>
 			</Card>
 		</TabPanel>
-		<TabPanel active={standaloneVertActive === 'standalone-vert-3'} id="standalone-vert-3">
+		<TabPanel isActive={standaloneVertActive === 'standalone-vert-3'} id="standalone-vert-3">
 			<Card titleText="Users">
 				<Paragraph>User management content here.</Paragraph>
 			</Card>
@@ -904,15 +904,15 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent>
-		<TabPanel active={borderedActive === 'bordered-1'} id="bordered-1">
+		<TabPanel isActive={borderedActive === 'bordered-1'} id="bordered-1">
 			<Heading level={4}>Dashboard</Heading>
 			<Paragraph>Bordered tabs wrap the entire tab system in a card-like border. The content has no separate border - it's all unified.</Paragraph>
 		</TabPanel>
-		<TabPanel active={borderedActive === 'bordered-2'} id="bordered-2">
+		<TabPanel isActive={borderedActive === 'bordered-2'} id="bordered-2">
 			<Heading level={4}>Settings</Heading>
 			<Paragraph>This pattern works well for standalone tabs that need visual separation from the page background.</Paragraph>
 		</TabPanel>
-		<TabPanel active={borderedActive === 'bordered-3'} id="bordered-3">
+		<TabPanel isActive={borderedActive === 'bordered-3'} id="bordered-3">
 			<Heading level={4}>Profile</Heading>
 			<Paragraph>Use <Code>pa-tabs__container--bordered</Code> wrapper for horizontal tabs.</Paragraph>
 		</TabPanel>
@@ -955,16 +955,16 @@
 		</TabItem>
 	</Tabs>
 	<TabsContent class="flex-grow-1">
-		<TabPanel active={borderedVertActive === 'bordered-vert-1'} id="bordered-vert-1">
+		<TabPanel isActive={borderedVertActive === 'bordered-vert-1'} id="bordered-vert-1">
 			<Heading level={4}>Overview</Heading>
 			<Paragraph>Bordered vertical tabs create a unified card-like appearance.</Paragraph>
 			<Paragraph>The border wraps both the tab navigation and content area with a divider between them.</Paragraph>
 		</TabPanel>
-		<TabPanel active={borderedVertActive === 'bordered-vert-2'} id="bordered-vert-2">
+		<TabPanel isActive={borderedVertActive === 'bordered-vert-2'} id="bordered-vert-2">
 			<Heading level={4}>Reports</Heading>
 			<Paragraph>Perfect for sidebar-style navigation that needs to stand out.</Paragraph>
 		</TabPanel>
-		<TabPanel active={borderedVertActive === 'bordered-vert-3'} id="bordered-vert-3">
+		<TabPanel isActive={borderedVertActive === 'bordered-vert-3'} id="bordered-vert-3">
 			<Heading level={4}>Settings</Heading>
 			<Paragraph>Use <Code>pa-tabs__vertical-layout--bordered</Code> modifier for vertical tabs.</Paragraph>
 		</TabPanel>
@@ -991,16 +991,16 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={longWrapActive === 'long-1'} id="long-1">
+				<TabPanel isActive={longWrapActive === 'long-1'} id="long-1">
 					<Paragraph>Default behavior - tabs wrap to multiple lines when needed.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longWrapActive === 'long-2'} id="long-2">
+				<TabPanel isActive={longWrapActive === 'long-2'} id="long-2">
 					<Paragraph>User Management System content.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longWrapActive === 'long-3'} id="long-3">
+				<TabPanel isActive={longWrapActive === 'long-3'} id="long-3">
 					<Paragraph>Reports & Analytics content.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longWrapActive === 'long-4'} id="long-4">
+				<TabPanel isActive={longWrapActive === 'long-4'} id="long-4">
 					<Paragraph>Settings & Configuration content.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -1056,16 +1056,16 @@
 				</TabItem>
 			</Tabs>
 			<TabsContent>
-				<TabPanel active={longCollapseActive === 'collapse-1'} id="collapse-1">
+				<TabPanel isActive={longCollapseActive === 'collapse-1'} id="collapse-1">
 					<Paragraph>Collapse mode - inactive tabs show only icons, active tab shows full title.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longCollapseActive === 'collapse-2'} id="collapse-2">
+				<TabPanel isActive={longCollapseActive === 'collapse-2'} id="collapse-2">
 					<Paragraph>User Management content.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longCollapseActive === 'collapse-3'} id="collapse-3">
+				<TabPanel isActive={longCollapseActive === 'collapse-3'} id="collapse-3">
 					<Paragraph>Reports content.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longCollapseActive === 'collapse-4'} id="collapse-4">
+				<TabPanel isActive={longCollapseActive === 'collapse-4'} id="collapse-4">
 					<Paragraph>Settings content.</Paragraph>
 				</TabPanel>
 			</TabsContent>
@@ -1089,16 +1089,16 @@
 				</TabItem>
 			</TabsScrollable>
 			<TabsContent>
-				<TabPanel active={longScrollActive === 'long-boxed-1'} id="long-boxed-1">
+				<TabPanel isActive={longScrollActive === 'long-boxed-1'} id="long-boxed-1">
 					<Paragraph>Scrollable tabs with <Code>TabsScrollable</Code> component - click arrows to scroll.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longScrollActive === 'long-boxed-2'} id="long-boxed-2">
+				<TabPanel isActive={longScrollActive === 'long-boxed-2'} id="long-boxed-2">
 					<Paragraph>User Management content.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longScrollActive === 'long-boxed-3'} id="long-boxed-3">
+				<TabPanel isActive={longScrollActive === 'long-boxed-3'} id="long-boxed-3">
 					<Paragraph>Reports content.</Paragraph>
 				</TabPanel>
-				<TabPanel active={longScrollActive === 'long-boxed-4'} id="long-boxed-4">
+				<TabPanel isActive={longScrollActive === 'long-boxed-4'} id="long-boxed-4">
 					<Paragraph>Settings content.</Paragraph>
 				</TabPanel>
 			</TabsContent>

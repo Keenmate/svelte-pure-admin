@@ -12,7 +12,7 @@
 	import { onMount } from 'svelte';
 	import { _ } from '../i18n';
 
-	type Position = 'top' | 'bottom' | 'start' | 'end';
+	type PopconfirmPlacement = 'top' | 'bottom' | 'start' | 'end';
 	type IconVariant = 'danger' | 'warning' | 'info';
 
 	interface Props {
@@ -21,7 +21,7 @@
 		/** Message text to display */
 		messageText: string;
 		/** Placement relative to trigger */
-		placement?: Position;
+		placement?: PopconfirmPlacement;
 		/** Icon variant */
 		icon?: IconVariant;
 		/** Compact size */
@@ -66,28 +66,28 @@
 	// requested side. The $effect below keeps it in sync for runtime flip()
 	// updates, but effects don't run under SSR — without this seed every
 	// server render emitted pa-popconfirm--bottom regardless of `placement`.
-	let actualPosition = $state<Position>(placement);
+	let actualPlacement = $state<PopconfirmPlacement>(placement);
 	let isPositioned = $state(false);
 	let isFixedPositioning = $state(false);
 
 	// Map logical positions (start/end) to Floating UI physical positions
-	function toFloatingPlacement(pos: Position): import('@floating-ui/dom').Placement {
+	function toFloatingPlacement(pos: PopconfirmPlacement): import('@floating-ui/dom').Placement {
 		const isRtl = typeof document !== 'undefined' && document.dir === 'rtl';
 		if (pos === 'start') return isRtl ? 'right' : 'left';
 		if (pos === 'end') return isRtl ? 'left' : 'right';
 		return pos;
 	}
 
-	// Sync actualPosition with placement prop (before Floating UI adjusts it)
+	// Sync actualPlacement with placement prop (before Floating UI adjusts it)
 	$effect(() => {
-		actualPosition = placement;
+		actualPlacement = placement;
 	});
 
 	// Build class string
 	// SCSS uses logical class names (pa-popconfirm--start/--end) since core v2.5.0,
 	// so emit them directly — no physical mapping needed.
 	const classes = $derived(() => {
-		const base = ['pa-popconfirm', `pa-popconfirm--${actualPosition}`];
+		const base = ['pa-popconfirm', `pa-popconfirm--${actualPlacement}`];
 		if (isCompact) base.push('pa-popconfirm--compact');
 		if (show) base.push('is-open');
 		if (className) base.push(className);
@@ -124,15 +124,15 @@
 			if (placement === 'top') {
 				top = rect.top - popRect.height - gap;
 				left = rect.left + rect.width / 2 - popRect.width / 2;
-				actualPosition = 'top';
+				actualPlacement = 'top';
 			} else if (placement === 'start') {
 				top = rect.top + rect.height / 2 - popRect.height / 2;
 				left = rect.left - popRect.width - gap;
-				actualPosition = 'start';
+				actualPlacement = 'start';
 			} else if (placement === 'end') {
 				top = rect.top + rect.height / 2 - popRect.height / 2;
 				left = rect.right + gap;
-				actualPosition = 'end';
+				actualPlacement = 'end';
 			} else {
 				// bottom (default) — flip to top if not enough space below
 				const bottomTop = rect.bottom + gap;
@@ -140,10 +140,10 @@
 
 				if (bottomTop + popRect.height > window.innerHeight - 10 && topTop >= 10) {
 					top = topTop;
-					actualPosition = 'top';
+					actualPlacement = 'top';
 				} else {
 					top = bottomTop;
-					actualPosition = 'bottom';
+					actualPlacement = 'bottom';
 				}
 				left = rect.left + rect.width / 2 - popRect.width / 2;
 			}
@@ -183,9 +183,9 @@
 			// Map Floating UI physical placement back to logical position
 			const physicalPos = resultPlacement.split('-')[0];
 			const isRtl = document.dir === 'rtl';
-			if (physicalPos === 'left') actualPosition = isRtl ? 'end' : 'start';
-			else if (physicalPos === 'right') actualPosition = isRtl ? 'start' : 'end';
-			else actualPosition = physicalPos as Position;
+			if (physicalPos === 'left') actualPlacement = isRtl ? 'end' : 'start';
+			else if (physicalPos === 'right') actualPlacement = isRtl ? 'start' : 'end';
+			else actualPlacement = physicalPos as PopconfirmPlacement;
 
 			Object.assign(popconfirmEl.style, {
 				position: 'absolute',

@@ -849,7 +849,7 @@
 </TableContainer>
 
 <Card titleText="Panel Table with Header" class="mt-4">
-	<Paragraph>Use the <Code>title</Code> and <Code>headerActions</Code> props to add a header.</Paragraph>
+	<Paragraph>Use the <Code>titleText</Code> prop and the <Code>actions</Code> snippet to add a header.</Paragraph>
 </Card>
 
 <TableContainer isPanel titleText="Recent Orders">

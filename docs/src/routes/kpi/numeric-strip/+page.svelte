@@ -458,7 +458,7 @@
 	<Heading level={4} class="mt-4">KpiStripRow props — cells</Heading>
 	<BasicList spacing="compact">
 		<li><Code>metricText</Code> — metric label.</li>
-		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — focal "now" cell (e.g. <Code>$</Code> / <Code>862</Code> / <Code>K</Code>).</li>
+		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — focal "now" cell (e.g. <Code>$</Code> / <Code>862</Code> / <Code>K</Code>).</li>
 		<li><Code>previousValueText</Code> — previous-period value.</li>
 		<li><Code>deltaText</Code> + <Code>deltaVariant</Code> — Δ% text and sentiment colour.</li>
 		<li><Code>targetBarPercent</Code> — bar fill 0–100 (visually capped at 100).</li>

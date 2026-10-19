@@ -81,7 +81,7 @@ ColorVariant -> typescript-types.txt
 Column -> layout.txt
 cols (DescTable) -> data-display.txt
 cols (Fields) -> data-display.txt
-cols (Heatmap) -> data-visualization.txt
+columns (Heatmap) -> data-visualization.txt
 CommandPalette -> navigation.txt
 Compact (Fields) -> data-display.txt
 CompositeBadge -> display.txt

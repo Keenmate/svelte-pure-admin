@@ -123,7 +123,7 @@ v2.7.0 SCSS positions `__label` at `top: 100%` (below the baseline, on the same 
 **Required prop:**
 ```ts
 /** Override `--pa-gauge-size` (default `12rem`). Width auto-derives 2:1. */
-gaugeSize?: string;
+gaugeSize?: string;   // renamed `size` in the naming-parity pass
 ```
 
 ### 3.2 Modal — `isBanded` prop
@@ -210,7 +210,7 @@ When `isSymbolPrefix && symbolText`, emit `<__symbol>` then `<__number>`.
 
 **Single coordinated pass (target v1.8.0):**
 1. Bump `@keenmate/pure-admin-core` peerDependency to `^2.7.0`.
-2. Gauge: move `__label` outside `__inner`; add `gaugeSize` prop.
+2. Gauge: move `__label` outside `__inner`; add `gaugeSize` prop (now `size`).
 3. Modal: add `isBanded` prop.
 4. Stat: widen `ChangeDirection` to 5-step; add `isSymbolPrefix` prop.
 5. CLAUDE.md: bump version, add 2.6.0/2.7.0 breaking-changes entries, add new theming-token surfaces.
@@ -241,7 +241,7 @@ All §3 items shipped in a single pass.
 |---|---|---|---|
 | 1 | Bump core peerDependency `^2.5.0` → `^2.7.0` | `packages/svelte-pure-admin/package.json` | ✅ |
 | 2 | Modal: add `isBanded` prop, apply `pa-modal--banded` | `src/lib/feedback/Modal.svelte` | ✅ |
-| 3 | Gauge: move `__label` out of `__inner`, add `gaugeSize` prop emitting `--pa-gauge-size` | `src/lib/display/Gauge.svelte` | ✅ Markup change |
+| 3 | Gauge: move `__label` out of `__inner`, add `gaugeSize` prop (now `size`) emitting `--pa-gauge-size` | `src/lib/display/Gauge.svelte` | ✅ Markup change |
 | 4 | Stat: widen `ChangeDirection` to 5-step sentiment scale | `src/lib/display/Stat.svelte` | ✅ Type widening, fully additive |
 | 5 | Stat: add `isSymbolPrefix` prop for prefix currencies on `square` variant | `src/lib/display/Stat.svelte` | ✅ |
 | 6 | `CLAUDE.md` — bump synced version `2.5.0 → 2.7.0`, add v2.6.0 + v2.7.0 breaking-changes log, document new theming-token surfaces | `CLAUDE.md` | ✅ |

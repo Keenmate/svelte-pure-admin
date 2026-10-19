@@ -7,7 +7,7 @@
 
 	interface Props {
 		/** Active state */
-		active?: boolean;
+		isActive?: boolean;
 		/** Panel ID (for accessibility and JS switching) */
 		id?: string;
 		/** Additional CSS classes */
@@ -16,12 +16,12 @@
 		children?: import('svelte').Snippet;
 	}
 
-	let { active = false, id, class: className = '', children }: Props = $props();
+	let { isActive = false, id, class: className = '', children }: Props = $props();
 
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-tabs__panel'];
-		if (active) base.push('pa-tabs__panel--active');
+		if (isActive) base.push('pa-tabs__panel--active');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

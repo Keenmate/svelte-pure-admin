@@ -10,8 +10,8 @@
 	 * // In your +layout.svelte or +page.svelte, import page from SvelteKit's app/stores
 	 * // then use it to determine active state:
 	 *
-	 * <SidebarItem href="/dashboard" label="Dashboard" active={$page.url.pathname === '/dashboard'} />
-	 * <SidebarItem href="/users" label="Users" active={$page.url.pathname.startsWith('/users')} />
+	 * <SidebarItem href="/dashboard" labelText="Dashboard" isActive={$page.url.pathname === '/dashboard'} />
+	 * <SidebarItem href="/users" labelText="Users" isActive={$page.url.pathname.startsWith('/users')} />
 	 */
 
 
@@ -19,7 +19,7 @@
 		/** Item href (for links) */
 		href?: string;
 		/** Is active/selected */
-		active?: boolean;
+		isActive?: boolean;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
 		/** Label text */
@@ -38,7 +38,7 @@
 
 	let {
 		href,
-		active = false,
+		isActive = false,
 		icon,
 		labelText,
 		hasSubmenu = false,
@@ -63,7 +63,7 @@
 	// Build class string for link
 	const linkClasses = $derived(() => {
 		const base = ['pc-sidebar__link'];
-		if (active) base.push('pc-sidebar__link--active');
+		if (isActive) base.push('pc-sidebar__link--active');
 		return base.join(' ');
 	});
 

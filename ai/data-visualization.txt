@@ -458,7 +458,7 @@ Grid-based heatmap with intensity levels (GitHub contribution graph style).
 HEATMAP PROPS:
   variant?: 'success' | 'danger'   -- Color palette (default: green/success)
   isCompact?: boolean               -- Smaller cells, tighter gap (default: false)
-  cols?: number                     -- Grid columns (default: 53 for weekly calendar)
+  columns?: number                  -- Grid columns (default: 53 for weekly calendar)
   class?: string                    -- Additional CSS classes
   children?: Snippet                -- HeatmapCell children
 
@@ -479,7 +479,7 @@ HEATMAP LEGEND PROPS:
   class?: string      -- Additional CSS classes
 
 IMPORTANT: Only two variants are supported: 'success' (green) and 'danger' (red).
-The cols prop defaults to 53 (standard year in weeks). Override for custom grids.
+The columns prop defaults to 53 (standard year in weeks). Override for custom grids.
 
 BASIC USAGE:
 
@@ -645,7 +645,7 @@ EXAMPLE 1: SERVER MONITORING DASHBOARD
 
 <script lang="ts">
   import {
-    Card, Grid,
+    Card, Grid, Column,
     Progress, ProgressRing, Gauge, Sparkline, SparklineBar
   } from '@keenmate/svelte-pure-admin';
 
@@ -653,42 +653,50 @@ EXAMPLE 1: SERVER MONITORING DASHBOARD
   const memoryHistory = [60, 62, 65, 68, 70, 72, 75, 78, 80, 82, 78, 75];
 </script>
 
-<Grid cols={4}>
-  <Card>
-    {#snippet header()}
-      <h4>CPU Usage</h4>
-    {/snippet}
-    <div style="display: flex; justify-content: center;">
-      <ProgressRing value={72} valueText="72%" labelText="CPU" variant="warning" />
-    </div>
-    <Sparkline variant="warning" size="sm">
-      {#each cpuHistory as val}
-        <SparklineBar value={val} />
-      {/each}
-    </Sparkline>
-  </Card>
+<Grid>
+  <Column md="1-4">
+    <Card>
+      {#snippet header()}
+        <h4>CPU Usage</h4>
+      {/snippet}
+      <div style="display: flex; justify-content: center;">
+        <ProgressRing value={72} valueText="72%" labelText="CPU" variant="warning" />
+      </div>
+      <Sparkline variant="warning" size="sm">
+        {#each cpuHistory as val}
+          <SparklineBar value={val} />
+        {/each}
+      </Sparkline>
+    </Card>
+  </Column>
 
-  <Card>
-    {#snippet header()}
-      <h4>Memory</h4>
-    {/snippet}
-    <Progress value={78} labelText="RAM" valueText="78% (12.5 GB)" variant="warning" isRounded />
-    <Progress value={45} labelText="Swap" valueText="45% (3.6 GB)" variant="info" isRounded />
-  </Card>
+  <Column md="1-4">
+    <Card>
+      {#snippet header()}
+        <h4>Memory</h4>
+      {/snippet}
+      <Progress value={78} labelText="RAM" valueText="78% (12.5 GB)" variant="warning" isRounded />
+      <Progress value={45} labelText="Swap" valueText="45% (3.6 GB)" variant="info" isRounded />
+    </Card>
+  </Column>
 
-  <Card>
-    {#snippet header()}
-      <h4>Disk I/O</h4>
-    {/snippet}
-    <Gauge value={65} valueText="65 MB/s" labelText="Read" minText="0" maxText="200" variant="info" />
-  </Card>
+  <Column md="1-4">
+    <Card>
+      {#snippet header()}
+        <h4>Disk I/O</h4>
+      {/snippet}
+      <Gauge value={65} valueText="65 MB/s" labelText="Read" minText="0" maxText="200" variant="info" />
+    </Card>
+  </Column>
 
-  <Card>
-    {#snippet header()}
-      <h4>Network Health</h4>
-    {/snippet}
-    <Gauge value={92} valueText="92%" labelText="Uptime" minText="0%" maxText="100%" isZones />
-  </Card>
+  <Column md="1-4">
+    <Card>
+      {#snippet header()}
+        <h4>Network Health</h4>
+      {/snippet}
+      <Gauge value={92} valueText="92%" labelText="Uptime" minText="0%" maxText="100%" isZones />
+    </Card>
+  </Column>
 </Grid>
 
 
@@ -696,7 +704,7 @@ EXAMPLE 2: SALES ANALYTICS DASHBOARD
 
 <script lang="ts">
   import {
-    Card, Grid,
+    Card, Grid, Column,
     StackedBar, StackedBarSegment, StackedBarLegend, StackedBarLegendItem,
     BarList, BarListItem, ProgressGroup, DataBar
   } from '@keenmate/svelte-pure-admin';
@@ -710,37 +718,41 @@ EXAMPLE 2: SALES ANALYTICS DASHBOARD
   ];
 </script>
 
-<Grid cols={2}>
-  <Card>
-    {#snippet header()}
-      <h4>Revenue by Channel</h4>
-    {/snippet}
-    <BarList variant="info">
-      {#each channels as ch}
-        <BarListItem labelText={ch.name} valueText={ch.value} value={ch.pct} />
-      {/each}
-    </BarList>
-  </Card>
+<Grid>
+  <Column md="1-2">
+    <Card>
+      {#snippet header()}
+        <h4>Revenue by Channel</h4>
+      {/snippet}
+      <BarList variant="info">
+        {#each channels as ch}
+          <BarListItem labelText={ch.name} valueText={ch.value} value={ch.pct} />
+        {/each}
+      </BarList>
+    </Card>
+  </Column>
 
-  <Card>
-    {#snippet header()}
-      <h4>Deal Pipeline</h4>
-    {/snippet}
-    <ProgressGroup labelText="Q4 Pipeline" valueText="$120,000">
-      <StackedBar isRounded>
-        <StackedBarSegment value={40} variant="success" />
-        <StackedBarSegment value={30} variant="warning" />
-        <StackedBarSegment value={20} variant="info" />
-        <StackedBarSegment value={10} variant="danger" />
-      </StackedBar>
-    </ProgressGroup>
-    <StackedBarLegend>
-      <StackedBarLegendItem variant="success">Won ($48K)</StackedBarLegendItem>
-      <StackedBarLegendItem variant="warning">Negotiating ($36K)</StackedBarLegendItem>
-      <StackedBarLegendItem variant="info">Proposal ($24K)</StackedBarLegendItem>
-      <StackedBarLegendItem variant="danger">Lost ($12K)</StackedBarLegendItem>
-    </StackedBarLegend>
-  </Card>
+  <Column md="1-2">
+    <Card>
+      {#snippet header()}
+        <h4>Deal Pipeline</h4>
+      {/snippet}
+      <ProgressGroup labelText="Q4 Pipeline" valueText="$120,000">
+        <StackedBar isRounded>
+          <StackedBarSegment value={40} variant="success" />
+          <StackedBarSegment value={30} variant="warning" />
+          <StackedBarSegment value={20} variant="info" />
+          <StackedBarSegment value={10} variant="danger" />
+        </StackedBar>
+      </ProgressGroup>
+      <StackedBarLegend>
+        <StackedBarLegendItem variant="success">Won ($48K)</StackedBarLegendItem>
+        <StackedBarLegendItem variant="warning">Negotiating ($36K)</StackedBarLegendItem>
+        <StackedBarLegendItem variant="info">Proposal ($24K)</StackedBarLegendItem>
+        <StackedBarLegendItem variant="danger">Lost ($12K)</StackedBarLegendItem>
+      </StackedBarLegend>
+    </Card>
+  </Column>
 </Grid>
 
 
@@ -748,7 +760,7 @@ EXAMPLE 3: PROJECT STATUS WITH HEATMAP
 
 <script lang="ts">
   import {
-    Card, Grid,
+    Card, Grid, Column,
     Heatmap, HeatmapCell, HeatmapLegend,
     Progress, ProgressRing
   } from '@keenmate/svelte-pure-admin';
@@ -762,38 +774,44 @@ EXAMPLE 3: PROJECT STATUS WITH HEATMAP
   ];
 </script>
 
-<Grid cols={3}>
-  <Card>
-    {#snippet header()}
-      <h4>Sprint Progress</h4>
-    {/snippet}
-    <div style="display: flex; gap: 2rem; justify-content: center;">
-      <ProgressRing value={85} valueText="85%" labelText="Done" variant="success" />
-      <ProgressRing value={12} valueText="12%" labelText="Review" variant="warning" size="sm" />
-      <ProgressRing value={3} valueText="3%" labelText="Blocked" variant="danger" size="sm" />
-    </div>
-  </Card>
+<Grid>
+  <Column md="1-3">
+    <Card>
+      {#snippet header()}
+        <h4>Sprint Progress</h4>
+      {/snippet}
+      <div style="display: flex; gap: 2rem; justify-content: center;">
+        <ProgressRing value={85} valueText="85%" labelText="Done" variant="success" />
+        <ProgressRing value={12} valueText="12%" labelText="Review" variant="warning" size="sm" />
+        <ProgressRing value={3} valueText="3%" labelText="Blocked" variant="danger" size="sm" />
+      </div>
+    </Card>
+  </Column>
 
-  <Card>
-    {#snippet header()}
-      <h4>Team Activity (4 weeks)</h4>
-    {/snippet}
-    <Heatmap variant="success" columns={7}>
-      {#each activityData as level}
-        <HeatmapCell {level} />
-      {/each}
-    </Heatmap>
-    <HeatmapLegend lessText="Idle" moreText="Active" />
-  </Card>
+  <Column md="1-3">
+    <Card>
+      {#snippet header()}
+        <h4>Team Activity (4 weeks)</h4>
+      {/snippet}
+      <Heatmap variant="success" columns={7}>
+        {#each activityData as level}
+          <HeatmapCell {level} />
+        {/each}
+      </Heatmap>
+      <HeatmapLegend lessText="Idle" moreText="Active" />
+    </Card>
+  </Column>
 
-  <Card>
-    {#snippet header()}
-      <h4>Test Coverage</h4>
-    {/snippet}
-    <Progress value={92} labelText="Unit Tests" valueText="92%" variant="success" isRounded />
-    <Progress value={78} labelText="Integration" valueText="78%" variant="info" isRounded />
-    <Progress value={45} labelText="E2E Tests" valueText="45%" variant="warning" isRounded />
-  </Card>
+  <Column md="1-3">
+    <Card>
+      {#snippet header()}
+        <h4>Test Coverage</h4>
+      {/snippet}
+      <Progress value={92} labelText="Unit Tests" valueText="92%" variant="success" isRounded />
+      <Progress value={78} labelText="Integration" valueText="78%" variant="info" isRounded />
+      <Progress value={45} labelText="E2E Tests" valueText="45%" variant="warning" isRounded />
+    </Card>
+  </Column>
 </Grid>
 
 
@@ -857,7 +875,7 @@ All fill-based components use the --value CSS custom property:
   StackedBarSegment:    style="--value: {value}%"
   SparklineBar:         style="--value: {value}%"
   BarListItem bar:      style="--value: {value}%"
-  Heatmap cols:         grid-template-columns: repeat({cols}, 1.2rem)
+  Heatmap columns:      grid-template-columns: repeat({columns}, 1.2rem)
   HeatmapCell:          data-level={level}             (attribute, not CSS var)
 
 NOTE: ProgressRing and Gauge use --value WITHOUT the % suffix because

@@ -15,7 +15,7 @@
 
 	type PopoverPlacement = 'top' | 'end' | 'bottom' | 'start';
 	type PopoverSize = 'sm' | 'lg';
-	type PopoverAlignment = 'center' | 'end';
+	type PopoverTextAlign = 'center' | 'end';
 
 	interface Props {
 		/** Popover title text */
@@ -25,7 +25,7 @@
 		/** Popover size */
 		size?: PopoverSize;
 		/** Text alignment within popover body */
-		textAlign?: PopoverAlignment;
+		textAlign?: PopoverTextAlign;
 		/** Trigger button text */
 		triggerText?: string;
 		/** Additional CSS classes */

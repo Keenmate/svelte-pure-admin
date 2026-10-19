@@ -375,7 +375,7 @@ TOAST PROPS:
                                  -- Toast color (default: 'primary')
   titleText: string              -- Toast title (REQUIRED)
   messageText: string            -- Toast message (REQUIRED)
-  show?: boolean (bindable)      -- Show/hide toast (default: true)
+  isVisible?: boolean (bindable) -- Show/hide toast (default: true)
   duration?: number              -- Auto-dismiss in ms, 0 for persistent (default: 5000)
   shouldShowProgress?: boolean   -- Show progress bar (default: false)
   icon?: Snippet                 -- Custom icon

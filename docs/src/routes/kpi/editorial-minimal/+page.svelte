@@ -220,7 +220,7 @@
 	<Heading level={4} class="mt-4">KpiEditorialTile props</Heading>
 	<BasicList spacing="compact">
 		<li><Code>labelText</Code> — single-line label. Use the <Code>label</Code> snippet for multi-line (<Code>{'<br>'}</Code>).</li>
-		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — headline number (e.g. <Code>$</Code> / <Code>871</Code> / <Code>K</Code>).</li>
+		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — headline number (e.g. <Code>$</Code> / <Code>871</Code> / <Code>K</Code>).</li>
 		<li><Code>deltaText</Code> + <Code>deltaVariant</Code> — Δ text and sentiment colour.</li>
 		<li><Code>targetText</Code> — target shown after the literal "tgt" prefix in the visible meta row, and reused as the "Target" row in the auto-generated popover.</li>
 		<li><Code>detailTitleText</Code> — popover title (setting this enables the auto-generated popover).</li>

@@ -143,7 +143,7 @@ With validation:
   {/snippet}
 </FormField>
 
-With manual state:
+With manual validation:
 
 <FormField labelText="API Key" validation="warning" helpText="This key expires in 3 days">
   {#snippet children()}
@@ -215,7 +215,7 @@ Props:
   size?: 'xs' | 'sm' | 'lg' | 'xl'    Input size
   validation?: 'success' | 'warning' | 'error'
                                     Validation state (auto-derived from errors if not set)
-  errors?: string | string[]        Error messages (auto-sets state to 'error' when touched)
+  errors?: string | string[]        Error messages (auto-sets validation to 'error' when touched)
   touched?: boolean                 Field has been interacted with (default: true)
   themeColor?: 1-9                  Theme color variant
   disabled?: boolean                Disabled state (default: false)
@@ -265,7 +265,7 @@ Validation states (auto-derived from errors):
 
 <Input bind:value={email} errors={emailErrors} touched={emailTouched} />
 
-When touched=true and errors has items, state automatically becomes 'error'.
+When touched=true and errors has items, validation automatically becomes 'error'.
 When touched=false, errors are not shown (no error styling).
 
 Disabled and readonly:
@@ -681,9 +681,9 @@ the errors + touched pattern for automatic validation styling.
 
 HOW IT WORKS:
 1. Pass errors (string or string[]) and touched (boolean) to the input
-2. When touched=true AND errors has items, state auto-becomes 'error'
+2. When touched=true AND errors has items, validation auto-becomes 'error'
 3. When touched=false, no error styling is shown (even if errors exist)
-4. Manual state prop always takes precedence over auto-derived state
+4. Manual validation prop always takes precedence over the auto-derived value
 
 <script lang="ts">
   let email = $state('');
@@ -1074,7 +1074,7 @@ CRITICAL REMINDERS
 - errors + touched pattern: errors shown only when touched=true
 - touched defaults to true on Input/NumberInput/DateInput/Textarea/Select
   (so errors show immediately unless you set touched={false} initially)
-- Manual state prop always overrides auto-derived state from errors
+- Manual validation prop always overrides the value auto-derived from errors
 - FormField children snippet receives context: { errors, touched, validation }
 - FormErrorSummary uses anchor links (#id) to jump to errored fields
 - InputGroup addons use class="pa-input-group__addon" directly (no component)

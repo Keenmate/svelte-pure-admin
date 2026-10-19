@@ -259,7 +259,7 @@
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — sentiment colour: <Code>positive</Code> / <Code>warning</Code> / <Code>negative</Code> / <Code>neutral</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
-		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — focal value cell.</li>
+		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — focal value cell.</li>
 		<li><Code>barPercent</Code> — bar fill width 0–100 (no cap; overshoots are signalled by colour).</li>
 		<li><Code>tickPosition</Code> — target tick position (default <Code>"100%"</Code>; set to a smaller % for wider-scale bars).</li>
 		<li><Code>tickColor</Code> — tick colour override (default <Code>--pc-text-color-1</Code>).</li>

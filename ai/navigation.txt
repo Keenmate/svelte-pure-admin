@@ -56,13 +56,13 @@ Basic usage with manual active state:
 </Tabs>
 
 <TabsContent>
-  <TabPanel active={activeTab === 'overview'}>
+  <TabPanel isActive={activeTab === 'overview'}>
     <p>Overview content here.</p>
   </TabPanel>
-  <TabPanel active={activeTab === 'details'}>
+  <TabPanel isActive={activeTab === 'details'}>
     <p>Details content here.</p>
   </TabPanel>
-  <TabPanel active={activeTab === 'settings'}>
+  <TabPanel isActive={activeTab === 'settings'}>
     <p>Settings content here.</p>
   </TabPanel>
 </TabsContent>
@@ -73,7 +73,7 @@ TABITEM
 Individual tab button. Renders a <button> with pa-tabs__item class.
 
 Props:
-  active?: boolean           (highlights the tab, default: false)
+  isActive?: boolean         (highlights the tab, default: false)
   width?: '1x' | '2x' | ... | '10x'    (fixed width)
   height?: '1x' | '2x' | ... | '10x'   (fixed height)
   class?: string
@@ -98,14 +98,14 @@ TabItem with fixed width:
 
 TABS CONTENT AND TAB PANEL
 ---------------------------
-TabsContent wraps TabPanel children. TabPanel shows/hides based on active prop.
+TabsContent wraps TabPanel children. TabPanel shows/hides based on isActive prop.
 
 TabsContent props:
   class?: string
   children?: Snippet
 
 TabPanel props:
-  active?: boolean    (default: false)
+  isActive?: boolean  (default: false)
   id?: string         (for accessibility)
   class?: string
   children?: Snippet
@@ -177,8 +177,8 @@ Bordered tabs:
     <TabItem isActive={activeTab === 'two'} onclick={() => activeTab = 'two'}>Tab 2</TabItem>
   </Tabs>
   <TabsContent>
-    <TabPanel active={activeTab === 'one'}>Content 1</TabPanel>
-    <TabPanel active={activeTab === 'two'}>Content 2</TabPanel>
+    <TabPanel isActive={activeTab === 'one'}>Content 1</TabPanel>
+    <TabPanel isActive={activeTab === 'two'}>Content 2</TabPanel>
   </TabsContent>
 </TabsContainer>
 
@@ -190,7 +190,7 @@ Card-style tabs (tabs act as the card header):
     <TabItem>Stats</TabItem>
   </Tabs>
   <TabsContent>
-    <TabPanel active={true}>
+    <TabPanel isActive={true}>
       <p>Card-style content with padding.</p>
     </TabPanel>
   </TabsContent>
@@ -229,9 +229,9 @@ Complete vertical tabs example:
     </TabItem>
   </Tabs>
   <TabsContent>
-    <TabPanel active={activeTab === 'general'}>General settings here.</TabPanel>
-    <TabPanel active={activeTab === 'security'}>Security settings here.</TabPanel>
-    <TabPanel active={activeTab === 'billing'}>Billing settings here.</TabPanel>
+    <TabPanel isActive={activeTab === 'general'}>General settings here.</TabPanel>
+    <TabPanel isActive={activeTab === 'security'}>Security settings here.</TabPanel>
+    <TabPanel isActive={activeTab === 'billing'}>Billing settings here.</TabPanel>
   </TabsContent>
 </TabsVerticalLayout>
 
@@ -668,13 +668,13 @@ COMPLETE EXAMPLE: TABS WITH CONTENT SWITCHING
       </TabItem>
     </Tabs>
     <TabsContent>
-      <TabPanel active={activeTab === 'users'}>
+      <TabPanel isActive={activeTab === 'users'}>
         <p>User list goes here.</p>
       </TabPanel>
-      <TabPanel active={activeTab === 'roles'}>
+      <TabPanel isActive={activeTab === 'roles'}>
         <p>Roles management goes here.</p>
       </TabPanel>
-      <TabPanel active={activeTab === 'permissions'}>
+      <TabPanel isActive={activeTab === 'permissions'}>
         <p>Permissions matrix goes here.</p>
       </TabPanel>
     </TabsContent>

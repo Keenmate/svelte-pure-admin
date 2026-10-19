@@ -633,7 +633,7 @@ COMPLETE DETAIL PAGE EXAMPLE
     Card, Fields, Field, FieldGroup, DescTable, DescTableItem,
     DotLeaders, DotLeadersItem, PropCard, PropCardRow,
     Banded, BandedRow, AccentGrid, AccentGridItem,
-    Badge, Grid
+    Badge, Grid, Column
   } from '@keenmate/svelte-pure-admin';
 </script>
 
@@ -649,33 +649,37 @@ COMPLETE DETAIL PAGE EXAMPLE
   </AccentGrid>
 </Card>
 
-<Grid cols={2}>
+<Grid>
   <!-- Customer info with Fields -->
-  <Card titleText="Customer">
-    <FieldGroup titleText="Contact">
-      <Fields isHorizontal isBordered>
-        <Field labelText="Name" valueText="John Doe" />
-        <Field labelText="Email" valueText="john@example.com" copyMode="hover" />
-        <Field labelText="Phone" valueText="+1 555-0123" />
-      </Fields>
-    </FieldGroup>
+  <Column md="1-2">
+    <Card titleText="Customer">
+      <FieldGroup titleText="Contact">
+        <Fields isHorizontal isBordered>
+          <Field labelText="Name" valueText="John Doe" />
+          <Field labelText="Email" valueText="john@example.com" copyMode="hover" />
+          <Field labelText="Phone" valueText="+1 555-0123" />
+        </Fields>
+      </FieldGroup>
 
-    <FieldGroup titleText="Address">
-      <Fields isHorizontal>
-        <Field labelText="Street" valueText="123 Main St" />
-        <Field labelText="City" valueText="Springfield, IL 62701" />
-      </Fields>
-    </FieldGroup>
-  </Card>
+      <FieldGroup titleText="Address">
+        <Fields isHorizontal>
+          <Field labelText="Street" valueText="123 Main St" />
+          <Field labelText="City" valueText="Springfield, IL 62701" />
+        </Fields>
+      </FieldGroup>
+    </Card>
+  </Column>
 
   <!-- Payment info with PropCard -->
-  <PropCard headerText="Payment Details">
-    <PropCardRow labelText="Method">
-      <Badge variant="info">Visa</Badge> ending in 4242
-    </PropCardRow>
-    <PropCardRow labelText="Transaction ID" valueText="txn_abc123" copyMode="hover" />
-    <PropCardRow labelText="Amount" valueText="$54.46" isBold />
-  </PropCard>
+  <Column md="1-2">
+    <PropCard headerText="Payment Details">
+      <PropCardRow labelText="Method">
+        <Badge variant="info">Visa</Badge> ending in 4242
+      </PropCardRow>
+      <PropCardRow labelText="Transaction ID" valueText="txn_abc123" copyMode="hover" />
+      <PropCardRow labelText="Amount" valueText="$54.46" isBold />
+    </PropCard>
+  </Column>
 </Grid>
 
 <!-- Order items with DotLeaders -->

@@ -374,7 +374,7 @@
 	<BasicList spacing="compact">
 		<li><Code>variant</Code> — trend line/area/dot colour: <Code>up-strong</Code> / <Code>up</Code> / <Code>flat</Code> / <Code>down</Code> / <Code>down-strong</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
-		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — focal value cell.</li>
+		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — focal value cell.</li>
 		<li><Code>deltaText</Code> + <Code>deltaVariant</Code> — Δ% text and sentiment: <Code>very-positive</Code> / <Code>positive</Code> / <Code>neutral</Code> / <Code>negative</Code> / <Code>very-negative</Code>.</li>
 		<li><Code>chart</Code> — snippet for the chart cell (SVG, canvas, anything).</li>
 		<li><Code>detailTitleText</Code> — popover title (setting this enables the auto-generated popover).</li>

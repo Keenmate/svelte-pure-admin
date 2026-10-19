@@ -232,7 +232,7 @@
 		<li><Code>variant</Code> — accent colour: <Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> / <Code>up-strong</Code> / <Code>down-strong</Code>.</li>
 		<li><Code>isHero</Code> — bump value font + chart height. Set on the first (left-half) tile.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
-		<li><Code>valueText</Code> / <Code>unit</Code> / <Code>prefix</Code> — focal value cell.</li>
+		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — focal value cell.</li>
 		<li><Code>deltaText</Code> — Δ% text (coloured by <Code>variant</Code>).</li>
 		<li><Code>chart</Code> — snippet for the background sparkline (SVG, canvas, etc.).</li>
 		<li><Code>detailTitleText</Code> + <Code>previousValueText</Code> + <Code>targetText</Code> + <Code>deltaAbsoluteText</Code> — popover (auto-generated).</li>

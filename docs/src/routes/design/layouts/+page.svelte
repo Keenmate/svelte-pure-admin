@@ -158,7 +158,7 @@
 			</Paragraph>
 			<Sidebar>
 				<SidebarSection labelText="Project" />
-				<SidebarItem href="#dashboard" labelText="Dashboard" active>
+				<SidebarItem href="#dashboard" labelText="Dashboard" isActive>
 					{#snippet icon()}📊{/snippet}
 				</SidebarItem>
 				<SidebarItem href="#components" labelText="Components">
@@ -182,7 +182,7 @@
 			<Heading level={4} class="mb-2">Sidebar with flat sections</Heading>
 			<CodeBlock>{`<Sidebar>
   <SidebarSection labelText="Project" />
-  <SidebarItem href="/" labelText="Dashboard" active />
+  <SidebarItem href="/" labelText="Dashboard" isActive />
   <SidebarItem href="/components" labelText="Components" />
 
   <SidebarDivider />

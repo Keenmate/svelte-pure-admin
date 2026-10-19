@@ -36,8 +36,8 @@ One nomenclature across both wrappers (core `fidelity/NAMING.md`, checked by
 plain-text values `*Text`, a single actions area is `actions`. No aliases for the old names.
 
 - Booleans → `is*`: `BadgeGroup` `showAll` → `isShowAll`; `ButtonGroup` `vertical` / `nowrap` →
-  `isVertical` / `isNowrap`; `TabItem` / `CardTab` / `CardTabContent` `active` → `isActive`;
-  `Column` `noPadding` / `grow` / `shrink` → `isNoPadding` / `isGrow` / `isShrink`; `Grid`
+  `isVertical` / `isNowrap`; `TabItem` / `TabPanel` / `CardTab` / `CardTabContent` / `SidebarItem`
+  `active` → `isActive`; `Column` `noPadding` / `grow` / `shrink` → `isNoPadding` / `isGrow` / `isShrink`; `Grid`
   `noGutter` / `sameHeight` → `isNoGutter` / `isSameHeight`; `FilterCard` `disabled` →
   `isDisabled`; `KpiSparklineList` `noDelta` → `isNoDelta`; `NavDropdown` `level2` → `isLevel2`;
   `Tabs` `wrapLabels` → `isWrapLabels`; `Timeline` `shouldKeepLayout` → `isKeepLayout`; `Toast`
