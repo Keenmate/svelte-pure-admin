@@ -382,14 +382,14 @@ const errors = $derived.by(() => {
   return [];
 });`;
 
-	const codeByoTemplate = `<FormField labelText="Email" {errors} {touched}>
-  {#snippet children({ errors, touched, validation })}
+	const codeByoTemplate = `<FormField labelText="Email" {errors} isTouched={touched}>
+  {#snippet children({ errors, isTouched, validation })}
     <Input
       type="email"
       bind:value={email}
       oninput={() => (touched = true)}
       {errors}
-      {touched}
+      {isTouched}
       {validation}
     />
   {/snippet}
@@ -420,11 +420,11 @@ const { form, errors, touched, data } = createForm<z.infer<typeof schema>>({
     helpText="Enter your email"
     successMessage="Valid email"
     errors={$errors.email}
-    touched={$touched.email ?? false}
+    isTouched={$touched.email ?? false}
     hasValue={!!$data.email}
   >
-    {#snippet children({ errors, touched })}
-      <Input isRequired name="email" {errors} {touched} />
+    {#snippet children({ errors, isTouched })}
+      <Input isRequired name="email" {errors} {isTouched} />
     {/snippet}
   </FormField>
   <Button type="submit">Save</Button>
@@ -454,7 +454,7 @@ password: z.string()
 
 <Callout variant="info" class="mb-4">
 	<strong>svelte-pure-admin's form components are validation-agnostic.</strong> They take plain data
-	props (<Code>errors</Code>, <Code>touched</Code>, <Code>validation</Code>) and depend on
+	props (<Code>errors</Code>, <Code>isTouched</Code>, <Code>validation</Code>) and depend on
 	<strong>no</strong> validation library — there is no <Code>felte</Code> or <Code>zod</Code> in the
 	package. Bring whatever you like: a schema library, server-side errors, or a few lines of
 	hand-rolled logic.
@@ -463,7 +463,7 @@ password: z.string()
 <Paragraph class="mb-4">
 	The tests below use <a href="https://felte.dev">Felte</a> + <a href="https://zod.dev">Zod</a> as
 	<em>one</em> convenient, type-safe example — it eliminates boilerplate, and its
-	<Code>errors</Code> / <Code>touched</Code> output maps straight onto the props these components
+	<Code>errors</Code> / <Code>touched</Code> output maps straight onto the <Code>errors</Code> / <Code>isTouched</Code> props these components
 	expect. But it's entirely optional. Jump to the
 	<strong>Bring Your Own Validation</strong> section at the bottom to see the exact same components
 	driven by a plain function, with no library at all.
@@ -501,7 +501,7 @@ password: z.string()
 		<Alert variant="success" class="mb-4">Email saved successfully!</Alert>
 	{/if}
 
-	<FormErrorSummary errors={test1AllErrors()} show={test1Submitted} />
+	<FormErrorSummary errors={test1AllErrors()} isVisible={test1Submitted} />
 
 	<form use:form1>
 		<FormField
@@ -509,11 +509,11 @@ password: z.string()
 			helpText="Enter a valid email address"
 			successMessage="Valid email address"
 			errors={$errors1.email}
-			touched={$touched1.email ?? false}
+			isTouched={$touched1.email ?? false}
 			hasValue={!!$data1?.email}
 		>
-			{#snippet children({ errors, touched })}
-				<Input isRequired type="email" name="email" id="test1-email" placeholder="Enter your email" {errors} {touched} />
+			{#snippet children({ errors, isTouched })}
+				<Input isRequired type="email" name="email" id="test1-email" placeholder="Enter your email" {errors} {isTouched} />
 			{/snippet}
 		</FormField>
 
@@ -530,7 +530,7 @@ password: z.string()
 		<Alert variant="success" class="mb-4">Profile saved successfully!</Alert>
 	{/if}
 
-	<FormErrorSummary errors={test2AllErrors()} show={test2Submitted} />
+	<FormErrorSummary errors={test2AllErrors()} isVisible={test2Submitted} />
 
 	<form use:form2>
 		<Grid>
@@ -538,10 +538,10 @@ password: z.string()
 				<FormField
 					labelText="Name"
 					errors={$errors2.name}
-					touched={$touched2.name ?? false}
+					isTouched={$touched2.name ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<Input isRequired name="name" id="test2-name" placeholder="Your name" {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<Input isRequired name="name" id="test2-name" placeholder="Your name" {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -549,10 +549,10 @@ password: z.string()
 				<FormField
 					labelText="Age"
 					errors={$errors2.age}
-					touched={$touched2.age ?? false}
+					isTouched={$touched2.age ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<NumberInput isRequired name="age" id="test2-age" placeholder="Your age" {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<NumberInput isRequired name="age" id="test2-age" placeholder="Your age" {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -561,10 +561,10 @@ password: z.string()
 					labelText="Bio (optional, max 200 chars)"
 					helpText="{($data2.bio ?? '').length}/200 characters"
 					errors={$errors2.bio}
-					touched={$touched2.bio ?? false}
+					isTouched={$touched2.bio ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<Textarea name="bio" id="test2-bio" placeholder="Tell us about yourself" rows={2} {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<Textarea name="bio" id="test2-bio" placeholder="Tell us about yourself" rows={2} {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -581,30 +581,30 @@ password: z.string()
 <Card titleText="Test 3: Touched Behavior">
 	<Paragraph class="mb-4">
 		Both inputs have the same error, but only the touched one shows error styling.
-		This demonstrates how <Code>touched</Code> controls error visibility.
+		This demonstrates how <Code>isTouched</Code> controls error visibility.
 	</Paragraph>
 
 	<Grid>
 		<Column size="100" md="50">
 			<FormField
-				labelText="touched=false (pristine)"
+				labelText="isTouched=false (pristine)"
 				helpText="Error exists but not shown"
 				errors={test3Errors}
-				touched={false}
+				isTouched={false}
 			>
-				{#snippet children({ errors, touched })}
-					<Input placeholder="Type here" bind:value={test3Value} {errors} {touched} />
+				{#snippet children({ errors, isTouched })}
+					<Input placeholder="Type here" bind:value={test3Value} {errors} {isTouched} />
 				{/snippet}
 			</FormField>
 		</Column>
 		<Column size="100" md="50">
 			<FormField
-				labelText="touched=true"
+				labelText="isTouched=true"
 				errors={test3Errors}
-				touched={true}
+				isTouched={true}
 			>
-				{#snippet children({ errors, touched })}
-					<Input placeholder="Same value as left" value={test3Value} {errors} {touched} />
+				{#snippet children({ errors, isTouched })}
+					<Input placeholder="Same value as left" value={test3Value} {errors} {isTouched} />
 				{/snippet}
 			</FormField>
 		</Column>
@@ -621,7 +621,7 @@ password: z.string()
 		<Alert variant="success" class="mb-4">Location data saved!</Alert>
 	{/if}
 
-	<FormErrorSummary errors={test4AllErrors()} show={test4Submitted} />
+	<FormErrorSummary errors={test4AllErrors()} isVisible={test4Submitted} />
 
 	<form use:form4>
 		<Grid>
@@ -629,10 +629,10 @@ password: z.string()
 				<FormField
 					labelText="Country"
 					errors={$errors4.country}
-					touched={$touched4.country ?? false}
+					isTouched={$touched4.country ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<Select isRequired name="country" id="test4-country" {errors} {touched}>
+					{#snippet children({ errors, isTouched })}
+						<Select isRequired name="country" id="test4-country" {errors} {isTouched}>
 							<option value="">Select a country...</option>
 							<option value="us">United States</option>
 							<option value="uk">United Kingdom</option>
@@ -647,10 +647,10 @@ password: z.string()
 				<FormField
 					labelText="Birth Date (not in future)"
 					errors={$errors4.birthDate}
-					touched={$touched4.birthDate ?? false}
+					isTouched={$touched4.birthDate ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<DateInput isRequired name="birthDate" id="test4-birthDate" {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<DateInput isRequired name="birthDate" id="test4-birthDate" {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -669,7 +669,7 @@ password: z.string()
 		<Alert variant="success" class="mb-4">Password set successfully!</Alert>
 	{/if}
 
-	<FormErrorSummary errors={test5AllErrors()} show={test5Submitted} />
+	<FormErrorSummary errors={test5AllErrors()} isVisible={test5Submitted} />
 
 	<Paragraph class="mb-4">
 		Password requires: 8+ characters, uppercase letter, and a number. Uses Zod's
@@ -684,11 +684,11 @@ password: z.string()
 					helpText="Min 8 chars, 1 uppercase, 1 number"
 					successMessage="Password meets requirements"
 					errors={$errors5.password}
-					touched={$touched5.password ?? false}
+					isTouched={$touched5.password ?? false}
 					hasValue={!!$data5.password}
 				>
-					{#snippet children({ errors, touched })}
-						<Input isRequired type="password" name="password" id="test5-password" placeholder="Enter password" {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<Input isRequired type="password" name="password" id="test5-password" placeholder="Enter password" {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -697,11 +697,11 @@ password: z.string()
 					labelText="Confirm Password"
 					successMessage="Passwords match!"
 					errors={$errors5.confirm}
-					touched={$touched5.confirm ?? false}
+					isTouched={$touched5.confirm ?? false}
 					hasValue={!!$data5.confirm}
 				>
-					{#snippet children({ errors, touched })}
-						<Input isRequired type="password" name="confirm" id="test5-confirm" placeholder="Confirm password" {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<Input isRequired type="password" name="confirm" id="test5-confirm" placeholder="Confirm password" {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -736,7 +736,7 @@ password: z.string()
 		</Alert>
 	{/if}
 
-	<FormErrorSummary errors={createUserAllErrors()} show={createUserSubmitted} />
+	<FormErrorSummary errors={createUserAllErrors()} isVisible={createUserSubmitted} />
 
 	<form use:createUserForm>
 		<Grid>
@@ -744,10 +744,10 @@ password: z.string()
 				<FormField
 					labelText="First Name"
 					errors={$createUserErrors.firstName}
-					touched={$createUserTouched.firstName ?? false}
+					isTouched={$createUserTouched.firstName ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<Input isRequired name="firstName" id="create-user-firstName" placeholder="John" {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<Input isRequired name="firstName" id="create-user-firstName" placeholder="John" {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -755,10 +755,10 @@ password: z.string()
 				<FormField
 					labelText="Last Name"
 					errors={$createUserErrors.lastName}
-					touched={$createUserTouched.lastName ?? false}
+					isTouched={$createUserTouched.lastName ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<Input isRequired name="lastName" id="create-user-lastName" placeholder="Doe" {errors} {touched} />
+					{#snippet children({ errors, isTouched })}
+						<Input isRequired name="lastName" id="create-user-lastName" placeholder="Doe" {errors} {isTouched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -768,10 +768,10 @@ password: z.string()
 			labelText="Email"
 			helpText="Use admin@example.com to test server-side validation error"
 			errors={$createUserErrors.email}
-			touched={$createUserTouched.email ?? false}
+			isTouched={$createUserTouched.email ?? false}
 		>
-			{#snippet children({ errors, touched })}
-				<Input isRequired type="email" name="email" id="create-user-email" placeholder="john.doe@company.com" {errors} {touched} />
+			{#snippet children({ errors, isTouched })}
+				<Input isRequired type="email" name="email" id="create-user-email" placeholder="john.doe@company.com" {errors} {isTouched} />
 			{/snippet}
 		</FormField>
 
@@ -780,10 +780,10 @@ password: z.string()
 				<FormField
 					labelText="Role"
 					errors={$createUserErrors.role}
-					touched={$createUserTouched.role ?? false}
+					isTouched={$createUserTouched.role ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<Select isRequired name="role" id="create-user-role" {errors} {touched}>
+					{#snippet children({ errors, isTouched })}
+						<Select isRequired name="role" id="create-user-role" {errors} {isTouched}>
 							<option value="">Select a role...</option>
 							<option value="Developer">Developer</option>
 							<option value="Designer">Designer</option>
@@ -797,10 +797,10 @@ password: z.string()
 				<FormField
 					labelText="Department"
 					errors={$createUserErrors.department}
-					touched={$createUserTouched.department ?? false}
+					isTouched={$createUserTouched.department ?? false}
 				>
-					{#snippet children({ errors, touched })}
-						<Select isRequired name="department" id="create-user-department" {errors} {touched}>
+					{#snippet children({ errors, isTouched })}
+						<Select isRequired name="department" id="create-user-department" {errors} {isTouched}>
 							<option value="">Select a department...</option>
 							<option value="Engineering">Engineering</option>
 							<option value="Product">Product</option>
@@ -846,11 +846,11 @@ password: z.string()
 				labelText="Input with errors + manual state"
 				helpText="state='{test6ManualState}' overrides errors"
 				errors={['This error is ignored visually']}
-				touched={true}
+				isTouched={true}
 				validation={test6ManualState}
 			>
-				{#snippet children({ errors, touched, validation })}
-					<Input bind:value={test6Value} {errors} {touched} {validation} />
+				{#snippet children({ errors, isTouched, validation })}
+					<Input bind:value={test6Value} {errors} {isTouched} {validation} />
 				{/snippet}
 			</FormField>
 		</Column>
@@ -880,10 +880,10 @@ password: z.string()
 			<FormField
 				labelText="Has errors + touched"
 				errors={['Error!']}
-				touched={true}
+				isTouched={true}
 			>
-				{#snippet children({ errors, touched })}
-					<Input placeholder="Inspect me - has aria-invalid=true" {errors} {touched} />
+				{#snippet children({ errors, isTouched })}
+					<Input placeholder="Inspect me - has aria-invalid=true" {errors} {isTouched} />
 				{/snippet}
 			</FormField>
 		</Column>
@@ -905,7 +905,7 @@ password: z.string()
 
 <Callout variant="success" class="mb-4">
 	Everything below uses <Strong>no validation library</Strong> — no Felte, no Zod. The form
-	components take plain <Code>errors</Code> / <Code>touched</Code> / <Code>validation</Code> props, so a
+	components take plain <Code>errors</Code> / <Code>isTouched</Code> / <Code>validation</Code> props, so a
 	plain function and a little <Code>$state</Code> is all you need. Swap in your own rules, a
 	different schema library, or server-side errors exactly the same way.
 </Callout>
@@ -923,16 +923,16 @@ password: z.string()
 				labelText="Email"
 				helpText="We'll never share it."
 				errors={byoErrors}
-				touched={byoTouched}
+				isTouched={byoTouched}
 			>
-				{#snippet children({ errors, touched, validation })}
+				{#snippet children({ errors, isTouched, validation })}
 					<Input
 						type="email"
 						placeholder="you@example.com"
 						bind:value={byoEmail}
 						oninput={() => (byoTouched = true)}
 						{errors}
-						{touched}
+						{isTouched}
 						{validation}
 					/>
 				{/snippet}

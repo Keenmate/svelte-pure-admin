@@ -16,7 +16,7 @@
   <button data-pc-fit-ignore>Save</button>                 <!-- pinned, never yields -->
 </div>`;
 
-	const codeRelocate = `<FitContainer auto={false} class="bar">
+	const codeRelocate = `<FitContainer isAuto={false} class="bar">
   <span class="bar__brand">Acme Console</span>
   <FitSlot strategy="relocate" target="floating-menu" priority={10}>
     <Badge themeColor={1}>Users 123</Badge>
@@ -36,7 +36,7 @@
 <FitSlot
   strategy="relocate"
   target="floating-menu"
-  managed
+  isManaged
   onrelocate={(d) => (relocated = d.action === 'out')}
 >
   <Stats {users} {rooms} {subs} />
@@ -174,7 +174,7 @@
 	</div>
 
 	<div class="resp-stage" style="max-width:{barWidth}px">
-		<FitContainer auto={false} class="resp-bar">
+		<FitContainer isAuto={false} class="resp-bar">
 			<span class="resp-bar__brand">Acme Console</span>
 			<FitSlot strategy="relocate" target="floating-menu" priority={10} class="resp-stats">
 				<Badge themeColor={1}>Users&nbsp;123</Badge>
@@ -206,7 +206,7 @@
 		<strong>owns placement itself</strong>.
 	</p>
 	<p>
-		Set <Code>managed</Code> (the <Code>data-pc-fit-managed</Code> attribute — or call
+		Set <Code>isManaged</Code> (the <Code>data-pc-fit-managed</Code> attribute — or call
 		<Code>preventDefault()</Code>) and Fit performs <strong>no DOM surgery</strong>; it only hides the
 		slot in-row and hands you the flip through <Code>onrelocate</Code>. The framework then re-renders
 		the block in its new home <em>from state</em>. That solves the staleness trap: a moved DOM node

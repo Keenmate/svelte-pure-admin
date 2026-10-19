@@ -74,9 +74,7 @@ Individual tab button. Renders a <button> with pa-tabs__item class.
 
 Props:
   isActive?: boolean         (highlights the tab, default: false)
-  width?: '1x' | '2x' | ... | '10x'    (fixed width)
-  height?: '1x' | '2x' | ... | '10x'   (fixed height)
-  class?: string
+  class?: string             (fixed size: the minwr-N / minhr-N utilities, e.g. "minwr-3 minhr-3")
   icon?: Snippet             (icon rendered before children text)
   iconName?: string          (icon name rendered through <Icon>; the icon snippet wins)
   isDisabled?: boolean       (emits native disabled, default: false)
@@ -96,7 +94,7 @@ TabItem with icon:
 
 TabItem with fixed width:
 
-<TabItem width="3x" isActive={true}>Dashboard</TabItem>
+<TabItem class="minwr-3" isActive={true}>Dashboard</TabItem>
 
 
 TABS CONTENT AND TAB PANEL
@@ -295,7 +293,7 @@ Useful when you have many tabs and want a "more" dropdown.
 
 Props:
   hasActive?: boolean    (highlight toggle when active tab is in overflow, default: false)
-  show?: boolean         (bindable, controls dropdown visibility, default: false)
+  isOpen?: boolean       (bindable, controls dropdown visibility, default: false)
   class?: string
   toggle?: Snippet       (custom toggle button content, defaults to ellipsis icon)
   children?: Snippet     (overflow tab items)
@@ -353,7 +351,7 @@ via shortcut registry). Supports three input modes:
   plain text  - Global search (no prefix)
 
 Props:
-  show?: boolean          (bindable, controls visibility)
+  isOpen?: boolean        (bindable, controls visibility)
   commands?: Command[]    (available commands, triggered by /)
   contexts?: SearchContext[]   (available search contexts, triggered by :)
   globalSearch?: (query: string) => Promise<SearchResult[]> | SearchResult[]
@@ -541,7 +539,7 @@ Complete command palette setup:
 </script>
 
 <CommandPalette
-  bind:show={showPalette}
+  bind:isOpen={showPalette}
   {commands}
   {contexts}
   {globalSearch}
@@ -587,7 +585,7 @@ Internal BEM classes:
 
 Custom error display:
 
-<CommandPalette bind:show={showPalette} {commands}>
+<CommandPalette bind:isOpen={showPalette} {commands}>
   {#snippet errorSnippet(message)}
     <div class="my-custom-error">
       <strong>Error:</strong> {message}
@@ -620,7 +618,7 @@ Usage with CommandPalette:
   onclick={() => showPalette = true}
 />
 
-<CommandPalette bind:show={showPalette} />
+<CommandPalette bind:isOpen={showPalette} />
 
 NavbarSearch inside a Header:
 
@@ -695,4 +693,4 @@ IMPORTANT NOTES
 - CommandPalette auto-registers Ctrl+K via the shortcut registry on mount.
 - CommandPalette debounces global search and context search by 150ms.
 - All event handlers use Svelte 5 lowercase convention: onclick, onglobalselect.
-- The show prop on CommandPalette and TabsOverflow is bindable ($bindable).
+- The isOpen prop on CommandPalette and TabsOverflow is bindable ($bindable).

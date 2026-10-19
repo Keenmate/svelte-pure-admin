@@ -117,7 +117,7 @@
 				<li>Grids, tables, components in the body</li>
 				<li>Custom header/footer layouts</li>
 				<li>Two-way data binding with <Code>bind:</Code></li>
-				<li>Full control over show/hide via <Code>bind:show</Code></li>
+				<li>Full control over show/hide via <Code>bind:isOpen</Code></li>
 			</BasicList>
 		</Column>
 		<Column size="100" md="1-2">
@@ -147,7 +147,7 @@
   Open Modal
 </Button>
 
-<Modal bind:show={showModal} titleText="My Modal">
+<Modal bind:isOpen={showModal} titleText="My Modal">
   <Paragraph>Modal body content here.</Paragraph>
 
   {#snippet footer()}
@@ -161,7 +161,7 @@
 		</Column>
 		<Column size="100" md="1-2">
 			<Heading level={4}>Form Modal</Heading>
-			<CodeBlock>{`<Modal bind:show={showForm}
+			<CodeBlock>{`<Modal bind:isOpen={showForm}
   titleText="Edit Profile" size="lg">
   <Grid>
     <Column size="100" md="1-2">
@@ -213,7 +213,7 @@
   }
 `}{`<` + `/script>`}{`
 
-<Modal bind:show={showModal}
+<Modal bind:isOpen={showModal}
   titleText="Edit Document"
   beforeCloseCallback={beforeClose}>
   <Input oninput={() =>
@@ -232,7 +232,7 @@
 		<Column size="100" md="1-2">
 			<Heading level={4}>Scrollable + Static + Variants</Heading>
 			<CodeBlock>{`<!-- Scrollable body -->
-<Modal bind:show={showTerms}
+<Modal bind:isOpen={showTerms}
   titleText="Terms of Service"
   isScrollable size="lg">
   <div style="height: 2000px;">
@@ -247,14 +247,14 @@
 </Modal>
 
 <!-- Static (no ESC / backdrop close) -->
-<Modal bind:show={showProcessing}
-  isStatic shouldShowClose={false}>
+<Modal bind:isOpen={showProcessing}
+  isStatic hasClose={false}>
   <Spinner size="lg" />
   Processing...
 </Modal>
 
 <!-- Themed modal + leading severity icon -->
-<Modal bind:show={showDanger}
+<Modal bind:isOpen={showDanger}
   titleText="Delete Item"
   titleIconName="delete"
   variant="danger">
@@ -265,7 +265,7 @@
 </Modal>
 
 <!-- Full modal theme -->
-<Modal bind:show={showSuccess}
+<Modal bind:isOpen={showSuccess}
   titleText="Done!" titleIconName="success" variant="success">
   Operation completed.
 </Modal>`}</CodeBlock>
@@ -286,7 +286,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><Code>show</Code></td><td>boolean (bindable)</td><td>false</td><td>Show/hide the modal</td></tr>
+			<tr><td><Code>isOpen</Code></td><td>boolean (bindable)</td><td>false</td><td>Show/hide the modal</td></tr>
 			<tr><td><Code>size</Code></td><td>'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw'</td><td>'md'</td><td>Modal width</td></tr>
 			<tr><td><Code>variant</Code></td><td>'primary' | 'success' | 'warning' | 'danger' | 'info'</td><td>-</td><td>Full modal theming (header colour inherits via the root)</td></tr>
 			<tr><td><Code>placement</Code></td><td>'center' | 'top'</td><td>'center'</td><td>Where the dialog sits</td></tr>
@@ -294,7 +294,7 @@
 			<tr><td><Code>isStatic</Code></td><td>boolean</td><td>false</td><td>Prevents ESC/backdrop close</td></tr>
 			<tr><td><Code>titleText</Code></td><td>string</td><td>-</td><td>Modal title</td></tr>
 			<tr><td><Code>titleIconName</Code></td><td>string</td><td>-</td><td>Leading icon name before the title, rendered through <Code>Icon</Code> (affordances such as <Code>success</Code> / <Code>warning</Code> / <Code>danger</Code> / <Code>info</Code> / <Code>delete</Code> render the masked glyph) — inherits the header colour. Since core v3.2.0.</td></tr>
-			<tr><td><Code>shouldShowClose</Code></td><td>boolean</td><td>true</td><td>Show close button in header</td></tr>
+			<tr><td><Code>hasClose</Code></td><td>boolean</td><td>true</td><td>Show close button in header</td></tr>
 			<tr><td><Code>shouldCloseOnEscape</Code></td><td>boolean</td><td>true</td><td>Close on ESC key</td></tr>
 			<tr><td><Code>beforeCloseCallback</Code></td><td>() => boolean | void</td><td>-</td><td>Return false to prevent closing</td></tr>
 			<tr><td><Code>onclose</Code></td><td>() => void</td><td>-</td><td>Called after modal closes</td></tr>
@@ -323,7 +323,7 @@
 <!-- Modal Definitions -->
 
 <!-- Small Modal -->
-<Modal bind:show={showSmall} size="sm" titleText="Small Modal">
+<Modal bind:isOpen={showSmall} size="sm" titleText="Small Modal">
 	<Paragraph>This is a small modal dialog. Perfect for quick notifications or simple confirmations.</Paragraph>
 	{#snippet footer()}
 		<Button variant="secondary" onclick={() => (showSmall = false)}>Close</Button>
@@ -332,7 +332,7 @@
 </Modal>
 
 <!-- Medium Modal -->
-<Modal bind:show={showMedium} titleText="Medium Modal">
+<Modal bind:isOpen={showMedium} titleText="Medium Modal">
 	<Paragraph>This is a medium-sized modal dialog. Great for forms and detailed content.</Paragraph>
 	<Paragraph>You can include multiple paragraphs, lists, and other content here.</Paragraph>
 	<BasicList>
@@ -347,7 +347,7 @@
 </Modal>
 
 <!-- Large Modal -->
-<Modal bind:show={showLarge} size="lg" titleText="Large Modal">
+<Modal bind:isOpen={showLarge} size="lg" titleText="Large Modal">
 	<Grid>
 		<Column size="100" md="1-2">
 			<Heading level={5}>Column 1</Heading>
@@ -369,7 +369,7 @@
 </Modal>
 
 <!-- Extra Large Modal -->
-<Modal bind:show={showXL} size="xl" titleText="Extra Large Modal">
+<Modal bind:isOpen={showXL} size="xl" titleText="Extra Large Modal">
 	<Grid>
 		<Column size="100" md="1-3">
 			<Heading level={5}>Column 1</Heading>
@@ -396,7 +396,7 @@
 </Modal>
 
 <!-- XXL Modal -->
-<Modal bind:show={showXXL} size="xxl" titleText="XXL Modal - Maximum Size">
+<Modal bind:isOpen={showXXL} size="xxl" titleText="XXL Modal - Maximum Size">
 	<Grid>
 		<Column size="100" md="1-4">
 			<Heading level={5}>Section 1</Heading>
@@ -450,7 +450,7 @@
 </Modal>
 
 <!-- Full Width Modal -->
-<Modal bind:show={showFullWidth} size="fw" titleText="Full Width Modal - Maximum Screen Coverage">
+<Modal bind:isOpen={showFullWidth} size="fw" titleText="Full Width Modal - Maximum Screen Coverage">
 	<Grid>
 		<Column size="100">
 			<Alert variant="info" class="mb-4">
@@ -538,7 +538,7 @@
 </Modal>
 
 <!-- Success Modal -->
-<Modal bind:show={showSuccess} variant="success" titleText="Success!" titleIconName="success">
+<Modal bind:isOpen={showSuccess} variant="success" titleText="Success!" titleIconName="success">
 	<Paragraph>Your action has been completed successfully!</Paragraph>
 	<Alert variant="success">Operation completed without any errors.</Alert>
 	{#snippet footer()}
@@ -547,7 +547,7 @@
 </Modal>
 
 <!-- Warning Modal -->
-<Modal bind:show={showWarning} variant="warning" titleText="Warning" titleIconName="warning">
+<Modal bind:isOpen={showWarning} variant="warning" titleText="Warning" titleIconName="warning">
 	<Paragraph>Please review your action before proceeding.</Paragraph>
 	<Alert variant="warning">
 		This action may have consequences that cannot be undone.
@@ -559,7 +559,7 @@
 </Modal>
 
 <!-- Danger Modal -->
-<Modal bind:show={showDanger} variant="danger" titleText="Danger Zone" titleIconName="danger">
+<Modal bind:isOpen={showDanger} variant="danger" titleText="Danger Zone" titleIconName="danger">
 	<Paragraph>This action is potentially destructive.</Paragraph>
 	<Alert variant="danger">
 		<strong>Warning:</strong> This action cannot be undone and may result in data loss.
@@ -571,7 +571,7 @@
 </Modal>
 
 <!-- Contact Form Modal -->
-<Modal bind:show={showForm} titleText="Contact Us">
+<Modal bind:isOpen={showForm} titleText="Contact Us">
 	<form>
 		<Grid>
 			<Column size="100">
@@ -601,7 +601,7 @@
 </Modal>
 
 <!-- Login Form Modal -->
-<Modal bind:show={showLogin} size="sm" titleText="Sign In">
+<Modal bind:isOpen={showLogin} size="sm" titleText="Sign In">
 	<form>
 		<Grid>
 			<Column size="100">
@@ -630,7 +630,7 @@
 </Modal>
 
 <!-- Settings Modal -->
-<Modal bind:show={showSettings} size="lg" titleText="Settings">
+<Modal bind:isOpen={showSettings} size="lg" titleText="Settings">
 	<Grid>
 		<Column size="100" md="1-2">
 			<Heading level={5}>General Settings</Heading>
@@ -667,7 +667,7 @@
 </Modal>
 
 <!-- Delete Confirmation Modal -->
-<Modal bind:show={showConfirmDelete} size="sm" variant="danger" titleText="Confirm Delete" titleIconName="delete">
+<Modal bind:isOpen={showConfirmDelete} size="sm" variant="danger" titleText="Confirm Delete" titleIconName="delete">
 	<Paragraph>Are you sure you want to delete this item?</Paragraph>
 	<Alert variant="danger">
 		<strong>This action cannot be undone.</strong>
@@ -679,7 +679,7 @@
 </Modal>
 
 <!-- Action Confirmation Modal -->
-<Modal bind:show={showConfirmAction} size="sm" titleText="Confirm Action">
+<Modal bind:isOpen={showConfirmAction} size="sm" titleText="Confirm Action">
 	<Paragraph>Do you want to proceed with this action?</Paragraph>
 	<Paragraph>This will update your preferences and may affect other users.</Paragraph>
 	{#snippet footer()}
@@ -689,7 +689,7 @@
 </Modal>
 
 <!-- Information Dialog -->
-<Modal bind:show={showInfo} variant="info" titleText="Information" titleIconName="info">
+<Modal bind:isOpen={showInfo} variant="info" titleText="Information" titleIconName="info">
 	<Paragraph>Here's some important information you should know:</Paragraph>
 	<Alert variant="info">
 		Your subscription will expire in 7 days. Consider renewing to continue enjoying all features.
@@ -706,7 +706,7 @@
 </Modal>
 
 <!-- Centered Modal (Default) -->
-<Modal bind:show={showCentered} titleText="Centered Modal (Default)">
+<Modal bind:isOpen={showCentered} titleText="Centered Modal (Default)">
 	<Paragraph>This is the default modal behavior - centered vertically and horizontally in the viewport.</Paragraph>
 	<Paragraph>This works well for most use cases where you want the modal to be the focal point.</Paragraph>
 	{#snippet footer()}
@@ -716,7 +716,7 @@
 </Modal>
 
 <!-- Top-Aligned Modal -->
-<Modal bind:show={showTop} placement="top" titleText="Top-Aligned Modal">
+<Modal bind:isOpen={showTop} placement="top" titleText="Top-Aligned Modal">
 	<Paragraph>This modal uses the <Code>placement="top"</Code> prop to place it near the top of the viewport.</Paragraph>
 	<Paragraph>This is useful for:</Paragraph>
 	<BasicList>
@@ -732,7 +732,7 @@
 </Modal>
 
 <!-- Static Modal (no ESC, no backdrop click) -->
-<Modal bind:show={showStatic} size="sm" isStatic variant="warning" shouldShowClose={false} titleText="Static Modal" titleIconName="warning">
+<Modal bind:isOpen={showStatic} size="sm" isStatic variant="warning" hasClose={false} titleText="Static Modal" titleIconName="warning">
 	<Paragraph>This modal <strong>cannot</strong> be closed by:</Paragraph>
 	<BasicList>
 		<li>Pressing the <kbd>Escape</kbd> key</li>
@@ -749,7 +749,7 @@
 </Modal>
 
 <!-- Scrollable Modal -->
-<Modal bind:show={showScrollable} size="lg" isScrollable titleText="Scrollable Modal">
+<Modal bind:isOpen={showScrollable} size="lg" isScrollable titleText="Scrollable Modal">
 	<Paragraph>This modal has a scrollable body. The header and footer stay fixed while the body content scrolls.</Paragraph>
 	<Paragraph>Useful for long content like terms of service, license agreements, or lengthy forms.</Paragraph>
 	{#each Array(15) as _, i}
@@ -762,7 +762,7 @@
 </Modal>
 
 <!-- Prevent Close Modal -->
-<Modal bind:show={showPreventClose} titleText="Edit Document" beforeCloseCallback={beforeClose}>
+<Modal bind:isOpen={showPreventClose} titleText="Edit Document" beforeCloseCallback={beforeClose}>
 	<Paragraph>This modal uses <Code>beforeCloseCallback</Code> to prevent closing when there are unsaved changes.</Paragraph>
 	<Paragraph>Type something below, then try closing the modal via the X button, ESC key, or backdrop click.</Paragraph>
 	<FormGroup class="mt-3">

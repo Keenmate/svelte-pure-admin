@@ -18,7 +18,7 @@
 		/** Tooltip color variant */
 		variant?: TooltipVariant;
 		/** Multiline tooltip (20rem width, left-aligned) */
-		multiline?: boolean;
+		isMultiline?: boolean;
 		/** Help cursor (question mark cursor) */
 		isHelp?: boolean;
 		/** Keyword tooltip — dotted underline + help cursor for inline term explanations */
@@ -33,7 +33,7 @@
 		text,
 		placement = 'top',
 		variant,
-		multiline = false,
+		isMultiline = false,
 		isHelp = false,
 		isKeyword = false,
 		class: className = '',
@@ -58,7 +58,7 @@
 		const base = ['pa-tooltip', 'pa-tooltip--floating'];
 		if (placement && placement !== 'top') base.push(`pa-tooltip--${placement}`);
 		if (variant) base.push(`pa-tooltip--${variant}`);
-		if (multiline) base.push('pa-tooltip--multiline');
+		if (isMultiline) base.push('pa-tooltip--multiline');
 		if (isHelp) base.push('pa-tooltip--help');
 		if (isKeyword) base.push('pa-tooltip--keyword');
 		if (className) base.push(className);
@@ -85,7 +85,7 @@
 			tooltipElement.style.visibility = 'hidden';
 			tooltipElement.style.zIndex = '9000'; // $z-index-tooltip
 			if (variant) tooltipElement.classList.add(`pa-tooltip--${variant}`);
-			if (multiline) tooltipElement.classList.add('pa-tooltip--multiline');
+			if (isMultiline) tooltipElement.classList.add('pa-tooltip--multiline');
 			document.body.appendChild(tooltipElement);
 		}
 

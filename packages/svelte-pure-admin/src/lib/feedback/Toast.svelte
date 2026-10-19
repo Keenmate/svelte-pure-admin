@@ -27,7 +27,7 @@
 		/** Auto-dismiss duration (ms), 0 for persistent */
 		duration?: number;
 		/** Show progress bar */
-		shouldShowProgress?: boolean;
+		hasProgress?: boolean;
 		/** Custom progress bar color */
 		progressColor?: string;
 		/** Custom max-width for the toast (e.g., '50rem', '500px') */
@@ -52,7 +52,7 @@
 		messageText,
 		isVisible = $bindable(true),
 		duration = 5000,
-		shouldShowProgress = false,
+		hasProgress = false,
 		progressColor,
 		maxWidth,
 		icon,
@@ -88,14 +88,14 @@
 	}
 
 	onMount(() => {
-		if (duration > 0 && !shouldShowProgress) {
+		if (duration > 0 && !hasProgress) {
 			// Auto-dismiss without progress bar
 			const timer = setTimeout(() => {
 				handleClose();
 			}, duration);
 
 			return () => clearTimeout(timer);
-		} else if (duration > 0 && shouldShowProgress) {
+		} else if (duration > 0 && hasProgress) {
 			// Auto-dismiss with progress bar animation
 			// Delay setting to 0 so browser paints the initial 100% first
 			const frame = requestAnimationFrame(() => {
@@ -140,7 +140,7 @@
 	     — not a hardcoded inline SVG at a fixed 24px. -->
 	<button class="pa-toast__close" onclick={handleClose} aria-label={$_('pureAdmin.buttons.close')}><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>
 
-	{#if shouldShowProgress && duration > 0}
+	{#if hasProgress && duration > 0}
 		<div
 			class="pa-toast__progress"
 			style="width: {progressWidth}%; transition: width {duration}ms linear;{progressColor ? ` color: ${progressColor};` : ''}"

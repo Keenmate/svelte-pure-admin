@@ -36,6 +36,9 @@ export type DataVizVariant = 'primary' | 'success' | 'warning' | 'danger' | 'inf
 // Tooltip placement (logical: start/end flip in RTL) and colour variants —
 // shared by <Tooltip> and the card title/description tooltips.
 export type TooltipPlacement = 'top' | 'end' | 'bottom' | 'start';
+// When a truncation tooltip appears: `overflow` = only while the text is cut off
+// (core `data-pa-tooltip-overflow`), `always` = on every hover.
+export type TooltipMode = 'overflow' | 'always';
 export type TooltipVariant =
 	| 'primary'
 	| 'success'

@@ -5,10 +5,10 @@
 	 *
 	 * The `.pa-notifications` positioning anchor + bell trigger (`__btn` with the
 	 * masked `pa-icon--bell` glyph and an optional `__badge` counter). Host a
-	 * `<NotificationsPanel>` inside it and bind the same `show` to both:
+	 * `<NotificationsPanel>` inside it and bind the same `isOpen` to both:
 	 *
-	 *   <NotificationBell bind:show={open} count={3}>
-	 *     <NotificationsPanel bind:show={open} items={...} />
+	 *   <NotificationBell bind:isOpen={open} count={3}>
+	 *     <NotificationsPanel bind:isOpen={open} items={...} />
 	 *   </NotificationBell>
 	 */
 
@@ -16,7 +16,7 @@
 
 	interface Props {
 		/** Panel open state (bindable) — toggled by the bell, read by the panel */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Unread counter shown in the badge; hidden when unset / 0 / '' */
 		count?: number | string;
 		/** Accessible label for the bell button (default: i18n 'notifications.title') */
@@ -25,14 +25,14 @@
 		class?: string;
 		/** Custom bell icon (replaces the default masked pa-icon--bell) */
 		bell?: import('svelte').Snippet;
-		/** Panel content — place a <NotificationsPanel bind:show> here */
+		/** Panel content — place a <NotificationsPanel bind:isOpen> here */
 		children?: import('svelte').Snippet;
-		/** Fired when the bell is clicked (after toggling `show`) */
+		/** Fired when the bell is clicked (after toggling `isOpen`) */
 		onclick?: () => void;
 	}
 
 	let {
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		count,
 		ariaLabel,
 		class: className = '',
@@ -54,16 +54,16 @@
 	let anchorEl = $state<HTMLDivElement | undefined>(undefined);
 
 	function handleToggle() {
-		show = !show;
+		isOpen = !isOpen;
 		onclick?.();
 	}
 
 	// Close on outside click while open
 	$effect(() => {
-		if (!show) return;
+		if (!isOpen) return;
 		function onDocClick(event: MouseEvent) {
 			if (anchorEl && !anchorEl.contains(event.target as Node)) {
-				show = false;
+				isOpen = false;
 			}
 		}
 		document.addEventListener('click', onDocClick, true);
@@ -78,7 +78,7 @@
 		onclick={handleToggle}
 		aria-label={resolvedLabel}
 		aria-haspopup="menu"
-		aria-expanded={show}
+		aria-expanded={isOpen}
 	>
 		<span class="pa-notifications__icon">
 			{#if bell}

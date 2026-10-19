@@ -10,7 +10,7 @@
     "headerUnderlined":          { "prop": "isHeaderUnderlined",        "kind": "bool" },
     "headerUnderlineColor":      { "prop": "headerUnderlineColor",      "kind": "enum",   "values": ["success", "warning", "danger", "info"] },
     "headerUnderlineThemeColor": { "prop": "headerUnderlineThemeColor", "kind": "enum",   "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "nativeType": "number" },
-    "headerWrap":                { "prop": "headerWrap",                "kind": "bool" },
+    "shouldWrapHeader":          { "prop": "shouldWrapHeader",          "kind": "bool" },
     "title":                     { "prop": "titleText",                 "kind": "string" },
     "titleIcon":                 { "prop": "titleIcon",                 "kind": "slot" },
     "description":               { "prop": "descriptionText",           "kind": "string" },
@@ -25,16 +25,16 @@
     "titleTooltip":              { "prop": "titleTooltip",                        "kind": "bool" },
     "titleTooltipPlacement":     { "prop": "titleTooltipPlacement",               "kind": "enum", "values": ["bottom", "start", "end"] },
     "titleTooltipVariant":       { "prop": "titleTooltipVariant",                 "kind": "enum", "values": ["primary", "success", "warning", "danger", "color-1", "color-2", "color-3", "color-4", "color-5", "color-6", "color-7", "color-8", "color-9"] },
-    "titleTooltipMultiline":     { "prop": "titleTooltipMultiline",               "kind": "bool" },
+    "titleTooltipIsMultiline":   { "prop": "titleTooltipIsMultiline",             "kind": "bool" },
     "titleTooltipIsHelp":        { "prop": "titleTooltipIsHelp",                  "kind": "bool" },
     "titleTooltipIsKeyword":     { "prop": "titleTooltipIsKeyword",               "kind": "bool" },
-    "titleTooltipAlways":        { "prop": "titleTooltipAlways",                  "kind": "bool" },
+    "titleTooltipMode":          { "prop": "titleTooltipMode",                    "kind": "enum", "values": ["overflow", "always"] },
     "descriptionTooltip":        { "prop": "descriptionTooltip",                  "kind": "bool" },
     "descriptionTooltipPlacement":{ "prop": "descriptionTooltipPlacement",         "kind": "enum", "values": ["bottom", "start", "end"] },
     "descriptionTooltipVariant": { "prop": "descriptionTooltipVariant",           "kind": "enum", "values": ["primary", "success", "warning", "danger", "color-1", "color-2", "color-3", "color-4", "color-5", "color-6", "color-7", "color-8", "color-9"] },
-    "descriptionTooltipMultiline":{ "prop": "descriptionTooltipMultiline",         "kind": "bool" },
+    "descriptionTooltipIsMultiline":{ "prop": "descriptionTooltipIsMultiline",     "kind": "bool" },
     "descriptionTooltipIsHelp":  { "prop": "descriptionTooltipIsHelp",            "kind": "bool" },
     "descriptionTooltipIsKeyword":{ "prop": "descriptionTooltipIsKeyword",         "kind": "bool" },
-    "descriptionTooltipAlways":  { "prop": "descriptionTooltipAlways",            "kind": "bool" }
+    "descriptionTooltipMode":    { "prop": "descriptionTooltipMode",              "kind": "enum", "values": ["overflow", "always"] }
   }
 }

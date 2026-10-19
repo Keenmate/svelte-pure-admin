@@ -196,18 +196,18 @@
 		<!-- Fixed Width Tabs -->
 		<Card titleText="Fixed Width Tabs">
 			<Alert variant="info">
-				<strong>Fixed widths:</strong> the <Code>width</Code> / <Code>height</Code> props (<Code>"1x"</Code>–<Code>"10x"</Code>) emit the rem min-size utilities <Code>minwr-1</Code>–<Code>minwr-10</Code> / <Code>minhr-1</Code>–<Code>minhr-10</Code> (1rem–10rem) on the tab button. Core has no <Code>pa-tabs__item--w-Nx</Code> modifier — the min-size utilities are the canonical per-tab width contract. For elastic sizing pass <Code>maxwr-*</Code> / <Code>wr-*</Code> via <Code>class</Code>, optionally with <Code>isWrapLabels</Code> on <Code>&lt;Tabs&gt;</Code>.
+				<strong>Fixed widths:</strong> pass the rem min-size utilities <Code>minwr-1</Code>–<Code>minwr-10</Code> / <Code>minhr-1</Code>–<Code>minhr-10</Code> (1rem–10rem) via <Code>class</Code> on the tab button. Core has no <Code>pa-tabs__item--w-Nx</Code> modifier — the min-size utilities are the canonical per-tab width contract. For elastic sizing pass <Code>maxwr-*</Code> / <Code>wr-*</Code> via <Code>class</Code>, optionally with <Code>isWrapLabels</Code> on <Code>&lt;Tabs&gt;</Code>.
 			</Alert>
 
 			<Heading level={4}>6x Width (6rem each)</Heading>
 			<Tabs>
-				<TabItem isActive={fixed6xActive === 'fixed-tab-1'} onclick={() => (fixed6xActive = 'fixed-tab-1')} width="6x">
+				<TabItem isActive={fixed6xActive === 'fixed-tab-1'} onclick={() => (fixed6xActive = 'fixed-tab-1')} class="minwr-6">
 					View
 				</TabItem>
-				<TabItem isActive={fixed6xActive === 'fixed-tab-2'} onclick={() => (fixed6xActive = 'fixed-tab-2')} width="6x">
+				<TabItem isActive={fixed6xActive === 'fixed-tab-2'} onclick={() => (fixed6xActive = 'fixed-tab-2')} class="minwr-6">
 					Edit
 				</TabItem>
-				<TabItem isActive={fixed6xActive === 'fixed-tab-3'} onclick={() => (fixed6xActive = 'fixed-tab-3')} width="6x">
+				<TabItem isActive={fixed6xActive === 'fixed-tab-3'} onclick={() => (fixed6xActive = 'fixed-tab-3')} class="minwr-6">
 					Delete
 				</TabItem>
 			</Tabs>
@@ -225,13 +225,13 @@
 
 			<Heading level={4} class="mt-6">8x Width (8rem each)</Heading>
 			<Tabs>
-				<TabItem isActive={fixed8xActive === 'fixed-8x-1'} onclick={() => (fixed8xActive = 'fixed-8x-1')} width="8x">
+				<TabItem isActive={fixed8xActive === 'fixed-8x-1'} onclick={() => (fixed8xActive = 'fixed-8x-1')} class="minwr-8">
 					{#snippet icon()}
 						<i class="fa-solid fa-chart-line"></i>
 					{/snippet}
 					<span>Dashboard</span>
 				</TabItem>
-				<TabItem isActive={fixed8xActive === 'fixed-8x-2'} onclick={() => (fixed8xActive = 'fixed-8x-2')} width="8x">
+				<TabItem isActive={fixed8xActive === 'fixed-8x-2'} onclick={() => (fixed8xActive = 'fixed-8x-2')} class="minwr-8">
 					{#snippet icon()}
 						<i class="fa-solid fa-chart-bar"></i>
 					{/snippet}
@@ -290,16 +290,16 @@
 <Heading level={3} class="mt-4 mb-4">Per-Tab Width — Real-World Example</Heading>
 <Card titleText="Per-Tab Width — Real-World Example">
 	<Alert variant="info">
-		A mixed label set like <em>User / Order / Invoice / Packages / Deliveries and returns</em> has a too-narrow first tab and a too-wide last one. Give every tab a <Code>minwr-*</Code> floor (the <Code>width</Code> prop, e.g. <Code>width="8x"</Code>) so the short ones stop looking cramped, and cap the long one with a <Code>maxwr-*</Code> utility (plus <Code>isWrapLabels</Code> so it wraps) — the row then stays tidy and level.
+		A mixed label set like <em>User / Order / Invoice / Packages / Deliveries and returns</em> has a too-narrow first tab and a too-wide last one. Give every tab a <Code>minwr-*</Code> floor (e.g. <Code>class="minwr-8"</Code>) so the short ones stop looking cramped, and cap the long one with a <Code>maxwr-*</Code> utility (plus <Code>isWrapLabels</Code> so it wraps) — the row then stays tidy and level.
 	</Alert>
 
-	<Heading level={4}>Floor every tab at 8rem (<Code>width="8x"</Code>), cap + wrap the long one (<Code>maxwr-15</Code>)</Heading>
+	<Heading level={4}>Floor every tab at 8rem (<Code>minwr-8</Code>), cap + wrap the long one (<Code>maxwr-15</Code>)</Heading>
 	<Tabs isWrapLabels>
-		<TabItem isActive={rwWrapActive === 'rw-tab-1'} onclick={() => (rwWrapActive = 'rw-tab-1')} width="8x">User</TabItem>
-		<TabItem isActive={rwWrapActive === 'rw-tab-2'} onclick={() => (rwWrapActive = 'rw-tab-2')} width="8x">Order</TabItem>
-		<TabItem isActive={rwWrapActive === 'rw-tab-3'} onclick={() => (rwWrapActive = 'rw-tab-3')} width="8x">Invoice</TabItem>
-		<TabItem isActive={rwWrapActive === 'rw-tab-4'} onclick={() => (rwWrapActive = 'rw-tab-4')} width="8x">Packages</TabItem>
-		<TabItem isActive={rwWrapActive === 'rw-tab-5'} onclick={() => (rwWrapActive = 'rw-tab-5')} width="8x" class="maxwr-15">Deliveries and returns</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-1'} onclick={() => (rwWrapActive = 'rw-tab-1')} class="minwr-8">User</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-2'} onclick={() => (rwWrapActive = 'rw-tab-2')} class="minwr-8">Order</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-3'} onclick={() => (rwWrapActive = 'rw-tab-3')} class="minwr-8">Invoice</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-4'} onclick={() => (rwWrapActive = 'rw-tab-4')} class="minwr-8">Packages</TabItem>
+		<TabItem isActive={rwWrapActive === 'rw-tab-5'} onclick={() => (rwWrapActive = 'rw-tab-5')} class="minwr-8 maxwr-15">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel isActive={rwWrapActive === 'rw-tab-1'} id="rw-tab-1"><Heading level={4}>User</Heading><Paragraph>Account holder details.</Paragraph></TabPanel>
@@ -311,11 +311,11 @@
 
 	<Heading level={4} class="mt-6">Prefer one line? Drop <Code>isWrapLabels</Code> and let the long tab grow past the floor</Heading>
 	<Tabs>
-		<TabItem isActive={rwGrowActive === 'rw1-tab-1'} onclick={() => (rwGrowActive = 'rw1-tab-1')} width="8x">User</TabItem>
-		<TabItem isActive={rwGrowActive === 'rw1-tab-2'} onclick={() => (rwGrowActive = 'rw1-tab-2')} width="8x">Order</TabItem>
-		<TabItem isActive={rwGrowActive === 'rw1-tab-3'} onclick={() => (rwGrowActive = 'rw1-tab-3')} width="8x">Invoice</TabItem>
-		<TabItem isActive={rwGrowActive === 'rw1-tab-4'} onclick={() => (rwGrowActive = 'rw1-tab-4')} width="8x">Packages</TabItem>
-		<TabItem isActive={rwGrowActive === 'rw1-tab-5'} onclick={() => (rwGrowActive = 'rw1-tab-5')} width="8x">Deliveries and returns</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-1'} onclick={() => (rwGrowActive = 'rw1-tab-1')} class="minwr-8">User</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-2'} onclick={() => (rwGrowActive = 'rw1-tab-2')} class="minwr-8">Order</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-3'} onclick={() => (rwGrowActive = 'rw1-tab-3')} class="minwr-8">Invoice</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-4'} onclick={() => (rwGrowActive = 'rw1-tab-4')} class="minwr-8">Packages</TabItem>
+		<TabItem isActive={rwGrowActive === 'rw1-tab-5'} onclick={() => (rwGrowActive = 'rw1-tab-5')} class="minwr-8">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel isActive={rwGrowActive === 'rw1-tab-1'} id="rw1-tab-1"><Paragraph>Same 8rem floor, no cap — the four short tabs are uniform and only “Deliveries and returns” grows to fit its text.</Paragraph></TabPanel>
@@ -327,11 +327,11 @@
 
 	<Heading level={4} class="mt-6">Center the label inside each tab — add <Code>justify-content-center</Code> via <Code>class</Code></Heading>
 	<Tabs isWrapLabels>
-		<TabItem isActive={rwCenterActive === 'rwc-tab-1'} onclick={() => (rwCenterActive = 'rwc-tab-1')} width="8x" class="justify-content-center">User</TabItem>
-		<TabItem isActive={rwCenterActive === 'rwc-tab-2'} onclick={() => (rwCenterActive = 'rwc-tab-2')} width="8x" class="justify-content-center">Order</TabItem>
-		<TabItem isActive={rwCenterActive === 'rwc-tab-3'} onclick={() => (rwCenterActive = 'rwc-tab-3')} width="8x" class="justify-content-center">Invoice</TabItem>
-		<TabItem isActive={rwCenterActive === 'rwc-tab-4'} onclick={() => (rwCenterActive = 'rwc-tab-4')} width="8x" class="justify-content-center">Packages</TabItem>
-		<TabItem isActive={rwCenterActive === 'rwc-tab-5'} onclick={() => (rwCenterActive = 'rwc-tab-5')} width="8x" class="maxwr-15 justify-content-center">Deliveries and returns</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-1'} onclick={() => (rwCenterActive = 'rwc-tab-1')} class="minwr-8 justify-content-center">User</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-2'} onclick={() => (rwCenterActive = 'rwc-tab-2')} class="minwr-8 justify-content-center">Order</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-3'} onclick={() => (rwCenterActive = 'rwc-tab-3')} class="minwr-8 justify-content-center">Invoice</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-4'} onclick={() => (rwCenterActive = 'rwc-tab-4')} class="minwr-8 justify-content-center">Packages</TabItem>
+		<TabItem isActive={rwCenterActive === 'rwc-tab-5'} onclick={() => (rwCenterActive = 'rwc-tab-5')} class="minwr-8 maxwr-15 justify-content-center">Deliveries and returns</TabItem>
 	</Tabs>
 	<TabsContent>
 		<TabPanel isActive={rwCenterActive === 'rwc-tab-1'} id="rwc-tab-1"><Paragraph>Same floored tabs, but the label is centered within each tab instead of start-aligned.</Paragraph></TabPanel>
@@ -738,9 +738,7 @@
 					<TabItem
 						isActive={iconVertActive === 'icon-vert-1'}
 						onclick={() => (iconVertActive = 'icon-vert-1')}
-						width="3x"
-						height="3x"
-						class="pa-tooltip"
+						class="minwr-3 minhr-3 pa-tooltip"
 						data-tooltip="Home"
 					>
 						<i class="fa-solid fa-house"></i>
@@ -748,9 +746,7 @@
 					<TabItem
 						isActive={iconVertActive === 'icon-vert-2'}
 						onclick={() => (iconVertActive = 'icon-vert-2')}
-						width="3x"
-						height="3x"
-						class="pa-tooltip"
+						class="minwr-3 minhr-3 pa-tooltip"
 						data-tooltip="Profile"
 					>
 						<i class="fa-solid fa-user"></i>
@@ -758,9 +754,7 @@
 					<TabItem
 						isActive={iconVertActive === 'icon-vert-3'}
 						onclick={() => (iconVertActive = 'icon-vert-3')}
-						width="3x"
-						height="3x"
-						class="pa-tooltip"
+						class="minwr-3 minhr-3 pa-tooltip"
 						data-tooltip="Messages"
 					>
 						<i class="fa-solid fa-envelope"></i>
@@ -768,9 +762,7 @@
 					<TabItem
 						isActive={iconVertActive === 'icon-vert-4'}
 						onclick={() => (iconVertActive = 'icon-vert-4')}
-						width="3x"
-						height="3x"
-						class="pa-tooltip"
+						class="minwr-3 minhr-3 pa-tooltip"
 						data-tooltip="Settings"
 					>
 						<i class="fa-solid fa-gear"></i>
@@ -841,7 +833,7 @@
 		<TabItem
 			isActive={standaloneVertActive === 'standalone-vert-1'}
 			onclick={() => (standaloneVertActive = 'standalone-vert-1')}
-			height="3x"
+			class="minhr-3"
 		>
 			{#snippet icon()}
 				<i class="fa-solid fa-house"></i>
@@ -851,7 +843,7 @@
 		<TabItem
 			isActive={standaloneVertActive === 'standalone-vert-2'}
 			onclick={() => (standaloneVertActive = 'standalone-vert-2')}
-			height="3x"
+			class="minhr-3"
 		>
 			{#snippet icon()}
 				<i class="fa-solid fa-chart-bar"></i>
@@ -861,7 +853,7 @@
 		<TabItem
 			isActive={standaloneVertActive === 'standalone-vert-3'}
 			onclick={() => (standaloneVertActive = 'standalone-vert-3')}
-			height="3x"
+			class="minhr-3"
 		>
 			{#snippet icon()}
 				<i class="fa-solid fa-users"></i>
@@ -926,7 +918,7 @@
 		<TabItem
 			isActive={borderedVertActive === 'bordered-vert-1'}
 			onclick={() => (borderedVertActive = 'bordered-vert-1')}
-			height="3x"
+			class="minhr-3"
 		>
 			{#snippet icon()}
 				<i class="fa-solid fa-gauge"></i>
@@ -936,7 +928,7 @@
 		<TabItem
 			isActive={borderedVertActive === 'bordered-vert-2'}
 			onclick={() => (borderedVertActive = 'bordered-vert-2')}
-			height="3x"
+			class="minhr-3"
 		>
 			{#snippet icon()}
 				<i class="fa-solid fa-chart-pie"></i>
@@ -946,7 +938,7 @@
 		<TabItem
 			isActive={borderedVertActive === 'bordered-vert-3'}
 			onclick={() => (borderedVertActive = 'bordered-vert-3')}
-			height="3x"
+			class="minhr-3"
 		>
 			{#snippet icon()}
 				<i class="fa-solid fa-gear"></i>

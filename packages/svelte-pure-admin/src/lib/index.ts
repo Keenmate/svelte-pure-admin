@@ -12,6 +12,7 @@ export type {
 	DataVizVariant,
 	ThemeColor,
 	TooltipPlacement,
+	TooltipMode,
 	TooltipVariant
 } from './types';
 

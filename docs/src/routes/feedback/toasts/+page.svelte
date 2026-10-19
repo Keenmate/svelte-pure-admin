@@ -210,27 +210,27 @@ toastService.dismissAll();`}</CodeBlock>
 <Card titleText="Progress bar">
 	<Heading level={4}>Standard</Heading>
 	<ButtonGroup>
-		<Button variant="primary" onclick={() => fire('primary', { shouldShowProgress: true })}>Primary</Button>
-		<Button variant="success" onclick={() => fire('success', { shouldShowProgress: true })}>Success</Button>
-		<Button variant="danger"  onclick={() => fire('danger',  { shouldShowProgress: true })}>Danger</Button>
-		<Button variant="warning" onclick={() => fire('warning', { shouldShowProgress: true })}>Warning</Button>
-		<Button variant="info"    onclick={() => fire('info',    { shouldShowProgress: true })}>Info</Button>
+		<Button variant="primary" onclick={() => fire('primary', { hasProgress: true })}>Primary</Button>
+		<Button variant="success" onclick={() => fire('success', { hasProgress: true })}>Success</Button>
+		<Button variant="danger"  onclick={() => fire('danger',  { hasProgress: true })}>Danger</Button>
+		<Button variant="warning" onclick={() => fire('warning', { hasProgress: true })}>Warning</Button>
+		<Button variant="info"    onclick={() => fire('info',    { hasProgress: true })}>Info</Button>
 	</ButtonGroup>
 
 	<Heading level={4} class="mt-4">Filled</Heading>
 	<ButtonGroup>
-		<Button variant="primary" onclick={() => fire('primary', { shouldShowProgress: true, isFilled: true })}>Primary</Button>
-		<Button variant="success" onclick={() => fire('success', { shouldShowProgress: true, isFilled: true })}>Success</Button>
-		<Button variant="danger"  onclick={() => fire('danger',  { shouldShowProgress: true, isFilled: true })}>Danger</Button>
-		<Button variant="warning" onclick={() => fire('warning', { shouldShowProgress: true, isFilled: true })}>Warning</Button>
-		<Button variant="info"    onclick={() => fire('info',    { shouldShowProgress: true, isFilled: true })}>Info</Button>
+		<Button variant="primary" onclick={() => fire('primary', { hasProgress: true, isFilled: true })}>Primary</Button>
+		<Button variant="success" onclick={() => fire('success', { hasProgress: true, isFilled: true })}>Success</Button>
+		<Button variant="danger"  onclick={() => fire('danger',  { hasProgress: true, isFilled: true })}>Danger</Button>
+		<Button variant="warning" onclick={() => fire('warning', { hasProgress: true, isFilled: true })}>Warning</Button>
+		<Button variant="info"    onclick={() => fire('info',    { hasProgress: true, isFilled: true })}>Info</Button>
 	</ButtonGroup>
 
 	<Heading level={4} class="mt-4">Custom progress color</Heading>
 	<ButtonGroup>
-		<Button variant="primary" onclick={() => fire('primary', { shouldShowProgress: true, progressColor: '#e74c3c' })}>Red progress</Button>
-		<Button variant="success" onclick={() => fire('success', { shouldShowProgress: true, progressColor: '#8b5cf6' })}>Purple progress</Button>
-		<Button variant="info"    onclick={() => fire('info',    { shouldShowProgress: true, progressColor: '#14b8a6' })}>Teal progress</Button>
+		<Button variant="primary" onclick={() => fire('primary', { hasProgress: true, progressColor: '#e74c3c' })}>Red progress</Button>
+		<Button variant="success" onclick={() => fire('success', { hasProgress: true, progressColor: '#8b5cf6' })}>Purple progress</Button>
+		<Button variant="info"    onclick={() => fire('info',    { hasProgress: true, progressColor: '#14b8a6' })}>Teal progress</Button>
 	</ButtonGroup>
 
 	<Paragraph isMuted class="mt-4">
@@ -385,7 +385,7 @@ interface ToastOptions {
 	themeColor?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 	isFilled?: boolean;
 	duration?: number;          // ms; 0 = persistent
-	shouldShowProgress?: boolean;
+	hasProgress?: boolean;
 	progressColor?: string;
 	maxWidth?: string;          // CSS width (e.g. '50rem')
 	actions?: ToastAction[];

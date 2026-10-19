@@ -8,9 +8,9 @@
 
 	interface Props {
 		/** Controls panel visibility */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Show backdrop overlay behind panel (default true) */
-		shouldShowBackdrop?: boolean;
+		hasBackdrop?: boolean;
 		/** Use overlay mode (default true). When false, panel appears inline (split-view) */
 		isOverlay?: boolean;
 		/** Main content area (table, list, etc.) */
@@ -24,8 +24,8 @@
 	}
 
 	let {
-		show = $bindable(false),
-		shouldShowBackdrop = true,
+		isOpen = $bindable(false),
+		hasBackdrop = true,
 		isOverlay = true,
 		main,
 		children,
@@ -42,24 +42,24 @@
 
 	const overlayClasses = $derived(() => {
 		const base = ['pa-detail-view__overlay'];
-		if (show && shouldShowBackdrop) base.push('pa-detail-view__overlay--visible');
+		if (isOpen && hasBackdrop) base.push('pa-detail-view__overlay--visible');
 		return base.join(' ');
 	});
 
 	const panelClasses = $derived(() => {
 		const base = ['pa-detail-view__panel'];
-		if (show) base.push('pa-detail-view__panel--open');
+		if (isOpen) base.push('pa-detail-view__panel--open');
 		return base.join(' ');
 	});
 
 	function handleClose() {
-		show = false;
+		isOpen = false;
 		onclose?.();
 	}
 
 	// Escape key: only listen when panel is open
 	$effect(() => {
-		if (!show) return;
+		if (!isOpen) return;
 
 		function handleKeydown(event: KeyboardEvent) {
 			if (event.key === 'Escape') {
@@ -74,7 +74,7 @@
 
 <div class={classes()}>
 	{#if isOverlay}
-		<!-- Backdrop overlay (hidden by CSS default, visible when show && shouldShowBackdrop) -->
+		<!-- Backdrop overlay (hidden by CSS default, visible when isOpen && hasBackdrop) -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div class={overlayClasses()} onclick={handleClose}></div>

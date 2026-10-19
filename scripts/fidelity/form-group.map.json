@@ -5,7 +5,7 @@
     "body":       { "prop": "children",     "kind": "slot" },
     "validation": { "prop": "validation",     "kind": "enum", "values": ["success", "warning", "error"] },
     "isRequired":   { "prop": "isRequired",   "kind": "bool" },
-    "horizontal": { "prop": "isHorizontal", "kind": "bool" },
+    "isHorizontal": { "prop": "isHorizontal", "kind": "bool" },
     "extraClass": { "prop": "class",        "kind": "string" }
   }
 }

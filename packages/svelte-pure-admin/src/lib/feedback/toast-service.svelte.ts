@@ -70,7 +70,7 @@ export interface ToastOptions {
 	/** Auto-dismiss duration in ms; 0 means persistent (user must dismiss) */
 	duration?: number;
 	/** Show progress bar */
-	shouldShowProgress?: boolean;
+	hasProgress?: boolean;
 	/** Custom progress bar color (CSS color value) */
 	progressColor?: string;
 	/** Custom max-width (e.g. '50rem', '500px') */

@@ -67,7 +67,7 @@
 	<div class="maxwr-110">
 		<NotificationsPanel
 			{items}
-			show
+			isOpen
 			titleText="Notifications"
 			markAllReadText="Mark all as read"
 			footerText="View all notifications"
@@ -80,7 +80,7 @@
 	{#snippet description()}
 		Full-width list (<Code>isPageView</Code>) with selection checkboxes and per-item actions.
 	{/snippet}
-	<NotificationsPanel {items} isPageView shouldShowCheckboxes>
+	<NotificationsPanel {items} isPageView hasCheckboxes>
 		{#snippet itemActions(item)}
 			<Button variant="secondary" size="xs">Mark read</Button>
 			<Button variant="danger" size="xs">Dismiss</Button>
@@ -105,13 +105,13 @@
 	<Heading level={4}>Dropdown panel</Heading>
 	<CodeBlock language="html" class="mb-4">{`<NotificationsPanel
   {items}
-  show
+  isOpen
   titleText="Notifications"
   onmarkallread={markAllRead}
 />`}</CodeBlock>
 
 	<Heading level={4}>Page view with actions</Heading>
-	<CodeBlock language="html">{`<NotificationsPanel {items} isPageView shouldShowCheckboxes>
+	<CodeBlock language="html">{`<NotificationsPanel {items} isPageView hasCheckboxes>
   {#snippet itemActions(item)}
     <Button variant="secondary" size="xs">Mark read</Button>
   {/snippet}

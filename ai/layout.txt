@@ -60,8 +60,8 @@ COMPLETE LAYOUT SETUP EXAMPLE
 
 <Layout>
   <Navbar
-    showBurger={true}
-    burgerActive={!sidebarCollapsed}
+    hasBurger={true}
+    isBurgerActive={!sidebarCollapsed}
     onburgerclick={toggleSidebar}
   >
     {#snippet brand()}
@@ -177,9 +177,9 @@ engines (navbar-fit on .pa-navbar__inner; navbar-dropdown globally).
 Props (shell only):
   class?: string              Additional CSS classes for outer <nav>
   innerClass?: string         Additional CSS classes for .pa-navbar__inner
-  showBurger?: boolean        Show the burger toggle (default: false)
+  hasBurger?: boolean         Show the burger toggle (default: false)
   onburgerclick?: () => void  Burger click handler
-  burgerActive?: boolean      Burger in active X state (default: false)
+  isBurgerActive?: boolean    Burger in active X state (default: false)
   start?: Snippet             START zone content (inline-start)
   center?: Snippet            CENTER zone content (flex:1)
   end?: Snippet               END zone content (inline-end)
@@ -201,7 +201,7 @@ Content pieces (place inside the zones):
                client-side into sections (single round-trip, no fan-out). Props:
                value (bindable), placeholder, globalSearch, onselect, groups
                (SearchGroup[] label/icon/order/limit), debounce, minChars, emptyText,
-               allowHtml (render <mark> highlight).
+               shouldRenderHtml (render <mark> highlight).
   NavbarSearchInput type-and-go (.pa-navbar-search--input): a GET <form> that navigates
                to a results page on Enter (no dropdown/palette). Props: action, method,
                name (->query param), value, placeholder.
@@ -210,7 +210,7 @@ Content pieces (place inside the zones):
 Search destination + sidebar search (rc15):
   SearchResults page-level results list (.pa-search-results). Props: results
                (SearchResult[]), variant (compact|detailed|grouped|cards), groups,
-               allowHtml, onselect, emptyText. `grouped` buckets by SearchResult.group.
+               shouldRenderHtml, onselect, emptyText. `grouped` buckets by SearchResult.group.
   SidebarSearch sidebar search affordance (.pa-sidebar__search); renders its own
                <li class="pa-sidebar__item">. Trigger mode (onclick -> palette) or
                type-and-go (set `action` -> .pa-sidebar__search--input GET form).
@@ -224,7 +224,7 @@ Minimal navbar (config brand auto-fills AppHeader):
 
 Navbar composing all three zones:
 
-<Navbar showBurger onburgerclick={toggleSidebar}>
+<Navbar hasBurger onburgerclick={toggleSidebar}>
   {#snippet start()}
     <AppHeader><h1>Admin Panel</h1></AppHeader>
     <NavMenu collapse="sidebar" collapseLabelText="Menu">
@@ -265,7 +265,7 @@ data-pa-fit-step / pa-fit-hidden to hand-author.
 
 Composed header brand (wordmark shrinks to a monogram; version drops first):
 
-<Navbar showBurger onburgerclick={toggleSidebar}>
+<Navbar hasBurger onburgerclick={toggleSidebar}>
   {#snippet start()}
     <AppHeader>
       <h1>
@@ -428,7 +428,7 @@ Props:
   start?: Snippet          Start section (copyright; left in LTR, right in RTL)
   center?: Snippet         Center section (optional)
   end?: Snippet            End section (version, links; right in LTR, left in RTL)
-  endVertical?: boolean    Stack end section items vertically (default: false)
+  isEndVertical?: boolean  Stack end section items vertically (default: false)
   children?: Snippet       Legacy fallback (renders all content directly)
 
 Basic footer:
@@ -458,7 +458,7 @@ Three-section footer:
 
 Footer with vertical end section:
 
-<Footer endVertical={true}>
+<Footer isEndVertical={true}>
   {#snippet start()}
     <p>My App</p>
   {/snippet}
@@ -700,7 +700,7 @@ Fixed overlay panel that slides in from the right. Uses pa-detail-panel--overlay
 Supports escape key and backdrop click to close. Locks body scroll when open.
 
 Props:
-  show?: boolean (bindable)    Controls panel visibility (default: false)
+  isOpen?: boolean (bindable)  Controls panel visibility (default: false)
   onclose?: () => void         Called when panel is closed
   class?: string               Additional CSS classes
   children?: Snippet           Panel content
@@ -711,7 +711,7 @@ Props:
 
 <button onclick={() => showPanel = true}>Open Panel</button>
 
-<SlidePanel bind:show={showPanel} onclose={() => console.log('closed')}>
+<SlidePanel bind:isOpen={showPanel} onclose={() => console.log('closed')}>
   <div class="pa-detail-panel__header">
     <h3>Detail View</h3>
     <button onclick={() => showPanel = false}>X</button>
@@ -791,7 +791,7 @@ File: src/routes/+layout.svelte
 </script>
 
 <Layout>
-  <Navbar showBurger={true} burgerActive={!sidebarCollapsed} onburgerclick={toggleSidebar}>
+  <Navbar hasBurger={true} isBurgerActive={!sidebarCollapsed} onburgerclick={toggleSidebar}>
     {#snippet brand()}
       <img src="/logo.svg" alt="My App" />
       <h1>My App</h1>

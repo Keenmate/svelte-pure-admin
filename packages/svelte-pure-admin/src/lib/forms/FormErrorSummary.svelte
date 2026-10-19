@@ -17,14 +17,14 @@
 		/** Array of error objects */
 		errors: FormErrorItem[];
 		/** Whether to show the summary (typically: submitted && errors.length > 0) */
-		show?: boolean;
+		isVisible?: boolean;
 		/** Additional CSS class */
 		class?: string;
 	}
 
-	let { errors, show = true, class: className = '' }: Props = $props();
+	let { errors, isVisible = true, class: className = '' }: Props = $props();
 
-	const shouldShow = $derived(show && errors.length > 0);
+	const shouldShow = $derived(isVisible && errors.length > 0);
 	const errorCount = $derived(errors.length);
 	const headingText = $derived(
 		$_(errorCount === 1 ? 'pureAdmin.form.errorFound' : 'pureAdmin.form.errorsFound', {

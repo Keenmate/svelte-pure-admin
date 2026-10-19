@@ -617,7 +617,7 @@
 					<Tooltip
 						text="Settings > User Preferences > Notifications > Email"
 						placement="bottom"
-						multiline
+						isMultiline
 					>
 						<Badge variant="secondary" class="wr-6 text-truncate" isEllipsisStart
 							>Settings > User Preferences > Notifications > Email</Badge
@@ -626,7 +626,7 @@
 					<Tooltip
 						text="/var/www/html/application/config/database.php"
 						placement="bottom"
-						multiline
+						isMultiline
 					>
 						<Badge variant="info" class="wr-7 text-truncate" isEllipsisStart
 							>/var/www/html/application/config/database.php</Badge
@@ -635,7 +635,7 @@
 					<Tooltip
 						text="Components > Forms > Inputs > TextArea.svelte"
 						placement="bottom"
-						multiline
+						isMultiline
 					>
 						<Badge variant="primary" class="wr-6 text-truncate" isEllipsisStart
 							>Components > Forms > Inputs > TextArea.svelte</Badge
@@ -644,7 +644,7 @@
 					<Tooltip
 						text="Europe > Germany > Berlin > Mitte > Alexanderplatz"
 						placement="bottom"
-						multiline
+						isMultiline
 					>
 						<Badge variant="warning" class="wr-5 text-truncate" isEllipsisStart
 							>Europe > Germany > Berlin > Mitte > Alexanderplatz</Badge

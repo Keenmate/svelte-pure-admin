@@ -9,14 +9,8 @@
 	interface Props {
 		/** Validation state (success, warning, error) */
 		validation?: ValidationState;
-		/** Has validation error (legacy, prefer validation prop) */
-		isError?: boolean;
-		/** Has validation success (legacy, prefer validation prop) */
-		isSuccess?: boolean;
 		/** Horizontal layout (label left, input right) */
 		isHorizontal?: boolean;
-		/** Horizontal layout - alias for isHorizontal */
-		horizontal?: boolean;
 		/**
 		 * Mark the group required — emits `pa-form-group--required`, the escape
 		 * hatch for NON-native widgets (custom selects, etc.) that have no
@@ -33,34 +27,21 @@
 
 	let {
 		validation,
-		isError = false,
-		isSuccess = false,
 		isHorizontal = false,
-		horizontal = false,
 		isRequired = false,
 		class: className = '',
 		children
 	}: Props = $props();
 
-	// Merge horizontal props (horizontal is alias for isHorizontal)
-	const effectiveHorizontal = $derived(isHorizontal || horizontal);
-
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-form-group'];
-		// New validation prop takes precedence
-		if (validation) {
-			base.push(`pa-form-group--${validation}`);
-		} else {
-			// Legacy boolean props
-			if (isSuccess) base.push('pa-form-group--success');
-			if (isError) base.push('pa-form-group--error');
-		}
+		if (validation) base.push(`pa-form-group--${validation}`);
 		// `pa-form-group--required` is the escape hatch for non-native widgets
 		// (core `_form-layout.scss`); native controls should instead carry the
 		// `required` attribute so `:has(:required) > label::after` fires.
 		if (isRequired) base.push('pa-form-group--required');
-		if (effectiveHorizontal) base.push('pa-form-group--horizontal');
+		if (isHorizontal) base.push('pa-form-group--horizontal');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

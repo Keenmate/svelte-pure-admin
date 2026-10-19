@@ -20,7 +20,7 @@
 	 * Based on @keenmate/pure-admin-core snippets/notifications.html
 	 *
 	 * Two modes:
-	 *   - Dropdown panel (default): mounted next to a bell button, toggled via `show`.
+	 *   - Dropdown panel (default): mounted next to a bell button, toggled via `isOpen`.
 	 *   - Page-view (`isPageView`): full-page list, no panel chrome, supports
 	 *     hover-revealed actions and bulk-select checkboxes.
 	 *
@@ -35,7 +35,7 @@
 		/** Page-view mode — bare list with --page modifier, no panel wrapper */
 		isPageView?: boolean;
 		/** Show/hide the dropdown panel (ignored when isPageView) */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Heading text for the dropdown header */
 		titleText?: string;
 		/** "Mark all as read" link text */
@@ -45,7 +45,7 @@
 		/** Footer link href (dropdown only) */
 		footerHref?: string;
 		/** Show leading checkboxes on each item (page-view convention for bulk actions) */
-		shouldShowCheckboxes?: boolean;
+		hasCheckboxes?: boolean;
 		/** Additional CSS classes on the root element */
 		class?: string;
 		/** Per-item actions snippet — receives the NotificationItem; rendered inside .pa-notifications__actions */
@@ -67,12 +67,12 @@
 	let {
 		items = [],
 		isPageView = false,
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		titleText,
 		markAllReadText,
 		footerText,
 		footerHref = '#all-notifications',
-		shouldShowCheckboxes = false,
+		hasCheckboxes = false,
 		class: className = '',
 		itemActions,
 		customItems,
@@ -89,7 +89,7 @@
 
 	const panelClasses = $derived(() => {
 		const base = ['pa-notifications__panel'];
-		if (show) base.push('is-open');
+		if (isOpen) base.push('is-open');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -123,7 +123,7 @@
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 				<li class={itemClasses(item)} onclick={() => onitemclick?.(item)}>
-					{#if isPageView && shouldShowCheckboxes}
+					{#if isPageView && hasCheckboxes}
 						<label class="pa-checkbox" onclick={(e) => e.stopPropagation()}>
 							<input
 								type="checkbox"

@@ -123,11 +123,11 @@
 		bind:currentPage={basicPage}
 		totalPages={basicTotalPages}
 		justify="center"
-		showPageInput={true}
+		hasPageInput={true}
 		onprevious={goBasicPrev}
 		onnext={goBasicNext}
-		disablePrevious={basicPage <= 1}
-		disableNext={basicPage >= basicTotalPages}
+		isPreviousDisabled={basicPage <= 1}
+		isNextDisabled={basicPage >= basicTotalPages}
 	/>
 
 	<Alert variant="info" size="sm">
@@ -144,13 +144,13 @@
 		bind:currentPage={fullPage}
 		totalPages={fullTotalPages}
 		justify="start"
-		showPageInput={true}
+		hasPageInput={true}
 		onfirst={goFullFirst}
 		onprevious={goFullPrev}
 		onnext={goFullNext}
 		onlast={goFullLast}
-		disablePrevious={fullPage <= 1}
-		disableNext={fullPage >= fullTotalPages}
+		isPreviousDisabled={fullPage <= 1}
+		isNextDisabled={fullPage >= fullTotalPages}
 	/>
 
 	<Heading level={4} class="mt-8">End-Aligned with Info Text</Heading>
@@ -158,13 +158,13 @@
 		bind:currentPage={infoPage}
 		totalPages={infoTotalPages}
 		justify="end"
-		showPageInput={false}
-		showInfo={false}
+		hasPageInput={false}
+		hasInfo={false}
 		infoText="Showing {infoFrom}-{infoTo} of {infoTotal}"
 		onprevious={goInfoPrev}
 		onnext={goInfoNext}
-		disablePrevious={infoPage <= 1}
-		disableNext={infoPage >= infoTotalPages}
+		isPreviousDisabled={infoPage <= 1}
+		isNextDisabled={infoPage >= infoTotalPages}
 	/>
 
 	<Alert variant="info" size="sm">
@@ -181,13 +181,13 @@
 		bind:currentPage={tablePage}
 		totalPages={tableTotalPages}
 		justify="end"
-		showPageInput={true}
+		hasPageInput={true}
 		onfirst={goTableFirst}
 		onprevious={goTablePrev}
 		onnext={goTableNext}
 		onlast={goTableLast}
-		disablePrevious={tablePage <= 1}
-		disableNext={tablePage >= tableTotalPages}
+		isPreviousDisabled={tablePage <= 1}
+		isNextDisabled={tablePage >= tableTotalPages}
 	/>
 
 	<TableContainer>
@@ -222,11 +222,11 @@
 		bind:currentPage={tablePage}
 		totalPages={tableTotalPages}
 		justify="center"
-		showPageInput={true}
+		hasPageInput={true}
 		onprevious={goTablePrev}
 		onnext={goTableNext}
-		disablePrevious={tablePage <= 1}
-		disableNext={tablePage >= tableTotalPages}
+		isPreviousDisabled={tablePage <= 1}
+		isNextDisabled={tablePage >= tableTotalPages}
 	/>
 </Card>
 
@@ -240,8 +240,8 @@
 			<Pager
 				currentPage={1}
 				totalPages={5}
-				showPageInput={false}
-				showInfo={false}
+				hasPageInput={false}
+				hasInfo={false}
 			/>
 		</Column>
 		<Column md="1-2">
@@ -249,8 +249,8 @@
 			<Pager
 				currentPage={1}
 				totalPages={5}
-				showPageInput={false}
-				showInfo={false}
+				hasPageInput={false}
+				hasInfo={false}
 				infoText="Page 1 of 5"
 			/>
 		</Column>
@@ -265,8 +265,8 @@
 	<Pager
 		currentPage={1}
 		totalPages={10}
-		showPageInput={false}
-		showInfo={false}
+		hasPageInput={false}
+		hasInfo={false}
 		infoPlacement="start"
 		infoText="Showing 1-25 of 247 items"
 	/>
@@ -421,13 +421,13 @@
 						<td>Pager alignment (RTL-aware)</td>
 					</tr>
 					<tr>
-						<td><Code>showPageInput</Code></td>
+						<td><Code>hasPageInput</Code></td>
 						<td><Code>boolean</Code></td>
 						<td><Code>true</Code></td>
 						<td>Show the page number input</td>
 					</tr>
 					<tr>
-						<td><Code>showInfo</Code></td>
+						<td><Code>hasInfo</Code></td>
 						<td><Code>boolean</Code></td>
 						<td><Code>true</Code></td>
 						<td>Show the info section</td>
@@ -445,13 +445,13 @@
 						<td>Info before (<Code>start</Code>) or after (<Code>end</Code>) the controls</td>
 					</tr>
 					<tr>
-						<td><Code>disablePrevious</Code></td>
+						<td><Code>isPreviousDisabled</Code></td>
 						<td><Code>boolean</Code></td>
 						<td><Code>false</Code></td>
 						<td>Disable previous/first buttons</td>
 					</tr>
 					<tr>
-						<td><Code>disableNext</Code></td>
+						<td><Code>isNextDisabled</Code></td>
 						<td><Code>boolean</Code></td>
 						<td><Code>false</Code></td>
 						<td>Disable next/last buttons</td>

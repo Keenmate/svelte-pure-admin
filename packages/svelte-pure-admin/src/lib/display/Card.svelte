@@ -6,7 +6,7 @@
 	import Icon from '../icon/Icon.svelte';
 
 	import { onMount } from 'svelte';
-	import type { ThemeColor, TooltipPlacement, TooltipVariant } from '../types';
+	import type { ThemeColor, TooltipMode, TooltipPlacement, TooltipVariant } from '../types';
 	import { loadCoreJs } from '../internal/core-js';
 
 	// Core card variants: primary/success/warning/danger (no --info / --secondary)
@@ -41,7 +41,7 @@
 		/**
 		 * Tooltip on the title (`.pa-card__title-text`). `true` shows the title's own
 		 * text, a string shows custom text. By default it appears ONLY while the title is
-		 * truncated (ellipsis); see `titleTooltipAlways`.
+		 * truncated (ellipsis); see `titleTooltipMode`.
 		 */
 		titleTooltip?: boolean | string;
 		/** Title tooltip placement (default `top`) */
@@ -49,17 +49,17 @@
 		/** Title tooltip colour */
 		titleTooltipVariant?: TooltipVariant;
 		/** Wide, wrapping title tooltip */
-		titleTooltipMultiline?: boolean;
+		titleTooltipIsMultiline?: boolean;
 		/** Help cursor on the title */
 		titleTooltipIsHelp?: boolean;
 		/** Dotted-underline keyword style on the title */
 		titleTooltipIsKeyword?: boolean;
-		/** Show the title tooltip even when the text is not truncated */
-		titleTooltipAlways?: boolean;
+		/** When the title tooltip appears: `overflow` (default) = only while truncated, `always` = every hover */
+		titleTooltipMode?: TooltipMode;
 		/**
 		 * Tooltip on the description (`.pa-card__description`). `true` shows the description's own
 		 * text, a string shows custom text. By default it appears ONLY while the description is
-		 * truncated (ellipsis); see `descriptionTooltipAlways`.
+		 * truncated (ellipsis); see `descriptionTooltipMode`.
 		 */
 		descriptionTooltip?: boolean | string;
 		/** Description tooltip placement (default `top`) */
@@ -67,19 +67,19 @@
 		/** Description tooltip colour */
 		descriptionTooltipVariant?: TooltipVariant;
 		/** Wide, wrapping description tooltip */
-		descriptionTooltipMultiline?: boolean;
+		descriptionTooltipIsMultiline?: boolean;
 		/** Help cursor on the description */
 		descriptionTooltipIsHelp?: boolean;
 		/** Dotted-underline keyword style on the description */
 		descriptionTooltipIsKeyword?: boolean;
-		/** Show the description tooltip even when the text is not truncated */
-		descriptionTooltipAlways?: boolean;
+		/** When the description tooltip appears: `overflow` (default) = only while truncated, `always` = every hover */
+		descriptionTooltipMode?: TooltipMode;
 		/** Subtitle/description text (shown below title) - deprecated, use descriptionText for inline layout */
 		subtitleText?: string;
 		/** Subtitle snippet (for rich content subtitles with markup - alternative to subtitleText) */
 		subtitle?: import('svelte').Snippet;
 		/** Allow header description to wrap to its own line (v1.4.1 --wrap modifier) */
-		headerWrap?: boolean;
+		shouldWrapHeader?: boolean;
 		/** Accent border under heading in card header */
 		isHeaderUnderlined?: boolean;
 		/** Underline color variant (requires isHeaderUnderlined) */
@@ -149,20 +149,20 @@
 		titleTooltip,
 		titleTooltipPlacement,
 		titleTooltipVariant,
-		titleTooltipMultiline = false,
+		titleTooltipIsMultiline = false,
 		titleTooltipIsHelp = false,
 		titleTooltipIsKeyword = false,
-		titleTooltipAlways = false,
+		titleTooltipMode = 'overflow',
 		descriptionTooltip,
 		descriptionTooltipPlacement,
 		descriptionTooltipVariant,
-		descriptionTooltipMultiline = false,
+		descriptionTooltipIsMultiline = false,
 		descriptionTooltipIsHelp = false,
 		descriptionTooltipIsKeyword = false,
-		descriptionTooltipAlways = false,
+		descriptionTooltipMode = 'overflow',
 		subtitleText,
 		subtitle,
-		headerWrap = false,
+		shouldWrapHeader = false,
 		isHeaderUnderlined = false,
 		headerUnderlineColor,
 		headerUnderlineThemeColor,
@@ -260,20 +260,20 @@
 		text: titleText ?? titleSnippetText,
 		placement: titleTooltipPlacement,
 		variant: titleTooltipVariant,
-		multiline: titleTooltipMultiline,
+		multiline: titleTooltipIsMultiline,
 		isHelp: titleTooltipIsHelp,
 		isKeyword: titleTooltipIsKeyword,
-		always: titleTooltipAlways
+		always: titleTooltipMode === 'always'
 	});
 	const descriptionTip = $derived<TooltipOpts>({
 		on: descriptionTooltip,
 		text: descriptionText ?? descriptionSnippetText,
 		placement: descriptionTooltipPlacement,
 		variant: descriptionTooltipVariant,
-		multiline: descriptionTooltipMultiline,
+		multiline: descriptionTooltipIsMultiline,
 		isHelp: descriptionTooltipIsHelp,
 		isKeyword: descriptionTooltipIsKeyword,
-		always: descriptionTooltipAlways
+		always: descriptionTooltipMode === 'always'
 	});
 
 	// Enhance the tooltip targets with core's floating-tooltip runtime once mounted.
@@ -312,7 +312,7 @@
 	// Build header class string (v1.4.1 three-part layout with --wrap modifier)
 	const headerClasses = $derived(() => {
 		const base = ['pa-card__header'];
-		if (headerWrap) base.push('pa-card__header--wrap');
+		if (shouldWrapHeader) base.push('pa-card__header--wrap');
 		if (isHeaderUnderlined) {
 			base.push('pa-card__header--underlined');
 			if (headerUnderlineColor) base.push(`pa-card__header--underline-${headerUnderlineColor}`);
@@ -351,7 +351,7 @@
 							bind:this={titleEl}
 							class={tooltipClasses('pa-card__title-text', titleTip)}
 							data-tooltip={tooltipText(titleTip)}
-							data-pa-tooltip-overflow={titleTooltip && !titleTooltipAlways ? '' : undefined}
+							data-pa-tooltip-overflow={titleTooltip && titleTooltipMode !== 'always' ? '' : undefined}
 						>
 							{#if title}{@render title()}{:else}{titleText}{/if}
 						</h3>
@@ -363,7 +363,7 @@
 						bind:this={descriptionEl}
 						class={tooltipClasses('pa-card__description', descriptionTip)}
 						data-tooltip={tooltipText(descriptionTip)}
-						data-pa-tooltip-overflow={descriptionTooltip && !descriptionTooltipAlways ? '' : undefined}
+						data-pa-tooltip-overflow={descriptionTooltip && descriptionTooltipMode !== 'always' ? '' : undefined}
 					>{#if description}{@render description()}{:else}{descriptionText}{/if}</p>
 				{:else if subtitle}
 					<!-- Legacy subtitle → canonical .pa-card__meta (the card's own muted

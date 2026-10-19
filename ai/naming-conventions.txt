@@ -37,8 +37,6 @@ Used for component state, visual modifiers, and behavior toggles.
   isPlain          -- Removes card styling (TableCard)
   isResponsive     -- Responsive table with horizontal scrolling
   isResponsiveGrid -- Collapses to cards on mobile
-  isError          -- Has validation error (FormGroup, legacy)
-  isSuccess        -- Has validation success (FormGroup, legacy)
   isRequired       -- Mark as required (FormGroup)
   isEllipsisStart  -- Ellipsis at start of text (Badge)
   isInteractive    -- Renders as button element (CompositeBadge)
@@ -78,14 +76,16 @@ BOOLEAN PROPS: should* PREFIX
 Behavior flags -- what the component SHOULD do.
 Controls behavior, not appearance.
 
-  shouldShowClose      -- Show close button in header (Modal)
-  shouldCloseOnEscape  -- Close on Escape key (Modal)
-  shouldShowProgress   -- Show progress bar (Toast)
+  shouldCloseOnEscape    -- Close on Escape key (Modal)
+  shouldHandleShortcuts  -- Handle the global keyboard shortcuts (PureAdminProvider)
+  shouldWrapHeader       -- Let the card description wrap onto its own line (Card)
+
+Showing a part is has* (hasClose, hasProgress), not shouldShow*.
 
 Examples:
 
-  <Modal shouldShowClose={false} shouldCloseOnEscape={false}>...</Modal>
-  <Toast shouldShowProgress duration={5000} titleText="Saved" messageText="Done" />
+  <Modal hasClose={false} shouldCloseOnEscape={false}>...</Modal>
+  <Toast hasProgress duration={5000} titleText="Saved" messageText="Done" />
 
 
 TEXT CONTENT PROPS: *Text SUFFIX
@@ -152,7 +152,7 @@ WRONG (do NOT use camelCase for handlers):
 Examples:
 
   <Button onclick={() => console.log('clicked')}>Click Me</Button>
-  <Modal bind:show={isOpen} onclose={() => console.log('closed')}>...</Modal>
+  <Modal bind:isOpen={isOpen} onclose={() => console.log('closed')}>...</Modal>
   <Input bind:value={email} oninput={(e) => validate(e)} onblur={handleBlur} />
   <Field labelText="ID" valueText="abc-123" copyMode="btn" oncopy={(v) => log(v)} />
 
@@ -173,7 +173,7 @@ WRONG:
 Examples:
 
   <Modal
-    bind:show={isOpen}
+    bind:isOpen={isOpen}
     beforeCloseCallback={() => {
       if (hasUnsavedChanges) {
         return false; // Prevent close!
@@ -321,9 +321,13 @@ If you see old patterns, here is the correct naming:
   readonly                 isReadonly             is* for booleans (native too)
   labelSnippet             label                  bare name = rich snippet
   style (design enum)      type                   style = inline CSS only
-  showClose                shouldShowClose        should* for behavior flags
+  showClose                hasClose               has* for showing a part
   closeOnEscape            shouldCloseOnEscape    should* for behavior flags
-  showProgress             shouldShowProgress     should* for behavior flags
+  showProgress             hasProgress            has* for showing a part
+  show (overlay)           isOpen                 is* for state
+  noHeader                 hasHeader={false}      has* defaulting to true, not no*
+  touched                  isTouched              is* for state
+  disableShortcuts         shouldHandleShortcuts  should* for behaviour
   title (string)           titleText              *Text suffix for strings
   subtitle (string)        subtitleText           *Text suffix for strings
   message (string)         messageText            *Text suffix for strings
@@ -363,8 +367,8 @@ BENEFITS OF THIS METHODOLOGY
 CRITICAL REMINDERS
 -------------------
 - is* for state booleans: isStriped, isCompact, isGhost, isLoading
-- has* for feature presence: hasPadding, hasBorder, hasContainerQuery
-- should* for behavior flags: shouldShowClose, shouldCloseOnEscape
+- has* for feature presence: hasPadding, hasBorder, hasContainerQuery, hasClose, hasProgress
+- should* for behavior flags: shouldCloseOnEscape, shouldHandleShortcuts
 - *Text for display strings: titleText, labelText, messageText
 - on* (lowercase!) for events: onclick, onclose, onconfirm
 - *Callback only when return value matters: beforeCloseCallback, copyValueCallback

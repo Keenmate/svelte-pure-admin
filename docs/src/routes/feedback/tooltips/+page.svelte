@@ -143,14 +143,14 @@
 			<!-- Multiline Tooltips -->
 			<Card titleText="Multiline Tooltips" class="mb-4">
 				<Paragraph class="mb-3 text-sm">
-					Use <Code>multiline</Code> prop for longer text (20rem width, left-aligned):
+					Use <Code>isMultiline</Code> prop for longer text (20rem width, left-aligned):
 				</Paragraph>
 				<div class="text-center">
 					<ButtonGroup>
 						<Tooltip
 							text="This button will save your changes to the database. Make sure you have reviewed all fields before clicking. Changes cannot be undone after saving."
 							placement="bottom"
-							multiline
+							isMultiline
 						>
 							<Button variant="primary" size="sm">
 								<span class="pa-icon pa-icon--save" aria-hidden="true"></span> Save
@@ -159,7 +159,7 @@
 						<Tooltip
 							text="This action will permanently delete the selected item and all associated data. This operation cannot be reversed. Please confirm you want to proceed."
 							placement="bottom"
-							multiline
+							isMultiline
 						>
 							<Button variant="danger" size="sm">
 								<span class="pa-icon pa-icon--delete" aria-hidden="true"></span> Delete
@@ -324,7 +324,7 @@
 &lt;Tooltip text="..." variant="success"&gt;...&lt;/Tooltip&gt;
 
 &lt;!-- Multiline --&gt;
-&lt;Tooltip text="..." multiline&gt;...&lt;/Tooltip&gt;</code
+&lt;Tooltip text="..." isMultiline&gt;...&lt;/Tooltip&gt;</code
 						></pre>
 				</Column>
 				<Column size="100" md="1-2">

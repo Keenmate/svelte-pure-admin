@@ -13,7 +13,7 @@
 	 *
 	 * Full-text match highlight: a backend returns the matched fragment wrapped in
 	 * `<mark class="pa-search-results__mark">…</mark>` (Elasticsearch highlight /
-	 * Postgres ts_headline). Set `allowHtml` to render it (the value is injected as
+	 * Postgres ts_headline). Set `shouldRenderHtml` to render it (the value is injected as
 	 * HTML — the consumer is responsible for it being backend-sanitised).
 	 */
 	import type { SearchResult, SearchGroup } from './command-palette-types';
@@ -32,7 +32,7 @@
 		 */
 		groups?: SearchGroup[];
 		/** Render `title` / `snippet` / `meta` as HTML so backend `<mark>` highlight shows. */
-		allowHtml?: boolean;
+		shouldRenderHtml?: boolean;
 		/** Called when a row is clicked (in addition to following `href`, if any). */
 		onselect?: (result: SearchResult) => void;
 		/** Message shown when `results` is empty. */
@@ -45,7 +45,7 @@
 		results,
 		variant = 'compact',
 		groups,
-		allowHtml = false,
+		shouldRenderHtml = false,
 		onselect,
 		emptyText = 'No results',
 		class: className = ''
@@ -92,7 +92,7 @@
 	}
 </script>
 
-{#snippet text(value: string)}{#if allowHtml}{@html value}{:else}{value}{/if}{/snippet}
+{#snippet text(value: string)}{#if shouldRenderHtml}{@html value}{:else}{value}{/if}{/snippet}
 
 {#snippet item(result: SearchResult)}
 	<a

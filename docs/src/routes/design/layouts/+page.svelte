@@ -198,7 +198,7 @@
 				each zone from <Code>AppHeader</Code>, <Code>NavMenu</Code>, <Code>PageHeader</Code>,
 				<Code>NavbarSearch</Code>, <Code>ProfileButton</Code>, … in any order you like.
 			</Paragraph>
-			<CodeBlock>{`<Navbar showBurger onburgerclick={toggle}>
+			<CodeBlock>{`<Navbar hasBurger onburgerclick={toggle}>
   {#snippet start()}
     <AppHeader><h1>My App</h1></AppHeader>
     <NavMenu>…</NavMenu>

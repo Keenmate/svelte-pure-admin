@@ -141,8 +141,8 @@ Full admin layout with sidebar, navbar, and content area:
 <PureAdminProvider config={{ app: { name: 'My App' } }}>
   <Layout>
     <Navbar
-      showBurger={true}
-      burgerActive={sidebarOpen}
+      hasBurger={true}
+      isBurgerActive={sidebarOpen}
       onburgerclick={() => sidebarOpen = !sidebarOpen}
     />
     <LayoutInner>
@@ -341,7 +341,7 @@ Full admin dashboard:
 
 <PureAdminProvider>
   <Layout>
-    <Navbar showBurger={true} />
+    <Navbar hasBurger={true} />
     <LayoutInner>
       <Sidebar>
         <SidebarItem labelText="Home" href="/" />

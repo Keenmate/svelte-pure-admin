@@ -22,17 +22,17 @@
 		/** Error messages array from validation */
 		errors?: string[] | null;
 		/** Whether the field has been touched/interacted with */
-		touched?: boolean;
+		isTouched?: boolean;
 		/** Field has a value (for showing success state) */
 		hasValue?: boolean;
 		/** Manual state override (takes precedence over errors) */
 		validation?: InputState;
 		/** Additional class for FormGroup */
 		class?: string;
-		/** Horizontal layout */
-		horizontal?: boolean;
+		/** Horizontal layout (label left, input right) */
+		isHorizontal?: boolean;
 		/** The input control */
-		children: Snippet<[{ errors: string[]; touched: boolean; validation?: InputState }]>;
+		children: Snippet<[{ errors: string[]; isTouched: boolean; validation?: InputState }]>;
 	}
 
 	let {
@@ -40,11 +40,11 @@
 		helpText,
 		successMessage,
 		errors = null,
-		touched = false,
+		isTouched = false,
 		hasValue = false,
 		validation,
 		class: className = '',
-		horizontal = false,
+		isHorizontal = false,
 		children
 	}: Props = $props();
 
@@ -52,9 +52,9 @@
 	const normalizedErrors = $derived(errors ?? []);
 	const hasErrors = $derived(normalizedErrors.length > 0);
 
-	// When validation is manually set, use it; otherwise derive from errors/touched
-	const showError = $derived(!validation && touched && hasErrors);
-	const showSuccess = $derived(!validation && touched && !hasErrors && hasValue && !!successMessage);
+	// When validation is manually set, use it; otherwise derive from errors/isTouched
+	const showError = $derived(!validation && isTouched && hasErrors);
+	const showSuccess = $derived(!validation && isTouched && !hasErrors && hasValue && !!successMessage);
 
 	// Help variant follows manual validation or derived state
 	const helpVariant = $derived<InputState | undefined>(
@@ -62,14 +62,14 @@
 	);
 </script>
 
-<FormGroup class={className} {horizontal}>
+<FormGroup class={className} {isHorizontal}>
 	{#if labelText}
 		<FormLabel>{labelText}</FormLabel>
 	{/if}
 
 	<!-- Mark the control `isRequired` inside the snippet — core's
 	     `.pa-form-group:has(:required) > label::after` draws the asterisk. -->
-	{@render children({ errors: normalizedErrors, touched, validation })}
+	{@render children({ errors: normalizedErrors, isTouched, validation })}
 
 	{#if showError}
 		<FormHelp variant="error">{normalizedErrors[0]}</FormHelp>

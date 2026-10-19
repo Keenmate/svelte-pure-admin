@@ -16,8 +16,8 @@
 	"Numeric strip · densest" KPI indicator. <strong>Wide table-card layout — most data per pixel</strong>:
 	metric / now / prev / Δ% / vs target columns. No sparkline, no chart chrome — a stripped-down grid for
 	"spreadsheet-style" scanning. <Code>metric</Code> and <Code>now</Code> are mandatory; the other three
-	columns are independently optional via <Code>noPreviousValue</Code>, <Code>noDeltaPercent</Code>,
-	<Code>noTargetBar</Code>. Each row's hover popover auto-generates from the typed props — no raw
+	columns are independently optional via <Code>hasPreviousValue</Code>, <Code>hasDeltaPercent</Code>,
+	<Code>hasTargetBar</Code> (set to <Code>false</Code>). Each row's hover popover auto-generates from the typed props — no raw
 	markup needed.
 </Paragraph>
 
@@ -123,7 +123,7 @@
 
 <Grid class="mt-xl">
 	<Column size="100" md="25">
-		<KpiStrip titleText="Revenue" isLive noPreviousValue>
+		<KpiStrip titleText="Revenue" isLive hasPreviousValue={false}>
 			<KpiStripRow
 				metricText="MRR"
 				prefixText="$"
@@ -274,9 +274,9 @@
      showing the 4-col, 3-col, and 2-col shapes side-by-side.
      ============================================================ -->
 
-<Heading class="mt-xl" level={3}>Column variations · composable <Code>no*</Code> toggles</Heading>
+<Heading class="mt-xl" level={3}>Column variations · composable <Code>has*</Code> flags</Heading>
 <Paragraph>
-	<Code>noPreviousValue</Code>, <Code>noDeltaPercent</Code>, and <Code>noTargetBar</Code> compose.
+	<Code>hasPreviousValue</Code>, <Code>hasDeltaPercent</Code>, and <Code>hasTargetBar</Code> (all default <Code>true</Code>) compose.
 	<Code>metric</Code> and <Code>now</Code> are mandatory; any combination of the other three can be dropped
 	to land on a 2-, 3-, or 4-column shape. Templates and cell-hiding rules are precomputed in the framework,
 	so consumers just toggle the props.
@@ -284,7 +284,7 @@
 
 <Grid>
 	<Column size="100" md="1-3">
-		<KpiStrip titleText="4-col · noTargetBar" noTargetBar>
+		<KpiStrip titleText="4-col · hasTargetBar={false}" hasTargetBar={false}>
 			<KpiStripRow
 				metricText="Revenue"
 				prefixText="$"
@@ -317,7 +317,7 @@
 	</Column>
 
 	<Column size="100" md="1-3">
-		<KpiStrip titleText="3-col · noPreviousValue + noDeltaPercent" noPreviousValue noDeltaPercent>
+		<KpiStrip titleText="3-col · no prev + no Δ%" hasPreviousValue={false} hasDeltaPercent={false}>
 			<KpiStripRow
 				metricText="Revenue"
 				prefixText="$"
@@ -356,7 +356,7 @@
 	</Column>
 
 	<Column size="100" md="1-3">
-		<KpiStrip titleText="2-col · all three dropped" noPreviousValue noDeltaPercent noTargetBar>
+		<KpiStrip titleText="2-col · all three dropped" hasPreviousValue={false} hasDeltaPercent={false} hasTargetBar={false}>
 			<KpiStripRow
 				metricText="Revenue"
 				prefixText="$"
@@ -413,7 +413,7 @@
 	<Paragraph>
 		<Code>metric</Code> and <Code>now</Code> are mandatory. <Code>previousValue</Code>,
 		<Code>deltaPercent</Code>, and <Code>targetBar</Code> are independently optional via
-		<Code>noPreviousValue</Code> / <Code>noDeltaPercent</Code> / <Code>noTargetBar</Code> on
+		<Code>hasPreviousValue</Code> / <Code>hasDeltaPercent</Code> / <Code>hasTargetBar</Code> (set to <Code>false</Code>) on
 		<Code>KpiStrip</Code>. The modifiers compose freely, so the visible column count lands anywhere from
 		5 (no toggles) down to 2 (all three optional columns dropped: metric + now only). The framework
 		precomputes a <Code>grid-template-columns</Code> selector for every combination, so consumers only
@@ -447,12 +447,12 @@
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
-		<li><Code>noPreviousValue</Code> — drop the prev column (<Code>pa-kpi-strip--no-prev</Code>).</li>
-		<li><Code>noDeltaPercent</Code> — drop the Δ% column (<Code>pa-kpi-strip--no-delta</Code>).</li>
-		<li><Code>noTargetBar</Code> — drop the vs-target column (<Code>pa-kpi-strip--no-target</Code>).</li>
-		<li><Code>noHeader</Code> — suppress the auto-generated header row.</li>
+		<li><Code>hasPreviousValue</Code> (default <Code>true</Code>) — <Code>false</Code> drops the prev column (<Code>pa-kpi-strip--no-prev</Code>).</li>
+		<li><Code>hasDeltaPercent</Code> (default <Code>true</Code>) — <Code>false</Code> drops the Δ% column (<Code>pa-kpi-strip--no-delta</Code>).</li>
+		<li><Code>hasTargetBar</Code> (default <Code>true</Code>) — <Code>false</Code> drops the vs-target column (<Code>pa-kpi-strip--no-target</Code>).</li>
+		<li><Code>hasHeader</Code> (default <Code>true</Code>) — <Code>false</Code> suppresses the auto-generated header row.</li>
 		<li><Code>headerLabels</Code> — override individual header labels: <Code>{`{ metric, now, previousValue, deltaPercent, targetBar }`}</Code>.</li>
-		<li><Code>head</Code> snippet — fully-custom header markup. Wins over <Code>headerLabels</Code> + <Code>noHeader</Code>.</li>
+		<li><Code>head</Code> snippet — fully-custom header markup. Wins over <Code>headerLabels</Code> + <Code>hasHeader</Code>.</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiStripRow props — cells</Heading>

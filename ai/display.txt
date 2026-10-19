@@ -30,7 +30,7 @@ Props:
   descriptionText? string - Inline description with title, truncates with ellipsis
   description?   Snippet - Rich description (alternative to descriptionText)
   subtitleText?  string - Below title (deprecated, use descriptionText)
-  headerWrap?    boolean (false) - Allow description to wrap to its own line
+  shouldWrapHeader? boolean (false) - Allow description to wrap to its own line
   hasInlineTabs? boolean (false) - Pill-style tab buttons in header
   headerClass?   string - Additional CSS classes on the header element
   isGhost?       boolean (false) - Invisible container (no bg, border, shadow)
@@ -743,7 +743,7 @@ CodeBlock Props:
 CodeBlockWithHeader Props:
   titleText      string (required) - Header title (e.g. filename)
   language?      'javascript' | 'json' | 'html' | 'css' | 'bash' | 'sql' | 'python'
-  showCopy?      boolean (true) - Show copy button
+  hasCopy?       boolean (true) - Show copy button
   class?         string
   children?      Snippet
 
@@ -834,10 +834,10 @@ Props:
   currentPage?   number (1, bindable) - Current page
   totalPages?    number (1) - Total page count
   justify?       'start' | 'center' | 'end' (default: 'center')
-  showPageInput? boolean (true) - Show page number input
-  showInfo?      boolean (true) - Show info text
-  disablePrevious? boolean (false)
-  disableNext?   boolean (false)
+  hasPageInput?  boolean (true) - Show page number input
+  hasInfo?       boolean (true) - Show info text
+  isPreviousDisabled? boolean (false)
+  isNextDisabled?     boolean (false)
   infoText?      string - Custom info text
   firstText? / previousText? / nextText? / lastText?  string - Button labels (default: i18n)
   class?         string
@@ -865,8 +865,8 @@ Snippets:
   {totalPages}
   onprevious={prev}
   onnext={next}
-  disablePrevious={page <= 1}
-  disableNext={page >= totalPages}
+  isPreviousDisabled={page <= 1}
+  isNextDisabled={page >= totalPages}
 />
 
 With first/last buttons:
@@ -878,8 +878,8 @@ With first/last buttons:
   onnext={next}
   onfirst={() => page = 1}
   onlast={() => page = totalPages}
-  disablePrevious={page <= 1}
-  disableNext={page >= totalPages}
+  isPreviousDisabled={page <= 1}
+  isNextDisabled={page >= totalPages}
 />
 
 
@@ -907,8 +907,8 @@ DETAILVIEW / DETAILPANEL
 Overlay panel for viewing details of a selected item (e.g. table row click).
 
 DetailView Props:
-  show?            boolean (false, bindable) - Panel visibility
-  shouldShowBackdrop? boolean (true) - Backdrop overlay
+  isOpen?          boolean (false, bindable) - Panel visibility
+  hasBackdrop?   boolean (true) - Backdrop overlay
   isOverlay?       boolean (true) - Overlay mode (false = inline split-view)
   class?           string
   onclose?         () => void
@@ -941,7 +941,7 @@ Snippets:
   }
 </script>
 
-<DetailView bind:show={showDetail} onclose={() => showDetail = false}>
+<DetailView bind:isOpen={showDetail} onclose={() => showDetail = false}>
   {#snippet main()}
     <TableCard titleText="Users">
       <Table isStriped isHover>
@@ -1002,7 +1002,7 @@ Putting it all together: filter card + table card + pager + detail view.
   ];
 </script>
 
-<DetailView bind:show={showDetail} onclose={() => showDetail = false}>
+<DetailView bind:isOpen={showDetail} onclose={() => showDetail = false}>
   {#snippet main()}
     <FilterCard onclear={() => { search = ''; status = ''; }} onrefresh={() => {}}>
       {#snippet filters()}
@@ -1088,7 +1088,7 @@ CRITICAL REMINDERS
 - Card body has padding by default (hasPadding=true), TableCard has none
 - TableCard is preferred over Card for tables (proper padding alignment)
 - Pager currentPage is bindable
-- DetailView show is bindable
+- DetailView isOpen is bindable
 - FilterCard isExpanded is bindable
 
 NEXT STEPS

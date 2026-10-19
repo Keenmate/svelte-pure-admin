@@ -14,17 +14,17 @@
 
 	interface Props {
 		/** Show/hide the dialog (bindable) */
-		show?: boolean;
+		isOpen?: boolean;
 	}
 
-	let { show = $bindable(false) }: Props = $props();
+	let { isOpen = $bindable(false) }: Props = $props();
 
 	// Local state that gets updated when dialog opens
 	let groupedShortcuts = $state<Map<string, Shortcut[]>>(new Map());
 
 	// Update shortcuts when dialog opens (untrack to prevent loop)
 	$effect(() => {
-		if (show) {
+		if (isOpen) {
 			untrack(() => {
 				groupedShortcuts = shortcutRegistry.byCategory;
 			});
@@ -32,11 +32,11 @@
 	});
 
 	function handleClose() {
-		show = false;
+		isOpen = false;
 	}
 </script>
 
-<Modal bind:show size="md" titleText={$_('pureAdmin.shortcuts.title')} onclose={handleClose}>
+<Modal bind:isOpen size="md" titleText={$_('pureAdmin.shortcuts.title')} onclose={handleClose}>
 	<div class="pa-shortcut-help">
 		{#each groupedShortcuts as [category, shortcuts]}
 			<div class="pa-shortcut-help__category">

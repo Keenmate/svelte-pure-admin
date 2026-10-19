@@ -1,14 +1,14 @@
 {
-  "//": "Capability manifest for <KpiStrip> (the .pa-kpi-strip container) — svelte-pure-admin. CONTAINER + AUTO-HEADER slice: KpiStrip.svelte is a pa-card SHELL (<div class=\"pa-card pa-kpi-strip [--no-*] {class}\">) with an optional header (titleText/isLive), an auto-generated head-row built from the visible columns, an optional footer (footerText), and a `children` slot for the rows. The DATA ROWS are a SEPARATE component (KpiStripRow) fed through the slot — the dumper passes slot content as plain text, so the per-row __row/__metric/__now/… element classes are the DEFERRED row sub-slice, not mapped here. noPrev/noDelta/noTarget are the three column toggles (isX bools → pa-kpi-strip--no-*); title/live/footer/noHeader toggle structural shell parts.",
+  "//": "Capability manifest for <KpiStrip> (the .pa-kpi-strip container) — svelte-pure-admin. CONTAINER + AUTO-HEADER slice: KpiStrip.svelte is a pa-card SHELL (<div class=\"pa-card pa-kpi-strip [--no-*] {class}\">) with an optional header (titleText/isLive), an auto-generated head-row built from the visible columns, an optional footer (footerText), and a `children` slot for the rows. The DATA ROWS are a SEPARATE component (KpiStripRow) fed through the slot — the dumper passes slot content as plain text, so the per-row __row/__metric/__now/… element classes are the DEFERRED row sub-slice, not mapped here. noPrev/noDelta/noTarget are the three column toggles (hasPreviousValue / hasDeltaPercent / hasTargetBar, negated: false → pa-kpi-strip--no-*); title/live/footer and noHeader (hasHeader, negated) toggle structural shell parts.",
   "component": "kpi-strip",
   "features": {
-    "noPrev":     { "prop": "noPreviousValue", "kind": "bool" },
-    "noDelta":    { "prop": "noDeltaPercent",  "kind": "bool" },
-    "noTarget":   { "prop": "noTargetBar",     "kind": "bool" },
+    "noPrev":     { "prop": "hasPreviousValue", "kind": "bool", "negate": true },
+    "noDelta":    { "prop": "hasDeltaPercent",  "kind": "bool", "negate": true },
+    "noTarget":   { "prop": "hasTargetBar",     "kind": "bool", "negate": true },
     "title":      { "prop": "titleText",       "kind": "string" },
     "live":       { "prop": "isLive",          "kind": "bool" },
     "footer":     { "prop": "footerText",      "kind": "string" },
-    "noHeader":   { "prop": "noHeader",        "kind": "bool" },
+    "noHeader":   { "prop": "hasHeader",        "kind": "bool", "negate": true },
     "body":       { "prop": "children",        "kind": "slot" },
     "extraClass": { "prop": "class",           "kind": "string" }
   }

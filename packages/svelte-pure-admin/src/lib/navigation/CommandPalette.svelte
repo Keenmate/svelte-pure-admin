@@ -28,7 +28,7 @@
 
 	interface Props {
 		/** Show/hide the palette (bindable) */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Available commands (triggered by /) */
 		commands?: Command[];
 		/** Available search contexts (triggered by :) */
@@ -60,7 +60,7 @@
 	}
 
 	let {
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		commands = [],
 		contexts = [],
 		globalSearch,
@@ -105,7 +105,7 @@
 
 	const classes = $derived(() => {
 		const base = ['pa-command-palette'];
-		if (show) base.push('pa-command-palette--active');
+		if (isOpen) base.push('pa-command-palette--active');
 		if (size) base.push(`pa-command-palette--${size}`);
 		if (className) base.push(className);
 		return base.join(' ');
@@ -621,7 +621,7 @@
 
 	function handleKeyDown(event: KeyboardEvent) {
 		// Leading-key sequences are modifier-free and inert while typing or open.
-		if (!show && !event.ctrlKey && !event.metaKey && !event.altKey && !isTypingTarget(event.target)) {
+		if (!isOpen && !event.ctrlKey && !event.metaKey && !event.altKey && !isTypingTarget(event.target)) {
 			if (!seqActive) {
 				// Arm on the leader key ("g"); wait a short window for the second key.
 				if (event.key.toLowerCase() === 'g') {
@@ -636,7 +636,7 @@
 			const cmd = findCommandByHotkey(event.key);
 			if (cmd) {
 				event.preventDefault();
-				show = true;
+				isOpen = true;
 				// Wait for focus/mount, then enter the command.
 				setTimeout(() => {
 					inputValue = cmd.shortcut + ' ';
@@ -646,7 +646,7 @@
 			return;
 		}
 
-		if (!show) return;
+		if (!isOpen) return;
 
 		switch (event.key) {
 			case 'ArrowDown':
@@ -799,7 +799,7 @@
 	// =========================================================================
 
 	function close() {
-		show = false;
+		isOpen = false;
 		reset();
 	}
 
@@ -819,7 +819,7 @@
 
 	// Focus input and lock scroll when shown
 	$effect(() => {
-		if (show && inputRef) {
+		if (isOpen && inputRef) {
 			setTimeout(() => inputRef?.focus(), 0);
 			document.body.style.overflow = 'hidden';
 		} else {
@@ -833,7 +833,7 @@
 	$effect(() => {
 		activeIndex; // dependency
 		mode; // re-scroll when the list swaps (home ↔ results)
-		if (!show || !resultsRef) return;
+		if (!isOpen || !resultsRef) return;
 		const el = resultsRef.querySelector('.pa-command-palette__item--active');
 		if (el) (el as HTMLElement).scrollIntoView({ block: 'nearest' });
 	});
@@ -849,8 +849,8 @@
 			description: get(_)('commandPalette.openCommandPalette'),
 			category: get(_)('shortcuts.generalCategory'),
 			action: () => {
-				show = !show;
-				if (!show) reset();
+				isOpen = !isOpen;
+				if (!isOpen) reset();
 			}
 		});
 	});

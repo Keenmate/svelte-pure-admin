@@ -17,9 +17,9 @@
 		/** Alignment (default: center) */
 		justify?: PagerJustify;
 		/** Show page input */
-		showPageInput?: boolean;
+		hasPageInput?: boolean;
 		/** Show info text */
-		showInfo?: boolean;
+		hasInfo?: boolean;
 		/** Previous button click callback */
 		onprevious?: (event: MouseEvent) => void;
 		/** Next button click callback */
@@ -31,9 +31,9 @@
 		/** Last button click callback */
 		onlast?: (event: MouseEvent) => void;
 		/** Disable previous button */
-		disablePrevious?: boolean;
+		isPreviousDisabled?: boolean;
 		/** Disable next button */
-		disableNext?: boolean;
+		isNextDisabled?: boolean;
 		/** Custom info text */
 		infoText?: string;
 		/** Where the info sits relative to the controls: 'end' (default, after) or 'start' (before) */
@@ -66,15 +66,15 @@
 		currentPage = $bindable(1),
 		totalPages = 1,
 		justify = 'center',
-		showPageInput = true,
-		showInfo = true,
+		hasPageInput = true,
+		hasInfo = true,
 		onprevious,
 		onnext,
 		onpagechange,
 		onfirst,
 		onlast,
-		disablePrevious = false,
-		disableNext = false,
+		isPreviousDisabled = false,
+		isNextDisabled = false,
 		infoText,
 		infoPlacement = 'end',
 		firstText,
@@ -122,7 +122,7 @@
 {#snippet infoBlock()}
 	{#if info}
 		{@render info()}
-	{:else if showInfo && showPageInput}
+	{:else if hasInfo && hasPageInput}
 		<div class="pa-pager__info">
 			<span class="pa-pager__text">{$_('pureAdmin.pager.page')}</span>
 			<input
@@ -150,18 +150,18 @@
 		{:else}
 			<div class="pa-pager__controls">
 				{#if onfirst}
-					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onfirst} disabled={disablePrevious}>
+					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onfirst} disabled={isPreviousDisabled}>
 						{#if first}{@render first()}{:else}{resolvedFirst}{/if}
 					</button>
 				{/if}
-				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onprevious} disabled={disablePrevious}>
+				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onprevious} disabled={isPreviousDisabled}>
 					{#if previous}{@render previous()}{:else}{resolvedPrevious}{/if}
 				</button>
-				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onnext} disabled={disableNext}>
+				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onnext} disabled={isNextDisabled}>
 					{#if next}{@render next()}{:else}{resolvedNext}{/if}
 				</button>
 				{#if onlast}
-					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onlast} disabled={disableNext}>
+					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onlast} disabled={isNextDisabled}>
 						{#if last}{@render last()}{:else}{resolvedLast}{/if}
 					</button>
 				{/if}

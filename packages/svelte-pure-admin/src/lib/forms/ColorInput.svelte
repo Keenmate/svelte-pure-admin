@@ -18,7 +18,7 @@
 		/** Input name */
 		name?: string;
 		/** Show hex value next to picker */
-		showValue?: boolean;
+		hasValue?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Input handler */
@@ -33,7 +33,7 @@
 		isDisabled = false,
 		id,
 		name,
-		showValue = false,
+		hasValue = false,
 		class: className = '',
 		oninput,
 		onchange
@@ -51,7 +51,7 @@
 	});
 </script>
 
-{#if showValue}
+{#if hasValue}
 	<!-- Core ships no colour-input wrapper (`pa-color-wrapper` / `pa-color-value`
 	     are phantoms). Use the real `pa-input-group` addon layout: the swatch is the
 	     `.pa-input`, the hex value is an `__append` addon. -->

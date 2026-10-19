@@ -166,7 +166,7 @@
 			<Button onclick={() => { showModal = true; confirmClose = false; }}>Open Modal</Button>
 
 			<Modal
-				bind:show={showModal}
+				bind:isOpen={showModal}
 				titleText="Test Modal"
 				beforeCloseCallback={() => {
 					const allowed = confirmClose;
@@ -220,7 +220,7 @@
 			</button>
 
 			<Popconfirm
-				bind:show={showPopconfirm}
+				bind:isOpen={showPopconfirm}
 				messageText="Are you sure you want to delete this item?"
 				iconVariant="danger"
 				confirmVariant="danger"
@@ -237,8 +237,8 @@
 			<Pager
 				bind:currentPage={pagerPage}
 				totalPages={10}
-				disablePrevious={pagerPage <= 1}
-				disableNext={pagerPage >= 10}
+				isPreviousDisabled={pagerPage <= 1}
+				isNextDisabled={pagerPage >= 10}
 				onfirst={() => { pagerPage = 1; log('Pager', 'onfirst', 'Page: 1'); }}
 				onprevious={() => { if (pagerPage > 1) pagerPage--; log('Pager', 'onprevious', `Page: ${pagerPage}`); }}
 				onnext={() => { if (pagerPage < 10) pagerPage++; log('Pager', 'onnext', `Page: ${pagerPage}`); }}
@@ -376,7 +376,7 @@
 			<Paragraph>Events: <Code>onclose</Code> (card overlay mode)</Paragraph>
 
 			<DetailView
-				bind:show={showDetailView}
+				bind:isOpen={showDetailView}
 				onclose={() => log('DetailView', 'onclose', 'Card overlay closed')}
 			>
 				{#snippet main()}
@@ -405,7 +405,7 @@
 			<Button onclick={() => { showSlidePanel = true; }}>Open Slide Panel</Button>
 
 			<SlidePanel
-				bind:show={showSlidePanel}
+				bind:isOpen={showSlidePanel}
 				onclose={() => log('SlidePanel', 'onclose', 'Slide panel closed')}
 			>
 				<DetailPanel
@@ -428,7 +428,7 @@
 			<Button onclick={() => { showProfilePanel = true; }}>Open Profile Panel</Button>
 
 			<ProfilePanel
-				bind:show={showProfilePanel}
+				bind:isOpen={showProfilePanel}
 				name="Jane Doe"
 				email="jane@example.com"
 				role="Admin"
@@ -462,7 +462,7 @@
 			<span style="color:var(--pc-text-color-2);margin-left:0.5rem;">(or Ctrl+K)</span>
 
 			<CommandPalette
-				bind:show={showCommandPalette}
+				bind:isOpen={showCommandPalette}
 				globalSearch={(query) => {
 					return [
 						{ id: '1', title: `Result for "${query}"`, subtitle: 'Sample result 1', icon: '📄' },

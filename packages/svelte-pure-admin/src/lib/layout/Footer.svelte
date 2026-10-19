@@ -25,7 +25,7 @@
 		/** End section snippet (version info, links; right in LTR, left in RTL) */
 		end?: import('svelte').Snippet;
 		/** Make end section vertical (stacks items) */
-		endVertical?: boolean;
+		isEndVertical?: boolean;
 		/** Children content (legacy fallback - renders all content) */
 		children?: import('svelte').Snippet;
 	}
@@ -35,7 +35,7 @@
 		start,
 		center,
 		end,
-		endVertical = false,
+		isEndVertical = false,
 		children
 	}: Props = $props();
 
@@ -49,7 +49,7 @@
 	// Build end section classes
 	const endClasses = $derived(() => {
 		const base = ['pc-footer__end'];
-		if (endVertical) base.push('pc-footer__end--vertical');
+		if (isEndVertical) base.push('pc-footer__end--vertical');
 		return base.join(' ');
 	});
 

@@ -130,7 +130,7 @@ export interface SearchResult {
 	 * Longer descriptive text — the `.pa-search-results__snippet` on the page-level
 	 * `SearchResults` list (e.g. a full-text excerpt). May contain
 	 * `<mark class="pa-search-results__mark">…</mark>` highlight when the surface's
-	 * `allowHtml` is enabled.
+	 * `shouldRenderHtml` is enabled.
 	 */
 	snippet?: string;
 	/** Trailing meta chips — the `.pa-search-results__meta-item` trail (e.g. "Docs / Guides", "Updated 2 days ago"). */

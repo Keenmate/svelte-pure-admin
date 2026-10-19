@@ -55,7 +55,7 @@ Card with title icon:
 
 Modal with header, body, footer:
 
-<Modal bind:show={isOpen} titleText="Confirm Delete">
+<Modal bind:isOpen={isOpen} titleText="Confirm Delete">
   <p>Are you sure you want to delete this item?</p>
 
   {#snippet footer()}
@@ -93,14 +93,14 @@ Checkbox and Radio binding:
 <Radio bind:group={selectedPlan} name="plan" value="free" labelText="Free" />
 <Radio bind:group={selectedPlan} name="plan" value="pro" labelText="Pro" />
 
-Modal show binding:
+Modal isOpen binding:
 
 <script>
   let showModal = $state(false);
 </script>
 
 <Button onclick={() => showModal = true}>Open Modal</Button>
-<Modal bind:show={showModal} titleText="Settings">
+<Modal bind:isOpen={showModal} titleText="Settings">
   <p>Modal content</p>
 </Modal>
 
@@ -178,7 +178,7 @@ Button click:
 Modal close:
 
 <Modal
-  bind:show={showModal}
+  bind:isOpen={showModal}
   titleText="Confirm"
   onclose={() => console.log('modal closed')}
 >
@@ -198,7 +198,7 @@ Input events:
 Prevent close with callback:
 
 <Modal
-  bind:show={showForm}
+  bind:isOpen={showForm}
   beforeCloseCallback={() => {
     if (hasUnsavedChanges) {
       return false; // Prevents closing
@@ -412,7 +412,7 @@ Basic form layout:
   <Button type="submit" variant="primary">Submit</Button>
 </Form>
 
-Form with validation errors (using errors/touched props):
+Form with validation errors (using errors/isTouched props):
 
 <script>
   let email = $state('');
@@ -433,7 +433,7 @@ Form with validation errors (using errors/touched props):
       bind:value={email}
       type="email"
       errors={errors.email}
-      touched={touchedFields.email}
+      isTouched={touchedFields.email}
       onblur={() => { touchedFields.email = true; validate(); }}
     />
   </FormGroup>
@@ -444,7 +444,7 @@ Form with validation errors (using errors/touched props):
       bind:value={password}
       type="password"
       errors={errors.password}
-      touched={touchedFields.password}
+      isTouched={touchedFields.password}
       onblur={() => { touchedFields.password = true; validate(); }}
     />
   </FormGroup>
@@ -472,7 +472,7 @@ Form with error summary:
     { field: 'Email', id: 'email-input', message: 'Email is required' },
     { field: 'Password', id: 'password-input', message: 'Must be 8+ characters' }
   ]}
-  show={submitted}
+  isVisible={submitted}
 />
 
 Input group with addons:
@@ -570,7 +570,7 @@ Toast with progress bar:
   variant="info"
   titleText="Processing"
   messageText="Your file is being uploaded..."
-  shouldShowProgress
+  hasProgress
   duration={10000}
 />
 
@@ -959,7 +959,7 @@ Bar list:
   });
 </script>
 
-<ShortcutHelpDialog bind:show={showHelp} />
+<ShortcutHelpDialog bind:isOpen={showHelp} />
 
 
 17. COMMAND PALETTE
@@ -1010,7 +1010,7 @@ Bar list:
   ];
 </script>
 
-<CommandPalette bind:show={showPalette} {commands} {contexts} />
+<CommandPalette bind:isOpen={showPalette} {commands} {contexts} />
 
 
 18. BATCH RPC (MULTIPLE API CALLS IN ONE REQUEST)

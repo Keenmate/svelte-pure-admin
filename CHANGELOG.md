@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING — every remaining boolean is `is*`/`has*`/`should*` (keen parity, batch 4)
+
+No aliases; old names are gone (Svelte ignores unknown props, so grep your usages).
+
+- **Showing a part is `has*`.** `shouldShowClose` → `hasClose` (Modal), `shouldShowBackdrop` → `hasBackdrop`
+  (DetailView), `shouldShowCheckboxes` → `hasCheckboxes` (NotificationsPanel), `shouldShowProgress` →
+  `hasProgress` (Toast + `toastService` options); `showInfo` / `showPageInput` → `hasInfo` / `hasPageInput`
+  (Pager), `showValue` → `hasValue` (ColorInput, RangeInput), `showCopy` → `hasCopy` (CodeBlockWithHeader),
+  `showBurger` → `hasBurger` (Navbar).
+- **Negated flags become `has*` defaulting to `true`.** KpiStrip `noHeader` / `noPreviousValue` /
+  `noDeltaPercent` / `noTargetBar` → `hasHeader` / `hasPreviousValue` / `hasDeltaPercent` / `hasTargetBar`
+  (pass `={false}` to drop the part).
+- **Overlay open state is `isOpen`.** `show` → `isOpen` (bindable) on Modal, SlidePanel, DetailView, Popconfirm,
+  CommandPalette, ProfilePanel, NotificationBell, NotificationsPanel, ShortcutHelpDialog, TabsOverflow.
+  FormErrorSummary `show` → `isVisible`.
+- **State flags are `is*`.** `touched` → `isTouched` (Input, NumberInput, DateInput, Select, Textarea, FormField —
+  including the FormField `children` snippet context `{ errors, isTouched, validation }`); Tooltip `multiline` →
+  `isMultiline`; Card `titleTooltipMultiline` / `descriptionTooltipMultiline` → `*TooltipIsMultiline`; FormField
+  `horizontal` → `isHorizontal`; Navbar `burgerActive` → `isBurgerActive`; ProfilePanelFavoriteItem `removable` →
+  `isRemovable`; Footer `endVertical` → `isEndVertical`; Pager `disablePrevious` / `disableNext` →
+  `isPreviousDisabled` / `isNextDisabled`; FitContainer `auto` → `isAuto`; FitSlot `managed` → `isManaged`.
+- **Behaviour flags are `should*`.** Card `headerWrap` → `shouldWrapHeader`; NavbarSearchField / SearchResults
+  `allowHtml` → `shouldRenderHtml`; PureAdminProvider `disableShortcuts` → `shouldHandleShortcuts` (default `true`).
+- **When a card tooltip appears is a `mode`.** Card `titleTooltipAlways` / `descriptionTooltipAlways` →
+  `titleTooltipMode` / `descriptionTooltipMode` (`"overflow"` default = only while truncated, `"always"`); new
+  exported type `TooltipMode`.
+- **Aliases removed.** FormGroup `horizontal` (use `isHorizontal`) and `isError` / `isSuccess` (use
+  `validation`); ButtonGroup `mdVertical` / `lgHorizontal` (use `verticalAt="md"` / `horizontalAt="lg"`);
+  TabItem `width` / `height` (pass the `minwr-N` / `minhr-N` utilities via `class`, as keen does).
+
 ### BREAKING — text vs rich slot, every boolean is `is*`/`has*`/`should*`, icon names (keen parity, batch 3)
 
 - **Where a part sits is `<part>Placement`.** `Checkbox` / `Radio` `labelPosition` → `labelPlacement`

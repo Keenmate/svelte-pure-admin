@@ -96,7 +96,7 @@
 
 	<!-- Row 2: Cast with inline detail panel -->
 	<Card titleText="Cast" hasPadding={false}>
-		<DetailView bind:show={showActorPanel} isOverlay={false} onclose={closeActorPanel}>
+		<DetailView bind:isOpen={showActorPanel} isOverlay={false} onclose={closeActorPanel}>
 			{#snippet main()}
 				<Table>
 					<thead>

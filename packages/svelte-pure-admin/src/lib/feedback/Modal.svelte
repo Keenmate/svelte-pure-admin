@@ -18,7 +18,7 @@
 		 *  wiring or external addressing. Omitted entirely when not set. */
 		id?: string;
 		/** Show modal */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Modal size */
 		size?: ModalSize;
 		/** Modal variant/theme — themes the whole modal (header colour inherits via the root). */
@@ -43,7 +43,7 @@
 		 */
 		titleIconName?: string;
 		/** Show close button in header (default: true) */
-		shouldShowClose?: boolean;
+		hasClose?: boolean;
 		/** Close on Escape key (default: true, ignored when isStatic is true) */
 		shouldCloseOnEscape?: boolean;
 		/** Close on backdrop click (default: true, ignored when isStatic is true).
@@ -74,7 +74,7 @@
 
 	let {
 		id,
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		size = 'md',
 		variant,
 		isBanded = false,
@@ -83,7 +83,7 @@
 		isStatic = false,
 		titleText,
 		titleIconName,
-		shouldShowClose = true,
+		hasClose = true,
 		shouldCloseOnEscape = true,
 		shouldCloseOnBackdrop = true,
 		beforeCloseCallback,
@@ -99,7 +99,7 @@
 	// Build class string for modal
 	const modalClasses = $derived(() => {
 		const base = ['pa-modal'];
-		if (show) base.push('pa-modal--show');
+		if (isOpen) base.push('pa-modal--show');
 		if (variant) base.push(`pa-modal--${variant}`);
 		if (isBanded) base.push('pa-modal--banded');
 		if (placement === 'top') base.push('pa-modal--top');
@@ -147,23 +147,23 @@
 		}`
 	);
 
-	// Track external show changes so that setting show=false via binding
+	// Track external isOpen changes so that setting isOpen=false via binding
 	// goes through the same close flow (beforeCloseCallback / onclose)
 	let wasOpen = false;
 	let internalClose = false;
 
 	$effect.pre(() => {
-		if (wasOpen && !show && !internalClose) {
-			// show was set to false externally (e.g., parent toggled bind:show)
+		if (wasOpen && !isOpen && !internalClose) {
+			// isOpen was set to false externally (e.g., parent toggled bind:isOpen)
 			if (beforeCloseCallback && beforeCloseCallback() === false) {
-				// Prevent close - restore show
-				show = true;
+				// Prevent close - restore isOpen
+				isOpen = true;
 				internalClose = false;
 				return;
 			}
 			onclose?.();
 		}
-		wasOpen = show;
+		wasOpen = isOpen;
 		internalClose = false;
 	});
 
@@ -173,7 +173,7 @@
 			return;
 		}
 		internalClose = true;
-		show = false;
+		isOpen = false;
 		if (onclose) onclose();
 	}
 
@@ -187,7 +187,7 @@
 	function handleKeyDown(event: KeyboardEvent) {
 		// Static modals don't close on ESC key
 		if (isStatic) return;
-		if (show && shouldCloseOnEscape && event.key === 'Escape') {
+		if (isOpen && shouldCloseOnEscape && event.key === 'Escape') {
 			handleClose();
 		}
 	}
@@ -207,7 +207,7 @@
 				{:else if titleText}
 					<h3 class="pa-modal__title">{#if titleIconName}{#if isAffordanceIcon(titleIconName)}<span class="pa-icon pa-icon--{titleIconName}" aria-hidden="true"></span>{:else}<Icon name={titleIconName} />{/if} {/if}{titleText}</h3>
 				{/if}
-				{#if shouldShowClose}<button class={closeBtnClasses} onclick={handleClose} aria-label={$_('pureAdmin.buttons.close')}><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>{/if}
+				{#if hasClose}<button class={closeBtnClasses} onclick={handleClose} aria-label={$_('pureAdmin.buttons.close')}><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>{/if}
 			</div>
 		{/if}
 

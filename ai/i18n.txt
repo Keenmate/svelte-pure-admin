@@ -23,7 +23,7 @@ No init() call needed for basic English usage:
 </script>
 
 <!-- All component strings (close buttons, aria labels) already translated -->
-<Modal titleText="Settings" bind:show={showSettings}>
+<Modal titleText="Settings" bind:isOpen={showSettings}>
   <p>Content here</p>
 </Modal>
 

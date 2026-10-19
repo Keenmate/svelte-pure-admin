@@ -18,7 +18,7 @@
 		/** Label text */
 		labelText: string;
 		/** Show remove button */
-		removable?: boolean;
+		isRemovable?: boolean;
 		/** Click handler */
 		onclick?: () => void;
 		/** Remove callback */
@@ -32,7 +32,7 @@
 		icon,
 		iconName,
 		labelText,
-		removable = true,
+		isRemovable = true,
 		onclick,
 		onremove,
 		class: className = ''
@@ -67,7 +67,7 @@
 			<span class="pa-profile-panel__favorite-icon">{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}</span>
 		{/if}
 		<span class="pa-profile-panel__favorite-label">{labelText}</span>
-		{#if removable}
+		{#if isRemovable}
 			<button
 				class="pa-profile-panel__favorite-remove"
 				title={$_('pureAdmin.a11y.removeFromFavorites')}

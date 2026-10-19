@@ -29,11 +29,11 @@
 		/** Additional CSS classes for the `.pc-navbar__inner` element */
 		innerClass?: string;
 		/** Show the burger toggle (fixed anchor, first child of `.pc-navbar__inner`) */
-		showBurger?: boolean;
+		hasBurger?: boolean;
 		/** Burger click handler */
 		onburgerclick?: () => void;
 		/** Whether the burger is in its active (X) state — toggles the animation */
-		burgerActive?: boolean;
+		isBurgerActive?: boolean;
 		/** START zone content (inline-start) — brand, primary nav, … */
 		start?: import('svelte').Snippet;
 		/** CENTER zone content (flex:1) — page title, search, … */
@@ -45,9 +45,9 @@
 	let {
 		class: className = '',
 		innerClass = '',
-		showBurger = false,
+		hasBurger = false,
 		onburgerclick,
-		burgerActive = false,
+		isBurgerActive = false,
 		start,
 		center,
 		end
@@ -86,10 +86,10 @@
 <nav class={classes()} bind:this={navbarElement}>
 	<div class={innerClasses()} bind:this={navInnerElement}>
 		<!-- Burger: fixed anchor OUTSIDE the zones (core rc13) — first child of __inner. -->
-		{#if showBurger && onburgerclick}
+		{#if hasBurger && onburgerclick}
 			<button
 				class="pc-navbar__burger burger-menu"
-				class:active={burgerActive}
+				class:active={isBurgerActive}
 				onclick={onburgerclick}
 				aria-label={$_('pureAdmin.a11y.toggleSidebar')}
 			>

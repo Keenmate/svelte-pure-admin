@@ -57,12 +57,12 @@
 		/** Hands-off mode: fit fires `pc:fit-relocate` but performs NO DOM move — the
 		 *  framework owns placement (re-render the block in its new home from state).
 		 *  Maps to `data-pc-fit-managed`. See {@link onrelocate}. */
-		managed?: boolean;
+		isManaged?: boolean;
 		/** @deprecated Use `targetSelector`. Sidebar `<ul>` selector to relocate into. */
 		sidebarTarget?: string;
 		/** Additional CSS classes (applied to the slot element itself). */
 		class?: string;
-		/** Fired on every relocate flip (`pc:fit-relocate`) — for `managed` slots,
+		/** Fired on every relocate flip (`pc:fit-relocate`) — for `isManaged` slots,
 		 *  this is where you re-render the block in / out of its new home. */
 		onrelocate?: (detail: FitRelocateDetail) => void;
 		/** Slot content — `hide`/`relocate`/`sidebar`: the content; `steps`: the `<FitStep>` ladder. */
@@ -75,7 +75,7 @@
 		tag = 'span',
 		target,
 		targetSelector,
-		managed = false,
+		isManaged = false,
 		sidebarTarget,
 		class: className = '',
 		onrelocate,
@@ -112,7 +112,7 @@
 	data-pc-fit-priority={priority}
 	data-pc-fit-target={strategy === 'relocate' ? target : undefined}
 	data-pc-fit-target-selector={isRelocating ? selector : undefined}
-	data-pc-fit-managed={isRelocating && managed ? '' : undefined}
+	data-pc-fit-managed={isRelocating && isManaged ? '' : undefined}
 >
 	{@render children?.()}
 </svelte:element>

@@ -660,7 +660,7 @@
 </TableCard>
 
 <Popconfirm
-	bind:show={showClearAllConfirm}
+	bind:isOpen={showClearAllConfirm}
 	trigger={clearAllTrigger}
 	messageText="Remove all stored submissions?"
 	iconVariant="danger"

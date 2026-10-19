@@ -13,7 +13,7 @@
 		 *  profile_panel/1 always renders it (default "profile-panel"). Omitted when unset. */
 		id?: string;
 		/** Show panel */
-		show?: boolean;
+		isOpen?: boolean;
 		/** User name */
 		name: string;
 		/** User email */
@@ -46,7 +46,7 @@
 
 	let {
 		id,
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		name,
 		email,
 		role,
@@ -66,7 +66,7 @@
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-profile-panel'];
-		if (show) base.push('pa-profile-panel--open');
+		if (isOpen) base.push('pa-profile-panel--open');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -86,7 +86,7 @@
 	});
 
 	function handleClose() {
-		show = false;
+		isOpen = false;
 		if (onclose) onclose();
 	}
 
@@ -96,7 +96,7 @@
 
 	// Scroll lock: prevent body scroll when overlay is open (v1.4.1)
 	$effect(() => {
-		if (show) {
+		if (isOpen) {
 			document.body.classList.add('pa-scroll-lock');
 		} else {
 			document.body.classList.remove('pa-scroll-lock');

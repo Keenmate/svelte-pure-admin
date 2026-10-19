@@ -20,8 +20,8 @@
 	interface Props {
 		/** Configuration overrides (merged with defaults) */
 		config?: Partial<PureAdminConfig>;
-		/** Disable keyboard shortcuts (default: false) */
-		disableShortcuts?: boolean;
+		/** Handle the global keyboard shortcuts (default: true) */
+		shouldHandleShortcuts?: boolean;
 		/**
 		 * Ordered list of icon providers that resolve non-affordance `<Icon name="…">`
 		 * names to markup — configure the set(s) your app uses (Font Awesome, inline-SVG
@@ -34,7 +34,7 @@
 		children?: import('svelte').Snippet;
 	}
 
-	let { config = {}, disableShortcuts = false, iconProviders, children }: Props = $props();
+	let { config = {}, shouldHandleShortcuts = true, iconProviders, children }: Props = $props();
 
 	// Register the icon provider list for all descendant <Icon> components.
 	// svelte-ignore state_referenced_locally
@@ -71,7 +71,7 @@
 
 	// Setup global keyboard shortcut listener
 	onMount(() => {
-		if (disableShortcuts) return;
+		if (!shouldHandleShortcuts) return;
 
 		// Global keydown handler
 		function handleKeyDown(event: KeyboardEvent) {
@@ -102,4 +102,4 @@
 {@render children?.()}
 
 <!-- Shortcut Help Dialog -->
-<ShortcutHelpDialog bind:show={showShortcutHelp} />
+<ShortcutHelpDialog bind:isOpen={showShortcutHelp} />

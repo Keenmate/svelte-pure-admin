@@ -19,7 +19,7 @@
 		/** Error messages from validation library (string or array of strings) */
 		errors?: string | string[];
 		/** Whether field has been touched/interacted with (controls when errors are shown) */
-		touched?: boolean;
+		isTouched?: boolean;
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
@@ -59,7 +59,7 @@
 		size,
 		validation,
 		errors,
-		touched = true,
+		isTouched = true,
 		themeColor,
 		isDisabled = false,
 		isReadonly = false,
@@ -88,13 +88,13 @@
 	// Compute effective state: manual validation takes precedence, otherwise derive from errors
 	const effectiveState = $derived(() => {
 		if (validation) return validation;
-		if (hasErrors() && touched) return 'error';
+		if (hasErrors() && isTouched) return 'error';
 		return undefined;
 	});
 
 	// Compute aria-invalid for accessibility
 	const ariaInvalid = $derived(() => {
-		return hasErrors() && touched ? 'true' : undefined;
+		return hasErrors() && isTouched ? 'true' : undefined;
 	});
 
 	// Build class string

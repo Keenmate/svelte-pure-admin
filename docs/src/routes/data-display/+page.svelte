@@ -296,7 +296,7 @@
 	<Column size="1-3">
 		<Card titleText="Horizontal">
 			{#snippet description()}
-				Uses <Code>horizontal</Code> prop.
+				Uses <Code>layout="horizontal"</Code>.
 			{/snippet}
 
 			<Fields layout="horizontal">

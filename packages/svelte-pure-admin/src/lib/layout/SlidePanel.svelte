@@ -15,7 +15,7 @@
 
 	interface Props {
 		/** Controls panel visibility */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Called when panel is closed (escape key, backdrop click) */
 		onclose?: () => void;
 		/** Additional CSS classes */
@@ -25,7 +25,7 @@
 	}
 
 	let {
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		onclose,
 		class: className = '',
 		children
@@ -33,19 +33,19 @@
 
 	const classes = $derived(() => {
 		const base = ['pa-detail-panel--overlay'];
-		if (show) base.push('pa-detail-panel--open');
+		if (isOpen) base.push('pa-detail-panel--open');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
 
 	function handleClose() {
-		show = false;
+		isOpen = false;
 		onclose?.();
 	}
 
 	// Escape key: only listen when panel is open
 	$effect(() => {
-		if (!show) return;
+		if (!isOpen) return;
 
 		function handleKeydown(event: KeyboardEvent) {
 			if (event.key === 'Escape') {
@@ -59,7 +59,7 @@
 
 	// Scroll lock: prevent body scroll when overlay is open (v1.4.1)
 	$effect(() => {
-		if (show) {
+		if (isOpen) {
 			document.body.classList.add('pa-scroll-lock');
 		} else {
 			document.body.classList.remove('pa-scroll-lock');

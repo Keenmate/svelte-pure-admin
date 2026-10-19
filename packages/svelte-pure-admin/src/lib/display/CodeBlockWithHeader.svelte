@@ -15,7 +15,7 @@
 		/** Programming language for styling */
 		language?: Language;
 		/** Show copy button */
-		showCopy?: boolean;
+		hasCopy?: boolean;
 		/** Compact layout on the inner code block (pa-code--compact) */
 		isCompact?: boolean;
 		/** Show line numbers on the inner code block (pa-code--numbered) */
@@ -29,7 +29,7 @@
 	let {
 		titleText,
 		language,
-		showCopy = true,
+		hasCopy = true,
 		isCompact = false,
 		isNumbered = false,
 		class: className = '',
@@ -74,7 +74,7 @@
 <div class={classes()}>
 	<div class="pa-code-block__header">
 		<span class="pa-code-block__title">{titleText}</span>
-		{#if showCopy}
+		{#if hasCopy}
 			<Button variant={copied ? 'success' : 'secondary'} size="xs" onclick={handleCopy}>
 				{#snippet icon()}
 					{copied ? '✓' : '📋'}

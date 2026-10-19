@@ -11,7 +11,7 @@
 		/** Whether an active tab is in the overflow menu */
 		hasActive?: boolean;
 		/** Control dropdown visibility (bindable) */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Toggle button content (icon) */
@@ -22,7 +22,7 @@
 
 	let {
 		hasActive = false,
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		class: className = '',
 		toggle,
 		children
@@ -38,7 +38,7 @@
 	// Build menu class string
 	const menuClasses = $derived(() => {
 		const base = ['pa-tabs__overflow-menu'];
-		if (show) base.push('pa-tabs__overflow-menu--open');
+		if (isOpen) base.push('pa-tabs__overflow-menu--open');
 		return base.join(' ');
 	});
 
@@ -50,19 +50,19 @@
 	});
 
 	function handleToggleClick() {
-		show = !show;
+		isOpen = !isOpen;
 	}
 
 	function handleClickOutside(event: MouseEvent) {
 		const target = event.target as HTMLElement;
-		if (show && !target.closest('.pa-tabs__overflow')) {
-			show = false;
+		if (isOpen && !target.closest('.pa-tabs__overflow')) {
+			isOpen = false;
 		}
 	}
 
 	// Handle click outside to close dropdown
 	$effect(() => {
-		if (show) {
+		if (isOpen) {
 			document.addEventListener('click', handleClickOutside, true);
 			return () => {
 				document.removeEventListener('click', handleClickOutside, true);
@@ -78,7 +78,7 @@
 		onclick={handleToggleClick}
 		aria-label={$_('pureAdmin.a11y.moreTabs')}
 		aria-haspopup="menu"
-		aria-expanded={show}
+		aria-expanded={isOpen}
 	>
 		{#if toggle}
 			{@render toggle()}

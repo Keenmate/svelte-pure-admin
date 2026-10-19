@@ -185,9 +185,9 @@
 	<Paragraph class="mb-2">
 		<Code>descriptionTooltip</Code> puts a tooltip with the full text on the description. It appears
 		<strong>only while the description is cut off</strong> — widen the window until it fits and hovering
-		shows nothing (<Code>descriptionTooltipAlways</Code> shows it regardless). Position, colour, multiline,
+		shows nothing (<Code>descriptionTooltipMode="always"</Code> shows it regardless). Position, colour, multiline,
 		help and keyword styles: <Code>descriptionTooltipPlacement</Code> / <Code>…Variant</Code> /
-		<Code>…Multiline</Code> / <Code>…IsHelp</Code> / <Code>…IsKeyword</Code>; the same set exists for the
+		<Code>…IsMultiline</Code> / <Code>…IsHelp</Code> / <Code>…IsKeyword</Code>; the same set exists for the
 		title as <Code>titleTooltip…</Code>.
 	</Paragraph>
 
@@ -198,7 +198,7 @@
 				descriptionText="View real-time metrics, KPIs, and performance indicators for your organization. Includes customizable widgets, drill-down reports, and automated alerts."
 				descriptionTooltip
 				descriptionTooltipPlacement="bottom"
-				descriptionTooltipMultiline
+				descriptionTooltipIsMultiline
 			>
 				{#snippet titleIcon()}<i class="fas fa-gauge-high"></i>{/snippet}
 				{#snippet headerActions()}
@@ -214,7 +214,7 @@
 				descriptionText="Complete history of system changes, user actions, and security events. Filter by date, user, action type, or resource. Export to CSV for compliance reporting."
 				descriptionTooltip
 				descriptionTooltipPlacement="bottom"
-				descriptionTooltipMultiline
+				descriptionTooltipIsMultiline
 			>
 				{#snippet titleIcon()}<i class="fas fa-clipboard-list"></i>{/snippet}
 				{#snippet headerActions()}
@@ -227,23 +227,23 @@
 	</Grid>
 
 	<Heading level={4} class="mt-4">Wrap Modifier</Heading>
-	<Paragraph class="mb-2">Use <Code>headerWrap</Code> when you need the description to wrap onto its own line (useful for mobile or when full description visibility is important).</Paragraph>
+	<Paragraph class="mb-2">Use <Code>shouldWrapHeader</Code> when you need the description to wrap onto its own line (useful for mobile or when full description visibility is important).</Paragraph>
 
 	<Grid>
 		<Column size="100" lg="1-2">
-			<Card headerWrap titleText="Project Overview" descriptionText="This card uses the wrap modifier so the description appears on its own line below the title and actions. This is useful when the full description text needs to be visible.">
+			<Card shouldWrapHeader titleText="Project Overview" descriptionText="This card uses the wrap modifier so the description appears on its own line below the title and actions. This is useful when the full description text needs to be visible.">
 				{#snippet headerActions()}
 					<ButtonGroup>
 						<Button variant="secondary" size="sm">Edit</Button>
 						<Button variant="primary" size="sm">View</Button>
 					</ButtonGroup>
 				{/snippet}
-				<Paragraph>With <Code>headerWrap</Code>, the description moves to a new line (via <Code>flex-basis: 100%</Code> and <Code>order: 1</Code>) and can display multiple lines.</Paragraph>
+				<Paragraph>With <Code>shouldWrapHeader</Code>, the description moves to a new line (via <Code>flex-basis: 100%</Code> and <Code>order: 1</Code>) and can display multiple lines.</Paragraph>
 			</Card>
 		</Column>
 
 		<Column size="100" lg="1-2">
-			<Card headerWrap titleText="Documentation" descriptionText="Complete API reference and integration guides for developers. Includes code samples, authentication flows, and best practices for building with our platform.">
+			<Card shouldWrapHeader titleText="Documentation" descriptionText="Complete API reference and integration guides for developers. Includes code samples, authentication flows, and best practices for building with our platform.">
 				{#snippet headerActions()}
 					<Button variant="primary" size="sm">Open Docs</Button>
 				{/snippet}
@@ -500,7 +500,7 @@
 				titleText="This is a Very Long Card Title That Should Be Truncated With Ellipsis When It Exceeds Available Space"
 				titleTooltip
 				titleTooltipPlacement="bottom"
-				titleTooltipMultiline
+				titleTooltipIsMultiline
 			>
 				{#snippet titleIcon()}🔒{/snippet}
 				{#snippet headerActions()}

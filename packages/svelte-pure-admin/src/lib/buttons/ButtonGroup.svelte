@@ -30,10 +30,6 @@
 		verticalAt?: Breakpoint;
 		/** Switch to horizontal at this breakpoint and up (pa-btn-group--{bp}-horizontal) */
 		horizontalAt?: Breakpoint;
-		/** @deprecated use `verticalAt="md"` — horizontal on mobile, vertical on md+ */
-		mdVertical?: boolean;
-		/** @deprecated use `horizontalAt="lg"` — vertical on mobile/tablet, horizontal on lg+ */
-		lgHorizontal?: boolean;
 		/** Prevent wrapping (single line, may overflow) */
 		isNowrap?: boolean;
 		/** Additional CSS classes */
@@ -48,8 +44,6 @@
 		responsive,
 		verticalAt,
 		horizontalAt,
-		mdVertical = false,
-		lgHorizontal = false,
 		isNowrap = false,
 		class: className = '',
 		children
@@ -61,12 +55,10 @@
 		if (isVertical) base.push('pa-btn-group--vertical');
 		if (align) base.push(`pa-btn-group--${align}`);
 		// Responsive orientation: combined `responsive` token first, then the
-		// per-direction breakpoint props (fall back to the deprecated booleans).
+		// per-direction breakpoint props.
 		if (responsive) base.push(`pa-btn-group--${responsive}`);
-		const vAt = verticalAt ?? (mdVertical ? 'md' : undefined);
-		const hAt = horizontalAt ?? (lgHorizontal ? 'lg' : undefined);
-		if (vAt) base.push(`pa-btn-group--${vAt}-vertical`);
-		if (hAt) base.push(`pa-btn-group--${hAt}-horizontal`);
+		if (verticalAt) base.push(`pa-btn-group--${verticalAt}-vertical`);
+		if (horizontalAt) base.push(`pa-btn-group--${horizontalAt}-horizontal`);
 		if (isNowrap) base.push('pa-btn-group--nowrap');
 		if (className) base.push(className);
 		return base.join(' ');

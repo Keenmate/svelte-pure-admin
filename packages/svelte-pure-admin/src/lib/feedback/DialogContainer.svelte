@@ -141,11 +141,11 @@
 {#each dialogs as dialog (dialog.id)}
 	{@const options = dialog.options}
 	<Modal
-		show={true}
+		isOpen={true}
 		size={options.size || 'sm'}
 		variant={options.variant}
 		isBanded={options.isBanded ?? false}
-		shouldShowClose={false}
+		hasClose={false}
 		shouldCloseOnBackdrop={options.closeOnBackdrop !== false}
 		placement={options.placement || 'center'}
 		titleText={options.title}

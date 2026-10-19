@@ -36,7 +36,7 @@
 	]);
 
 	// Preset B — detailed: tinted icon + title + 2-line snippet + meta trail, with the
-	// matched fragment wrapped in <mark> (allowHtml renders it).
+	// matched fragment wrapped in <mark> (shouldRenderHtml renders it).
 	const detailed = $derived<SearchResult[]>([
 		{
 			id: 'd1',
@@ -148,8 +148,8 @@
 				justify="end"
 				currentPage={1}
 				totalPages={9}
-				showPageInput={false}
-				disablePrevious
+				hasPageInput={false}
+				isPreviousDisabled
 				infoText="128 results"
 			/>
 		</Card>
@@ -160,8 +160,8 @@
 				the same shape a backend returns (Elasticsearch highlight, Postgres
 				<Code>ts_headline</Code>), re-skinned off the browser yellow onto a themed accent tint.
 			</Paragraph>
-			<SearchResults results={detailed} variant="detailed" allowHtml />
-			<Pager currentPage={1} totalPages={43} showPageInput disablePrevious />
+			<SearchResults results={detailed} variant="detailed" shouldRenderHtml />
+			<Pager currentPage={1} totalPages={43} hasPageInput isPreviousDisabled />
 		</Card>
 
 		<Card titleText="Grouped" descriptionText="variant=&quot;grouped&quot;" class="mb-4">

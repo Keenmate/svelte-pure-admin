@@ -169,8 +169,8 @@
 		<Pager
 			bind:currentPage
 			{totalPages}
-			disablePrevious={safeCurrentPage <= 1}
-			disableNext={safeCurrentPage >= totalPages}
+			isPreviousDisabled={safeCurrentPage <= 1}
+			isNextDisabled={safeCurrentPage >= totalPages}
 			onprevious={handlePrevious}
 			onnext={handleNext}
 		>

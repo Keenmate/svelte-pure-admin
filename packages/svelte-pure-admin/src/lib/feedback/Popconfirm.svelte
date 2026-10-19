@@ -17,7 +17,7 @@
 
 	interface Props {
 		/** Show/hide popconfirm */
-		show?: boolean;
+		isOpen?: boolean;
 		/** Message text to display */
 		messageText: string;
 		/** Placement relative to trigger */
@@ -43,7 +43,7 @@
 	}
 
 	let {
-		show = $bindable(false),
+		isOpen = $bindable(false),
 		messageText,
 		placement = 'bottom',
 		iconVariant,
@@ -89,7 +89,7 @@
 	const classes = $derived(() => {
 		const base = ['pa-popconfirm', `pa-popconfirm--${actualPlacement}`];
 		if (isCompact) base.push('pa-popconfirm--compact');
-		if (show) base.push('is-open');
+		if (isOpen) base.push('is-open');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -105,7 +105,7 @@
 	});
 
 	async function updatePosition() {
-		if (!show || !trigger || !popconfirmEl || typeof window === 'undefined') return;
+		if (!isOpen || !trigger || !popconfirmEl || typeof window === 'undefined') return;
 
 		const rootNode = trigger.getRootNode();
 		const isShadowDOM = rootNode instanceof ShadowRoot;
@@ -201,16 +201,16 @@
 
 	function handleConfirm() {
 		if (onconfirm) onconfirm();
-		show = false;
+		isOpen = false;
 	}
 
 	function handleCancel() {
 		if (oncancel) oncancel();
-		show = false;
+		isOpen = false;
 	}
 
 	function handleClickOutside(event: MouseEvent) {
-		if (!show) return;
+		if (!isOpen) return;
 
 		const target = event.target as Node;
 		if (
@@ -219,7 +219,7 @@
 			trigger &&
 			!trigger.contains(target)
 		) {
-			show = false;
+			isOpen = false;
 		}
 	}
 
@@ -232,7 +232,7 @@
 	});
 
 	$effect(() => {
-		if (show && trigger) {
+		if (isOpen && trigger) {
 			// Reset position state so the popconfirm is hidden until Floating UI calculates
 			isPositioned = false;
 			// Use setTimeout to ensure DOM is ready and trigger is positioned
@@ -241,7 +241,7 @@
 	});
 
 	$effect(() => {
-		if (!show) return;
+		if (!isOpen) return;
 
 		const handleScroll = () => updatePosition();
 		const handleResize = () => updatePosition();
@@ -256,7 +256,7 @@
 	});
 </script>
 
-<div bind:this={popconfirmEl} class={classes()} style:visibility={show && !isPositioned ? 'hidden' : undefined}>
+<div bind:this={popconfirmEl} class={classes()} style:visibility={isOpen && !isPositioned ? 'hidden' : undefined}>
 	<div class="pa-popconfirm__arrow"></div>
 	<div class="pa-popconfirm__content">
 		<div class={messageClasses()}>

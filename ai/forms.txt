@@ -55,11 +55,8 @@ Handles validation state styling and horizontal layout.
 
 Props:
   validation?: 'success' | 'warning' | 'error' Validation state (adds pa-form-group--{validation})
-  isError?: boolean          Legacy error flag (prefer validation prop)
-  isSuccess?: boolean        Legacy success flag (prefer validation prop)
   isRequired?: boolean       Mark as required (adds pa-form-group--required)
   isHorizontal?: boolean     Horizontal layout, label left, input right (default: false)
-  horizontal?: boolean       Alias for isHorizontal
   class?: string             Additional CSS classes
   children?: Snippet         Label + input + help content
 
@@ -93,7 +90,7 @@ With validation state:
 
 Horizontal layout:
 
-<FormGroup horizontal>
+<FormGroup isHorizontal>
   <FormLabel>Company</FormLabel>
   <Input bind:value={company} />
 </FormGroup>
@@ -104,19 +101,19 @@ FORM FIELD
 High-level wrapper that combines FormGroup + FormLabel + FormHelp with automatic
 error/success state handling. Reduces boilerplate when using form validation.
 
-The children snippet receives context: { errors: string[], touched: boolean, validation?: InputState }
+The children snippet receives context: { errors: string[], isTouched: boolean, validation?: InputState }
 
 Props:
   labelText?: string            Field label text
   helpText?: string             Default help text (shown when no errors)
   successMessage?: string       Success message (shown when touched, no errors, has value)
   errors?: string[] | null      Error messages from validation
-  touched?: boolean             Whether field has been interacted with (default: false)
+  isTouched?: boolean           Whether field has been interacted with (default: false)
   hasValue?: boolean            Field has a value (for success state) (default: false)
   validation?: 'success' | 'warning' | 'error'  Manual validation override
   class?: string                Additional class for FormGroup
-  horizontal?: boolean          Horizontal layout (default: false)
-  children: Snippet<[{ errors, touched, validation }]>    The input control (REQUIRED)
+  isHorizontal?: boolean        Horizontal layout (default: false)
+  children: Snippet<[{ errors, isTouched, validation }]>    The input control (REQUIRED)
 
 Basic usage:
 
@@ -131,13 +128,13 @@ With validation:
 <FormField
   labelText="Username"
   errors={usernameErrors}
-  touched={usernameTouched}
+  isTouched={usernameTouched}
   hasValue={username.length > 0}
   successMessage="Username is available"
   helpText="Choose a unique username"
 >
-  {#snippet children({ errors, touched })}
-    <Input isRequired bind:value={username} {errors} {touched} />
+  {#snippet children({ errors, isTouched })}
+    <Input isRequired bind:value={username} {errors} {isTouched} />
   {/snippet}
 </FormField>
 
@@ -209,7 +206,7 @@ Props:
   validation?: 'success' | 'warning' | 'error'
                                     Validation state (auto-derived from errors if not set)
   errors?: string | string[]        Error messages (auto-sets validation to 'error' when touched)
-  touched?: boolean                 Field has been interacted with (default: true)
+  isTouched?: boolean               Field has been interacted with (default: true)
   themeColor?: 1-9                  Theme color variant
   isDisabled?: boolean              Disabled state (default: false)
   isReadonly?: boolean              Readonly state (default: false)
@@ -256,10 +253,10 @@ Validation states (manual):
 
 Validation states (auto-derived from errors):
 
-<Input bind:value={email} errors={emailErrors} touched={emailTouched} />
+<Input bind:value={email} errors={emailErrors} isTouched={emailTouched} />
 
-When touched=true and errors has items, validation automatically becomes 'error'.
-When touched=false, errors are not shown (no error styling).
+When isTouched=true and errors has items, validation automatically becomes 'error'.
+When isTouched=false, errors are not shown (no error styling).
 
 Disabled and readonly:
 
@@ -284,7 +281,7 @@ Props:
   size?: 'xs' | 'sm' | 'lg' | 'xl'   Input size
   validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]          Error messages
-  touched?: boolean                   (default: true)
+  isTouched?: boolean                 (default: true)
   themeColor?: 1-9                    Theme color variant
   isDisabled?: boolean                (default: false)
   isReadonly?: boolean                (default: false)
@@ -306,7 +303,7 @@ Props:
 
 With validation:
 
-<NumberInput bind:value={amount} errors={amountErrors} touched={amountTouched} />
+<NumberInput bind:value={amount} errors={amountErrors} isTouched={amountTouched} />
 
 
 DATE INPUT
@@ -320,7 +317,7 @@ Props:
   size?: 'xs' | 'sm' | 'lg' | 'xl'
   validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]
-  touched?: boolean                   (default: true)
+  isTouched?: boolean                 (default: true)
   themeColor?: 1-9
   isDisabled?: boolean                (default: false)
   isReadonly?: boolean                (default: false)
@@ -364,7 +361,7 @@ Props:
   size?: 'xs' | 'sm' | 'lg' | 'xl'
   validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]
-  touched?: boolean                   (default: true)
+  isTouched?: boolean                 (default: true)
   themeColor?: 1-9
   isDisabled?: boolean                (default: false)
   isReadonly?: boolean                (default: false)
@@ -383,7 +380,7 @@ Props:
 
 With validation:
 
-<Textarea bind:value={comment} errors={commentErrors} touched={commentTouched} />
+<Textarea bind:value={comment} errors={commentErrors} isTouched={commentTouched} />
 
 
 SELECT
@@ -396,7 +393,7 @@ Props:
   size?: 'xs' | 'sm' | 'lg' | 'xl'
   validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]
-  touched?: boolean                   (default: true)
+  isTouched?: boolean                 (default: true)
   themeColor?: 1-9
   isDisabled?: boolean                (default: false)
   isRequired?: boolean                (default: false)
@@ -436,7 +433,7 @@ With size:
 
 With validation:
 
-<Select bind:value={category} errors={categoryErrors} touched={categoryTouched}>
+<Select bind:value={category} errors={categoryErrors} isTouched={categoryTouched}>
   <option value="">Select...</option>
   <option value="a">Category A</option>
 </Select>
@@ -631,7 +628,7 @@ Renders an Alert (danger variant) with a list of errors.
 
 Props:
   errors: FormErrorItem[]    Array of error objects (REQUIRED)
-  show?: boolean             Whether to show the summary (default: true)
+  isVisible?: boolean        Whether to show the summary (default: true)
   class?: string             Additional CSS class
 
 FormErrorItem: { field: string; id: string; message: string }
@@ -654,7 +651,7 @@ The id field is used to create anchor links (#id) that scroll to the error field
   }
 </script>
 
-<FormErrorSummary errors={formErrors} show={submitted && formErrors.length > 0} />
+<FormErrorSummary errors={formErrors} isVisible={submitted && formErrors.length > 0} />
 
 <FormGroup>
   <FormLabel>Name</FormLabel>
@@ -670,12 +667,12 @@ The id field is used to create anchor links (#id) that scroll to the error field
 VALIDATION PATTERN: ERRORS + TOUCHED
 --------------------------------------
 All input components (Input, NumberInput, DateInput, Textarea, Select) support
-the errors + touched pattern for automatic validation styling.
+the errors + isTouched pattern for automatic validation styling.
 
 HOW IT WORKS:
-1. Pass errors (string or string[]) and touched (boolean) to the input
-2. When touched=true AND errors has items, validation auto-becomes 'error'
-3. When touched=false, no error styling is shown (even if errors exist)
+1. Pass errors (string or string[]) and isTouched (boolean) to the input
+2. When isTouched=true AND errors has items, validation auto-becomes 'error'
+3. When isTouched=false, no error styling is shown (even if errors exist)
 4. Manual validation prop always takes precedence over the auto-derived value
 
 <script lang="ts">
@@ -696,7 +693,7 @@ HOW IT WORKS:
     type="email"
     bind:value={email}
     errors={emailErrors()}
-    touched={emailTouched}
+    isTouched={emailTouched}
     onblur={() => emailTouched = true}
     placeholder="user@example.com"
   />
@@ -710,17 +707,17 @@ SIMPLIFIED WITH FORM FIELD:
 <FormField
   labelText="Email"
   errors={emailErrors()}
-  touched={emailTouched}
+  isTouched={emailTouched}
   hasValue={email.length > 0}
   successMessage="Valid email"
   helpText="We'll never share your email"
 >
-  {#snippet children({ errors, touched })}
+  {#snippet children({ errors, isTouched })}
     <Input isRequired
       type="email"
       bind:value={email}
       {errors}
-      {touched}
+      {isTouched}
       onblur={() => emailTouched = true}
     />
   {/snippet}
@@ -824,23 +821,23 @@ COMPLETE FORM EXAMPLE
 </script>
 
 <Form onsubmit={handleSubmit}>
-  <FormErrorSummary errors={formErrors} show={submitted && formErrors.length > 0} />
+  <FormErrorSummary errors={formErrors} isVisible={submitted && formErrors.length > 0} />
 
   <Grid gap="md">
     <Column size="100" md="50">
       <FormField
         labelText="First Name"
         errors={getFirstNameErrors()}
-        touched={firstNameTouched}
+        isTouched={firstNameTouched}
         hasValue={firstName.length > 0}
         successMessage="Looks good"
       >
-        {#snippet children({ errors, touched })}
+        {#snippet children({ errors, isTouched })}
           <Input isRequired
             id="firstName"
             bind:value={firstName}
             {errors}
-            {touched}
+            {isTouched}
             onblur={() => firstNameTouched = true}
             placeholder="John"
           />
@@ -852,15 +849,15 @@ COMPLETE FORM EXAMPLE
       <FormField
         labelText="Last Name"
         errors={getLastNameErrors()}
-        touched={lastNameTouched}
+        isTouched={lastNameTouched}
         hasValue={lastName.length > 0}
       >
-        {#snippet children({ errors, touched })}
+        {#snippet children({ errors, isTouched })}
           <Input isRequired
             id="lastName"
             bind:value={lastName}
             {errors}
-            {touched}
+            {isTouched}
             onblur={() => lastNameTouched = true}
             placeholder="Doe"
           />
@@ -872,17 +869,17 @@ COMPLETE FORM EXAMPLE
   <FormField
     labelText="Email Address"
     errors={getEmailErrors()}
-    touched={emailTouched}
+    isTouched={emailTouched}
     hasValue={email.length > 0}
     helpText="We'll never share your email"
   >
-    {#snippet children({ errors, touched })}
+    {#snippet children({ errors, isTouched })}
       <Input isRequired
         id="email"
         type="email"
         bind:value={email}
         {errors}
-        {touched}
+        {isTouched}
         onblur={() => emailTouched = true}
         placeholder="john@example.com"
       />
@@ -894,17 +891,17 @@ COMPLETE FORM EXAMPLE
       <FormField
         labelText="Age"
         errors={getAgeErrors()}
-        touched={ageTouched}
+        isTouched={ageTouched}
         hasValue={age !== null}
       >
-        {#snippet children({ errors, touched })}
+        {#snippet children({ errors, isTouched })}
           <NumberInput isRequired
             id="age"
             bind:value={age}
             min={0}
             max={150}
             {errors}
-            {touched}
+            {isTouched}
             onblur={() => ageTouched = true}
           />
         {/snippet}
@@ -922,15 +919,15 @@ COMPLETE FORM EXAMPLE
   <FormField
     labelText="Role"
     errors={getRoleErrors()}
-    touched={roleTouched}
+    isTouched={roleTouched}
     hasValue={role.length > 0}
   >
-    {#snippet children({ errors, touched })}
+    {#snippet children({ errors, isTouched })}
       <Select isRequired
         id="role"
         bind:value={role}
         {errors}
-        {touched}
+        {isTouched}
         onchange={() => roleTouched = true}
       >
         <option value="">Select a role...</option>
@@ -974,20 +971,20 @@ COMPLETE FORM EXAMPLE
 
 HORIZONTAL FORM LAYOUT
 ------------------------
-Use horizontal prop on FormGroup or FormField for label-left layout.
+Use isHorizontal on FormGroup or FormField for label-left layout.
 
 <Form>
-  <FormGroup horizontal isRequired>
+  <FormGroup isHorizontal isRequired>
     <FormLabel>Username</FormLabel>
     <Input bind:value={username} />
   </FormGroup>
 
-  <FormGroup horizontal>
+  <FormGroup isHorizontal>
     <FormLabel>Email</FormLabel>
     <Input type="email" bind:value={email} />
   </FormGroup>
 
-  <FormGroup horizontal>
+  <FormGroup isHorizontal>
     <FormLabel>Role</FormLabel>
     <Select bind:value={role}>
       <option value="user">User</option>
@@ -998,7 +995,7 @@ Use horizontal prop on FormGroup or FormField for label-left layout.
 
 Or with FormField:
 
-<FormField labelText="Username" horizontal>
+<FormField labelText="Username" isHorizontal>
   {#snippet children()}
     <Input isRequired bind:value={username} />
   {/snippet}
@@ -1058,9 +1055,9 @@ CRITICAL REMINDERS
 - Checkbox requires id prop (it is mandatory)
 - Radio requires name and value props (they are mandatory)
 - SidebarItem requires labelText prop (it is mandatory)
-- errors + touched pattern: errors shown only when touched=true
-- touched defaults to true on Input/NumberInput/DateInput/Textarea/Select
-  (so errors show immediately unless you set touched={false} initially)
+- errors + isTouched pattern: errors shown only when isTouched=true
+- isTouched defaults to true on Input/NumberInput/DateInput/Textarea/Select
+  (so errors show immediately unless you set isTouched={false} initially)
 - Manual validation prop always overrides the value auto-derived from errors
 - FormField children snippet receives context: { errors, touched, validation }
 - FormErrorSummary uses anchor links (#id) to jump to errored fields

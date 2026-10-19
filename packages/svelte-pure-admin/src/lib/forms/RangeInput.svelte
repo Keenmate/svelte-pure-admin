@@ -31,7 +31,7 @@
 		/** Step increment */
 		step?: number | 'any';
 		/** Show value label */
-		showValue?: boolean;
+		hasValue?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Input handler */
@@ -51,7 +51,7 @@
 		min = 0,
 		max = 100,
 		step = 1,
-		showValue = false,
+		hasValue = false,
 		class: className = '',
 		oninput,
 		onchange
@@ -71,7 +71,7 @@
 	});
 </script>
 
-{#if showValue}
+{#if hasValue}
 	<!-- Core ships no native-range wrapper (`pa-range-wrapper` / `pa-range-value` are
 	     phantoms — those live on the div-based `pa-range` slider). Use the real
 	     `pa-input-group` addon layout. -->

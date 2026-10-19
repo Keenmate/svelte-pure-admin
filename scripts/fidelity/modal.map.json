@@ -9,7 +9,7 @@
     "size":       { "prop": "size",             "kind": "enum",   "values": ["sm", "lg", "xl", "xxl", "fw"] },
     "scrollable": { "prop": "isScrollable",     "kind": "bool" },
     "static":     { "prop": "isStatic",         "kind": "bool" },
-    "showClose":  { "prop": "shouldShowClose",  "kind": "bool" },
+    "hasClose":   { "prop": "hasClose",         "kind": "bool" },
     "title":      { "prop": "titleText",        "kind": "string" },
     "titleIcon":  { "prop": "titleIconName",    "kind": "string" },
     "body":       { "prop": "children",         "kind": "slot" },

@@ -142,7 +142,7 @@
 		<span class="text-muted text-sm">{filtered.length} movies</span>
 	{/snippet}
 
-	<DetailView bind:show={showPanel} isOverlay={true} onclose={closePanel}>
+	<DetailView bind:isOpen={showPanel} isOverlay={true} onclose={closePanel}>
 		{#snippet main()}
 			<Table isStriped>
 				<thead>
@@ -241,8 +241,8 @@
 		<Pager
 			bind:currentPage
 			{totalPages}
-			disablePrevious={safeCurrentPage <= 1}
-			disableNext={safeCurrentPage >= totalPages}
+			isPreviousDisabled={safeCurrentPage <= 1}
+			isNextDisabled={safeCurrentPage >= totalPages}
 			onprevious={handlePrevious}
 			onnext={handleNext}
 		>

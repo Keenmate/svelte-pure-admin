@@ -40,7 +40,7 @@
 		 *  `true`). Set `false` to arm the engine on this row but only manage the
 		 *  children you tag with `data-pc-fit` / wrap in a {@link FitSlot} — the rest
 		 *  stay put. Use for a row with a single relocating slot beside fixed content. */
-		auto?: boolean;
+		isAuto?: boolean;
 		/** Container element tag (default `div`). */
 		tag?: string;
 		/** Extra classes on the container. */
@@ -49,7 +49,7 @@
 		children?: import('svelte').Snippet;
 	}
 
-	let { defaultPriority, auto = true, tag = 'div', class: className = '', children }: Props = $props();
+	let { defaultPriority, isAuto = true, tag = 'div', class: className = '', children }: Props = $props();
 
 	let el = $state<HTMLElement>();
 
@@ -57,7 +57,7 @@
 		let disposed = false;
 		// `navbar-fit` resolves to core's renamed `fit.js`. The engine is
 		// container-generic; `init` no-ops unless the element is armed
-		// (`data-pc-fit-auto`, set below when `auto`) or holds a `[data-pc-fit]` child.
+		// (`data-pc-fit-auto`, set below when `isAuto`) or holds a `[data-pc-fit]` child.
 		loadCoreJs('navbar-fit').then(() => {
 			if (disposed || !el) return;
 			const fit = window.pureAdmin?.components?.fit ?? window.pureAdmin?.components?.navFit;
@@ -73,7 +73,7 @@
 	this={tag}
 	bind:this={el}
 	class={className || undefined}
-	data-pc-fit-auto={auto ? '' : undefined}
+	data-pc-fit-auto={isAuto ? '' : undefined}
 	data-pc-fit-default-priority={defaultPriority}
 >
 	{@render children?.()}

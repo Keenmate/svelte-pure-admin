@@ -9,8 +9,8 @@
     "previousText" : { "prop": "previousText",     "kind": "string" },
     "nextText" :     { "prop": "nextText",         "kind": "string" },
     "lastText" :     { "prop": "lastText",         "kind": "string" },
-    "showInfo":      { "prop": "showInfo",         "kind": "bool" },
-    "showPageInput": { "prop": "showPageInput",    "kind": "bool" },
+    "hasInfo":       { "prop": "hasInfo",          "kind": "bool" },
+    "hasPageInput":  { "prop": "hasPageInput",     "kind": "bool" },
     "page":          { "prop": "currentPage",      "kind": "string", "nativeType": "number" },
     "totalPages":    { "prop": "totalPages",       "kind": "string", "nativeType": "number" },
     "extraClass":    { "prop": "class",            "kind": "string" }

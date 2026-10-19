@@ -282,7 +282,7 @@
 	</Grid>
 
 	<Popconfirm
-		bind:show={showDeletePopconfirm}
+		bind:isOpen={showDeletePopconfirm}
 		trigger={deleteTrigger}
 		messageText="Are you sure you want to delete this item? This action cannot be undone."
 		iconVariant="danger"
@@ -292,7 +292,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showArchivePopconfirm}
+		bind:isOpen={showArchivePopconfirm}
 		trigger={archiveTrigger}
 		messageText="Archive this item? It will be moved to the archive folder."
 		iconVariant="warning"
@@ -302,7 +302,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showResetPopconfirm}
+		bind:isOpen={showResetPopconfirm}
 		trigger={resetTrigger}
 		messageText="Reset all settings to default values?"
 		iconVariant="info"
@@ -312,7 +312,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showCompactPopconfirm}
+		bind:isOpen={showCompactPopconfirm}
 		trigger={compactTrigger}
 		messageText="Delete this item?"
 		isCompact
@@ -323,7 +323,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showCompact2Popconfirm}
+		bind:isOpen={showCompact2Popconfirm}
 		trigger={compact2Trigger}
 		messageText="Remove this item?"
 		isCompact
@@ -380,7 +380,7 @@
 	</ButtonGroup>
 
 	<Popconfirm
-		bind:show={showTopPopconfirm}
+		bind:isOpen={showTopPopconfirm}
 		trigger={topTrigger}
 		placement="top"
 		messageText="Confirm this action?"
@@ -389,7 +389,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showBottomPopconfirm}
+		bind:isOpen={showBottomPopconfirm}
 		trigger={bottomTrigger}
 		placement="bottom"
 		messageText="Confirm this action?"
@@ -398,7 +398,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showLeftPopconfirm}
+		bind:isOpen={showLeftPopconfirm}
 		trigger={leftTrigger}
 		placement="start"
 		messageText="Confirm this action?"
@@ -407,7 +407,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showRightPopconfirm}
+		bind:isOpen={showRightPopconfirm}
 		trigger={rightTrigger}
 		placement="end"
 		messageText="Confirm this action?"
@@ -452,7 +452,7 @@
 	</ButtonGroup>
 
 	<Popconfirm
-		bind:show={showDangerPopconfirm}
+		bind:isOpen={showDangerPopconfirm}
 		trigger={dangerTrigger}
 		messageText="This action is destructive and cannot be undone."
 		iconVariant="danger"
@@ -461,7 +461,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showWarningPopconfirm}
+		bind:isOpen={showWarningPopconfirm}
 		trigger={warningTrigger}
 		messageText="Please review this action carefully before proceeding."
 		iconVariant="warning"
@@ -470,7 +470,7 @@
 	/>
 
 	<Popconfirm
-		bind:show={showInfoPopconfirm}
+		bind:isOpen={showInfoPopconfirm}
 		trigger={infoTrigger}
 		messageText="This will update your preferences. Continue?"
 		iconVariant="info"
@@ -517,7 +517,7 @@
 	<!-- Popconfirms outside isTable to avoid invalid HTML -->
 	{#each tableData as row (row.id)}
 		<Popconfirm
-			bind:show={row.showPopconfirm}
+			bind:isOpen={row.showPopconfirm}
 			trigger={row.trigger}
 			messageText={`Delete ${row.name}?`}
 			isCompact
@@ -551,7 +551,7 @@
 
 <!-- Shared Popconfirm for WebGrid (outside Card to avoid position: relative issues) -->
 <Popconfirm
-	bind:show={gridConfirmShow}
+	bind:isOpen={gridConfirmShow}
 	trigger={gridConfirmTrigger}
 	messageText={gridConfirmMessage}
 	iconVariant="danger"

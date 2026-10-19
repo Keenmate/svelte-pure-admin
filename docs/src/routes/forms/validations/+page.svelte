@@ -312,7 +312,7 @@
 	<Paragraph class="mb-3">Error text positioned to the right of the input. Works well in horizontal form layouts with more screen real estate.</Paragraph>
 
 	<Form>
-		<FormGroup horizontal class="align-items-center">
+		<FormGroup isHorizontal class="align-items-center">
 			<FormLabel class="pc-col-md-25" for="company-name">Company Name</FormLabel>
 			<Column class="pc-col-md-40">
 				<Input type="text" id="company-name" value="" validation="error" />
@@ -321,7 +321,7 @@
 				<FormHelp variant="error" class="mt-0">Company name is required</FormHelp>
 			</Column>
 		</FormGroup>
-		<FormGroup horizontal class="align-items-center">
+		<FormGroup isHorizontal class="align-items-center">
 			<FormLabel class="pc-col-md-25" for="website-url">Website URL</FormLabel>
 			<Column class="pc-col-md-40">
 				<Input type="url" id="website-url" value="not-a-url" validation="error" />
@@ -330,7 +330,7 @@
 				<FormHelp variant="error" class="mt-0">Please enter a valid URL (e.g., https://example.com)</FormHelp>
 			</Column>
 		</FormGroup>
-		<FormGroup horizontal class="align-items-center">
+		<FormGroup isHorizontal class="align-items-center">
 			<FormLabel class="pc-col-md-25" for="industry-select">Industry</FormLabel>
 			<Column class="pc-col-md-40">
 				<Select id="industry-select" validation="success">

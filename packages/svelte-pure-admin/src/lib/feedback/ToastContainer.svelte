@@ -115,7 +115,7 @@
 			titleText={toast.titleText}
 			messageText={toast.messageText}
 			duration={toast.duration ?? 5000}
-			shouldShowProgress={toast.shouldShowProgress}
+			hasProgress={toast.hasProgress}
 			progressColor={toast.progressColor}
 			maxWidth={toast.maxWidth}
 			class={toast.class}

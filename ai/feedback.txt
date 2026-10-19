@@ -190,7 +190,7 @@ MODAL
 Dialog overlay with backdrop, header, body, and footer.
 
 PROPS:
-  show?: boolean (bindable)     -- Show/hide modal (default: false)
+  isOpen?: boolean (bindable)   -- Show/hide modal (default: false)
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw'
                                 -- Modal size (default: 'md')
   variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
@@ -202,7 +202,7 @@ PROPS:
   isStatic?: boolean            -- Prevents ESC/backdrop close (default: false)
   titleText?: string            -- Modal title text
   titleIconName?: string        -- Leading icon name before the title, rendered through <Icon> (affordances like success / warning / danger / info / delete render the masked glyph)
-  shouldShowClose?: boolean     -- Show close button (default: true)
+  hasClose?: boolean            -- Show close button (default: true)
   shouldCloseOnEscape?: boolean -- Close on ESC key (default: true)
   beforeCloseCallback?: () => boolean | void
                                 -- Return false to prevent closing
@@ -214,7 +214,7 @@ PROPS:
   children?: Snippet            -- Modal body content
   footer?: Snippet              -- Modal footer content
 
-IMPORTANT: show is $bindable -- use bind:show for two-way binding.
+IMPORTANT: isOpen is $bindable -- use bind:isOpen for two-way binding.
 When isStatic is true, both ESC key and backdrop click are disabled.
 
 WHEN TO USE MODAL vs DIALOG SERVICE:
@@ -243,7 +243,7 @@ BASIC USAGE:
 
 <Button onclick={() => showModal = true}>Open Modal</Button>
 
-<Modal bind:show={showModal} titleText="Confirm Action">
+<Modal bind:isOpen={showModal} titleText="Confirm Action">
   Are you sure you want to proceed?
 
   {#snippet footer()}
@@ -254,14 +254,14 @@ BASIC USAGE:
 
 SIZE VARIANTS:
 
-<Modal bind:show={showSm} titleText="Small Modal" size="sm">
+<Modal bind:isOpen={showSm} titleText="Small Modal" size="sm">
   Compact dialog for simple confirmations.
   {#snippet footer()}
     <Button variant="primary" onclick={() => showSm = false}>OK</Button>
   {/snippet}
 </Modal>
 
-<Modal bind:show={showLg} titleText="Large Modal" size="lg">
+<Modal bind:isOpen={showLg} titleText="Large Modal" size="lg">
   Wider dialog for forms and detailed content.
   {#snippet footer()}
     <Button variant="secondary" onclick={() => showLg = false}>Cancel</Button>
@@ -269,7 +269,7 @@ SIZE VARIANTS:
   {/snippet}
 </Modal>
 
-<Modal bind:show={showFw} titleText="Full Width" size="fw">
+<Modal bind:isOpen={showFw} titleText="Full Width" size="fw">
   Full-width dialog spanning the entire viewport.
   {#snippet footer()}
     <Button variant="secondary" onclick={() => showFw = false}>Close</Button>
@@ -278,7 +278,7 @@ SIZE VARIANTS:
 
 THEMED MODAL:
 
-<Modal bind:show={showDanger} titleText="Delete Item" variant="danger">
+<Modal bind:isOpen={showDanger} titleText="Delete Item" variant="danger">
   This action cannot be undone. All data will be permanently deleted.
   {#snippet footer()}
     <Button variant="secondary" onclick={() => showDanger = false}>Cancel</Button>
@@ -288,7 +288,7 @@ THEMED MODAL:
 
 HEADER-ONLY THEME:
 
-<Modal bind:show={showHeaderTheme} titleText="Warning" headerVariant="warning">
+<Modal bind:isOpen={showHeaderTheme} titleText="Warning" headerVariant="warning">
   Only the header bar is themed, body stays neutral.
   {#snippet footer()}
     <Button variant="warning" onclick={() => showHeaderTheme = false}>Acknowledge</Button>
@@ -297,7 +297,7 @@ HEADER-ONLY THEME:
 
 SCROLLABLE BODY:
 
-<Modal bind:show={showScroll} titleText="Terms of Service" isScrollable size="lg">
+<Modal bind:isOpen={showScroll} titleText="Terms of Service" isScrollable size="lg">
   <div style="height: 2000px;">
     Very long content that scrolls within the modal body...
   </div>
@@ -308,7 +308,7 @@ SCROLLABLE BODY:
 
 STATIC MODAL (NO CLOSE ON ESC/BACKDROP):
 
-<Modal bind:show={showStatic} titleText="Processing..." isStatic shouldShowClose={false}>
+<Modal bind:isOpen={showStatic} titleText="Processing..." isStatic hasClose={false}>
   Please wait while we process your request.
   <Spinner size="lg" />
 </Modal>
@@ -328,7 +328,7 @@ PREVENT CLOSE WITH CALLBACK:
 </script>
 
 <Modal
-  bind:show={showModal}
+  bind:isOpen={showModal}
   titleText="Edit Profile"
   beforeCloseCallback={beforeClose}
   onclose={() => console.log('modal closed')}
@@ -344,7 +344,7 @@ PREVENT CLOSE WITH CALLBACK:
 
 CUSTOM HEADER:
 
-<Modal bind:show={showCustom} size="lg">
+<Modal bind:isOpen={showCustom} size="lg">
   {#snippet header()}
     <div style="display: flex; align-items: center; gap: 0.5rem;">
       <svg>...</svg>
@@ -360,7 +360,7 @@ CUSTOM HEADER:
 
 TOP-POSITIONED MODAL:
 
-<Modal bind:show={showTop} titleText="Quick Action" placement="top" size="sm">
+<Modal bind:isOpen={showTop} titleText="Quick Action" placement="top" size="sm">
   Modal appears near the top of the viewport.
   {#snippet footer()}
     <Button variant="primary" onclick={() => showTop = false}>OK</Button>
@@ -381,7 +381,7 @@ TOAST PROPS:
   messageText: string            -- Toast message (REQUIRED)
   isVisible?: boolean (bindable) -- Show/hide toast (default: true)
   duration?: number              -- Auto-dismiss in ms, 0 for persistent (default: 5000)
-  shouldShowProgress?: boolean   -- Show progress bar (default: false)
+  hasProgress?: boolean          -- Show progress bar (default: false)
   icon?: Snippet                 -- Custom icon
   iconName?: string              -- Icon name rendered through <Icon> (the icon snippet wins)
   onclose?: () => void           -- Fired when toast closes
@@ -413,7 +413,7 @@ WITH PROGRESS BAR:
     variant="info"
     titleText="Uploading"
     messageText="File upload in progress..."
-    shouldShowProgress
+    hasProgress
     duration={8000}
   />
 </ToastContainer>
@@ -464,7 +464,7 @@ COMPLETE TOAST SYSTEM:
       variant={toast.variant}
       titleText={toast.title}
       messageText={toast.message}
-      shouldShowProgress
+      hasProgress
       duration={5000}
       onclose={() => removeToast(toast.id)}
     />
@@ -630,7 +630,7 @@ PROPS:
                                                 -- Placement (default: 'top')
   variant?: 'primary' | 'success' | 'warning' | 'danger' | 'color-1' ... 'color-9'
                                                 -- Color variant
-  multiline?: boolean                           -- 20rem width, left-aligned (default: false)
+  isMultiline?: boolean                         -- 20rem width, left-aligned (default: false)
   isHelp?: boolean                              -- Question mark cursor (default: false)
   class?: string                                -- Additional CSS classes
   children?: Snippet                            -- Trigger element content
@@ -663,7 +663,7 @@ MULTILINE:
 
 <Tooltip
   text="This is a longer tooltip that wraps to multiple lines for detailed explanations."
-  multiline
+  isMultiline
 >
   Hover for details
 </Tooltip>
@@ -752,7 +752,7 @@ Small confirmation dialog anchored to a trigger element. Perfect for
 delete confirmations and quick yes/no decisions.
 
 PROPS:
-  show?: boolean (bindable)            -- Show/hide popconfirm (default: false)
+  isOpen?: boolean (bindable)          -- Show/hide popconfirm (default: false)
   messageText: string                  -- Confirmation message (REQUIRED)
   placement?: 'top' | 'bottom' | 'start' | 'end'
                                        -- Placement (default: 'bottom')
@@ -766,7 +766,7 @@ PROPS:
   oncancel?: () => void                -- Fired on cancel
   class?: string                       -- Additional CSS classes
 
-IMPORTANT: show is $bindable. You must provide the trigger element reference
+IMPORTANT: isOpen is $bindable. You must provide the trigger element reference
 for Floating UI positioning. Requires Floating UI loaded globally.
 
 BASIC USAGE:
@@ -791,7 +791,7 @@ BASIC USAGE:
 </button>
 
 <Popconfirm
-  bind:show={showConfirm}
+  bind:isOpen={showConfirm}
   messageText="Are you sure you want to delete this item?"
   trigger={triggerEl}
   confirmVariant="danger"
@@ -802,7 +802,7 @@ BASIC USAGE:
 WITH ICON:
 
 <Popconfirm
-  bind:show={showConfirm}
+  bind:isOpen={showConfirm}
   messageText="This action cannot be undone."
   iconVariant="danger"
   trigger={triggerEl}
@@ -815,7 +815,7 @@ WITH ICON:
 COMPACT MODE:
 
 <Popconfirm
-  bind:show={showConfirm}
+  bind:isOpen={showConfirm}
   messageText="Remove?"
   isCompact
   trigger={triggerEl}
@@ -981,7 +981,7 @@ NOTIFICATIONS PANEL
 Dropdown panel for displaying notifications (placeholder/demo component).
 
 PROPS:
-  show?: boolean (bindable)  -- Show/hide panel (default: false)
+  isOpen?: boolean (bindable)  -- Show/hide panel (default: false)
   class?: string             -- Additional CSS classes
 
 NOTE: This is currently a demo component with hardcoded notification items.
@@ -999,7 +999,7 @@ BASIC USAGE:
   Notifications
 </button>
 
-<NotificationsPanel bind:show={showNotifications} />
+<NotificationsPanel bind:isOpen={showNotifications} />
 
 
 =====================================================================
@@ -1111,7 +1111,7 @@ EXAMPLE 2: CRUD OPERATIONS WITH TOAST NOTIFICATIONS
       variant={toast.variant}
       titleText={toast.title}
       messageText={toast.message}
-      shouldShowProgress
+      hasProgress
       duration={4000}
       onclose={() => toasts = toasts.filter(t => t.id !== toast.id)}
     />
@@ -1309,7 +1309,7 @@ CRITICAL REMINDERS
 DO:
   - Import CSS from @keenmate/pure-admin-core separately
   - Place DialogContainer, PopoverContainer, ToastContainer at root layout
-  - Use bind:show for two-way binding on Modal, Toast, Popconfirm
+  - Use bind:isOpen for two-way binding on Modal, Popconfirm, SlidePanel, DetailView
   - Use beforeCloseCallback to prevent modal close (return false)
   - Use dialogService for programmatic confirm/alert/prompt (await the result)
   - Use logical placements for ToastContainer (top-end, bottom-start, etc.)

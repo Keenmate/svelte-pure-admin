@@ -30,7 +30,7 @@
 
 	// Page-level results (the destination a search submits to). Rows tagged with a
 	// `group` so the `grouped` preset can bucket them; `snippet`/`meta`/`type` feed the
-	// richer presets. `<mark>` highlight would render with `allowHtml`.
+	// richer presets. `<mark>` highlight would render with `shouldRenderHtml`.
 	const searchResultsDemo: SearchResult[] = [
 		{ id: 'r1', group: 'Pages', type: 'Page', icon: '📄', href: '#', title: 'Getting started with widgets', snippet: 'A step-by-step guide covering widget setup, configuration, and troubleshooting for teams of any size.', meta: ['Docs / Guides', 'Updated 2 days ago'] },
 		{ id: 'r2', group: 'Pages', type: 'Page', icon: '📄', href: '#', title: 'Widget API reference', snippet: 'Endpoints, payloads and rate limits for the Widget REST API.', meta: ['Docs / API'] },
@@ -516,7 +516,7 @@
 				The page-level results list a search <em>navigates to</em> (distinct from the live
 				dropdown). One item tree, four presets — switch below. The <Code>grouped</Code> preset
 				buckets by each row's <Code>group</Code>; <Code>detailed</Code> adds the snippet and
-				meta trail. Backend <Code>&lt;mark&gt;</Code> highlight renders with <Code>allowHtml</Code>.
+				meta trail. Backend <Code>&lt;mark&gt;</Code> highlight renders with <Code>shouldRenderHtml</Code>.
 			</p>
 
 			<ButtonGroup class="mb-3">
@@ -551,7 +551,7 @@
 <SidebarSearch action="/search" name="q" />
 
 <!-- Command palette size preset (rc15): --sm / --lg / --xl -->
-<CommandPalette bind:show size="lg" {commands} {contexts} />`}</CodeBlock>
+<CommandPalette bind:isOpen size="lg" {commands} {contexts} />`}</CodeBlock>
 		</div>
 	</Card>
 </div>
@@ -763,7 +763,7 @@
 </div>
 
 <CommandPalette
-	bind:show={showPalette}
+	bind:isOpen={showPalette}
 	{commands}
 	{contexts}
 	{globalSearch}

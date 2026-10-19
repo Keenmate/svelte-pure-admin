@@ -53,7 +53,7 @@
 		 * same `<mark>` in the autocomplete popup too). The value is injected as HTML, so
 		 * the consumer is responsible for it being backend-sanitised.
 		 */
-		allowHtml?: boolean;
+		shouldRenderHtml?: boolean;
 		/** Additional CSS classes on the field shell. */
 		class?: string;
 	}
@@ -67,7 +67,7 @@
 		debounce = 300,
 		minChars = 1,
 		emptyText = 'No results',
-		allowHtml = false,
+		shouldRenderHtml = false,
 		class: className = ''
 	}: Props = $props();
 
@@ -261,11 +261,11 @@
 							     / `__item-name` / `__item-type` out as DIRECT flex children of
 							     `__item` — no `__item-content` wrapper. -->
 							<span class="pa-search-autocomplete__item-name">
-								{#if allowHtml}{@html result.title}{:else}{result.title}{/if}
+								{#if shouldRenderHtml}{@html result.title}{:else}{result.title}{/if}
 							</span>
 							{#if result.subtitle}
 								<span class="pa-search-autocomplete__item-type">
-									{#if allowHtml}{@html result.subtitle}{:else}{result.subtitle}{/if}
+									{#if shouldRenderHtml}{@html result.subtitle}{:else}{result.subtitle}{/if}
 								</span>
 							{/if}
 							{#if result.badge}

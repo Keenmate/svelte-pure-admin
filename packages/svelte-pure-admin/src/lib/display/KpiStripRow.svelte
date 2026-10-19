@@ -32,7 +32,7 @@
 		unitText?: string;
 		/** Currency / scale prefix rendered before the number ("$", "¥", "€"). */
 		prefixText?: string;
-		/** Previous-period value (omit when noPreviousValue on parent). */
+		/** Previous-period value (omit when the parent has hasPreviousValue={false}). */
 		previousValueText?: string;
 		/** Δ% text shown in the delta column. */
 		deltaText?: string;
@@ -149,21 +149,21 @@
 		</div>
 	{/if}
 
-	<!-- Previous-value (cell hidden by parent's --no-prev when noPreviousValue is set) -->
+	<!-- Previous-value (cell hidden by parent's --no-prev when the parent has hasPreviousValue={false}) -->
 	{#if previousValue}
 		<div class="pa-kpi-strip__prev">{@render previousValue()}</div>
 	{:else if previousValueText !== undefined}
 		<div class="pa-kpi-strip__prev">{previousValueText}</div>
 	{/if}
 
-	<!-- Delta (cell hidden by parent's --no-delta when noDeltaPercent is set) -->
+	<!-- Delta (cell hidden by parent's --no-delta when the parent has hasDeltaPercent={false}) -->
 	{#if delta}
 		<div class={deltaClasses()}>{@render delta()}</div>
 	{:else}
 		<div class={deltaClasses()}>{deltaText ?? ''}</div>
 	{/if}
 
-	<!-- Target (cell hidden by parent's --no-target when noTargetBar is set) -->
+	<!-- Target (cell hidden by parent's --no-target when the parent has hasTargetBar={false}) -->
 	{#if target}
 		<div class="pa-kpi-strip__target">{@render target()}</div>
 	{:else}

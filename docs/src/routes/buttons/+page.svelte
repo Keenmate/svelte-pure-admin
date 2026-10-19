@@ -343,7 +343,7 @@
 		<Card titleText="Responsive Direction">
 			<Heading level={4}>Horizontal → Vertical at md (768px)</Heading>
 			<Paragraph isMuted class="mb-1">Resize window to see change</Paragraph>
-			<ButtonGroup mdVertical>
+			<ButtonGroup verticalAt="md">
 				<Button variant="primary">Save</Button>
 				<Button variant="secondary">Cancel</Button>
 				<Button variant="danger">Delete</Button>
@@ -351,7 +351,7 @@
 
 			<Heading level={4} class="mt-2">Vertical → Horizontal at lg (992px)</Heading>
 			<Paragraph isMuted class="mb-1">Starts vertical, becomes horizontal on large screens</Paragraph>
-			<ButtonGroup isVertical lgHorizontal>
+			<ButtonGroup isVertical horizontalAt="lg">
 				<Button variant="success">Approve</Button>
 				<Button variant="warning">Review</Button>
 				<Button variant="danger">Reject</Button>
@@ -561,7 +561,7 @@
 	</ButtonGroup>
 
 	<Popconfirm
-		bind:show={removeShow}
+		bind:isOpen={removeShow}
 		trigger={removeTrigger}
 		messageText={`Remove ${removeName}?`}
 		iconVariant="danger"
@@ -580,7 +580,7 @@
 <Card titleText="Text Truncation">
 	<Paragraph isMuted class="mb-1">Give the button a fixed width (<Code>.wr-*</Code>) and set <Code>shouldTruncateText</Code> to truncate long text with ellipsis</Paragraph>
 	<div class="component-showcase">
-		<Tooltip text="This is a very long button text that will be truncated with ellipsis" placement="bottom" multiline>
+		<Tooltip text="This is a very long button text that will be truncated with ellipsis" placement="bottom" isMultiline>
 			<Button variant="secondary" class="wr-15" shouldTruncateText>
 				This is a very long button text that will be truncated with ellipsis
 			</Button>

@@ -465,7 +465,7 @@
 	<PopoverContainer />
 	<SettingsPanel {availableThemes} defaultTheme={data.theme} onsettingschange={handleSettingsChange} />
 	<ProfilePanel
-		bind:show={showProfilePanel}
+		bind:isOpen={showProfilePanel}
 		name="John Doe"
 		email="john.doe@company.com"
 		role="Administrator"
@@ -544,7 +544,7 @@
 	</ProfilePanel>
 	<DialogContainer />
 	<CommandPalette
-		bind:show={showCommandPalette}
+		bind:isOpen={showCommandPalette}
 		size={commandPaletteSize}
 		{commands}
 		{contexts}
@@ -559,8 +559,8 @@
 	     into Navbar. -->
 	<Navbar
 		onburgerclick={toggleSidebar}
-		showBurger={true}
-		burgerActive={isMobile || overlayMode ? sidebarMobileVisible : !sidebarHidden}
+		hasBurger={true}
+		isBurgerActive={isMobile || overlayMode ? sidebarMobileVisible : !sidebarHidden}
 	>
 		{#snippet start()}
 			<!-- App identity. As the header narrows the version tag drops first
@@ -661,7 +661,7 @@
 					<span class="pa-notifications__icon"><span class="pa-icon pa-icon--bell" aria-hidden="true"></span></span>
 					<span class="pa-notifications__badge">3</span>
 				</button>
-				<NotificationsPanel bind:show={showNotifications} />
+				<NotificationsPanel bind:isOpen={showNotifications} />
 			</div>
 
 			<ProfileButton name="John Doe" onclick={toggleProfilePanel} />

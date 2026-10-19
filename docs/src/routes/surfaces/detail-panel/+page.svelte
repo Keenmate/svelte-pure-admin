@@ -320,7 +320,7 @@
 
 <TableCard isPlain class="minhr-25 mb-4" titleText="Min-Height Card with Single Row"
 	descriptionText="The card uses minhr-25 so the detail panel fills the available height even when the table has minimal content.">
-	<DetailView bind:show={minHeightShow} onclose={() => minHeightShow = false}>
+	<DetailView bind:isOpen={minHeightShow} onclose={() => minHeightShow = false}>
 		{#snippet main()}
 			<Table isStriped>
 				<thead>
@@ -377,7 +377,7 @@
 		Click a row to open the detail panel alongside the table. The table shrinks to make room. Uses <Code>isOverlay=&#123;false&#125;</Code>.
 	{/snippet}
 
-	<DetailView bind:show={inlineShow} isOverlay={false} onclose={() => inlineShow = false}>
+	<DetailView bind:isOpen={inlineShow} isOverlay={false} onclose={() => inlineShow = false}>
 		{#snippet main()}
 			{@render userTable(inlineUser, inlineShow, (user) => { inlineUser = user; inlineShow = true; })}
 		{/snippet}
@@ -399,7 +399,7 @@
 <Card class="mb-4" hasPadding={false} titleText="Card Overlay (with Backdrop)"
 	descriptionText="Panel overlays the table within the card. Clicking the backdrop closes the panel.">
 
-	<DetailView bind:show={cardOverlayShow} shouldShowBackdrop onclose={() => cardOverlayShow = false}>
+	<DetailView bind:isOpen={cardOverlayShow} hasBackdrop onclose={() => cardOverlayShow = false}>
 		{#snippet main()}
 			{@render userTable(cardOverlayUser, cardOverlayShow, (user) => { cardOverlayUser = user; cardOverlayShow = true; })}
 		{/snippet}
@@ -421,7 +421,7 @@
 <Card class="mb-4" hasPadding={false} titleText="Card Overlay (No Backdrop)"
 	descriptionText="Panel stays open while you click rows. Simulates loading data from a server with a short delay.">
 
-	<DetailView bind:show={noBackdropShow} shouldShowBackdrop={false} onclose={() => noBackdropShow = false}>
+	<DetailView bind:isOpen={noBackdropShow} hasBackdrop={false} onclose={() => noBackdropShow = false}>
 		{#snippet main()}
 			{@render userTable(noBackdropUser, noBackdropShow, selectNoBackdrop)}
 		{/snippet}
@@ -449,7 +449,7 @@
 		Detail panel with tabs inside, like the profile panel. Click a row, then switch between Details, Activity and Notes. Uses the <Code>tabs</Code> snippet prop on <Code>DetailPanel</Code>.
 	{/snippet}
 
-	<DetailView bind:show={tabbedShow} shouldShowBackdrop={false} onclose={() => tabbedShow = false}>
+	<DetailView bind:isOpen={tabbedShow} hasBackdrop={false} onclose={() => tabbedShow = false}>
 		{#snippet main()}
 			{@render userTable(tabbedUser, tabbedShow, selectTabbed)}
 		{/snippet}
@@ -516,7 +516,7 @@
 		Icon buttons live in the header next to the close button via the <Code>actions</Code> snippet. No footer, like a compact card.
 	{/snippet}
 
-	<DetailView bind:show={headerActionsShow} shouldShowBackdrop={false} onclose={() => headerActionsShow = false}>
+	<DetailView bind:isOpen={headerActionsShow} hasBackdrop={false} onclose={() => headerActionsShow = false}>
 		{#snippet main()}
 			{@render userTable(headerActionsUser, headerActionsShow, (user) => { headerActionsUser = user; headerActionsShow = true; })}
 		{/snippet}
@@ -542,7 +542,7 @@
 <Card class="mb-4" hasPadding={false} titleText="List Drives Panel"
 	descriptionText="A selectable table drives the detail panel. Selecting a row shows a spinner, then loads the detail (simulated server fetch). Header actions, no footer.">
 
-	<DetailView bind:show={listShow} shouldShowBackdrop={false} onclose={() => listShow = false}>
+	<DetailView bind:isOpen={listShow} hasBackdrop={false} onclose={() => listShow = false}>
 		{#snippet main()}
 			<Table isStriped>
 				<thead>
@@ -598,7 +598,7 @@
 		<Button variant="primary" size="sm">Add New</Button>
 	{/snippet}
 
-	<DetailView bind:show={tcShow} onclose={() => tcShow = false}>
+	<DetailView bind:isOpen={tcShow} onclose={() => tcShow = false}>
 		{#snippet main()}
 			<Table isStriped>
 				<thead>
@@ -644,7 +644,7 @@
 <Grid class="mb-4">
 	<Column md="50">
 		<TableCard isPlain titleText="Products">
-			<DetailView bind:show={prodShow} onclose={() => prodShow = false}>
+			<DetailView bind:isOpen={prodShow} onclose={() => prodShow = false}>
 				{#snippet main()}
 					<Table isStriped>
 						<thead>
@@ -678,7 +678,7 @@
 
 	<Column md="50">
 		<TableCard isPlain titleText="Orders">
-			<DetailView bind:show={ordShow} onclose={() => ordShow = false}>
+			<DetailView bind:isOpen={ordShow} onclose={() => ordShow = false}>
 				{#snippet main()}
 					<Table isStriped>
 						<thead>
@@ -748,7 +748,7 @@
 	</Table>
 </Card>
 
-<SlidePanel bind:show={overlayShow} onclose={() => overlayShow = false}>
+<SlidePanel bind:isOpen={overlayShow} onclose={() => overlayShow = false}>
 	<DetailPanel titleText={overlayUser.name} isResizable={false} onclose={() => overlayShow = false}>
 		{@render userDetail(overlayUser)}
 
@@ -772,7 +772,7 @@
 	<Heading level={4} class="mt-4">Card Overlay Mode</Heading>
 	<Callout variant="info" class="mb-3">
 		Use <Code>DetailView</Code> + <Code>DetailPanel</Code> together. The table goes in the <Code>main</Code> snippet,
-		the panel content goes as children. Toggle <Code>shouldShowBackdrop</Code> to control whether a backdrop appears.
+		the panel content goes as children. Toggle <Code>hasBackdrop</Code> to control whether a backdrop appears.
 	</Callout>
 
 	<Heading level={4} class="mt-4">Tabbed Panel</Heading>
@@ -816,8 +816,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><Code>show</Code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
-			<tr><td><Code>shouldShowBackdrop</Code></td><td>boolean</td><td>true</td><td>Show backdrop overlay behind panel</td></tr>
+			<tr><td><Code>isOpen</Code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
+			<tr><td><Code>hasBackdrop</Code></td><td>boolean</td><td>true</td><td>Show backdrop overlay behind panel</td></tr>
 			<tr><td><Code>isOverlay</Code></td><td>boolean</td><td>true</td><td>Use overlay mode. When false, panel appears inline (split-view)</td></tr>
 			<tr><td><Code>main</Code></td><td>Snippet</td><td>-</td><td>Main content area (table, list, etc.)</td></tr>
 			<tr><td><Code>children</Code></td><td>Snippet</td><td>-</td><td>Panel content (DetailPanel)</td></tr>
@@ -861,7 +861,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><td><Code>show</Code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
+			<tr><td><Code>isOpen</Code></td><td>boolean (bindable)</td><td>false</td><td>Controls panel visibility</td></tr>
 			<tr><td><Code>onclose</Code></td><td>() =&gt; void</td><td>-</td><td>Called on escape key or backdrop click</td></tr>
 			<tr><td><Code>children</Code></td><td>Snippet</td><td>-</td><td>Panel content</td></tr>
 			<tr><td><Code>class</Code></td><td>string</td><td>''</td><td>Additional CSS classes</td></tr>

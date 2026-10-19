@@ -11,13 +11,12 @@
 	 * Wide-only table-card. Default 5-col layout
 	 * (metric · now · previousValue · deltaPercent · targetBar). previousValue /
 	 * deltaPercent / targetBar are independently optional via the matching
-	 * `noPreviousValue` / `noDeltaPercent` / `noTargetBar` toggles, which
-	 * compose 1:1 with the upstream `pa-kpi-strip--no-prev` / `--no-delta` /
-	 * `--no-target` modifiers. `metric` and `now` are always present.
+	 * `hasPreviousValue` / `hasDeltaPercent` / `hasTargetBar` flags (default `true`; `false` emits the
+	 * upstream `pa-kpi-strip--no-prev` / `--no-delta` / `--no-target` modifiers). `metric` and `now` are always present.
 	 *
 	 * The header row is auto-generated from the visible columns — no raw
 	 * pa-kpi-strip__head markup needed in consumer code. Override individual
-	 * labels via `headerLabels`, suppress the header via `noHeader`, or
+	 * labels via `headerLabels`, suppress the header via `hasHeader={false}`, or
 	 * fully replace it via the `head` snippet.
 	 */
 
@@ -49,22 +48,22 @@
 		/** Footer caption (plain string). Override via the `footer` snippet for richer markup. */
 		footerText?: string;
 
-		/** Drop the previous-value column (`pa-kpi-strip--no-prev`). */
-		noPreviousValue?: boolean;
-		/** Drop the Δ% column (`pa-kpi-strip--no-delta`). */
-		noDeltaPercent?: boolean;
-		/** Drop the target bar column (`pa-kpi-strip--no-target`). */
-		noTargetBar?: boolean;
+		/** Show the previous-value column (default `true`; `false` emits `pa-kpi-strip--no-prev`). */
+		hasPreviousValue?: boolean;
+		/** Show the Δ% column (default `true`; `false` emits `pa-kpi-strip--no-delta`). */
+		hasDeltaPercent?: boolean;
+		/** Show the target bar column (default `true`; `false` emits `pa-kpi-strip--no-target`). */
+		hasTargetBar?: boolean;
 
-		/** Suppress the auto-generated header row entirely. */
-		noHeader?: boolean;
+		/** Render the auto-generated header row (default `true`). */
+		hasHeader?: boolean;
 		/** Override individual header labels. Keys are column identifiers; provide only the labels you want to change. */
 		headerLabels?: Partial<Record<KpiStripColumn, string>>;
 
 		/** Additional CSS classes appended to the card. */
 		class?: string;
 
-		/** Fully replace the auto-generated header with custom markup. Wins over `headerLabels` / `noHeader`. */
+		/** Fully replace the auto-generated header with custom markup. Wins over `headerLabels` / `hasHeader`. */
 		head?: import('svelte').Snippet;
 		/** Row content (KpiStripRow instances). */
 		children?: import('svelte').Snippet;
@@ -76,10 +75,10 @@
 		titleText,
 		isLive = false,
 		footerText,
-		noPreviousValue = false,
-		noDeltaPercent = false,
-		noTargetBar = false,
-		noHeader = false,
+		hasPreviousValue = true,
+		hasDeltaPercent = true,
+		hasTargetBar = true,
+		hasHeader = true,
 		headerLabels = {},
 		class: className = '',
 		head,
@@ -89,9 +88,9 @@
 
 	const classes = $derived(() => {
 		const base = ['pa-card', 'pa-kpi-strip'];
-		if (noPreviousValue) base.push('pa-kpi-strip--no-prev');
-		if (noDeltaPercent) base.push('pa-kpi-strip--no-delta');
-		if (noTargetBar) base.push('pa-kpi-strip--no-target');
+		if (!hasPreviousValue) base.push('pa-kpi-strip--no-prev');
+		if (!hasDeltaPercent) base.push('pa-kpi-strip--no-delta');
+		if (!hasTargetBar) base.push('pa-kpi-strip--no-target');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -99,9 +98,9 @@
 	/** Columns visible in this strip, in source order, after applying the toggles. */
 	const visibleColumns = $derived.by((): KpiStripColumn[] => {
 		const cols: KpiStripColumn[] = ['metric', 'now'];
-		if (!noPreviousValue) cols.push('previousValue');
-		if (!noDeltaPercent) cols.push('deltaPercent');
-		if (!noTargetBar) cols.push('targetBar');
+		if (hasPreviousValue) cols.push('previousValue');
+		if (hasDeltaPercent) cols.push('deltaPercent');
+		if (hasTargetBar) cols.push('targetBar');
 		return cols;
 	});
 
@@ -123,7 +122,7 @@
 			<div class="pa-kpi-strip__head-row">
 				{@render head()}
 			</div>
-		{:else if !noHeader}
+		{:else if hasHeader}
 			<div class="pa-kpi-strip__head-row">
 				{#each visibleColumns as col (col)}
 					<div
