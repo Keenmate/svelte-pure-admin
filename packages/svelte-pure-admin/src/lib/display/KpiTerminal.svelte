@@ -16,7 +16,7 @@
 	 *      instances; each pane carries its own grid + tile set. The active
 	 *      pane is selected by the tab strip rendered in the header.
 	 *
-	 * KpiTerminal owns the active tab id (bindable `view`) and exposes it
+	 * KpiTerminal owns the active tab id (bindable `activePaneId`) and exposes it
 	 * to its KpiTerminalPane children via `KPI_TERMINAL_CONTEXT`; panes
 	 * also register their `{ id, labelText, class? }` metadata back via the
 	 * same context so the tab strip can render from the registered list.
@@ -32,6 +32,8 @@
 		labelText: string;
 		/** Optional extra class for the tab button. */
 		class?: string;
+		/** The pane asked to be the initially active one. */
+		isActive?: boolean;
 	}
 
 	/** Context payload published by KpiTerminal, consumed by KpiTerminalPane. */
@@ -54,13 +56,15 @@
 		titleText?: string;
 		/** Show the LIVE pill (animated green dot) next to the title. */
 		isLive?: boolean;
+		/** Text of the LIVE pill (default: "LIVE"). */
+		liveText?: string;
 		/** Footer caption (plain string). Override via the `footer` snippet for richer markup. */
 		footerText?: string;
 		/**
-		 * Currently active pane id (bindable). Default: first registered pane's id.
-		 * Only meaningful when `hasTabs` is true.
+		 * Currently active pane id (bindable). Default: the pane marked `isActive`,
+		 * else the first registered pane. Only meaningful when `hasTabs` is true.
 		 */
-		view?: string;
+		activePaneId?: string;
 		/**
 		 * Switch to tabs+panes mode. Children should be KpiTerminalPane instances.
 		 * When false (default), children are tiles wrapped in a single
@@ -73,30 +77,44 @@
 		children?: Snippet;
 		/** Footer snippet override. Takes precedence over `footerText`. */
 		footer?: Snippet;
+		/** Extra header controls rendered before the tab strip / LIVE pill (e.g. custom toolbars). */
+		headerControls?: Snippet;
 	}
 
 	let {
 		titleText,
 		isLive = false,
+		liveText = 'LIVE',
 		footerText,
-		view = $bindable(),
+		activePaneId = $bindable(),
 		hasTabs = false,
 		class: className = '',
 		children,
-		footer
+		footer,
+		headerControls
 	}: Props = $props();
 
 	// Registered panes (populated by KpiTerminalPane via the context.register fn).
 	const panes = $state<KpiTerminalPaneInfo[]>([]);
 
+	// An explicitly bound activePaneId wins; otherwise the pane marked isActive, else the first.
+	const hasInitialActive = activePaneId !== undefined;
+	let claimedByPane = false;
+
 	setContext<KpiTerminalContext>(KPI_TERMINAL_CONTEXT, {
 		get activeId() {
-			return view ?? panes[0]?.id;
+			return activePaneId ?? panes[0]?.id;
 		},
 		register(info) {
 			panes.push(info);
-			// First registered pane becomes active by default.
-			if (view === undefined) view = info.id;
+			if (!hasInitialActive) {
+				if (info.isActive && !claimedByPane) {
+					activePaneId = info.id;
+					claimedByPane = true;
+				} else if (activePaneId === undefined) {
+					activePaneId = info.id;
+				}
+			}
 			return () => {
 				const i = panes.findIndex((p) => p.id === info.id);
 				if (i >= 0) panes.splice(i, 1);
@@ -112,7 +130,7 @@
 
 	function tabClasses(pane: KpiTerminalPaneInfo) {
 		const base = ['pa-kpi-terminal__tab'];
-		if (view === pane.id) base.push('is-active');
+		if (activePaneId === pane.id) base.push('is-active');
 		if (pane.class) base.push(pane.class);
 		return base.join(' ');
 	}
@@ -122,6 +140,7 @@
 	<div class="pa-card__header pa-kpi-header">
 		{#if titleText}<div class="pa-card__title"><h3 class="pa-card__title-text">{titleText}</h3></div>{/if}
 		<div class="pa-kpi-terminal__controls">
+			{@render headerControls?.()}
 			{#if hasTabs && panes.length > 0}
 				<div class="pa-kpi-terminal__tabs" role="tablist" aria-label="Dashboard view">
 					{#each panes as pane (pane.id)}
@@ -130,8 +149,8 @@
 							class={tabClasses(pane)}
 							data-tab={pane.id}
 							role="tab"
-							aria-selected={view === pane.id}
-							onclick={() => (view = pane.id)}
+							aria-selected={activePaneId === pane.id}
+							onclick={() => (activePaneId = pane.id)}
 						>
 							{pane.labelText}
 						</button>
@@ -139,7 +158,7 @@
 				</div>
 			{/if}
 			{#if isLive}
-				<span class="pa-kpi-live"><span class="pa-kpi-live__dot"></span>LIVE</span>
+				<span class="pa-kpi-live"><span class="pa-kpi-live__dot"></span>{liveText}</span>
 			{/if}
 		</div>
 	</div>

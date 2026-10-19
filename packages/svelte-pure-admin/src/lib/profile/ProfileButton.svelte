@@ -5,6 +5,7 @@
 	 *
 	 * Header button that triggers the profile panel.
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import { _ } from '../i18n';
 
@@ -15,6 +16,8 @@
 		onclick?: (event: MouseEvent) => void;
 		/** Icon snippet (defaults to user emoji) */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Additional CSS classes */
 		class?: string;
 	}
@@ -23,6 +26,7 @@
 		name,
 		onclick,
 		icon,
+		iconName,
 		class: className = ''
 	}: Props = $props();
 
@@ -35,8 +39,8 @@
 
 <button class={classes()} {onclick} aria-label={$_('pureAdmin.a11y.userProfile')}>
 	<span class="pa-btn__icon">
-		{#if icon}
-			{@render icon()}
+		{#if icon || iconName}
+			{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 		{:else}
 			<span class="pa-icon pa-icon--user" aria-hidden="true"></span>
 		{/if}

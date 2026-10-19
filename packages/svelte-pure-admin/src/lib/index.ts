@@ -116,7 +116,7 @@ export { default as RangeInput } from './forms/RangeInput.svelte';
 export { default as RangeGroup } from './forms/RangeGroup.svelte';
 export type {
 	RangeGroupRow,
-	RangeHandleShape,
+	RangeHandleType,
 	RangeGroupValues,
 	RangeGroupSingleValue,
 	RangeGroupRangeValue

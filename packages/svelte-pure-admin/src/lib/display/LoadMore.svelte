@@ -14,33 +14,29 @@
 		justify?: LoadMoreJustify;
 		/** Loading state */
 		isLoading?: boolean;
-		/** Button text */
-		text?: string;
-		/** Count text (e.g., "25 of 250") */
-		count?: string;
-		/** Show count */
-		shouldShowCount?: boolean;
+		/** Count text (e.g., "25 of 250") — renders the __count span when set */
+		countText?: string;
 		/** Click handler */
 		onclick?: (event: MouseEvent) => void;
 		/** Additional CSS classes */
 		class?: string;
-		/** Custom button content snippet */
+		/** Button label (rendered inside pa-load-more__text). Default: i18n "Load more" ("Loading…" while loading) */
 		children?: import('svelte').Snippet;
 	}
 
 	let {
 		justify,
 		isLoading = false,
-		text,
-		count,
-		shouldShowCount = false,
+		countText,
 		onclick,
 		class: className = '',
 		children
 	}: Props = $props();
 
-	// Use i18n defaults if props not provided
-	const resolvedText = $derived(text ?? $_('pureAdmin.loadMore.loadMore'));
+	// i18n default label when no children are passed
+	const defaultText = $derived(
+		isLoading ? $_('pureAdmin.loadMore.loading') : $_('pureAdmin.loadMore.loadMore')
+	);
 
 	// Build class string
 	const classes = $derived(() => {
@@ -66,18 +62,14 @@
 
 <div class={classes()}>
 	<button class={buttonClasses()} {onclick} disabled={isLoading}>
-		{#if children}
-			{@render children()}
-		{:else}
-			{#if isLoading}
-				<span class="pa-load-more__spinner"></span>
-				<span class="pa-load-more__text">{text ?? $_('pureAdmin.loadMore.loading')}</span>
-			{:else}
-				<span class="pa-load-more__text">{resolvedText}</span>
-				{#if count}
-					<span class="pa-load-more__count">({count})</span>
-				{/if}
-			{/if}
+		{#if isLoading}
+			<span class="pa-load-more__spinner"></span>
+		{/if}
+		<span class="pa-load-more__text">
+			{#if children}{@render children()}{:else}{defaultText}{/if}
+		</span>
+		{#if countText}
+			<span class="pa-load-more__count">({countText})</span>
 		{/if}
 	</button>
 </div>

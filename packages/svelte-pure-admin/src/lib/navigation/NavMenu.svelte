@@ -5,7 +5,7 @@
 	 * when `collapse` is set it drives the one core Fit engine (`fit.js`,
 	 * `data-pc-fit-nav`) on itself, folding its lowest-priority items out as the
 	 * header narrows and restoring them as it widens. Per-item config lives on the
-	 * `NavItem` children (`navPriority` / `navCollapse="hide"` / `navIcon`).
+	 * `NavItem` children (`navPriority` / `navCollapse="hide"` / `iconText`).
 	 *
 	 * A menu's side is decided purely by which zone it sits in — core rc14 dropped the
 	 * old `--start` / `--end` modifiers. Children are `NavItem`s.
@@ -24,13 +24,13 @@
 		 */
 		collapse?: 'menu' | 'sidebar';
 		/** Label for the generated "More" trigger (menu collapse mode). */
-		moreLabel?: string;
+		moreLabelText?: string;
 		/** Sidebar `<ul>` selector to inject into (sidebar mode; default: first `.pc-sidebar__nav > ul`). */
 		collapseTarget?: string;
 		/** Heading for the injected sidebar group (sidebar mode). */
-		collapseLabel?: string;
+		collapseLabelText?: string;
 		/** Default icon for injected sidebar items (sidebar mode; `""` to omit icons). */
-		collapseIcon?: string;
+		collapseIconText?: string;
 		/** Additional CSS classes */
 		class?: string;
 		/** `NavItem` children */
@@ -39,10 +39,10 @@
 
 	let {
 		collapse,
-		moreLabel,
+		moreLabelText,
 		collapseTarget,
-		collapseLabel,
-		collapseIcon,
+		collapseLabelText,
+		collapseIconText,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -69,10 +69,10 @@
 	class={classes()}
 	bind:this={navElement}
 	data-pc-fit-nav={collapse}
-	data-pc-fit-nav-more-label={moreLabel}
+	data-pc-fit-nav-more-label={moreLabelText}
 	data-pc-fit-nav-target={collapseTarget}
-	data-pc-fit-nav-label={collapseLabel}
-	data-pc-fit-nav-icon={collapseIcon}
+	data-pc-fit-nav-label={collapseLabelText}
+	data-pc-fit-nav-icon={collapseIconText}
 >
 	<ul>
 		{@render children?.()}

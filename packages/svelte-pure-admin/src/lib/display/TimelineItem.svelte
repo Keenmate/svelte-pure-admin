@@ -3,8 +3,9 @@
 	 * Pure Admin TimelineItem Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/timeline.html
 	 * Individual timeline entry - adapts to parent timeline variant
-	 * IMPORTANT: Uses clear naming - iconText (not icon), avatarUrl (not avatar)
+	 * Icon: iconText (plain text) / iconName (provider name via <Icon>) / icon (rich snippet); avatarUrl (not avatar)
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import type { TimelineItemVariant } from './timeline-types';
 
@@ -21,8 +22,10 @@
 		date?: string;
 		/** Icon text content (alternating timeline) - string only */
 		iconText?: string;
-		/** Icon template snippet (for custom icon rendering) */
-		iconTemplate?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it) */
+		iconName?: string;
+		/** Rich icon content (snippet) — wins over iconName, then iconText */
+		icon?: import('svelte').Snippet;
 		/** Avatar image URL (feed timeline) */
 		avatarUrl?: string;
 		/** Avatar alt text */
@@ -44,7 +47,8 @@
 		timeText,
 		date,
 		iconText,
-		iconTemplate,
+		iconName,
+		icon,
 		avatarUrl,
 		avatarAlt = 'User',
 		onclick,
@@ -83,22 +87,26 @@
 >
 	{#if isDateHeader}
 		<!-- Date header (for feed timeline) -->
-		{#if iconText || iconTemplate}
+		{#if iconText || iconName || icon}
 			<div class="pa-timeline__date-icon">
-				{#if iconTemplate}
-					{@render iconTemplate()}
+				{#if icon}
+					{@render icon()}
+				{:else if iconName}
+					<Icon name={iconName} />
 				{:else}
 					{iconText}
 				{/if}
 			</div>
 		{/if}
 		<div class="pa-timeline__date-label">{@render children?.()}</div>
-	{:else if date && (iconText || iconTemplate)}
+	{:else if date && (iconText || iconName || icon)}
 		<!-- Alternating timeline -->
 		<div class="pa-timeline__date">{date}</div>
 		<div class="pa-timeline__icon">
-			{#if iconTemplate}
-				{@render iconTemplate()}
+			{#if icon}
+				{@render icon()}
+			{:else if iconName}
+				<Icon name={iconName} />
 			{:else}
 				{iconText}
 			{/if}

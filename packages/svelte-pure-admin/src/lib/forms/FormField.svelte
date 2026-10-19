@@ -67,7 +67,7 @@
 		<FormLabel>{labelText}</FormLabel>
 	{/if}
 
-	<!-- Mark the control `required` inside the snippet — core's
+	<!-- Mark the control `isRequired` inside the snippet — core's
 	     `.pa-form-group:has(:required) > label::after` draws the asterisk. -->
 	{@render children({ errors: normalizedErrors, touched, validation })}
 

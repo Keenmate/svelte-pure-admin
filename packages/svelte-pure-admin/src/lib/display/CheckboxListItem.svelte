@@ -21,9 +21,9 @@
 		/** Selected/highlighted row (pa-checkbox-list__item--selected; orthogonal to state) */
 		isSelected?: boolean;
 		/** Checked state (bindable) */
-		checked?: boolean;
+		isChecked?: boolean;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Change callback */
@@ -38,8 +38,8 @@
 		descriptionText,
 		state,
 		isSelected = false,
-		checked = $bindable(false),
-		disabled = false,
+		isChecked = $bindable(false),
+		isDisabled = false,
 		class: className = '',
 		onchange,
 		actions
@@ -62,20 +62,20 @@
 
 	// Handle checkbox change
 	function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
-		checked = event.currentTarget.checked;
-		onchange?.(checked);
+		isChecked = event.currentTarget.checked;
+		onchange?.(isChecked);
 	}
 
 	// Determine if checkbox should be disabled
-	const isDisabled = $derived(disabled || state === 'disabled' || state === 'locked');
+	const isEffectivelyDisabled = $derived(isDisabled || state === 'disabled' || state === 'locked');
 </script>
 
 <li class={itemClasses()}>
 	<label class="pa-checkbox-list__label">
 		<CheckboxBox
 			{id}
-			bind:checked
-			disabled={isDisabled}
+			bind:isChecked
+			isDisabled={isEffectivelyDisabled}
 			onchange={handleChange}
 		/>
 		<span class="pa-checkbox-list__text">

@@ -3,6 +3,7 @@
 	 * Pure Admin Button Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/buttons.html
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import type { ThemeColor } from '../types';
 
@@ -55,7 +56,7 @@
 		/** Used in input group (adds pa-input-group__button class) */
 		isInputGroupButton?: boolean;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Button type */
 		type?: 'button' | 'submit' | 'reset';
 		/** Link URL (renders as anchor tag instead of button) */
@@ -70,6 +71,8 @@
 		class?: string;
 		/** Icon snippet (renders in pa-btn__icon) */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Children (button content) */
 		children?: import('svelte').Snippet;
 		/** Rest props (data-*, aria-*, etc.) */
@@ -89,7 +92,7 @@
 		iconPosition = 'start',
 		shouldTruncateText = false,
 		isInputGroupButton = false,
-		disabled = false,
+		isDisabled = false,
 		type = 'button',
 		href,
 		target,
@@ -97,6 +100,7 @@
 		titleText,
 		class: className = '',
 		icon,
+		iconName,
 		children,
 		...restProps
 	}: Props = $props();
@@ -154,7 +158,7 @@
 		{target}
 		title={titleText}
 		class={classes()}
-		class:disabled={disabled || isLoading}
+		class:disabled={isDisabled || isLoading}
 		{onclick}
 		data-ripple={isRipple ? true : undefined}
 		{...restProps}
@@ -162,9 +166,9 @@
 		{#if isLoading}
 			<span class="pa-btn__spinner"></span>
 		{/if}
-		{#if icon && iconPosition !== 'end'}
+		{#if (icon || iconName) && iconPosition !== 'end'}
 			<span class="pa-btn__icon">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
 		{/if}
 		{#if children}
@@ -179,9 +183,9 @@
 				<span class={labelWrapClass}>{@render children()}</span>
 			{/if}
 		{/if}
-		{#if icon && iconPosition === 'end'}
+		{#if (icon || iconName) && iconPosition === 'end'}
 			<span class="pa-btn__icon">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
 		{/if}
 	</a>
@@ -189,7 +193,7 @@
 	<button
 		{type}
 		title={titleText}
-		disabled={disabled || isLoading}
+		disabled={isDisabled || isLoading}
 		class={classes()}
 		{onclick}
 		data-ripple={isRipple ? true : undefined}
@@ -198,9 +202,9 @@
 		{#if isLoading}
 			<span class="pa-btn__spinner"></span>
 		{/if}
-		{#if icon && iconPosition !== 'end'}
+		{#if (icon || iconName) && iconPosition !== 'end'}
 			<span class="pa-btn__icon">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
 		{/if}
 		{#if children}
@@ -215,9 +219,9 @@
 				<span class={labelWrapClass}>{@render children()}</span>
 			{/if}
 		{/if}
-		{#if icon && iconPosition === 'end'}
+		{#if (icon || iconName) && iconPosition === 'end'}
 			<span class="pa-btn__icon">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
 		{/if}
 	</button>

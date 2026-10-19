@@ -15,6 +15,7 @@
 	 * Renders its own `<li class="pc-sidebar__item">`, so it sits as a sibling of
 	 * `SidebarItem` inside `<Sidebar>`.
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	interface Props {
 		/** Label text (trigger mode). */
@@ -35,6 +36,8 @@
 		class?: string;
 		/** Icon (defaults to a magnifier). */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 	}
 
 	let {
@@ -46,7 +49,8 @@
 		value = $bindable(undefined),
 		placeholder = 'Search…',
 		class: className = '',
-		icon
+		icon,
+		iconName
 	}: Props = $props();
 
 	const isInput = $derived(action !== undefined);
@@ -64,7 +68,7 @@
 			     (font-size:0). Pass an `icon` snippet only to override. The oracle
 			     snippet (snippets/layout.html) blesses aria-label="Search" on both the
 			     submit magnifier and the input, and emits no `value` when empty. -->
-			<button type="submit" class="pc-sidebar__search-icon" aria-label="Search">{#if icon}{@render icon()}{/if}</button>
+			<button type="submit" class="pc-sidebar__search-icon" aria-label="Search">{#if icon || iconName}{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}{/if}</button>
 			<input
 				type="search"
 				{name}
@@ -83,7 +87,7 @@
 			class={['pc-sidebar__search', className].filter(Boolean).join(' ')}
 			{onclick}
 		>
-			<span class="pc-sidebar__icon pc-icon-hover-highlight" aria-hidden="true">{#if icon}{@render icon()}{:else}<span class="pa-icon pa-icon--search"></span>{/if}</span>
+			<span class="pc-sidebar__icon pc-icon-hover-highlight" aria-hidden="true">{#if icon || iconName}{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}{:else}<span class="pa-icon pa-icon--search"></span>{/if}</span>
 			<span class="pc-sidebar__label">{labelText}</span>
 		</button>
 	{/if}

@@ -308,15 +308,15 @@
 	<Grid>
 		<Column md="1-3">
 			<Heading level={4}>Start</Heading>
-			<LoadMore justify="start" text="Load more" />
+			<LoadMore justify="start">Load more</LoadMore>
 		</Column>
 		<Column md="1-3">
 			<Heading level={4}>Center (Default)</Heading>
-			<LoadMore justify="center" text="Load more" />
+			<LoadMore justify="center">Load more</LoadMore>
 		</Column>
 		<Column md="1-3">
 			<Heading level={4}>End</Heading>
-			<LoadMore justify="end" text="Load more" />
+			<LoadMore justify="end">Load more</LoadMore>
 		</Column>
 	</Grid>
 </Card>
@@ -328,7 +328,7 @@
 	<Grid>
 		<Column md="1-3">
 			<Heading level={4}>With Count</Heading>
-			<LoadMore text="Show more items" count="25 of 250" shouldShowCount={true} />
+			<LoadMore countText="25 of 250">Show more items</LoadMore>
 		</Column>
 		<Column md="1-3">
 			<Heading level={4}>Loading State</Heading>
@@ -336,7 +336,7 @@
 		</Column>
 		<Column md="1-3">
 			<Heading level={4}>Custom Text</Heading>
-			<LoadMore text="Fetch older messages" />
+			<LoadMore>Fetch older messages</LoadMore>
 		</Column>
 	</Grid>
 </Card>
@@ -373,12 +373,12 @@
 	{#if hasMoreProducts}
 		<LoadMore
 			justify="center"
-			text="Load more products"
-			count="showing {visibleCount} of {allProducts.length}"
-			shouldShowCount={true}
+			countText="showing {visibleCount} of {allProducts.length}"
 			isLoading={isLoadingProducts}
 			onclick={loadMoreProducts}
-		/>
+		>
+			Load more products
+		</LoadMore>
 	{:else}
 		<Alert variant="success" size="sm">
 			All {allProducts.length} products loaded. <Button variant="secondary" size="sm" onclick={resetProducts}>Reset</Button>
@@ -530,22 +530,10 @@
 						<td>Show loading spinner</td>
 					</tr>
 					<tr>
-						<td><Code>text</Code></td>
-						<td><Code>string</Code></td>
-						<td><Code>'Load More'</Code></td>
-						<td>Button text</td>
-					</tr>
-					<tr>
-						<td><Code>count</Code></td>
+						<td><Code>countText</Code></td>
 						<td><Code>string</Code></td>
 						<td>-</td>
 						<td>Count text (e.g., "25 of 250")</td>
-					</tr>
-					<tr>
-						<td><Code>shouldShowCount</Code></td>
-						<td><Code>boolean</Code></td>
-						<td><Code>false</Code></td>
-						<td>Show the count text</td>
 					</tr>
 					<tr>
 						<td><Code>onclick</Code></td>
@@ -557,7 +545,7 @@
 						<td><Code>children</Code></td>
 						<td><Code>Snippet</Code></td>
 						<td>-</td>
-						<td>Custom button content</td>
+						<td>Button label, rendered inside <Code>pa-load-more__text</Code> (default: i18n "Load more")</td>
 					</tr>
 				</tbody>
 			{/snippet}

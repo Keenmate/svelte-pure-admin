@@ -15,7 +15,7 @@
 		/** Value text (simple mode) */
 		valueText?: string | number;
 		/** Value spans remaining columns in the row */
-		full?: boolean;
+		isFull?: boolean;
 		/** Additional CSS classes on the value span */
 		class?: string;
 		/** Copy mode: 'btn' (always visible), 'click' (value clickable), 'hover' (button on hover) */
@@ -31,7 +31,7 @@
 	let {
 		labelText,
 		valueText,
-		full = false,
+		isFull = false,
 		class: className = '',
 		copyMode,
 		copyValue,
@@ -49,7 +49,7 @@
 
 	const valueClasses = $derived(() => {
 		const base = ['pa-desc-table__value'];
-		if (full) base.push('pa-desc-table__value--full');
+		if (isFull) base.push('pa-desc-table__value--full');
 		if (copyMode && canCopy) {
 			base.push(`pa-desc-table__value--copy-${copyMode}`);
 			// Core shows the "Copied!" ::after for any copy mode (not just click),

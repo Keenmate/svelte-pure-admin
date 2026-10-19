@@ -6,6 +6,7 @@
 	 * outside (querystring back/forward, translated rows). Do not use directly.
 	 */
 	import { onMount } from 'svelte';
+	import { _ } from '../i18n';
 	import { loadCoreJs } from '../internal/core-js';
 	import type { RangeGroupRow, RangeGroupValues } from './range-group-types';
 
@@ -13,14 +14,27 @@
 		rows: RangeGroupRow[];
 		ariaLabel: string;
 		panelStyle?: string;
+		resetText?: string;
+		applyText?: string;
+		hasActions?: boolean;
 		class?: string;
 		onchange?: (values: RangeGroupValues) => void;
 		onapply?: (values: RangeGroupValues) => void;
 		onreset?: (values: RangeGroupValues) => void;
 	}
 
-	let { rows, ariaLabel, panelStyle, class: className = '', onchange, onapply, onreset }: Props =
-		$props();
+	let {
+		rows,
+		ariaLabel,
+		panelStyle,
+		resetText,
+		applyText,
+		hasActions = true,
+		class: className = '',
+		onchange,
+		onapply,
+		onreset
+	}: Props = $props();
 
 	// display:contents host so PaRangeGroup.init (which scans descendants for
 	// [data-range-group]) can find the root without adding a layout box.
@@ -31,7 +45,7 @@
 	function rangeClasses(row: RangeGroupRow): string {
 		const base = ['pa-range'];
 		if (row.mode === 'single') base.push('pa-range--single');
-		if (row.handleShape) base.push(`pa-range--handle-${row.handleShape}`);
+		if (row.handleType) base.push(`pa-range--handle-${row.handleType}`);
 		return base.join(' ');
 	}
 
@@ -83,14 +97,14 @@
 			{#each rows as row (row.key)}
 				<div class="pa-range-group__row">
 					<div class="pa-range-group__row-head">
-						<span class="pa-range-group__row-label">{row.label}</span>
+						<span class="pa-range-group__row-label">{row.rowLabelText || row.labelText}</span>
 						<span class="pa-range-group__row-value" data-range-output>{row.outputText ?? ''}</span>
 					</div>
 					<div
 						class={rangeClasses(row)}
 						data-range
 						data-key={row.key}
-						data-label={row.label}
+						data-label={row.labelText}
 						data-min={row.min}
 						data-max={row.max}
 						data-step={row.step}
@@ -101,11 +115,11 @@
 						data-value-max={row.mode === 'single' ? undefined : row.valueMax}
 						data-prefix={row.prefix}
 						data-suffix={row.suffix}
-						data-thousands={row.thousands ? '' : undefined}
+						data-thousands={row.hasThousandsSeparator ? '' : undefined}
 						data-ticks={row.ticks}
 						data-ticks-minor={row.ticksMinor}
-						data-tick-labels={row.tickLabels ? '' : undefined}
-						data-snap-ticks={row.snapTicks ? '' : undefined}
+						data-tick-labels={row.hasTickLabels ? '' : undefined}
+						data-snap-ticks={row.shouldSnapToTicks ? '' : undefined}
 					>
 						<div class="pa-range__rail">
 							<div class="pa-range__track"></div>
@@ -114,7 +128,7 @@
 								type="button"
 								class="pa-range__thumb pa-range__thumb--min"
 								data-range-thumb="min"
-								aria-label={row.mode === 'single' ? undefined : `Minimum ${row.label}`}
+								aria-label={row.mode === 'single' ? undefined : `Minimum ${row.labelText}`}
 								aria-hidden={row.mode === 'single' ? 'true' : undefined}
 							></button>
 							<!-- Both thumbs carry their BEM modifier per the core snippet's
@@ -125,17 +139,19 @@
 								type="button"
 								class="pa-range__thumb pa-range__thumb--max"
 								data-range-thumb="max"
-								aria-label={row.mode === 'single' ? `Minimum ${row.label}` : `Maximum ${row.label}`}
+								aria-label={row.mode === 'single' ? `Minimum ${row.labelText}` : `Maximum ${row.labelText}`}
 							></button>
 						</div>
 					</div>
 				</div>
 			{/each}
 
-			<div class="pa-range-group__actions">
-				<button type="button" class="pa-btn pa-btn--sm pa-btn--ghost" data-range-group-reset>Reset</button>
-				<button type="button" class="pa-btn pa-btn--sm pa-btn--primary" data-range-group-apply>Apply</button>
-			</div>
+			{#if hasActions}
+				<div class="pa-range-group__actions">
+					<button type="button" class="pa-btn pa-btn--sm pa-btn--ghost" data-range-group-reset>{resetText ?? $_('pureAdmin.buttons.reset')}</button>
+					<button type="button" class="pa-btn pa-btn--sm pa-btn--primary" data-range-group-apply>{applyText ?? $_('pureAdmin.buttons.apply')}</button>
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>

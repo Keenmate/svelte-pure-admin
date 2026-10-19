@@ -23,7 +23,7 @@
 		/** Placement relative to trigger */
 		placement?: PopconfirmPlacement;
 		/** Icon variant */
-		icon?: IconVariant;
+		iconVariant?: IconVariant;
 		/** Compact size */
 		isCompact?: boolean;
 		/** Confirm button text */
@@ -46,7 +46,7 @@
 		show = $bindable(false),
 		messageText,
 		placement = 'bottom',
-		icon,
+		iconVariant,
 		isCompact = false,
 		confirmText,
 		cancelText,
@@ -97,9 +97,9 @@
 	// Build message class string
 	const messageClasses = $derived(() => {
 		const base = ['pa-popconfirm__message'];
-		if (icon) {
+		if (iconVariant) {
 			base.push('pa-popconfirm__icon');
-			base.push(`pa-popconfirm__icon--${icon}`);
+			base.push(`pa-popconfirm__icon--${iconVariant}`);
 		}
 		return base.join(' ');
 	});

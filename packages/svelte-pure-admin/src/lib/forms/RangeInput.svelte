@@ -19,7 +19,7 @@
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Input ID */
 		id?: string;
 		/** Input name */
@@ -45,7 +45,7 @@
 		size,
 		validation,
 		themeColor,
-		disabled = false,
+		isDisabled = false,
 		id,
 		name,
 		min = 0,
@@ -84,7 +84,7 @@
 			{min}
 			{max}
 			{step}
-			{disabled}
+			disabled={isDisabled}
 			class={classes()}
 			{oninput}
 			{onchange}
@@ -100,7 +100,7 @@
 		{min}
 		{max}
 		{step}
-		{disabled}
+		disabled={isDisabled}
 		class={classes()}
 		{oninput}
 		{onchange}

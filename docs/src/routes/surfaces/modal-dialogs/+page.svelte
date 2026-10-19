@@ -903,7 +903,7 @@ await dialogService.confirm({ closeOnBackdrop: false, confirmText: 'Yes', cancel
 				<td>Additional button class</td>
 			</tr>
 			<tr>
-				<td><Code>disabled</Code></td>
+				<td><Code>isDisabled</Code></td>
 				<td>boolean</td>
 				<td>false</td>
 				<td>Disable the button</td>

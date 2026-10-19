@@ -81,6 +81,8 @@ export const en: Record<string, string> = {
 	'pureAdmin.buttons.hideFilters': 'Hide filters',
 	'pureAdmin.buttons.clearFilters': 'Clear Filters',
 	'pureAdmin.buttons.applyFilters': 'Apply Filters',
+	'pureAdmin.buttons.reset': 'Reset',
+	'pureAdmin.buttons.apply': 'Apply',
 
 	// Accessibility labels
 	'pureAdmin.a11y.closeProfile': 'Close Profile',

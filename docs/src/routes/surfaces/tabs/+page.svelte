@@ -351,7 +351,7 @@
 	<Column size="100" md="1-2">
 		<!-- Pills Style Tabs -->
 		<Card titleText="Pills Style Tabs">
-			<Tabs style="pills">
+			<Tabs type="pills">
 				<TabItem isActive={pillsActive === 'pills-tab-1'} onclick={() => (pillsActive = 'pills-tab-1')}>
 					Dashboard
 				</TabItem>
@@ -382,7 +382,7 @@
 	<Column size="100" md="1-2">
 		<!-- Pills with Icons -->
 		<Card titleText="Pills with Icons">
-			<Tabs style="pills">
+			<Tabs type="pills">
 				<TabItem isActive={iconPillsActive === 'icon-pills-1'} onclick={() => (iconPillsActive = 'icon-pills-1')}>
 					{#snippet icon()}
 						<i class="fa-solid fa-chart-line"></i>
@@ -423,7 +423,7 @@
 		<!-- Vertical Tabs -->
 		<Card titleText="Vertical Tabs">
 			<TabsVerticalLayout>
-				<Tabs style="vertical">
+				<Tabs type="vertical">
 					<TabItem isActive={verticalActive === 'vert-tab-1'} onclick={() => (verticalActive = 'vert-tab-1')}>
 						{#snippet icon()}
 							<i class="fa-solid fa-user"></i>
@@ -474,7 +474,7 @@
 	<Column size="100" lg="1-2">
 		<!-- Boxed Style Tabs -->
 		<Card titleText="Boxed Tabs">
-			<Tabs style="boxed">
+			<Tabs type="boxed">
 				<TabItem isActive={boxedActive === 'boxed-tab-1'} onclick={() => (boxedActive = 'boxed-tab-1')}>
 					Code
 				</TabItem>
@@ -734,7 +734,7 @@
 	<Column size="100" md="1-2">
 		<Card titleText="Icon-Only Tabs - Vertical">
 			<TabsVerticalLayout>
-				<Tabs style="vertical" justify="center">
+				<Tabs type="vertical" justify="center">
 					<TabItem
 						isActive={iconVertActive === 'icon-vert-1'}
 						onclick={() => (iconVertActive = 'icon-vert-1')}
@@ -837,7 +837,7 @@
 <Heading level={3} class="mt-8 mb-4">Standalone Vertical Tabs</Heading>
 
 <TabsVerticalLayout>
-	<Tabs style="vertical">
+	<Tabs type="vertical">
 		<TabItem
 			isActive={standaloneVertActive === 'standalone-vert-1'}
 			onclick={() => (standaloneVertActive = 'standalone-vert-1')}
@@ -922,7 +922,7 @@
 <Heading level={3} class="mt-8 mb-4">Bordered Vertical Tabs</Heading>
 
 <TabsVerticalLayout isBordered>
-	<Tabs style="vertical">
+	<Tabs type="vertical">
 		<TabItem
 			isActive={borderedVertActive === 'bordered-vert-1'}
 			onclick={() => (borderedVertActive = 'bordered-vert-1')}

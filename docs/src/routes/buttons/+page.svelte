@@ -46,7 +46,7 @@
 	let removeTargetId = $state<number | null>(null);
 	let removeName = $state('');
 	function askRemoveMember(event: MouseEvent, member: { id: number; name: string }) {
-		// The delete button carries `data-pa-keep-open`, so SplitButton leaves its
+		// The delete button sets `shouldKeepOpen` (data-pa-keep-open), so SplitButton leaves its
 		// menu open on click — no stopPropagation needed. This keeps the trigger
 		// visible so the shared Popconfirm can anchor to it inside the menu.
 		removeTrigger = event.currentTarget as HTMLElement;
@@ -200,7 +200,7 @@
 		<Card titleText="Button States">
 			<ButtonGroup>
 				<Button variant="primary">Normal</Button>
-				<Button variant="primary" disabled>Disabled</Button>
+				<Button variant="primary" isDisabled>Disabled</Button>
 				<Button variant="primary" isLoading>Loading...</Button>
 			</ButtonGroup>
 		</Card>
@@ -393,8 +393,8 @@
 		<SplitButton variant="danger" onclick={() => alert('Delete clicked')}>
 			Delete
 			{#snippet menu()}
-				<SplitButtonItem isDanger onclick={() => alert('Delete All')}>Delete All</SplitButtonItem>
-				<SplitButtonItem onclick={() => alert('Archive Instead')}>Archive Instead</SplitButtonItem>
+				<SplitButtonItem variant="danger" onclick={() => alert('Delete All')}>Delete All</SplitButtonItem>
+				<SplitButtonItem variant="warning" onclick={() => alert('Archive Instead')}>Archive Instead</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
 
@@ -493,14 +493,14 @@
 			{#snippet menu()}
 				<SplitButtonItem>General</SplitButtonItem>
 				<SplitButtonItem>Advanced</SplitButtonItem>
-				<SplitButtonItem isDanger>Reset All</SplitButtonItem>
+				<SplitButtonItem variant="danger">Reset All</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
 		<SplitButton variant="danger" onclick={() => alert('Delete')}>
 			Delete
 			{#snippet toggleIcon()}<span class="pa-icon pa-icon--delete text-2xs" aria-hidden="true"></span>{/snippet}
 			{#snippet menu()}
-				<SplitButtonItem isDanger>Delete Permanently</SplitButtonItem>
+				<SplitButtonItem variant="danger">Delete Permanently</SplitButtonItem>
 				<SplitButtonItem>Move to Trash</SplitButtonItem>
 			{/snippet}
 		</SplitButton>
@@ -508,7 +508,7 @@
 
 	<!-- Items with Actions -->
 	<Heading level={4} class="mt-4">Items with Actions</Heading>
-	<Paragraph isMuted class="mb-2">Two patterns. <strong>Bookmarks</strong> and <strong>Recent</strong> use an inline action button (a <Code>.pa-btn-split__item-row</Code> delete) — a row-action isn't the item itself, so clicking it removes the row and the menu stays open on its own. <strong>Members</strong> instead confirms on the item: the item carries <Code>data-pa-keep-open</Code> so clicking it (a real menu item, which would otherwise close the menu) keeps it open while the popconfirm is anchored — and the primary button adds a new member.</Paragraph>
+	<Paragraph isMuted class="mb-2">Two patterns. <strong>Bookmarks</strong> and <strong>Recent</strong> use an inline action button (a <Code>.pa-btn-split__item-row</Code> delete) — a row-action isn't the item itself, so clicking it removes the row and the menu stays open on its own. <strong>Members</strong> instead confirms on the item: the item sets <Code>shouldKeepOpen</Code> (emits <Code>data-pa-keep-open</Code>) so clicking it (a real menu item, which would otherwise close the menu) keeps it open while the popconfirm is anchored — and the primary button adds a new member.</Paragraph>
 	<ButtonGroup class="gap-lg">
 		<SplitButton variant="primary" onclick={() => {}}>
 			{#snippet icon()}<i class="fas fa-bookmark"></i>{/snippet}
@@ -551,7 +551,7 @@
 			Members
 			{#snippet menu()}
 				{#each members as m (m.id)}
-					<SplitButtonItem isDanger data-pa-keep-open onclick={(e) => askRemoveMember(e, m)}>
+					<SplitButtonItem variant="danger" shouldKeepOpen onclick={(e) => askRemoveMember(e, m)}>
 						{#snippet icon()}<i class="fas fa-user"></i>{/snippet}
 						{m.name}
 					</SplitButtonItem>
@@ -564,7 +564,7 @@
 		bind:show={removeShow}
 		trigger={removeTrigger}
 		messageText={`Remove ${removeName}?`}
-		icon="danger"
+		iconVariant="danger"
 		isCompact
 		placement="bottom"
 		confirmText="Remove"
@@ -1016,7 +1016,7 @@
 		<li><Code>pa-btn-split__menu-inner</Code> - Inner wrapper for menu items (padding, flex layout)</li>
 		<li><Code>pa-btn-split__menu--open</Code> - Show dropdown menu</li>
 		<li><Code>pa-btn-split__item</Code> - Menu item button</li>
-		<li><Code>pa-btn-split__item--danger</Code> - Destructive action styling</li>
+		<li><Code>pa-btn-split__item--{'{variant}'}</Code> - Role-coloured item (primary / secondary / success / warning / danger / info; <Code>danger</Code> for destructive actions)</li>
 		<li><Code>pa-btn-split__item-row</Code> - Menu row wrapping an item + a trailing action button (e.g. delete)</li>
 		<li><Code>data-placement="top-end"</Code> - Open menu upward (on container)</li>
 		<li><Code>data-pa-keep-open</Code> - On an item (or ancestor): keep the menu open on click, for actions that spawn their own popover</li>

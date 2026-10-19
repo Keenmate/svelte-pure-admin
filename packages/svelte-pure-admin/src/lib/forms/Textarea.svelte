@@ -25,11 +25,11 @@
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Readonly state */
-		readonly?: boolean;
+		isReadonly?: boolean;
 		/** Required field */
-		required?: boolean;
+		isRequired?: boolean;
 		/** Placeholder text */
 		placeholder?: string;
 		/** Textarea ID */
@@ -56,9 +56,9 @@
 		errors,
 		touched = true,
 		themeColor,
-		disabled = false,
-		readonly = false,
-		required = false,
+		isDisabled = false,
+		isReadonly = false,
+		isRequired = false,
 		placeholder,
 		id,
 		name,
@@ -108,9 +108,9 @@
 	{name}
 	{rows}
 	{placeholder}
-	{disabled}
-	{readonly}
-	{required}
+	disabled={isDisabled}
+	readonly={isReadonly}
+	required={isRequired}
 	class={classes()}
 	aria-invalid={ariaInvalid()}
 	{oninput}

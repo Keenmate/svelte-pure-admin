@@ -56,7 +56,7 @@ export interface DialogButton<T = unknown> {
 	/** Additional CSS class for the button */
 	class?: string;
 	/** Whether this button should be disabled */
-	disabled?: boolean;
+	isDisabled?: boolean;
 }
 
 export interface ConfirmDialogOptions extends BaseDialogOptions {

@@ -193,10 +193,10 @@
 						<Field labelText="Year" valueText={loadedMovie.year} />
 						<Field labelText="Director" valueText={loadedMovie.director} />
 						<Field labelText="Genre">
-							{#snippet valueSnippet()}<Badge>{loadedMovie!.genre}</Badge>{/snippet}
+							{#snippet children()}<Badge>{loadedMovie!.genre}</Badge>{/snippet}
 						</Field>
 						<Field labelText="Rating">
-							{#snippet valueSnippet()}<Badge variant={getRatingBadgeVariant(loadedMovie!.rating)}>{loadedMovie!.rating.toFixed(1)} / 10</Badge>{/snippet}
+							{#snippet children()}<Badge variant={getRatingBadgeVariant(loadedMovie!.rating)}>{loadedMovie!.rating.toFixed(1)} / 10</Badge>{/snippet}
 						</Field>
 						<Field labelText="Runtime" valueText={loadedMovie.runtime} />
 						<Field labelText="Language" valueText={loadedMovie.language} />
@@ -218,7 +218,7 @@
 
 				{#if loadedMovie.actors && loadedMovie.actors.length > 0}
 					<FieldGroup titleText="Cast">
-						<Fields isCompact>
+						<Fields density="compact">
 							{#each loadedMovie.actors as actor (actor.id)}
 								<Field labelText={actor.role} valueText={actor.name} />
 							{/each}

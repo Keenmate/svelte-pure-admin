@@ -56,6 +56,7 @@ PROPS:
   headingSize?: 'lg'         -- 'lg' = large heading (pa-alert__heading--lg)
   class?: string             -- Additional CSS classes
   icon?: Snippet             -- Icon snippet (enables complex layout with pa-alert__content wrapper)
+  iconName?: string          -- Icon name rendered through <Icon> (same layout; the icon snippet wins)
   children?: Snippet         -- Alert body content
   list?: Snippet             -- List items rendered in pa-alert__list <ul>
   actions?: Snippet          -- Action buttons rendered in pa-alert__actions
@@ -139,6 +140,7 @@ PROPS:
   headingText?: string      -- Callout heading text
   class?: string            -- Additional CSS classes
   icon?: Snippet            -- Icon snippet (enables complex layout)
+  iconName?: string         -- Icon name rendered through <Icon> (the icon snippet wins)
   children?: Snippet        -- Callout body content
 
 BASIC USAGE:
@@ -199,6 +201,7 @@ PROPS:
   isScrollable?: boolean        -- Scrollable body (default: false)
   isStatic?: boolean            -- Prevents ESC/backdrop close (default: false)
   titleText?: string            -- Modal title text
+  titleIconName?: string        -- Leading icon name before the title, rendered through <Icon> (affordances like success / warning / danger / info / delete render the masked glyph)
   shouldShowClose?: boolean     -- Show close button (default: true)
   shouldCloseOnEscape?: boolean -- Close on ESC key (default: true)
   beforeCloseCallback?: () => boolean | void
@@ -380,6 +383,7 @@ TOAST PROPS:
   duration?: number              -- Auto-dismiss in ms, 0 for persistent (default: 5000)
   shouldShowProgress?: boolean   -- Show progress bar (default: false)
   icon?: Snippet                 -- Custom icon
+  iconName?: string              -- Icon name rendered through <Icon> (the icon snippet wins)
   onclose?: () => void           -- Fired when toast closes
   class?: string                 -- Additional CSS classes
 
@@ -752,7 +756,7 @@ PROPS:
   messageText: string                  -- Confirmation message (REQUIRED)
   placement?: 'top' | 'bottom' | 'start' | 'end'
                                        -- Placement (default: 'bottom')
-  icon?: 'danger' | 'warning' | 'info' -- Icon variant
+  iconVariant?: 'danger' | 'warning' | 'info' -- Severity colour of the built-in icon
   isCompact?: boolean                  -- Compact size (default: false)
   confirmText?: string                 -- Confirm button text (default: i18n)
   cancelText?: string                  -- Cancel button text (default: i18n)
@@ -800,7 +804,7 @@ WITH ICON:
 <Popconfirm
   bind:show={showConfirm}
   messageText="This action cannot be undone."
-  icon="danger"
+  iconVariant="danger"
   trigger={triggerEl}
   confirmVariant="danger"
   confirmText="Yes, delete"
@@ -959,7 +963,7 @@ CUSTOM BUTTON OPTIONS:
   variant?: ColorVariant      -- Button color (default: 'secondary')
   isOutline?: boolean         -- Outline button style
   class?: string              -- Additional button CSS class
-  disabled?: boolean          -- Disable button
+  isDisabled?: boolean        -- Disable button
 
 CUSTOM DIALOG OPTIONS:
   title?: string
@@ -1139,7 +1143,7 @@ EXAMPLE 3: FULL PAGE WITH LOADING STATES
   <Card>
     {#snippet header()}
       <h3>Data Table</h3>
-      <Button onclick={refreshTable} disabled={isTableLoading}>
+      <Button onclick={refreshTable} isDisabled={isTableLoading}>
         {#if isTableLoading}
           <Spinner size="xs" /> Refreshing...
         {:else}

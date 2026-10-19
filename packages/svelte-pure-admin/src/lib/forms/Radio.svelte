@@ -21,9 +21,9 @@
 		/** Radio value */
 		value: string | number;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Required field — core turns the native `required` attribute into the group asterisk */
-		required?: boolean;
+		isRequired?: boolean;
 		/** Radio name (group name) */
 		name: string;
 		/** Radio size */
@@ -39,7 +39,7 @@
 		/** Additional CSS classes for wrapper */
 		class?: string;
 		/** Label snippet (alternative to label prop for custom content) */
-		labelSnippet?: import('svelte').Snippet;
+		label?: import('svelte').Snippet;
 		/** Change handler */
 		onchange?: (event: Event & { currentTarget: HTMLInputElement }) => void;
 	}
@@ -47,14 +47,14 @@
 	let {
 		group = $bindable(),
 		value,
-		disabled = false,
-		required = false,
+		isDisabled = false,
+		isRequired = false,
 		name,
 		size,
 		labelPosition,
 		labelText,
 		class: className = '',
-		labelSnippet,
+		label,
 		onchange
 	}: Props = $props();
 
@@ -80,12 +80,12 @@
 		bind:group
 		{value}
 		{name}
-		{disabled}
-		{required}
+		disabled={isDisabled}
+		required={isRequired}
 		{onchange}
 	/>
-	{#if labelSnippet}
-		<span class="pa-radio__label">{@render labelSnippet()}</span>
+	{#if label}
+		<span class="pa-radio__label">{@render label()}</span>
 	{:else if labelText}
 		<span class="pa-radio__label">{labelText}</span>
 	{/if}

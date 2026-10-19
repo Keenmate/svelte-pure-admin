@@ -4,6 +4,7 @@
 	 * Based on @keenmate/pure-admin-core snippets/callouts.html
 	 * Documentation-style callouts with left border accent for tips, notes, warnings
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import type { ThemeColor } from '../types';
 
@@ -25,6 +26,8 @@
 		class?: string;
 		/** Icon snippet (when provided, content is wrapped in pa-callout__content) */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Children (callout content) */
 		children?: import('svelte').Snippet;
 	}
@@ -37,6 +40,7 @@
 		heading,
 		class: className = '',
 		icon,
+		iconName,
 		children
 	}: Props = $props();
 
@@ -62,10 +66,10 @@
 </script>
 
 <div class={classes()}>
-	{#if icon}
+	{#if icon || iconName}
 		<!-- Callout with icon -->
 		<span class="pa-callout__icon">
-			{@render icon()}
+			{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 		</span>
 		<div class="pa-callout__content">
 			{#if heading || headingText}

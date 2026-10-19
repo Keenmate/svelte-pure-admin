@@ -29,4 +29,4 @@
 	});
 </script>
 
-<div class={classes()}></div>
+<span class={classes()}></span>

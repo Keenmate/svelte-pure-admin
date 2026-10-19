@@ -38,7 +38,7 @@
 		<DescTableItem labelText="Contact" valueText="Jan Novak" />
 		<DescTableItem labelText="Email" valueText="jan.novak@novakpartners.cz" />
 		<DescTableItem labelText="Phone" valueText="+420 234 111 222" />
-		<DescTableItem labelText="Notes" full valueText="Preferred carrier for Central European routes. Framework agreement renewed annually." />
+		<DescTableItem labelText="Notes" isFull valueText="Preferred carrier for Central European routes. Framework agreement renewed annually." />
 	</DescTable>
 </Card>
 
@@ -151,7 +151,7 @@
 <Grid>
 	<Column size="1-3">
 		<Card titleText="4. Linear Minimal" descriptionText="Ultra-clean. Only weight + color contrast. No decoration.">
-			<Fields isLinear hasBorder={false} hasContainerQuery>
+			<Fields layout="linear" hasBorder={false} hasContainerQuery>
 				<Field labelText="Status">
 					<Badge variant="success">Active</Badge>
 				</Field>
@@ -170,7 +170,7 @@
 
 	<Column size="1-3">
 		<Card titleText="5. Inline Chips" descriptionText="Properties as flowing inline pairs. Value in a chip/pill.">
-			<Fields isChips hasBorder={false} hasContainerQuery>
+			<Fields layout="chips" hasBorder={false} hasContainerQuery>
 				<Field labelText="Status" valueText="Active" valueVariant="success" />
 				<Field labelText="Role" valueText="Senior Dev" />
 				<Field labelText="Team" valueText="Platform" />
@@ -273,7 +273,7 @@
 		<Card hasPadding={false}>
 			{#snippet title()}7h. Banded — Multiline + <Code>--middle</Code>{/snippet}
 			{#snippet description()}<Code>pa-banded--middle</Code> vertically centers labels against wrapped values.{/snippet}
-			<Banded isMiddle hasContainerQuery>
+			<Banded align="center" hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="Description" valueText="Primary API gateway for Central European region. Handles authentication, rate limiting, and request routing to downstream microservices." />
 				<BandedRow labelText="Tags" valueText="production, eu-west, api-gateway, load-balanced, auto-scaling, monitored, pci-compliant" />
@@ -299,7 +299,7 @@
 		<Card>
 			{#snippet title()}1f. Desc Table — Multiline + <Code>--middle</Code>{/snippet}
 			{#snippet description()}Cells stretch to fill the row, content centered inside. Label backgrounds fill the full row height.{/snippet}
-			<DescTable cols={2} isMiddle hasContainerQuery>
+			<DescTable cols={2} align="center" hasContainerQuery>
 				<DescTableItem labelText="Company" valueText="Novak & Partners s.r.o." />
 				<DescTableItem labelText="Address" valueText="Vinohradska 2468/164, Prague 3, Vinohrady, 130 00, Czech Republic" />
 				<DescTableItem labelText="Notes" valueText="Preferred carrier for Central European routes. Framework agreement renewed annually. Contact Jan Novak for any billing disputes or special rate negotiations." />
@@ -323,7 +323,7 @@
 	<Column size="1-3">
 		<Card hasPadding={false}>
 			{#snippet title()}Banded — <Code>--label-end</Code>{/snippet}
-			<Banded isLabelEnd hasContainerQuery>
+			<Banded labelTextAlign="end" hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
 				<BandedRow labelText="Memory" valueText="16 GB DDR5" />
@@ -333,7 +333,7 @@
 	<Column size="1-3">
 		<Card hasPadding={false}>
 			{#snippet title()}Banded — <Code>--label-center</Code>{/snippet}
-			<Banded isLabelCenter hasContainerQuery>
+			<Banded labelTextAlign="center" hasContainerQuery>
 				<BandedRow labelText="Server" valueText="prod-api-01" />
 				<BandedRow labelText="IP Address" valueText="10.0.12.45" />
 				<BandedRow labelText="Memory" valueText="16 GB DDR5" />
@@ -355,7 +355,7 @@
 	<Column size="1-3">
 		<Card>
 			{#snippet title()}Desc Table — <Code>--label-end</Code>{/snippet}
-			<DescTable cols={2} isFixed isLabelEnd hasContainerQuery>
+			<DescTable cols={2} isFixed labelTextAlign="end" hasContainerQuery>
 				<DescTableItem labelText="Server" valueText="prod-api-01" />
 				<DescTableItem labelText="IP Address" valueText="10.0.12.45" />
 				<DescTableItem labelText="Memory" valueText="16 GB DDR5" />
@@ -365,7 +365,7 @@
 	<Column size="1-3">
 		<Card>
 			{#snippet title()}Desc Table — <Code>--label-center</Code>{/snippet}
-			<DescTable cols={2} isFixed isLabelCenter hasContainerQuery>
+			<DescTable cols={2} isFixed labelTextAlign="center" hasContainerQuery>
 				<DescTableItem labelText="Server" valueText="prod-api-01" />
 				<DescTableItem labelText="IP Address" valueText="10.0.12.45" />
 				<DescTableItem labelText="Memory" valueText="16 GB DDR5" />

@@ -88,10 +88,10 @@ Checkbox and Radio binding:
   let selectedPlan = $state('free');
 </script>
 
-<Checkbox bind:checked={agreed}>I agree to the terms</Checkbox>
+<Checkbox bind:isChecked={agreed}>I agree to the terms</Checkbox>
 
-<Radio bind:checked={selectedPlan} name="plan" value="free">Free</Radio>
-<Radio bind:checked={selectedPlan} name="plan" value="pro">Pro</Radio>
+<Radio bind:group={selectedPlan} name="plan" value="free" labelText="Free" />
+<Radio bind:group={selectedPlan} name="plan" value="pro" labelText="Pro" />
 
 Modal show binding:
 
@@ -396,12 +396,12 @@ Basic form layout:
 <Form>
   <FormGroup isRequired>
     <FormLabel>Full Name</FormLabel>
-    <Input bind:value={name} placeholder="Enter your name" required />
+    <Input bind:value={name} placeholder="Enter your name" isRequired />
   </FormGroup>
 
   <FormGroup isRequired>
     <FormLabel>Email</FormLabel>
-    <Input bind:value={email} type="email" placeholder="you@example.com" required />
+    <Input bind:value={email} type="email" placeholder="you@example.com" isRequired />
   </FormGroup>
 
   <FormGroup>
@@ -518,7 +518,7 @@ Card with loading state:
 
 Button with loading state:
 
-<Button variant="primary" isLoading={saving} disabled={saving} onclick={handleSave}>
+<Button variant="primary" isLoading={saving} isDisabled={saving} onclick={handleSave}>
   {saving ? 'Saving...' : 'Save Changes'}
 </Button>
 
@@ -660,7 +660,7 @@ Usage anywhere in app:
 
 Field/Fields (label-value pairs):
 
-<Fields cols={2} isHorizontal isBordered>
+<Fields cols={2} layout="horizontal" isBordered>
   <Field labelText="Name" valueText="John Doe" />
   <Field labelText="Email" valueText="john@example.com" copyMode="btn" />
   <Field labelText="Role" valueText="Admin" valueVariant="success" />
@@ -670,20 +670,20 @@ Field/Fields (label-value pairs):
 Fields with different layouts:
 
 <!-- Table layout (consistent label widths) -->
-<Fields isTable isBordered>
+<Fields layout="table" isBordered>
   <Field labelText="Created" valueText="2024-01-15" />
   <Field labelText="Modified" valueText="2024-03-20" />
   <Field labelText="Owner" valueText="Jane Smith" />
 </Fields>
 
 <!-- Linear layout (ultra-clean) -->
-<Fields isLinear>
+<Fields layout="linear">
   <Field labelText="Type" valueText="Invoice" />
   <Field labelText="Amount" valueText="$1,234.56" />
 </Fields>
 
 <!-- Chips layout (Notion-style pills) -->
-<Fields isChips>
+<Fields layout="chips">
   <Field labelText="Tags" valueText="Urgent" valueVariant="danger" />
   <Field labelText="Priority" valueText="High" valueVariant="warning" />
 </Fields>
@@ -848,7 +848,7 @@ Bar list:
           </Column>
           <Column md="1-3">
             <Card titleText="Quick Stats">
-              <Fields isTable isBordered>
+              <Fields layout="table" isBordered>
                 <Field labelText="CPU" valueText="32%" />
                 <Field labelText="Memory" valueText="8.2 GB" />
                 <Field labelText="Disk I/O" valueText="125 MB/s" />
@@ -900,7 +900,7 @@ Bar list:
 <Grid gap="md">
   <Column md="1-3">
     <Card titleText="Profile">
-      <Fields isTable isBordered>
+      <Fields layout="table" isBordered>
         <Field labelText="Name" valueText="John Doe" />
         <Field labelText="Email" valueText="john@example.com" copyMode="hover" />
         <Field labelText="Phone" valueText="+1 555-0123" copyMode="btn" />

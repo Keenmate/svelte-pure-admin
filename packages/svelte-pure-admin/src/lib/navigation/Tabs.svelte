@@ -5,7 +5,7 @@
 	 * Main container for standalone tabs navigation
 	 */
 
-	type TabsStyle = 'underline' | 'pills' | 'boxed' | 'vertical';
+	type TabsType = 'underline' | 'pills' | 'boxed' | 'vertical';
 	type TabsSize = 'sm' | 'lg';
 	type TabsJustify = 'center' | 'stretch';
 	// NOTE: 'scrollable' is intentionally NOT here. The scrollable variant needs
@@ -15,8 +15,8 @@
 	type TabsOverflow = 'nowrap' | 'collapse';
 
 	interface Props {
-		/** Tab style (default: underline) */
-		style?: TabsStyle;
+		/** Tab type — the predefined design (default: underline) */
+		type?: TabsType;
 		/** Tab size */
 		size?: TabsSize;
 		/** Tab alignment */
@@ -40,7 +40,7 @@
 	}
 
 	let {
-		style = 'underline',
+		type = 'underline',
 		size,
 		justify,
 		overflow,
@@ -55,9 +55,9 @@
 		const base = ['pa-tabs'];
 
 		// Style
-		if (style === 'pills') base.push('pa-tabs--pills');
-		if (style === 'boxed') base.push('pa-tabs--boxed');
-		if (style === 'vertical') base.push('pa-tabs--vertical');
+		if (type === 'pills') base.push('pa-tabs--pills');
+		if (type === 'boxed') base.push('pa-tabs--boxed');
+		if (type === 'vertical') base.push('pa-tabs--vertical');
 
 		// Size
 		if (size) base.push(`pa-tabs--${size}`);

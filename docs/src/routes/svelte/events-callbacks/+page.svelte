@@ -222,7 +222,7 @@
 			<Popconfirm
 				bind:show={showPopconfirm}
 				messageText="Are you sure you want to delete this item?"
-				icon="danger"
+				iconVariant="danger"
 				confirmVariant="danger"
 				trigger={popconfirmTrigger}
 				onconfirm={() => log('Popconfirm', 'onconfirm', 'User confirmed')}

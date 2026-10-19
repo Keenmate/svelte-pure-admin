@@ -26,11 +26,11 @@
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Readonly state */
-		readonly?: boolean;
+		isReadonly?: boolean;
 		/** Required field */
-		required?: boolean;
+		isRequired?: boolean;
 		/** Input ID */
 		id?: string;
 		/** Input name */
@@ -61,9 +61,9 @@
 		errors,
 		touched = true,
 		themeColor,
-		disabled = false,
-		readonly = false,
-		required = false,
+		isDisabled = false,
+		isReadonly = false,
+		isRequired = false,
 		id,
 		name,
 		min,
@@ -114,9 +114,9 @@
 	{min}
 	{max}
 	{step}
-	{disabled}
-	{readonly}
-	{required}
+	disabled={isDisabled}
+	readonly={isReadonly}
+	required={isRequired}
 	class={classes()}
 	aria-invalid={ariaInvalid()}
 	{oninput}

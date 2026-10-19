@@ -443,7 +443,7 @@
 						autocomplete="given-name"
 						bind:value={firstName}
 						errors={errors.first_name}
-						required
+						isRequired
 					/>
 					{#if errors.first_name}
 						<FormHelp variant="error">{errors.first_name}</FormHelp>
@@ -461,7 +461,7 @@
 						autocomplete="family-name"
 						bind:value={lastName}
 						errors={errors.last_name}
-						required
+						isRequired
 					/>
 					{#if errors.last_name}
 						<FormHelp variant="error">{errors.last_name}</FormHelp>
@@ -480,7 +480,7 @@
 						autocomplete="email"
 						bind:value={email}
 						errors={errors.email}
-						required
+						isRequired
 					/>
 					{#if errors.email}
 						<FormHelp variant="error">{errors.email}</FormHelp>
@@ -545,7 +545,7 @@
 					<Checkbox
 						id="fd-force-errors"
 						name="force_errors"
-						bind:checked={forceErrors}
+						bind:isChecked={forceErrors}
 						labelText="Force validation errors on every field (for testing that values stick and errors render)"
 					/>
 				</FormGroup>
@@ -663,7 +663,7 @@
 	bind:show={showClearAllConfirm}
 	trigger={clearAllTrigger}
 	messageText="Remove all stored submissions?"
-	icon="danger"
+	iconVariant="danger"
 	confirmText="Clear all"
 	confirmVariant="danger"
 	onconfirm={clearAll}
@@ -672,7 +672,7 @@
 <!-- How it works -->
 <Card titleText="How it works">
 	<Heading level={4}>Form binding</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li>
 			Each field is a Svelte 5 <Code>$state</Code> primitive, bound to an
 			<Code>Input</Code> / <Code>Select</Code> / <Code>Textarea</Code> via
@@ -694,7 +694,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">State &amp; UX</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li>
 			Entries are a reactive <Code>$state</Code> array keyed by an incrementing id. The table
 			re-renders via Svelte's keyed <Code>{'{#each}'}</Code> on every change — simple, and

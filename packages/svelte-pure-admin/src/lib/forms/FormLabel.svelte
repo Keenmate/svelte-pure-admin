@@ -6,8 +6,8 @@
 	 * Core styles a BARE <label> inside `.pa-form-group` — there is no
 	 * `.pa-form-label` class. The required marker is attribute-driven: core's
 	 * `.pa-form-group:has(:required) > label::after` draws the asterisk whenever
-	 * the group holds a `:required` control. So the label takes no `required`
-	 * prop — put `required` on the control (Input / Select / Textarea forward the
+	 * the group holds a `:required` control. So the label takes no `isRequired`
+	 * prop — put `isRequired` on the control (Input / Select / Textarea emit the
 	 * native attribute) and the marker appears for free.
 	 */
 

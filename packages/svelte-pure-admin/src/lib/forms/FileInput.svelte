@@ -19,9 +19,9 @@
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Required field */
-		required?: boolean;
+		isRequired?: boolean;
 		/** Input ID */
 		id?: string;
 		/** Input name */
@@ -29,7 +29,7 @@
 		/** Accepted file types (e.g., '.pdf,.doc', 'image/*', 'audio/*') */
 		accept?: string;
 		/** Allow multiple file selection */
-		multiple?: boolean;
+		isMultiple?: boolean;
 		/** Use camera/microphone capture (mobile) */
 		capture?: 'user' | 'environment';
 		/** Additional CSS classes */
@@ -43,12 +43,12 @@
 		size,
 		validation,
 		themeColor,
-		disabled = false,
-		required = false,
+		isDisabled = false,
+		isRequired = false,
 		id,
 		name,
 		accept,
-		multiple = false,
+		isMultiple = false,
 		capture,
 		class: className = '',
 		onchange
@@ -73,10 +73,10 @@
 	{id}
 	{name}
 	{accept}
-	{multiple}
+	multiple={isMultiple}
 	{capture}
-	{disabled}
-	{required}
+	disabled={isDisabled}
+	required={isRequired}
 	class={classes()}
 	{onchange}
 />

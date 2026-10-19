@@ -3,6 +3,7 @@
 	 * Pure Admin Stat Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core scss/core-components/_statistics.scss
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import { onMount, tick } from 'svelte';
 	import { loadCoreJs } from '../internal/core-js';
@@ -43,6 +44,8 @@
 		class?: string;
 		/** Icon snippet (for the default layout) */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Children content (for custom layouts) */
 		children?: import('svelte').Snippet;
 	}
@@ -61,6 +64,7 @@
 		contextText,
 		class: className = '',
 		icon,
+		iconName,
 		children
 	}: Props = $props();
 
@@ -150,9 +154,9 @@
 	</div>
 {:else}
 	<div class={classes()}>
-		{#if icon}
+		{#if icon || iconName}
 			<div class="pa-stat__icon pa-stat__icon--{iconVariant}">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</div>
 			<div class="pa-stat__content">
 				<div class="pa-stat__number">{number}</div>

@@ -245,14 +245,14 @@
 			<Column size="100" md="50">
 				<FormGroup>
 					<FormLabel for="text-input">Text Input</FormLabel>
-					<Input id="text-input" placeholder="Enter text" required bind:value={textInput} />
+					<Input id="text-input" placeholder="Enter text" isRequired bind:value={textInput} />
 				</FormGroup>
 			</Column>
 
 			<Column size="100" md="50">
 				<FormGroup>
 					<FormLabel for="email-input">Email Input</FormLabel>
-					<Input type="email" id="email-input" placeholder="user@example.com" required bind:value={emailInput} />
+					<Input type="email" id="email-input" placeholder="user@example.com" isRequired bind:value={emailInput} />
 				</FormGroup>
 			</Column>
 
@@ -273,7 +273,7 @@
 			<Column size="100" md="50">
 				<FormGroup>
 					<FormLabel for="basic-select">Select Dropdown</FormLabel>
-					<Select id="basic-select" required bind:value={basicSelect}>
+					<Select id="basic-select" isRequired bind:value={basicSelect}>
 						<option>Choose an option...</option>
 						<option>Option 1</option>
 						<option>Option 2</option>
@@ -292,7 +292,7 @@
 			<Column size="100">
 				<FormGroup>
 					<FormLabel for="textarea">Textarea (Full Width)</FormLabel>
-					<Textarea id="textarea" placeholder="Enter your message here..." required bind:value={textareaValue} />
+					<Textarea id="textarea" placeholder="Enter your message here..." isRequired bind:value={textareaValue} />
 				</FormGroup>
 			</Column>
 		</Grid>
@@ -542,14 +542,14 @@
 			<Column size="100" md="1-3">
 				<FormGroup>
 					<FormLabel for="disabled-input">Disabled Input</FormLabel>
-					<Input id="disabled-input" placeholder="Disabled" disabled />
+					<Input id="disabled-input" placeholder="Disabled" isDisabled />
 				</FormGroup>
 			</Column>
 
 			<Column size="100" md="1-3">
 				<FormGroup>
 					<FormLabel for="readonly-input">Readonly Input</FormLabel>
-					<Input id="readonly-input" bind:value={readonlyInput} readonly />
+					<Input id="readonly-input" bind:value={readonlyInput} isReadonly />
 				</FormGroup>
 			</Column>
 
@@ -616,9 +616,9 @@
 		<FormGroup>
 			<FormLabel>Checkboxes (Custom Tri-State)</FormLabel>
 			<CheckboxGroup>
-				<Checkbox id="check1" labelText="Option 1 (checked)" bind:checked={check1} />
-				<Checkbox id="check2" labelText="Option 2" bind:checked={check2} />
-				<Checkbox id="check3" labelText="Option 3 (disabled)" disabled />
+				<Checkbox id="check1" labelText="Option 1 (checked)" bind:isChecked={check1} />
+				<Checkbox id="check2" labelText="Option 2" bind:isChecked={check2} />
+				<Checkbox id="check3" labelText="Option 3 (disabled)" isDisabled />
 			</CheckboxGroup>
 		</FormGroup>
 
@@ -627,7 +627,7 @@
 			<RadioGroup>
 				<Radio name="radio-group" value="a" bind:group={radioGroup} labelText="Choice A (selected)" />
 				<Radio name="radio-group" value="b" bind:group={radioGroup} labelText="Choice B" />
-				<Radio name="radio-group" value="c" disabled labelText="Choice C (disabled)" />
+				<Radio name="radio-group" value="c" isDisabled labelText="Choice C (disabled)" />
 			</RadioGroup>
 		</FormGroup>
 
@@ -635,14 +635,14 @@
 			<FormLabel>Two-state &amp; Three-state (indeterminate)</FormLabel>
 			<CheckboxGroup>
 				<!-- Two-state: a normal checkbox -->
-				<Checkbox id="cb-two" labelText="Two-state (checked / unchecked)" bind:checked={twoState} />
+				<Checkbox id="cb-two" labelText="Two-state (checked / unchecked)" bind:isChecked={twoState} />
 				<!-- Static indeterminate -->
 				<Checkbox id="cb-indet" labelText="Indeterminate (mixed) — static" isIndeterminate />
 				<!-- Three-state cycler: click cycles unchecked → checked → indeterminate -->
 				<Checkbox
 					id="cb-tri"
 					labelText="Three-state — click to cycle"
-					checked={triChecked}
+					isChecked={triChecked}
 					isIndeterminate={triIndeterminate}
 					onchange={cycleTri}
 				/>
@@ -662,16 +662,16 @@
 			<Grid>
 				<Column size="100" md="1-2">
 					<CheckboxGroup>
-						<Checkbox id="lp-ce-1" labelPosition="end" labelText="End · Option 1" checked />
+						<Checkbox id="lp-ce-1" labelPosition="end" labelText="End · Option 1" isChecked />
 						<Checkbox id="lp-ce-2" labelPosition="end" labelText="End · Option 2" />
-						<Checkbox id="lp-ce-3" labelPosition="end" labelText="End · Option 3" checked />
+						<Checkbox id="lp-ce-3" labelPosition="end" labelText="End · Option 3" isChecked />
 					</CheckboxGroup>
 				</Column>
 				<Column size="100" md="1-2">
 					<CheckboxGroup>
-						<Checkbox id="lp-cs-1" labelPosition="start" labelText="Start · Option 1" checked />
+						<Checkbox id="lp-cs-1" labelPosition="start" labelText="Start · Option 1" isChecked />
 						<Checkbox id="lp-cs-2" labelPosition="start" labelText="Start · Option 2" />
-						<Checkbox id="lp-cs-3" labelPosition="start" labelText="Start · Option 3" checked />
+						<Checkbox id="lp-cs-3" labelPosition="start" labelText="Start · Option 3" isChecked />
 					</CheckboxGroup>
 				</Column>
 			</Grid>
@@ -680,11 +680,11 @@
 		<FormGroup class="mb-2xl">
 			<FormLabel>Checkbox · label top (auto-flow grid, 6 options)</FormLabel>
 			<CheckboxGroup layout="grid">
-				<Checkbox id="lp-ct-1" labelPosition="top" labelText="Top · Option 1" checked />
+				<Checkbox id="lp-ct-1" labelPosition="top" labelText="Top · Option 1" isChecked />
 				<Checkbox id="lp-ct-2" labelPosition="top" labelText="Top · Option 2" />
-				<Checkbox id="lp-ct-3" labelPosition="top" labelText="Top · Option 3" checked />
+				<Checkbox id="lp-ct-3" labelPosition="top" labelText="Top · Option 3" isChecked />
 				<Checkbox id="lp-ct-4" labelPosition="top" labelText="Top · Option 4" />
-				<Checkbox id="lp-ct-5" labelPosition="top" labelText="Top · Option 5" checked />
+				<Checkbox id="lp-ct-5" labelPosition="top" labelText="Top · Option 5" isChecked />
 				<Checkbox id="lp-ct-6" labelPosition="top" labelText="Top · Option 6" />
 			</CheckboxGroup>
 		</FormGroup>
@@ -745,7 +745,7 @@
 			<li>
 				<strong>Standalone choice</strong> (a lone <Code>.pa-checkbox</Code> / <Code>.pa-radio</Code>,
 				e.g. a consent box with no <Code>*-group</Code> wrapper) → the <strong>*</strong> sits on its
-				<strong>own</strong> option label. Use native <Code>required</Code>, or — when the checked
+				<strong>own</strong> option label. Use <Code>isRequired</Code> on the control (emits the native <Code>required</Code>), or — when the checked
 				state is JS-driven and never carries the attribute — declare it on the group with
 				<Code>.pa-form-group--required</Code> (the <Code>isRequired</Code> prop). Both land the
 				<strong>*</strong> on the option label. See <em>I accept the terms</em> below.
@@ -756,14 +756,14 @@
 			</li>
 		</BasicList>
 		<p class="mb-0">
-			The first “Horizontal orientation” group has no <Code>required</Code>, so it shows no marker.
+			The first “Horizontal orientation” group has no <Code>isRequired</Code>, so it shows no marker.
 		</p>
 	</Callout>
 	<Form>
 		<FormGroup>
 			<FormLabel>Horizontal orientation</FormLabel>
 			<CheckboxGroup layout="horizontal">
-				<Checkbox id="ho-red" labelText="Red" checked />
+				<Checkbox id="ho-red" labelText="Red" isChecked />
 				<Checkbox id="ho-green" labelText="Green" />
 				<Checkbox id="ho-blue" labelText="Blue" />
 			</CheckboxGroup>
@@ -779,16 +779,16 @@
 		<FormGroup>
 			<FormLabel>Priority (required group)</FormLabel>
 			<RadioGroup layout="horizontal">
-				<Radio name="req-priority" value="low" required bind:group={reqPriority} labelText="Low" />
-				<Radio name="req-priority" value="medium" required bind:group={reqPriority} labelText="Medium" />
-				<Radio name="req-priority" value="high" required bind:group={reqPriority} labelText="High" />
+				<Radio name="req-priority" value="low" isRequired bind:group={reqPriority} labelText="Low" />
+				<Radio name="req-priority" value="medium" isRequired bind:group={reqPriority} labelText="Medium" />
+				<Radio name="req-priority" value="high" isRequired bind:group={reqPriority} labelText="High" />
 			</RadioGroup>
 		</FormGroup>
 
 		<!-- Standalone consent checkbox (no *-group wrapper): the requirement IS
 		     this one control, so the asterisk sits on its OWN option label. -->
 		<FormGroup>
-			<Checkbox id="consent" required labelText="I accept the terms" />
+			<Checkbox id="consent" isRequired labelText="I accept the terms" />
 		</FormGroup>
 
 		<!-- Same standalone consent, but the requirement is declared on the GROUP
@@ -809,11 +809,11 @@
 				<FormGroup>
 					<FormLabel>Checkbox Sizes</FormLabel>
 					<CheckboxGroup>
-						<Checkbox id="check-xs" size="xs" labelText="Extra Small (12px)" bind:checked={checkXs} />
-						<Checkbox id="check-sm" size="sm" labelText="Small (14px)" bind:checked={checkSm} />
-						<Checkbox id="check-default" labelText="Default (16px)" bind:checked={checkDefault} />
-						<Checkbox id="check-lg" size="lg" labelText="Large (20px)" bind:checked={checkLg} />
-						<Checkbox id="check-xl" size="xl" labelText="Extra Large (24px)" bind:checked={checkXl} />
+						<Checkbox id="check-xs" size="xs" labelText="Extra Small (12px)" bind:isChecked={checkXs} />
+						<Checkbox id="check-sm" size="sm" labelText="Small (14px)" bind:isChecked={checkSm} />
+						<Checkbox id="check-default" labelText="Default (16px)" bind:isChecked={checkDefault} />
+						<Checkbox id="check-lg" size="lg" labelText="Large (20px)" bind:isChecked={checkLg} />
+						<Checkbox id="check-xl" size="xl" labelText="Extra Large (24px)" bind:isChecked={checkXl} />
 					</CheckboxGroup>
 				</FormGroup>
 			</Column>

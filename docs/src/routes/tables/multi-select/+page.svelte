@@ -178,7 +178,7 @@
 			Export
 
 			{#snippet menu()}
-				<SplitButtonItem isDanger onclick={deleteSelected}>
+				<SplitButtonItem variant="danger" onclick={deleteSelected}>
 					<span class="pa-icon pa-icon--delete" aria-hidden="true"></span> Delete Selected
 				</SplitButtonItem>
 				<SplitButtonItem onclick={clearSelection}>
@@ -316,7 +316,7 @@
 					<th class="col-auto">
 						<Checkbox
 							id="select-all"
-							checked={allVisibleSelected}
+							isChecked={allVisibleSelected}
 							isIndeterminate={someVisibleSelected}
 							onchange={(e) => toggleSelectAll(e.currentTarget.checked)}
 						/>
@@ -333,7 +333,7 @@
 						<td class="col-auto">
 							<Checkbox
 								id="user-{user.id}"
-								checked={selection.has(user.id)}
+								isChecked={selection.has(user.id)}
 								onchange={() => toggleSelection(user)}
 							/>
 						</td>

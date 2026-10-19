@@ -110,7 +110,7 @@
 						isIconOnly
 						titleText={isExpanded ? $_('pureAdmin.buttons.hideFilters') : $_('pureAdmin.buttons.moreFilters')}
 						onclick={handleToggle}
-						disabled={isDisabled}
+						isDisabled={isDisabled}
 					>
 						<span class="pa-icon" class:pa-icon--chevron-up={isExpanded} class:pa-icon--chevron-down={!isExpanded} aria-hidden="true"></span>
 					</Button>
@@ -126,7 +126,7 @@
 						isIconOnly
 						titleText={$_('pureAdmin.buttons.clearAll')}
 						onclick={handleClear}
-						disabled={isDisabled}
+						isDisabled={isDisabled}
 					>
 						<span class="pa-icon pa-icon--clear" aria-hidden="true"></span>
 					</Button>
@@ -138,7 +138,7 @@
 						isIconOnly
 						titleText={$_('pureAdmin.buttons.refresh')}
 						onclick={handleRefresh}
-						disabled={isDisabled || isLoading}
+						isDisabled={isDisabled || isLoading}
 					>
 						<span class="pa-icon pa-icon--refresh" aria-hidden="true"></span>
 					</Button>
@@ -153,10 +153,10 @@
 
 				{#if hasAdvancedActions}
 					<div class="pa-filter-card__advanced-actions">
-						<Button variant="secondary" onclick={handleClearAdvanced} disabled={isDisabled}>
+						<Button variant="secondary" onclick={handleClearAdvanced} isDisabled={isDisabled}>
 							{$_('pureAdmin.buttons.clearFilters')}
 						</Button>
-						<Button variant="primary" onclick={handleApply} disabled={isDisabled || isLoading}>
+						<Button variant="primary" onclick={handleApply} isDisabled={isDisabled || isLoading}>
 							{$_('pureAdmin.buttons.applyFilters')}
 						</Button>
 					</div>

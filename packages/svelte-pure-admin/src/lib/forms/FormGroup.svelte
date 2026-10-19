@@ -21,8 +21,8 @@
 		 * Mark the group required — emits `pa-form-group--required`, the escape
 		 * hatch for NON-native widgets (custom selects, etc.) that have no
 		 * `:required` descendant for core's auto-asterisk. For a native control,
-		 * prefer putting `required` on the input (Input/Select/Textarea forward
-		 * it) and let `:has(:required) > label::after` draw the marker for free.
+		 * prefer `isRequired` on the input (Input/Select/Textarea emit the native
+		 * `required`) and let `:has(:required) > label::after` draw the marker for free.
 		 */
 		isRequired?: boolean;
 		/** Additional CSS classes */

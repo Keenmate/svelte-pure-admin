@@ -4,7 +4,7 @@
   "features": {
     "body":       { "prop": "children",     "kind": "slot" },
     "validation": { "prop": "validation",     "kind": "enum", "values": ["success", "warning", "error"] },
-    "required":   { "prop": "isRequired",   "kind": "bool" },
+    "isRequired":   { "prop": "isRequired",   "kind": "bool" },
     "horizontal": { "prop": "isHorizontal", "kind": "bool" },
     "extraClass": { "prop": "class",        "kind": "string" }
   }

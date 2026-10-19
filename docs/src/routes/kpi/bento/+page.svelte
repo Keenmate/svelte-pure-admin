@@ -221,14 +221,14 @@
 
 <Card class="mt-xl" titleText="Component Reference">
 	<Heading level={4}>KpiBento props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiBentoTile props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>variant</Code> — accent colour: <Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> / <Code>up-strong</Code> / <Code>down-strong</Code>.</li>
 		<li><Code>isHero</Code> — bump value font + chart height. Set on the first (left-half) tile.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>

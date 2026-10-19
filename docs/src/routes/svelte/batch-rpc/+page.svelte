@@ -569,14 +569,14 @@ const transport = createPhoenixTransport(channel, {
 	<Grid class="mb-4">
 		<Column size="100" md="50">
 			<ButtonGroup>
-				<Button variant="primary" onclick={runBatchDemo} disabled={loading}>
+				<Button variant="primary" onclick={runBatchDemo} isDisabled={loading}>
 					{#if loading}
 						<Spinner size="xs" class="me-2" /> Running...
 					{:else}
 						Run Batched (1 request)
 					{/if}
 				</Button>
-				<Button variant="secondary" onclick={runSequentialDemo} disabled={loading}>
+				<Button variant="secondary" onclick={runSequentialDemo} isDisabled={loading}>
 					{#if loading}
 						<Spinner size="xs" class="me-2" /> Running...
 					{:else}
@@ -586,7 +586,7 @@ const transport = createPhoenixTransport(channel, {
 			</ButtonGroup>
 		</Column>
 		<Column size="100" md="50">
-			<Button variant="light" onclick={reset} disabled={loading}>Reset</Button>
+			<Button variant="light" onclick={reset} isDisabled={loading}>Reset</Button>
 		</Column>
 	</Grid>
 
@@ -654,19 +654,19 @@ const transport = createPhoenixTransport(channel, {
 					<Column size="50" md="25">
 						<FormGroup>
 							<FormLabel>Order ID</FormLabel>
-							<Input value={String(orderDetail.id)} readonly />
+							<Input value={String(orderDetail.id)} isReadonly />
 						</FormGroup>
 					</Column>
 					<Column size="50" md="25">
 						<FormGroup>
 							<FormLabel>Customer</FormLabel>
-							<Input value={orderDetail.customer} readonly />
+							<Input value={orderDetail.customer} isReadonly />
 						</FormGroup>
 					</Column>
 					<Column size="50" md="25">
 						<FormGroup>
 							<FormLabel>Total</FormLabel>
-							<Input value={`$${orderDetail.total.toFixed(2)}`} readonly />
+							<Input value={`$${orderDetail.total.toFixed(2)}`} isReadonly />
 						</FormGroup>
 					</Column>
 					<Column size="50" md="25">
@@ -690,7 +690,7 @@ const transport = createPhoenixTransport(channel, {
 		If one call fails, others still succeed.
 	</Paragraph>
 
-	<Button variant="primary" onclick={runErrorDemo} disabled={demo2Loading} class="mb-4">
+	<Button variant="primary" onclick={runErrorDemo} isDisabled={demo2Loading} class="mb-4">
 		{#if demo2Loading}
 			<Spinner size="xs" class="me-2" /> Running...
 		{:else}

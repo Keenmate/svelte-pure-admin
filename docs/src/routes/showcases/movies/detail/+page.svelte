@@ -67,17 +67,17 @@
 			<Card titleText="Basic Information">
 				<Fields cols={2}>
 					<Field labelText="Title">
-						{#snippet valueSnippet()}<strong>{movie.title}</strong>{/snippet}
+						{#snippet children()}<strong>{movie.title}</strong>{/snippet}
 					</Field>
 					<Field labelText="Year" valueText={movie.year} />
 					<Field labelText="Director" valueText={movie.director} />
 					<Field labelText="Genre">
-						{#snippet valueSnippet()}<Badge>{movie.genre}</Badge>{/snippet}
+						{#snippet children()}<Badge>{movie.genre}</Badge>{/snippet}
 					</Field>
 					<Field labelText="Rating">
-						{#snippet valueSnippet()}<Badge variant={getRatingBadgeVariant(movie.rating)}>{movie.rating.toFixed(1)} / 10</Badge>{/snippet}
+						{#snippet children()}<Badge variant={getRatingBadgeVariant(movie.rating)}>{movie.rating.toFixed(1)} / 10</Badge>{/snippet}
 					</Field>
-					<Field labelText="Plot Summary" full valueText={movie.plot} />
+					<Field labelText="Plot Summary" isFull valueText={movie.plot} />
 				</Fields>
 			</Card>
 		</Column>

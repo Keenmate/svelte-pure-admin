@@ -12,7 +12,7 @@
 	<Grid>
 		<Column size="100" md="50">
 			<Heading level={4}>Key Features</Heading>
-			<BasicList spacing="spacious">
+			<BasicList density="spacious">
 				<li><strong>Gutter:</strong> 0.8rem (8px) per side, 1.6rem (16px) total gap</li>
 				<li><strong>Percentage columns:</strong> 5% increments (5, 10, 15... 100)</li>
 				<li><strong>Fraction columns:</strong> Halves, thirds, quarters, fifths, sixths, twelfths</li>

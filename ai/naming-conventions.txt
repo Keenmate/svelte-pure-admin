@@ -17,14 +17,10 @@ Used for component state, visual modifiers, and behavior toggles.
   isHover          -- Table has hover effect on rows
   isBordered       -- Table/Fields has bottom border separators
   isBorderless     -- Table has no cell borders
-  isCompact        -- Tighter spacing (Table, Fields, BarList, Heatmap)
-  isRelaxed        -- Larger gaps between fields
-  isHorizontal     -- Label left, value right (FormGroup, Fields)
-  isTable          -- Consistent label widths like key-value table
-  isInline         -- Fields flow on one line
-  isRow            -- Equal-width auto columns
-  isLinear         -- Ultra-clean side-by-side layout
-  isChips          -- Notion-style inline flowing pairs with pill values
+  isCompact        -- Tighter spacing (Table, BarList, Heatmap)
+  isHorizontal     -- Label left, value right (FormGroup)
+  isDisabled       -- Disabled (emits the native disabled attribute)
+  isReadonly / isRequired / isChecked / isMultiple -- native boolean attributes, same rule
   isFilled         -- Subtle background panel (Fields)
   isScrollable     -- Scrollable body content (Modal, TableCard)
   isStatic         -- Prevents closing via ESC/backdrop (Modal)
@@ -57,7 +53,7 @@ Examples in component code:
   <Card isGhost isStat>...</Card>
   <Button isOutline isBlock isLoading>...</Button>
   <Modal isScrollable isStatic>...</Modal>
-  <Fields isHorizontal isBordered isStriped>...</Fields>
+  <Fields layout="horizontal" isBordered isStriped>...</Fields>
   <Progress isRounded isStriped isAnimated value={75} />
 
 
@@ -218,13 +214,19 @@ Examples:
   <Button class="wr-5 minwr-5">Fixed Width</Button>
 
 
-NATIVE HTML ATTRIBUTES: KEEP AS-IS
-------------------------------------
-Standard HTML attributes are NOT renamed. Keep them exactly as in HTML.
+NATIVE HTML ATTRIBUTES
+----------------------
+BOOLEAN native attributes follow the is*/has*/should* rule like every other
+boolean — the component emits the native attribute internally:
 
-  disabled       -- Not isDisabled (Button, Input, Select)
-  readonly       -- Not isReadonly (Input, Textarea)
-  required       -- Not isRequired (Input, but FormGroup uses isRequired)
+  isDisabled     -- emits disabled (Button, Input, Select, ...)
+  isReadonly     -- emits readonly (Input, Textarea)
+  isRequired     -- emits required (Input, Select, Checkbox, ...; FormGroup too)
+  isChecked      -- emits checked (Checkbox; bind:isChecked)
+  isMultiple     -- emits multiple (Select, FileInput)
+
+Non-boolean native attributes keep their HTML names:
+
   placeholder    -- Not placeholderText (Input, Textarea, Select)
   id             -- Element ID
   name           -- Form field name
@@ -234,8 +236,8 @@ Standard HTML attributes are NOT renamed. Keep them exactly as in HTML.
 
 Examples:
 
-  <Button disabled>Can't Click</Button>
-  <Input placeholder="Enter email" required disabled={!canEdit} />
+  <Button isDisabled>Can't Click</Button>
+  <Input placeholder="Enter email" isRequired isDisabled={!canEdit} />
   <Select name="country" id="country-select">...</Select>
 
 
@@ -272,8 +274,11 @@ Svelte 5 Snippet type for complex content sections:
   actions        -- Footer actions area
   tabs           -- Tab content area
   titleIcon      -- Icon rendered before title
-  labelSnippet   -- Complex label content (Field)
-  valueSnippet   -- Complex value content (Field)
+  label          -- Rich label content (Field, Checkbox, Radio; alternative to labelText)
+
+The bare name is the rich snippet; the plain-text form is *Text (titleText /
+title). Icons follow the same split: iconName (string, rendered through <Icon>
+so icon providers resolve it) vs icon (rich snippet, wins when both are set).
 
 Type declaration in component:
   header?: import('svelte').Snippet;
@@ -312,8 +317,10 @@ If you see old patterns, here is the correct naming:
   onClose                  onclose                Svelte 5 lowercase events
   closeCallback            onclose                Fire-and-forget, not callback
   confirmCallback          onconfirm              Fire-and-forget, not callback
-  isDisabled               disabled               Native HTML attribute
-  isReadonly               readonly               Native HTML attribute
+  disabled                 isDisabled             is* for booleans (native too)
+  readonly                 isReadonly             is* for booleans (native too)
+  labelSnippet             label                  bare name = rich snippet
+  style (design enum)      type                   style = inline CSS only
   showClose                shouldShowClose        should* for behavior flags
   closeOnEscape            shouldCloseOnEscape    should* for behavior flags
   showProgress             shouldShowProgress     should* for behavior flags
@@ -361,7 +368,10 @@ CRITICAL REMINDERS
 - *Text for display strings: titleText, labelText, messageText
 - on* (lowercase!) for events: onclick, onclose, onconfirm
 - *Callback only when return value matters: beforeCloseCallback, copyValueCallback
-- Keep native HTML attrs as-is: disabled, readonly, required, placeholder
+- ALL booleans use is*/has*/should*, native ones too: isDisabled, isReadonly, isRequired, isChecked
+- Keep non-boolean native attrs as-is: placeholder, name, id, type, href
+- iconName (string via <Icon>) vs icon (rich snippet)
+- type = predefined design, layout = arrangement, density = compact|relaxed spacing, style = inline CSS only
 - Use start/end not left/right (RTL support, since v1.4.0/v1.5.0)
 - Exception: Tooltip/Popconfirm keep physical left/right for arrow positioning
 

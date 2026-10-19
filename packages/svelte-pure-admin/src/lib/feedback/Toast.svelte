@@ -3,6 +3,7 @@
 	 * Pure Admin Toast Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/toasts.html
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import { onMount } from 'svelte';
 	import { _ } from '../i18n';
@@ -33,6 +34,8 @@
 		maxWidth?: string;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Action buttons snippet — renders inside pa-toast__actions */
 		actions?: import('svelte').Snippet;
 		/** Close callback */
@@ -53,6 +56,7 @@
 		progressColor,
 		maxWidth,
 		icon,
+		iconName,
 		actions,
 		onclose,
 		class: className = ''
@@ -115,9 +119,9 @@
 </script>
 
 <div class={classes()} style:max-width={maxWidth}>
-	{#if icon}
+	{#if icon || iconName}
 		<div class="pa-toast__icon">
-			{@render icon()}
+			{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 		</div>
 	{/if}
 

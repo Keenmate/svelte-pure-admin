@@ -4,6 +4,7 @@
 	 * Based on @keenmate/pure-admin-core snippets/tabs.html
 	 * Individual tab button within Tabs container
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
@@ -21,6 +22,8 @@
 		class?: string;
 		/** Icon snippet (rendered before children) */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Tab content */
 		children?: import('svelte').Snippet;
 		/** Click handler */
@@ -33,6 +36,7 @@
 		height,
 		class: className = '',
 		icon,
+		iconName,
 		children,
 		onclick,
 		...restProps
@@ -62,8 +66,8 @@
 </script>
 
 <button class={classes()} {onclick} {...restProps}>
-	{#if icon}
-		{@render icon()}
+	{#if icon || iconName}
+		{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 	{/if}
 	{@render children?.()}
 </button>

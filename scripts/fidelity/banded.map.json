@@ -1,14 +1,12 @@
 {
-  "//": "Capability manifest for <Banded> — svelte-pure-admin (container-only slice). See list.map.json for the container-only model. Banded.svelte exposes the label-column width as the labelWidth='narrow'|'wide' enum, matching the neutral labelWidth feature. The other seven layout modifiers are plain bool props. body → the children snippet; extraClass → the class passthrough. Per-ROW structure (pa-banded__row/__label/__value/__copy) is the BandedRow.svelte sub-component, deferred in the fixture.",
+  "//": "Capability manifest for <Banded> — svelte-pure-admin (container-only slice). See list.map.json for the container-only model. Banded.svelte exposes the label-column width as the labelWidth='narrow'|'wide' enum, matching the neutral labelWidth feature. align ('center' → --middle) and labelTextAlign / valueTextAlign (center|end → --label-* / --value-*) are enums named for the CSS they drive; isTruncate is a bool. body → the children snippet; extraClass → the class passthrough. Per-ROW structure (pa-banded__row/__label/__value/__copy) is the BandedRow.svelte sub-component, deferred in the fixture.",
   "component": "banded",
   "features": {
     "labelWidth":  { "prop": "labelWidth", "kind": "enum", "values": ["narrow", "wide"] },
-    "middle":      { "prop": "isMiddle",      "kind": "bool" },
+    "align":          { "prop": "align",          "kind": "enum", "values": ["center"] },
     "truncate":    { "prop": "isTruncate",    "kind": "bool" },
-    "labelEnd":    { "prop": "isLabelEnd",    "kind": "bool" },
-    "labelCenter": { "prop": "isLabelCenter", "kind": "bool" },
-    "valueEnd":    { "prop": "isValueEnd",    "kind": "bool" },
-    "valueCenter": { "prop": "isValueCenter", "kind": "bool" },
+    "labelTextAlign": { "prop": "labelTextAlign", "kind": "enum", "values": ["center", "end"] },
+    "valueTextAlign": { "prop": "valueTextAlign", "kind": "enum", "values": ["center", "end"] },
     "body":        { "prop": "children", "kind": "slot" },
     "extraClass":  { "prop": "class",    "kind": "string" }
   }

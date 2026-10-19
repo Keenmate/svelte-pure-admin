@@ -81,6 +81,8 @@ export const cs: Record<string, string> = {
 	'pureAdmin.buttons.hideFilters': 'Skrýt filtry',
 	'pureAdmin.buttons.clearFilters': 'Vymazat filtry',
 	'pureAdmin.buttons.applyFilters': 'Použít filtry',
+	'pureAdmin.buttons.reset': 'Obnovit',
+	'pureAdmin.buttons.apply': 'Použít',
 
 	// Accessibility labels
 	'pureAdmin.a11y.closeProfile': 'Zavřít profil',

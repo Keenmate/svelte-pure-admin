@@ -118,7 +118,7 @@ DialogContainer -> feedback.txt
 dialogService -> feedback.txt
 dialogStore -> feedback.txt
 DialogVariant -> feedback.txt, typescript-types.txt
-disabled -> forms.txt, common-patterns.txt
+isDisabled -> forms.txt, common-patterns.txt
 Dismissible (Alert) -> feedback.txt
 Divider -> layout.txt
 DotLeaders -> data-display.txt
@@ -186,11 +186,10 @@ InputGroupPrepend -> forms.txt
 Installation -> getting-started.txt
 is* (boolean naming) -> naming-conventions.txt
 isBlock -> display.txt, naming-conventions.txt
-isChips (Fields) -> data-display.txt
+layout (Fields) -> data-display.txt
 isCompact (Heatmap) -> data-visualization.txt
 isDismissible -> feedback.txt, naming-conventions.txt
 isGhost (Card) -> display.txt
-isLinear (Fields) -> data-display.txt
 isLoading (Button) -> display.txt
 isLocaleLoaded -> i18n.txt
 isNegative (DataBar) -> data-visualization.txt
@@ -293,11 +292,11 @@ R
 Radio -> forms.txt
 RadioGroup -> forms.txt
 RangeInput -> forms.txt
-readonly -> forms.txt
+isReadonly -> forms.txt
 register (i18n) -> i18n.txt
 registerLibraryTranslations -> i18n.txt
 Relaxed (Fields) -> data-display.txt
-required -> forms.txt
+isRequired -> forms.txt
 Responsive grid -> layout.txt
 RPC (Batch) -> common-patterns.txt
 RTL support -> theming.txt, layout.txt

@@ -132,7 +132,7 @@
 					<li>Form Modals</li>
 					<li>Confirmation Dialogs</li>
 				</BasicList>
-				<Button variant="secondary" size="sm" disabled>Coming Soon</Button>
+				<Button variant="secondary" size="sm" isDisabled>Coming Soon</Button>
 			</Card>
 		</Column>
 
@@ -147,7 +147,7 @@
 					<li>Overlay Loaders</li>
 					<li>Progress Bars</li>
 				</BasicList>
-				<Button variant="secondary" size="sm" disabled>Coming Soon</Button>
+				<Button variant="secondary" size="sm" isDisabled>Coming Soon</Button>
 			</Card>
 		</Column>
 
@@ -163,7 +163,7 @@
 					<li>Responsive Tables</li>
 					<li>Lazy Loading</li>
 				</BasicList>
-				<Button variant="secondary" size="sm" disabled>Coming Soon</Button>
+				<Button variant="secondary" size="sm" isDisabled>Coming Soon</Button>
 			</Card>
 		</Column>
 	</Grid>

@@ -219,7 +219,7 @@
 				Consecutive <Code>Fields</Code> blocks get automatic spacing via <Code>.pa-fields + .pa-fields</Code>.
 			{/snippet}
 
-			<Fields isRow>
+			<Fields layout="row">
 				<Field labelText="First Name" valueText="Elena" />
 				<Field labelText="Last Name" valueText="Petrova" />
 			</Fields>
@@ -237,7 +237,7 @@
 	<Column size="1-2">
 		<Card titleText="Multi-Column Grid">
 			{#snippet description()}
-				Uses <Code>cols={2|3|4}</Code>. Use <Code>full</Code> prop to span all columns.
+				Uses <Code>cols={2|3|4}</Code>. Use the <Code>isFull</Code> prop to span all columns.
 			{/snippet}
 
 			<Fields cols={2}>
@@ -245,7 +245,7 @@
 				<Field labelText="Reg. No." valueText="CZ27082440" />
 				<Field labelText="Contact" valueText="Jan Kratochvil" />
 				<Field labelText="Phone" valueText="+420 234 567 890" />
-				<Field labelText="Notes" valueText="Preferred carrier for Central European routes." full />
+				<Field labelText="Notes" valueText="Preferred carrier for Central European routes." isFull />
 			</Fields>
 		</Card>
 	</Column>
@@ -299,7 +299,7 @@
 				Uses <Code>horizontal</Code> prop.
 			{/snippet}
 
-			<Fields isHorizontal>
+			<Fields layout="horizontal">
 				<Field labelText="Company" valueText="Acme Corp" />
 				<Field labelText="Reg. No." valueText="CZ12345678" />
 				<Field labelText="VAT ID" valueText="CZ12345678" />
@@ -313,7 +313,7 @@
 				Uses <Code>table bordered</Code> props.
 			{/snippet}
 
-			<Fields isTable isBordered>
+			<Fields layout="table" isBordered>
 				<Field labelText="Order ID" valueText="#ORD-00847" />
 				<Field labelText="Status">
 					<Badge variant="success">Delivered</Badge>
@@ -352,7 +352,7 @@
 				<Code>compact</Code>
 			{/snippet}
 
-			<Fields isCompact>
+			<Fields density="compact">
 				<Field labelText="Name" valueText="Martin" />
 				<Field labelText="Role" valueText="DevOps" />
 				<Field labelText="Team" valueText="Infra" />
@@ -365,7 +365,7 @@
 				<Code>inline</Code>
 			{/snippet}
 
-			<Fields isInline>
+			<Fields layout="inline">
 				<Field labelText="Browser" valueText="Chrome" />
 				<Field labelText="OS" valueText="Win 11" />
 				<Field labelText="Lang" valueText="en-US" />
@@ -378,7 +378,7 @@
 				<Code>row</Code>
 			{/snippet}
 
-			<Fields isRow>
+			<Fields layout="row">
 				<Field labelText="Width" valueText="120cm" />
 				<Field labelText="Height" valueText="80cm" />
 				<Field labelText="Depth" valueText="60cm" />
@@ -391,7 +391,7 @@
 				<Code>relaxed</Code>
 			{/snippet}
 
-			<Fields isRelaxed>
+			<Fields density="relaxed">
 				<Field labelText="Name" valueText="Elena" />
 				<Field labelText="Role" valueText="Developer" />
 			</Fields>
@@ -421,7 +421,7 @@
 					</Fields>
 				</Column>
 				<Column size="1-2">
-					<Fields isFilled isRow>
+					<Fields isFilled layout="row">
 						<Field labelText="Plan" valueText="Enterprise" />
 						<Field labelText="Renewal" valueText="1 Jan 2027" />
 						<Field labelText="Seats" valueText="48 / 50" />
@@ -626,7 +626,7 @@
 	</FieldGroup>
 
 	<div class="invoice-totals">
-		<Fields isHorizontal>
+		<Fields layout="horizontal">
 			<Field labelText="Subtotal" valueText="$2,094" />
 			<Field labelText="VAT 21%" valueText="$439.74" />
 			<Field labelText="Total" class="invoice-total">
@@ -650,7 +650,7 @@
 			</div>
 
 			<FieldGroup titleText="Contact">
-				<Fields isCompact>
+				<Fields density="compact">
 					<Field labelText="Email" valueText="elena@acme.com" />
 					<Field labelText="Phone" valueText="+420 776 123 456" />
 				</Fields>
@@ -672,7 +672,7 @@
 			<Grid>
 				<Column size="1-2">
 					<Heading level={4}>Field Elements</Heading>
-					<BasicList spacing="compact">
+					<BasicList density="compact">
 						<li><Code>pa-field</Code> - Label-value pair</li>
 						<li><Code>pa-field__label</Code> - Label element</li>
 						<li><Code>pa-field__value</Code> - Value element</li>
@@ -680,14 +680,14 @@
 					</BasicList>
 
 					<Heading level={4} class="mt-4">Container & Groups</Heading>
-					<BasicList spacing="compact">
+					<BasicList density="compact">
 						<li><Code>pa-fields</Code> - Field container</li>
 						<li><Code>pa-field-group</Code> - Section wrapper</li>
 						<li><Code>pa-field-group__title</Code> - Section title</li>
 					</BasicList>
 
 					<Heading level={4} class="mt-4">Grid Columns</Heading>
-					<BasicList spacing="compact">
+					<BasicList density="compact">
 						<li><Code>pa-fields--cols-2</Code> - 2 columns</li>
 						<li><Code>pa-fields--cols-3</Code> - 3 columns</li>
 						<li><Code>pa-fields--cols-4</Code> - 4 columns</li>
@@ -695,7 +695,7 @@
 				</Column>
 				<Column size="1-2">
 					<Heading level={4}>Layout Modifiers</Heading>
-					<BasicList spacing="compact">
+					<BasicList density="compact">
 						<li><Code>pa-fields--horizontal</Code> - Label left, value right</li>
 						<li><Code>pa-fields--table</Code> - Table-like widths</li>
 						<li><Code>pa-fields--bordered</Code> - Row separators</li>
@@ -710,7 +710,7 @@
 					</BasicList>
 
 					<Heading level={4} class="mt-4">Combining</Heading>
-					<BasicList spacing="compact">
+					<BasicList density="compact">
 						<li><Code>table bordered</Code></li>
 						<li><Code>horizontal compact</Code></li>
 						<li><Code>filled cols=&#123;2&#125;</Code></li>
@@ -881,7 +881,7 @@
 				</FieldGroup>
 
 				<FieldGroup titleText="Inventory">
-					<Fields isRow>
+					<Fields layout="row">
 						<Field labelText="Price">
 							<strong>{product.price}</strong>
 						</Field>

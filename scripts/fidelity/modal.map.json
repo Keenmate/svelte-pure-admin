@@ -11,7 +11,7 @@
     "static":     { "prop": "isStatic",         "kind": "bool" },
     "showClose":  { "prop": "shouldShowClose",  "kind": "bool" },
     "title":      { "prop": "titleText",        "kind": "string" },
-    "titleIcon":  { "prop": "titleIcon",        "kind": "string" },
+    "titleIcon":  { "prop": "titleIconName",    "kind": "string" },
     "body":       { "prop": "children",         "kind": "slot" },
     "footer":     { "prop": "footer",           "kind": "slot" }
   }

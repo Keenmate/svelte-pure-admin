@@ -285,7 +285,7 @@
 		bind:show={showDeletePopconfirm}
 		trigger={deleteTrigger}
 		messageText="Are you sure you want to delete this item? This action cannot be undone."
-		icon="danger"
+		iconVariant="danger"
 		confirmText="Delete"
 		confirmVariant="danger"
 		onconfirm={handleDelete}
@@ -295,7 +295,7 @@
 		bind:show={showArchivePopconfirm}
 		trigger={archiveTrigger}
 		messageText="Archive this item? It will be moved to the archive folder."
-		icon="warning"
+		iconVariant="warning"
 		confirmText="Archive"
 		confirmVariant="warning"
 		onconfirm={handleArchive}
@@ -305,7 +305,7 @@
 		bind:show={showResetPopconfirm}
 		trigger={resetTrigger}
 		messageText="Reset all settings to default values?"
-		icon="info"
+		iconVariant="info"
 		confirmText="Reset"
 		confirmVariant="primary"
 		onconfirm={handleReset}
@@ -455,7 +455,7 @@
 		bind:show={showDangerPopconfirm}
 		trigger={dangerTrigger}
 		messageText="This action is destructive and cannot be undone."
-		icon="danger"
+		iconVariant="danger"
 		confirmText="Continue"
 		confirmVariant="danger"
 	/>
@@ -464,7 +464,7 @@
 		bind:show={showWarningPopconfirm}
 		trigger={warningTrigger}
 		messageText="Please review this action carefully before proceeding."
-		icon="warning"
+		iconVariant="warning"
 		confirmText="Proceed"
 		confirmVariant="warning"
 	/>
@@ -473,7 +473,7 @@
 		bind:show={showInfoPopconfirm}
 		trigger={infoTrigger}
 		messageText="This will update your preferences. Continue?"
-		icon="info"
+		iconVariant="info"
 		confirmText="Update"
 		confirmVariant="primary"
 	/>
@@ -554,7 +554,7 @@
 	bind:show={gridConfirmShow}
 	trigger={gridConfirmTrigger}
 	messageText={gridConfirmMessage}
-	icon="danger"
+	iconVariant="danger"
 	confirmText="Delete"
 	confirmVariant="danger"
 	onconfirm={handleGridConfirm}

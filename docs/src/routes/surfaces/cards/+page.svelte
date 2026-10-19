@@ -613,7 +613,7 @@
 <!-- CSS Classes Reference -->
 <Card titleText="CSS Classes Reference">
 	<Heading level={4}>Card Base & Sections</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-card</Code> - Base card container</li>
 		<li><Code>pa-card__header</Code> - Card header with title/tools</li>
 		<li><Code>pa-card__body</Code> - Card body content area</li>
@@ -622,7 +622,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Header Elements</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-card__header</Code> - Flexbox header with gap between children</li>
 		<li><Code>pa-card__header--wrap</Code> - Allow description to wrap to new line</li>
 		<li><Code>h1-h6</Code> (direct child) - Title, fixed width, won't shrink</li>
@@ -636,13 +636,13 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Footer Elements</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-card__actions</Code> - Action buttons container</li>
 		<li><Code>pa-card__meta</Code> - Meta text (timestamps, etc.)</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Color Variants</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-card--primary</Code> - Primary color header</li>
 		<li><Code>pa-card--success</Code> - Success color header</li>
 		<li><Code>pa-card--warning</Code> - Warning color header</li>
@@ -653,7 +653,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Card Tabs</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-card__tabs</Code> - Tab navigation container</li>
 		<li><Code>pa-card__tabs--inline</Code> - Inline tabs in header (same height as regular header)</li>
 		<li><Code>pa-card__tab</Code> - Individual tab button</li>
@@ -663,7 +663,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Section Helpers</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-section</Code> - Page section with margin</li>
 		<li><Code>pa-section-title</Code> - Standalone section title with accent border</li>
 	</BasicList>

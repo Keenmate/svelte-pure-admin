@@ -7,19 +7,17 @@
 	 * Clear visual anchor for label-value data.
 	 */
 
+	type CellTextAlign = 'start' | 'center' | 'end';
+
 	interface Props {
 		/** Label column width variant */
 		labelWidth?: 'narrow' | 'wide';
-		/** Vertically center labels and values */
-		isMiddle?: boolean;
-		/** Right-align labels */
-		isLabelEnd?: boolean;
-		/** Center-align labels */
-		isLabelCenter?: boolean;
-		/** Right-align values */
-		isValueEnd?: boolean;
-		/** Center-align values */
-		isValueCenter?: boolean;
+		/** align-items of the cells: 'center' = vertically centred (absent = top) */
+		align?: 'center';
+		/** text-align of the labels (start = default, no class) */
+		labelTextAlign?: CellTextAlign;
+		/** text-align of the values (start = default, no class) */
+		valueTextAlign?: CellTextAlign;
 		/** Single-line ellipsis on labels and values */
 		isTruncate?: boolean;
 		/** Wrap in pa-banded-container for CSS container query responsive behavior */
@@ -32,11 +30,9 @@
 
 	let {
 		labelWidth,
-		isMiddle = false,
-		isLabelEnd = false,
-		isLabelCenter = false,
-		isValueEnd = false,
-		isValueCenter = false,
+		align,
+		labelTextAlign,
+		valueTextAlign,
 		isTruncate = false,
 		hasContainerQuery = false,
 		class: className = '',
@@ -46,11 +42,9 @@
 	const classes = $derived(() => {
 		const base = ['pa-banded'];
 		if (labelWidth) base.push(`pa-banded--${labelWidth}`);
-		if (isMiddle) base.push('pa-banded--middle');
-		if (isLabelEnd) base.push('pa-banded--label-end');
-		if (isLabelCenter) base.push('pa-banded--label-center');
-		if (isValueEnd) base.push('pa-banded--value-end');
-		if (isValueCenter) base.push('pa-banded--value-center');
+		if (align === 'center') base.push('pa-banded--middle');
+		if (labelTextAlign && labelTextAlign !== 'start') base.push(`pa-banded--label-${labelTextAlign}`);
+		if (valueTextAlign && valueTextAlign !== 'start') base.push(`pa-banded--value-${valueTextAlign}`);
 		if (isTruncate) base.push('pa-banded--truncate');
 		if (className) base.push(className);
 		return base.join(' ');

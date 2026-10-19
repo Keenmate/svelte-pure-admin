@@ -7,6 +7,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING — text vs rich slot, every boolean is `is*`/`has*`/`should*`, icon names (keen parity, batch 3)
+
+The bare name is the rich snippet and the plain-text form is `*Text`; every boolean prop — native
+HTML ones included — follows `is*`/`has*`/`should*`; an icon passed by name is `iconName` (rendered
+through `<Icon>`, so the configured icon providers resolve it) beside the `icon` snippet; `type` is
+the predefined design, `layout` the arrangement, `density` the spacing, and `style` is only ever the
+inline CSS string. Requires core with the batch-3 fixtures and `pa-btn-split__item--{role}`. No aliases.
+
+- Native boolean attributes → `is*` (the component still emits the native attribute):
+  `disabled` → `isDisabled` (`Button`, `SplitButton`, `SplitButtonItem`, `Checkbox`, `CheckboxBox`,
+  `CheckboxListItem`, `Radio`, `Input`, `NumberInput`, `DateInput`, `ColorInput`, `FileInput`,
+  `RangeInput`, `Select`, `Textarea`, and the `dialogService` `DialogButton` option);
+  `readonly` → `isReadonly`; `required` → `isRequired`; `multiple` → `isMultiple`;
+  `checked` → `isChecked` (`bind:checked` → `bind:isChecked`).
+- Rich snippets take the bare name: `Checkbox` / `Radio` / `Field` `labelSnippet` → `label`;
+  `FieldGroup` `titleSnippet` → `title`; `Field` `valueSnippet` is removed — `children` is the rich
+  value; `TimelineItem` `iconTemplate` → `icon`.
+- `iconName` (string, rendered through `<Icon>`; the `icon` snippet wins when both are set) added to
+  `Button`, `SplitButton`, `SplitButtonItem`, `Badge`, `CompositeBadge`, `Stat`, `Alert`, `Callout`,
+  `Toast`, `SidebarItem`, `SidebarSearch`, `TabItem`, `TimelineItem`, `ProfileButton`,
+  `ProfilePanelFavoriteItem`, `ProfilePanelNavItem`; `Card` gains `titleIconName`.
+  `Modal` `titleIcon` → `titleIconName`; `NavItem` `navIcon` → `iconText`; `NavMenu`
+  `collapseIcon` → `collapseIconText`, `moreLabel` → `moreLabelText`, `collapseLabel` → `collapseLabelText` (plain text: the fit engine inserts them as escaped text).
+- `Popconfirm` `icon` → `iconVariant` (it picks the severity colour of the built-in glyph).
+- `Pager` gains `first` / `previous` / `next` / `last` snippets (rich button content overriding
+  `firstText` …).
+- `LoadMore`: the `text` prop is removed — the label is `children`, now rendered inside
+  `pa-load-more__text` with the spinner kept (keen's shape); `count` → `countText` (also shown while
+  loading); the unused `shouldShowCount` is removed.
+- `SplitButtonItem` `isDanger` → `variant` (any role colour → `pa-btn-split__item--{variant}`);
+  new `shouldKeepOpen` (emits `data-pa-keep-open`).
+- `RangeGroup` rows: `label` → `labelText`, new `rowLabelText`, `thousands` →
+  `hasThousandsSeparator`, `tickLabels` → `hasTickLabels`, `snapTicks` → `shouldSnapToTicks`,
+  `handleShape` → `handleType` (type `RangeHandleShape` → `RangeHandleType`). `RangeGroup` gains
+  `resetText` / `applyText` (i18n `pureAdmin.buttons.reset` / `.apply`) and `hasActions`.
+- `Tabs` / `TabsScrollable` `style` → `type`; `OrderedList` `style` → `type`; `BasicList`
+  `spacing` → `density`.
+- `KpiTerminal` `view` → `activePaneId` (bindable); new `liveText` (default `LIVE`) and
+  `headerControls` snippet; `KpiTerminalPane` gains `isActive` (initially active pane).
+- Data display: `Fields` `isHorizontal` / `isTable` / `isInline` / `isRow` / `isLinear` / `isChips`
+  → `layout` (one of), `isCompact` / `isRelaxed` → `density`; `DescTable` / `Banded` `isMiddle` →
+  `align="center"`, `isLabelEnd` / `isLabelCenter` → `labelTextAlign`, `isValueEnd` /
+  `isValueCenter` → `valueTextAlign` (`'start' | 'center' | 'end'`); `Field` / `DescTableItem`
+  `full` → `isFull`.
+- `Spinner` (and the command-palette loading spinner) render a `<span>` (core's canonical element)
+  — valid inside text, e.g. a `Paragraph`.
+
 ### BREAKING — one flag per option, `variant` is the role colour (keen parity, batch 2)
 
 Combinable options are booleans, mutually exclusive ones a single enum named for what it controls,

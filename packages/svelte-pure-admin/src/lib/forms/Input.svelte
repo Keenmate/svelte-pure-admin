@@ -35,11 +35,11 @@
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Readonly state */
-		readonly?: boolean;
+		isReadonly?: boolean;
 		/** Required field */
-		required?: boolean;
+		isRequired?: boolean;
 		/** Placeholder text */
 		placeholder?: string;
 		/** Input ID */
@@ -76,9 +76,9 @@
 		errors,
 		touched = true,
 		themeColor,
-		disabled = false,
-		readonly = false,
-		required = false,
+		isDisabled = false,
+		isReadonly = false,
+		isRequired = false,
 		placeholder,
 		id,
 		name,
@@ -135,9 +135,9 @@
 	{pattern}
 	{autocomplete}
 	{placeholder}
-	{disabled}
-	{readonly}
-	{required}
+	disabled={isDisabled}
+	readonly={isReadonly}
+	required={isRequired}
 	class={classes()}
 	aria-invalid={ariaInvalid()}
 	{oninput}

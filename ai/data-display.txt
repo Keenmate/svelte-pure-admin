@@ -25,7 +25,7 @@ Supports copyable variants with clipboard functionality.
 Props:
   labelText?       string - Label text
   valueText?       string | number - Value text
-  full?            boolean (false) - Full width (spans entire row in grid)
+  isFull?          boolean (false) - Full width (spans entire row in grid)
   copyMode?        'btn' | 'click' | 'hover' - Copy to clipboard mode
                      btn: always-visible copy button
                      click: click entire value to copy (shows hint on hover)
@@ -39,9 +39,8 @@ Props:
   class?           string
 
 Snippets:
-  labelSnippet?    Complex label content
-  valueSnippet?    Complex value content
-  children?        Alias for valueSnippet
+  label?           Rich label content (overrides labelText)
+  children?        Rich value content (overrides valueText)
 
 Basic field:
 
@@ -63,7 +62,7 @@ Copyable field (button on hover):
 
 Full width field (spans entire row in grid):
 
-<Field labelText="Description" valueText="A longer description text" full />
+<Field labelText="Description" valueText="A longer description text" isFull />
 
 Field with custom value snippet:
 
@@ -74,7 +73,7 @@ Field with custom value snippet:
 Field with custom label snippet:
 
 <Field valueText="john@example.com">
-  {#snippet labelSnippet()}
+  {#snippet label()}
     <strong>Email</strong> <Badge variant="info" size="xs">Primary</Badge>
   {/snippet}
 </Field>
@@ -95,16 +94,13 @@ Container for multiple Field components with extensive layout modifiers.
 
 Props:
   cols?              2 | 3 | 4 - Grid columns
-  isHorizontal?      boolean (false) - Label left, value right (side-by-side)
-  isTable?           boolean (false) - Consistent label widths (key-value table)
+  layout?            'horizontal' | 'table' | 'inline' | 'row' | 'linear' | 'chips' - Display layout (one of):
+                       horizontal = label left / value right, table = consistent label widths,
+                       inline = fields flow on one line, row = equal-width auto columns,
+                       linear = ultra-clean side-by-side, chips = Notion-style inline pills
   isBordered?        boolean (false) - Bottom border separator between fields
   isStriped?         boolean (false) - Alternating background rows
-  isCompact?         boolean (false) - Tighter spacing
-  isRelaxed?         boolean (false) - Larger gaps
-  isInline?          boolean (false) - Fields flow on one line
-  isRow?             boolean (false) - Equal-width auto columns
-  isLinear?          boolean (false) - Ultra-clean side-by-side, weight+color only
-  isChips?           boolean (false) - Notion-style inline pills
+  density?           'compact' | 'relaxed' - Spacing density (compact = tighter, relaxed = larger gaps)
   isFilled?          boolean (false) - Subtle background panel
   themeColor?        1-9 - Theme color for left border
   hasBorder?         boolean (true) - Show left border (false to remove)
@@ -123,7 +119,7 @@ Default vertical layout (2 columns):
 
 Horizontal layout (label left, value right):
 
-<Fields isHorizontal>
+<Fields layout="horizontal">
   <Field labelText="Name" valueText="John Doe" />
   <Field labelText="Email" valueText="john@example.com" />
   <Field labelText="Role" valueText="Administrator" />
@@ -131,7 +127,7 @@ Horizontal layout (label left, value right):
 
 Table layout (consistent label widths):
 
-<Fields isTable isBordered>
+<Fields layout="table" isBordered>
   <Field labelText="Order ID" valueText="ORD-2024-001" copyMode="hover" />
   <Field labelText="Date" valueText="2024-01-15" />
   <Field labelText="Status" valueText="Shipped" valueVariant="success" />
@@ -151,7 +147,7 @@ Three-column grid with borders and stripes:
 
 Compact layout (less spacing):
 
-<Fields isHorizontal isCompact>
+<Fields layout="horizontal" density="compact">
   <Field labelText="IP" valueText="192.168.1.1" />
   <Field labelText="Port" valueText="8080" />
   <Field labelText="Protocol" valueText="HTTPS" />
@@ -159,14 +155,14 @@ Compact layout (less spacing):
 
 Linear layout (ultra-clean side-by-side):
 
-<Fields isLinear>
+<Fields layout="linear">
   <Field labelText="Name" valueText="John Doe" />
   <Field labelText="Status" valueText="Active" />
 </Fields>
 
 Chips layout (Notion-style inline pills):
 
-<Fields isChips>
+<Fields layout="chips">
   <Field labelText="Tags" valueText="Frontend" valueVariant="success" />
   <Field labelText="Priority" valueText="High" valueVariant="danger" />
   <Field labelText="Sprint" valueText="Sprint 12" />
@@ -182,7 +178,7 @@ Filled background panel with color accent:
 
 Inline layout (single line):
 
-<Fields isInline>
+<Fields layout="inline">
   <Field labelText="Version" valueText="1.5.0" />
   <Field labelText="Build" valueText="2024-01-15" />
   <Field labelText="Env" valueText="Production" />
@@ -190,7 +186,7 @@ Inline layout (single line):
 
 Row layout (equal-width auto columns):
 
-<Fields isRow>
+<Fields layout="row">
   <Field labelText="Q1" valueText="$12,500" />
   <Field labelText="Q2" valueText="$15,200" />
   <Field labelText="Q3" valueText="$18,700" />
@@ -199,7 +195,7 @@ Row layout (equal-width auto columns):
 
 No left border:
 
-<Fields isHorizontal hasBorder={false}>
+<Fields layout="horizontal" hasBorder={false}>
   <Field labelText="Name" valueText="John Doe" />
 </Fields>
 
@@ -210,12 +206,12 @@ Titled section containing Fields. Used to group related fields visually.
 
 Props:
   titleText?       string - Group title
-  titleSnippet?    Snippet - Complex title content
+  title?           Snippet - Rich title content (overrides titleText)
   class?           string
   children?        Snippet
 
 <FieldGroup titleText="Customer Information">
-  <Fields cols={2} isHorizontal>
+  <Fields cols={2} layout="horizontal">
     <Field labelText="Name" valueText="John Doe" />
     <Field labelText="Email" valueText="john@example.com" />
     <Field labelText="Phone" valueText="+1 555-0123" />
@@ -224,7 +220,7 @@ Props:
 </FieldGroup>
 
 <FieldGroup titleText="Shipping Address">
-  <Fields isHorizontal isBordered>
+  <Fields layout="horizontal" isBordered>
     <Field labelText="Street" valueText="123 Main St" />
     <Field labelText="City" valueText="Springfield" />
     <Field labelText="State" valueText="IL" />
@@ -235,12 +231,12 @@ Props:
 With custom title:
 
 <FieldGroup>
-  {#snippet titleSnippet()}
+  {#snippet title()}
     <span>Server Details</span>
     <Badge variant="success" size="xs">Online</Badge>
   {/snippet}
 
-  <Fields isTable>
+  <Fields layout="table">
     <Field labelText="Hostname" valueText="srv-prod-01" />
     <Field labelText="IP" valueText="10.0.1.50" copyMode="click" />
   </Fields>
@@ -256,9 +252,9 @@ DescTable Props:
   cols?              2 | 3 (default: 3) - Number of label-value columns
   isFixed?           boolean (false) - Fixed-width label columns (default 14rem)
   labelWidth?        string - Custom label width CSS (e.g. '20rem'), requires isFixed
-  isMiddle?          boolean (false) - Vertically center labels and values
-  isLabelEnd?        boolean (false) - Right-align labels
-  isLabelCenter?     boolean (false) - Center-align labels
+  align?             'center' - Vertically center labels and values (align-items)
+  labelTextAlign?    'start' | 'center' | 'end' - text-align of the labels (start = default)
+  valueTextAlign?    'start' | 'center' | 'end' - text-align of the values (start = default)
   isTruncate?        boolean (false) - Single-line ellipsis on labels and values
   hasContainerQuery? boolean (false) - Wrap for CSS container query responsiveness
   class?             string
@@ -267,7 +263,7 @@ DescTable Props:
 DescTableItem Props:
   labelText          string (required) - Label text
   valueText?         string | number - Value text
-  full?              boolean (false) - Value spans remaining columns in row
+  isFull?            boolean (false) - Value spans remaining columns in row
   copyMode?          'btn' | 'click' | 'hover'
   copyValue?         string - Override copy value
   oncopy?            (value: string) => void
@@ -298,7 +294,7 @@ Full-width value row:
   <DescTableItem labelText="Name" valueText="John Doe" />
   <DescTableItem labelText="Email" valueText="john@example.com" />
   <DescTableItem labelText="Phone" valueText="+1 555-0123" />
-  <DescTableItem labelText="Bio" full>
+  <DescTableItem labelText="Bio" isFull>
     A software engineer with 10+ years of experience in full-stack development,
     specializing in Svelte, TypeScript, and distributed systems.
   </DescTableItem>
@@ -453,9 +449,9 @@ label-value data. Best for detail views, system info, configuration displays.
 
 Banded Props:
   labelWidth?        'narrow' | 'wide' - Label column width
-  isMiddle?          boolean (false) - Vertically center labels and values
-  isLabelEnd?        boolean (false) - Right-align labels
-  isLabelCenter?     boolean (false) - Center-align labels
+  align?             'center' - Vertically center labels and values (align-items)
+  labelTextAlign?    'start' | 'center' | 'end' - text-align of the labels (start = default)
+  valueTextAlign?    'start' | 'center' | 'end' - text-align of the values (start = default)
   isTruncate?        boolean (false) - Single-line ellipsis
   hasContainerQuery? boolean (false) - CSS container query wrapper
   class?             string
@@ -597,7 +593,7 @@ WHEN TO USE WHICH PATTERN
 Field/Fields (default choice):
   Use when: Most label-value displays, detail pages, forms, settings
   Best for: Flexible layouts, 2-4 column grids, horizontal/vertical orientation
-  Unique: isLinear, isChips, color variants, container query support
+  Unique: layout="linear" / "chips", color variants, container query support
 
 DescTable:
   Use when: Structured detail pages with many properties
@@ -654,7 +650,7 @@ COMPLETE DETAIL PAGE EXAMPLE
   <Column md="1-2">
     <Card titleText="Customer">
       <FieldGroup titleText="Contact">
-        <Fields isHorizontal isBordered>
+        <Fields layout="horizontal" isBordered>
           <Field labelText="Name" valueText="John Doe" />
           <Field labelText="Email" valueText="john@example.com" copyMode="hover" />
           <Field labelText="Phone" valueText="+1 555-0123" />
@@ -662,7 +658,7 @@ COMPLETE DETAIL PAGE EXAMPLE
       </FieldGroup>
 
       <FieldGroup titleText="Address">
-        <Fields isHorizontal>
+        <Fields layout="horizontal">
           <Field labelText="Street" valueText="123 Main St" />
           <Field labelText="City" valueText="Springfield, IL 62701" />
         </Fields>
@@ -700,7 +696,7 @@ COMPLETE DETAIL PAGE EXAMPLE
     <DescTableItem labelText="Created" valueText="2024-01-15 10:30:00 UTC" />
     <DescTableItem labelText="Last Updated" valueText="2024-01-15 14:22:00 UTC" />
     <DescTableItem labelText="Source" valueText="Web Store" />
-    <DescTableItem labelText="Notes" full>
+    <DescTableItem labelText="Notes" isFull>
       Customer requested gift wrapping. Leave package at front door.
     </DescTableItem>
   </DescTable>
@@ -738,15 +734,15 @@ CRITICAL REMINDERS
 - Use Svelte 5 runes: $props(), $state(), $derived()
 - Content uses Snippets ({#snippet name()}...{/snippet}), NOT <slot>
 - Event handlers are lowercase: onclick, oncopy (NOT onClick)
-- Boolean props use is* prefix: isHorizontal, isBordered, isTotal, isBold
+- Boolean props use is*/has*/should* prefixes: isBordered, isTotal, isBold, isFull, hasBorder
 - Fields is the container, Field is the individual item
 - DescTable is the container, DescTableItem is the individual item
 - DotLeaders is the container, DotLeadersItem is the individual item
 - PropCard is the container, PropCardRow is the individual item
 - Banded is the container, BandedRow is the individual item
 - AccentGrid is the container, AccentGridItem is the individual item
-- Field "full" prop spans the entire row in a grid layout
-- DescTableItem "full" prop spans remaining columns in the row
+- Field "isFull" prop spans the entire row in a grid layout
+- DescTableItem "isFull" prop spans remaining columns in the row
 - Fields "color" prop (1-9) adds themed left border
 - AccentGridItem "variant" controls the left border color
 - Field "valueVariant" colors the value text (for chips mode)

@@ -5,9 +5,9 @@
 
 	// Demo 1 — filter bar rows (Age / Salary / Children)
 	const peopleRows: RangeGroupRow[] = [
-		{ key: 'age', label: 'Age', min: 18, max: 80, step: 1, valueMin: 25, valueMax: 60 },
-		{ key: 'salary', label: 'Salary', min: 0, max: 200000, step: 5000, valueMin: 40000, valueMax: 200000, prefix: '$', thousands: true },
-		{ key: 'children', label: 'Children', min: 0, max: 8, step: 1, mode: 'single', bound: 'gte', value: 2 }
+		{ key: 'age', labelText: 'Age', min: 18, max: 80, step: 1, valueMin: 25, valueMax: 60 },
+		{ key: 'salary', labelText: 'Salary', min: 0, max: 200000, step: 5000, valueMin: 40000, valueMax: 200000, prefix: '$', hasThousandsSeparator: true },
+		{ key: 'children', labelText: 'Children', min: 0, max: 8, step: 1, mode: 'single', bound: 'gte', value: 2 }
 	];
 
 	// Live event output for demo 1
@@ -31,31 +31,31 @@
 
 	// Demo 2 — single-thumb thresholds
 	const thresholdRows: RangeGroupRow[] = [
-		{ key: 'rating', label: 'Rating', min: 0, max: 5, step: 0.5, mode: 'single', bound: 'gte', value: 4, suffix: '★' },
-		{ key: 'distance', label: 'Distance', min: 1, max: 50, step: 1, mode: 'single', bound: 'lte', value: 20, suffix: ' km' }
+		{ key: 'rating', labelText: 'Rating', min: 0, max: 5, step: 0.5, mode: 'single', bound: 'gte', value: 4, suffix: '★' },
+		{ key: 'distance', labelText: 'Distance', min: 1, max: 50, step: 1, mode: 'single', bound: 'lte', value: 20, suffix: ' km' }
 	];
 
 	// Demo 3 — handle shapes
 	const handleRows: RangeGroupRow[] = [
-		{ key: 'circle', label: 'Circle', min: 0, max: 100, valueMin: 20, valueMax: 70 },
-		{ key: 'rect', label: 'Rectangle', min: 0, max: 100, valueMin: 20, valueMax: 70, handleShape: 'rect' },
-		{ key: 'bar', label: 'Bar', min: 0, max: 100, valueMin: 20, valueMax: 70, handleShape: 'bar' },
-		{ key: 'arrow', label: 'Chevron', min: 0, max: 100, valueMin: 20, valueMax: 70, handleShape: 'arrow' },
-		{ key: 'needle', label: 'Needle', min: 0, max: 100, valueMin: 20, valueMax: 70, handleShape: 'needle' }
+		{ key: 'circle', labelText: 'Circle', min: 0, max: 100, valueMin: 20, valueMax: 70 },
+		{ key: 'rect', labelText: 'Rectangle', min: 0, max: 100, valueMin: 20, valueMax: 70, handleType: 'rect' },
+		{ key: 'bar', labelText: 'Bar', min: 0, max: 100, valueMin: 20, valueMax: 70, handleType: 'bar' },
+		{ key: 'arrow', labelText: 'Chevron', min: 0, max: 100, valueMin: 20, valueMax: 70, handleType: 'arrow' },
+		{ key: 'needle', labelText: 'Needle', min: 0, max: 100, valueMin: 20, valueMax: 70, handleType: 'needle' }
 	];
 
 	// Demo 4 — ticks & click-to-seek
 	const tickRows: RangeGroupRow[] = [
-		{ key: 'age', label: 'Age', min: 0, max: 80, step: 1, valueMin: 25, valueMax: 60, ticks: 20, ticksMinor: 10, tickLabels: true },
-		{ key: 'score', label: 'Score', min: 0, max: 100, step: 5, valueMin: 40, valueMax: 90, ticks: 25 },
-		{ key: 'level', label: 'Level', min: 0, max: 100, step: 1, valueMin: 20, valueMax: 80, ticks: 10, tickLabels: true, snapTicks: true },
-		{ key: 'rating', label: 'Rating', min: 0, max: 5, step: 0.5, mode: 'single', bound: 'gte', value: 3, suffix: '★', ticks: 1, tickLabels: true }
+		{ key: 'age', labelText: 'Age', min: 0, max: 80, step: 1, valueMin: 25, valueMax: 60, ticks: 20, ticksMinor: 10, hasTickLabels: true },
+		{ key: 'score', labelText: 'Score', min: 0, max: 100, step: 5, valueMin: 40, valueMax: 90, ticks: 25 },
+		{ key: 'level', labelText: 'Level', min: 0, max: 100, step: 1, valueMin: 20, valueMax: 80, ticks: 10, hasTickLabels: true, shouldSnapToTicks: true },
+		{ key: 'rating', labelText: 'Rating', min: 0, max: 5, step: 0.5, mode: 'single', bound: 'gte', value: 3, suffix: '★', ticks: 1, hasTickLabels: true }
 	];
 
 	// Demo 5 — custom tokens
 	const themedRows: RangeGroupRow[] = [
-		{ key: 'budget', label: 'Budget', min: 0, max: 5000, step: 50, valueMin: 1000, valueMax: 3500, prefix: '$', thousands: true },
-		{ key: 'guests', label: 'Guests', min: 1, max: 12, step: 1, mode: 'single', bound: 'gte', value: 4, handleShape: 'bar' }
+		{ key: 'budget', labelText: 'Budget', min: 0, max: 5000, step: 50, valueMin: 1000, valueMax: 3500, prefix: '$', hasThousandsSeparator: true },
+		{ key: 'guests', labelText: 'Guests', min: 1, max: 12, step: 1, mode: 'single', bound: 'gte', value: 4, handleType: 'bar' }
 	];
 	const themedPanelStyle =
 		'--pa-range-fill: #8b5cf6; --pa-range-thumb-border: #8b5cf6; --pa-range-thumb-border-hover: #7c3aed; --pa-range-focus-ring: rgba(139, 92, 246, 0.35); --pa-range-track-height: 0.8rem; --pa-range-thumb-size: 2rem;';
@@ -91,16 +91,16 @@
 	};
 
 	const urlRows: RangeGroupRow[] = [
-		{ key: 'age', label: 'Age', min: 18, max: 80, valueMin: 25, valueMax: 60 },
-		{ key: 'salary', label: 'Salary', min: 0, max: 200000, step: 5000, valueMin: 40000, valueMax: 200000, prefix: '$', thousands: true },
-		{ key: 'children', label: 'Children', min: 0, max: 8, mode: 'single', bound: 'gte', value: 2 }
+		{ key: 'age', labelText: 'Age', min: 18, max: 80, valueMin: 25, valueMax: 60 },
+		{ key: 'salary', labelText: 'Salary', min: 0, max: 200000, step: 5000, valueMin: 40000, valueMax: 200000, prefix: '$', hasThousandsSeparator: true },
+		{ key: 'children', labelText: 'Children', min: 0, max: 8, mode: 'single', bound: 'gte', value: 2 }
 	];
 	let urlValues = $state<RangeGroupValues>({});
 
 	// Apply-mode demo — `values` only commit on the Apply button
 	const applyRows: RangeGroupRow[] = [
-		{ key: 'price', label: 'Price', min: 0, max: 1000, step: 10, valueMin: 100, valueMax: 800, prefix: '$' },
-		{ key: 'rating', label: 'Rating', min: 0, max: 5, step: 0.5, mode: 'single', bound: 'gte', value: 3, suffix: '★' }
+		{ key: 'price', labelText: 'Price', min: 0, max: 1000, step: 10, valueMin: 100, valueMax: 800, prefix: '$' },
+		{ key: 'rating', labelText: 'Rating', min: 0, max: 5, step: 0.5, mode: 'single', bound: 'gte', value: 3, suffix: '★' }
 	];
 	let applyValues = $state<RangeGroupValues>({});
 	let applyChangeCount = $state(0);
@@ -154,10 +154,10 @@
 <!-- Two-way bound values — no event wiring needed -->
 <RangeGroup
   rows={[
-    { key: 'age', label: 'Age', min: 18, max: 80, valueMin: 25, valueMax: 60 },
-    { key: 'salary', label: 'Salary', min: 0, max: 200000, step: 5000,
-      valueMin: 40000, valueMax: 200000, prefix: '$', thousands: true },
-    { key: 'children', label: 'Children', min: 0, max: 8,
+    { key: 'age', labelText: 'Age', min: 18, max: 80, valueMin: 25, valueMax: 60 },
+    { key: 'salary', labelText: 'Salary', min: 0, max: 200000, step: 5000,
+      valueMin: 40000, valueMax: 200000, prefix: '$', hasThousandsSeparator: true },
+    { key: 'children', labelText: 'Children', min: 0, max: 8,
       mode: 'single', bound: 'gte', value: 2 }
   ]}
   bind:values
@@ -285,7 +285,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <Card class="mt-4">
 	{#snippet title()}Handle shapes{/snippet}
 	{#snippet description()}
-		Add a <Code>handleShape</Code> to any row to restyle its handles. Purely cosmetic (no JS), so you
+		Add a <Code>handleType</Code> to any row to restyle its handles. Purely cosmetic (no JS), so you
 		can mix shapes per row. Open the filter to compare — <Code>circle</Code> (default),
 		<Code>rect</Code>, <Code>bar</Code>, <Code>arrow</Code>, and <Code>needle</Code> (a downward
 		triangle balancing its point on the track).
@@ -299,10 +299,10 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	{#snippet title()}Ticks &amp; click-to-seek{/snippet}
 	{#snippet description()}
 		Add <Code>ticks</Code> (major interval) and optionally <Code>ticksMinor</Code> to draw tick marks
-		along the track; add <Code>tickLabels</Code> to print the major values beneath. Marks sit behind the
+		along the track; add <Code>hasTickLabels</Code> to print the major values beneath. Marks sit behind the
 		track so only their ends show — major ticks reach further out than minor. On every row the track is
 		<strong>click-to-seek</strong>: press anywhere off the handles and the nearest thumb jumps there and
-		keeps following the pointer. Add <Code>snapTicks</Code> to make the thumbs settle on the nearest tick
+		keeps following the pointer. Add <Code>shouldSnapToTicks</Code> to make the thumbs settle on the nearest tick
 		instead of the (possibly finer) <Code>step</Code> grid — drag the <em>Level</em> row and it snaps to
 		0, 10, 20…
 	{/snippet}
@@ -421,7 +421,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 <Card class="mt-4">
 	{#snippet title()}CSS Classes Reference{/snippet}
 	<Heading level={4}>Compact control</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-range-group</Code> - Root wrapper (toggle + floating panel)</li>
 		<li><Code>pa-range-group__toggle</Code> - The button summarising the filters</li>
 		<li><Code>pa-range-group__summary</Code> - Single-line "LABEL value / …" readout host</li>
@@ -434,7 +434,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Floating panel</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-range-group__panel</Code> - The floating panel (reparented to body when open)</li>
 		<li><Code>pa-range-group__panel--open</Code> - State: shown</li>
 		<li><Code>pa-range-group__row</Code> - One dimension (head + slider)</li>
@@ -446,7 +446,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Slider primitive</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-range</Code> - Slider (dual-thumb by default)</li>
 		<li><Code>pa-range__rail</Code> - Inner rail the thumbs travel along</li>
 		<li><Code>pa-range__track</Code> - Full track</li>
@@ -458,7 +458,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Handle shapes</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-range--handle-rect</Code> - Rounded rectangle handles</li>
 		<li><Code>pa-range--handle-bar</Code> - Thin vertical bar handles</li>
 		<li><Code>pa-range--handle-arrow</Code> - Chevron handles</li>
@@ -466,7 +466,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Tick marks</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-range__ticks</Code> - Tick container (built by JS from <Code>data-ticks</Code>)</li>
 		<li><Code>pa-range__tick</Code> - A minor tick mark</li>
 		<li><Code>pa-range__tick--major</Code> - A major tick mark (longer)</li>
@@ -476,7 +476,7 @@ const router = createSpaRouterAdapter({ querystring, location, replace });
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Theming tokens (CSS variables)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>--pa-range-track</Code> / <Code>-fill</Code> - Track / fill colour</li>
 		<li><Code>--pa-range-thumb-bg</Code> / <Code>-thumb-border</Code> / <Code>-thumb-border-hover</Code> - Handle colours</li>
 		<li><Code>--pa-range-focus-ring</Code> - Thumb focus / active ring</li>

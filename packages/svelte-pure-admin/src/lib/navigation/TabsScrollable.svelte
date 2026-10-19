@@ -9,8 +9,8 @@
 	import { _ } from '../i18n';
 
 	interface Props {
-		/** Tab style */
-		style?: 'pills' | 'boxed';
+		/** Tab type — the predefined design */
+		type?: 'pills' | 'boxed';
 		/** Tab size */
 		size?: 'sm' | 'lg';
 		/** Additional CSS classes */
@@ -20,7 +20,7 @@
 	}
 
 	let {
-		style,
+		type,
 		size,
 		class: className = '',
 		children
@@ -35,8 +35,8 @@
 		const base = ['pa-tabs', 'pa-tabs--scrollable'];
 
 		// Style variants
-		if (style === 'pills') base.push('pa-tabs--pills');
-		if (style === 'boxed') base.push('pa-tabs--boxed');
+		if (type === 'pills') base.push('pa-tabs--pills');
+		if (type === 'boxed') base.push('pa-tabs--boxed');
 
 		// Size variants
 		if (size === 'sm') base.push('pa-tabs--sm');

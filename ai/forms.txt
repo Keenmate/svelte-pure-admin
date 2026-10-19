@@ -6,7 +6,7 @@ CRITICAL: This is a Svelte 5 component library (@keenmate/svelte-pure-admin).
 - Content sections use Snippets ({#snippet}), NOT slots (<slot>)
 - BEM class names internally (pa-*) - you never write CSS classes manually
 - Import from '@keenmate/svelte-pure-admin'
-- Values are bindable via bind:value, bind:checked, bind:group
+- Values are bindable via bind:value, bind:isChecked, bind:group
 
 INSTALLATION
 ------------
@@ -74,7 +74,7 @@ Required field:
 
 <FormGroup isRequired={true}>
   <FormLabel>Email</FormLabel>
-  <Input type="email" bind:value={email} required />
+  <Input type="email" bind:value={email} isRequired />
 </FormGroup>
 
 With validation state:
@@ -218,9 +218,9 @@ Props:
   errors?: string | string[]        Error messages (auto-sets validation to 'error' when touched)
   touched?: boolean                 Field has been interacted with (default: true)
   themeColor?: 1-9                  Theme color variant
-  disabled?: boolean                Disabled state (default: false)
-  readonly?: boolean                Readonly state (default: false)
-  required?: boolean                Required field (default: false)
+  isDisabled?: boolean              Disabled state (default: false)
+  isReadonly?: boolean              Readonly state (default: false)
+  isRequired?: boolean              Required field (default: false)
   placeholder?: string             Placeholder text
   id?: string                      Input ID
   name?: string                    Input name
@@ -270,8 +270,8 @@ When touched=false, errors are not shown (no error styling).
 
 Disabled and readonly:
 
-<Input bind:value={locked} disabled />
-<Input bind:value={display} readonly />
+<Input bind:value={locked} isDisabled />
+<Input bind:value={display} isReadonly />
 
 With theme color:
 
@@ -293,9 +293,9 @@ Props:
   errors?: string | string[]          Error messages
   touched?: boolean                   (default: true)
   themeColor?: 1-9                    Theme color variant
-  disabled?: boolean                  (default: false)
-  readonly?: boolean                  (default: false)
-  required?: boolean                  (default: false)
+  isDisabled?: boolean                (default: false)
+  isReadonly?: boolean                (default: false)
+  isRequired?: boolean                (default: false)
   placeholder?: string
   id?: string
   name?: string
@@ -309,7 +309,7 @@ Props:
 
 <NumberInput bind:value={price} min={0} step={0.01} placeholder="0.00" />
 
-<NumberInput bind:value={age} min={0} max={150} required />
+<NumberInput bind:value={age} min={0} max={150} isRequired />
 
 With validation:
 
@@ -329,9 +329,9 @@ Props:
   errors?: string | string[]
   touched?: boolean                   (default: true)
   themeColor?: 1-9
-  disabled?: boolean                  (default: false)
-  readonly?: boolean                  (default: false)
-  required?: boolean                  (default: false)
+  isDisabled?: boolean                (default: false)
+  isReadonly?: boolean                (default: false)
+  isRequired?: boolean                (default: false)
   id?: string
   name?: string
   min?: string                        Minimum date/time
@@ -373,9 +373,9 @@ Props:
   errors?: string | string[]
   touched?: boolean                   (default: true)
   themeColor?: 1-9
-  disabled?: boolean                  (default: false)
-  readonly?: boolean                  (default: false)
-  required?: boolean                  (default: false)
+  isDisabled?: boolean                (default: false)
+  isReadonly?: boolean                (default: false)
+  isRequired?: boolean                (default: false)
   placeholder?: string
   id?: string
   name?: string
@@ -405,8 +405,8 @@ Props:
   errors?: string | string[]
   touched?: boolean                   (default: true)
   themeColor?: 1-9
-  disabled?: boolean                  (default: false)
-  required?: boolean                  (default: false)
+  isDisabled?: boolean                (default: false)
+  isRequired?: boolean                (default: false)
   id?: string
   name?: string
   class?: string
@@ -455,9 +455,9 @@ Labeled checkbox with custom tri-state support. Renders <label class="pa-checkbo
 Wraps the checkbox input + visual box + label text.
 
 Props:
-  checked?: boolean (bindable)        Checked state (default: false)
+  isChecked?: boolean (bindable)        Checked state (default: false)
   isIndeterminate?: boolean           Indeterminate state (default: false)
-  disabled?: boolean                  Disabled state (default: false)
+  isDisabled?: boolean                Disabled state (default: false)
   isXMark?: boolean                   Show X instead of checkmark (default: false)
   size?: 'xs' | 'sm' | 'lg' | 'xl'   Checkbox size
   id: string                          Checkbox ID (REQUIRED)
@@ -465,40 +465,40 @@ Props:
   value?: string
   labelText?: string                  Label text
   class?: string
-  labelSnippet?: Snippet              Custom label content (alternative to labelText)
+  label?: Snippet                     Custom label content (alternative to labelText)
   onchange?: handler                  Change event handler
 
 Basic checkbox:
 
-<Checkbox id="agree" labelText="I agree to terms" bind:checked={agreed} />
+<Checkbox id="agree" labelText="I agree to terms" bind:isChecked={agreed} />
 
 Indeterminate state:
 
-<Checkbox id="selectAll" labelText="Select All" bind:checked={allSelected} isIndeterminate={someSelected} />
+<Checkbox id="selectAll" labelText="Select All" bind:isChecked={allSelected} isIndeterminate={someSelected} />
 
 X-mark variant:
 
-<Checkbox id="exclude" labelText="Exclude from results" bind:checked={excluded} isXMark={true} />
+<Checkbox id="exclude" labelText="Exclude from results" bind:isChecked={excluded} isXMark={true} />
 
 Sizes:
 
-<Checkbox id="cb-xs" labelText="Extra small" size="xs" bind:checked={v1} />
-<Checkbox id="cb-sm" labelText="Small" size="sm" bind:checked={v2} />
-<Checkbox id="cb-default" labelText="Default" bind:checked={v3} />
-<Checkbox id="cb-lg" labelText="Large" size="lg" bind:checked={v4} />
-<Checkbox id="cb-xl" labelText="Extra large" size="xl" bind:checked={v5} />
+<Checkbox id="cb-xs" labelText="Extra small" size="xs" bind:isChecked={v1} />
+<Checkbox id="cb-sm" labelText="Small" size="sm" bind:isChecked={v2} />
+<Checkbox id="cb-default" labelText="Default" bind:isChecked={v3} />
+<Checkbox id="cb-lg" labelText="Large" size="lg" bind:isChecked={v4} />
+<Checkbox id="cb-xl" labelText="Extra large" size="xl" bind:isChecked={v5} />
 
 With custom label snippet:
 
-<Checkbox id="custom" bind:checked={accepted}>
-  {#snippet labelSnippet()}
+<Checkbox id="custom" bind:isChecked={accepted}>
+  {#snippet label()}
     I accept the <a href="/terms">Terms of Service</a>
   {/snippet}
 </Checkbox>
 
 Disabled:
 
-<Checkbox id="locked" labelText="Locked option" disabled checked={true} />
+<Checkbox id="locked" labelText="Locked option" isDisabled isChecked={true} />
 
 
 CHECKBOX BOX
@@ -507,9 +507,9 @@ Low-level checkbox (input + visual box only, no label wrapper).
 Renders <span class="pa-checkbox"> for use inside composite components.
 
 Props:
-  checked?: boolean (bindable)        Checked state (default: false)
+  isChecked?: boolean (bindable)        Checked state (default: false)
   isIndeterminate?: boolean           Indeterminate state (default: false)
-  disabled?: boolean                  (default: false)
+  isDisabled?: boolean                (default: false)
   isXMark?: boolean                   (default: false)
   size?: 'xs' | 'sm' | 'lg' | 'xl'
   id?: string
@@ -518,12 +518,12 @@ Props:
   class?: string
   onchange?: handler
 
-<CheckboxBox bind:checked={selected} id="raw-cb" />
+<CheckboxBox bind:isChecked={selected} id="raw-cb" />
 
 Used in table rows:
 
 <td>
-  <CheckboxBox bind:checked={row.selected} id="row-{row.id}" />
+  <CheckboxBox bind:isChecked={row.selected} id="row-{row.id}" />
 </td>
 
 
@@ -535,12 +535,12 @@ Uses bind:group for radio group binding.
 Props:
   group?: string | number (bindable)   Radio group value
   value: string | number               This radio's value (REQUIRED)
-  disabled?: boolean                   (default: false)
+  isDisabled?: boolean                 (default: false)
   name: string                         Radio group name (REQUIRED)
   size?: 'xs' | 'sm' | 'lg' | 'xl'
   labelText?: string                   Label text
   class?: string
-  labelSnippet?: Snippet               Custom label content
+  label?: Snippet                      Custom label content
   onchange?: handler
 
 Basic radio group:
@@ -563,12 +563,12 @@ Disabled option:
 
 <Radio name="plan" value="free" labelText="Free" bind:group={plan} />
 <Radio name="plan" value="pro" labelText="Pro" bind:group={plan} />
-<Radio name="plan" value="enterprise" labelText="Enterprise (coming soon)" bind:group={plan} disabled />
+<Radio name="plan" value="enterprise" labelText="Enterprise (coming soon)" bind:group={plan} isDisabled />
 
 With custom label:
 
 <Radio name="theme" value="dark" bind:group={theme}>
-  {#snippet labelSnippet()}
+  {#snippet label()}
     <strong>Dark Mode</strong> - easier on the eyes
   {/snippet}
 </Radio>
@@ -976,7 +976,7 @@ COMPLETE FORM EXAMPLE
     </RadioGroup>
   </FormGroup>
 
-  <Checkbox id="newsletter" labelText="Subscribe to newsletter" bind:checked={newsletter} />
+  <Checkbox id="newsletter" labelText="Subscribe to newsletter" bind:isChecked={newsletter} />
 
   <div class="mt-4">
     <Button type="submit" variant="primary">Submit</Button>
@@ -1066,7 +1066,7 @@ This applies the pa-input--color-N / pa-textarea--color-N CSS class.
 CRITICAL REMINDERS
 ------------------
 - Use bind:value for Input, NumberInput, DateInput, Textarea, Select
-- Use bind:checked for Checkbox, CheckboxBox
+- Use bind:isChecked for Checkbox, CheckboxBox
 - Use bind:group for Radio
 - Checkbox requires id prop (it is mandatory)
 - Radio requires name and value props (they are mandatory)

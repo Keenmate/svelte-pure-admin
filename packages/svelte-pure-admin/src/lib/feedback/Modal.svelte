@@ -5,6 +5,8 @@
 	 */
 
 	import { _ } from '../i18n';
+	import Icon from '../icon/Icon.svelte';
+	import { isAffordanceIcon } from '../icon/affordances';
 
 	type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw';
 	type ModalVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
@@ -32,13 +34,14 @@
 		/** Modal title text */
 		titleText?: string;
 		/**
-		 * Optional leading masked icon shown before `titleText` — a `.pa-icon--{name}`
+		 * Optional leading icon NAME shown before `titleText`, rendered through <Icon>
+		 * (framework affordances resolve to the masked `.pa-icon--{name}`
 		 * span that inherits the header's colour via `currentColor` (e.g. `success` /
 		 * `warning` / `danger` / `info` for a severity mark, or `delete` on a
-		 * confirm-delete header). Only applies to the built-in `titleText` header;
+		 * confirm-delete header)). Only applies to the built-in `titleText` header;
 		 * a custom `header` snippet supplies its own icon. Since core v3.2.0.
 		 */
-		titleIcon?: string;
+		titleIconName?: string;
 		/** Show close button in header (default: true) */
 		shouldShowClose?: boolean;
 		/** Close on Escape key (default: true, ignored when isStatic is true) */
@@ -79,7 +82,7 @@
 		isScrollable = false,
 		isStatic = false,
 		titleText,
-		titleIcon,
+		titleIconName,
 		shouldShowClose = true,
 		shouldCloseOnEscape = true,
 		shouldCloseOnBackdrop = true,
@@ -202,7 +205,7 @@
 				{#if header}
 					<h3 class="pa-modal__title">{@render header()}</h3>
 				{:else if titleText}
-					<h3 class="pa-modal__title">{#if titleIcon}<span class="pa-icon pa-icon--{titleIcon}" aria-hidden="true"></span> {/if}{titleText}</h3>
+					<h3 class="pa-modal__title">{#if titleIconName}{#if isAffordanceIcon(titleIconName)}<span class="pa-icon pa-icon--{titleIconName}" aria-hidden="true"></span>{:else}<Icon name={titleIconName} />{/if} {/if}{titleText}</h3>
 				{/if}
 				{#if shouldShowClose}<button class={closeBtnClasses} onclick={handleClose} aria-label={$_('pureAdmin.buttons.close')}><span class="pa-icon pa-icon--x" aria-hidden="true"></span></button>{/if}
 			</div>

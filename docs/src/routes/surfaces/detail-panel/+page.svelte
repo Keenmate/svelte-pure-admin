@@ -257,7 +257,7 @@
 			<Field labelText="Department" valueText={user.department} />
 			<Field labelText="Joined" valueText={user.joined} />
 			<Field labelText="Status">
-				{#snippet valueSnippet()}
+				{#snippet children()}
 					<Badge variant={statusVariant(user.status)}>{user.status}</Badge>
 				{/snippet}
 			</Field>
@@ -345,17 +345,17 @@
 				<Fields cols={2}>
 					<Field labelText="Name" valueText={config.name} />
 					<Field labelText="Code">
-						{#snippet valueSnippet()}<Code>{config.code}</Code>{/snippet}
+						{#snippet children()}<Code>{config.code}</Code>{/snippet}
 					</Field>
 					<Field labelText="Status">
-						{#snippet valueSnippet()}<Badge variant="success">Active</Badge>{/snippet}
+						{#snippet children()}<Badge variant="success">Active</Badge>{/snippet}
 					</Field>
 					<Field labelText="Created" valueText={config.created} />
 				</Fields>
 			</FieldGroup>
 			<FieldGroup titleText="Description">
 				<Fields>
-					<Field full valueText="This is the main configuration entry. The panel fills the available height defined by minhr-25 on the card, even though the table only has one row." />
+					<Field isFull valueText="This is the main configuration entry. The panel fills the available height defined by minhr-25 on the card, even though the table only has one row." />
 				</Fields>
 			</FieldGroup>
 			<FieldGroup titleText="Actions">
@@ -626,7 +626,7 @@
 				<Field labelText="ID" valueText={tcRecord.id} />
 				<Field labelText="Department" valueText={tcRecord.department} />
 				<Field labelText="Status">
-					{#snippet valueSnippet()}<Badge variant={statusVariant(tcRecord.status)}>{tcRecord.status}</Badge>{/snippet}
+					{#snippet children()}<Badge variant={statusVariant(tcRecord.status)}>{tcRecord.status}</Badge>{/snippet}
 				</Field>
 			</Fields>
 		</DetailPanel>

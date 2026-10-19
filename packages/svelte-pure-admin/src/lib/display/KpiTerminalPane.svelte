@@ -27,6 +27,8 @@
 		labelText: string;
 		/** Optional extra class for the tab button (not the pane element). */
 		tabClass?: string;
+		/** Make this the initially active pane (an explicitly bound `activePaneId` on the KpiTerminal wins). */
+		isActive?: boolean;
 		/** Additional CSS classes for the pane element. */
 		class?: string;
 		/** Tile content. */
@@ -37,6 +39,7 @@
 		id,
 		labelText,
 		tabClass,
+		isActive = false,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -49,14 +52,15 @@
 
 	onMount(() => {
 		if (!ctx) return;
-		return ctx.register({ id, labelText, class: tabClass });
+		return ctx.register({ id, labelText, class: tabClass, isActive });
 	});
 
-	const isActive = $derived(ctx?.activeId === id);
+	// Before registration (SSR / first paint) fall back to the isActive prop.
+	const isShown = $derived(ctx?.activeId === undefined ? isActive : ctx.activeId === id);
 
 	const paneClasses = $derived(() => {
 		const base = ['pa-kpi-terminal__pane'];
-		if (isActive) base.push('is-active');
+		if (isShown) base.push('is-active');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

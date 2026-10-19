@@ -339,7 +339,7 @@
 	<Paragraph>
 		Two independently composable boolean props on <Code>KpiSparklineList</Code>:
 	</Paragraph>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li>
 			<Code>isChartFirst</Code> — flips the mid-narrow 2-row collapsed layout from "value-above-chart"
 			to "label / chart / value+delta", preserving the canonical L→R reading order when rotated 90°. The
@@ -362,7 +362,7 @@
 
 <Card class="mt-xl" titleText="Component Reference">
 	<Heading level={4}>KpiSparklineList props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
@@ -371,7 +371,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiSparklineRow props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>variant</Code> — trend line/area/dot colour: <Code>up-strong</Code> / <Code>up</Code> / <Code>flat</Code> / <Code>down</Code> / <Code>down-strong</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
 		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — focal value cell.</li>

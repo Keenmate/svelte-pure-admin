@@ -23,7 +23,7 @@
 		 */
 		navCollapse?: 'hide';
 		/** Icon shown when this item is folded into the sidebar (sidebar collapse mode). Maps to `data-pc-nav-icon`. */
-		navIcon?: string;
+		iconText?: string;
 		/** Additional CSS classes */
 		class?: string;
 		/** Children content (link text or submenu) */
@@ -38,7 +38,7 @@
 		isActive = false,
 		navPriority,
 		navCollapse,
-		navIcon,
+		iconText,
 		class: className = '',
 		children,
 		dropdown
@@ -62,7 +62,7 @@
 		class={classes()}
 		data-pc-fit-nav-priority={navPriority}
 		data-pc-fit-nav={navCollapse}
-		data-pc-nav-icon={navIcon}
+		data-pc-nav-icon={iconText}
 	>
 		<a href={href || '#'} class="pc-navmenu__link">
 			{@render children?.()}
@@ -76,7 +76,7 @@
 		class={classes()}
 		data-pc-fit-nav-priority={navPriority}
 		data-pc-fit-nav={navCollapse}
-		data-pc-nav-icon={navIcon}
+		data-pc-nav-icon={iconText}
 	>
 		<a href={href || '#'}>
 			{@render children?.()}

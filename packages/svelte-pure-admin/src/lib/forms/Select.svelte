@@ -11,12 +11,12 @@
 
 	interface Props {
 		/**
-		 * Select value. Scalar for a single select; bind an array when `multiple`
+		 * Select value. Scalar for a single select; bind an array when `isMultiple`
 		 * is set (Svelte binds the list of selected option values).
 		 */
 		value?: string | number | Array<string | number>;
 		/** Allow multiple selections — renders a native `<select multiple>`. */
-		multiple?: boolean;
+		isMultiple?: boolean;
 		/** Select size */
 		size?: SelectSize;
 		/** Validation state - auto-derived from errors if not set */
@@ -28,9 +28,9 @@
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Required field */
-		required?: boolean;
+		isRequired?: boolean;
 		/** Select ID */
 		id?: string;
 		/** Select name */
@@ -45,14 +45,14 @@
 
 	let {
 		value = $bindable(),
-		multiple = false,
+		isMultiple = false,
 		size,
 		validation,
 		errors,
 		touched = true,
 		themeColor,
-		disabled = false,
-		required = false,
+		isDisabled = false,
+		isRequired = false,
 		id,
 		name,
 		class: className = '',
@@ -93,12 +93,12 @@
 
 <!-- Svelte requires `multiple` to be a static attribute alongside `bind:value`,
      so the two modes are separate branches rather than a dynamic attribute. -->
-{#if multiple}
-	<select multiple bind:value {id} {name} {disabled} {required} class={classes()} aria-invalid={ariaInvalid()} {onchange}>
+{#if isMultiple}
+	<select multiple bind:value {id} {name} disabled={isDisabled} required={isRequired} class={classes()} aria-invalid={ariaInvalid()} {onchange}>
 		{@render children?.()}
 	</select>
 {:else}
-	<select bind:value {id} {name} {disabled} {required} class={classes()} aria-invalid={ariaInvalid()} {onchange}>
+	<select bind:value {id} {name} disabled={isDisabled} required={isRequired} class={classes()} aria-invalid={ariaInvalid()} {onchange}>
 		{@render children?.()}
 	</select>
 {/if}

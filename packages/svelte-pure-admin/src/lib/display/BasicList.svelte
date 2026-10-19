@@ -5,12 +5,12 @@
 	 * For simple unordered lists with various modifiers
 	 */
 
-	type ListSpacing = 'compact' | 'spacious';
+	type ListDensity = 'compact' | 'spacious';
 	type ListIconVariant = 'success' | 'danger' | 'info' | 'warning';
 
 	interface Props {
-		/** Spacing variant */
-		spacing?: ListSpacing;
+		/** Spacing density */
+		density?: ListDensity;
 		/** Remove bullets and padding */
 		isUnstyled?: boolean;
 		/** Display items inline (horizontal) */
@@ -30,7 +30,7 @@
 	}
 
 	let {
-		spacing,
+		density,
 		isUnstyled = false,
 		isInline = false,
 		isBordered = false,
@@ -46,7 +46,7 @@
 		const base = ['pa-list-basic'];
 
 		// Spacing
-		if (spacing) base.push(`pa-list-basic--${spacing}`);
+		if (density) base.push(`pa-list-basic--${density}`);
 
 		// Modifiers
 		if (isUnstyled) base.push('pa-list-basic--unstyled');

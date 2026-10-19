@@ -111,7 +111,7 @@
 	<Grid class="mt-4">
 		<Column size="100" md="1-2">
 			<Heading level={5}>Modal (template-based)</Heading>
-			<BasicList spacing="compact">
+			<BasicList density="compact">
 				<li>Forms with inputs, selects, checkboxes</li>
 				<li>Formatted/multiline text with HTML</li>
 				<li>Grids, tables, components in the body</li>
@@ -122,7 +122,7 @@
 		</Column>
 		<Column size="100" md="1-2">
 			<Heading level={5}>dialogService (programmatic)</Heading>
-			<BasicList spacing="compact">
+			<BasicList density="compact">
 				<li>Quick confirm/cancel decisions</li>
 				<li>Alert notifications (acknowledge and close)</li>
 				<li>Single text input prompts</li>
@@ -256,7 +256,7 @@
 <!-- Themed modal + leading severity icon -->
 <Modal bind:show={showDanger}
   titleText="Delete Item"
-  titleIcon="delete"
+  titleIconName="delete"
   variant="danger">
   Are you sure?
   {#snippet footer()}
@@ -266,7 +266,7 @@
 
 <!-- Full modal theme -->
 <Modal bind:show={showSuccess}
-  titleText="Done!" titleIcon="success" variant="success">
+  titleText="Done!" titleIconName="success" variant="success">
   Operation completed.
 </Modal>`}</CodeBlock>
 		</Column>
@@ -293,7 +293,7 @@
 			<tr><td><Code>isScrollable</Code></td><td>boolean</td><td>false</td><td>Scrollable body content</td></tr>
 			<tr><td><Code>isStatic</Code></td><td>boolean</td><td>false</td><td>Prevents ESC/backdrop close</td></tr>
 			<tr><td><Code>titleText</Code></td><td>string</td><td>-</td><td>Modal title</td></tr>
-			<tr><td><Code>titleIcon</Code></td><td>string</td><td>-</td><td>Leading masked icon before the title (e.g. <Code>success</Code> / <Code>warning</Code> / <Code>danger</Code> / <Code>info</Code> / <Code>delete</Code>) — inherits the header colour. Since core v3.2.0.</td></tr>
+			<tr><td><Code>titleIconName</Code></td><td>string</td><td>-</td><td>Leading icon name before the title, rendered through <Code>Icon</Code> (affordances such as <Code>success</Code> / <Code>warning</Code> / <Code>danger</Code> / <Code>info</Code> / <Code>delete</Code> render the masked glyph) — inherits the header colour. Since core v3.2.0.</td></tr>
 			<tr><td><Code>shouldShowClose</Code></td><td>boolean</td><td>true</td><td>Show close button in header</td></tr>
 			<tr><td><Code>shouldCloseOnEscape</Code></td><td>boolean</td><td>true</td><td>Close on ESC key</td></tr>
 			<tr><td><Code>beforeCloseCallback</Code></td><td>() => boolean | void</td><td>-</td><td>Return false to prevent closing</td></tr>
@@ -517,15 +517,15 @@
 			<Card titleText="Properties">
 				<FormGroup>
 					<FormLabel for="fw-width">Width</FormLabel>
-					<Input id="fw-width" value="100vw - 2rem" readonly />
+					<Input id="fw-width" value="100vw - 2rem" isReadonly />
 				</FormGroup>
 				<FormGroup>
 					<FormLabel for="fw-height">Height</FormLabel>
-					<Input id="fw-height" value="100vh - 2rem" readonly />
+					<Input id="fw-height" value="100vh - 2rem" isReadonly />
 				</FormGroup>
 				<FormGroup>
 					<FormLabel for="fw-margin">Margin</FormLabel>
-					<Input id="fw-margin" value="1rem" readonly />
+					<Input id="fw-margin" value="1rem" isReadonly />
 				</FormGroup>
 			</Card>
 		</Column>
@@ -538,7 +538,7 @@
 </Modal>
 
 <!-- Success Modal -->
-<Modal bind:show={showSuccess} variant="success" titleText="Success!" titleIcon="success">
+<Modal bind:show={showSuccess} variant="success" titleText="Success!" titleIconName="success">
 	<Paragraph>Your action has been completed successfully!</Paragraph>
 	<Alert variant="success">Operation completed without any errors.</Alert>
 	{#snippet footer()}
@@ -547,7 +547,7 @@
 </Modal>
 
 <!-- Warning Modal -->
-<Modal bind:show={showWarning} variant="warning" titleText="Warning" titleIcon="warning">
+<Modal bind:show={showWarning} variant="warning" titleText="Warning" titleIconName="warning">
 	<Paragraph>Please review your action before proceeding.</Paragraph>
 	<Alert variant="warning">
 		This action may have consequences that cannot be undone.
@@ -559,7 +559,7 @@
 </Modal>
 
 <!-- Danger Modal -->
-<Modal bind:show={showDanger} variant="danger" titleText="Danger Zone" titleIcon="danger">
+<Modal bind:show={showDanger} variant="danger" titleText="Danger Zone" titleIconName="danger">
 	<Paragraph>This action is potentially destructive.</Paragraph>
 	<Alert variant="danger">
 		<strong>Warning:</strong> This action cannot be undone and may result in data loss.
@@ -644,7 +644,7 @@
 					</Select>
 				</FormGroup>
 				<FormGroup>
-					<Checkbox id="settings-notifications" checked labelText="Enable notifications" />
+					<Checkbox id="settings-notifications" isChecked labelText="Enable notifications" />
 				</FormGroup>
 			</form>
 		</Column>
@@ -655,7 +655,7 @@
 					<Checkbox id="settings-analytics" labelText="Share analytics data" />
 				</FormGroup>
 				<FormGroup>
-					<Checkbox id="settings-email" checked labelText="Email updates" />
+					<Checkbox id="settings-email" isChecked labelText="Email updates" />
 				</FormGroup>
 			</form>
 		</Column>
@@ -667,7 +667,7 @@
 </Modal>
 
 <!-- Delete Confirmation Modal -->
-<Modal bind:show={showConfirmDelete} size="sm" variant="danger" titleText="Confirm Delete" titleIcon="delete">
+<Modal bind:show={showConfirmDelete} size="sm" variant="danger" titleText="Confirm Delete" titleIconName="delete">
 	<Paragraph>Are you sure you want to delete this item?</Paragraph>
 	<Alert variant="danger">
 		<strong>This action cannot be undone.</strong>
@@ -689,7 +689,7 @@
 </Modal>
 
 <!-- Information Dialog -->
-<Modal bind:show={showInfo} variant="info" titleText="Information" titleIcon="info">
+<Modal bind:show={showInfo} variant="info" titleText="Information" titleIconName="info">
 	<Paragraph>Here's some important information you should know:</Paragraph>
 	<Alert variant="info">
 		Your subscription will expire in 7 days. Consider renewing to continue enjoying all features.
@@ -732,7 +732,7 @@
 </Modal>
 
 <!-- Static Modal (no ESC, no backdrop click) -->
-<Modal bind:show={showStatic} size="sm" isStatic variant="warning" shouldShowClose={false} titleText="Static Modal" titleIcon="warning">
+<Modal bind:show={showStatic} size="sm" isStatic variant="warning" shouldShowClose={false} titleText="Static Modal" titleIconName="warning">
 	<Paragraph>This modal <strong>cannot</strong> be closed by:</Paragraph>
 	<BasicList>
 		<li>Pressing the <kbd>Escape</kbd> key</li>

@@ -424,7 +424,7 @@ const { form, errors, touched, data } = createForm<z.infer<typeof schema>>({
     hasValue={!!$data.email}
   >
     {#snippet children({ errors, touched })}
-      <Input required name="email" {errors} {touched} />
+      <Input isRequired name="email" {errors} {touched} />
     {/snippet}
   </FormField>
   <Button type="submit">Save</Button>
@@ -513,7 +513,7 @@ password: z.string()
 			hasValue={!!$data1?.email}
 		>
 			{#snippet children({ errors, touched })}
-				<Input required type="email" name="email" id="test1-email" placeholder="Enter your email" {errors} {touched} />
+				<Input isRequired type="email" name="email" id="test1-email" placeholder="Enter your email" {errors} {touched} />
 			{/snippet}
 		</FormField>
 
@@ -541,7 +541,7 @@ password: z.string()
 					touched={$touched2.name ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Input required name="name" id="test2-name" placeholder="Your name" {errors} {touched} />
+						<Input isRequired name="name" id="test2-name" placeholder="Your name" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -552,7 +552,7 @@ password: z.string()
 					touched={$touched2.age ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<NumberInput required name="age" id="test2-age" placeholder="Your age" {errors} {touched} />
+						<NumberInput isRequired name="age" id="test2-age" placeholder="Your age" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -632,7 +632,7 @@ password: z.string()
 					touched={$touched4.country ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Select required name="country" id="test4-country" {errors} {touched}>
+						<Select isRequired name="country" id="test4-country" {errors} {touched}>
 							<option value="">Select a country...</option>
 							<option value="us">United States</option>
 							<option value="uk">United Kingdom</option>
@@ -650,7 +650,7 @@ password: z.string()
 					touched={$touched4.birthDate ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<DateInput required name="birthDate" id="test4-birthDate" {errors} {touched} />
+						<DateInput isRequired name="birthDate" id="test4-birthDate" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -688,7 +688,7 @@ password: z.string()
 					hasValue={!!$data5.password}
 				>
 					{#snippet children({ errors, touched })}
-						<Input required type="password" name="password" id="test5-password" placeholder="Enter password" {errors} {touched} />
+						<Input isRequired type="password" name="password" id="test5-password" placeholder="Enter password" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -701,7 +701,7 @@ password: z.string()
 					hasValue={!!$data5.confirm}
 				>
 					{#snippet children({ errors, touched })}
-						<Input required type="password" name="confirm" id="test5-confirm" placeholder="Confirm password" {errors} {touched} />
+						<Input isRequired type="password" name="confirm" id="test5-confirm" placeholder="Confirm password" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -747,7 +747,7 @@ password: z.string()
 					touched={$createUserTouched.firstName ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Input required name="firstName" id="create-user-firstName" placeholder="John" {errors} {touched} />
+						<Input isRequired name="firstName" id="create-user-firstName" placeholder="John" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -758,7 +758,7 @@ password: z.string()
 					touched={$createUserTouched.lastName ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Input required name="lastName" id="create-user-lastName" placeholder="Doe" {errors} {touched} />
+						<Input isRequired name="lastName" id="create-user-lastName" placeholder="Doe" {errors} {touched} />
 					{/snippet}
 				</FormField>
 			</Column>
@@ -771,7 +771,7 @@ password: z.string()
 			touched={$createUserTouched.email ?? false}
 		>
 			{#snippet children({ errors, touched })}
-				<Input required type="email" name="email" id="create-user-email" placeholder="john.doe@company.com" {errors} {touched} />
+				<Input isRequired type="email" name="email" id="create-user-email" placeholder="john.doe@company.com" {errors} {touched} />
 			{/snippet}
 		</FormField>
 
@@ -783,7 +783,7 @@ password: z.string()
 					touched={$createUserTouched.role ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Select required name="role" id="create-user-role" {errors} {touched}>
+						<Select isRequired name="role" id="create-user-role" {errors} {touched}>
 							<option value="">Select a role...</option>
 							<option value="Developer">Developer</option>
 							<option value="Designer">Designer</option>
@@ -800,7 +800,7 @@ password: z.string()
 					touched={$createUserTouched.department ?? false}
 				>
 					{#snippet children({ errors, touched })}
-						<Select required name="department" id="create-user-department" {errors} {touched}>
+						<Select isRequired name="department" id="create-user-department" {errors} {touched}>
 							<option value="">Select a department...</option>
 							<option value="Engineering">Engineering</option>
 							<option value="Product">Product</option>
@@ -817,7 +817,7 @@ password: z.string()
 			<Button
 				type="submit"
 				variant="primary"
-				disabled={createUserSaving}
+				isDisabled={createUserSaving}
 				onclick={() => (createUserSubmitted = true)}
 			>
 				{#if createUserSaving}
@@ -826,7 +826,7 @@ password: z.string()
 					Create User
 				{/if}
 			</Button>
-			<Button type="button" variant="secondary" onclick={resetCreateUser} disabled={createUserSaving}>
+			<Button type="button" variant="secondary" onclick={resetCreateUser} isDisabled={createUserSaving}>
 				Reset
 			</Button>
 		</ButtonGroup>

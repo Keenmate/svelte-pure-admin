@@ -13,6 +13,7 @@
 	 * <SidebarItem href="/dashboard" labelText="Dashboard" isActive={$page.url.pathname === '/dashboard'} />
 	 * <SidebarItem href="/users" labelText="Users" isActive={$page.url.pathname.startsWith('/users')} />
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 
 	interface Props {
@@ -22,6 +23,8 @@
 		isActive?: boolean;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Label text */
 		labelText: string;
 		/** Has submenu */
@@ -40,6 +43,7 @@
 		href,
 		isActive = false,
 		icon,
+		iconName,
 		labelText,
 		hasSubmenu = false,
 		submenu,
@@ -90,9 +94,9 @@
 <li class={itemClasses()}>
 	{#if hasSubmenu}
 		<button class="pc-sidebar__toggle" onclick={toggleSubmenu}>
-			{#if icon}
+			{#if icon || iconName}
 				<span class="pc-sidebar__icon pc-icon-hover-highlight">
-					{@render icon()}
+					{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 				</span>
 			{:else if shouldKeepIconSpace}
 				<span class="pc-sidebar__icon pc-icon-hover-highlight"></span>
@@ -108,9 +112,9 @@
 		{/if}
 	{:else if href}
 		<a {href} class={linkClasses()} {onclick}>
-			{#if icon}
+			{#if icon || iconName}
 				<span class="pc-sidebar__icon pc-icon-hover-highlight">
-					{@render icon()}
+					{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 				</span>
 			{:else if shouldKeepIconSpace}
 				<span class="pc-sidebar__icon pc-icon-hover-highlight"></span>
@@ -119,9 +123,9 @@
 		</a>
 	{:else}
 		<button class={linkClasses()} {onclick}>
-			{#if icon}
+			{#if icon || iconName}
 				<span class="pc-sidebar__icon pc-icon-hover-highlight">
-					{@render icon()}
+					{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 				</span>
 			{:else if shouldKeepIconSpace}
 				<span class="pc-sidebar__icon pc-icon-hover-highlight"></span>

@@ -17,13 +17,13 @@
 
 	interface Props {
 		/** Checkbox checked state */
-		checked?: boolean;
+		isChecked?: boolean;
 		/** Indeterminate state (partial selection) */
 		isIndeterminate?: boolean;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Required field — core turns the native `required` attribute into the asterisk */
-		required?: boolean;
+		isRequired?: boolean;
 		/** Use X mark instead of checkmark when checked */
 		isXMark?: boolean;
 		/** Checkbox size */
@@ -47,16 +47,16 @@
 		/** Inline style on the wrapper — e.g. `--base-icon-check` / `--base-icon-indeterminate` glyph overrides. */
 		style?: string;
 		/** Label snippet (alternative to label prop for custom label content) */
-		labelSnippet?: import('svelte').Snippet;
+		label?: import('svelte').Snippet;
 		/** Change handler */
 		onchange?: (event: Event & { currentTarget: HTMLInputElement }) => void;
 	}
 
 	let {
-		checked = $bindable(false),
+		isChecked = $bindable(false),
 		isIndeterminate = false,
-		disabled = false,
-		required = false,
+		isDisabled = false,
+		isRequired = false,
 		isXMark = false,
 		size,
 		labelPosition,
@@ -66,7 +66,7 @@
 		labelText,
 		class: className = '',
 		style,
-		labelSnippet,
+		label,
 		onchange
 	}: Props = $props();
 
@@ -88,7 +88,7 @@
 		// redundant but valid); emit whichever is explicitly set. A checkbox with no
 		// `labelPosition` stays classless (= end).
 		if (labelPosition) base.push(`pa-checkbox--label-${labelPosition}`);
-		if (disabled) base.push('pa-checkbox--disabled');
+		if (isDisabled) base.push('pa-checkbox--disabled');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -98,18 +98,18 @@
 	<input
 		bind:this={inputElement}
 		type="checkbox"
-		bind:checked
+		bind:checked={isChecked}
 		{id}
 		{name}
 		{value}
-		{disabled}
-		{required}
+		disabled={isDisabled}
+		required={isRequired}
 		{onchange}
 	/>
 	<span class="pa-checkbox__box"></span>
-	{#if labelSnippet}
+	{#if label}
 		<span class="pa-checkbox__label">
-			{@render labelSnippet()}
+			{@render label()}
 		</span>
 	{:else if labelText}
 		<span class="pa-checkbox__label">{labelText}</span>

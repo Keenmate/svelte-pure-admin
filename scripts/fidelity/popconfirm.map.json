@@ -4,7 +4,7 @@
   "features": {
     "placement":      { "prop": "placement",     "kind": "enum",   "values": ["top", "bottom", "start", "end"] },
     "compact":        { "prop": "isCompact",       "kind": "bool" },
-    "icon":           { "prop": "icon",            "kind": "enum",   "values": ["danger", "warning", "info"] },
+    "iconVariant":           { "prop": "iconVariant",            "kind": "enum",   "values": ["danger", "warning", "info"] },
     "message":        { "prop": "messageText",     "kind": "string" },
     "confirmVariant": { "prop": "confirmVariant",  "kind": "string" },
     "confirmText":    { "prop": "confirmText",     "kind": "string" },

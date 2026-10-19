@@ -578,13 +578,13 @@
 			</AppHeader>
 
 			<!-- Primary nav — folds into the sidebar as the header narrows. -->
-			<NavMenu collapse="sidebar" collapseLabel="Menu">
-				<NavItem href="/" isActive={$page.url.pathname === '/'} navPriority={10} navIcon="📊">Dashboard</NavItem>
+			<NavMenu collapse="sidebar" collapseLabelText="Menu">
+				<NavItem href="/" isActive={$page.url.pathname === '/'} navPriority={10} iconText="📊">Dashboard</NavItem>
 				<NavItem
 					href="/components"
 					hasDropdown
 					isActive={$page.url.pathname.startsWith('/components')}
-					navIcon="🧩"
+					iconText="🧩"
 				>
 					Components
 					{#snippet dropdown()}
@@ -611,7 +611,7 @@
 						</NavDropdown>
 					{/snippet}
 				</NavItem>
-				<NavItem href="/forms" isActive={$page.url.pathname === '/forms'} navIcon="📝">Forms</NavItem>
+				<NavItem href="/forms" isActive={$page.url.pathname === '/forms'} iconText="📝">Forms</NavItem>
 			</NavMenu>
 		{/snippet}
 

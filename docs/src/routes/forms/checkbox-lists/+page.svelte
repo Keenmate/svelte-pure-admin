@@ -173,29 +173,29 @@
 		<Column size="100" md="50">
 			<Heading level={4}>Three States</Heading>
 			<div class="d-flex flex-column gap-12">
-				<Checkbox id="unchecked-demo" labelText="Unchecked" bind:checked={uncheckedDemo} />
-				<Checkbox id="checked-demo" labelText="Checked" bind:checked={checkedDemo} />
-				<Checkbox id="indeterminate-demo" labelText="Indeterminate" bind:checked={indeterminateDemo} isIndeterminate={true} />
+				<Checkbox id="unchecked-demo" labelText="Unchecked" bind:isChecked={uncheckedDemo} />
+				<Checkbox id="checked-demo" labelText="Checked" bind:isChecked={checkedDemo} />
+				<Checkbox id="indeterminate-demo" labelText="Indeterminate" bind:isChecked={indeterminateDemo} isIndeterminate={true} />
 			</div>
 		</Column>
 		<Column size="100" md="50">
 			<Heading level={4}>Size Variants</Heading>
 			<div class="d-flex flex-column gap-12">
-				<Checkbox id="size-xs" labelText="Extra Small (xs)" size="xs" bind:checked={sizeXs} />
-				<Checkbox id="size-sm" labelText="Small (sm)" size="sm" bind:checked={sizeSm} />
-				<Checkbox id="size-default" labelText="Default" bind:checked={sizeDefault} />
-				<Checkbox id="size-lg" labelText="Large (lg)" size="lg" bind:checked={sizeLg} />
-				<Checkbox id="size-xl" labelText="Extra Large (xl)" size="xl" bind:checked={sizeXl} />
+				<Checkbox id="size-xs" labelText="Extra Small (xs)" size="xs" bind:isChecked={sizeXs} />
+				<Checkbox id="size-sm" labelText="Small (sm)" size="sm" bind:isChecked={sizeSm} />
+				<Checkbox id="size-default" labelText="Default" bind:isChecked={sizeDefault} />
+				<Checkbox id="size-lg" labelText="Large (lg)" size="lg" bind:isChecked={sizeLg} />
+				<Checkbox id="size-xl" labelText="Extra Large (xl)" size="xl" bind:isChecked={sizeXl} />
 			</div>
 		</Column>
 		<Column size="100" md="50">
 			<Heading level={4}>X Mark Modifier</Heading>
 			<div class="d-flex flex-column gap-12">
-				<Checkbox id="xmark-xs" labelText="Extra Small with X" size="xs" isXMark bind:checked={xMarkXs} />
-				<Checkbox id="xmark-sm" labelText="Small with X" size="sm" isXMark bind:checked={xMarkSm} />
-				<Checkbox id="xmark-default" labelText="Default with X" isXMark bind:checked={xMarkDefault} />
-				<Checkbox id="xmark-lg" labelText="Large with X" size="lg" isXMark bind:checked={xMarkLg} />
-				<Checkbox id="xmark-xl" labelText="Extra Large with X" size="xl" isXMark bind:checked={xMarkXl} />
+				<Checkbox id="xmark-xs" labelText="Extra Small with X" size="xs" isXMark bind:isChecked={xMarkXs} />
+				<Checkbox id="xmark-sm" labelText="Small with X" size="sm" isXMark bind:isChecked={xMarkSm} />
+				<Checkbox id="xmark-default" labelText="Default with X" isXMark bind:isChecked={xMarkDefault} />
+				<Checkbox id="xmark-lg" labelText="Large with X" size="lg" isXMark bind:isChecked={xMarkLg} />
+				<Checkbox id="xmark-xl" labelText="Extra Large with X" size="xl" isXMark bind:isChecked={xMarkXl} />
 			</div>
 		</Column>
 	</Grid>
@@ -212,19 +212,19 @@
 			<div class="d-flex flex-column gap-12">
 				<Checkbox
 					id="cg-heart"
-					checked
+					isChecked
 					labelText="Heart glyph"
 					style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Cpath d=%22M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z%22/%3E%3C/svg%3E');"
 				/>
 				<Checkbox
 					id="cg-star"
-					checked
+					isChecked
 					labelText="Star glyph"
 					style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Cpath d=%22M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.5l7.1-.6z%22/%3E%3C/svg%3E');"
 				/>
 				<Checkbox
 					id="cg-circle"
-					checked
+					isChecked
 					size="lg"
 					labelText="Filled circle-check (lg)"
 					style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Cpath d=%22M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.1 14.2l-4-4 1.4-1.4 2.6 2.6 5.4-5.4 1.4 1.4-6.8 6.8z%22/%3E%3C/svg%3E');"
@@ -236,7 +236,7 @@
 			<CheckboxGroup
 				style="--base-icon-check: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22black%22 stroke-width=%223%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M12 5v14M5 12h14%22/%3E%3C/svg%3E'); --base-icon-indeterminate: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22black%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%225%22/%3E%3C/svg%3E');"
 			>
-				<Checkbox id="cg-plus" checked labelText="Checked → plus glyph" />
+				<Checkbox id="cg-plus" isChecked labelText="Checked → plus glyph" />
 				<Checkbox id="cg-dot" isIndeterminate labelText="Indeterminate → dot glyph" />
 				<Checkbox id="cg-off" labelText="Unchecked (unaffected)" />
 			</CheckboxGroup>
@@ -254,29 +254,29 @@
 				<Checkbox
 					id="select-all-fruits"
 					labelText="Select All Fruits"
-					checked={selectAllFruits}
+					isChecked={selectAllFruits}
 					isIndeterminate={selectAllIndeterminate}
 					onchange={handleSelectAllFruits}
 					class="font-weight-500"
 				/>
 				<div class="d-flex flex-column gap-8 ms-10">
-					<Checkbox id="fruit-apple" bind:checked={fruits.apple}>
-						{#snippet labelSnippet()}
+					<Checkbox id="fruit-apple" bind:isChecked={fruits.apple}>
+						{#snippet label()}
 							🍎 Apple
 						{/snippet}
 					</Checkbox>
-					<Checkbox id="fruit-banana" bind:checked={fruits.banana}>
-						{#snippet labelSnippet()}
+					<Checkbox id="fruit-banana" bind:isChecked={fruits.banana}>
+						{#snippet label()}
 							🍌 Banana
 						{/snippet}
 					</Checkbox>
-					<Checkbox id="fruit-orange" bind:checked={fruits.orange}>
-						{#snippet labelSnippet()}
+					<Checkbox id="fruit-orange" bind:isChecked={fruits.orange}>
+						{#snippet label()}
 							🍊 Orange
 						{/snippet}
 					</Checkbox>
-					<Checkbox id="fruit-grape" bind:checked={fruits.grape}>
-						{#snippet labelSnippet()}
+					<Checkbox id="fruit-grape" bind:isChecked={fruits.grape}>
+						{#snippet label()}
 							🍇 Grape
 						{/snippet}
 					</Checkbox>
@@ -303,9 +303,9 @@
 <Card titleText="Disabled Checkboxes" descriptionText="Disabled state with reduced opacity">
 
 	<div class="d-flex flex-wrap gap-2xl">
-		<Checkbox id="disabled-unchecked" labelText="Disabled unchecked" disabled bind:checked={disabledUnchecked} />
-		<Checkbox id="disabled-checked" labelText="Disabled checked" disabled bind:checked={disabledChecked} />
-		<Checkbox id="disabled-indeterminate" labelText="Disabled indeterminate" disabled isIndeterminate bind:checked={disabledIndeterminate} />
+		<Checkbox id="disabled-unchecked" labelText="Disabled unchecked" isDisabled bind:isChecked={disabledUnchecked} />
+		<Checkbox id="disabled-checked" labelText="Disabled checked" isDisabled bind:isChecked={disabledChecked} />
+		<Checkbox id="disabled-indeterminate" labelText="Disabled indeterminate" isDisabled isIndeterminate bind:isChecked={disabledIndeterminate} />
 	</div>
 </Card>
 
@@ -319,10 +319,10 @@
 		<Column size="100" md="50">
 			<Heading level={4}>Default List</Heading>
 			<CheckboxList>
-				<CheckboxListItem id="check1" labelText="Option 1" bind:checked={basicOptions.option1} />
-				<CheckboxListItem id="check2" labelText="Option 2 (Selected)" bind:checked={basicOptions.option2} />
-				<CheckboxListItem id="check3" labelText="Option 3" bind:checked={basicOptions.option3} />
-				<CheckboxListItem id="check4" labelText="Option 4 (Disabled)" state="disabled" bind:checked={basicOptions.option4} />
+				<CheckboxListItem id="check1" labelText="Option 1" bind:isChecked={basicOptions.option1} />
+				<CheckboxListItem id="check2" labelText="Option 2 (Selected)" bind:isChecked={basicOptions.option2} />
+				<CheckboxListItem id="check3" labelText="Option 3" bind:isChecked={basicOptions.option3} />
+				<CheckboxListItem id="check4" labelText="Option 4 (Disabled)" state="disabled" bind:isChecked={basicOptions.option4} />
 			</CheckboxList>
 		</Column>
 		<Column size="100" md="50">
@@ -332,19 +332,19 @@
 					id="feature1"
 					labelText="Email Notifications"
 					descriptionText="Receive updates via email"
-					bind:checked={features.email}
+					bind:isChecked={features.email}
 				/>
 				<CheckboxListItem
 					id="feature2"
 					labelText="SMS Alerts"
 					descriptionText="Get urgent alerts via SMS"
-					bind:checked={features.sms}
+					bind:isChecked={features.sms}
 				/>
 				<CheckboxListItem
 					id="feature3"
 					labelText="Push Notifications"
 					descriptionText="Browser push notifications"
-					bind:checked={features.push}
+					bind:isChecked={features.push}
 				/>
 			</CheckboxList>
 		</Column>
@@ -356,11 +356,11 @@
 
 	<Heading level={4}>State Comparison</Heading>
 	<CheckboxList variant="bordered">
-		<CheckboxListItem id="state1" labelText="Normal clickable option" bind:checked={stateOptions.normal} />
-		<CheckboxListItem id="state2" labelText="Disabled - feature not available" state="disabled" bind:checked={stateOptions.disabled} />
-		<CheckboxListItem id="state3" labelText="Requires admin permission" state="locked" bind:checked={stateOptions.locked1} />
-		<CheckboxListItem id="state4" labelText="Pro feature - upgrade required" state="locked" bind:checked={stateOptions.locked2} />
-		<CheckboxListItem id="state5" labelText="Normal selected option" bind:checked={stateOptions.normalSelected} />
+		<CheckboxListItem id="state1" labelText="Normal clickable option" bind:isChecked={stateOptions.normal} />
+		<CheckboxListItem id="state2" labelText="Disabled - feature not available" state="disabled" bind:isChecked={stateOptions.disabled} />
+		<CheckboxListItem id="state3" labelText="Requires admin permission" state="locked" bind:isChecked={stateOptions.locked1} />
+		<CheckboxListItem id="state4" labelText="Pro feature - upgrade required" state="locked" bind:isChecked={stateOptions.locked2} />
+		<CheckboxListItem id="state5" labelText="Normal selected option" bind:isChecked={stateOptions.normalSelected} />
 	</CheckboxList>
 
 	<Alert variant="info" class="mt-4">
@@ -380,26 +380,26 @@
 		<Column size="100" md="1-3">
 			<Heading level={4}>Compact</Heading>
 			<CheckboxList variant="compact">
-				<CheckboxListItem id="compact1" labelText="Compact Option 1" bind:checked={compactOptions.compact1} />
-				<CheckboxListItem id="compact2" labelText="Compact Option 2" bind:checked={compactOptions.compact2} />
-				<CheckboxListItem id="compact3" labelText="Compact Option 3" bind:checked={compactOptions.compact3} />
+				<CheckboxListItem id="compact1" labelText="Compact Option 1" bind:isChecked={compactOptions.compact1} />
+				<CheckboxListItem id="compact2" labelText="Compact Option 2" bind:isChecked={compactOptions.compact2} />
+				<CheckboxListItem id="compact3" labelText="Compact Option 3" bind:isChecked={compactOptions.compact3} />
 			</CheckboxList>
 		</Column>
 		<Column size="100" md="1-3">
 			<Heading level={4}>Bordered</Heading>
 			<CheckboxList variant="bordered">
-				<CheckboxListItem id="bordered1" labelText="Bordered Option 1" bind:checked={borderedOptions.bordered1} />
-				<CheckboxListItem id="bordered2" labelText="Bordered Option 2" bind:checked={borderedOptions.bordered2} />
-				<CheckboxListItem id="bordered3" labelText="Bordered Option 3" bind:checked={borderedOptions.bordered3} />
+				<CheckboxListItem id="bordered1" labelText="Bordered Option 1" bind:isChecked={borderedOptions.bordered1} />
+				<CheckboxListItem id="bordered2" labelText="Bordered Option 2" bind:isChecked={borderedOptions.bordered2} />
+				<CheckboxListItem id="bordered3" labelText="Bordered Option 3" bind:isChecked={borderedOptions.bordered3} />
 			</CheckboxList>
 		</Column>
 		<Column size="100" md="1-3">
 			<Heading level={4}>Striped</Heading>
 			<CheckboxList variant="striped">
-				<CheckboxListItem id="striped1" labelText="Striped Option 1" bind:checked={stripedOptions.striped1} />
-				<CheckboxListItem id="striped2" labelText="Striped Option 2" bind:checked={stripedOptions.striped2} />
-				<CheckboxListItem id="striped3" labelText="Striped Option 3" bind:checked={stripedOptions.striped3} />
-				<CheckboxListItem id="striped4" labelText="Striped Option 4" bind:checked={stripedOptions.striped4} />
+				<CheckboxListItem id="striped1" labelText="Striped Option 1" bind:isChecked={stripedOptions.striped1} />
+				<CheckboxListItem id="striped2" labelText="Striped Option 2" bind:isChecked={stripedOptions.striped2} />
+				<CheckboxListItem id="striped3" labelText="Striped Option 3" bind:isChecked={stripedOptions.striped3} />
+				<CheckboxListItem id="striped4" labelText="Striped Option 4" bind:isChecked={stripedOptions.striped4} />
 			</CheckboxList>
 		</Column>
 	</Grid>
@@ -411,7 +411,7 @@
 	<Heading level={4}>Task List</Heading>
 	<CheckboxList variant="bordered">
 		{#each tasks as task (task.id)}
-			<CheckboxListItem id={task.id} labelText={task.label} bind:checked={task.checked}>
+			<CheckboxListItem id={task.id} labelText={task.label} bind:isChecked={task.checked}>
 				{#snippet actions()}
 					<Button size="xs" variant="secondary" isIconOnly onclick={() => editTask(task.id)}>✏️</Button>
 					<Button size="xs" variant="danger" isIconOnly onclick={() => deleteTask(task.id)}>🗑️</Button>
@@ -426,36 +426,36 @@
 
 	<Heading level={4}>Inline Layout</Heading>
 	<CheckboxList layout="inline">
-		<CheckboxListItem id="inline1" labelText="Option A" bind:checked={inlineOptions.optionA} />
-		<CheckboxListItem id="inline2" labelText="Option B" bind:checked={inlineOptions.optionB} />
-		<CheckboxListItem id="inline3" labelText="Option C" bind:checked={inlineOptions.optionC} />
-		<CheckboxListItem id="inline4" labelText="Option D" bind:checked={inlineOptions.optionD} />
+		<CheckboxListItem id="inline1" labelText="Option A" bind:isChecked={inlineOptions.optionA} />
+		<CheckboxListItem id="inline2" labelText="Option B" bind:isChecked={inlineOptions.optionB} />
+		<CheckboxListItem id="inline3" labelText="Option C" bind:isChecked={inlineOptions.optionC} />
+		<CheckboxListItem id="inline4" labelText="Option D" bind:isChecked={inlineOptions.optionD} />
 	</CheckboxList>
 
 	<Heading level={4} class="mt-6">Grid Layout</Heading>
 	<CheckboxList layout="grid">
-		<CheckboxListItem id="grid1" labelText="Grid Item 1" bind:checked={gridOptions.grid1} />
-		<CheckboxListItem id="grid2" labelText="Grid Item 2" bind:checked={gridOptions.grid2} />
-		<CheckboxListItem id="grid3" labelText="Grid Item 3" bind:checked={gridOptions.grid3} />
-		<CheckboxListItem id="grid4" labelText="Grid Item 4" bind:checked={gridOptions.grid4} />
+		<CheckboxListItem id="grid1" labelText="Grid Item 1" bind:isChecked={gridOptions.grid1} />
+		<CheckboxListItem id="grid2" labelText="Grid Item 2" bind:isChecked={gridOptions.grid2} />
+		<CheckboxListItem id="grid3" labelText="Grid Item 3" bind:isChecked={gridOptions.grid3} />
+		<CheckboxListItem id="grid4" labelText="Grid Item 4" bind:isChecked={gridOptions.grid4} />
 	</CheckboxList>
 
 	<Heading level={4} class="mt-6">Two-Column Layout</Heading>
 	<CheckboxList layout="2col" variant="bordered">
-		<CheckboxListItem id="col2-1" labelText="Column 1 - Item 1" bind:checked={twoColOptions.col21} />
-		<CheckboxListItem id="col2-2" labelText="Column 2 - Item 1" bind:checked={twoColOptions.col22} />
-		<CheckboxListItem id="col2-3" labelText="Column 1 - Item 2" bind:checked={twoColOptions.col23} />
-		<CheckboxListItem id="col2-4" labelText="Column 2 - Item 2" bind:checked={twoColOptions.col24} />
+		<CheckboxListItem id="col2-1" labelText="Column 1 - Item 1" bind:isChecked={twoColOptions.col21} />
+		<CheckboxListItem id="col2-2" labelText="Column 2 - Item 1" bind:isChecked={twoColOptions.col22} />
+		<CheckboxListItem id="col2-3" labelText="Column 1 - Item 2" bind:isChecked={twoColOptions.col23} />
+		<CheckboxListItem id="col2-4" labelText="Column 2 - Item 2" bind:isChecked={twoColOptions.col24} />
 	</CheckboxList>
 
 	<Heading level={4} class="mt-6">Three-Column Layout</Heading>
 	<CheckboxList layout="3col" variant="bordered">
-		<CheckboxListItem id="col3-1" labelText="Col 1 - Item 1" bind:checked={threeColOptions.col31} />
-		<CheckboxListItem id="col3-2" labelText="Col 2 - Item 1" bind:checked={threeColOptions.col32} />
-		<CheckboxListItem id="col3-3" labelText="Col 3 - Item 1" bind:checked={threeColOptions.col33} />
-		<CheckboxListItem id="col3-4" labelText="Col 1 - Item 2" bind:checked={threeColOptions.col34} />
-		<CheckboxListItem id="col3-5" labelText="Col 2 - Item 2" bind:checked={threeColOptions.col35} />
-		<CheckboxListItem id="col3-6" labelText="Col 3 - Item 2" bind:checked={threeColOptions.col36} />
+		<CheckboxListItem id="col3-1" labelText="Col 1 - Item 1" bind:isChecked={threeColOptions.col31} />
+		<CheckboxListItem id="col3-2" labelText="Col 2 - Item 1" bind:isChecked={threeColOptions.col32} />
+		<CheckboxListItem id="col3-3" labelText="Col 3 - Item 1" bind:isChecked={threeColOptions.col33} />
+		<CheckboxListItem id="col3-4" labelText="Col 1 - Item 2" bind:isChecked={threeColOptions.col34} />
+		<CheckboxListItem id="col3-5" labelText="Col 2 - Item 2" bind:isChecked={threeColOptions.col35} />
+		<CheckboxListItem id="col3-6" labelText="Col 3 - Item 2" bind:isChecked={threeColOptions.col36} />
 	</CheckboxList>
 </Card>
 
@@ -478,7 +478,7 @@
 			{#each staticTableData as row (row.id)}
 				<tr class:pa-table__row--selected={row.checked}>
 					<td class="pa-table__checkbox-col">
-						<CheckboxBox checked={row.checked} />
+						<CheckboxBox isChecked={row.checked} />
 					</td>
 					<td>{row.name}</td>
 					<td>{row.email}</td>
@@ -503,7 +503,7 @@
 		<thead>
 			<tr>
 				<th class="pa-table__checkbox-col">
-					<CheckboxBox id="select-all-demo" checked={interactiveSelectAll} onchange={handleInteractiveSelectAll} />
+					<CheckboxBox id="select-all-demo" isChecked={interactiveSelectAll} onchange={handleInteractiveSelectAll} />
 				</th>
 				<th>Product</th>
 				<th>SKU</th>
@@ -515,7 +515,7 @@
 			{#each interactiveTableData as row (row.id)}
 				<tr class:pa-table__row--selected={row.checked}>
 					<td class="pa-table__checkbox-col">
-						<CheckboxBox bind:checked={row.checked} />
+						<CheckboxBox bind:isChecked={row.checked} />
 					</td>
 					<td>{row.product}</td>
 					<td>{row.sku}</td>

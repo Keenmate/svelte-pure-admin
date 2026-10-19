@@ -149,7 +149,7 @@
 		shouldCloseOnBackdrop={options.closeOnBackdrop !== false}
 		placement={options.placement || 'center'}
 		titleText={options.title}
-		titleIcon={resolveTitleIcon(options)}
+		titleIconName={resolveTitleIcon(options)}
 		class={options.class}
 		bodyClass={options.bodyClass}
 		footerClass={options.footerClass}
@@ -192,7 +192,7 @@
 						variant={button.variant || 'secondary'}
 						isOutline={button.isOutline}
 						class={button.class}
-						disabled={button.disabled}
+						isDisabled={button.isDisabled}
 						onclick={() => handleCustomButton(dialog, button.value)}
 					>
 						{button.label}

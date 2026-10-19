@@ -12,7 +12,7 @@
 		/** Input size */
 		size?: InputSize;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Input ID */
 		id?: string;
 		/** Input name */
@@ -30,7 +30,7 @@
 	let {
 		value = $bindable('#000000'),
 		size,
-		disabled = false,
+		isDisabled = false,
 		id,
 		name,
 		showValue = false,
@@ -61,7 +61,7 @@
 			bind:value
 			{id}
 			{name}
-			{disabled}
+			disabled={isDisabled}
 			class={classes()}
 			{oninput}
 			{onchange}
@@ -74,7 +74,7 @@
 		bind:value
 		{id}
 		{name}
-		{disabled}
+		disabled={isDisabled}
 		class={classes()}
 		{oninput}
 		{onchange}

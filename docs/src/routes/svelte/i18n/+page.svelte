@@ -336,7 +336,7 @@ import type {
 				<Select
 					value={demoLocale}
 					onchange={(e) => handleLocaleChange(e.currentTarget.value)}
-					disabled={demoLoading}
+					isDisabled={demoLoading}
 				>
 					{#each demoLanguages as lang}
 						<option value={lang.code}>{lang.name || lang.code}</option>
@@ -400,7 +400,7 @@ import type {
 						variant="primary"
 						size="sm"
 						onclick={addCustomLanguage}
-						disabled={!customLanguageCode || !customLanguageName}
+						isDisabled={!customLanguageCode || !customLanguageName}
 					>
 						Add
 					</Button>

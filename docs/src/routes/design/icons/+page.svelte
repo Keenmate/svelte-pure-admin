@@ -321,7 +321,7 @@
 			{#snippet icon()}<span class="pa-icon pa-icon--bell" aria-hidden="true"></span>{/snippet}
 			Subscribe (Lucide)
 		</Button>
-		<Button variant="primary" disabled>
+		<Button variant="primary" isDisabled>
 			{#snippet icon()}<span class="pa-icon demo-fill-bell" aria-hidden="true"></span>{/snippet}
 			Disabled (Tabler)
 		</Button>

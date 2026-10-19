@@ -618,7 +618,7 @@
 		regardless of row count.
 	</Paragraph>
 	<Paragraph>
-		Bind the active id externally with <Code>bind:view</Code>. The first registered pane becomes active
+		Bind the active id externally with <Code>bind:activePaneId</Code>, or mark a pane <Code>isActive</Code>. Otherwise the first registered pane becomes active
 		by default.
 	</Paragraph>
 
@@ -682,24 +682,26 @@
 
 <Card class="mt-xl" titleText="Component Reference">
 	<Heading level={4}>KpiTerminal props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
-		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
+		<li><Code>isLive</Code> — show the LIVE pill with animated green dot (<Code>liveText</Code> sets its text, default "LIVE").</li>
+		<li><Code>headerControls</Code> — snippet for extra header controls, rendered before the tab strip / LIVE pill.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via the <Code>footer</Code> snippet.</li>
 		<li><Code>hasTabs</Code> — switch to tabs+panes mode. Children must be <Code>KpiTerminalPane</Code> instances.</li>
-		<li><Code>view</Code> — currently active pane id (bindable). Default: first registered pane's id.</li>
+		<li><Code>activePaneId</Code> — currently active pane id (bindable). Default: the pane marked <Code>isActive</Code>, else the first registered pane.</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiTerminalPane props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>id</Code> — unique pane id. Used for <Code>data-tab</Code> and visibility matching.</li>
 		<li><Code>labelText</Code> — tab button text shown in the parent's tab strip.</li>
 		<li><Code>tabClass</Code> — optional extra class for the tab button (not the pane element).</li>
+		<li><Code>isActive</Code> — make this the initially active pane.</li>
 		<li><Code>class</Code> — optional extra class for the pane element.</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiTerminalTile props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>variant</Code> — sparkline + dot trend colour (<Code>up-strong</Code> / <Code>up</Code> / <Code>flat</Code> / <Code>down</Code> / <Code>down-strong</Code>).</li>
 		<li><Code>isStandalone</Code> — full border + card bg + bottom margin (use when tile lives in a page-grid <Code>Column</Code> outside any terminal grid / pane).</li>
 		<li><Code>idText</Code> — small ID label in the head row (e.g. "KPI.01 · 30d").</li>

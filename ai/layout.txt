@@ -188,11 +188,11 @@ Content pieces (place inside the zones):
   AppHeader    <div class="pa-app-header"> — app identity. children, or config brand
                (logo + app.name) as a fallback when no children. `class`.
   NavMenu      <nav class="pa-navmenu"><ul> — a nav menu; owns responsive collapse.
-               Props: collapse ('menu' | 'sidebar'), moreLabel, collapseTarget,
-               collapseLabel, collapseIcon, class. Children are NavItems.
+               Props: collapse ('menu' | 'sidebar'), moreLabelText, collapseTarget,
+               collapseLabelText, collapseIconText, class. Children are NavItems.
   PageHeader   <div class="pa-page-header"> — page-title wrapper. children, class.
   NavItem      one menu item. href, hasDropdown, isActive, navPriority,
-               navCollapse="hide", navIcon; `dropdown` snippet -> NavDropdown.
+               navCollapse="hide", iconText; `dropdown` snippet -> NavDropdown.
   NavDropdown  <ul class="pa-navmenu__dropdown"> submenu. isLevel2, class.
   NavbarSearch search pill that opens the command palette. placeholder, size, onclick.
   NavbarSearchField inline LIVE search box (.pa-navbar-search--field) with its own
@@ -227,8 +227,8 @@ Navbar composing all three zones:
 <Navbar showBurger onburgerclick={toggleSidebar}>
   {#snippet start()}
     <AppHeader><h1>Admin Panel</h1></AppHeader>
-    <NavMenu collapse="sidebar" collapseLabel="Menu">
-      <NavItem href="/dashboard" isActive navIcon="D">Dashboard</NavItem>
+    <NavMenu collapse="sidebar" collapseLabelText="Menu">
+      <NavItem href="/dashboard" isActive iconText="D">Dashboard</NavItem>
       <NavItem href="/analytics">Analytics</NavItem>
     </NavMenu>
   {/snippet}
@@ -334,6 +334,7 @@ Props:
   href?: string                       Item URL (renders <a>)
   isActive?: boolean                  Is active/selected (default: false)
   icon?: Snippet                      Icon content
+  iconName?: string                   Icon name rendered through <Icon> (the icon snippet wins)
   labelText: string                   Label text (REQUIRED)
   hasSubmenu?: boolean                Has expandable submenu (default: false)
   submenu?: Snippet                   Submenu items

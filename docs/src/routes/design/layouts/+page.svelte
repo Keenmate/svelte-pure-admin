@@ -215,14 +215,14 @@
 				<Code>navPriority</Code>; <Code>navCollapse="hide"</Code> to just hide one). Touch
 				support for hover dropdowns is wired automatically.
 			</Paragraph>
-			<CodeBlock>{`<NavMenu collapse="menu" moreLabel="More">
+			<CodeBlock>{`<NavMenu collapse="menu" moreLabelText="More">
   <NavItem href="/" isActive navPriority={10}>Dashboard</NavItem>
   <NavItem href="/reports">Reports</NavItem>
   <NavItem href="/forms" navCollapse="hide">Forms</NavItem>
 </NavMenu>
 
 <!-- Or fold items into the sidebar instead of a "More" menu: -->
-<NavMenu collapse="sidebar" collapseLabel="Menu">…</NavMenu>`}</CodeBlock>
+<NavMenu collapse="sidebar" collapseLabelText="Menu">…</NavMenu>`}</CodeBlock>
 
 			<Heading level={4} class="mb-2 mt-4">Navbar Fit: priority-driven header degradation (rc12–rc14)</Heading>
 			<Paragraph>

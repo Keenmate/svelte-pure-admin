@@ -43,11 +43,11 @@
 			<Form>
 				<FormGroup>
 					<FormLabel>Full name</FormLabel>
-					<Input id="rf-name" name="name" placeholder="Jane Doe" required />
+					<Input id="rf-name" name="name" placeholder="Jane Doe" isRequired />
 				</FormGroup>
 				<FormGroup>
 					<FormLabel>Email</FormLabel>
-					<Input id="rf-email" type="email" name="email" placeholder="jane@acme.com" required />
+					<Input id="rf-email" type="email" name="email" placeholder="jane@acme.com" isRequired />
 				</FormGroup>
 
 				<Breaker {mode} show="comfy wide">

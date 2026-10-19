@@ -20,7 +20,7 @@
 			</BasicList>
 
 			<Heading level={4} class="mt-8">Compact Spacing</Heading>
-			<BasicList spacing="compact">
+			<BasicList density="compact">
 				<li>Reduced vertical spacing</li>
 				<li>Perfect for dense content</li>
 				<li>Saves vertical space</li>
@@ -28,7 +28,7 @@
 			</BasicList>
 
 			<Heading level={4} class="mt-8">Spacious Layout</Heading>
-			<BasicList spacing="spacious">
+			<BasicList density="spacious">
 				<li>More breathing room between items</li>
 				<li>Better for longer content blocks</li>
 				<li>Improved readability</li>
@@ -76,7 +76,7 @@
 			</OrderedList>
 
 			<Heading level={4} class="mt-8">Roman Numerals</Heading>
-			<OrderedList style="roman">
+			<OrderedList type="roman">
 				<li>Executive summary</li>
 				<li>Market analysis</li>
 				<li>Financial projections</li>
@@ -84,7 +84,7 @@
 			</OrderedList>
 
 			<Heading level={4} class="mt-8">Alphabetical</Heading>
-			<OrderedList style="alpha">
+			<OrderedList type="alpha">
 				<li>Appendix A: Technical specifications</li>
 				<li>Appendix B: User testimonials</li>
 				<li>Appendix C: Pricing structure</li>
@@ -215,7 +215,7 @@
 	<Heading level={4}>Available Classes</Heading>
 
 	<Heading level={5} class="mt-4">Unordered Lists (ul)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-list-basic</Code> - Base unordered list</li>
 		<li><Code>pa-list-basic--compact</Code> - Reduced spacing</li>
 		<li><Code>pa-list-basic--spacious</Code> - Increased spacing</li>
@@ -230,20 +230,20 @@
 	</BasicList>
 
 	<Heading level={5} class="mt-4">Ordered Lists (ol)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-list-ordered</Code> - Base ordered list (numeric)</li>
 		<li><Code>pa-list-ordered--roman</Code> - Roman numerals (I, II, III)</li>
 		<li><Code>pa-list-ordered--alpha</Code> - Lowercase letters (a, b, c)</li>
 	</BasicList>
 
 	<Heading level={5} class="mt-4">Definition Lists (dl)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-list-definition</Code> - Standard definition list</li>
 		<li><Code>pa-list-definition--inline</Code> - Horizontal key-value pairs</li>
 	</BasicList>
 
 	<Heading level={5} class="mt-4">Complex Lists</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-list</Code> - Container for complex list items</li>
 		<li><Code>pa-list__item</Code> - Individual list item with avatar/content</li>
 		<li><Code>pa-list__avatar</Code> - Avatar/icon container</li>

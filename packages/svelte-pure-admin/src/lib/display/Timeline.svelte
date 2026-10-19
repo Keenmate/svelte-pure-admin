@@ -275,7 +275,7 @@
 				{/if}
 
 				{#if iconSnippet}
-					{#snippet iconTemplate()}
+					{#snippet icon()}
 						{@render iconSnippet(item)}
 					{/snippet}
 				{/if}

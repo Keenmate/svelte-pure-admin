@@ -280,7 +280,7 @@ Source: packages/svelte-pure-admin/src/lib/feedback/dialog-service.svelte.ts
              | 'warning' | 'info' | 'light' | 'dark';
     isOutline?: boolean;
     class?: string;
-    disabled?: boolean;
+    isDisabled?: boolean;
   }
 
   interface ConfirmDialogOptions extends BaseDialogOptions {

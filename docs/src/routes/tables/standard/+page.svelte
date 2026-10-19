@@ -635,12 +635,12 @@
 	{#if hasMoreProducts}
 		<LoadMore
 			justify="start"
-			text="Load more products"
-			count="showing {visibleCount} of {allProducts.length}"
-			shouldShowCount={true}
+			countText="showing {visibleCount} of {allProducts.length}"
 			isLoading={isLoadingProducts}
 			onclick={loadMoreProducts}
-		/>
+		>
+			Load more products
+		</LoadMore>
 	{/if}
 
 	<Heading level={4} class="mt-8">Table with Center Load More</Heading>
@@ -681,10 +681,10 @@
 
 	<LoadMore
 		justify="center"
-		text="Load more customers"
-		count="3 of 1,247"
-		shouldShowCount={true}
-	/>
+		countText="3 of 1,247"
+	>
+		Load more customers
+	</LoadMore>
 
 	<Heading level={4} class="mt-8">Table with Right Load More (Loading State)</Heading>
 	<TableContainer>
@@ -1305,7 +1305,7 @@
 			<div class="pa-pager__container">
 				<span class="pa-pager__text">Showing 1-10 of 156</span>
 				<div class="pa-pager__controls">
-					<Button variant="secondary" size="sm" disabled>‹</Button>
+					<Button variant="secondary" size="sm" isDisabled>‹</Button>
 					<Button variant="secondary" size="sm">›</Button>
 				</div>
 			</div>
@@ -1375,7 +1375,7 @@
 <Grid>
 	<Column md="50">
 		<Card titleText="Customer Information">
-			<Fields isHorizontal>
+			<Fields layout="horizontal">
 				<Field labelText="Name" valueText="John Smith" />
 				<Field labelText="Email" valueText="john.smith@example.com" />
 				<Field labelText="Phone" valueText="+1 (555) 123-4567" />
@@ -1385,7 +1385,7 @@
 	</Column>
 	<Column md="50">
 		<Card titleText="Delivery Details">
-			<Fields isHorizontal>
+			<Fields layout="horizontal">
 				<Field labelText="Address" valueText="123 Main Street, Apt 4B" />
 				<Field labelText="City" valueText="New York, NY 10001" />
 				<Field labelText="Delivery Method" valueText="Express Shipping" />
@@ -1594,7 +1594,7 @@
 <!-- CSS Classes Reference -->
 <Card titleText="CSS Classes Reference" class="mt-8">
 	<Heading level={4}>Tables</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-table-container</Code> - Scrollable table wrapper with border</li>
 		<li><Code>pa-table-container--panel</Code> - Card-like containment with shadow and margin</li>
 		<li><Code>pa-table-container__header</Code> - Header row for panel tables</li>
@@ -1613,7 +1613,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Pager</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-pager</Code> - Pagination container (default: centered)</li>
 		<li><Code>pa-pager--start</Code> - Start-aligned</li>
 		<li><Code>pa-pager--center</Code> - Center-aligned</li>
@@ -1626,7 +1626,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Load More</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-load-more</Code> - Load more container (default: centered)</li>
 		<li><Code>pa-load-more--start</Code> - Start-aligned</li>
 		<li><Code>pa-load-more--center</Code> - Center-aligned</li>
@@ -1639,7 +1639,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Table Card</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-table-card</Code> - Card container for tables</li>
 		<li><Code>pa-table-card--plain</Code> - Removes card styling (no border, shadow, background)</li>
 		<li><Code>pa-table-card--primary</Code>, <Code>--success</Code>, <Code>--warning</Code>, <Code>--danger</Code> - Semantic color variants</li>

@@ -6,29 +6,25 @@
 	 * Container for multiple Field components with layout modifiers.
 	 */
 
+	type FieldsLayout = 'horizontal' | 'table' | 'inline' | 'row' | 'linear' | 'chips';
+	type FieldsDensity = 'compact' | 'relaxed';
+
 	interface Props {
 		/** Number of grid columns (2, 3, or 4) */
 		cols?: 2 | 3 | 4;
-		/** Label left, value right (side-by-side) */
-		isHorizontal?: boolean;
-		/** Consistent label widths like a key-value table */
-		isTable?: boolean;
+		/**
+		 * Display layout (one of): horizontal = label left / value right, table = aligned
+		 * key-value widths, inline = fields flow on one line, row = equal-width auto columns,
+		 * linear = ultra-clean side-by-side, chips = inline pairs with pill values.
+		 * Absent = default stacked label-over-value.
+		 */
+		layout?: FieldsLayout;
 		/** Bottom border separator between fields */
 		isBordered?: boolean;
 		/** Alternating background rows */
 		isStriped?: boolean;
-		/** Tighter spacing */
-		isCompact?: boolean;
-		/** Larger gaps between fields */
-		isRelaxed?: boolean;
-		/** Fields flow on one line */
-		isInline?: boolean;
-		/** Equal-width auto columns */
-		isRow?: boolean;
-		/** Ultra-clean side-by-side layout, weight + color contrast only */
-		isLinear?: boolean;
-		/** Notion-style inline flowing pairs with pill/chip values */
-		isChips?: boolean;
+		/** Spacing density: compact = tighter, relaxed = larger gaps. Absent = default. */
+		density?: FieldsDensity;
 		/** Subtle background panel */
 		isFilled?: boolean;
 		/** Theme color for left border (1-9) */
@@ -45,16 +41,10 @@
 
 	let {
 		cols,
-		isHorizontal = false,
-		isTable = false,
+		layout,
 		isBordered = false,
 		isStriped = false,
-		isCompact = false,
-		isRelaxed = false,
-		isInline = false,
-		isRow = false,
-		isLinear = false,
-		isChips = false,
+		density,
 		isFilled = false,
 		themeColor,
 		hasBorder = true,
@@ -70,22 +60,16 @@
 		// Grid columns
 		if (cols) base.push(`pa-fields--cols-${cols}`);
 
-		// Layout modifiers
-		if (isHorizontal) base.push('pa-fields--horizontal');
-		if (isTable) base.push('pa-fields--table');
-		if (isInline) base.push('pa-fields--inline');
-		if (isRow) base.push('pa-fields--row');
-		if (isLinear) base.push('pa-fields--linear');
-		if (isChips) base.push('pa-fields--chips');
+		// Layout (one of)
+		if (layout) base.push(`pa-fields--${layout}`);
 
 		// Visual modifiers
 		if (isBordered) base.push('pa-fields--bordered');
 		if (isStriped) base.push('pa-fields--striped');
 		if (isFilled) base.push('pa-fields--filled');
 
-		// Spacing modifiers
-		if (isCompact) base.push('pa-fields--compact');
-		if (isRelaxed) base.push('pa-fields--relaxed');
+		// Spacing density
+		if (density) base.push(`pa-fields--${density}`);
 
 		// Color variant
 		if (themeColor) base.push(`pa-fields--color-${themeColor}`);

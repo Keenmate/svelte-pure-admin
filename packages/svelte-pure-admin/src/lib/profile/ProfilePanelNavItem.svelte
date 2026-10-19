@@ -5,12 +5,15 @@
 	 *
 	 * Helper component for rendering nav items in ProfilePanel with proper BEM classes.
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	interface Props {
 		/** Link URL */
 		href?: string;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Content children */
 		children?: import('svelte').Snippet;
 		/** Click handler */
@@ -22,6 +25,7 @@
 	let {
 		href,
 		icon,
+		iconName,
 		children,
 		onclick,
 		class: className = ''
@@ -40,8 +44,8 @@
 		class={classes()}
 		{onclick}
 	>
-		{#if icon}
-			<span class="pa-profile-panel__nav-icon">{@render icon()}</span>
+		{#if icon || iconName}
+			<span class="pa-profile-panel__nav-icon">{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}</span>
 		{/if}
 		{@render children?.()}
 	</a>

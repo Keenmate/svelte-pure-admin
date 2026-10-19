@@ -3,6 +3,7 @@
 	 * Pure Admin CompositeBadge Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/badges.html
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import type { BadgeVariant, CompositeButtonVariant } from './badge-types';
 
@@ -17,6 +18,8 @@
 		iconVariant?: BadgeVariant;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Label text */
 		labelText: string;
 		/** Button/count text */
@@ -37,6 +40,7 @@
 		buttonVariant,
 		iconVariant,
 		icon,
+		iconName,
 		labelText,
 		buttonText,
 		isInteractive = false,
@@ -57,9 +61,9 @@
 </script>
 
 <div class={classes()}>
-	{#if icon}
+	{#if icon || iconName}
 		<span class="pa-composite-badge__icon">
-			{@render icon()}
+			{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 		</span>
 	{/if}
 	{#if onlabelclick}

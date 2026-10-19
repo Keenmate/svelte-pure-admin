@@ -209,7 +209,7 @@
 
 <Card class="mt-xl" titleText="Component Reference">
 	<Heading level={4}>KpiEditorial props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
@@ -218,7 +218,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiEditorialTile props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>labelText</Code> — single-line label. Use the <Code>label</Code> snippet for multi-line (<Code>{'<br>'}</Code>).</li>
 		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — headline number (e.g. <Code>$</Code> / <Code>871</Code> / <Code>K</Code>).</li>
 		<li><Code>deltaText</Code> + <Code>deltaVariant</Code> — Δ text and sentiment colour.</li>
@@ -229,7 +229,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Delta sentiment variants</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> — ordinary movement / no change.</li>
 		<li><Code>up-strong</Code> / <Code>down-strong</Code> — outlier positive / negative (deeper colours).</li>
 	</BasicList>

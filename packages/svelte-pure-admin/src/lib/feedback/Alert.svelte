@@ -3,6 +3,7 @@
 	 * Pure Admin Alert Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/alerts.html
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import { _ } from '../i18n';
 	import type { ThemeColor } from '../types';
@@ -45,6 +46,8 @@
 		class?: string;
 		/** Icon snippet (when provided, content is wrapped in pa-alert__content) */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Children (alert content) */
 		children?: import('svelte').Snippet;
 		/** List snippet for alert lists */
@@ -67,6 +70,7 @@
 		heading,
 		class: className = '',
 		icon,
+		iconName,
 		children,
 		list,
 		actions,
@@ -130,13 +134,13 @@
 
 {#if visible}
 	<div class={classes()} role="alert">
-		{#if icon}
+		{#if icon || iconName}
 			<span class="pa-alert__icon">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
 		{/if}
 
-		{#if icon}
+		{#if icon || iconName}
 			<!-- Only wrap in __content when there's an icon to flow around (the icon
 			     is one flex item, __content the flex:1 sibling). WITHOUT an icon,
 			     structural children (__heading / __list / __actions / <p>) go DIRECT

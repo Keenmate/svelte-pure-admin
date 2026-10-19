@@ -247,7 +247,7 @@
 
 <Card class="mt-xl" titleText="Component Reference">
 	<Heading level={4}>KpiGaugeList props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via the <Code>footer</Code> snippet.</li>
@@ -256,7 +256,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiGauge props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>variant</Code> — sentiment colour: <Code>positive</Code> / <Code>warning</Code> / <Code>negative</Code> / <Code>neutral</Code>.</li>
 		<li><Code>labelText</Code> — uppercase mono label.</li>
 		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — focal value cell.</li>

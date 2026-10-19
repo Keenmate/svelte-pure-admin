@@ -13,6 +13,7 @@
 	 * registry defensively (mirroring core's object shape) so it also works on a
 	 * page that loads no core JS at all.
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import { onMount, tick } from 'svelte';
 	import type { ThemeColor } from '../types';
@@ -34,7 +35,7 @@
 		/** Menu placement */
 		placement?: 'bottom-end' | 'top-end';
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Click handler for the main button */
 		onclick?: (event: MouseEvent) => void;
 		/** Native tooltip (`title`) on the main button */
@@ -47,6 +48,8 @@
 		class?: string;
 		/** Main button icon snippet (renders in pa-btn__icon) */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Main button content */
 		children?: import('svelte').Snippet;
 		/** Toggle button icon (defaults to chevron-down) */
@@ -62,13 +65,14 @@
 		isOutline = false,
 		isOpen = $bindable(false),
 		placement = 'bottom-end',
-		disabled = false,
+		isDisabled = false,
 		onclick,
 		titleText,
 		ariaLabel,
 		toggleAriaLabel,
 		class: className = '',
 		icon,
+		iconName,
 		children,
 		toggleIcon,
 		menu
@@ -273,13 +277,13 @@
 	class={classes()}
 	data-placement={placement !== 'bottom-end' ? placement : undefined}
 >
-	<button type="button" class={btnClasses()} {onclick} {disabled} title={titleText} aria-label={ariaLabel}>
-		{#if icon}
-			<span class="pa-btn__icon">{@render icon()}</span>
+	<button type="button" class={btnClasses()} {onclick} disabled={isDisabled} title={titleText} aria-label={ariaLabel}>
+		{#if icon || iconName}
+			<span class="pa-btn__icon">{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}</span>
 		{/if}
 		{@render children?.()}
 	</button>
-	<button type="button" class={toggleClasses()} onclick={handleToggle} {disabled} aria-label={toggleAriaLabel}>
+	<button type="button" class={toggleClasses()} onclick={handleToggle} disabled={isDisabled} aria-label={toggleAriaLabel}>
 		{#if toggleIcon}
 			{@render toggleIcon()}
 		{:else}

@@ -4,6 +4,7 @@
 	 * Based on @keenmate/pure-admin-core snippets/profile.html
 	 * Renders a favorite item in the profile panel favorites tab
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import { _ } from '../i18n';
 
@@ -12,6 +13,8 @@
 		href?: string;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Label text */
 		labelText: string;
 		/** Show remove button */
@@ -27,6 +30,7 @@
 	let {
 		href,
 		icon,
+		iconName,
 		labelText,
 		removable = true,
 		onclick,
@@ -59,8 +63,8 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class={classes()} data-href={href} onclick={handleClick}>
-		{#if icon}
-			<span class="pa-profile-panel__favorite-icon">{@render icon()}</span>
+		{#if icon || iconName}
+			<span class="pa-profile-panel__favorite-icon">{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}</span>
 		{/if}
 		<span class="pa-profile-panel__favorite-label">{labelText}</span>
 		{#if removable}

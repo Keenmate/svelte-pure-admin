@@ -9,8 +9,8 @@
 	interface Props {
 		/** Group title text (simple mode) */
 		titleText?: string;
-		/** Complex title content (snippet) */
-		titleSnippet?: import('svelte').Snippet;
+		/** Rich title content (snippet) — overrides titleText */
+		title?: import('svelte').Snippet;
 		/** Additional CSS classes */
 		class?: string;
 		/** Fields content */
@@ -19,7 +19,7 @@
 
 	let {
 		titleText,
-		titleSnippet,
+		title,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -32,14 +32,14 @@
 	});
 
 	// Determine if we have a title
-	const hasTitle = $derived(titleText || titleSnippet);
+	const hasTitle = $derived(titleText || title);
 </script>
 
 <div class={classes()}>
 	{#if hasTitle}
 		<h3 class="pa-field-group__title">
-			{#if titleSnippet}
-				{@render titleSnippet()}
+			{#if title}
+				{@render title()}
 			{:else if titleText}
 				{titleText}
 			{/if}

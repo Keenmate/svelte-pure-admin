@@ -52,6 +52,14 @@
 		controls?: import('svelte').Snippet;
 		/** Custom info snippet */
 		info?: import('svelte').Snippet;
+		/** Rich First-button content — overrides firstText */
+		first?: import('svelte').Snippet;
+		/** Rich Previous-button content — overrides previousText */
+		previous?: import('svelte').Snippet;
+		/** Rich Next-button content — overrides nextText */
+		next?: import('svelte').Snippet;
+		/** Rich Last-button content — overrides lastText */
+		last?: import('svelte').Snippet;
 	}
 
 	let {
@@ -75,7 +83,11 @@
 		lastText,
 		class: className = '',
 		controls,
-		info
+		info,
+		first,
+		previous,
+		next,
+		last
 	}: Props = $props();
 
 	// Resolve labels: explicit prop wins, else i18n
@@ -139,18 +151,18 @@
 			<div class="pa-pager__controls">
 				{#if onfirst}
 					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onfirst} disabled={disablePrevious}>
-						{resolvedFirst}
+						{#if first}{@render first()}{:else}{resolvedFirst}{/if}
 					</button>
 				{/if}
 				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onprevious} disabled={disablePrevious}>
-					{resolvedPrevious}
+					{#if previous}{@render previous()}{:else}{resolvedPrevious}{/if}
 				</button>
 				<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onnext} disabled={disableNext}>
-					{resolvedNext}
+					{#if next}{@render next()}{:else}{resolvedNext}{/if}
 				</button>
 				{#if onlast}
 					<button class="pa-btn pa-btn--sm pa-btn--secondary" onclick={onlast} disabled={disableNext}>
-						{resolvedLast}
+						{#if last}{@render last()}{:else}{resolvedLast}{/if}
 					</button>
 				{/if}
 			</div>

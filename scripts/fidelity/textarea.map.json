@@ -1,5 +1,5 @@
 {
-  "//": "Capability manifest for <Textarea> (the .pa-textarea control) — svelte-pure-admin. Textarea.svelte is a bare <textarea class=\"pa-textarea {size} {color} {class}\">{value}</textarea>. Size + themeColor are the only class axes (core has NO textarea validation-state border — svelte's `state` prop drives aria-invalid only, no class, so it is NOT mapped). value + placeholder + name + id + disabled + readonly + required are native attrs/props. `rows` is NOT mapped (fixed to no always-on default; see the oracle note).",
+  "//": "Capability manifest for <Textarea> (the .pa-textarea control) — svelte-pure-admin. Textarea.svelte is a bare <textarea class=\"pa-textarea {size} {color} {class}\">{value}</textarea>. Size + themeColor are the only class axes (core has NO textarea validation-state border — svelte's `state` prop drives aria-invalid only, no class, so it is NOT mapped). value + placeholder + name + id + isDisabled + isReadonly + isRequired emit native attrs. `rows` is NOT mapped (fixed to no always-on default; see the oracle note).",
   "component": "textarea",
   "features": {
     "size":        { "prop": "size",        "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
@@ -8,9 +8,9 @@
     "placeholder": { "prop": "placeholder", "kind": "string" },
     "name":        { "prop": "name",        "kind": "string" },
     "id":          { "prop": "id",          "kind": "string" },
-    "disabled":    { "prop": "disabled",    "kind": "bool" },
-    "readonly":    { "prop": "readonly",    "kind": "bool" },
-    "required":    { "prop": "required",    "kind": "bool" },
+    "isDisabled":    { "prop": "isDisabled",    "kind": "bool" },
+    "isReadonly":    { "prop": "isReadonly",    "kind": "bool" },
+    "isRequired":    { "prop": "isRequired",    "kind": "bool" },
     "extraClass":  { "prop": "class",       "kind": "string" }
   }
 }

@@ -3,6 +3,7 @@
 	 * Pure Admin Badge Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/badges.html
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import type { BaseBadgeProps } from './badge-types';
 	import type { ThemeColor } from '../types';
@@ -12,6 +13,8 @@
 		themeColor?: ThemeColor;
 		/** Icon snippet */
 		icon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `icon` snippet wins when both are set. */
+		iconName?: string;
 		/** Children content */
 		children?: import('svelte').Snippet;
 	}
@@ -25,6 +28,7 @@
 		class: className = '',
 		onclick,
 		icon,
+		iconName,
 		children
 	}: Props = $props();
 
@@ -53,18 +57,18 @@
 		role="button"
 		tabindex="0"
 	>
-		{#if icon}
+		{#if icon || iconName}
 			<span class="pa-badge__icon">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
 		{/if}
 		{@render children?.()}
 	</span>
 {:else}
 	<span class={classes()}>
-		{#if icon}
+		{#if icon || iconName}
 			<span class="pa-badge__icon">
-				{@render icon()}
+				{#if icon}{@render icon()}{:else if iconName}<Icon name={iconName} />{/if}
 			</span>
 		{/if}
 		{@render children?.()}

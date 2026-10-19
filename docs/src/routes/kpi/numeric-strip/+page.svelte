@@ -443,7 +443,7 @@
 <!-- Component Reference -->
 <Card class="mt-xl" titleText="Component Reference">
 	<Heading level={4}>KpiStrip props</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>titleText</Code> — card title in the header.</li>
 		<li><Code>isLive</Code> — show the LIVE pill with animated green dot.</li>
 		<li><Code>footerText</Code> — footer caption (plain string). Override via <Code>footer</Code> snippet.</li>
@@ -456,7 +456,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiStripRow props — cells</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>metricText</Code> — metric label.</li>
 		<li><Code>valueText</Code> / <Code>unitText</Code> / <Code>prefixText</Code> — focal "now" cell (e.g. <Code>$</Code> / <Code>862</Code> / <Code>K</Code>).</li>
 		<li><Code>previousValueText</Code> — previous-period value.</li>
@@ -466,7 +466,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">KpiStripRow props — popover</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>detailTitleText</Code> — popover title. Setting this enables the popover.</li>
 		<li><Code>targetText</Code> — target value shown only in the popover.</li>
 		<li><Code>deltaAbsoluteText</Code> — absolute delta value shown only in the popover.</li>
@@ -476,7 +476,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Delta sentiment variants</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>positive</Code> / <Code>negative</Code> / <Code>neutral</Code> — ordinary movement / no change.</li>
 		<li><Code>up-strong</Code> / <Code>down-strong</Code> — outlier positive / negative (deeper colours).</li>
 	</BasicList>

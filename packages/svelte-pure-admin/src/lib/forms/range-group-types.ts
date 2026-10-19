@@ -4,15 +4,17 @@
  * a component ↔ component circular dependency).
  */
 
-/** Handle shape modifier (cosmetic, per row). */
-export type RangeHandleShape = 'rect' | 'bar' | 'arrow' | 'needle';
+/** Handle type — the predefined thumb design (cosmetic, per row). */
+export type RangeHandleType = 'rect' | 'bar' | 'arrow' | 'needle';
 
 /** One dimension in the range group. Mirrors the `data-*` config on `.pa-range`. */
 export interface RangeGroupRow {
 	/** Identity key — the row's entry key in the emitted `values` payload. */
 	key: string;
-	/** Visible label (row head + summary segment). */
-	label: string;
+	/** Visible label (summary segment + row head unless rowLabelText overrides it). */
+	labelText: string;
+	/** Row-head label override (defaults to labelText). */
+	rowLabelText?: string;
 	/** Lower bound (required). */
 	min: number;
 	/** Upper bound (required). */
@@ -34,17 +36,17 @@ export interface RangeGroupRow {
 	/** String after the formatted number (e.g. ` km`). */
 	suffix?: string;
 	/** Group the integer part with thousands separators. */
-	thousands?: boolean;
+	hasThousandsSeparator?: boolean;
 	/** Major tick interval (value units). */
 	ticks?: number;
 	/** Minor tick interval (value units). */
 	ticksMinor?: number;
 	/** Print major values under the ticks. */
-	tickLabels?: boolean;
+	hasTickLabels?: boolean;
 	/** Thumbs settle on the nearest tick instead of the step grid. */
-	snapTicks?: boolean;
-	/** Handle shape modifier (default: round). */
-	handleShape?: RangeHandleShape;
+	shouldSnapToTicks?: boolean;
+	/** Handle type (default: round). */
+	handleType?: RangeHandleType;
 	/** Initial row-value / summary text before the JS computes it. */
 	outputText?: string;
 }

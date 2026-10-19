@@ -172,11 +172,11 @@
 			<SearchResults results={cards} variant="cards" />
 			<LoadMore
 				isLoading={loading}
-				text={cards.length >= CARD_TOTAL ? 'All results shown' : 'Load more results'}
-				count="(showing {cards.length} of {CARD_TOTAL})"
-				shouldShowCount
+				countText="(showing {cards.length} of {CARD_TOTAL})"
 				onclick={loadMore}
-			/>
+			>
+				{cards.length >= CARD_TOTAL ? 'All results shown' : 'Load more results'}
+			</LoadMore>
 		</Card>
 	{:else}
 		<Callout variant="info">

@@ -3,6 +3,7 @@
 	 * Pure Admin Card Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/cards.html
 	 */
+	import Icon from '../icon/Icon.svelte';
 
 	import { onMount } from 'svelte';
 	import type { ThemeColor, TooltipPlacement, TooltipVariant } from '../types';
@@ -108,6 +109,8 @@
 		header?: import('svelte').Snippet;
 		/** Title icon snippet (renders before title text) */
 		titleIcon?: import('svelte').Snippet;
+		/** Icon name rendered through <Icon> (icon providers resolve it, e.g. "fas fa-home"). The `titleIcon` snippet wins when both are set. */
+		titleIconName?: string;
 		/** Header actions snippet (buttons, controls in header toolbar area) */
 		headerActions?: import('svelte').Snippet;
 		/**
@@ -172,6 +175,7 @@
 		style,
 		header,
 		titleIcon,
+		titleIconName,
 		headerActions,
 		headerActionsCollapsed,
 		tabs,
@@ -319,7 +323,7 @@
 	});
 
 	// Determine if we should show header
-	const hasHeader = $derived(header || titleText || title || titleIcon || descriptionText || description || subtitleText || subtitle || headerActions || headerActionsCollapsed || tabs);
+	const hasHeader = $derived(header || titleText || title || titleIcon || titleIconName || descriptionText || description || subtitleText || subtitle || headerActions || headerActionsCollapsed || tabs);
 	// Determine if we should show footer
 	const hasFooter = $derived(footer || footerActions);
 
@@ -338,9 +342,9 @@
 				     .pa-card__description is a real BEM element (not a bare <p>). -->
 				{#if title || titleText}
 					<div class="pa-card__title">
-						{#if titleIcon}
+						{#if titleIcon || titleIconName}
 							<span class="pa-card__title-icon">
-								{@render titleIcon()}
+								{#if titleIcon}{@render titleIcon()}{:else if titleIconName}<Icon name={titleIconName} />{/if}
 							</span>
 						{/if}
 						<h3

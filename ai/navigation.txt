@@ -28,7 +28,7 @@ The core tab component. Renders a pa-tabs div around tab items.
 import { Tabs, TabItem, TabsContent, TabPanel } from '@keenmate/svelte-pure-admin';
 
 Props:
-  style?: 'underline' | 'pills' | 'boxed' | 'vertical'   (default: 'underline')
+  type?: 'underline' | 'pills' | 'boxed' | 'vertical'    (default: 'underline') — the predefined tab design
   size?: 'sm' | 'lg'
   justify?: 'center' | 'stretch'
   overflow?: 'nowrap' | 'scrollable' | 'collapse'
@@ -78,6 +78,7 @@ Props:
   height?: '1x' | '2x' | ... | '10x'   (fixed height)
   class?: string
   icon?: Snippet             (icon rendered before children text)
+  iconName?: string          (icon name rendered through <Icon>; the icon snippet wins)
   children?: Snippet
   onclick?: (event: MouseEvent) => void
   ...restProps               (extends HTMLButtonAttributes)
@@ -115,14 +116,14 @@ TAB STYLE VARIANTS
 ------------------
 Pills style:
 
-<Tabs style="pills">
+<Tabs type="pills">
   <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
 
 Boxed style:
 
-<Tabs style="boxed">
+<Tabs type="boxed">
   <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
@@ -217,7 +218,7 @@ Complete vertical tabs example:
 </script>
 
 <TabsVerticalLayout isBordered={true}>
-  <Tabs style="vertical">
+  <Tabs type="vertical">
     <TabItem isActive={activeTab === 'general'} onclick={() => activeTab = 'general'}>
       General
     </TabItem>
@@ -243,7 +244,7 @@ when tabs overflow the container and disappear at scroll edges. Scrolls 200px
 per click. Listens to scroll and resize events.
 
 Props:
-  style?: 'pills' | 'boxed'
+  type?: 'pills' | 'boxed'
   size?: 'sm' | 'lg'
   class?: string
   children?: Snippet         (TabItem components)
@@ -267,7 +268,7 @@ Scrollable tabs example:
 
 Scrollable pills:
 
-<TabsScrollable style="pills">
+<TabsScrollable type="pills">
   <TabItem isActive={true}>Dashboard</TabItem>
   <TabItem>Analytics</TabItem>
   <TabItem>Reports</TabItem>

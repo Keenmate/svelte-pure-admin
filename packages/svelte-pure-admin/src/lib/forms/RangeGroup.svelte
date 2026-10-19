@@ -2,7 +2,7 @@
 	// Re-exported so existing `import { RangeGroupRow } from '.../RangeGroup.svelte'`
 	// keeps working; the canonical definitions live in range-group-types.ts.
 	export type {
-		RangeHandleShape,
+		RangeHandleType,
 		RangeGroupRow,
 		RangeGroupSingleValue,
 		RangeGroupRangeValue,
@@ -72,6 +72,12 @@
 		ariaLabel?: string;
 		/** Inline style on the `__panel` (where per-instance `--pa-range-*` overrides belong). */
 		panelStyle?: string;
+		/** Reset button label (default: i18n "Reset"). */
+		resetText?: string;
+		/** Apply button label (default: i18n "Apply"). */
+		applyText?: string;
+		/** Render the Reset / Apply footer (default: true). */
+		hasActions?: boolean;
 		/** Additional CSS classes on the group root. */
 		class?: string;
 	}
@@ -89,6 +95,9 @@
 		debounce = 0,
 		ariaLabel = 'Numeric filters',
 		panelStyle,
+		resetText,
+		applyText,
+		hasActions = true,
 		class: className = ''
 	}: Props = $props();
 
@@ -180,6 +189,9 @@
 		rows={seededRows}
 		{ariaLabel}
 		{panelStyle}
+		{resetText}
+		{applyText}
+		{hasActions}
 		class={className}
 		onchange={handleChange}
 		onapply={handleApply}

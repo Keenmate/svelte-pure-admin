@@ -15,7 +15,7 @@
 		/** Value text (simple mode) */
 		valueText?: string | number;
 		/** Full width in grid layouts (spans entire row) */
-		full?: boolean;
+		isFull?: boolean;
 		/** Copy mode: 'btn' (always visible), 'click' (value clickable), 'hover' (button on hover) */
 		copyMode?: 'btn' | 'click' | 'hover';
 		/** Override what gets copied (defaults to value prop) */
@@ -32,18 +32,16 @@
 		valueVariant?: 'success' | 'warning' | 'danger' | 'info';
 		/** Additional CSS classes */
 		class?: string;
-		/** Complex label content (snippet) */
-		labelSnippet?: import('svelte').Snippet;
-		/** Complex value content (snippet) */
-		valueSnippet?: import('svelte').Snippet;
-		/** Alias for valueSnippet - main content */
+		/** Rich label content (snippet) — overrides labelText */
+		label?: import('svelte').Snippet;
+		/** Rich value content — overrides valueText */
 		children?: import('svelte').Snippet;
 	}
 
 	let {
 		labelText,
 		valueText,
-		full = false,
+		isFull = false,
 		copyMode,
 		copyValue,
 		copyValueCallback,
@@ -52,8 +50,7 @@
 		oncopy,
 		valueVariant,
 		class: className = '',
-		labelSnippet,
-		valueSnippet,
+		label,
 		children
 	}: Props = $props();
 
@@ -73,7 +70,7 @@
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-field'];
-		if (full) base.push('pa-field--full');
+		if (isFull) base.push('pa-field--full');
 		// Only add copy classes if there's something to copy
 		if (copyMode && canCopy) {
 			if (copyMode === 'btn') base.push('pa-field--copy-btn');
@@ -109,7 +106,7 @@
 	);
 
 	// Determine which value content to render
-	const hasValueContent = $derived(valueSnippet || children || valueText !== undefined);
+	const hasValueContent = $derived(children || valueText !== undefined);
 
 	// Get the text to copy
 	function getTextToCopy(): string {
@@ -150,9 +147,9 @@
 </script>
 
 <div class={classes()} style={copyVarStyle}>
-	{#if labelSnippet}
+	{#if label}
 		<span class="pa-field__label">
-			{@render labelSnippet()}
+			{@render label()}
 		</span>
 	{:else if labelText}
 		<span class="pa-field__label">{labelText}</span>
@@ -165,9 +162,7 @@
 			class={valueClasses()}
 			onclick={copyMode === 'click' && canCopy ? handleValueClick : undefined}
 		>
-			{#if valueSnippet}
-				{@render valueSnippet()}
-			{:else if children}
+			{#if children}
 				{@render children()}
 			{:else if valueText !== undefined}
 				{valueText}

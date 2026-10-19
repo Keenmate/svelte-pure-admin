@@ -3,7 +3,7 @@
   "component": "filter-card",
   "features": {
     "loading":             { "prop": "isLoading",                 "kind": "bool" },
-    "disabled":            { "prop": "isDisabled",                "kind": "bool" },
+    "isDisabled":            { "prop": "isDisabled",                "kind": "bool" },
     "expanded":            { "prop": "isExpanded",                "kind": "bool" },
     "showToggle":          { "prop": "hasToggle",                 "kind": "bool" },
     "showClear":           { "prop": "hasClear",                  "kind": "bool" },

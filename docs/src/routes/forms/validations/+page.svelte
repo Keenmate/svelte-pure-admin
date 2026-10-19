@@ -131,21 +131,21 @@
 			<Column size="100" md="50">
 				<FormGroup validation="error">
 					<FormLabel>Email Address</FormLabel>
-					<Input type="email" value="invalid-email" validation="error" required />
+					<Input type="email" value="invalid-email" validation="error" isRequired />
 					<FormHelp variant="error">Please enter a valid email address</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
 				<FormGroup validation="error">
 					<FormLabel>Password</FormLabel>
-					<Input type="password" value="123" validation="error" required />
+					<Input type="password" value="123" validation="error" isRequired />
 					<FormHelp variant="error">Password must be at least 8 characters</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
 				<FormGroup validation="success">
 					<FormLabel>Username</FormLabel>
-					<Input type="text" value="johndoe" validation="success" required />
+					<Input type="text" value="johndoe" validation="success" isRequired />
 					<FormHelp variant="success">Username is available</FormHelp>
 				</FormGroup>
 			</Column>
@@ -182,7 +182,7 @@
 			<Column size="100" md="50">
 				<FormGroup validation="error">
 					<FormLabel>First Name</FormLabel>
-					<Input type="text" placeholder="Enter first name" validation="error" required />
+					<Input type="text" placeholder="Enter first name" validation="error" isRequired />
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
@@ -194,19 +194,19 @@
 			<Column size="100" md="50">
 				<FormGroup validation="error">
 					<FormLabel>Email</FormLabel>
-					<Input type="email" value="not-an-email" validation="error" required />
+					<Input type="email" value="not-an-email" validation="error" isRequired />
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
 				<FormGroup validation="error">
 					<FormLabel>Password</FormLabel>
-					<Input type="password" value="password" validation="error" required />
+					<Input type="password" value="password" validation="error" isRequired />
 				</FormGroup>
 			</Column>
 			<Column size="100">
 				<FormGroup validation="error">
 					<Checkbox id="terms">
-						{#snippet labelSnippet()}I accept the terms and conditions <Text variant="danger">*</Text>{/snippet}
+						{#snippet label()}I accept the terms and conditions <Text variant="danger">*</Text>{/snippet}
 					</Checkbox>
 				</FormGroup>
 			</Column>
@@ -234,7 +234,7 @@
 			<Column size="100" md="50">
 				<FormGroup validation="error">
 					<FormLabel for="card-number">Card Number</FormLabel>
-					<Input type="text" id="card-number" value="1234-5678-XXXX" validation="error" required />
+					<Input type="text" id="card-number" value="1234-5678-XXXX" validation="error" isRequired />
 					<FormHelp variant="error">Invalid card number format. Please use 16 digits.</FormHelp>
 				</FormGroup>
 			</Column>
@@ -248,7 +248,7 @@
 			<Column size="100" md="25">
 				<FormGroup validation="error">
 					<FormLabel for="cvv">CVV</FormLabel>
-					<Input type="text" id="cvv" value="12" validation="error" required />
+					<Input type="text" id="cvv" value="12" validation="error" isRequired />
 					<FormHelp variant="error">Must be 3 or 4 digits</FormHelp>
 				</FormGroup>
 			</Column>
@@ -561,7 +561,7 @@
 			<Column size="100" md="50">
 				<FormGroup validation="error">
 					<FormLabel>Display Name</FormLabel>
-					<Input type="text" placeholder="Enter display name" validation="error" required />
+					<Input type="text" placeholder="Enter display name" validation="error" isRequired />
 					<FormHelp variant="error">Display name is required</FormHelp>
 				</FormGroup>
 			</Column>
@@ -575,7 +575,7 @@
 		</Grid>
 		<FormActions>
 			<Button variant="secondary">Back</Button>
-			<Button variant="primary" disabled>Next Step</Button>
+			<Button variant="primary" isDisabled>Next Step</Button>
 		</FormActions>
 	</Form>
 </Card>
@@ -583,21 +583,21 @@
 <!-- CSS Classes Reference -->
 <Card titleText="CSS Classes Reference">
 	<Heading level={4}>Form Group States</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-form-group--success</Code> - Success state (green)</li>
 		<li><Code>pa-form-group--warning</Code> - Warning state (yellow/orange)</li>
 		<li><Code>pa-form-group--error</Code> - Error state (red)</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Input States</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-input--success</Code> - Success border on input</li>
 		<li><Code>pa-input--warning</Code> - Warning border on input</li>
 		<li><Code>pa-input--error</Code> - Error border on input</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Help/Message Text</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-form-help</Code> - Base help text styling</li>
 		<li><Code>pa-form-help--success</Code> - Green help text</li>
 		<li><Code>pa-form-help--warning</Code> - Yellow/orange help text</li>
@@ -605,7 +605,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Alert Variants (for Summary Blocks)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-alert pa-alert--danger</Code> - Error summary block</li>
 		<li><Code>pa-alert pa-alert--warning</Code> - Warning summary block</li>
 		<li><Code>pa-alert pa-alert--success</Code> - Success message block</li>
@@ -613,7 +613,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Text Utility Classes</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>text-danger</Code> - Red text color</li>
 		<li><Code>text-warning</Code> - Yellow/orange text color</li>
 		<li><Code>text-success</Code> - Green text color</li>

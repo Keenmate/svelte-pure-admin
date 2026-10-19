@@ -19,13 +19,13 @@
 		<Column size="100" md="1-3">
 			<FormGroup>
 				<FormLabel>Disabled</FormLabel>
-				<Input placeholder="Disabled" disabled />
+				<Input placeholder="Disabled" isDisabled />
 			</FormGroup>
 		</Column>
 		<Column size="100" md="1-3">
 			<FormGroup>
 				<FormLabel>Readonly</FormLabel>
-				<Input value="Read only value" readonly />
+				<Input value="Read only value" isReadonly />
 			</FormGroup>
 		</Column>
 
@@ -309,7 +309,7 @@
 		<Column size="100" md="1-3">
 			<FormGroup>
 				<FormLabel>Disabled</FormLabel>
-				<Select disabled>
+				<Select isDisabled>
 					<option>Disabled</option>
 				</Select>
 			</FormGroup>
@@ -384,7 +384,7 @@
 		<Column size="100" md="50">
 			<FormGroup>
 				<FormLabel>Disabled</FormLabel>
-				<Textarea placeholder="Disabled" disabled />
+				<Textarea placeholder="Disabled" isDisabled />
 			</FormGroup>
 		</Column>
 
@@ -430,9 +430,9 @@
 			<FormGroup>
 				<FormLabel>Checkboxes</FormLabel>
 				<CheckboxGroup>
-					<Checkbox id="input-check1" checked labelText="Option 1 (checked)" />
+					<Checkbox id="input-check1" isChecked labelText="Option 1 (checked)" />
 					<Checkbox id="input-check2" labelText="Option 2" />
-					<Checkbox id="input-check3" disabled labelText="Option 3 (disabled)" />
+					<Checkbox id="input-check3" isDisabled labelText="Option 3 (disabled)" />
 				</CheckboxGroup>
 			</FormGroup>
 		</Column>
@@ -444,7 +444,7 @@
 				<RadioGroup>
 					<Radio name="radio-demo" value="a" labelText="Option A (selected)" />
 					<Radio name="radio-demo" value="b" labelText="Option B" />
-					<Radio name="radio-demo" value="c" disabled labelText="Option C (disabled)" />
+					<Radio name="radio-demo" value="c" isDisabled labelText="Option C (disabled)" />
 				</RadioGroup>
 			</FormGroup>
 		</Column>
@@ -454,11 +454,11 @@
 			<FormGroup>
 				<FormLabel>Checkbox Sizes</FormLabel>
 				<CheckboxGroup>
-					<Checkbox id="size-check-xs" size="xs" checked labelText="Extra Small" />
-					<Checkbox id="size-check-sm" size="sm" checked labelText="Small" />
-					<Checkbox id="size-check-default" checked labelText="Default" />
-					<Checkbox id="size-check-lg" size="lg" checked labelText="Large" />
-					<Checkbox id="size-check-xl" size="xl" checked labelText="Extra Large" />
+					<Checkbox id="size-check-xs" size="xs" isChecked labelText="Extra Small" />
+					<Checkbox id="size-check-sm" size="sm" isChecked labelText="Small" />
+					<Checkbox id="size-check-default" isChecked labelText="Default" />
+					<Checkbox id="size-check-lg" size="lg" isChecked labelText="Large" />
+					<Checkbox id="size-check-xl" size="xl" isChecked labelText="Extra Large" />
 				</CheckboxGroup>
 			</FormGroup>
 		</Column>
@@ -608,16 +608,16 @@
 			<Heading level={4} class="mb-2">Checkboxes & Radios</Heading>
 			<CodeBlock>{`<!-- Checkbox group -->
 <CheckboxGroup>
-  <Checkbox labelText="Option 1" checked />
+  <Checkbox labelText="Option 1" isChecked />
   <Checkbox labelText="Option 2" />
-  <Checkbox labelText="Disabled" disabled />
+  <Checkbox labelText="Disabled" isDisabled />
 </CheckboxGroup>
 
 <!-- Radio group -->
 <RadioGroup name="demo">
   <Radio labelText="Option A" checked />
   <Radio labelText="Option B" />
-  <Radio labelText="Disabled" disabled />
+  <Radio labelText="Disabled" isDisabled />
 </RadioGroup>
 
 <!-- Sizes: xs, sm, (default), lg, xl -->
@@ -630,7 +630,7 @@
 <!-- CSS Classes Reference -->
 <Card titleText="CSS Classes Reference">
 	<Heading level={4}>Text Inputs</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-input</Code> - Base input styling</li>
 		<li><Code>pa-input--xs</Code> - Extra small input</li>
 		<li><Code>pa-input--sm</Code> - Small input</li>
@@ -639,7 +639,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Select Dropdowns</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-select</Code> - Base select styling</li>
 		<li><Code>pa-select--xs</Code> - Extra small select</li>
 		<li><Code>pa-select--sm</Code> - Small select</li>
@@ -648,7 +648,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Textareas</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-textarea</Code> - Base textarea styling</li>
 		<li><Code>pa-textarea--xs</Code> - Extra small textarea</li>
 		<li><Code>pa-textarea--sm</Code> - Small textarea</li>
@@ -657,7 +657,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Input Groups</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-input-group</Code> - Container for input with addons</li>
 		<li><Code>pa-input-group__prepend</Code> - Addon before input</li>
 		<li><Code>pa-input-group__append</Code> - Addon after input</li>
@@ -669,7 +669,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Form Layout</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-form</Code> - Form container with label styling</li>
 		<li><Code>pa-form-group</Code> - Form field container with spacing</li>
 		<li><Code>pa-form-group--horizontal</Code> - Horizontal label/input layout</li>
@@ -677,28 +677,28 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Validation States (on form-group)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-form-group--success</Code> - Success state (green border)</li>
 		<li><Code>pa-form-group--warning</Code> - Warning state (yellow border)</li>
 		<li><Code>pa-form-group--error</Code> - Error state (red border)</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Validation States (on input)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-input--success</Code>, <Code>pa-select--success</Code>, <Code>pa-textarea--success</Code> - Success state</li>
 		<li><Code>pa-input--warning</Code>, <Code>pa-select--warning</Code>, <Code>pa-textarea--warning</Code> - Warning state</li>
 		<li><Code>pa-input--error</Code>, <Code>pa-select--error</Code>, <Code>pa-textarea--error</Code> - Error state</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Theme Color Variants (on input)</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-input--color-1</Code> through <Code>pa-input--color-9</Code> - Theme color slots</li>
 		<li><Code>pa-select--color-1</Code> through <Code>pa-select--color-9</Code> - Theme color slots</li>
 		<li><Code>pa-textarea--color-1</Code> through <Code>pa-textarea--color-9</Code> - Theme color slots</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Help Text</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-form-help</Code> - Help text below input</li>
 		<li><Code>pa-form-help--success</Code> - Success colored help text</li>
 		<li><Code>pa-form-help--warning</Code> - Warning colored help text</li>
@@ -707,7 +707,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Checkboxes</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-checkbox-group</Code> - Container for multiple checkboxes</li>
 		<li><Code>pa-checkbox</Code> - Checkbox wrapper (label element)</li>
 		<li><Code>pa-checkbox__box</Code> - Custom checkbox visual</li>
@@ -721,7 +721,7 @@
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Radio Buttons</Heading>
-	<BasicList spacing="compact">
+	<BasicList density="compact">
 		<li><Code>pa-radio-group</Code> - Container for multiple radios</li>
 		<li><Code>pa-radio</Code> - Radio button wrapper (label element)</li>
 		<li><Code>pa-radio__label</Code> - Radio label text</li>

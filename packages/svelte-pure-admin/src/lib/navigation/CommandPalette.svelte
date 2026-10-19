@@ -1054,7 +1054,7 @@
 				</div>
 			{:else if loading}
 				<div class="pa-command-palette__loader">
-					<div class="pa-spinner pa-spinner--xs pa-spinner--primary"></div>
+					<span class="pa-spinner pa-spinner--xs pa-spinner--primary"></span>
 					<span>{$_('pureAdmin.commandPalette.loading')}</span>
 				</div>
 			{:else if error}

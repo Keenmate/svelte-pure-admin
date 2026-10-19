@@ -42,7 +42,7 @@
 		<SheetParties>
 			<SheetParty label="Supplier" name="Twin Peaks Ltd." variant="boxed">
 				251 Fir Avenue<br />Twin Peaks, 98065
-				<Fields isHorizontal isCompact hasBorder={false} class="mt-2">
+				<Fields layout="horizontal" density="compact" hasBorder={false} class="mt-2">
 					<Field labelText="Reg. No." valueText="12345678" />
 					<Field labelText="VAT No." valueText="GB12345678" />
 				</Fields>

@@ -16,11 +16,11 @@
 
 	interface Props {
 		/** Checkbox checked state */
-		checked?: boolean;
+		isChecked?: boolean;
 		/** Indeterminate state (partial selection) */
 		isIndeterminate?: boolean;
 		/** Disabled state */
-		disabled?: boolean;
+		isDisabled?: boolean;
 		/** Use X mark instead of checkmark when checked */
 		isXMark?: boolean;
 		/** Checkbox size */
@@ -38,9 +38,9 @@
 	}
 
 	let {
-		checked = $bindable(false),
+		isChecked = $bindable(false),
 		isIndeterminate = false,
-		disabled = false,
+		isDisabled = false,
 		isXMark = false,
 		size,
 		id,
@@ -64,7 +64,7 @@
 		const base = ['pa-checkbox'];
 		if (size) base.push(`pa-checkbox--${size}`);
 		if (isXMark) base.push('pa-checkbox--x');
-		if (disabled) base.push('pa-checkbox--disabled');
+		if (isDisabled) base.push('pa-checkbox--disabled');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
@@ -83,11 +83,11 @@
 	<input
 		bind:this={inputElement}
 		type="checkbox"
-		bind:checked
+		bind:checked={isChecked}
 		{id}
 		{name}
 		{value}
-		{disabled}
+		disabled={isDisabled}
 		{onchange}
 	/>
 	<span class="pa-checkbox__box"></span>
