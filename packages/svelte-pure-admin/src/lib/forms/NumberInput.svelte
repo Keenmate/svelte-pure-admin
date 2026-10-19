@@ -15,7 +15,7 @@
 		/** Input size */
 		size?: InputSize;
 		/** Validation state - auto-derived from errors if not set */
-		state?: InputState;
+		validation?: InputState;
 		/** Error messages from validation library (string or array of strings) */
 		errors?: string | string[];
 		/** Whether field has been touched/interacted with (controls when errors are shown) */
@@ -57,7 +57,7 @@
 	let {
 		value = $bindable(null),
 		size,
-		state,
+		validation,
 		errors,
 		touched = true,
 		themeColor,
@@ -85,9 +85,9 @@
 		return errors.length > 0;
 	});
 
-	// Compute effective state: manual state takes precedence, otherwise derive from errors
+	// Compute effective state: manual validation takes precedence, otherwise derive from errors
 	const effectiveState = $derived(() => {
-		if (state) return state;
+		if (validation) return validation;
 		if (hasErrors() && touched) return 'error';
 		return undefined;
 	});

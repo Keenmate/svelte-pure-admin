@@ -566,7 +566,7 @@
 		messageText={`Remove ${removeName}?`}
 		icon="danger"
 		isCompact
-		position="bottom"
+		placement="bottom"
 		confirmText="Remove"
 		confirmVariant="danger"
 		onconfirm={confirmRemoveMember}
@@ -580,17 +580,17 @@
 <Card titleText="Text Truncation">
 	<Paragraph color="secondary" class="mb-1">Give the button a fixed width (<Code>.wr-*</Code>) and set <Code>shouldTruncateText</Code> to truncate long text with ellipsis</Paragraph>
 	<div class="component-showcase">
-		<Tooltip text="This is a very long button text that will be truncated with ellipsis" position="bottom" multiline>
+		<Tooltip text="This is a very long button text that will be truncated with ellipsis" placement="bottom" multiline>
 			<Button variant="secondary" class="wr-15" shouldTruncateText>
 				This is a very long button text that will be truncated with ellipsis
 			</Button>
 		</Tooltip>
-		<Tooltip text="Another long button" position="bottom">
+		<Tooltip text="Another long button" placement="bottom">
 			<Button variant="primary" class="wr-10" shouldTruncateText>
 				Another long button
 			</Button>
 		</Tooltip>
-		<Tooltip text="Short width truncation" position="bottom">
+		<Tooltip text="Short width truncation" placement="bottom">
 			<Button variant="success" class="wr-8" shouldTruncateText>
 				Short width truncation
 			</Button>
@@ -721,15 +721,15 @@
 
 			<Heading level={4}>Inline Start Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="start">
+				<Button variant="primary" class="wr-20" justify="start">
 					{#snippet icon()}✓{/snippet}
 					OK
 				</Button>
-				<Button variant="success" class="wr-20" align="start">
+				<Button variant="success" class="wr-20" justify="start">
 					{#snippet icon()}→{/snippet}
 					Continue
 				</Button>
-				<Button variant="secondary" class="wr-20" align="start">
+				<Button variant="secondary" class="wr-20" justify="start">
 					{#snippet icon()}×{/snippet}
 					Discard All Changes
 				</Button>
@@ -737,15 +737,15 @@
 
 			<Heading level={4} class="mt-6">Inline End Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="end" iconPosition="end">
+				<Button variant="primary" class="wr-20" justify="end" iconPosition="end">
 					{#snippet icon()}✓{/snippet}
 					OK
 				</Button>
-				<Button variant="success" class="wr-20" align="end" iconPosition="end">
+				<Button variant="success" class="wr-20" justify="end" iconPosition="end">
 					{#snippet icon()}→{/snippet}
 					Continue
 				</Button>
-				<Button variant="secondary" class="wr-20" align="end" iconPosition="end">
+				<Button variant="secondary" class="wr-20" justify="end" iconPosition="end">
 					{#snippet icon()}×{/snippet}
 					Discard All Changes
 				</Button>
@@ -753,25 +753,25 @@
 
 			<Heading level={4} class="mt-6">Center Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="center">
+				<Button variant="primary" class="wr-20" justify="center">
 					{#snippet icon()}✓{/snippet}
 					OK
 				</Button>
-				<Button variant="success" class="wr-20" align="center">Continue</Button>
-				<Button variant="secondary" class="wr-20" align="center">Discard All Changes</Button>
+				<Button variant="success" class="wr-20" justify="center">Continue</Button>
+				<Button variant="secondary" class="wr-20" justify="center">Discard All Changes</Button>
 			</ButtonGroup>
 
 			<Heading level={4} class="mt-6">Justified</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="justify">
+				<Button variant="primary" class="wr-20" justify="between">
 					{#snippet icon()}✓{/snippet}
 					OK
 				</Button>
-				<Button variant="success" class="wr-20" align="justify">
+				<Button variant="success" class="wr-20" justify="between">
 					{#snippet icon()}→{/snippet}
 					Continue
 				</Button>
-				<Button variant="secondary" class="wr-20" align="justify">
+				<Button variant="secondary" class="wr-20" justify="between">
 					{#snippet icon()}×{/snippet}
 					Discard All Changes
 				</Button>
@@ -786,15 +786,15 @@
 
 			<Heading level={4}>Inline Start Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="start">
+				<Button variant="primary" class="wr-20" justify="start">
 					{#snippet icon()}<span class="pa-icon pa-icon--save" aria-hidden="true"></span>{/snippet}
 					Save
 				</Button>
-				<Button variant="success" class="wr-20" align="start">
+				<Button variant="success" class="wr-20" justify="start">
 					{#snippet icon()}<span class="pa-icon pa-icon--check" aria-hidden="true"></span>{/snippet}
 					Approve Request
 				</Button>
-				<Button variant="danger" class="wr-20" align="start">
+				<Button variant="danger" class="wr-20" justify="start">
 					{#snippet icon()}<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>{/snippet}
 					Delete Selected Items
 				</Button>
@@ -802,15 +802,15 @@
 
 			<Heading level={4} class="mt-6">Inline End Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="end" iconPosition="end">
+				<Button variant="primary" class="wr-20" justify="end" iconPosition="end">
 					{#snippet icon()}<span class="pa-icon pa-icon--save" aria-hidden="true"></span>{/snippet}
 					Save
 				</Button>
-				<Button variant="success" class="wr-20" align="end" iconPosition="end">
+				<Button variant="success" class="wr-20" justify="end" iconPosition="end">
 					{#snippet icon()}<i class="fa-solid fa-arrow-right"></i>{/snippet}
 					Approve Request
 				</Button>
-				<Button variant="secondary" class="wr-20" align="end" iconPosition="end">
+				<Button variant="secondary" class="wr-20" justify="end" iconPosition="end">
 					{#snippet icon()}<i class="fa-solid fa-gear"></i>{/snippet}
 					Delete Selected Items
 				</Button>
@@ -818,15 +818,15 @@
 
 			<Heading level={4} class="mt-6">Center Aligned</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="center">
+				<Button variant="primary" class="wr-20" justify="center">
 					{#snippet icon()}<i class="fa-solid fa-upload"></i>{/snippet}
 					Upload
 				</Button>
-				<Button variant="success" class="wr-20" align="center">
+				<Button variant="success" class="wr-20" justify="center">
 					{#snippet icon()}<span class="pa-icon pa-icon--add" aria-hidden="true"></span>{/snippet}
 					Add New Item
 				</Button>
-				<Button variant="info" class="wr-20" align="center">
+				<Button variant="info" class="wr-20" justify="center">
 					{#snippet icon()}<span class="pa-icon pa-icon--search" aria-hidden="true"></span>{/snippet}
 					Search Entire Database
 				</Button>
@@ -834,15 +834,15 @@
 
 			<Heading level={4} class="mt-6">Justified</Heading>
 			<ButtonGroup isVertical>
-				<Button variant="primary" class="wr-20" align="justify">
+				<Button variant="primary" class="wr-20" justify="between">
 					{#snippet icon()}<i class="fa-solid fa-user"></i>{/snippet}
 					Profile
 				</Button>
-				<Button variant="success" class="wr-20" align="justify">
+				<Button variant="success" class="wr-20" justify="between">
 					{#snippet icon()}<i class="fa-solid fa-envelope"></i>{/snippet}
 					Messages
 				</Button>
-				<Button variant="danger" class="wr-20" align="justify">
+				<Button variant="danger" class="wr-20" justify="between">
 					{#snippet icon()}<i class="fa-solid fa-right-from-bracket"></i>{/snippet}
 					Logout
 				</Button>
@@ -969,10 +969,10 @@
 
 	<Heading level={4} class="mt-4">Content Alignment</Heading>
 	<BasicList class="pa-list-basic--compact">
-		<li><Code>pa-btn--align-start</Code> - Inline-start align content (RTL: right)</li>
-		<li><Code>pa-btn--align-end</Code> - Inline-end align content (RTL: left)</li>
-		<li><Code>pa-btn--align-center</Code> - Center-align content (the default since core rc06; explicit)</li>
-		<li><Code>pa-btn--align-justify</Code> - Space-between content</li>
+		<li><Code>pa-btn--justify-start</Code> - Inline-start align content (RTL: right)</li>
+		<li><Code>pa-btn--justify-end</Code> - Inline-end align content (RTL: left)</li>
+		<li><Code>pa-btn--justify-center</Code> - Center-align content (the default since core rc06; explicit)</li>
+		<li><Code>pa-btn--justify-between</Code> - Space-between content</li>
 	</BasicList>
 
 	<Heading level={4} class="mt-4">Button Elements</Heading>

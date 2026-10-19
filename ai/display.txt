@@ -822,7 +822,7 @@ Pagination component for tables and lists.
 Props:
   currentPage?   number (1, bindable) - Current page
   totalPages?    number (1) - Total page count
-  align?         'start' | 'center' | 'end' (default: 'center')
+  justify?       'start' | 'center' | 'end' (default: 'center')
   showPageInput? boolean (true) - Show page number input
   showInfo?      boolean (true) - Show info text
   disablePrevious? boolean (false)
@@ -875,7 +875,7 @@ LOADMORE
 Load more button for infinite scroll/lazy loading.
 
 Props:
-  align?         'start' | 'center' | 'end' (default: 'center')
+  justify?       'start' | 'center' | 'end' (default: 'center')
   isLoading?     boolean (false)
   text?          string - Button text (default: i18n "Load More")
   count?         string - Count text (e.g. "25 of 250")

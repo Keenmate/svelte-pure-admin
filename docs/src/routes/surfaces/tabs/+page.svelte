@@ -254,7 +254,7 @@
 <Heading level={3} class="mt-4 mb-4">Wrap Long Labels</Heading>
 <Card titleText="Wrap Long Labels">
 	<Alert variant="info">
-		<strong>The problem:</strong> an irregular label set like <em>Orders / Invoices / Delivery sheets / Complaints and missed items</em> looks bad both ways — <Code>align="full"</Code> stretches the short tabs into dead space, and plain auto width leaves the long one huge and the edge ragged. Set <Code>isWrapLabels</Code> to let the long title wrap, and cap it with a <Code>maxwr-*</Code> utility (via <Code>class</Code>) to choose the wrap point. The row then keeps every tab as tall as the wrapped one — no zig-zag — via the flex row's default <Code>align-items: stretch</Code>.
+		<strong>The problem:</strong> an irregular label set like <em>Orders / Invoices / Delivery sheets / Complaints and missed items</em> looks bad both ways — <Code>justify="stretch"</Code> stretches the short tabs into dead space, and plain auto width leaves the long one huge and the edge ragged. Set <Code>isWrapLabels</Code> to let the long title wrap, and cap it with a <Code>maxwr-*</Code> utility (via <Code>class</Code>) to choose the wrap point. The row then keeps every tab as tall as the wrapped one — no zig-zag — via the flex row's default <Code>align-items: stretch</Code>.
 	</Alert>
 
 	<Heading level={4}>Default (auto width, no wrap) — ragged, long tab dominates</Heading>
@@ -342,7 +342,7 @@
 	</TabsContent>
 
 	<Alert variant="info" class="mt-4">
-		<strong>Note:</strong> when a tab is wider than its text (via <Code>minwr-*</Code> / <Code>wr-*</Code>), the label is <em>start-aligned</em> by default. Add the <Code>justify-content-center</Code> utility — the tab item is a flexbox — to center it (or <Code>justify-content-end</Code> to end-align). That utility ships in <Code>@keenmate/pure-css</Code>. It is <em>not</em> the same as <Code>align="centered"</Code> (<Code>pa-tabs--centered</Code>), which centers the whole tab group within the bar rather than the label inside each tab.
+		<strong>Note:</strong> when a tab is wider than its text (via <Code>minwr-*</Code> / <Code>wr-*</Code>), the label is <em>start-aligned</em> by default. Add the <Code>justify-content-center</Code> utility — the tab item is a flexbox — to center it (or <Code>justify-content-end</Code> to end-align). That utility ships in <Code>@keenmate/pure-css</Code>. It is <em>not</em> the same as <Code>justify="center"</Code> (<Code>pa-tabs--justify-center</Code>), which centers the whole tab group within the bar rather than the label inside each tab.
 	</Alert>
 </Card>
 
@@ -613,7 +613,7 @@
 
 <!-- Centered Tabs -->
 <Card titleText="Centered Tabs">
-	<Tabs align="centered">
+	<Tabs justify="center">
 		<TabItem isActive={centeredActive === 'center-tab-1'} onclick={() => (centeredActive = 'center-tab-1')}>
 			Features
 		</TabItem>
@@ -639,7 +639,7 @@
 
 <!-- Full Width Tabs -->
 <Card titleText="Full Width Tabs">
-	<Tabs align="full">
+	<Tabs justify="stretch">
 		<TabItem isActive={fullActive === 'full-tab-1'} onclick={() => (fullActive = 'full-tab-1')}>
 			{#snippet icon()}
 				<i class="fa-solid fa-mobile-screen"></i>
@@ -734,7 +734,7 @@
 	<Column size="100" md="1-2">
 		<Card titleText="Icon-Only Tabs - Vertical">
 			<TabsVerticalLayout>
-				<Tabs style="vertical" align="centered">
+				<Tabs style="vertical" justify="center">
 					<TabItem
 						isActive={iconVertActive === 'icon-vert-1'}
 						onclick={() => (iconVertActive = 'icon-vert-1')}

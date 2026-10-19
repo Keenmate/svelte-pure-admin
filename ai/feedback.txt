@@ -621,8 +621,8 @@ Hover-activated text tooltip using Floating UI for smart positioning.
 
 PROPS:
   text: string                                  -- Tooltip text (REQUIRED)
-  position?: 'top' | 'right' | 'bottom' | 'left'
-                                                -- Position (default: 'top')
+  placement?: 'top' | 'end' | 'bottom' | 'start'
+                                                -- Placement (default: 'top')
   variant?: 'primary' | 'success' | 'warning' | 'danger' | 'color-1' ... 'color-9'
                                                 -- Color variant
   multiline?: boolean                           -- 20rem width, left-aligned (default: false)
@@ -642,10 +642,10 @@ BASIC USAGE:
 
 POSITION VARIANTS:
 
-<Tooltip text="Top tooltip" position="top">Top</Tooltip>
-<Tooltip text="Right tooltip" position="right">Right</Tooltip>
-<Tooltip text="Bottom tooltip" position="bottom">Bottom</Tooltip>
-<Tooltip text="Left tooltip" position="left">Left</Tooltip>
+<Tooltip text="Top tooltip" placement="top">Top</Tooltip>
+<Tooltip text="End tooltip" placement="end">End</Tooltip>
+<Tooltip text="Bottom tooltip" placement="bottom">Bottom</Tooltip>
+<Tooltip text="Start tooltip" placement="start">Start</Tooltip>
 
 COLOR VARIANTS:
 
@@ -684,7 +684,7 @@ POPOVER PROPS:
   placement?: 'top' | 'right' | 'bottom' | 'left'
                                        -- Placement (default: 'top')
   size?: 'sm' | 'lg'                  -- Size variant
-  alignment?: 'center' | 'end'        -- Text alignment in body
+  textAlign?: 'center' | 'end'        -- Text alignment in body
   triggerText?: string                 -- Default trigger button text (default: '?')
   class?: string                      -- Additional CSS classes
   trigger?: Snippet                   -- Custom trigger element
@@ -734,7 +734,7 @@ SIZE VARIANTS:
 
 TEXT ALIGNMENT:
 
-<Popover titleText="Centered" alignment="center" placement="bottom">
+<Popover titleText="Centered" textAlign="center" placement="bottom">
   This text is centered within the popover body.
 </Popover>
 
@@ -749,8 +749,8 @@ delete confirmations and quick yes/no decisions.
 PROPS:
   show?: boolean (bindable)            -- Show/hide popconfirm (default: false)
   messageText: string                  -- Confirmation message (REQUIRED)
-  position?: 'top' | 'bottom' | 'left' | 'right'
-                                       -- Position (default: 'bottom')
+  placement?: 'top' | 'bottom' | 'start' | 'end'
+                                       -- Placement (default: 'bottom')
   icon?: 'danger' | 'warning' | 'info' -- Icon variant
   isCompact?: boolean                  -- Compact size (default: false)
   confirmText?: string                 -- Confirm button text (default: i18n)
@@ -1238,7 +1238,7 @@ EXAMPLE 5: TOOLTIP AND POPOVER ON TABLE ACTIONS
     <tr>
       <th>Name</th>
       <th>
-        <Tooltip text="The current status of each item" position="top">
+        <Tooltip text="The current status of each item" placement="top">
           Status
         </Tooltip>
       </th>
@@ -1250,7 +1250,7 @@ EXAMPLE 5: TOOLTIP AND POPOVER ON TABLE ACTIONS
       <tr>
         <td>{item.name}</td>
         <td>
-          <Tooltip text={item.statusDetails} position="right">
+          <Tooltip text={item.statusDetails} placement="right">
             <span class="pa-badge pa-badge--{item.statusColor}">{item.status}</span>
           </Tooltip>
         </td>

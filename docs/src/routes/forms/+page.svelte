@@ -564,7 +564,7 @@
 			<Column size="100" md="50">
 				<FormGroup isError>
 					<FormLabel for="error-input">Input with Error</FormLabel>
-					<Input id="error-input" state="error" placeholder="Invalid input" bind:value={errorInput} />
+					<Input id="error-input" validation="error" placeholder="Invalid input" bind:value={errorInput} />
 					<FormHelp variant="error">This field is required</FormHelp>
 				</FormGroup>
 			</Column>
@@ -572,7 +572,7 @@
 			<Column size="100" md="50">
 				<FormGroup isSuccess>
 					<FormLabel for="success-input">Input with Success</FormLabel>
-					<Input id="success-input" state="success" bind:value={successInput} />
+					<Input id="success-input" validation="success" bind:value={successInput} />
 					<FormHelp variant="success">Looks good!</FormHelp>
 				</FormGroup>
 			</Column>

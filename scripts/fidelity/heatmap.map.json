@@ -4,7 +4,7 @@
   "features": {
     "variant":    { "prop": "variant",   "kind": "enum", "values": ["success", "danger"] },
     "compact":    { "prop": "isCompact",  "kind": "bool" },
-    "columns":    { "prop": "cols",       "kind": "string", "nativeType": "number" },
+    "columns":    { "prop": "columns",     "kind": "string", "nativeType": "number" },
     "levels":     { "prop": "levels",     "kind": "string" },
     "extraClass": { "prop": "class",      "kind": "string" }
   }

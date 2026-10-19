@@ -383,14 +383,14 @@ const errors = $derived.by(() => {
 });`;
 
 	const codeByoTemplate = `<FormField labelText="Email" {errors} {touched}>
-  {#snippet children({ errors, touched, state })}
+  {#snippet children({ errors, touched, validation })}
     <Input
       type="email"
       bind:value={email}
       oninput={() => (touched = true)}
       {errors}
       {touched}
-      {state}
+      {validation}
     />
   {/snippet}
 </FormField>`;
@@ -454,7 +454,7 @@ password: z.string()
 
 <Callout variant="info" class="mb-4">
 	<strong>svelte-pure-admin's form components are validation-agnostic.</strong> They take plain data
-	props (<Code>errors</Code>, <Code>touched</Code>, <Code>state</Code>) and depend on
+	props (<Code>errors</Code>, <Code>touched</Code>, <Code>validation</Code>) and depend on
 	<strong>no</strong> validation library — there is no <Code>felte</Code> or <Code>zod</Code> in the
 	package. Bring whatever you like: a schema library, server-side errors, or a few lines of
 	hand-rolled logic.
@@ -836,7 +836,7 @@ password: z.string()
 <!-- Test 6: State Override -->
 <Card titleText="Test 6: Manual State Override">
 	<Paragraph class="mb-4">
-		The <Code>state</Code> prop takes precedence over auto-derived state from <Code>errors</Code>.
+		The <Code>validation</Code> prop takes precedence over the state auto-derived from <Code>errors</Code>.
 		This is useful when you need manual control.
 	</Paragraph>
 
@@ -847,10 +847,10 @@ password: z.string()
 				helpText="state='{test6ManualState}' overrides errors"
 				errors={['This error is ignored visually']}
 				touched={true}
-				state={test6ManualState}
+				validation={test6ManualState}
 			>
-				{#snippet children({ errors, touched, state })}
-					<Input bind:value={test6Value} {errors} {touched} {state} />
+				{#snippet children({ errors, touched, validation })}
+					<Input bind:value={test6Value} {errors} {touched} {validation} />
 				{/snippet}
 			</FormField>
 		</Column>
@@ -905,7 +905,7 @@ password: z.string()
 
 <Callout variant="success" class="mb-4">
 	Everything below uses <Strong>no validation library</Strong> — no Felte, no Zod. The form
-	components take plain <Code>errors</Code> / <Code>touched</Code> / <Code>state</Code> props, so a
+	components take plain <Code>errors</Code> / <Code>touched</Code> / <Code>validation</Code> props, so a
 	plain function and a little <Code>$state</Code> is all you need. Swap in your own rules, a
 	different schema library, or server-side errors exactly the same way.
 </Callout>
@@ -925,7 +925,7 @@ password: z.string()
 				errors={byoErrors}
 				touched={byoTouched}
 			>
-				{#snippet children({ errors, touched, state })}
+				{#snippet children({ errors, touched, validation })}
 					<Input
 						type="email"
 						placeholder="you@example.com"
@@ -933,7 +933,7 @@ password: z.string()
 						oninput={() => (byoTouched = true)}
 						{errors}
 						{touched}
-						{state}
+						{validation}
 					/>
 				{/snippet}
 			</FormField>
@@ -950,19 +950,19 @@ password: z.string()
 <Card titleText="Even lower level — FormGroup + FormHelp, no FormField">
 	<Paragraph class="mb-4">
 		You don't even need <Code>FormField</Code>. Drop to <Code>FormGroup</Code>,
-		<Code>FormHelp</Code> and <Code>Input</Code> and set the <Code>state</Code> and message
+		<Code>FormHelp</Code> and <Code>Input</Code> and set the <Code>validation</Code> and message
 		yourself. Type at least 8 characters to see it flip to success.
 	</Paragraph>
 
 	<Grid>
 		<Column size="100" md="50">
-			<FormGroup state={byoPwdState}>
+			<FormGroup validation={byoPwdState}>
 				<FormLabel>Password</FormLabel>
 				<Input
 					type="password"
 					placeholder="At least 8 characters"
 					bind:value={byoPwd}
-					state={byoPwdState}
+					validation={byoPwdState}
 					oninput={() => (byoPwdTouched = true)}
 					onblur={() => (byoPwdTouched = true)}
 				/>

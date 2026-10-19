@@ -15,7 +15,7 @@
 		/** Input size */
 		size?: InputSize;
 		/** Validation state */
-		state?: InputState;
+		validation?: InputState;
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
@@ -41,7 +41,7 @@
 	let {
 		files = $bindable(null),
 		size,
-		state,
+		validation,
 		themeColor,
 		disabled = false,
 		required = false,
@@ -60,7 +60,7 @@
 		// the base `.pa-input`. Only size / state / theme-colour modifiers are real.
 		const base = ['pa-input'];
 		if (size) base.push(`pa-input--${size}`);
-		if (state) base.push(`pa-input--${state}`);
+		if (validation) base.push(`pa-input--${validation}`);
 		if (themeColor) base.push(`pa-input--color-${themeColor}`);
 		if (className) base.push(className);
 		return base.join(' ');

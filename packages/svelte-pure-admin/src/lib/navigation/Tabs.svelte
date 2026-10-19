@@ -7,7 +7,7 @@
 
 	type TabsStyle = 'underline' | 'pills' | 'boxed' | 'vertical';
 	type TabsSize = 'sm' | 'lg';
-	type TabsAlign = 'centered' | 'full';
+	type TabsJustify = 'center' | 'stretch';
 	// NOTE: 'scrollable' is intentionally NOT here. The scrollable variant needs
 	// the `pa-tabs__scroll-container` + start/end `pa-tabs__scroll-btn` scaffold
 	// to actually scroll — emitting a bare `pa-tabs--scrollable` on a flat <Tabs>
@@ -20,7 +20,7 @@
 		/** Tab size */
 		size?: TabsSize;
 		/** Tab alignment */
-		align?: TabsAlign;
+		justify?: TabsJustify;
 		/** Overflow handling */
 		overflow?: TabsOverflow;
 		/** Border on top instead of bottom (useful for profile panel tabs) */
@@ -42,7 +42,7 @@
 	let {
 		style = 'underline',
 		size,
-		align,
+		justify,
 		overflow,
 		isBorderTop = false,
 		isWrapLabels = false,
@@ -63,7 +63,7 @@
 		if (size) base.push(`pa-tabs--${size}`);
 
 		// Alignment
-		if (align) base.push(`pa-tabs--${align}`);
+		if (justify) base.push(`pa-tabs--justify-${justify}`);
 
 		// Overflow
 		if (overflow) base.push(`pa-tabs--${overflow}`);

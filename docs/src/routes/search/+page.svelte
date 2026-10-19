@@ -145,7 +145,7 @@
 		<Card titleText="Compact" descriptionText="variant=&quot;compact&quot;" class="mb-4">
 			<SearchResults results={compact} variant="compact" />
 			<Pager
-				align="end"
+				justify="end"
 				currentPage={1}
 				totalPages={9}
 				showPageInput={false}

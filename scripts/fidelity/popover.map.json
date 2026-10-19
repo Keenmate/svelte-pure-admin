@@ -4,7 +4,7 @@
   "features": {
     "placement": { "prop": "placement",   "kind": "enum",   "values": ["top", "end", "bottom", "start"] },
     "size":      { "prop": "size",         "kind": "enum",   "values": ["sm", "lg"] },
-    "alignment": { "prop": "alignment",    "kind": "enum",   "values": ["center", "end"] },
+    "textAlign": { "prop": "textAlign",    "kind": "enum",   "values": ["center", "end"] },
     "triggerText": { "prop": "triggerText", "kind": "string" },
     "title":     { "prop": "titleText",    "kind": "string" },
     "content":   { "prop": "children",     "kind": "slot" }

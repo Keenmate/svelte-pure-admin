@@ -21,7 +21,7 @@
 		/** Multi-zone gauge (green/yellow/red bands) — overrides variant */
 		isZones?: boolean;
 		/** Override `--pa-gauge-size` (default `12rem`). Height auto-derives 2:1. Since core v2.7.0. */
-		gaugeSize?: string;
+		size?: string;
 		/** Additional CSS classes */
 		class?: string;
 		/** Children content (rendered inside the inner area — replaces `valueText` rendering only) */
@@ -36,13 +36,13 @@
 		maxText,
 		variant,
 		isZones = false,
-		gaugeSize,
+		size,
 		class: className = '',
 		children
 	}: Props = $props();
 
 	const styleAttr = $derived(
-		gaugeSize ? `--value: ${value}; --pa-gauge-size: ${gaugeSize}` : `--value: ${value}`
+		size ? `--value: ${value}; --pa-gauge-size: ${size}` : `--value: ${value}`
 	);
 
 	const classes = $derived(() => {

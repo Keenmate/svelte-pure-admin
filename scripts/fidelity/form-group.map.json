@@ -3,7 +3,7 @@
   "component": "form-group",
   "features": {
     "body":       { "prop": "children",     "kind": "slot" },
-    "state":      { "prop": "state",        "kind": "enum", "values": ["success", "warning", "error"] },
+    "validation": { "prop": "validation",     "kind": "enum", "values": ["success", "warning", "error"] },
     "required":   { "prop": "isRequired",   "kind": "bool" },
     "horizontal": { "prop": "isHorizontal", "kind": "bool" },
     "extraClass": { "prop": "class",        "kind": "string" }

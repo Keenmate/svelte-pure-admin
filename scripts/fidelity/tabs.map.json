@@ -4,7 +4,7 @@
   "features": {
     "style":      { "prop": "style",       "kind": "enum",   "values": ["pills", "boxed", "vertical"] },
     "size":       { "prop": "size",        "kind": "enum",   "values": ["sm", "lg"] },
-    "align":      { "prop": "align",       "kind": "enum",   "values": ["centered", "full"] },
+    "justify":    { "prop": "justify",     "kind": "enum",   "values": ["center", "stretch"] },
     "overflow":   { "prop": "overflow",    "kind": "enum",   "values": ["nowrap", "scrollable", "collapse"] },
     "borderTop":  { "prop": "isBorderTop", "kind": "bool" },
     "wrapLabels": { "prop": "isWrapLabels", "kind": "bool" },

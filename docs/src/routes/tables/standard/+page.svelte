@@ -56,7 +56,7 @@
 <Card titleText="Basic Table with Pagination">
 	<!-- Pager Above Table (Center) -->
 	<Pager
-		align="center"
+		justify="center"
 		currentPage={1}
 		totalPages={10}
 		showPageInput={true}
@@ -151,7 +151,7 @@
 
 	<!-- Pager Below Table (Right) -->
 	<Pager
-		align="end"
+		justify="end"
 		currentPage={1}
 		totalPages={10}
 		showPageInput={true}
@@ -634,7 +634,7 @@
 
 	{#if hasMoreProducts}
 		<LoadMore
-			align="start"
+			justify="start"
 			text="Load more products"
 			count="showing {visibleCount} of {allProducts.length}"
 			shouldShowCount={true}
@@ -680,7 +680,7 @@
 	</TableContainer>
 
 	<LoadMore
-		align="center"
+		justify="center"
 		text="Load more customers"
 		count="3 of 1,247"
 		shouldShowCount={true}
@@ -723,7 +723,7 @@
 	</TableContainer>
 
 	<LoadMore
-		align="end"
+		justify="end"
 		isLoading={true}
 	/>
 </Card>
@@ -733,22 +733,22 @@
 
 <Card titleText="Pager Positioning Examples">
 	<Heading level={4}>Left-aligned Pager</Heading>
-	<Pager align="start" currentPage={1} totalPages={10} showPageInput={true} />
+	<Pager justify="start" currentPage={1} totalPages={10} showPageInput={true} />
 
 	<Heading level={4} class="mt-6">Center-aligned Pager (Default)</Heading>
-	<Pager align="center" currentPage={5} totalPages={10} showPageInput={true} />
+	<Pager justify="center" currentPage={5} totalPages={10} showPageInput={true} />
 
 	<Heading level={4} class="mt-6">Right-aligned Pager</Heading>
-	<Pager align="end" currentPage={10} totalPages={10} showPageInput={true} />
+	<Pager justify="end" currentPage={10} totalPages={10} showPageInput={true} />
 </Card>
 
 <!-- Alternative Icon Sets -->
 <Card titleText="Alternative Pager Icon Sets">
 	<Heading level={4}>Double/Single Angles (Default)</Heading>
-	<Pager align="center" currentPage={1} totalPages={10} showPageInput={true} />
+	<Pager justify="center" currentPage={1} totalPages={10} showPageInput={true} />
 
 	<Heading level={4} class="mt-6">Triangular Arrows</Heading>
-	<Pager align="center" currentPage={1} totalPages={10} showPageInput={true}>
+	<Pager justify="center" currentPage={1} totalPages={10} showPageInput={true}>
 		{#snippet controls()}
 			<div class="pa-pager__controls">
 				<Button variant="secondary" size="sm">⏮</Button>
@@ -767,7 +767,7 @@
 	</Pager>
 
 	<Heading level={4} class="mt-6">Simple Arrows</Heading>
-	<Pager align="center" currentPage={1} totalPages={10} showPageInput={true}>
+	<Pager justify="center" currentPage={1} totalPages={10} showPageInput={true}>
 		{#snippet controls()}
 			<div class="pa-pager__controls">
 				<Button variant="secondary" size="sm">⇤</Button>
@@ -786,7 +786,7 @@
 	</Pager>
 
 	<Heading level={4} class="mt-6">Mathematical Double Arrows</Heading>
-	<Pager align="center" currentPage={1} totalPages={10} showPageInput={true}>
+	<Pager justify="center" currentPage={1} totalPages={10} showPageInput={true}>
 		{#snippet controls()}
 			<div class="pa-pager__controls">
 				<Button variant="secondary" size="sm">⇇</Button>

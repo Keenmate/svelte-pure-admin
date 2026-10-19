@@ -122,7 +122,7 @@
 	<Pager
 		bind:currentPage={basicPage}
 		totalPages={basicTotalPages}
-		align="center"
+		justify="center"
 		showPageInput={true}
 		onprevious={goBasicPrev}
 		onnext={goBasicNext}
@@ -143,7 +143,7 @@
 	<Pager
 		bind:currentPage={fullPage}
 		totalPages={fullTotalPages}
-		align="start"
+		justify="start"
 		showPageInput={true}
 		onfirst={goFullFirst}
 		onprevious={goFullPrev}
@@ -157,7 +157,7 @@
 	<Pager
 		bind:currentPage={infoPage}
 		totalPages={infoTotalPages}
-		align="end"
+		justify="end"
 		showPageInput={false}
 		showInfo={false}
 		infoText="Showing {infoFrom}-{infoTo} of {infoTotal}"
@@ -180,7 +180,7 @@
 	<Pager
 		bind:currentPage={tablePage}
 		totalPages={tableTotalPages}
-		align="end"
+		justify="end"
 		showPageInput={true}
 		onfirst={goTableFirst}
 		onprevious={goTablePrev}
@@ -221,7 +221,7 @@
 	<Pager
 		bind:currentPage={tablePage}
 		totalPages={tableTotalPages}
-		align="center"
+		justify="center"
 		showPageInput={true}
 		onprevious={goTablePrev}
 		onnext={goTableNext}
@@ -279,7 +279,7 @@
 	<Pager
 		currentPage={4}
 		totalPages={12}
-		align="center"
+		justify="center"
 	>
 		{#snippet controls()}
 			<div class="pa-pager__controls">
@@ -308,15 +308,15 @@
 	<Grid>
 		<Column md="1-3">
 			<Heading level={4}>Start</Heading>
-			<LoadMore align="start" text="Load more" />
+			<LoadMore justify="start" text="Load more" />
 		</Column>
 		<Column md="1-3">
 			<Heading level={4}>Center (Default)</Heading>
-			<LoadMore align="center" text="Load more" />
+			<LoadMore justify="center" text="Load more" />
 		</Column>
 		<Column md="1-3">
 			<Heading level={4}>End</Heading>
-			<LoadMore align="end" text="Load more" />
+			<LoadMore justify="end" text="Load more" />
 		</Column>
 	</Grid>
 </Card>
@@ -372,7 +372,7 @@
 
 	{#if hasMoreProducts}
 		<LoadMore
-			align="center"
+			justify="center"
 			text="Load more products"
 			count="showing {visibleCount} of {allProducts.length}"
 			shouldShowCount={true}
@@ -415,7 +415,7 @@
 						<td>Total number of pages</td>
 					</tr>
 					<tr>
-						<td><Code>align</Code></td>
+						<td><Code>justify</Code></td>
 						<td><Code>'start' | 'center' | 'end'</Code></td>
 						<td><Code>'center'</Code></td>
 						<td>Pager alignment (RTL-aware)</td>
@@ -518,7 +518,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><Code>align</Code></td>
+						<td><Code>justify</Code></td>
 						<td><Code>'start' | 'center' | 'end'</Code></td>
 						<td><Code>'center'</Code></td>
 						<td>Button alignment (RTL-aware)</td>

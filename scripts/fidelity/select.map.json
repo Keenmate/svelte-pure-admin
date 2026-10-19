@@ -3,7 +3,7 @@
   "component": "select",
   "features": {
     "size":        { "prop": "size",       "kind": "enum", "values": ["xs", "sm", "lg", "xl"] },
-    "state":       { "prop": "state",      "kind": "enum", "values": ["success", "warning", "error"] },
+    "validation":  { "prop": "validation",   "kind": "enum", "values": ["success", "warning", "error"] },
     "themeColor":  { "prop": "themeColor", "kind": "enum", "values": ["1","2","3","4","5","6","7","8","9"] },
     "name":        { "prop": "name",       "kind": "string" },
     "id":          { "prop": "id",         "kind": "string" },

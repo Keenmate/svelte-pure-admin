@@ -427,7 +427,7 @@ Form with validation errors (using errors/touched props):
 </script>
 
 <Form>
-  <FormGroup state={touchedFields.email && errors.email.length ? 'error' : undefined} isRequired>
+  <FormGroup validation={touchedFields.email && errors.email.length ? 'error' : undefined} isRequired>
     <FormLabel>Email</FormLabel>
     <Input
       bind:value={email}
@@ -438,7 +438,7 @@ Form with validation errors (using errors/touched props):
     />
   </FormGroup>
 
-  <FormGroup state={touchedFields.password && errors.password.length ? 'error' : undefined} isRequired>
+  <FormGroup validation={touchedFields.password && errors.password.length ? 'error' : undefined} isRequired>
     <FormLabel>Password</FormLabel>
     <Input
       bind:value={password}
@@ -763,7 +763,7 @@ Sparkline:
 
 Heatmap:
 
-<Heatmap variant="success" cols={7}>
+<Heatmap variant="success" columns={7}>
   {#each contributions as level}
     <HeatmapCell {level} />
   {/each}

@@ -8,10 +8,10 @@
 
 	interface Props {
 		/** Validation state (success, warning, error) */
-		state?: ValidationState;
-		/** Has validation error (legacy, prefer state prop) */
+		validation?: ValidationState;
+		/** Has validation error (legacy, prefer validation prop) */
 		isError?: boolean;
-		/** Has validation success (legacy, prefer state prop) */
+		/** Has validation success (legacy, prefer validation prop) */
 		isSuccess?: boolean;
 		/** Horizontal layout (label left, input right) */
 		isHorizontal?: boolean;
@@ -32,7 +32,7 @@
 	}
 
 	let {
-		state,
+		validation,
 		isError = false,
 		isSuccess = false,
 		isHorizontal = false,
@@ -48,9 +48,9 @@
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-form-group'];
-		// New state prop takes precedence
-		if (state) {
-			base.push(`pa-form-group--${state}`);
+		// New validation prop takes precedence
+		if (validation) {
+			base.push(`pa-form-group--${validation}`);
 		} else {
 			// Legacy boolean props
 			if (isSuccess) base.push('pa-form-group--success');

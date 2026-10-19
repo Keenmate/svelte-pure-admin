@@ -265,7 +265,7 @@
 
 	<div style="overflow-x: auto">
 		<Heading level={4} class="mb-sm">Contribution Activity (12 weeks)</Heading>
-		<Heatmap cols={12}>
+		<Heatmap columns={12}>
 			<!-- Week 1 -->
 			<HeatmapCell level={0} /><HeatmapCell level={1} /><HeatmapCell level={2} /><HeatmapCell level={0} /><HeatmapCell level={3} /><HeatmapCell level={1} /><HeatmapCell level={0} />
 			<!-- Week 2 -->
@@ -295,7 +295,7 @@
 
 		<!-- Success color variant -->
 		<Heading level={4} class="mt-xl mb-sm">Color Variant (Success)</Heading>
-		<Heatmap variant="success" cols={7}>
+		<Heatmap variant="success" columns={7}>
 			<HeatmapCell level={0} /><HeatmapCell level={1} /><HeatmapCell level={2} /><HeatmapCell level={3} /><HeatmapCell level={4} /><HeatmapCell level={2} /><HeatmapCell level={0} />
 			<HeatmapCell level={1} /><HeatmapCell level={3} /><HeatmapCell level={4} /><HeatmapCell level={2} /><HeatmapCell level={1} /><HeatmapCell level={3} /><HeatmapCell level={4} />
 			<HeatmapCell level={2} /><HeatmapCell level={0} /><HeatmapCell level={1} /><HeatmapCell level={4} /><HeatmapCell level={3} /><HeatmapCell level={2} /><HeatmapCell level={1} />

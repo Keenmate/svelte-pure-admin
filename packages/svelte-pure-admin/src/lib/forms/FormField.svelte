@@ -26,13 +26,13 @@
 		/** Field has a value (for showing success state) */
 		hasValue?: boolean;
 		/** Manual state override (takes precedence over errors) */
-		state?: InputState;
+		validation?: InputState;
 		/** Additional class for FormGroup */
 		class?: string;
 		/** Horizontal layout */
 		horizontal?: boolean;
 		/** The input control */
-		children: Snippet<[{ errors: string[]; touched: boolean; state?: InputState }]>;
+		children: Snippet<[{ errors: string[]; touched: boolean; validation?: InputState }]>;
 	}
 
 	let {
@@ -42,7 +42,7 @@
 		errors = null,
 		touched = false,
 		hasValue = false,
-		state,
+		validation,
 		class: className = '',
 		horizontal = false,
 		children
@@ -52,13 +52,13 @@
 	const normalizedErrors = $derived(errors ?? []);
 	const hasErrors = $derived(normalizedErrors.length > 0);
 
-	// When state is manually set, use it; otherwise derive from errors/touched
-	const showError = $derived(!state && touched && hasErrors);
-	const showSuccess = $derived(!state && touched && !hasErrors && hasValue && !!successMessage);
+	// When validation is manually set, use it; otherwise derive from errors/touched
+	const showError = $derived(!validation && touched && hasErrors);
+	const showSuccess = $derived(!validation && touched && !hasErrors && hasValue && !!successMessage);
 
-	// Help variant follows manual state or derived state
+	// Help variant follows manual validation or derived state
 	const helpVariant = $derived<InputState | undefined>(
-		state ?? (showError ? 'error' : showSuccess ? 'success' : undefined)
+		validation ?? (showError ? 'error' : showSuccess ? 'success' : undefined)
 	);
 </script>
 
@@ -69,7 +69,7 @@
 
 	<!-- Mark the control `required` inside the snippet — core's
 	     `.pa-form-group:has(:required) > label::after` draws the asterisk. -->
-	{@render children({ errors: normalizedErrors, touched, state })}
+	{@render children({ errors: normalizedErrors, touched, validation })}
 
 	{#if showError}
 		<FormHelp variant="error">{normalizedErrors[0]}</FormHelp>

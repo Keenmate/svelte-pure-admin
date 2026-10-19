@@ -20,8 +20,8 @@
 		show?: boolean;
 		/** Message text to display */
 		messageText: string;
-		/** Position relative to trigger */
-		position?: Position;
+		/** Placement relative to trigger */
+		placement?: Position;
 		/** Icon variant */
 		icon?: IconVariant;
 		/** Compact size */
@@ -45,7 +45,7 @@
 	let {
 		show = $bindable(false),
 		messageText,
-		position = 'bottom',
+		placement = 'bottom',
 		icon,
 		isCompact = false,
 		confirmText,
@@ -62,11 +62,11 @@
 	const resolvedCancelText = $derived(cancelText ?? $_('pureAdmin.popconfirm.cancel'));
 
 	let popconfirmEl: HTMLDivElement;
-	// Seed from the `position` prop so the server-rendered class matches the
+	// Seed from the `placement` prop so the server-rendered class matches the
 	// requested side. The $effect below keeps it in sync for runtime flip()
 	// updates, but effects don't run under SSR — without this seed every
-	// server render emitted pa-popconfirm--bottom regardless of `position`.
-	let actualPosition = $state<Position>(position);
+	// server render emitted pa-popconfirm--bottom regardless of `placement`.
+	let actualPosition = $state<Position>(placement);
 	let isPositioned = $state(false);
 	let isFixedPositioning = $state(false);
 
@@ -78,9 +78,9 @@
 		return pos;
 	}
 
-	// Sync actualPosition with position prop (before Floating UI adjusts it)
+	// Sync actualPosition with placement prop (before Floating UI adjusts it)
 	$effect(() => {
-		actualPosition = position;
+		actualPosition = placement;
 	});
 
 	// Build class string
@@ -121,15 +121,15 @@
 			let top: number;
 			let left: number;
 
-			if (position === 'top') {
+			if (placement === 'top') {
 				top = rect.top - popRect.height - gap;
 				left = rect.left + rect.width / 2 - popRect.width / 2;
 				actualPosition = 'top';
-			} else if (position === 'start') {
+			} else if (placement === 'start') {
 				top = rect.top + rect.height / 2 - popRect.height / 2;
 				left = rect.left - popRect.width - gap;
 				actualPosition = 'start';
-			} else if (position === 'end') {
+			} else if (placement === 'end') {
 				top = rect.top + rect.height / 2 - popRect.height / 2;
 				left = rect.right + gap;
 				actualPosition = 'end';
@@ -172,7 +172,7 @@
 
 		try {
 			const { x, y, placement: resultPlacement } = await computePosition(trigger, popconfirmEl, {
-				placement: toFloatingPlacement(position),
+				placement: toFloatingPlacement(placement),
 				middleware: [
 					offset(8),
 					flip(),

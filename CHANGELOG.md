@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING — layout/placement props are named after the CSS they drive (keen parity)
+
+A prop that drives a CSS property takes that property's name (`justify` = `justify-content`,
+`align` = `align-items`, `textAlign` = `text-align`); a prop that doesn't, doesn't borrow a CSS
+name. Requires core with the renamed `pa-btn--justify-*` / `pa-tabs--justify-*` classes. No aliases.
+
+- `align` → `justify`: `Pager`, `LoadMore`, `Button` (value `justify` → `between`; emits
+  `pa-btn--justify-{start,end,center,between}`), `Tabs` (values `centered` / `full` → `center` /
+  `stretch`; emits `pa-tabs--justify-center` / `--justify-stretch`). `Grid` already used
+  `justify` + `align`.
+- `textAlign`: `Paragraph` and `Heading` `horizontalAlignment` → `textAlign`; `Popover`
+  `alignment` → `textAlign`.
+- `Timeline` `alignment` → `side` (it puts every item on one side; not alignment).
+- `placement` for floating things: `Tooltip` and `Popconfirm` `position` → `placement`; `Card`
+  `titleTooltipPosition` / `descriptionTooltipPosition` → `titleTooltipPlacement` /
+  `descriptionTooltipPlacement`; type `TooltipPosition` → `TooltipPlacement`.
+- Form controls `state` → `validation`: `Input`, `Select`, `Textarea`, `DateInput`, `FileInput`,
+  `NumberInput`, `RangeInput`, `FormGroup`, `FormField` (its children snippet now receives
+  `{ errors, touched, validation }`).
+- `Gauge` `gaugeSize` → `size`; `Heatmap` `cols` → `columns`; `Splitter` `splitterId` → `id`
+  (now also stamped as the root element's `id`, as keen does, besides `data-pa-splitter-id`).
+
 ### BREAKING — prop names follow the shared keen/svelte convention
 
 One nomenclature across both wrappers (core `fidelity/NAMING.md`, checked by

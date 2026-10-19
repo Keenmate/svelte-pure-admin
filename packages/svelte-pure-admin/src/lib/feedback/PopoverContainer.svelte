@@ -33,7 +33,7 @@
     if (!popover) return "pa-popover";
     const base = ["pa-popover"];
     if (popover.size) base.push(`pa-popover--${popover.size}`);
-    if (popover.alignment) base.push(`pa-popover--${popover.alignment}`);
+    if (popover.textAlign) base.push(`pa-popover--${popover.textAlign}`);
     return base.join(" ");
   });
 

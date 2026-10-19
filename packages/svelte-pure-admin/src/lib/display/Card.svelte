@@ -5,7 +5,7 @@
 	 */
 
 	import { onMount } from 'svelte';
-	import type { ThemeColor, TooltipPosition, TooltipVariant } from '../types';
+	import type { ThemeColor, TooltipPlacement, TooltipVariant } from '../types';
 	import { loadCoreJs } from '../internal/core-js';
 
 	// Core card variants: primary/success/warning/danger (no --info / --secondary)
@@ -44,7 +44,7 @@
 		 */
 		titleTooltip?: boolean | string;
 		/** Title tooltip placement (default `top`) */
-		titleTooltipPosition?: TooltipPosition;
+		titleTooltipPlacement?: TooltipPlacement;
 		/** Title tooltip colour */
 		titleTooltipVariant?: TooltipVariant;
 		/** Wide, wrapping title tooltip */
@@ -62,7 +62,7 @@
 		 */
 		descriptionTooltip?: boolean | string;
 		/** Description tooltip placement (default `top`) */
-		descriptionTooltipPosition?: TooltipPosition;
+		descriptionTooltipPlacement?: TooltipPlacement;
 		/** Description tooltip colour */
 		descriptionTooltipVariant?: TooltipVariant;
 		/** Wide, wrapping description tooltip */
@@ -144,14 +144,14 @@
 		descriptionText,
 		description,
 		titleTooltip,
-		titleTooltipPosition,
+		titleTooltipPlacement,
 		titleTooltipVariant,
 		titleTooltipMultiline = false,
 		titleTooltipIsHelp = false,
 		titleTooltipIsKeyword = false,
 		titleTooltipAlways = false,
 		descriptionTooltip,
-		descriptionTooltipPosition,
+		descriptionTooltipPlacement,
 		descriptionTooltipVariant,
 		descriptionTooltipMultiline = false,
 		descriptionTooltipIsHelp = false,
@@ -230,7 +230,7 @@
 	interface TooltipOpts {
 		on: boolean | string | undefined;
 		text: string | undefined;
-		position?: TooltipPosition;
+		placement?: TooltipPlacement;
 		variant?: TooltipVariant;
 		multiline: boolean;
 		isHelp: boolean;
@@ -240,7 +240,7 @@
 	function tooltipClasses(base: string, o: TooltipOpts): string {
 		if (!o.on) return base;
 		const c = [base, 'pa-tooltip', 'pa-tooltip--floating'];
-		if (o.position && o.position !== 'top') c.push(`pa-tooltip--${o.position}`);
+		if (o.placement && o.placement !== 'top') c.push(`pa-tooltip--${o.placement}`);
 		if (o.variant) c.push(`pa-tooltip--${o.variant}`);
 		if (o.multiline) c.push('pa-tooltip--multiline');
 		if (o.isHelp) c.push('pa-tooltip--help');
@@ -254,7 +254,7 @@
 	const titleTip = $derived<TooltipOpts>({
 		on: titleTooltip,
 		text: titleText ?? titleSnippetText,
-		position: titleTooltipPosition,
+		placement: titleTooltipPlacement,
 		variant: titleTooltipVariant,
 		multiline: titleTooltipMultiline,
 		isHelp: titleTooltipIsHelp,
@@ -264,7 +264,7 @@
 	const descriptionTip = $derived<TooltipOpts>({
 		on: descriptionTooltip,
 		text: descriptionText ?? descriptionSnippetText,
-		position: descriptionTooltipPosition,
+		placement: descriptionTooltipPlacement,
 		variant: descriptionTooltipVariant,
 		multiline: descriptionTooltipMultiline,
 		isHelp: descriptionTooltipIsHelp,

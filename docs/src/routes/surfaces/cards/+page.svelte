@@ -186,7 +186,7 @@
 		<Code>descriptionTooltip</Code> puts a tooltip with the full text on the description. It appears
 		<strong>only while the description is cut off</strong> — widen the window until it fits and hovering
 		shows nothing (<Code>descriptionTooltipAlways</Code> shows it regardless). Position, colour, multiline,
-		help and keyword styles: <Code>descriptionTooltipPosition</Code> / <Code>…Variant</Code> /
+		help and keyword styles: <Code>descriptionTooltipPlacement</Code> / <Code>…Variant</Code> /
 		<Code>…Multiline</Code> / <Code>…IsHelp</Code> / <Code>…IsKeyword</Code>; the same set exists for the
 		title as <Code>titleTooltip…</Code>.
 	</Paragraph>
@@ -197,7 +197,7 @@
 				titleText="Dashboard"
 				descriptionText="View real-time metrics, KPIs, and performance indicators for your organization. Includes customizable widgets, drill-down reports, and automated alerts."
 				descriptionTooltip
-				descriptionTooltipPosition="bottom"
+				descriptionTooltipPlacement="bottom"
 				descriptionTooltipMultiline
 			>
 				{#snippet titleIcon()}<i class="fas fa-gauge-high"></i>{/snippet}
@@ -213,7 +213,7 @@
 				titleText="Audit Log"
 				descriptionText="Complete history of system changes, user actions, and security events. Filter by date, user, action type, or resource. Export to CSV for compliance reporting."
 				descriptionTooltip
-				descriptionTooltipPosition="bottom"
+				descriptionTooltipPlacement="bottom"
 				descriptionTooltipMultiline
 			>
 				{#snippet titleIcon()}<i class="fas fa-clipboard-list"></i>{/snippet}
@@ -499,7 +499,7 @@
 			<Card
 				titleText="This is a Very Long Card Title That Should Be Truncated With Ellipsis When It Exceeds Available Space"
 				titleTooltip
-				titleTooltipPosition="bottom"
+				titleTooltipPlacement="bottom"
 				titleTooltipMultiline
 			>
 				{#snippet titleIcon()}🔒{/snippet}

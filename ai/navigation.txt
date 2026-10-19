@@ -30,7 +30,7 @@ import { Tabs, TabItem, TabsContent, TabPanel } from '@keenmate/svelte-pure-admi
 Props:
   style?: 'underline' | 'pills' | 'boxed' | 'vertical'   (default: 'underline')
   size?: 'sm' | 'lg'
-  align?: 'centered' | 'full'
+  justify?: 'center' | 'stretch'
   overflow?: 'nowrap' | 'scrollable' | 'collapse'
   isBorderTop?: boolean     (border on top instead of bottom, default: false)
   class?: string
@@ -129,14 +129,14 @@ Boxed style:
 
 Centered alignment:
 
-<Tabs align="centered">
+<Tabs justify="center">
   <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>
 
 Full width (tabs fill container):
 
-<Tabs align="full">
+<Tabs justify="stretch">
   <TabItem isActive={true}>Tab 1</TabItem>
   <TabItem>Tab 2</TabItem>
 </Tabs>

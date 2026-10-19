@@ -129,30 +129,30 @@
 	<Form>
 		<Grid>
 			<Column size="100" md="50">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel>Email Address</FormLabel>
-					<Input type="email" value="invalid-email" state="error" required />
+					<Input type="email" value="invalid-email" validation="error" required />
 					<FormHelp variant="error">Please enter a valid email address</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel>Password</FormLabel>
-					<Input type="password" value="123" state="error" required />
+					<Input type="password" value="123" validation="error" required />
 					<FormHelp variant="error">Password must be at least 8 characters</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state="success">
+				<FormGroup validation="success">
 					<FormLabel>Username</FormLabel>
-					<Input type="text" value="johndoe" state="success" required />
+					<Input type="text" value="johndoe" validation="success" required />
 					<FormHelp variant="success">Username is available</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state="warning">
+				<FormGroup validation="warning">
 					<FormLabel>Phone Number</FormLabel>
-					<Input type="tel" value="555-1234" state="warning" />
+					<Input type="tel" value="555-1234" validation="warning" />
 					<FormHelp variant="warning">Consider adding country code for international format</FormHelp>
 				</FormGroup>
 			</Column>
@@ -180,9 +180,9 @@
 
 		<Grid>
 			<Column size="100" md="50">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel>First Name</FormLabel>
-					<Input type="text" placeholder="Enter first name" state="error" required />
+					<Input type="text" placeholder="Enter first name" validation="error" required />
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
@@ -192,19 +192,19 @@
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel>Email</FormLabel>
-					<Input type="email" value="not-an-email" state="error" required />
+					<Input type="email" value="not-an-email" validation="error" required />
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel>Password</FormLabel>
-					<Input type="password" value="password" state="error" required />
+					<Input type="password" value="password" validation="error" required />
 				</FormGroup>
 			</Column>
 			<Column size="100">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<Checkbox id="terms">
 						{#snippet labelSnippet()}I accept the terms and conditions <Text variant="danger">*</Text>{/snippet}
 					</Checkbox>
@@ -232,23 +232,23 @@
 
 		<Grid>
 			<Column size="100" md="50">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel for="card-number">Card Number</FormLabel>
-					<Input type="text" id="card-number" value="1234-5678-XXXX" state="error" required />
+					<Input type="text" id="card-number" value="1234-5678-XXXX" validation="error" required />
 					<FormHelp variant="error">Invalid card number format. Please use 16 digits.</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="25">
-				<FormGroup state="success">
+				<FormGroup validation="success">
 					<FormLabel>Expiry Date</FormLabel>
-					<Input type="text" value="12/25" state="success" />
+					<Input type="text" value="12/25" validation="success" />
 					<FormHelp variant="success">Valid</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="25">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel for="cvv">CVV</FormLabel>
-					<Input type="text" id="cvv" value="12" state="error" required />
+					<Input type="text" id="cvv" value="12" validation="error" required />
 					<FormHelp variant="error">Must be 3 or 4 digits</FormHelp>
 				</FormGroup>
 			</Column>
@@ -270,7 +270,7 @@
 				<FormGroup>
 					<FormLabel>Username</FormLabel>
 					<InputGroup>
-						<Input type="text" value="" state="error" />
+						<Input type="text" value="" validation="error" />
 						<InputGroupAppend class="text-danger">
 							<span class="pa-icon pa-icon--danger" aria-hidden="true" title="This field is required"></span>
 						</InputGroupAppend>
@@ -281,7 +281,7 @@
 				<FormGroup>
 					<FormLabel>Email</FormLabel>
 					<InputGroup>
-						<Input type="email" value="bad@" state="error" />
+						<Input type="email" value="bad@" validation="error" />
 						<InputGroupAppend class="text-danger">
 							<span class="pa-icon pa-icon--danger" aria-hidden="true" title="Invalid email format"></span>
 						</InputGroupAppend>
@@ -292,7 +292,7 @@
 				<FormGroup>
 					<FormLabel>Password</FormLabel>
 					<InputGroup>
-						<Input type="password" value="securepass123" state="success" />
+						<Input type="password" value="securepass123" validation="success" />
 						<InputGroupAppend class="text-success">
 							<span class="pa-icon pa-icon--success" aria-hidden="true"></span>
 						</InputGroupAppend>
@@ -315,7 +315,7 @@
 		<FormGroup horizontal class="align-items-center">
 			<FormLabel class="pc-col-md-25" for="company-name">Company Name</FormLabel>
 			<Column class="pc-col-md-40">
-				<Input type="text" id="company-name" value="" state="error" />
+				<Input type="text" id="company-name" value="" validation="error" />
 			</Column>
 			<Column class="pc-col-md-35">
 				<FormHelp variant="error" class="mt-0">Company name is required</FormHelp>
@@ -324,7 +324,7 @@
 		<FormGroup horizontal class="align-items-center">
 			<FormLabel class="pc-col-md-25" for="website-url">Website URL</FormLabel>
 			<Column class="pc-col-md-40">
-				<Input type="url" id="website-url" value="not-a-url" state="error" />
+				<Input type="url" id="website-url" value="not-a-url" validation="error" />
 			</Column>
 			<Column class="pc-col-md-35">
 				<FormHelp variant="error" class="mt-0">Please enter a valid URL (e.g., https://example.com)</FormHelp>
@@ -333,7 +333,7 @@
 		<FormGroup horizontal class="align-items-center">
 			<FormLabel class="pc-col-md-25" for="industry-select">Industry</FormLabel>
 			<Column class="pc-col-md-40">
-				<Select id="industry-select" state="success">
+				<Select id="industry-select" validation="success">
 					<option>Technology</option>
 				</Select>
 			</Column>
@@ -351,9 +351,9 @@
 	<Form>
 		<Grid>
 			<Column size="100">
-				<FormGroup state={bioOver ? 'error' : undefined}>
+				<FormGroup validation={bioOver ? 'error' : undefined}>
 					<FormLabel>Bio</FormLabel>
-					<Textarea rows={3} bind:value={bioText} state={bioOver ? 'error' : undefined} />
+					<Textarea rows={3} bind:value={bioText} validation={bioOver ? 'error' : undefined} />
 					{#if bioOver}
 						<FormHelp variant="error">Maximum {bioMax} characters exceeded ({bioCount}/{bioMax})</FormHelp>
 					{:else}
@@ -407,12 +407,12 @@
 	<Grid>
 		<Column size="100" md="1-3">
 			<Card variant="warning" titleText="On Input (Real-time)">
-				<FormGroup state={onInputError() ? 'error' : onInputEmail ? 'success' : undefined}>
+				<FormGroup validation={onInputError() ? 'error' : onInputEmail ? 'success' : undefined}>
 					<FormLabel>Email</FormLabel>
 					<Input
 						type="email"
 						bind:value={onInputEmail}
-						state={onInputError() ? 'error' : onInputEmail ? 'success' : undefined}
+						validation={onInputError() ? 'error' : onInputEmail ? 'success' : undefined}
 						placeholder="Type to see validation..."
 					/>
 					{#if onInputError()}
@@ -426,12 +426,12 @@
 		</Column>
 		<Column size="100" md="1-3">
 			<Card variant="success" titleText="On Blur (Recommended)">
-				<FormGroup state={onBlurError() ? 'error' : (onBlurTouched && onBlurEmail) ? 'success' : undefined}>
+				<FormGroup validation={onBlurError() ? 'error' : (onBlurTouched && onBlurEmail) ? 'success' : undefined}>
 					<FormLabel>Email</FormLabel>
 					<Input
 						type="email"
 						bind:value={onBlurEmail}
-						state={onBlurError() ? 'error' : (onBlurTouched && onBlurEmail) ? 'success' : undefined}
+						validation={onBlurError() ? 'error' : (onBlurTouched && onBlurEmail) ? 'success' : undefined}
 						placeholder="Tab out to validate..."
 						onblur={() => onBlurTouched = true}
 					/>
@@ -446,12 +446,12 @@
 		</Column>
 		<Column size="100" md="1-3">
 			<Card titleText="On Submit">
-				<FormGroup state={onSubmitError ? 'error' : onSubmitSuccess ? 'success' : undefined}>
+				<FormGroup validation={onSubmitError ? 'error' : onSubmitSuccess ? 'success' : undefined}>
 					<FormLabel>Email</FormLabel>
 					<Input
 						type="email"
 						bind:value={onSubmitEmail}
-						state={onSubmitError ? 'error' : onSubmitSuccess ? 'success' : undefined}
+						validation={onSubmitError ? 'error' : onSubmitSuccess ? 'success' : undefined}
 						placeholder="No validation until submit"
 						oninput={() => { onSubmitError = ''; onSubmitSuccess = false; }}
 					/>
@@ -475,9 +475,9 @@
 	<Form>
 		<Grid>
 			<Column size="100" md="50">
-				<FormGroup state={pwState()}>
+				<FormGroup validation={pwState()}>
 					<FormLabel>New Password</FormLabel>
-					<Input type="password" bind:value={pw} state={pwState()} placeholder="Enter password..." />
+					<Input type="password" bind:value={pw} validation={pwState()} placeholder="Enter password..." />
 					{#if pwStrength() === 'strong'}
 						<FormHelp variant="success">Strong password</FormHelp>
 					{:else if pwStrength() === 'medium'}
@@ -490,9 +490,9 @@
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state={confirmState()}>
+				<FormGroup validation={confirmState()}>
 					<FormLabel>Confirm Password</FormLabel>
-					<Input type="password" bind:value={pwConfirm} state={confirmState()} placeholder="Confirm password..." />
+					<Input type="password" bind:value={pwConfirm} validation={confirmState()} placeholder="Confirm password..." />
 					{#if pwMatch}
 						<FormHelp variant="success">Passwords match</FormHelp>
 					{:else if pwConfirm.length > 0}
@@ -508,15 +508,15 @@
 
 		<Grid>
 			<Column size="100" md="50">
-				<FormGroup state={dateState()}>
+				<FormGroup validation={dateState()}>
 					<FormLabel>Start Date</FormLabel>
-					<DateInput bind:value={startDate} state={dateState()} />
+					<DateInput bind:value={startDate} validation={dateState()} />
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state={dateState()}>
+				<FormGroup validation={dateState()}>
 					<FormLabel>End Date</FormLabel>
-					<DateInput bind:value={endDate} state={dateState()} />
+					<DateInput bind:value={endDate} validation={dateState()} />
 				</FormGroup>
 			</Column>
 			{#if datesValid() === false}
@@ -559,16 +559,16 @@
 	<Form>
 		<Grid>
 			<Column size="100" md="50">
-				<FormGroup state="error">
+				<FormGroup validation="error">
 					<FormLabel>Display Name</FormLabel>
-					<Input type="text" placeholder="Enter display name" state="error" required />
+					<Input type="text" placeholder="Enter display name" validation="error" required />
 					<FormHelp variant="error">Display name is required</FormHelp>
 				</FormGroup>
 			</Column>
 			<Column size="100" md="50">
-				<FormGroup state="success">
+				<FormGroup validation="success">
 					<FormLabel>Avatar URL</FormLabel>
-					<Input type="url" value="https://example.com/avatar.jpg" state="success" />
+					<Input type="url" value="https://example.com/avatar.jpg" validation="success" />
 					<FormHelp variant="success">Valid URL</FormHelp>
 				</FormGroup>
 			</Column>

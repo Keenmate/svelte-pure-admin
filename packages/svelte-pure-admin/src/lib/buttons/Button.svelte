@@ -8,7 +8,7 @@
 
 	type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'ghost';
 	type ButtonSize = 'xs' | 'sm' | 'lg' | 'xl';
-	type ButtonAlign = 'start' | 'end' | 'center' | 'justify';
+	type ButtonJustify = 'start' | 'end' | 'center' | 'between';
 
 	// Core defines outline variants for these six only (snippets/buttons.html +
 	// _buttons.scss). There is NO pa-btn--outline-light/-dark/-ghost. isOutline
@@ -38,7 +38,7 @@
 		/** Ripple effect on click */
 		isRipple?: boolean;
 		/** Button content alignment */
-		align?: ButtonAlign;
+		justify?: ButtonJustify;
 		/** Icon position relative to children text */
 		iconPosition?: 'start' | 'end';
 		/**
@@ -48,7 +48,7 @@
 		 * bare `<span class="text-truncate">` (the canonical core shape — see
 		 * snippets/buttons.html L435-438), NOT `.pa-btn__label`; `overflow:hidden`
 		 * makes that span the shrinking flex item. Mutually exclusive with
-		 * `align="center"` (a flex-fill label can't also shrink to ellipsis), so
+		 * `justify="center"` (a flex-fill label can't also shrink to ellipsis), so
 		 * `shouldTruncateText` takes precedence.
 		 */
 		shouldTruncateText?: boolean;
@@ -85,7 +85,7 @@
 		isIconOnly = false,
 		isLoading = false,
 		isRipple = false,
-		align,
+		justify,
 		iconPosition = 'start',
 		shouldTruncateText = false,
 		isInputGroupButton = false,
@@ -128,7 +128,7 @@
 		if (isRipple) base.push('pa-btn--ripple');
 
 		// Alignment
-		if (align) base.push(`pa-btn--align-${align}`);
+		if (justify) base.push(`pa-btn--justify-${justify}`);
 
 		// Input group button
 		if (isInputGroupButton) base.push('pa-input-group__button');
@@ -141,10 +141,10 @@
 
 	// Label wrapper decision (matches core / keen):
 	//   truncate → bare `.text-truncate` inner span (canonical snippet shape)
-	//   center   → `.pa-btn__label` so the core --align-center flex-fill applies
+	//   center   → `.pa-btn__label` so the core --justify-center flex-fill applies
 	//   else     → bare label (NO wrapper — core defines no base .pa-btn__label rule)
 	const labelWrapClass = $derived(
-		shouldTruncateText ? 'text-truncate' : align === 'center' ? 'pa-btn__label' : null
+		shouldTruncateText ? 'text-truncate' : justify === 'center' ? 'pa-btn__label' : null
 	);
 </script>
 

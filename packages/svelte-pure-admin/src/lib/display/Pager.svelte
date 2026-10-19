@@ -7,7 +7,7 @@
 
 	import { _ } from '../i18n';
 
-	type PagerAlign = 'start' | 'center' | 'end';
+	type PagerJustify = 'start' | 'center' | 'end';
 
 	interface Props {
 		/** Current page number */
@@ -15,7 +15,7 @@
 		/** Total number of pages */
 		totalPages?: number;
 		/** Alignment (default: center) */
-		align?: PagerAlign;
+		justify?: PagerJustify;
 		/** Show page input */
 		showPageInput?: boolean;
 		/** Show info text */
@@ -57,7 +57,7 @@
 	let {
 		currentPage = $bindable(1),
 		totalPages = 1,
-		align = 'center',
+		justify = 'center',
 		showPageInput = true,
 		showInfo = true,
 		onprevious,
@@ -87,8 +87,8 @@
 	// Build class string
 	const classes = $derived(() => {
 		const base = ['pa-pager'];
-		if (align === 'start') base.push('pa-pager--start');
-		if (align === 'end') base.push('pa-pager--end');
+		if (justify === 'start') base.push('pa-pager--start');
+		if (justify === 'end') base.push('pa-pager--end');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

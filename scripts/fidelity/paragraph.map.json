@@ -4,7 +4,7 @@
   "features": {
     "size":       { "prop": "size",                "kind": "enum",   "values": ["xs", "sm", "lg", "xl"] },
     "color":      { "prop": "color",               "kind": "enum",   "values": ["primary", "secondary"] },
-    "align":      { "prop": "horizontalAlignment", "kind": "enum",   "values": ["start", "center", "end"] },
+    "textAlign":  { "prop": "textAlign",           "kind": "enum",   "values": ["start", "center", "end"] },
     "semantic":   { "prop": "semantic",            "kind": "enum",   "values": ["caption", "lead"] },
     "content":    { "prop": "children",            "kind": "slot" },
     "extraClass": { "prop": "class",               "kind": "string" }

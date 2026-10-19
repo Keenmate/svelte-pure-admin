@@ -17,7 +17,7 @@
 		/** Textarea size */
 		size?: TextareaSize;
 		/** Validation state - auto-derived from errors if not set */
-		state?: TextareaState;
+		validation?: TextareaState;
 		/** Error messages from validation library (string or array of strings) */
 		errors?: string | string[];
 		/** Whether field has been touched/interacted with (controls when errors are shown) */
@@ -52,7 +52,7 @@
 		value = $bindable(''),
 		rows,
 		size,
-		state,
+		validation,
 		errors,
 		touched = true,
 		themeColor,
@@ -76,14 +76,14 @@
 		return errors.length > 0;
 	});
 
-	// Compute effective state: manual state takes precedence, otherwise derive from errors
+	// Compute effective state: manual validation takes precedence, otherwise derive from errors
 	const effectiveState = $derived(() => {
-		if (state) return state;
+		if (validation) return validation;
 		if (hasErrors() && touched) return 'error';
 		return undefined;
 	});
 
-	// aria-invalid tracks the effective ERROR state (manual `state="error"` OR
+	// aria-invalid tracks the effective ERROR state (manual `validation="error"` OR
 	// derived errors+touched), consistent with the pa-textarea--error class.
 	const ariaInvalid = $derived(() => {
 		return effectiveState() === 'error' ? 'true' : undefined;

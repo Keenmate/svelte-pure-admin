@@ -12,7 +12,7 @@ export type {
 	ValidationState,
 	DataVizVariant,
 	ThemeColor,
-	TooltipPosition,
+	TooltipPlacement,
 	TooltipVariant
 } from './types';
 

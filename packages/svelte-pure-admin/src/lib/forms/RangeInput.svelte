@@ -15,7 +15,7 @@
 		/** Input size */
 		size?: InputSize;
 		/** Validation state */
-		state?: InputState;
+		validation?: InputState;
 		/** Theme color variant (1-9) */
 		themeColor?: ThemeColor;
 		/** Disabled state */
@@ -43,7 +43,7 @@
 	let {
 		value = $bindable(50),
 		size,
-		state,
+		validation,
 		themeColor,
 		disabled = false,
 		id,
@@ -64,7 +64,7 @@
 	const classes = $derived(() => {
 		const base = ['pa-input'];
 		if (size) base.push(`pa-input--${size}`);
-		if (state) base.push(`pa-input--${state}`);
+		if (validation) base.push(`pa-input--${validation}`);
 		if (themeColor) base.push(`pa-input--color-${themeColor}`);
 		if (className) base.push(className);
 		return base.join(' ');

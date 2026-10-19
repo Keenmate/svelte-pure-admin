@@ -4,7 +4,7 @@
   "features": {
     "orientation":       { "prop": "orientation",      "kind": "enum", "values": ["horizontal", "vertical"] },
     "minimizeMirror":    { "prop": "isMinimizeMirror", "kind": "bool" },
-    "splitterId":        { "prop": "splitterId",       "kind": "string" },
+    "id":                { "prop": "id",               "kind": "string" },
     "step":              { "prop": "step",             "kind": "string" },
     "railSize":          { "prop": "railSize",         "kind": "string" },
     "minimizeThreshold": { "prop": "minimizeThreshold","kind": "string" },

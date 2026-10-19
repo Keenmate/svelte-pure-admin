@@ -5,7 +5,7 @@
 <Paragraph>
 	The <strong>advanced</strong> (alternating) timeline zig-zags items left/right of a central spine, each with a
 	date and an icon marker. Pass <Code>date</Code> + <Code>iconText</Code> on each <Code>&lt;TimelineItem&gt;</Code>
-	and <Code>variant="alternating"</Code> on the <Code>&lt;Timeline&gt;</Code>. Use <Code>alignment</Code> to force a
+	and <Code>variant="alternating"</Code> on the <Code>&lt;Timeline&gt;</Code>. Use <Code>side</Code> to force a
 	side, or <Code>isSingleColumn</Code> to collapse to one column.
 </Paragraph>
 
@@ -31,9 +31,9 @@
 
 <Card titleText="Forced to one side (alignment)">
 	{#snippet description()}
-		Set <Code>alignment="start"</Code> to keep every item on the start side instead of zig-zagging.
+		Set <Code>side="start"</Code> to keep every item on the start side instead of zig-zagging.
 	{/snippet}
-	<Timeline variant="alternating" alignment="start">
+	<Timeline variant="alternating" side="start">
 		<TimelineItem variant="primary" date="09:00" iconText="1">Stand-up and sprint planning.</TimelineItem>
 		<TimelineItem variant="success" date="12:30" iconText="2">Feature branch merged to main.</TimelineItem>
 		<TimelineItem variant="info" date="16:00" iconText="3">Design review with the product team.</TimelineItem>
@@ -52,6 +52,6 @@
 </Timeline>`}</CodeBlock>
 
 	<Heading level={4}>Force one side / single column</Heading>
-	<CodeBlock language="html">{`<Timeline variant="alternating" alignment="start"> … </Timeline>
+	<CodeBlock language="html">{`<Timeline variant="alternating" side="start"> … </Timeline>
 <Timeline variant="alternating" isSingleColumn> … </Timeline>`}</CodeBlock>
 </Card>

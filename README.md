@@ -195,7 +195,7 @@ npm install @keenmate/svelte-pure-admin @keenmate/pure-admin-core
 | `DefinitionList` | Definition list (dt/dd) |
 | `DetailView` | Detail panel wrapper with overlay/inline split-view modes |
 | `DetailPanel` | Detail panel content shell (header, tabs, body, footer) |
-| `Timeline` | Timeline container — simple/alternating/feed variants, `alignment` (start/end), `isKeepLayout` |
+| `Timeline` | Timeline container — simple/alternating/feed variants, `side` (start/end), `isKeepLayout` |
 | `TimelineItem` | Timeline entry with avatar, time, content |
 | `Code` | Inline code |
 | `CodeBlock` | Code block with optional compact mode |

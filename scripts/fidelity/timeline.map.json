@@ -3,7 +3,7 @@
   "component": "timeline",
   "features": {
     "variant":      { "prop": "variant",          "kind": "enum",   "values": ["simple", "alternating", "feed"] },
-    "alignment":    { "prop": "alignment",         "kind": "enum",   "values": ["start", "end"] },
+    "side":         { "prop": "side",              "kind": "enum",   "values": ["start", "end"] },
     "keepLayout":   { "prop": "isKeepLayout",      "kind": "bool" },
     "singleColumn": { "prop": "isSingleColumn",    "kind": "bool" },
     "body":         { "prop": "children",          "kind": "slot" },

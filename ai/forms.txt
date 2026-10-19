@@ -54,9 +54,9 @@ Form group wrapper for label + input + help text. Renders <div class="pa-form-gr
 Handles validation state styling and horizontal layout.
 
 Props:
-  state?: 'success' | 'warning' | 'error'    Validation state (adds pa-form-group--{state})
-  isError?: boolean          Legacy error flag (prefer state prop)
-  isSuccess?: boolean        Legacy success flag (prefer state prop)
+  validation?: 'success' | 'warning' | 'error' Validation state (adds pa-form-group--{validation})
+  isError?: boolean          Legacy error flag (prefer validation prop)
+  isSuccess?: boolean        Legacy success flag (prefer validation prop)
   isRequired?: boolean       Mark as required (adds pa-form-group--required)
   isHorizontal?: boolean     Horizontal layout, label left, input right (default: false)
   horizontal?: boolean       Alias for isHorizontal
@@ -79,15 +79,15 @@ Required field:
 
 With validation state:
 
-<FormGroup state="error">
+<FormGroup validation="error">
   <FormLabel>Password</FormLabel>
-  <Input type="password" bind:value={password} state="error" />
+  <Input type="password" bind:value={password} validation="error" />
   <FormHelp variant="error">Password is required</FormHelp>
 </FormGroup>
 
-<FormGroup state="success">
+<FormGroup validation="success">
   <FormLabel>Username</FormLabel>
-  <Input bind:value={username} state="success" />
+  <Input bind:value={username} validation="success" />
   <FormHelp variant="success">Username is available</FormHelp>
 </FormGroup>
 
@@ -104,7 +104,7 @@ FORM FIELD
 High-level wrapper that combines FormGroup + FormLabel + FormHelp with automatic
 error/success state handling. Reduces boilerplate when using form validation.
 
-The children snippet receives context: { errors: string[], touched: boolean, state?: InputState }
+The children snippet receives context: { errors: string[], touched: boolean, validation?: InputState }
 
 Props:
   labelText?: string            Field label text
@@ -114,10 +114,10 @@ Props:
   errors?: string[] | null      Error messages from validation
   touched?: boolean             Whether field has been interacted with (default: false)
   hasValue?: boolean            Field has a value (for success state) (default: false)
-  state?: 'success' | 'warning' | 'error'     Manual state override
+  validation?: 'success' | 'warning' | 'error'  Manual validation override
   class?: string                Additional class for FormGroup
   horizontal?: boolean          Horizontal layout (default: false)
-  children: Snippet<[{ errors, touched, state }]>    The input control (REQUIRED)
+  children: Snippet<[{ errors, touched, validation }]>    The input control (REQUIRED)
 
 Basic usage:
 
@@ -145,9 +145,9 @@ With validation:
 
 With manual state:
 
-<FormField labelText="API Key" state="warning" helpText="This key expires in 3 days">
+<FormField labelText="API Key" validation="warning" helpText="This key expires in 3 days">
   {#snippet children()}
-    <Input bind:value={apiKey} state="warning" />
+    <Input bind:value={apiKey} validation="warning" />
   {/snippet}
 </FormField>
 
@@ -213,7 +213,7 @@ Props:
                                     Input type (default: 'text')
   value?: string (bindable)         Input value (default: '')
   size?: 'xs' | 'sm' | 'lg' | 'xl'    Input size
-  state?: 'success' | 'warning' | 'error'
+  validation?: 'success' | 'warning' | 'error'
                                     Validation state (auto-derived from errors if not set)
   errors?: string | string[]        Error messages (auto-sets state to 'error' when touched)
   touched?: boolean                 Field has been interacted with (default: true)
@@ -257,9 +257,9 @@ Sizes:
 
 Validation states (manual):
 
-<Input bind:value={name} state="success" />
-<Input bind:value={name} state="warning" />
-<Input bind:value={name} state="error" />
+<Input bind:value={name} validation="success" />
+<Input bind:value={name} validation="warning" />
+<Input bind:value={name} validation="error" />
 
 Validation states (auto-derived from errors):
 
@@ -289,7 +289,7 @@ Specialized input for numeric values. Renders <input type="number" class="pa-inp
 Props:
   value?: number | null (bindable)    Numeric value (default: null)
   size?: 'xs' | 'sm' | 'lg' | 'xl'   Input size
-  state?: 'success' | 'warning' | 'error'
+  validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]          Error messages
   touched?: boolean                   (default: true)
   themeColor?: 1-9                    Theme color variant
@@ -325,7 +325,7 @@ Props:
                                       Date input type (default: 'date')
   value?: string (bindable)           Date/time value as string (default: '')
   size?: 'xs' | 'sm' | 'lg' | 'xl'
-  state?: 'success' | 'warning' | 'error'
+  validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]
   touched?: boolean                   (default: true)
   themeColor?: 1-9
@@ -369,7 +369,7 @@ Props:
   value?: string (bindable)           Textarea value (default: '')
   rows?: number                       Number of rows (default: 4)
   size?: 'xs' | 'sm' | 'lg' | 'xl'
-  state?: 'success' | 'warning' | 'error'
+  validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]
   touched?: boolean                   (default: true)
   themeColor?: 1-9
@@ -401,7 +401,7 @@ Options are provided as children (Snippet).
 Props:
   value?: string (bindable)           Selected value (default: '')
   size?: 'xs' | 'sm' | 'lg' | 'xl'
-  state?: 'success' | 'warning' | 'error'
+  validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]
   touched?: boolean                   (default: true)
   themeColor?: 1-9
@@ -697,7 +697,7 @@ HOW IT WORKS:
   });
 </script>
 
-<FormGroup state={emailTouched && emailErrors().length > 0 ? 'error' : undefined}>
+<FormGroup validation={emailTouched && emailErrors().length > 0 ? 'error' : undefined}>
   <FormLabel required>Email</FormLabel>
   <Input
     type="email"
@@ -1075,7 +1075,7 @@ CRITICAL REMINDERS
 - touched defaults to true on Input/NumberInput/DateInput/Textarea/Select
   (so errors show immediately unless you set touched={false} initially)
 - Manual state prop always overrides auto-derived state from errors
-- FormField children snippet receives context: { errors, touched, state }
+- FormField children snippet receives context: { errors, touched, validation }
 - FormErrorSummary uses anchor links (#id) to jump to errored fields
 - InputGroup addons use class="pa-input-group__addon" directly (no component)
 - All form components accept class prop for custom CSS classes

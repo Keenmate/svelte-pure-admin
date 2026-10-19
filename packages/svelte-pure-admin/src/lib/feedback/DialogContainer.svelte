@@ -215,7 +215,7 @@
 					type="text"
 					value={inputValues[dialog.id] || ''}
 					placeholder={promptOptions.placeholder}
-					state={inputErrors[dialog.id] ? 'error' : undefined}
+					validation={inputErrors[dialog.id] ? 'error' : undefined}
 					oninput={(e) => handleInputChange(dialog.id, e.currentTarget.value)}
 					onkeydown={(e) => handleKeydown(e, dialog)}
 				/>

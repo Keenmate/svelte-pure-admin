@@ -38,7 +38,7 @@ export type DataVizVariant = 'primary' | 'success' | 'warning' | 'danger' | 'inf
 
 // Tooltip placement (logical: start/end flip in RTL) and colour variants —
 // shared by <Tooltip> and the card title/description tooltips.
-export type TooltipPosition = 'top' | 'end' | 'bottom' | 'start';
+export type TooltipPlacement = 'top' | 'end' | 'bottom' | 'start';
 export type TooltipVariant =
 	| 'primary'
 	| 'success'

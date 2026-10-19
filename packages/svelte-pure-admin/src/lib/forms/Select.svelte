@@ -20,7 +20,7 @@
 		/** Select size */
 		size?: SelectSize;
 		/** Validation state - auto-derived from errors if not set */
-		state?: SelectState;
+		validation?: SelectState;
 		/** Error messages from validation library (string or array of strings) */
 		errors?: string | string[];
 		/** Whether field has been touched/interacted with (controls when errors are shown) */
@@ -47,7 +47,7 @@
 		value = $bindable(),
 		multiple = false,
 		size,
-		state,
+		validation,
 		errors,
 		touched = true,
 		themeColor,
@@ -67,14 +67,14 @@
 		return errors.length > 0;
 	});
 
-	// Compute effective state: manual state takes precedence, otherwise derive from errors
+	// Compute effective state: manual validation takes precedence, otherwise derive from errors
 	const effectiveState = $derived(() => {
-		if (state) return state;
+		if (validation) return validation;
 		if (hasErrors() && touched) return 'error';
 		return undefined;
 	});
 
-	// aria-invalid tracks the effective ERROR state (manual `state="error"` OR
+	// aria-invalid tracks the effective ERROR state (manual `validation="error"` OR
 	// derived errors+touched), consistent with the pa-select--error class.
 	const ariaInvalid = $derived(() => {
 		return effectiveState() === 'error' ? 'true' : undefined;

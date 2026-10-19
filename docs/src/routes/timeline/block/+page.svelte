@@ -247,7 +247,7 @@
 			{#snippet headerActions()}
 				<Code>--start</Code>
 			{/snippet}
-			<Timeline variant="alternating" alignment="start">
+			<Timeline variant="alternating" side="start">
 				{#each modifierItems as item (item.title)}
 					<TimelineItem date={item.date}>
 						{#snippet iconTemplate()}{@html item.icon}{/snippet}
@@ -264,7 +264,7 @@
 			{#snippet headerActions()}
 				<Code>--end</Code>
 			{/snippet}
-			<Timeline variant="alternating" alignment="end">
+			<Timeline variant="alternating" side="end">
 				{#each modifierItems as item (item.title)}
 					<TimelineItem date={item.date}>
 						{#snippet iconTemplate()}{@html item.icon}{/snippet}
@@ -309,7 +309,7 @@
 			{#snippet headerActions()}
 				<Code>--start --keep-layout</Code>
 			{/snippet}
-			<Timeline variant="alternating" alignment="start" isKeepLayout>
+			<Timeline variant="alternating" side="start" isKeepLayout>
 				{#each combinationItems as item (item.title)}
 					<TimelineItem date={item.date}>
 						{#snippet iconTemplate()}{@html item.icon}{/snippet}
@@ -326,7 +326,7 @@
 			{#snippet headerActions()}
 				<Code>--end --keep-layout</Code>
 			{/snippet}
-			<Timeline variant="alternating" alignment="end" isKeepLayout>
+			<Timeline variant="alternating" side="end" isKeepLayout>
 				{#each combinationItems as item (item.title)}
 					<TimelineItem date={item.date}>
 						{#snippet iconTemplate()}{@html item.icon}{/snippet}
@@ -352,22 +352,22 @@
 
 	<Heading level={4}>Layout Modifiers</Heading>
 	<CodeBlock class="mb-4">{`<!-- Force all items to start side -->
-<Timeline variant="alternating" alignment="start">...</Timeline>
+<Timeline variant="alternating" side="start">...</Timeline>
 
 <!-- Force all items to end side -->
-<Timeline variant="alternating" alignment="end">...</Timeline>
+<Timeline variant="alternating" side="end">...</Timeline>
 
 <!-- Preserve zig-zag layout on mobile -->
 <Timeline variant="alternating" isKeepLayout>...</Timeline>
 
 <!-- Combination -->
-<Timeline variant="alternating" alignment="start" isKeepLayout>...</Timeline>`}</CodeBlock>
+<Timeline variant="alternating" side="start" isKeepLayout>...</Timeline>`}</CodeBlock>
 
 	<Heading level={4}>Best Practices</Heading>
 	<BasicList>
 		<li>Use <Code>variant="alternating"</Code> for project roadmaps and milestone timelines</li>
 		<li>Add emojis or icons to timeline headers for visual interest</li>
-		<li>Use <Code>alignment="start"</Code>/<Code>"end"</Code> for narrow cards where zig-zag would feel cramped</li>
+		<li>Use <Code>side="start"</Code>/<Code>"end"</Code> for narrow cards where zig-zag would feel cramped</li>
 		<li>Use <Code>isKeepLayout</Code> when the design must hold its alternating shape across breakpoints</li>
 		<li>For long lists, pair <Code>pa-timeline__scroll-container</Code> with an IntersectionObserver for lazy loading</li>
 	</BasicList>

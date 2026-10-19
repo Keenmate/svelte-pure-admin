@@ -9,7 +9,7 @@
     "label":      { "prop": "labelText",  "kind": "string" },
     "min":        { "prop": "minText",    "kind": "string" },
     "max":        { "prop": "maxText",    "kind": "string" },
-    "size":       { "prop": "gaugeSize",  "kind": "string" },
+    "size":       { "prop": "size",       "kind": "string" },
     "extraClass": { "prop": "class",      "kind": "string" }
   }
 }

@@ -22,7 +22,7 @@
 		/** Timeline variant */
 		variant?: TimelineVariant;
 		/** Force all items to start or end side (alternating variant). When omitted, items zig-zag. */
-		alignment?: 'start' | 'end';
+		side?: 'start' | 'end';
 		/** Keep desktop layout on mobile (alternating variant) — disables single-column collapse below the breakpoint */
 		isKeepLayout?: boolean;
 		/** Force a single column at any screen width (alternating variant; pa-timeline--single-column) */
@@ -106,7 +106,7 @@
 
 		// Timeline config
 		variant = 'simple',
-		alignment,
+		side,
 		isKeepLayout = false,
 		isSingleColumn = false,
 
@@ -238,7 +238,7 @@
 		base.push(`pa-timeline--${variant}`);
 
 		// Alignment modifier (alternating variant only)
-		if (alignment) base.push(`pa-timeline--${alignment}`);
+		if (side) base.push(`pa-timeline--${side}`);
 
 		// Keep-layout modifier (alternating variant only)
 		if (isKeepLayout) base.push('pa-timeline--keep-layout');

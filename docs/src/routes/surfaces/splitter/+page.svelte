@@ -118,7 +118,7 @@ console.log(greet('Pure Admin'));`;
 
 	<Splitter
 		orientation="horizontal"
-		splitterId="demo-horizontal"
+		id="demo-horizontal"
 		style="height: 360px; border: 1px solid var(--pc-border-color); border-radius: var(--pc-border-radius);"
 	>
 		<SplitterPane
@@ -157,7 +157,7 @@ console.log(greet('Pure Admin'));`;
 
 	<Splitter
 		orientation="vertical"
-		splitterId="demo-vertical"
+		id="demo-vertical"
 		style="height: 420px; border: 1px solid var(--pc-border-color); border-radius: var(--pc-border-radius);"
 	>
 		<SplitterPane size="60%" min="80px" max="80%" style="padding: 1.6rem;">
@@ -189,7 +189,7 @@ console.log(greet('Pure Admin'));`;
 
 	<Splitter
 		orientation="horizontal"
-		splitterId="demo-spaced"
+		id="demo-spaced"
 		style="height: 280px; gap: 1.6rem; --pa-splitter-gutter-size: 1rem;"
 	>
 		<SplitterPane size="40%" min="25%" max="75%" style="padding: 0;">
@@ -242,7 +242,7 @@ console.log(greet('Pure Admin'));`;
 
 	<Splitter
 		orientation="horizontal"
-		splitterId="demo-minimize"
+		id="demo-minimize"
 		railSize={44}
 		isMinimizeMirror={mirror}
 		style="height: 320px; gap: 1.2rem;"
@@ -338,7 +338,7 @@ console.log(greet('Pure Admin'));`;
 
 	<Splitter
 		orientation="horizontal"
-		splitterId="demo-overflow"
+		id="demo-overflow"
 		railSize={44}
 		style="height: 220px; gap: 1.2rem;"
 	>
@@ -399,7 +399,7 @@ console.log(greet('Pure Admin'));`;
 
 	<Splitter
 		orientation="horizontal"
-		splitterId="demo-minimize-end"
+		id="demo-minimize-end"
 		railSize={44}
 		style="height: 320px; gap: 1.2rem;"
 	>
@@ -454,7 +454,7 @@ console.log(greet('Pure Admin'));`;
 	{#key paneCount}
 		<Splitter
 			orientation="horizontal"
-			splitterId={`demo-multi-pane-${paneCount}`}
+			id={`demo-multi-pane-${paneCount}`}
 			isMinimizeMirror
 			style="height: 420px; border: 1px solid var(--pc-border-color); border-radius: var(--pc-border-radius); column-gap: 0.8rem; padding: 0.8rem; background: var(--pc-subtle-bg);"
 		>
@@ -591,7 +591,7 @@ console.log(greet('Pure Admin'));`;
 				<Code>&lt;SplitterGutter&gt;</Code> between each pair. Root events are surfaced as
 				<Code>onresize</Code> / <Code>oncollapse</Code> / <Code>onexpand</Code> callbacks.
 			</p>
-			<CodeBlock>{`<Splitter orientation="horizontal" splitterId="my-id"
+			<CodeBlock>{`<Splitter orientation="horizontal" id="my-id"
           onresize={(d) => console.log(d)}>
   <SplitterPane size="240px" min="180px" isMinimizable>A</SplitterPane>
   <SplitterGutter />

@@ -8,13 +8,13 @@
 	 */
 
 	import { onMount } from 'svelte';
-	import type { TooltipPosition, TooltipVariant } from '../types';
+	import type { TooltipPlacement, TooltipVariant } from '../types';
 
 	interface Props {
 		/** Tooltip text */
 		text: string;
-		/** Tooltip position (default: top) */
-		position?: TooltipPosition;
+		/** Tooltip placement (default: top) */
+		placement?: TooltipPlacement;
 		/** Tooltip color variant */
 		variant?: TooltipVariant;
 		/** Multiline tooltip (20rem width, left-aligned) */
@@ -31,7 +31,7 @@
 
 	let {
 		text,
-		position = 'top',
+		placement = 'top',
 		variant,
 		multiline = false,
 		isHelp = false,
@@ -45,7 +45,7 @@
 	let cleanupAutoUpdate: (() => void) | null = null;
 
 	// Map logical positions (start/end) to Floating UI physical positions
-	function toFloatingPlacement(pos: TooltipPosition): import('@floating-ui/dom').Placement {
+	function toFloatingPlacement(pos: TooltipPlacement): import('@floating-ui/dom').Placement {
 		const isRtl = typeof document !== 'undefined' && document.dir === 'rtl';
 		if (pos === 'start') return isRtl ? 'right' : 'left';
 		if (pos === 'end') return isRtl ? 'left' : 'right';
@@ -56,7 +56,7 @@
 	// Note: pa-tooltip--floating disables CSS ::before/::after tooltips when using Floating UI
 	const classes = $derived(() => {
 		const base = ['pa-tooltip', 'pa-tooltip--floating'];
-		if (position && position !== 'top') base.push(`pa-tooltip--${position}`);
+		if (placement && placement !== 'top') base.push(`pa-tooltip--${placement}`);
 		if (variant) base.push(`pa-tooltip--${variant}`);
 		if (multiline) base.push('pa-tooltip--multiline');
 		if (isHelp) base.push('pa-tooltip--help');
@@ -99,7 +99,7 @@
 			if (!tooltipElement) return;
 
 			const { x, y } = await computePosition(triggerElement, tooltipElement, {
-				placement: toFloatingPlacement(position),
+				placement: toFloatingPlacement(placement),
 				middleware: [
 					offset(8),
 					flip(),

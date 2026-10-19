@@ -5,7 +5,7 @@
     "noGutter":   { "prop": "isNoGutter", "kind": "bool" },
     "sameHeight": { "prop": "isSameHeight", "kind": "bool" },
     "justify":    { "prop": "justify",    "kind": "enum",   "values": ["center", "end", "between", "around"] },
-    "valign":     { "prop": "align",      "kind": "enum",   "values": ["top", "middle", "bottom", "stretch"] },
+    "align":      { "prop": "align",      "kind": "enum",   "values": ["top", "middle", "bottom", "stretch"] },
     "body":       { "prop": "children",   "kind": "slot" },
     "extraClass": { "prop": "class",      "kind": "string" }
   }

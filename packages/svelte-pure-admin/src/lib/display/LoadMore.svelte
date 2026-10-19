@@ -7,11 +7,11 @@
 
 	import { _ } from '../i18n';
 
-	type LoadMoreAlign = 'start' | 'center' | 'end';
+	type LoadMoreJustify = 'start' | 'center' | 'end';
 
 	interface Props {
 		/** Alignment. Unset = no modifier (the base rule already centers, like the core snippet); pass center/start/end to emit the explicit modifier. */
-		align?: LoadMoreAlign;
+		justify?: LoadMoreJustify;
 		/** Loading state */
 		isLoading?: boolean;
 		/** Button text */
@@ -29,7 +29,7 @@
 	}
 
 	let {
-		align,
+		justify,
 		isLoading = false,
 		text,
 		count,
@@ -49,9 +49,9 @@
 		// (start/center/end). --center is redundant with the base rule but core
 		// blesses it, and emitting it keeps the wrapper's class contract complete
 		// (matches keen's load_more + snippets/tables.html).
-		if (align === 'start') base.push('pa-load-more--start');
-		if (align === 'center') base.push('pa-load-more--center');
-		if (align === 'end') base.push('pa-load-more--end');
+		if (justify === 'start') base.push('pa-load-more--start');
+		if (justify === 'center') base.push('pa-load-more--center');
+		if (justify === 'end') base.push('pa-load-more--end');
 		if (className) base.push(className);
 		return base.join(' ');
 	});

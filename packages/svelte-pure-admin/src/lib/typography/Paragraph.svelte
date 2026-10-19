@@ -22,7 +22,7 @@
 
 	interface Props {
 		/** Horizontal text alignment */
-		horizontalAlignment?: HorizontalAlignment;
+		textAlign?: HorizontalAlignment;
 		/** Text colour — "secondary" (→ text-muted = muted/subdued) or "primary" (→ text-body = default) */
 		color?: TextColor;
 		/** Text color mode (muted) — legacy alias of color="secondary" */
@@ -38,7 +38,7 @@
 	}
 
 	let {
-		horizontalAlignment,
+		textAlign,
 		color,
 		mode,
 		size,
@@ -51,7 +51,7 @@
 		// No size → a plain <p> at the body default (16px); don't force a size class.
 		const base: string[] = [];
 		if (size) base.push(sizeClassMap[size]);
-		if (horizontalAlignment) base.push(`text-${horizontalAlignment}`);
+		if (textAlign) base.push(`text-${textAlign}`);
 		// Explicit colour wins; `mode="muted"` is kept as a legacy alias.
 		if (color === 'secondary') base.push('text-muted');
 		else if (color === 'primary') base.push('text-body');

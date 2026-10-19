@@ -496,7 +496,7 @@ BASIC USAGE:
 
 CUSTOM GRID (12 COLUMNS):
 
-<Heatmap cols={12} variant="danger">
+<Heatmap columns={12} variant="danger">
   {#each Array(48) as _, i}
     <HeatmapCell level={Math.floor(Math.random() * 5)} />
   {/each}
@@ -505,7 +505,7 @@ CUSTOM GRID (12 COLUMNS):
 
 COMPACT MODE:
 
-<Heatmap isCompact cols={30}>
+<Heatmap isCompact columns={30}>
   {#each Array(210) as _, i}
     <HeatmapCell level={Math.floor(Math.random() * 5)} />
   {/each}
@@ -513,7 +513,7 @@ COMPACT MODE:
 
 SUCCESS VARIANT (GREEN):
 
-<Heatmap variant="success" cols={7}>
+<Heatmap variant="success" columns={7}>
   {#each contributions as level}
     <HeatmapCell {level} />
   {/each}
@@ -522,7 +522,7 @@ SUCCESS VARIANT (GREEN):
 
 DANGER VARIANT (RED):
 
-<Heatmap variant="danger" cols={7}>
+<Heatmap variant="danger" columns={7}>
   {#each errorCounts as level}
     <HeatmapCell {level} />
   {/each}
@@ -778,7 +778,7 @@ EXAMPLE 3: PROJECT STATUS WITH HEATMAP
     {#snippet header()}
       <h4>Team Activity (4 weeks)</h4>
     {/snippet}
-    <Heatmap variant="success" cols={7}>
+    <Heatmap variant="success" columns={7}>
       {#each activityData as level}
         <HeatmapCell {level} />
       {/each}

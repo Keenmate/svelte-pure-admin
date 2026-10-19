@@ -12,7 +12,7 @@
 		/** Compact mode (smaller cells, tighter gap) */
 		isCompact?: boolean;
 		/** Number of columns (default 53 for weekly calendar) */
-		cols?: number;
+		columns?: number;
 		/**
 		 * Intensity levels (0-4) — one cell is rendered per entry as
 		 * `.pa-heatmap__cell[data-level]`. The data-driven shape the core snippet
@@ -29,7 +29,7 @@
 	let {
 		variant,
 		isCompact = false,
-		cols = 53,
+		columns = 53,
 		levels,
 		class: className = '',
 		children
@@ -44,8 +44,8 @@
 	});
 
 	const style = $derived(() => {
-		if (cols !== 53) {
-			return `grid-template-columns: repeat(${cols}, 1.2rem)`;
+		if (columns !== 53) {
+			return `grid-template-columns: repeat(${columns}, 1.2rem)`;
 		}
 		return '';
 	});

@@ -23,7 +23,7 @@
 		/** Pane axis — `horizontal` = side-by-side (vertical gutter), `vertical` = stacked. */
 		orientation?: SplitterOrientation;
 		/** Enables localStorage persistence under `pa-splitter:<id>`. */
-		splitterId?: string;
+		id?: string;
 		/** Keyboard resize step in px (default 10). */
 		step?: number;
 		/** Rail width in px when a pane is minimized (default 40). */
@@ -48,7 +48,7 @@
 
 	let {
 		orientation = 'horizontal',
-		splitterId,
+		id,
 		step,
 		railSize,
 		minimizeThreshold,
@@ -104,7 +104,8 @@
 	class={classes()}
 	{style}
 	data-pa-splitter
-	data-pa-splitter-id={splitterId}
+
+	data-pa-splitter-id={id}
 	data-pa-splitter-step={step}
 	data-pa-splitter-rail-size={railSize}
 	data-pa-splitter-minimize-threshold={minimizeThreshold}

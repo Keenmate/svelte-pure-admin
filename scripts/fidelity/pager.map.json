@@ -2,7 +2,7 @@
   "//": "Capability manifest for <Pager> — svelte-pure-admin. Maps each NEUTRAL feature (core fixture vocabulary) to this wrapper's own prop/kind/values. Two consumers: (1) scripts/fidelity/dump.mjs drives SSR rendering from it; (2) core's capability.mjs diffs it against the oracle contract. Notes: showFirst/showLast map to the onfirst/onlast CALLBACK props — the button renders `{#if onfirst}`, and a truthy value (the dumper feeds a string) makes it render under SSR. firstLabel..lastLabel map to the *Text label-override props so button content matches the keen side exactly. align's 'center' is a real value of the PagerAlign union (produces no class, the default). See badge.map.json for the model.",
   "component": "pager",
   "features": {
-    "align":         { "prop": "align",           "kind": "enum",   "values": ["start", "center", "end"] },
+    "justify":       { "prop": "justify",         "kind": "enum",   "values": ["start", "center", "end"] },
     "showFirst":     { "prop": "onfirst",          "kind": "string" },
     "showLast":      { "prop": "onlast",           "kind": "string" },
     "firstLabel":    { "prop": "firstText",        "kind": "string" },

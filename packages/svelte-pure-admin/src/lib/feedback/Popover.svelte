@@ -25,7 +25,7 @@
 		/** Popover size */
 		size?: PopoverSize;
 		/** Text alignment within popover body */
-		alignment?: PopoverAlignment;
+		textAlign?: PopoverAlignment;
 		/** Trigger button text */
 		triggerText?: string;
 		/** Additional CSS classes */
@@ -42,7 +42,7 @@
 		titleText,
 		placement = 'top',
 		size,
-		alignment,
+		textAlign,
 		triggerText = '?',
 		class: className = '',
 		trigger,
@@ -77,7 +77,7 @@
 				header,
 				placement,
 				size,
-				alignment
+				textAlign
 			});
 		}
 	}

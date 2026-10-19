@@ -32,7 +32,7 @@ Actions (card footer) -> display.txt
 Actions (alert) -> feedback.txt
 addMessages -> i18n.txt
 Alert -> feedback.txt
-align (Button) -> display.txt, common-patterns.txt
+justify (Button) -> display.txt, common-patterns.txt
 Animated (progress) -> data-visualization.txt
 auto (theme) -> theming.txt
 

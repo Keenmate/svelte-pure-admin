@@ -21,13 +21,13 @@
 						<Tooltip text="Tooltip on top">Top</Tooltip>
 					</Column>
 					<Column size="1-2" md="1-4" class="text-center mb-3 p-4">
-						<Tooltip text="Tooltip on right" position="end">Right</Tooltip>
+						<Tooltip text="Tooltip on right" placement="end">Right</Tooltip>
 					</Column>
 					<Column size="1-2" md="1-4" class="text-center mb-3 p-4">
-						<Tooltip text="Tooltip on bottom" position="bottom">Bottom</Tooltip>
+						<Tooltip text="Tooltip on bottom" placement="bottom">Bottom</Tooltip>
 					</Column>
 					<Column size="1-2" md="1-4" class="text-center mb-3 p-4">
-						<Tooltip text="Tooltip on left" position="start">Left</Tooltip>
+						<Tooltip text="Tooltip on left" placement="start">Left</Tooltip>
 					</Column>
 				</Grid>
 				<hr class="my-3" />
@@ -86,17 +86,17 @@
 				<Paragraph class="mb-3 text-sm">Regular buttons:</Paragraph>
 				<div class="text-center mb-4">
 					<ButtonGroup>
-						<Tooltip text="Save your changes" position="start">
+						<Tooltip text="Save your changes" placement="start">
 							<Button variant="primary" size="sm">
 								<span class="pa-icon pa-icon--save" aria-hidden="true"></span> Save
 							</Button>
 						</Tooltip>
-						<Tooltip text="Cancel and go back" position="bottom">
+						<Tooltip text="Cancel and go back" placement="bottom">
 							<Button variant="secondary" size="sm">
 								<span class="pa-icon pa-icon--x" aria-hidden="true"></span> Cancel
 							</Button>
 						</Tooltip>
-						<Tooltip text="Delete this item" position="bottom">
+						<Tooltip text="Delete this item" placement="bottom">
 							<Button variant="danger" size="sm">
 								<span class="pa-icon pa-icon--delete" aria-hidden="true"></span> Delete
 							</Button>
@@ -106,32 +106,32 @@
 				<Paragraph class="mb-3 text-sm">Icon-only buttons:</Paragraph>
 				<div class="text-center">
 					<ButtonGroup>
-						<Tooltip text="Edit" position="bottom">
+						<Tooltip text="Edit" placement="bottom">
 							<Button variant="primary" size="sm" isIconOnly titleText="">
 								<span class="pa-icon pa-icon--edit" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
-						<Tooltip text="Copy" position="bottom">
+						<Tooltip text="Copy" placement="bottom">
 							<Button variant="secondary" size="sm" isIconOnly titleText="">
 								<span class="pa-icon pa-icon--copy" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
-						<Tooltip text="Download" position="bottom">
+						<Tooltip text="Download" placement="bottom">
 							<Button variant="success" size="sm" isIconOnly titleText="">
 								<span class="pa-icon pa-icon--download" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
-						<Tooltip text="Settings" position="bottom">
+						<Tooltip text="Settings" placement="bottom">
 							<Button variant="warning" size="sm" isIconOnly titleText="">
 								<span class="pa-icon pa-icon--settings" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
-						<Tooltip text="Delete" position="bottom">
+						<Tooltip text="Delete" placement="bottom">
 							<Button variant="danger" size="sm" isIconOnly titleText="">
 								<span class="pa-icon pa-icon--delete" aria-hidden="true"></span>
 							</Button>
 						</Tooltip>
-						<Tooltip text="Info" position="bottom">
+						<Tooltip text="Info" placement="bottom">
 							<Button variant="info" size="sm" isIconOnly titleText="">
 								<span class="pa-icon pa-icon--info" aria-hidden="true"></span>
 							</Button>
@@ -149,7 +149,7 @@
 					<ButtonGroup>
 						<Tooltip
 							text="This button will save your changes to the database. Make sure you have reviewed all fields before clicking. Changes cannot be undone after saving."
-							position="bottom"
+							placement="bottom"
 							multiline
 						>
 							<Button variant="primary" size="sm">
@@ -158,7 +158,7 @@
 						</Tooltip>
 						<Tooltip
 							text="This action will permanently delete the selected item and all associated data. This operation cannot be reversed. Please confirm you want to proceed."
-							position="bottom"
+							placement="bottom"
 							multiline
 						>
 							<Button variant="danger" size="sm">
@@ -258,8 +258,8 @@
 					<Column size="1-3" class="mb-3 text-center p-2">
 						<label class="text-sm">
 							Center
-							<Popover titleText="Centered" placement="bottom" alignment="center">
-								<Paragraph>Use <Code>alignment="center"</Code> prop.</Paragraph>
+							<Popover titleText="Centered" placement="bottom" textAlign="center">
+								<Paragraph>Use <Code>textAlign="center"</Code> prop.</Paragraph>
 								<Paragraph>Good for short messages or confirmations.</Paragraph>
 							</Popover>
 						</label>
@@ -267,8 +267,8 @@
 					<Column size="1-3" class="mb-3 text-center p-2">
 						<label class="text-sm">
 							End
-							<Popover titleText="End Aligned" placement="bottom" alignment="end">
-								<Paragraph>Use <Code>alignment="end"</Code> prop.</Paragraph>
+							<Popover titleText="End Aligned" placement="bottom" textAlign="end">
+								<Paragraph>Use <Code>textAlign="end"</Code> prop.</Paragraph>
 								<Paragraph>For RTL or special layouts.</Paragraph>
 							</Popover>
 						</label>
@@ -318,7 +318,7 @@
 &lt;Tooltip text="Tooltip text"&gt;Hover&lt;/Tooltip&gt;
 
 &lt;!-- Positions: right, bottom, left (default: top) --&gt;
-&lt;Tooltip text="..." position="bottom"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip text="..." placement="bottom"&gt;...&lt;/Tooltip&gt;
 
 &lt;!-- Colors: primary, success, warning, danger --&gt;
 &lt;Tooltip text="..." variant="success"&gt;...&lt;/Tooltip&gt;

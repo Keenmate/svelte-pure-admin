@@ -56,9 +56,9 @@
 		<Card titleText="Alignment">
 			<Paragraph color="secondary" class="mb-2">Logical, RTL-aware.</Paragraph>
 			<div style="display: flex; flex-direction: column; gap: 4px;">
-				<Paragraph horizontalAlignment="start" class="m-0">Start — leading edge</Paragraph>
-				<Paragraph horizontalAlignment="center" class="m-0">Center</Paragraph>
-				<Paragraph horizontalAlignment="end" class="m-0">End — trailing edge</Paragraph>
+				<Paragraph textAlign="start" class="m-0">Start — leading edge</Paragraph>
+				<Paragraph textAlign="center" class="m-0">Center</Paragraph>
+				<Paragraph textAlign="end" class="m-0">End — trailing edge</Paragraph>
 			</div>
 		</Card>
 	</Column>

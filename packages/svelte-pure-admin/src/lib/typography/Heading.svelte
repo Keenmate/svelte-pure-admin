@@ -12,18 +12,18 @@
 		/** Heading level (1-6) */
 		level?: HeadingLevel;
 		/** Horizontal text alignment */
-		horizontalAlignment?: HorizontalAlignment;
+		textAlign?: HorizontalAlignment;
 		/** Additional CSS classes */
 		class?: string;
 		/** Children content */
 		children?: import('svelte').Snippet;
 	}
 
-	let { level = 2, horizontalAlignment, class: className = '', children }: Props = $props();
+	let { level = 2, textAlign, class: className = '', children }: Props = $props();
 
 	const classes = $derived(() => {
 		const base: string[] = [];
-		if (horizontalAlignment) base.push(`text-${horizontalAlignment}`);
+		if (textAlign) base.push(`text-${textAlign}`);
 		if (className) base.push(className);
 		return base.length > 0 ? base.join(' ') : undefined;
 	});

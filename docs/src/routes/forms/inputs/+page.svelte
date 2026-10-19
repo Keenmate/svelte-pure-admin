@@ -63,21 +63,21 @@
 
 		<!-- Validation States -->
 		<Column size="100" md="1-3">
-			<FormGroup state="success">
+			<FormGroup validation="success">
 				<FormLabel>Success</FormLabel>
 				<Input value="Valid input" />
 				<FormHelp variant="success">Looks good!</FormHelp>
 			</FormGroup>
 		</Column>
 		<Column size="100" md="1-3">
-			<FormGroup state="warning">
+			<FormGroup validation="warning">
 				<FormLabel>Warning</FormLabel>
 				<Input value="Warning input" />
 				<FormHelp variant="warning">Please check this field</FormHelp>
 			</FormGroup>
 		</Column>
 		<Column size="100" md="1-3">
-			<FormGroup state="error">
+			<FormGroup validation="error">
 				<FormLabel>Error</FormLabel>
 				<Input value="Invalid input" />
 				<FormHelp variant="error">This field is required</FormHelp>
@@ -524,21 +524,21 @@
 		<Column size="100" md="50">
 			<Heading level={4} class="mb-2">Validation States</Heading>
 			<CodeBlock>{`<!-- Success state -->
-<FormGroup state="success">
+<FormGroup validation="success">
   <FormLabel>Valid Input</FormLabel>
   <Input value="Correct value" />
   <FormHelp>Looks good!</FormHelp>
 </FormGroup>
 
 <!-- Warning state -->
-<FormGroup state="warning">
+<FormGroup validation="warning">
   <FormLabel>Warning</FormLabel>
   <Input value="Check this" />
   <FormHelp>Please review</FormHelp>
 </FormGroup>
 
 <!-- Error state -->
-<FormGroup state="error">
+<FormGroup validation="error">
   <FormLabel>Invalid</FormLabel>
   <Input value="Wrong value" />
   <FormHelp>This field is required</FormHelp>

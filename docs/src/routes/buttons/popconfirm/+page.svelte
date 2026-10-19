@@ -382,7 +382,7 @@
 	<Popconfirm
 		bind:show={showTopPopconfirm}
 		trigger={topTrigger}
-		position="top"
+		placement="top"
 		messageText="Confirm this action?"
 		confirmText="Yes"
 		cancelText="No"
@@ -391,7 +391,7 @@
 	<Popconfirm
 		bind:show={showBottomPopconfirm}
 		trigger={bottomTrigger}
-		position="bottom"
+		placement="bottom"
 		messageText="Confirm this action?"
 		confirmText="Yes"
 		cancelText="No"
@@ -400,7 +400,7 @@
 	<Popconfirm
 		bind:show={showLeftPopconfirm}
 		trigger={leftTrigger}
-		position="start"
+		placement="start"
 		messageText="Confirm this action?"
 		confirmText="Yes"
 		cancelText="No"
@@ -409,7 +409,7 @@
 	<Popconfirm
 		bind:show={showRightPopconfirm}
 		trigger={rightTrigger}
-		position="end"
+		placement="end"
 		messageText="Confirm this action?"
 		confirmText="Yes"
 		cancelText="No"

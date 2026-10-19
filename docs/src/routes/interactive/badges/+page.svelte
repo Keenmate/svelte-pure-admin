@@ -540,21 +540,21 @@
 			<Column size="100" md="1-2">
 				<Heading level={4}>Various Fixed Widths</Heading>
 				<div class="component-showcase">
-					<Tooltip text="Short" position="bottom">
+					<Tooltip text="Short" placement="bottom">
 						<Badge variant="primary" class="wr-3 text-truncate">Short</Badge>
 					</Tooltip>
-					<Tooltip text="This is medium text" position="bottom">
+					<Tooltip text="This is medium text" placement="bottom">
 						<Badge variant="info" class="wr-4 text-truncate">This is medium text</Badge>
 					</Tooltip>
-					<Tooltip text="This is longer text that will be truncated" position="bottom">
+					<Tooltip text="This is longer text that will be truncated" placement="bottom">
 						<Badge variant="success" class="wr-5 text-truncate">This is longer text that will be truncated</Badge>
 					</Tooltip>
-					<Tooltip text="Very long badge text that definitely needs ellipsis" position="bottom">
+					<Tooltip text="Very long badge text that definitely needs ellipsis" placement="bottom">
 						<Badge variant="warning" class="wr-6 text-truncate"
 							>Very long badge text that definitely needs ellipsis</Badge
 						>
 					</Tooltip>
-					<Tooltip text="Super extremely long badge text example" position="bottom">
+					<Tooltip text="Super extremely long badge text example" placement="bottom">
 						<Badge variant="danger" class="wr-7 text-truncate">Super extremely long badge text example</Badge>
 					</Tooltip>
 				</div>
@@ -562,19 +562,19 @@
 			<Column size="100" md="1-2">
 				<Heading level={4}>Small Fixed-Width Badges</Heading>
 				<div class="component-showcase">
-					<Tooltip text="OK" position="bottom">
+					<Tooltip text="OK" placement="bottom">
 						<Badge size="sm" variant="primary" class="wr-2 text-truncate">OK</Badge>
 					</Tooltip>
-					<Tooltip text="Status" position="bottom">
+					<Tooltip text="Status" placement="bottom">
 						<Badge size="sm" variant="info" class="wr-3 text-truncate">Status</Badge>
 					</Tooltip>
-					<Tooltip text="Completed Task" position="bottom">
+					<Tooltip text="Completed Task" placement="bottom">
 						<Badge size="sm" variant="success" class="wr-4 text-truncate">Completed Task</Badge>
 					</Tooltip>
-					<Tooltip text="Pending Review Process" position="bottom">
+					<Tooltip text="Pending Review Process" placement="bottom">
 						<Badge size="sm" variant="warning" class="wr-5 text-truncate">Pending Review Process</Badge>
 					</Tooltip>
-					<Tooltip text="Critical Error in Production" position="bottom">
+					<Tooltip text="Critical Error in Production" placement="bottom">
 						<Badge size="sm" variant="danger" class="wr-6 text-truncate">Critical Error in Production</Badge>
 					</Tooltip>
 				</div>
@@ -585,22 +585,22 @@
 			<Column size="100">
 				<Heading level={4}>Practical Example: Tags with Consistent Width</Heading>
 				<div class="component-showcase">
-					<Tooltip text="JavaScript" position="bottom">
+					<Tooltip text="JavaScript" placement="bottom">
 						<Badge isPill variant="secondary" class="wr-5 text-truncate">JavaScript</Badge>
 					</Tooltip>
-					<Tooltip text="TypeScript" position="bottom">
+					<Tooltip text="TypeScript" placement="bottom">
 						<Badge isPill variant="secondary" class="wr-5 text-truncate">TypeScript</Badge>
 					</Tooltip>
-					<Tooltip text="React" position="bottom">
+					<Tooltip text="React" placement="bottom">
 						<Badge isPill variant="secondary" class="wr-5 text-truncate">React</Badge>
 					</Tooltip>
-					<Tooltip text="Node.js" position="bottom">
+					<Tooltip text="Node.js" placement="bottom">
 						<Badge isPill variant="secondary" class="wr-5 text-truncate">Node.js</Badge>
 					</Tooltip>
-					<Tooltip text="PostgreSQL Database" position="bottom">
+					<Tooltip text="PostgreSQL Database" placement="bottom">
 						<Badge isPill variant="secondary" class="wr-5 text-truncate">PostgreSQL Database</Badge>
 					</Tooltip>
-					<Tooltip text="Express.js Framework" position="bottom">
+					<Tooltip text="Express.js Framework" placement="bottom">
 						<Badge isPill variant="secondary" class="wr-5 text-truncate">Express.js Framework</Badge>
 					</Tooltip>
 				</div>
@@ -616,7 +616,7 @@
 				<div class="component-showcase">
 					<Tooltip
 						text="Settings > User Preferences > Notifications > Email"
-						position="bottom"
+						placement="bottom"
 						multiline
 					>
 						<Badge variant="secondary" class="wr-6 text-truncate" isEllipsisStart
@@ -625,7 +625,7 @@
 					</Tooltip>
 					<Tooltip
 						text="/var/www/html/application/config/database.php"
-						position="bottom"
+						placement="bottom"
 						multiline
 					>
 						<Badge variant="info" class="wr-7 text-truncate" isEllipsisStart
@@ -634,7 +634,7 @@
 					</Tooltip>
 					<Tooltip
 						text="Components > Forms > Inputs > TextArea.svelte"
-						position="bottom"
+						placement="bottom"
 						multiline
 					>
 						<Badge variant="primary" class="wr-6 text-truncate" isEllipsisStart
@@ -643,7 +643,7 @@
 					</Tooltip>
 					<Tooltip
 						text="Europe > Germany > Berlin > Mitte > Alexanderplatz"
-						position="bottom"
+						placement="bottom"
 						multiline
 					>
 						<Badge variant="warning" class="wr-5 text-truncate" isEllipsisStart

@@ -473,7 +473,7 @@
 		hasIconOnlyTabs={profileIconOnlyTabs}
 	>
 		{#snippet tabs()}
-			<Tabs align="full">
+			<Tabs justify="stretch">
 				<TabItem
 					isActive={activeProfileTab === 'profile'}
 					onclick={() => activeProfileTab = 'profile'}
