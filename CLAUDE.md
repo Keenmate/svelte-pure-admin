@@ -49,7 +49,7 @@ When a demo/consumer passes a CSS class to a library component, decide prop-vs-`
 ## Guide files
 
 - [Svelte 5 patterns](docs/guides/svelte5-patterns.md) — runes, snippets, class building, standard template, BEM
-- [Naming conventions](docs/guides/naming-conventions.md) — KeenMate prop suffixes / prefixes (older summary that predates the keen-parity renames, e.g. still shows `shouldShowBurger`; `ai/naming-conventions.txt` + core `fidelity/NAMING.md` win)
+- [Naming conventions](docs/guides/naming-conventions.md) — KeenMate prop suffixes / prefixes
 - `ai/*.txt` — LLM reference files shipped in the npm package (copied in by `build`); keep them in sync when a public prop changes
 - [TypeScript types](docs/guides/typescript-types.md) — common variant / size / alignment / sentiment types
 
