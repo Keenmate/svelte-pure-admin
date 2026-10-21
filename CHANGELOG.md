@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed — `<Radio>` disabled emits `.pa-radio--disabled`; pure-css `^2.0.0-rc04`
+
+- **`<Radio isDisabled>` adds `.pa-radio--disabled` to the label** as well as the native
+  `disabled` attribute, the same as `<Checkbox>`. pure-admin-core keeps the modifier for radios
+  (its `radio.json` fidelity goldens carry it), so the wrapper follows.
+- **Peer `@keenmate/pure-css` is `^2.0.0-rc04`** (was `^2.0.0-rc02`): pure-admin-core's text
+  scale (`--pc-text-color-1..4`) needs it.
+
 ### BREAKING — every remaining boolean is `is*`/`has*`/`should*` (keen parity, batch 4)
 
 No aliases; old names are gone (Svelte ignores unknown props, so grep your usages).

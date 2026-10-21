@@ -66,9 +66,9 @@
 		// redundant but valid); emit whichever is explicitly set. A radio with no
 		// `labelPlacement` stays classless (= end).
 		if (labelPlacement) base.push(`pa-radio--label-${labelPlacement}`);
-		// Core has no `.pa-radio--disabled` (only size modifiers) — the native
-		// `disabled` attribute on the <input> is the disabled contract
-		// (snippets/forms.html). Checkbox has --disabled; radio does not.
+		// Disabled = `.pa-radio--disabled` on the label AND the native `disabled`
+		// attribute on the <input>, same as Checkbox (core fixture radio.json).
+		if (isDisabled) base.push('pa-radio--disabled');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
