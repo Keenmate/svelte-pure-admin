@@ -327,23 +327,21 @@
 	</Form>
 
 	{#snippet footer()}
-		<ButtonGroup>
-			<Button variant="secondary">
-				{#snippet icon()}←{/snippet}
-				Back
-			</Button>
-			<Button variant="light">
-				{#snippet icon()}🗑{/snippet}
-				Delete
-			</Button>
-		</ButtonGroup>
-		<ButtonGroup class="ms-auto">
-			<Button variant="secondary">Cancel</Button>
-			<Button variant="success">
-				{#snippet icon()}✓{/snippet}
-				Save Changes
-			</Button>
-		</ButtonGroup>
+		<Button variant="secondary">
+			{#snippet icon()}←{/snippet}
+			Back
+		</Button>
+		<Button variant="light">
+			{#snippet icon()}🗑{/snippet}
+			Delete
+		</Button>
+	{/snippet}
+	{#snippet footerActions()}
+		<Button variant="secondary">Cancel</Button>
+		<Button variant="success">
+			{#snippet icon()}✓{/snippet}
+			Save Changes
+		</Button>
 	{/snippet}
 </Card>
 
@@ -471,7 +469,7 @@
 					<FormLabel for="button-append">Input with Button</FormLabel>
 					<InputGroup>
 						<Input id="button-append" placeholder="Search..." bind:value={buttonAppend} />
-						<Button variant="primary" isInputGroupButton>Search</Button>
+						<Button variant="primary" isInputGroupButton isRipple rippleType="double-pulse">Search</Button>
 					</InputGroup>
 				</FormGroup>
 			</Column>

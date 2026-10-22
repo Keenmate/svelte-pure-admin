@@ -1,5 +1,18 @@
 <script lang="ts">
-	import { Heading, Paragraph, Button, ButtonGroup, Card, Grid, Column, BasicList, Tooltip, SplitButton, SplitButtonItem, Popconfirm, Code } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Button, ButtonGroup, Card, Grid, Column, BasicList, Tooltip, SplitButton, SplitButtonItem, Popconfirm, Code, CodeBlock, Strong } from '@keenmate/svelte-pure-admin';
+
+	// A product-defined ripple type, shown on the page and applied below via <svelte:head>.
+	const waveCss = `.pa-btn--ripple-wave::before {
+  background: transparent;
+  border: 2px solid currentColor;
+}
+.pa-btn--ripple-wave.pa-btn--ripple-active::before {
+  animation: app-ripple-wave 0.6s ease-out;
+}
+@keyframes app-ripple-wave {
+  from { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+  to   { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}`;
 	import { onMount } from 'svelte';
 	import OverflowToolbar from './OverflowToolbar.svelte';
 
@@ -60,18 +73,6 @@
 	}
 		
 	onMount(() => {
-		function addRippleEffect(button: HTMLElement) {
-			button.addEventListener('click', function (e) {
-				// Add ripple active class
-				this.classList.add('pa-btn--ripple-active');
-
-				// Remove the class after animation completes
-				setTimeout(() => {
-					this.classList.remove('pa-btn--ripple-active');
-				}, 600);
-			});
-		}
-
 		function addLoadingDemo(button: HTMLButtonElement) {
 			const originalHTML = button.innerHTML;
 			const originalWidth = button.offsetWidth;
@@ -102,9 +103,6 @@
 			});
 		}
 
-		// Initialize ripple effects
-		document.querySelectorAll('[data-ripple]').forEach((btn) => addRippleEffect(btn as HTMLElement));
-
 		// Initialize loading demos
 		document.querySelectorAll('[data-loading-demo]').forEach((btn) => addLoadingDemo(btn as HTMLButtonElement));
 	});
@@ -115,6 +113,7 @@
 		rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 	/>
+	{@html `<style>${waveCss}</style>`}
 </svelte:head>
 
 <Paragraph>Various button styles and sizes for actions and navigation.</Paragraph>
@@ -672,10 +671,10 @@
 			<Grid>
 				<Column size="100">
 					<ButtonGroup>
-						<Button variant="primary" isIconOnly titleText="Save" data-ripple data-loading-demo><span class="pa-icon pa-icon--save" aria-hidden="true"></span></Button>
-						<Button variant="secondary" isIconOnly titleText="Refresh" data-ripple data-loading-demo><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></Button>
-						<Button variant="success" isIconOnly titleText="Upload" data-ripple data-loading-demo><i class="fa-solid fa-upload"></i></Button>
-						<Button variant="danger" isIconOnly titleText="Delete" data-ripple data-loading-demo><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
+						<Button variant="primary" isIconOnly titleText="Save" isRipple data-loading-demo><span class="pa-icon pa-icon--save" aria-hidden="true"></span></Button>
+						<Button variant="secondary" isIconOnly titleText="Refresh" isRipple data-loading-demo><span class="pa-icon pa-icon--refresh" aria-hidden="true"></span></Button>
+						<Button variant="success" isIconOnly titleText="Upload" isRipple data-loading-demo><i class="fa-solid fa-upload"></i></Button>
+						<Button variant="danger" isIconOnly titleText="Delete" isRipple data-loading-demo><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
 					</ButtonGroup>
 				</Column>
 			</Grid>
@@ -856,14 +855,43 @@
 	<!-- Ripple Effect Buttons -->
 	<Column size="100" lg="1-2">
 		<Card titleText="Ripple Effect Buttons">
-			<Paragraph class="mb-1">Click buttons to see ripple animation effect:</Paragraph>
-			<ButtonGroup>
-				<Button variant="primary" isRipple>Primary Ripple</Button>
-				<Button variant="secondary" isRipple>Secondary Ripple</Button>
-				<Button variant="success" isRipple>Success Ripple</Button>
-				<Button variant="warning" isRipple>Warning Ripple</Button>
-				<Button variant="danger" isRipple>Danger Ripple</Button>
+			<Paragraph class="mb-1"><Code>isRipple</Code> — grows from where you click and fades out. The ink is the button's text colour, so it works on every variant:</Paragraph>
+			<ButtonGroup class="mb-3">
+				<Button variant="primary" isRipple>Primary</Button>
+				<Button variant="success" isRipple>Success</Button>
+				<Button variant="danger" isRipple>Danger</Button>
+				<Button variant="secondary" isRipple>Secondary</Button>
+				<Button variant="primary" isOutline isRipple>Outline</Button>
+				<Button variant="light" isRipple>Light</Button>
 			</ButtonGroup>
+			<Paragraph class="mb-1"><Code>isRipple rippleType="center"</Code> — always starts in the middle:</Paragraph>
+			<ButtonGroup class="mb-3">
+				<Button variant="primary" isRipple rippleType="center">Primary</Button>
+				<Button variant="warning" isRipple rippleType="center">Warning</Button>
+				<Button variant="info" isRipple rippleType="center">Info</Button>
+				<Button variant="primary" isBlock isRipple rippleType="center">Full width, centred</Button>
+			</ButtonGroup>
+			<Paragraph class="mb-1"><Code>isRipple rippleType="pulse"</Code> — a halo of the button's fill grows past its edges (filled buttons):</Paragraph>
+			<ButtonGroup>
+				<Button variant="primary" isRipple rippleType="pulse">Primary</Button>
+				<Button variant="success" isRipple rippleType="pulse">Success</Button>
+				<Button variant="danger" isRipple rippleType="pulse">Danger</Button>
+				<Button variant="primary" isIconOnly isRipple rippleType="pulse" titleText="Favourite"><span class="pa-icon pa-icon--favorites" aria-hidden="true"></span></Button>
+			</ButtonGroup>
+			<Paragraph class="mb-1 mt-3"><Code>isRipple rippleType="double-pulse"</Code> — two halos, one right after the other:</Paragraph>
+			<ButtonGroup>
+				<Button variant="primary" isRipple rippleType="double-pulse">Primary</Button>
+				<Button variant="success" isRipple rippleType="double-pulse">Success</Button>
+				<Button variant="danger" isRipple rippleType="double-pulse">Danger</Button>
+				<Button variant="primary" isIconOnly isRipple rippleType="double-pulse" titleText="Notifications"><span class="pa-icon pa-icon--bell" aria-hidden="true"></span></Button>
+			</ButtonGroup>
+			<Paragraph class="mb-1 mt-3"><Strong>Your own type</Strong> — <Code>rippleType</Code> takes any name: define <Code>pa-btn--ripple-&lt;name&gt;</Code> with an animation on <Code>pa-btn--ripple-active</Code> in your CSS; no JS or registration. This page defines a ring <Code>wave</Code>:</Paragraph>
+			<ButtonGroup class="mb-2">
+				<Button variant="primary" isRipple rippleType="wave">Primary</Button>
+				<Button variant="success" isRipple rippleType="wave">Success</Button>
+				<Button variant="primary" isOutline isRipple rippleType="wave">Outline</Button>
+			</ButtonGroup>
+			<CodeBlock language="css" isCompact>{waveCss}</CodeBlock>
 		</Card>
 	</Column>
 
@@ -896,8 +924,9 @@
 <Card titleText="Usage Guide">
 	<Heading level={4}>Ripple Effect</Heading>
 	<Paragraph>
-		Add <Code>pa-btn--ripple</Code> class and <Code>data-ripple</Code> attribute to any button for
-		click animation feedback.
+		Set <Code>isRipple</Code> on any <Code>Button</Code> (<Code>pa-btn--ripple</Code>) for click
+		feedback that grows from the click point; <Code>rippleType="center"</Code> starts it in the middle,
+		<Code>rippleType="pulse"</Code> grows a halo past the edges. The component plays it, no script needed.
 	</Paragraph>
 
 	<Heading level={4}>Loading States</Heading>

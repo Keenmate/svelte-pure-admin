@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, Paragraph, Card, CardTab, CardTabContent, Button, ButtonGroup, Badge, Grid, Column, Section, Table, Stat, List, ListItem, BasicList, Code } from '@keenmate/svelte-pure-admin';
+	import { Heading, Paragraph, Card, CardTab, CardTabContent, Button, Badge, Grid, Column, Section, Table, Stat, List, ListItem, BasicList, Code } from '@keenmate/svelte-pure-admin';
 
 	// Local type matching Card component's variant prop (primary/success/warning/
 	// danger + the color-1..9 theme slots — no `info`, which Card doesn't support).
@@ -124,12 +124,10 @@
 		<Column size="100" lg="1-2">
 			<Card titleText="Reports" descriptionText="Generate and download analytics reports for your dashboard metrics">
 				{#snippet headerActions()}
-					<ButtonGroup>
-						<Button variant="secondary" size="sm">Export</Button>
-						<Button variant="primary" size="sm">Generate</Button>
-					</ButtonGroup>
+					<Button variant="secondary" size="sm">Export</Button>
+					<Button variant="primary" size="sm">Generate</Button>
 				{/snippet}
-				<Paragraph>Multiple buttons can be grouped with <Code>ButtonGroup</Code>. The group stays fixed and won't shrink.</Paragraph>
+				<Paragraph>Header controls belong in <Code>headerActions</Code> (renders <Code>.pa-card__actions</Code>) — the canonical actions slot. It stays fixed (<Code>flex-shrink: 0</Code>) and won't squeeze. Buttons go straight in — the slot spaces them; nest a <Code>ButtonGroup</Code> <em>inside</em> only for its options (<Code>isCompact</Code>, <Code>isVertical</Code>).</Paragraph>
 			</Card>
 		</Column>
 
@@ -144,10 +142,8 @@
 		<Column size="100" lg="1-2">
 			<Card titleText="Notifications">
 				{#snippet headerActions()}
-					<ButtonGroup>
-						<Button variant="secondary" size="sm">Mark All Read</Button>
-						<Button variant="danger" isOutline size="sm">Clear</Button>
-					</ButtonGroup>
+					<Button variant="secondary" size="sm">Mark All Read</Button>
+					<Button variant="danger" isOutline size="sm">Clear</Button>
 				{/snippet}
 				<Paragraph>Title + actions without description. The gap keeps them separated, and <Code>justify-content: space-between</Code> pushes actions to the right.</Paragraph>
 			</Card>
@@ -170,11 +166,9 @@
 		<Column size="100" lg="1-2">
 			<Card titleText="Inventory" descriptionText="Track stock levels, manage suppliers, process purchase orders, and monitor warehouse capacity across multiple locations">
 				{#snippet headerActions()}
-					<ButtonGroup>
-						<Button variant="secondary" size="sm">Import</Button>
-						<Button variant="secondary" size="sm">Export</Button>
-						<Button variant="primary" size="sm">Add Item</Button>
-					</ButtonGroup>
+					<Button variant="secondary" size="sm">Import</Button>
+					<Button variant="secondary" size="sm">Export</Button>
+					<Button variant="primary" size="sm">Add Item</Button>
 				{/snippet}
 				<Paragraph>Even with multiple action buttons, the description gracefully truncates to prevent overflow.</Paragraph>
 			</Card>
@@ -233,10 +227,8 @@
 		<Column size="100" lg="1-2">
 			<Card shouldWrapHeader titleText="Project Overview" descriptionText="This card uses the wrap modifier so the description appears on its own line below the title and actions. This is useful when the full description text needs to be visible.">
 				{#snippet headerActions()}
-					<ButtonGroup>
-						<Button variant="secondary" size="sm">Edit</Button>
-						<Button variant="primary" size="sm">View</Button>
-					</ButtonGroup>
+					<Button variant="secondary" size="sm">Edit</Button>
+					<Button variant="primary" size="sm">View</Button>
 				{/snippet}
 				<Paragraph>With <Code>shouldWrapHeader</Code>, the description moves to a new line (via <Code>flex-basis: 100%</Code> and <Code>order: 1</Code>) and can display multiple lines.</Paragraph>
 			</Card>

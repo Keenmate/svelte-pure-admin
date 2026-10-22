@@ -54,7 +54,7 @@
 		<tbody>
 			<tr>
 				<td class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
 						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -65,7 +65,7 @@
 			</tr>
 			<tr>
 				<td class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
 						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -76,7 +76,7 @@
 			</tr>
 			<tr>
 				<td class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
 						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -205,7 +205,7 @@
 		<tbody>
 			<tr>
 				<td class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
 						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -217,7 +217,7 @@
 			</tr>
 			<tr>
 				<td class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
 						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -229,7 +229,7 @@
 			</tr>
 			<tr>
 				<td class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" isIconOnly variant="primary">👁️</Button>
 						<Button size="xs" isIconOnly variant="secondary"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>

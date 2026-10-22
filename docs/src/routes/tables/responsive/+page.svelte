@@ -105,7 +105,7 @@
 		<tbody>
 			<tr>
 				<td data-label="Actions" class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
 						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -118,7 +118,7 @@
 			</tr>
 			<tr>
 				<td data-label="Actions" class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
 						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -131,7 +131,7 @@
 			</tr>
 			<tr>
 				<td data-label="Actions" class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
 						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -144,7 +144,7 @@
 			</tr>
 			<tr>
 				<td data-label="Actions" class="col-auto">
-					<ButtonGroup>
+					<ButtonGroup isCompact>
 						<Button size="xs" variant="primary" isIconOnly titleText="View">👁️</Button>
 						<Button size="xs" variant="secondary" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 					</ButtonGroup>
@@ -398,7 +398,7 @@
 // Actions column - use col-auto class
 <th class="col-auto">Actions</th>
 <td data-label="Actions" class="col-auto">
-  <ButtonGroup>
+  <ButtonGroup isCompact>
     <Button size="xs">View</Button>
     <Button size="xs">Edit</Button>
   </ButtonGroup>

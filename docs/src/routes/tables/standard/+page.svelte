@@ -79,7 +79,7 @@
 				<tbody>
 					<tr>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
 								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
@@ -93,7 +93,7 @@
 					</tr>
 					<tr>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
 								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 							</ButtonGroup>
@@ -106,7 +106,7 @@
 					</tr>
 					<tr>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
 								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
@@ -120,7 +120,7 @@
 					</tr>
 					<tr>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="primary" size="xs" isIconOnly titleText="View">👁️</Button>
 								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
 							</ButtonGroup>
@@ -133,7 +133,7 @@
 					</tr>
 					<tr>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="xs" isIconOnly titleText="Edit"><span class="pa-icon pa-icon--edit" aria-hidden="true"></span></Button>
 								<Button variant="danger" size="xs" isIconOnly titleText="Delete"><span class="pa-icon pa-icon--delete" aria-hidden="true"></span></Button>
 							</ButtonGroup>
@@ -233,7 +233,7 @@
 						<td>Edinburgh</td>
 						<td>61</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="xs">Edit</Button>
 								<Button variant="danger" size="xs">Delete</Button>
 							</ButtonGroup>
@@ -245,7 +245,7 @@
 						<td>Tokyo</td>
 						<td>63</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="xs">Edit</Button>
 								<Button variant="danger" size="xs">Delete</Button>
 							</ButtonGroup>
@@ -257,7 +257,7 @@
 						<td>San Francisco</td>
 						<td>66</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="xs">Edit</Button>
 								<Button variant="danger" size="xs">Delete</Button>
 							</ButtonGroup>
@@ -291,7 +291,7 @@
 						<td>Edinburgh</td>
 						<td>61</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="sm">Edit</Button>
 								<Button variant="danger" size="sm">Delete</Button>
 							</ButtonGroup>
@@ -303,7 +303,7 @@
 						<td>Tokyo</td>
 						<td>63</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="sm">Edit</Button>
 								<Button variant="danger" size="sm">Delete</Button>
 							</ButtonGroup>
@@ -315,7 +315,7 @@
 						<td>San Francisco</td>
 						<td>66</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="sm">Edit</Button>
 								<Button variant="danger" size="sm">Delete</Button>
 							</ButtonGroup>
@@ -349,7 +349,7 @@
 						<td>Edinburgh</td>
 						<td>61</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="sm">Edit</Button>
 								<Button variant="danger" size="sm">Delete</Button>
 							</ButtonGroup>
@@ -361,7 +361,7 @@
 						<td>Tokyo</td>
 						<td>63</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="sm">Edit</Button>
 								<Button variant="danger" size="sm">Delete</Button>
 							</ButtonGroup>
@@ -373,7 +373,7 @@
 						<td>San Francisco</td>
 						<td>66</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="sm">Edit</Button>
 								<Button variant="danger" size="sm">Delete</Button>
 							</ButtonGroup>
@@ -407,7 +407,7 @@
 						<td>Edinburgh</td>
 						<td>61</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="lg">Edit</Button>
 								<Button variant="danger" size="lg">Delete</Button>
 							</ButtonGroup>
@@ -419,7 +419,7 @@
 						<td>Tokyo</td>
 						<td>63</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="lg">Edit</Button>
 								<Button variant="danger" size="lg">Delete</Button>
 							</ButtonGroup>
@@ -431,7 +431,7 @@
 						<td>San Francisco</td>
 						<td>66</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="lg">Edit</Button>
 								<Button variant="danger" size="lg">Delete</Button>
 							</ButtonGroup>
@@ -465,7 +465,7 @@
 						<td>Edinburgh</td>
 						<td>61</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="xl">Edit</Button>
 								<Button variant="danger" size="xl">Delete</Button>
 							</ButtonGroup>
@@ -477,7 +477,7 @@
 						<td>Tokyo</td>
 						<td>63</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="xl">Edit</Button>
 								<Button variant="danger" size="xl">Delete</Button>
 							</ButtonGroup>
@@ -489,7 +489,7 @@
 						<td>San Francisco</td>
 						<td>66</td>
 						<td class="col-auto">
-							<ButtonGroup>
+							<ButtonGroup isCompact>
 								<Button variant="secondary" size="xl">Edit</Button>
 								<Button variant="danger" size="xl">Delete</Button>
 							</ButtonGroup>

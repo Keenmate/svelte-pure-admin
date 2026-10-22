@@ -140,7 +140,7 @@
 
 <!-- Filter Tabs -->
 <Card titleText="Filter by Status">
-	<div class="d-flex gap-5 flex-wrap">
+	<ButtonGroup>
 		{#each (['active', 'pending', 'archived'] as FilterType[]) as filter}
 			<Button
 				variant={activeFilter === filter ? 'primary' : 'secondary'}
@@ -152,7 +152,7 @@
 				{/if}
 			</Button>
 		{/each}
-	</div>
+	</ButtonGroup>
 </Card>
 
 <!-- Selection Summary Bar -->

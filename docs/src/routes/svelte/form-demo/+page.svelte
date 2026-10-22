@@ -605,7 +605,7 @@
 				{#each entries as e (e.id)}
 					<tr class:is-editing={e.id === editingId}>
 						<td>
-							<div class="pa-btn-group">
+							<div class="pa-btn-group pa-btn-group--compact">
 								<Button
 									variant="danger"
 									size="xs"

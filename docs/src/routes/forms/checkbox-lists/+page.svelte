@@ -484,7 +484,7 @@
 					<td>{row.email}</td>
 					<td><Badge variant={row.statusVariant}>{row.status}</Badge></td>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button size="xs" variant="primary" isIconOnly>👁️</Button>
 							<Button size="xs" variant="secondary" isIconOnly>✏️</Button>
 							<Button size="xs" variant="danger" isIconOnly>🗑️</Button>

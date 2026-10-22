@@ -22,7 +22,7 @@
 			<tbody>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="xs">Edit</Button>
 							<Button variant="danger" size="xs">Delete</Button>
 						</ButtonGroup>
@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="xs">Edit</Button>
 							<Button variant="danger" size="xs">Delete</Button>
 						</ButtonGroup>
@@ -46,7 +46,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="xs">Edit</Button>
 							<Button variant="danger" size="xs">Delete</Button>
 						</ButtonGroup>
@@ -79,7 +79,7 @@
 			<tbody>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="sm">Edit</Button>
 							<Button variant="danger" size="sm">Delete</Button>
 						</ButtonGroup>
@@ -91,7 +91,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="sm">Edit</Button>
 							<Button variant="danger" size="sm">Delete</Button>
 						</ButtonGroup>
@@ -103,7 +103,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="sm">Edit</Button>
 							<Button variant="danger" size="sm">Delete</Button>
 						</ButtonGroup>
@@ -136,7 +136,7 @@
 			<tbody>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="sm">Edit</Button>
 							<Button variant="danger" size="sm">Delete</Button>
 						</ButtonGroup>
@@ -148,7 +148,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="sm">Edit</Button>
 							<Button variant="danger" size="sm">Delete</Button>
 						</ButtonGroup>
@@ -160,7 +160,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="sm">Edit</Button>
 							<Button variant="danger" size="sm">Delete</Button>
 						</ButtonGroup>
@@ -193,7 +193,7 @@
 			<tbody>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="lg">Edit</Button>
 							<Button variant="danger" size="lg">Delete</Button>
 						</ButtonGroup>
@@ -205,7 +205,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="lg">Edit</Button>
 							<Button variant="danger" size="lg">Delete</Button>
 						</ButtonGroup>
@@ -217,7 +217,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="lg">Edit</Button>
 							<Button variant="danger" size="lg">Delete</Button>
 						</ButtonGroup>
@@ -250,7 +250,7 @@
 			<tbody>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="xl">Edit</Button>
 							<Button variant="danger" size="xl">Delete</Button>
 						</ButtonGroup>
@@ -262,7 +262,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="xl">Edit</Button>
 							<Button variant="danger" size="xl">Delete</Button>
 						</ButtonGroup>
@@ -274,7 +274,7 @@
 				</tr>
 				<tr>
 					<td class="col-auto">
-						<ButtonGroup>
+						<ButtonGroup isCompact>
 							<Button variant="secondary" size="xl">Edit</Button>
 							<Button variant="danger" size="xl">Delete</Button>
 						</ButtonGroup>
