@@ -5,6 +5,7 @@
     "vertical":   { "prop": "isVertical", "kind": "bool" },
     "align":      { "prop": "align",      "kind": "enum", "values": ["center", "end", "stretch"] },
     "nowrap":     { "prop": "isNowrap",   "kind": "bool" },
+    "compact":    { "prop": "isCompact",  "kind": "bool" },
     "responsive": { "prop": "responsive", "kind": "enum", "values": ["sm-vertical", "sm-horizontal", "md-vertical", "md-horizontal", "lg-vertical", "lg-horizontal", "xl-vertical", "xl-horizontal"] },
     "extraClass": { "prop": "class",      "kind": "string" },
     "content":    { "prop": "children",   "kind": "slot" }

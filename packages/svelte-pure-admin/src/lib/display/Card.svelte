@@ -129,9 +129,9 @@
 		tabs?: import('svelte').Snippet;
 		/** Body snippet (main content) */
 		children?: import('svelte').Snippet;
-		/** Footer snippet (for complex footers) */
+		/** Footer snippet — leading content (text, meta, buttons) on the left */
 		footer?: import('svelte').Snippet;
-		/** Footer actions snippet (rendered on right side of footer) */
+		/** Footer actions snippet — `.pa-card__actions`, pinned to the right; combines with `footer` */
 		footerActions?: import('svelte').Snippet;
 	}
 
@@ -405,9 +405,8 @@
 
 	{#if hasFooter}
 		<div class="pa-card__footer">
-			{#if footer}
-				{@render footer()}
-			{:else if footerActions}
+			{@render footer?.()}
+			{#if footerActions}
 				<div class="pa-card__actions">
 					{@render footerActions()}
 				</div>

@@ -3,6 +3,7 @@
 	 * Pure Admin Button Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/buttons.html
 	 */
+	import { ripple } from './ripple';
 	import Icon from '../icon/Icon.svelte';
 
 	import type { ThemeColor } from '../types';
@@ -36,8 +37,14 @@
 		isIconOnly?: boolean;
 		/** Loading state */
 		isLoading?: boolean;
-		/** Ripple effect on click */
+		/** Ripple effect on click (grows from the click point) */
 		isRipple?: boolean;
+		/**
+		 * Ripple design with `isRipple` → `pa-btn--ripple-{rippleType}`. Built in: `center` = always
+		 * from the middle, `pulse` = a halo of the fill past the edges, `double-pulse` = two halos.
+		 * Any other name works too — define `.pa-btn--ripple-<name>` in your own CSS.
+		 */
+		rippleType?: 'center' | 'pulse' | 'double-pulse' | (string & {});
 		/** Button content alignment */
 		justify?: ButtonJustify;
 		/** Icon position relative to children text */
@@ -88,6 +95,7 @@
 		isIconOnly = false,
 		isLoading = false,
 		isRipple = false,
+		rippleType,
 		justify,
 		iconPlacement = 'start',
 		shouldTruncateText = false,
@@ -130,6 +138,7 @@
 		if (isIconOnly) base.push('pa-btn--icon-only');
 		if (isLoading) base.push('pa-btn--loading');
 		if (isRipple) base.push('pa-btn--ripple');
+		if (isRipple && rippleType) base.push(`pa-btn--ripple-${rippleType}`);
 
 		// Alignment
 		if (justify) base.push(`pa-btn--justify-${justify}`);
@@ -160,7 +169,7 @@
 		class={classes()}
 		class:disabled={isDisabled || isLoading}
 		{onclick}
-		data-ripple={isRipple ? true : undefined}
+		use:ripple={isRipple}
 		{...restProps}
 	>
 		{#if isLoading}
@@ -196,7 +205,7 @@
 		disabled={isDisabled || isLoading}
 		class={classes()}
 		{onclick}
-		data-ripple={isRipple ? true : undefined}
+		use:ripple={isRipple}
 		{...restProps}
 	>
 		{#if isLoading}

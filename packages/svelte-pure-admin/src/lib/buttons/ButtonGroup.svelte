@@ -3,8 +3,8 @@
 	 * Pure Admin ButtonGroup Component (Svelte 5)
 	 * Based on @keenmate/pure-admin-core snippets/buttons.html
 	 *
-	 * Note: Gap modifiers (compact/loose) were removed in pure-admin-core rc04.
-	 * Use utility classes instead: `class="gap-2"` for compact, `class="gap-8"` for loose.
+	 * Default gap is 8px (the same as card actions / footers). `isCompact` gives the
+	 * tight 3px cluster for small buttons such as table row actions.
 	 */
 
 	type AlignVariant = 'center' | 'end' | 'stretch';
@@ -32,6 +32,8 @@
 		horizontalAt?: Breakpoint;
 		/** Prevent wrapping (single line, may overflow) */
 		isNowrap?: boolean;
+		/** Tight 3px gap for small-button clusters such as table row actions (pa-btn-group--compact) */
+		isCompact?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Children content */
@@ -45,6 +47,7 @@
 		verticalAt,
 		horizontalAt,
 		isNowrap = false,
+		isCompact = false,
 		class: className = '',
 		children
 	}: Props = $props();
@@ -60,6 +63,7 @@
 		if (verticalAt) base.push(`pa-btn-group--${verticalAt}-vertical`);
 		if (horizontalAt) base.push(`pa-btn-group--${horizontalAt}-horizontal`);
 		if (isNowrap) base.push('pa-btn-group--nowrap');
+		if (isCompact) base.push('pa-btn-group--compact');
 		if (className) base.push(className);
 		return base.join(' ');
 	});
