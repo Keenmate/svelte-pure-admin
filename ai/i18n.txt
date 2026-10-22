@@ -19,17 +19,19 @@ Built-in translations load automatically when you import anything from the libra
 No init() call needed for basic English usage:
 
 <script>
-  import { _, Button, Modal } from '@keenmate/svelte-pure-admin';
+  import { _, Modal } from '@keenmate/svelte-pure-admin';
+
+  let isSettingsOpen = $state(false);
 </script>
 
 <!-- All component strings (close buttons, aria labels) already translated -->
-<Modal titleText="Settings" bind:isOpen={showSettings}>
+<Modal titleText="Settings" bind:isOpen={isSettingsOpen}>
   <p>Content here</p>
 </Modal>
 
 <!-- Use $_ for your own translation keys -->
-<p>{$_('pureAdmin.dialog.confirm')}</p>
-<!-- Output: "Confirm" -->
+<p>{$_('pureAdmin.buttons.cancel')}</p>
+<!-- Output: "Cancel" -->
 
 
 I18N SERVICE API
@@ -88,7 +90,7 @@ i18n.init({
 
 Result: All library components now show Czech text.
   $_('pureAdmin.dialog.confirm') --> "Potvrdit"
-  $_('pureAdmin.dialog.cancel')  --> "Zrusit"
+  $_('pureAdmin.buttons.cancel')  --> "Zrušit"
 
 
 SWITCHING LOCALES AT RUNTIME
@@ -139,11 +141,11 @@ i18n.init({
   translations: {
     de: {
       'pureAdmin.dialog.confirm': 'Bestatigen',
-      'pureAdmin.dialog.cancel': 'Abbrechen',
-      'pureAdmin.dialog.ok': 'OK',
+      'pureAdmin.buttons.cancel': 'Abbrechen',
+      'pureAdmin.buttons.ok': 'OK',
       'pureAdmin.dialog.alert': 'Warnung',
       'pureAdmin.dialog.areYouSure': 'Sind Sie sicher?',
-      'pureAdmin.common.buttons.close': 'Schliessen',
+      'pureAdmin.buttons.close': 'Schliessen',
       // ... your app translations
       'app.dashboard.title': 'Ubersicht',
       'app.users.count': '{count} Benutzer'
@@ -158,8 +160,8 @@ import { i18n } from '@keenmate/svelte-pure-admin';
 i18n.addLanguage({ code: 'fr', name: 'Francais' });
 i18n.addTranslations('fr', {
   'pureAdmin.dialog.confirm': 'Confirmer',
-  'pureAdmin.dialog.cancel': 'Annuler',
-  'pureAdmin.common.buttons.close': 'Fermer',
+  'pureAdmin.buttons.cancel': 'Annuler',
+  'pureAdmin.buttons.close': 'Fermer',
   'app.dashboard.title': 'Tableau de bord'
 });
 
@@ -215,7 +217,7 @@ i18n.init({
   translations: {
     en: {
       'pureAdmin.dialog.confirm': 'Yes, do it!',
-      'pureAdmin.dialog.cancel': 'Nope',
+      'pureAdmin.buttons.cancel': 'Nope',
       'pureAdmin.field.clickToCopy': 'Copy this value',
       'pureAdmin.field.copied': 'Done!'
     }
@@ -227,7 +229,7 @@ import { registerLibraryTranslations } from '@keenmate/svelte-pure-admin';
 
 registerLibraryTranslations('en', {
   'pureAdmin.dialog.confirm': 'Yes, do it!',
-  'pureAdmin.common.buttons.close': 'Dismiss'
+  'pureAdmin.buttons.close': 'Dismiss'
 });
 
 Method 3: Via addMessages (svelte-i18n direct)
@@ -259,6 +261,9 @@ LOCALE STORES
 These are svelte-i18n stores, re-exported for convenience:
 
 import { locale, locales, isLoading } from '@keenmate/svelte-pure-admin';
+// also re-exported: addMessages, register, init, getLocaleFromNavigator,
+// getLocaleFromQueryString, getLocaleFromHash, getLocaleFromPathname,
+// and the built-in dictionaries `en` / `cs`
 
 $locale         -- Current locale code (writable store)
 $locales        -- Array of registered locale codes
@@ -267,22 +272,40 @@ $isLoading      -- True while async translations are loading
 
 BUILT-IN TRANSLATION KEYS
 --------------------------
-All keys use flat format with 'pureAdmin.' prefix.
+All keys use flat format with 'pureAdmin.' prefix (en / cs bundled, 71 keys each;
+source: src/lib/i18n/locales/en.ts).
 
-Dialog:
+Buttons (shared by dialogs, panels, filters, RangeGroup...):
+  pureAdmin.buttons.ok             -- "OK"
+  pureAdmin.buttons.cancel         -- "Cancel" / "Zrušit"
+  pureAdmin.buttons.confirm        -- "Confirm"
+  pureAdmin.buttons.close          -- "Close" (also the DetailPanel / Modal close aria-label)
+  pureAdmin.buttons.clearAll       -- "Clear all"
+  pureAdmin.buttons.refresh        -- "Refresh"
+  pureAdmin.buttons.moreFilters    -- "More filters"
+  pureAdmin.buttons.hideFilters    -- "Hide filters"
+  pureAdmin.buttons.clearFilters   -- "Clear Filters"
+  pureAdmin.buttons.applyFilters   -- "Apply Filters"
+  pureAdmin.buttons.reset          -- "Reset"  (RangeGroup resetText default)
+  pureAdmin.buttons.apply          -- "Apply"  (RangeGroup applyText default)
+
+Dialog (dialogService):
   pureAdmin.dialog.confirm         -- "Confirm" / "Potvrdit"
-  pureAdmin.dialog.cancel          -- "Cancel" / "Zrusit"
-  pureAdmin.dialog.ok              -- "OK" / "OK"
-  pureAdmin.dialog.alert           -- "Alert" / "Upozorneni"
-  pureAdmin.dialog.input           -- "Input" / "Vstup"
+  pureAdmin.dialog.alert           -- "Alert"
+  pureAdmin.dialog.input           -- "Input"
   pureAdmin.dialog.areYouSure      -- "Are you sure?" / "Jste si jisti?"
-  pureAdmin.dialog.enterValue      -- "Enter value:" / "Zadejte hodnotu:"
-  pureAdmin.dialog.defaultTitle    -- "Dialog" / "Dialog"
-  pureAdmin.dialog.invalidInput    -- "Invalid input" / "Neplatny vstup"
+  pureAdmin.dialog.enterValue      -- "Enter value:"
+  pureAdmin.dialog.defaultTitle    -- "Dialog"
+  pureAdmin.dialog.invalidInput    -- "Invalid input"
 
 Popconfirm:
-  pureAdmin.popconfirm.confirm     -- "Confirm" / "Potvrdit"
-  pureAdmin.popconfirm.cancel      -- "Cancel" / "Zrusit"
+  pureAdmin.popconfirm.confirm     -- "Confirm"
+  pureAdmin.popconfirm.cancel      -- "Cancel"
+
+Notifications:
+  pureAdmin.notifications.title        -- "Notifications"
+  pureAdmin.notifications.markAllRead  -- "Mark all as read"
+  pureAdmin.notifications.viewAll      -- "View all notifications"
 
 Shortcuts:
   pureAdmin.shortcuts.title            -- "Keyboard Shortcuts"
@@ -291,33 +314,41 @@ Shortcuts:
   pureAdmin.shortcuts.showShortcuts    -- "Show keyboard shortcuts"
 
 Command Palette:
-  pureAdmin.commandPalette.placeholder         -- "Type / for commands, : for search..."
+  pureAdmin.commandPalette.placeholder         -- "Type / for commands, : for search, or just type..."
+  pureAdmin.commandPalette.idleMessage         -- "Type / for commands, : for search contexts, ..."
   pureAdmin.commandPalette.loading             -- "Loading..."
   pureAdmin.commandPalette.commands            -- "Commands"
   pureAdmin.commandPalette.searchIn            -- "Search In"
   pureAdmin.commandPalette.search              -- "Search"
   pureAdmin.commandPalette.noMatchingCommands  -- "No matching commands"
+  pureAdmin.commandPalette.noMatchingContexts  -- "No matching search contexts"
   pureAdmin.commandPalette.typeToSearch        -- "Type to search..."
   pureAdmin.commandPalette.noResults           -- "No results found"
-  pureAdmin.commandPalette.close               -- "Close"
+  pureAdmin.commandPalette.preview             -- "Preview:"
+  pureAdmin.commandPalette.navigate / select / complete / close / back  -- footer hints
+  pureAdmin.commandPalette.searchFailed        -- "Search failed. Please try again."
+  pureAdmin.commandPalette.loadOptionsFailed   -- "Failed to load options. Please try again."
   pureAdmin.commandPalette.openCommandPalette  -- "Open command palette"
 
 Load More:
   pureAdmin.loadMore.loadMore      -- "Load More"
   pureAdmin.loadMore.loading       -- "Loading..."
 
+Pager (default button labels; override per pager with firstText/... or snippets):
+  pureAdmin.pager.first            -- "« First"
+  pureAdmin.pager.previous         -- "‹ Previous"
+  pureAdmin.pager.next             -- "Next ›"
+  pureAdmin.pager.last             -- "Last »"
+  pureAdmin.pager.page             -- "Page"
+  pureAdmin.pager.of               -- "of"
+
 Field:
   pureAdmin.field.clickToCopy      -- "Click to copy"
   pureAdmin.field.copied           -- "Copied!"
 
-Common Buttons:
-  pureAdmin.common.buttons.close        -- "Close"
-  pureAdmin.common.buttons.clearAll     -- "Clear all"
-  pureAdmin.common.buttons.refresh      -- "Refresh"
-  pureAdmin.common.buttons.moreFilters  -- "More filters"
-  pureAdmin.common.buttons.hideFilters  -- "Hide filters"
-  pureAdmin.common.buttons.clearFilters -- "Clear Filters"
-  pureAdmin.common.buttons.applyFilters -- "Apply Filters"
+Forms (FormErrorSummary):
+  pureAdmin.form.errorFound        -- "{count} error found:"
+  pureAdmin.form.errorsFound       -- "{count} errors found:"
 
 Accessibility Labels:
   pureAdmin.a11y.closeProfile           -- "Close Profile"
@@ -329,6 +360,8 @@ Accessibility Labels:
   pureAdmin.a11y.removeFromFavorites    -- "Remove from favorites"
   pureAdmin.a11y.dragToResizeSidebar    -- "Drag to resize sidebar"
   pureAdmin.a11y.settings               -- "Settings"
+  pureAdmin.a11y.userProfile            -- "User Profile"
+  pureAdmin.a11y.moreTabs               -- "More tabs"
 
 
 DEPRECATED API (BACKWARDS COMPATIBLE)
@@ -381,10 +414,12 @@ export function setupI18n() {
   import { setupI18n } from '$lib/i18n-setup';
   import '@keenmate/pure-admin-core/css';
 
+  let { children } = $props();
+
   setupI18n();
 </script>
 
-<slot />
+{@render children()}
 
 // src/routes/+page.svelte
 <script>

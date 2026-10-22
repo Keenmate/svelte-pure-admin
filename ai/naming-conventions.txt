@@ -14,11 +14,13 @@ Used for component state, visual modifiers, and behavior toggles.
   isGhost          -- Card has no background/border/shadow
   isStat           -- Card uses stat styling
   isStriped        -- Table/Fields has alternating row backgrounds
-  isHover          -- Table has hover effect on rows
   isBordered       -- Table/Fields has bottom border separators
-  isBorderless     -- Table has no cell borders
-  isCompact        -- Tighter spacing (Table, BarList, Heatmap)
-  isHorizontal     -- Label left, value right (FormGroup)
+  isCompact        -- Tighter spacing (Table, BarList, Heatmap, ButtonGroup)
+  isHorizontal     -- Label start, control end (FormGroup, FormField)
+  isOpen           -- Overlay open state, bindable (Modal, SlidePanel, Popconfirm, ...)
+  isVisible        -- Whole block rendered or not (Toast, FormErrorSummary)
+  isActive         -- Active item (TabItem, TabPanel, SidebarItem, ...)
+  isTouched        -- Field was touched (Input, Select, FormField, ...)
   isDisabled       -- Disabled (emits the native disabled attribute)
   isReadonly / isRequired / isChecked / isMultiple -- native boolean attributes, same rule
   isFilled         -- Subtle background panel (Fields)
@@ -29,15 +31,14 @@ Used for component state, visual modifiers, and behavior toggles.
   isIconOnly       -- No text, icon only (Button)
   isLoading        -- Loading state (Button, i18n service)
   isRipple         -- Ripple effect on click (Button)
-  isPill           -- Pill shape (Badge, Progress)
+  isPill           -- Pill shape (Badge)
   isRounded        -- Rounded corners (Progress, StackedBar)
   isAnimated       -- Animated stripes (Progress)
   isNegative       -- Red, right-aligned (DataBar)
   isZones          -- Multi-zone green/yellow/red (Gauge)
-  isPlain          -- Removes card styling (TableCard)
+  isPlain          -- Plain/unstyled variant (Table, TableCard)
   isResponsive     -- Responsive table with horizontal scrolling
   isResponsiveGrid -- Collapses to cards on mobile
-  isRequired       -- Mark as required (FormGroup)
   isEllipsisStart  -- Ellipsis at start of text (Badge)
   isInteractive    -- Renders as button element (CompositeBadge)
   isFilled         -- Filled marker instead of outline (TimelineItem)
@@ -47,7 +48,7 @@ Used for component state, visual modifiers, and behavior toggles.
 
 Examples in component code:
 
-  <Table isStriped isHover isCompact>...</Table>
+  <Table isStriped isCompact>...</Table>
   <Card isGhost isStat>...</Card>
   <Button isOutline isBlock isLoading>...</Button>
   <Modal isScrollable isStatic>...</Modal>
@@ -64,6 +65,10 @@ Feature flags -- whether something HAS a feature enabled.
   hasInlineTabs      -- Pill-style buttons inside card header
   hasContainerQuery  -- Wrap in container for CSS container query
   hasAvatar          -- Item shows an avatar image
+  hasClose           -- Show close button (Modal)
+  hasProgress        -- Show progress bar (Toast)
+  hasInfo            -- Show page info (Pager)
+  hasHeader          -- Show header row (KpiStrip, default true)
 
 Examples:
 
@@ -79,6 +84,8 @@ Controls behavior, not appearance.
   shouldCloseOnEscape    -- Close on Escape key (Modal)
   shouldHandleShortcuts  -- Handle the global keyboard shortcuts (PureAdminProvider)
   shouldWrapHeader       -- Let the card description wrap onto its own line (Card)
+  shouldCloseOnBackdrop  -- Close on backdrop click (Modal)
+  shouldRenderHtml       -- Render result text as HTML (NavbarSearchField, SearchResults)
 
 Showing a part is has* (hasClose, hasProgress), not shouldShow*.
 
@@ -94,7 +101,7 @@ String props that provide text content to display.
 The suffix tells you this is a displayable string, not a behavior flag.
 
   titleText        -- Card title, Modal title, Toast title
-  subtitleText     -- Subtitle/description (Card, below title)
+  subtitleText     -- Legacy Card subtitle (.pa-card__meta); prefer descriptionText
   descriptionText  -- Description (Card, inline with title)
   labelText        -- Field label, Stat label, Progress label
   valueText        -- Field value, Progress value display
@@ -111,6 +118,8 @@ The suffix tells you this is a displayable string, not a behavior flag.
   cancelText       -- Cancel button text (Dialog)
   okText           -- OK button text (Dialog)
   buttonText       -- Button/count text (CompositeBadge)
+  unitText / prefixText -- KPI value unit / prefix
+  countText        -- Count text (LoadMore)
 
 Examples:
 
@@ -199,10 +208,10 @@ CSS CLASS PROPS: class AND *Class SUFFIX
 String props for passing CSS class names.
 
   class          -- Standard additional CSS classes (every component has this)
-  headerClass    -- Extra classes for header element (Card, Modal)
-  bodyClass      -- Extra classes for body element (Modal)
+  headerClass    -- Extra classes for header element (Card)
+  bodyClass      -- Extra classes for body element (Card, Modal)
   footerClass    -- Extra classes for footer element (Modal)
-  labelClass     -- Extra classes for label element
+  labelClass     -- Extra classes for label element (BandedRow)
 
 The standard 'class' prop is aliased internally:
   let { class: className = '' }: Props = $props();
@@ -221,7 +230,8 @@ boolean — the component emits the native attribute internally:
 
   isDisabled     -- emits disabled (Button, Input, Select, ...)
   isReadonly     -- emits readonly (Input, Textarea)
-  isRequired     -- emits required (Input, Select, Checkbox, ...; FormGroup too)
+  isRequired     -- emits required (Input, Select, Checkbox, ...) -- on the CONTROL;
+                    FormLabel / FormField / FormGroup have no required prop
   isChecked      -- emits checked (Checkbox; bind:isChecked)
   isMultiple     -- emits multiple (Select, FileInput)
 
@@ -247,17 +257,29 @@ Standard pattern props for visual appearance:
 
   variant        -- Role colour (primary, success, danger, warning, info, etc.) — never a shape or layout
   size           -- Size variant (xs, sm, lg, xl)
-  type           -- Structural type (button type, input type)
+  type           -- Predefined design (Tabs pills/boxed, Loader dots/ring, OrderedList roman) or native type
+  mode           -- Which behaviour (copyMode btn/click/hover, titleTooltipMode overflow/always)
+  layout         -- Arrangement of children (Stat, KpiBento, Fields, CheckboxGroup)
+  density        -- Spacing (compact / relaxed: Fields, BasicList)
   themeColor     -- Theme color slot (1-9) for numbered color schemes
   placement      -- Where a floating / overlay element sits (top, bottom, start, end, top-end, center …)
+  <part>Placement -- Where one part sits (labelPlacement, iconPlacement, infoPlacement)
+
+Layout props are named after the CSS property they drive:
+  justify        -- justify-content (Grid, Button, Tabs, Pager, LoadMore)
+  align          -- align-items (Grid, ButtonGroup, DescTable/Banded "center")
+  textAlign      -- text-align (Paragraph, Heading, Popover; labelTextAlign / valueTextAlign)
+  side           -- not a CSS name on purpose (Timeline: all items on one side)
+  position       -- only for a real coordinate/length (KPI gauge tick position)
 
 Examples:
 
   <Button variant="primary" size="lg">Big Button</Button>
   <Badge variant="success" size="sm" isPill>Active</Badge>
   <Toast variant="danger" titleText="Error" messageText="Failed" />
-  <Fields themeColor={3} cols={2}>...</Fields>
-  <ToastContainer placement="top-end">...</ToastContainer>
+  <Fields themeColor={3} cols={2} layout="horizontal" density="compact">...</Fields>
+  <Tabs type="pills" justify="center">...</Tabs>
+  <ToastContainer placement="top-end" />
 
 
 SNIPPET PROPS (NAMED SLOTS)
@@ -270,11 +292,13 @@ Svelte 5 Snippet type for complex content sections:
   icon           -- Icon content
   title          -- Rich title content (alternative to titleText)
   description    -- Rich description content (alternative to descriptionText)
-  tools          -- Header toolbar area
-  actions        -- Footer actions area
+  actions        -- The single actions area (Alert, Toast, DetailPanel, FilterCard, TableCard)
+  headerActions / footerActions -- Card's two actions areas (+ headerActionsCollapsed fallback)
   tabs           -- Tab content area
-  titleIcon      -- Icon rendered before title
+  titleIcon      -- Icon rendered before title (Card; titleIconName = by name)
   label          -- Rich label content (Field, Checkbox, Radio; alternative to labelText)
+  heading        -- Rich heading (Alert, Callout; alternative to headingText)
+  meta           -- Rich meta content (ListItem; alternative to metaText)
 
 The bare name is the rich snippet; the plain-text form is *Text (titleText /
 title). Icons follow the same split: iconName (string, rendered through <Icon>
@@ -319,22 +343,48 @@ If you see old patterns, here is the correct naming:
   confirmCallback          onconfirm              Fire-and-forget, not callback
   disabled                 isDisabled             is* for booleans (native too)
   readonly                 isReadonly             is* for booleans (native too)
+  checked / bind:checked   isChecked / bind:isChecked  is* for booleans (native too)
+  required / multiple      isRequired / isMultiple     is* for booleans (native too)
+  active                   isActive               is* for state (TabItem, SidebarItem, ...)
   labelSnippet             label                  bare name = rich snippet
+  titleSnippet / iconTemplate  title / icon       bare name = rich snippet
   style (design enum)      type                   style = inline CSS only
-  showClose                hasClose               has* for showing a part
+  spacing                  density                density = spacing (BasicList)
+  showClose / shouldShowClose  hasClose           has* for showing a part
   closeOnEscape            shouldCloseOnEscape    should* for behavior flags
-  showProgress             hasProgress            has* for showing a part
+  showProgress / shouldShowProgress  hasProgress  has* for showing a part
+  showInfo / showPageInput hasInfo / hasPageInput has* for showing a part (Pager)
+  showValue / showCopy     hasValue / hasCopy     has* for showing a part
   show (overlay)           isOpen                 is* for state
+  show (Toast, FormErrorSummary)  isVisible       is* for rendered-or-not
   noHeader                 hasHeader={false}      has* defaulting to true, not no*
   touched                  isTouched              is* for state
   disableShortcuts         shouldHandleShortcuts  should* for behaviour
+  headerWrap               shouldWrapHeader       should* for behaviour (Card)
+  allowHtml                shouldRenderHtml       should* for behaviour
+  titleIcon (Modal string) titleIconName          icon by name = iconName
+  unit / prefix            unitText / prefixText  *Text suffix (KPI tiles)
+  align (Button/Tabs/Pager) justify               named after the CSS property
+  horizontalAlignment      textAlign              named after the CSS property
+  alignment (Timeline)     side                   not a CSS property
+  position                 placement              floating element side
+  labelPosition / iconPosition / infoPosition  labelPlacement / iconPlacement / infoPlacement
+  state                    validation             form control validation state
+  color (Loader, Stat)     variant                variant = role colour
+  color (slot 1-9)         themeColor             theme palette slot
+  isHeadingLarge           headingSize="lg"       one enum per choice (Alert)
+  titleTooltipAlways       titleTooltipMode="always"  mode = behaviour
+  isMiddle                 align="center"         one enum per choice (DescTable, Banded)
+  gaugeSize / cols (Heatmap) / splitterId   size / columns / id
+  mdVertical / lgHorizontal  verticalAt="md" / horizontalAt="lg"   (ButtonGroup)
+  layout="hero-right"      layout="hero-end"      logical direction (KpiBento)
+  isHover / isBorderless (Table)  (removed)       hover is built in
   title (string)           titleText              *Text suffix for strings
   subtitle (string)        subtitleText           *Text suffix for strings
   message (string)         messageText            *Text suffix for strings
   label (string)           labelText              *Text suffix for strings
   value (display)          valueText              *Text suffix for display strings
   striped                  isStriped              is* for state booleans
-  hover                    isHover                is* for state booleans
   compact                  isCompact              is* for state booleans
   bordered                 isBordered             is* for state booleans
   ghost                    isGhost                is* for state booleans
@@ -375,9 +425,12 @@ CRITICAL REMINDERS
 - ALL booleans use is*/has*/should*, native ones too: isDisabled, isReadonly, isRequired, isChecked
 - Keep non-boolean native attrs as-is: placeholder, name, id, type, href
 - iconName (string via <Icon>) vs icon (rich snippet)
-- type = predefined design, layout = arrangement, density = compact|relaxed spacing, style = inline CSS only
+- type = predefined design, mode = behaviour, layout = arrangement, density = compact|relaxed spacing, style = inline CSS only
+- variant = role colour, themeColor = 1-9 palette slot
+- Layout props use CSS names: justify, align, textAlign; placement / <part>Placement for position
+- Overlays bind isOpen; rendered-or-not blocks use isVisible
 - Use start/end not left/right (RTL support, since v1.4.0/v1.5.0)
-- Exception: Tooltip/Popconfirm keep physical left/right for arrow positioning
+- Tooltip / Popconfirm / Popover placement is logical too: top | bottom | start | end
 
 NEXT STEPS
 ----------

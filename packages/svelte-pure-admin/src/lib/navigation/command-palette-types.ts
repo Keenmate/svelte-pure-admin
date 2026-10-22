@@ -92,7 +92,7 @@ export interface Command {
 	/** Icon (emoji or icon class) */
 	icon?: string;
 
-	/** Keyboard hotkey (e.g., 'Alt+D') — displayed on home screen and usable globally */
+	/** Keyboard hotkey (e.g., 'g d' — a leading-key sequence) — displayed on home screen and usable globally */
 	hotkey?: string;
 
 	/** Steps in this command wizard (empty array for instant commands) */

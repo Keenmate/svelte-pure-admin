@@ -17,36 +17,156 @@ CSS must be imported separately:
 </script>
 
 
+BUTTON
+------
+Props:
+  variant?       'primary' | 'secondary' | 'success' | 'danger' | 'warning'
+                 | 'info' | 'light' | 'dark' | 'ghost'
+  themeColor?    1-9 - Theme color slot (pa-btn--color-N, overrides variant)
+  size?          'xs' | 'sm' | 'lg' | 'xl'
+  isOutline?     boolean (false)
+  isBlock?       boolean (false) - Full width
+  isIconOnly?    boolean (false) - Square icon-only button (glyph renders bare)
+  isLoading?     boolean (false)
+  isDisabled?    boolean (false) - Emits native disabled
+  isRipple?      boolean (false) - Ripple on click, grows from the click point (0.45s).
+                 The component plays it itself - no script needed.
+  rippleType?    'center' | 'pulse' | 'double-pulse' | any custom name (with isRipple)
+                 -> pa-btn--ripple-{rippleType}. Custom: define .pa-btn--ripple-<name> with an
+                 animation on .pa-btn--ripple-active in your own CSS; the button times it
+                 from the animation automatically.
+  justify?       'start' | 'end' | 'center' | 'between' -> pa-btn--justify-*
+  iconPlacement? 'start' (default) | 'end'
+  shouldTruncateText? boolean (false) - Ellipsis label (pair with a width utility, e.g. maxwr-10)
+  isInputGroupButton? boolean (false) - Adds pa-input-group__button
+  type?          'button' (default) | 'submit' | 'reset'
+  href?          string - Renders <a>
+  target?        '_blank' | '_self' | '_parent' | '_top' (with href)
+  titleText?     string - title attribute
+  iconName?      string - Icon name rendered through <Icon> (the icon snippet wins)
+  onclick?       (event: MouseEvent) => void
+  class?         string
+  ...rest        data-*, aria-* forwarded
+
+Snippets:
+  icon?          Rich icon (pa-btn__icon)
+  children?      Label (rendered bare - no .pa-btn__label wrapper unless justify="center"/truncation)
+
+<Button variant="primary" iconName="fas fa-save" isRipple>Save</Button>
+<Button variant="primary" isRipple rippleType="pulse">Pulse</Button>
+<Button variant="secondary" isOutline justify="between" isBlock>Options</Button>
+
+
+BUTTONGROUP
+-----------
+Default gap is 8px (same as card actions and footers).
+
+Props:
+  isCompact?     boolean (false) - Tight 3px gap (pa-btn-group--compact); use for table
+                 row-action icon clusters
+  isVertical?    boolean (false)
+  align?         'center' | 'end' | 'stretch' (vertical groups only)
+  verticalAt?    'sm' | 'md' | 'lg' | 'xl' - Vertical from this breakpoint up
+  horizontalAt?  'sm' | 'md' | 'lg' | 'xl' - Horizontal from this breakpoint up
+  responsive?    'md-vertical' | 'lg-horizontal' | ... - Combined token shorthand
+  isNowrap?      boolean (false) - Single line, may overflow
+  class?         string
+  children?      Snippet
+
+<ButtonGroup isCompact>
+  <Button size="xs" isIconOnly iconName="edit" titleText="Edit" />
+  <Button size="xs" isIconOnly iconName="trash" variant="danger" titleText="Delete" />
+</ButtonGroup>
+
+
+SPLITBUTTON / SPLITBUTTONITEM
+-----------------------------
+SplitButton Props: variant?, themeColor?, size?, isOutline?, isDisabled?,
+  isOpen? (bindable), placement? 'bottom-end' | 'top-end', onclick?, titleText?,
+  ariaLabel? (main button), toggleAriaLabel? (chevron), iconName?, class?
+  Snippets: icon?, children?, toggleIcon?, menu? (SplitButtonItem list)
+SplitButtonItem Props: variant? (role colour -> pa-btn-split__item--{variant}),
+  shouldKeepOpen? (data-pa-keep-open), isDisabled?, onclick?, iconName?, class?
+  Snippets: icon?, action?, children?
+
+<SplitButton variant="primary" onclick={save}>
+  Save
+  {#snippet menu()}
+    <SplitButtonItem onclick={saveAs}>Save as...</SplitButtonItem>
+    <SplitButtonItem variant="danger" onclick={discard}>Discard</SplitButtonItem>
+  {/snippet}
+</SplitButton>
+
+
+ICON
+----
+Renders an icon by name through the configured providers. Framework affordance names
+(masked pa-icon--NAME) resolve built-in; configure the rest once:
+
+<PureAdminProvider iconProviders={[svgIcons(myLucideSet), fontAwesome()]}>
+Providers: fontAwesome({ style?, fixedWidth? }), svgIcons(map, options?), masked(), combine(...)
+
+Props:
+  name           string (required)
+  size?          string - CSS length, e.g. '1.25rem' (default inherits 1em)
+  isInteractive? boolean (false) - Standalone icon reacts on hover (.pc-icon-hover)
+  label?         string - Accessible name (role="img"); otherwise aria-hidden
+  class?         string
+
+<Icon name="search" />
+Components with an iconName prop render it through <Icon>.
+
+
 CARD
 ----
 The main container component. Supports title, header/footer snippets, ghost mode,
 stat card style, live state indicators, and inline tabs.
 
 Props:
-  variant?       'primary' | 'success' | 'warning' | 'danger' | 'info'
+  variant?       'primary' | 'success' | 'warning' | 'danger'
                  | 'color-1' through 'color-9'
   titleText?     string - Simple title text in header
   title?         Snippet - Rich content title (alternative to titleText)
+  titleIconName? string - Icon name rendered through <Icon> before the title
   descriptionText? string - Inline description with title, truncates with ellipsis
   description?   Snippet - Rich description (alternative to descriptionText)
   subtitleText?  string - Below title (deprecated, use descriptionText)
+  titleTooltip?  boolean | string - Tooltip on the title (true = the title's own text)
+  descriptionTooltip? boolean | string - Tooltip on the description
+  titleTooltipMode? / descriptionTooltipMode?  'overflow' (default: only while truncated) | 'always'
+  titleTooltipPlacement? / descriptionTooltipPlacement?  'top' (default) | 'bottom' | 'start' | 'end'
+  titleTooltipVariant?, titleTooltipIsMultiline?, titleTooltipIsHelp?, titleTooltipIsKeyword?
+                 (same set for description*) - Tooltip styling
   shouldWrapHeader? boolean (false) - Allow description to wrap to its own line
+  isHeaderUnderlined? boolean (false) - Accent border under the header
+  headerUnderlineColor? 'success' | 'warning' | 'danger' | 'info'
+  headerUnderlineThemeColor? 1-9
   hasInlineTabs? boolean (false) - Pill-style tab buttons in header
+  isActionsOverflow? boolean (false) - Collapse header actions into a "..." menu when tight (JS)
+  actionsOverflowFrom? 'start' | 'end' (default 'end') - Which end drops first
   headerClass?   string - Additional CSS classes on the header element
+  bodyClass?     string - Additional CSS classes on the pa-card__body element
   isGhost?       boolean (false) - Invisible container (no bg, border, shadow)
   isStat?        boolean (false) - Stat card styling
   hasPadding?    boolean (true) - Body has padding (false removes it)
   liveState?     'up' | 'down' | 'neutral' - Tinted background for live data
+  href?          string - Render the whole card as a link (<a class="pa-card">)
+  tag?           'div' | 'a' (default: 'a' with href, else 'div')
+  target?        string - Link target (with href)
+  style?         string - Inline style on the card root
   class?         string - Additional CSS classes
 
 Snippets:
   header?        Custom header content (replaces default title layout)
-  titleIcon?     Icon before title text (rich; or pass the titleIconName prop for a provider icon name)
-  tools?         Toolbar area in header (buttons, dropdowns)
+  titleIcon?     Icon before title text (rich; wins over titleIconName)
+  headerActions? Header action buttons (.pa-card__actions in the header)
+  headerActionsCollapsed? Compact fallback for headerActions (e.g. a SplitButton);
+                 emits .pa-card__actions--responsive (CSS container query swaps them)
   tabs?          Tab buttons in header (replaces other header content)
   children?      Body content (main card content)
-  footer?        Custom footer content
-  actions?       Footer action buttons (right side)
+  footer?        Footer leading content (left)
+  footerActions? Footer action buttons (.pa-card__actions, right)
+                 footer and footerActions render TOGETHER in one footer row
 
 Basic card:
 
@@ -54,15 +174,15 @@ Basic card:
   <p>Card body content goes here.</p>
 </Card>
 
-Card with header tools and footer actions:
+Card with header actions and footer:
 
-<Card titleText="Active Users" descriptionText="Last 30 days">
-  {#snippet tools()}
+<Card titleText="Active Users" descriptionText="Last 30 days" descriptionTooltip>
+  {#snippet headerActions()}
     <Button variant="secondary" size="sm">Export</Button>
     <Button variant="primary" size="sm">Add User</Button>
   {/snippet}
 
-  <Table isStriped isHover>
+  <Table isStriped>
     <thead><tr><th>Name</th><th>Email</th></tr></thead>
     <tbody>
       <tr><td>John</td><td>john@example.com</td></tr>
@@ -70,7 +190,11 @@ Card with header tools and footer actions:
   </Table>
 
   {#snippet footer()}
-    <Pager currentPage={1} totalPages={10} />
+    <Button variant="secondary">Back</Button>
+  {/snippet}
+  {#snippet footerActions()}
+    <Button variant="secondary">Cancel</Button>
+    <Button variant="primary">Save</Button>
   {/snippet}
 </Card>
 
@@ -200,6 +324,7 @@ and border-radius properly.
 
 Props:
   titleText?     string - Card title
+  descriptionText? string - Inline description next to the title
   variant?       'primary' | 'success' | 'warning' | 'danger'
   themeColor?    1-9 (theme color)
   isScrollable?  boolean (false) - Horizontal scrolling for wide tables
@@ -217,7 +342,7 @@ Snippets:
     <Button variant="primary" size="sm">Add User</Button>
   {/snippet}
 
-  <Table isStriped isHover>
+  <Table isStriped>
     <thead>
       <tr><th>Name</th><th>Email</th><th>Status</th></tr>
     </thead>
@@ -235,21 +360,22 @@ Snippets:
 
 TABLE
 -----
-HTML table with visual modifiers.
+HTML table with visual modifiers. Row hover is built in (no prop).
+For row-action icon clusters use <ButtonGroup isCompact> (3px gap; the default group gap is 8px).
 
 Props:
   isStriped?       boolean (false) - Zebra striping
-  isHover?         boolean (false) - Row hover highlight
-  isBorderless?    boolean (false) - No cell borders
   isCompact?       boolean (false) - Reduced padding (alias for size="xs")
   size?            'xs' | 'sm' | 'lg' | 'xl' - Cell padding size
   isBordered?      boolean (false) - Full borders on all sides
+  isPlain?         boolean (false) - Neutral ruled table (no header fill / row backgrounds);
+                   pair with isBordered for print-style grids
   isResponsive?    boolean (false) - Horizontal scroll on overflow
   isResponsiveGrid? boolean (false) - Grid layout, collapses to cards on mobile
   class?           string
   children?        Snippet
 
-<Table isStriped isHover>
+<Table isStriped>
   <thead>
     <tr>
       <th>ID</th>
@@ -335,12 +461,13 @@ Props:
   size?          'xs' | 'sm' | 'lg' | 'xl'
   isPill?        boolean (false) - Rounded pill shape
   isEllipsisStart? boolean (false) - Ellipsis at start (left in LTR)
-  themeColor?    1-9 - Theme color (applies pa-bg-color-N)
+  themeColor?    1-9 - Theme color slot (pa-badge--color-N)
+  iconName?      string - Icon name rendered through <Icon>
   onclick?       (event: MouseEvent) => void
   class?         string
 
 Snippets:
-  icon?          Icon content before text (rich; or pass the iconName prop)
+  icon?          Icon content before text (rich; wins over the iconName prop)
   children?      Badge text
 
 Badge variants:
@@ -396,6 +523,8 @@ Props:
                  | 'info' | 'light' | 'dark' (default: 'primary')
   labelVariant?  Same as variant - Mixed label color
   buttonVariant? Same as variant - Mixed button color
+  iconVariant?   Same as variant - Icon section color
+  iconName?      string - Icon name rendered through <Icon>
   labelText      string (required) - Label section text
   buttonText     string | number (required) - Button/count section text
   isInteractive? boolean (false) - Render button as interactive element
@@ -404,7 +533,7 @@ Props:
   class?         string
 
 Snippets:
-  icon?          Icon content (rich; or pass the iconName prop)
+  icon?          Icon content (rich; wins over iconName)
 
 <CompositeBadge
   variant="primary"
@@ -442,8 +571,10 @@ Props:
   idMember?            string ('id') - Property for unique key
   getDisplayValueCallback? (item: T) => string
   getVariantCallback?  (item: T) => BadgeVariant | undefined
+  getPillCallback?     (item: T) => boolean
+  getSizeCallback?     (item: T) => BadgeSize | undefined
   limit?               number (5) - Max visible before "N more"
-  isShowAll?             boolean (false) - Show all without limit
+  isShowAll?           boolean (false) - Show all without limit
   onbadgeclick?        (item: T, event: MouseEvent) => void
   class?               string
   children?            Snippet
@@ -528,7 +659,9 @@ ListItem Props:
   titleText?     string
   subtitleText?  string
   metaText?      string
+  meta?          Snippet - Rich meta (badges, buttons); wins over metaText
   avatar?        string | Snippet - Avatar content
+  isHighlighted? boolean (false) - Highlighted row (pa-list__item--highlighted)
   class?         string
   children?      Snippet - Custom layout (replaces title/subtitle/meta)
 
@@ -542,10 +675,13 @@ ListItem Props:
   <ListItem
     titleText="Jane Smith"
     subtitleText="Product Manager"
-    metaText="5 hours ago"
+    isHighlighted
   >
     {#snippet avatar()}
       <img src="/avatars/jane.jpg" alt="Jane" />
+    {/snippet}
+    {#snippet meta()}
+      <Badge variant="success">Online</Badge>
     {/snippet}
   </ListItem>
 </List>
@@ -621,6 +757,9 @@ Supports data-driven mode, legacy array mode, and snippet mode.
 
 Timeline Props:
   variant?       'simple' | 'alternating' | 'feed' (default: 'simple')
+  side?          'start' | 'end' - Put every item on one side (alternating; omit = zig-zag)
+  isKeepLayout?  boolean (false) - Keep desktop layout on mobile (alternating)
+  isSingleColumn? boolean (false) - Force a single column at any width (alternating)
   data?          T[] - Generic data array
   items?         TimelineItemData[] - Legacy mode
   class?         string
@@ -628,10 +767,12 @@ Timeline Props:
   Member mappings (for data mode):
     variantMember?    string ('variant')
     filledMember?     string ('filled')
+    dateHeaderMember? string
     timeMember?       string ('time')
     dateMember?       string ('date')
     iconTextMember?   string ('iconText')
     avatarUrlMember?  string ('avatarUrl')
+    avatarAltMember?  string
     contentMember?    string ('content')
     commentMember?    string ('comment')
     idMember?         string ('id')
@@ -639,6 +780,8 @@ Timeline Props:
   Callbacks:
     getVariantCallback?   (item: T) => TimelineItemVariant | undefined
     getContentCallback?   (item: T) => string
+    (also getFilledCallback, getDateHeaderCallback, getTimeCallback, getDateCallback,
+     getIconTextCallback, getAvatarUrlCallback, getAvatarAltCallback, getCommentCallback)
 
   Template snippets:
     iconTemplate?     Snippet<[T]> - Custom icon per item
@@ -734,9 +877,9 @@ Code Props:
   children?      Snippet
 
 CodeBlock Props:
-  language?      'javascript' | 'typescript' | 'json' | 'html' | 'css' | 'bash'
-                 | 'sql' | 'python' | 'svelte'
+  language?      'javascript' | 'json' | 'html' | 'css' | 'bash' | 'sql' | 'python'
   isCompact?     boolean (false) - Smaller padding
+  isNumbered?    boolean (false) - Line numbers
   class?         string
   children?      Snippet
 
@@ -744,6 +887,8 @@ CodeBlockWithHeader Props:
   titleText      string (required) - Header title (e.g. filename)
   language?      'javascript' | 'json' | 'html' | 'css' | 'bash' | 'sql' | 'python'
   hasCopy?       boolean (true) - Show copy button
+  isCompact?     boolean (false)
+  isNumbered?    boolean (false) - Line numbers
   class?         string
   children?      Snippet
 
@@ -760,7 +905,7 @@ console.log(greeting);`}
 
 Code block with header:
 
-<CodeBlockWithHeader titleText="config.ts" language="typescript">
+<CodeBlockWithHeader titleText="config.js" language="javascript">
 {`export const config = {
   apiUrl: 'https://api.example.com',
   timeout: 5000,
@@ -776,16 +921,20 @@ Props:
   layout?        'hero' | 'hero-compact' | 'square'
   variant?       'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger'
                  (square layout only)
-  iconVariant?   Same values as variant (default: 'primary') - Icon color
+  iconVariant?   'primary' | 'success' | 'info' | 'warning' | 'danger' (default: 'primary') - Icon color
   number?        string | number - Value to display
   labelText?     string - Label text
   changeText?    string - Change indicator (e.g. "+12.5%")
-  changeDirection? 'positive' | 'negative' | 'neutral'
+  changeDirection? 'very-positive' | 'positive' | 'neutral' | 'negative' | 'very-negative'
   symbolText?    string - Symbol (for the square layout)
+  isSymbolPrefix? boolean (false) - Symbol before the number (e.g. $847K)
+  isFit?         boolean (false) - Square only: fit-to-box tile (needs a height source)
+  contextText?   string - Square fit mode: lowest-priority context row
+  iconName?      string - Icon name rendered through <Icon>
   class?         string
 
 Snippets:
-  icon?          Icon (for the default layout; or pass the iconName prop)
+  icon?          Icon (for the default layout; wins over iconName)
   children?      Custom layout
 
 Default stat (with icon):
@@ -839,6 +988,7 @@ Props:
   isPreviousDisabled? boolean (false)
   isNextDisabled?     boolean (false)
   infoText?      string - Custom info text
+  infoPlacement? 'start' | 'end' (default: 'end') - Info before or after the controls
   firstText? / previousText? / nextText? / lastText?  string - Button labels (default: i18n)
   class?         string
   onprevious?    (event: MouseEvent) => void
@@ -944,7 +1094,7 @@ Snippets:
 <DetailView bind:isOpen={showDetail} onclose={() => showDetail = false}>
   {#snippet main()}
     <TableCard titleText="Users">
-      <Table isStriped isHover>
+      <Table isStriped>
         <thead><tr><th>Name</th><th>Email</th></tr></thead>
         <tbody>
           {#each users as user}
@@ -1020,7 +1170,7 @@ Putting it all together: filter card + table card + pager + detail view.
         <Button variant="primary" size="sm">Add User</Button>
       {/snippet}
 
-      <Table isStriped isHover>
+      <Table isStriped>
         <thead>
           <tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th></tr>
         </thead>
@@ -1082,7 +1232,7 @@ CRITICAL REMINDERS
 - Use Svelte 5 runes: $props(), $state(), $derived(), $bindable()
 - Content uses Snippets ({#snippet name()}...{/snippet}), NOT <slot>
 - Event handlers are lowercase: onclick, onclose, onchange (NOT onClick)
-- Boolean props use is* prefix: isGhost, isStriped, isHover
+- Boolean props use is* prefix: isGhost, isStriped, isCompact
 - Show-a-part flags use has* prefix: hasToggle, hasClear; behaviour flags use should*: shouldCloseOnEscape
 - Class prop pattern: class?: string with let { class: className = '' } = $props()
 - Card body has padding by default (hasPadding=true), TableCard has none
@@ -1094,7 +1244,7 @@ CRITICAL REMINDERS
 NEXT STEPS
 ----------
 - Data display patterns (Field, Fields, DescTable, etc.) -> data-display.txt
-- Data visualization (Progress, Gauge, Heatmap, etc.) -> data-viz.txt
+- Data visualization (Progress, Gauge, Heatmap, etc.) -> data-visualization.txt
 - Form components (Input, Select, Checkbox, etc.) -> forms.txt
 - Layout components (Layout, Sidebar, Header) -> layout.txt
 - Feedback components (Modal, Toast, Alert) -> feedback.txt

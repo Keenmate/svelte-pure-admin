@@ -11,20 +11,26 @@ CRITICAL: This is a Svelte 5 component library (NOT a Web Component)
 
 INSTALLATION
 ------------
-npm install @keenmate/svelte-pure-admin @keenmate/pure-admin-core
+npm install @keenmate/svelte-pure-admin @keenmate/pure-admin-core @keenmate/pure-css
 
 # Or yarn
-yarn add @keenmate/svelte-pure-admin @keenmate/pure-admin-core
+yarn add @keenmate/svelte-pure-admin @keenmate/pure-admin-core @keenmate/pure-css
 
 # Or pnpm
-pnpm add @keenmate/svelte-pure-admin @keenmate/pure-admin-core
+pnpm add @keenmate/svelte-pure-admin @keenmate/pure-admin-core @keenmate/pure-css
 
-Both packages are required:
-- @keenmate/svelte-pure-admin — Svelte 5 component library (80+ components)
+Packages (2.0.0-rc01 is a pre-release: npm install @keenmate/svelte-pure-admin@rc):
+- @keenmate/svelte-pure-admin — Svelte 5 component library (~200 components)
 - @keenmate/pure-admin-core — CSS framework (the actual styles)
+- @keenmate/pure-css — foundation layer (grid, utilities, app shell JS)
 
 Peer dependencies (must already be in your project):
+- @keenmate/pure-admin-core ^3.3.0-rc09 (a ^2.x range does NOT reach 3.x — bump explicitly)
+- @keenmate/pure-css ^2.0.0-rc04
 - svelte ^5.0.0
+
+Themes compile core into their CSS: use themes rebuilt against core 3.3.0-rc09,
+or newer classes (8px button-group gap, ripple, ...) will be missing.
 
 CSS IMPORT
 ----------
@@ -42,24 +48,22 @@ Or in a global CSS file:
 Without this import, components will render with no styles.
 This is the single most common setup mistake.
 
-THEME PACKAGES
---------------
-Optional theme packages change the visual appearance:
+THEMES
+------
+Themes are ZIP packages from pureadmin.io (css/<id>.css + theme.json + fonts),
+installed with the pureadmin CLI (reads pureadmin.json, extracts into themesDir):
 
-npm install @keenmate/pure-admin-theme-audi
-npm install @keenmate/pure-admin-theme-dark
-npm install @keenmate/pure-admin-theme-corporate
-npm install @keenmate/pure-admin-theme-express
-npm install @keenmate/pure-admin-theme-minimal
+npx @keenmate/pureadmin themes install
 
-Import a theme AFTER the core CSS:
+A theme CSS file is self-contained (core is compiled in), so link it instead of
+core's CSS. Use themes built against core 3.3.0-rc09 - older builds miss newer
+classes/tokens. (The old npm @keenmate/pure-admin-theme-* packages are core 2.x
+builds - do not use them with 2.0.)
 
-<script>
-  import '@keenmate/pure-admin-core/css';
-  import '@keenmate/pure-admin-theme-audi/css';  // Optional theme overlay
-</script>
+<link rel="stylesheet" href="/themes/audi/css/audi.css">
 
-Only one theme at a time. Theme overrides core CSS variables.
+Only one theme at a time. Theme overrides core CSS variables
+(component tokens --pa-*, foundation tokens --pc-*).
 See theming.txt for color customization and dark mode.
 
 PROVIDER SETUP
@@ -112,9 +116,32 @@ With custom configuration:
 PureAdminProvider:
 - Merges your config with sensible defaults (mergeConfig)
 - Provides config to all child components via Svelte context
-- Sets up global keyboard shortcut listener (Shift+? for help)
+- Sets up global keyboard shortcut listener (Shift+? for help);
+  pass shouldHandleShortcuts={false} to turn it off (default true)
 - Initializes i18n if i18n config is present
+- Registers icon providers (iconProviders prop) used by <Icon> and every iconName prop
 - Components read config via usePureAdminConfig() hook
+
+PureAdminProvider props:
+  config?: Partial<PureAdminConfig>
+  shouldHandleShortcuts?: boolean = true
+  iconProviders?: IconProvider[]   (ordered; first provider returning markup wins)
+
+Icon providers (exported): fontAwesome(), svgIcons(map), combine(), masked().
+Framework affordance icons (close, chevrons, success, danger, ...) resolve built-in
+first — no provider needed. Configure providers only for your own icon set:
+
+<script>
+  import { PureAdminProvider, fontAwesome } from '@keenmate/svelte-pure-admin';
+  let { children } = $props();
+</script>
+
+<PureAdminProvider iconProviders={[fontAwesome()]}>
+  {@render children()}
+</PureAdminProvider>
+
+Then any iconName prop resolves through them (fontAwesome: "save" -> fa-solid fa-save):
+<Button iconName="save">Save</Button>
 
 LAYOUT SETUP
 -------------
@@ -124,6 +151,7 @@ Full admin layout with sidebar, navbar, and content area:
   import '@keenmate/pure-admin-core/css';
   import {
     PureAdminProvider,
+    fontAwesome,
     Layout,
     LayoutInner,
     LayoutContent,
@@ -138,7 +166,7 @@ Full admin layout with sidebar, navbar, and content area:
   let sidebarOpen = $state(true);
 </script>
 
-<PureAdminProvider config={{ app: { name: 'My App' } }}>
+<PureAdminProvider config={{ app: { name: 'My App' } }} iconProviders={[fontAwesome()]}>
   <Layout>
     <Navbar
       hasBurger={true}
@@ -147,9 +175,9 @@ Full admin layout with sidebar, navbar, and content area:
     />
     <LayoutInner>
       <Sidebar>
-        <SidebarItem labelText="Dashboard" href="/" icon="fa-home" />
-        <SidebarItem labelText="Users" href="/users" icon="fa-users" />
-        <SidebarItem labelText="Settings" href="/settings" icon="fa-cog" />
+        <SidebarItem labelText="Dashboard" href="/" iconName="home" />
+        <SidebarItem labelText="Users" href="/users" iconName="users" />
+        <SidebarItem labelText="Settings" href="/settings" iconName="gear" />
       </Sidebar>
       <LayoutContent>
         <Main>
@@ -165,7 +193,8 @@ Key layout components:
 - Layout — Outermost wrapper (pa-layout)
 - LayoutInner — Inner flex container
 - LayoutContent — Content area beside sidebar
-- Navbar — Top navigation bar with burger, brand, nav sections
+- Navbar — Top bar: burger + three zones (start / center / end snippets);
+  compose AppHeader / NavMenu / PageHeader inside the zones (see layout.txt)
 - Sidebar — Side navigation with collapsible items
 - SidebarItem — Navigation link with icon, label, optional submenu
 - Main — Main content area
@@ -221,7 +250,7 @@ Using more components on a page:
 
 <Section titleText="Recent Activity">
   <Card>
-    <Table isStriped isHover>
+    <Table isStriped>
       <thead>
         <tr>
           <th>Name</th>
@@ -377,10 +406,8 @@ With i18n:
   {@render children()}
 </PureAdminProvider>
 
-With theme:
+With theme (theme CSS linked in app.html, e.g. /themes/dark/css/dark.css):
 <script>
-  import '@keenmate/pure-admin-core/css';
-  import '@keenmate/pure-admin-theme-dark/css';
   import { PureAdminProvider } from '@keenmate/svelte-pure-admin';
   let { children } = $props();
 </script>

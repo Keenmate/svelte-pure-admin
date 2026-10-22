@@ -9,8 +9,8 @@ COMPONENT OVERVIEW
 ------------------
 Navigation components handle tab navigation and command palette functionality:
 
-- Tabs             - Tab strip container (underline/pills/boxed, alignment, border-top)
-- TabItem          - Individual tab button (active state, icon, width/height, onclick)
+- Tabs             - Tab strip container (underline/pills/boxed/vertical, justify, border-top)
+- TabItem          - Individual tab button (isActive, icon/iconName, isDisabled, titleText, onclick)
 - TabsContent      - Wrapper for tab panels
 - TabPanel         - Individual content panel (active state, id)
 - TabsContainer    - Horizontal wrapper for Tabs + TabsContent (bordered, card)
@@ -19,6 +19,9 @@ Navigation components handle tab navigation and command palette functionality:
 - TabsOverflow     - Tab strip with dropdown for overflow items
 - CommandPalette   - Ctrl+K command palette with multi-step commands, search contexts
 - NavbarSearch     - Search trigger button for the header/navbar area
+
+Navbar zone pieces (NavMenu / NavItem / NavDropdown, NavbarSearchField,
+NavbarSearchInput, SearchResults, SidebarSearch) are documented in layout.txt.
 
 
 TABS (BASIC)
@@ -30,9 +33,10 @@ import { Tabs, TabItem, TabsContent, TabPanel } from '@keenmate/svelte-pure-admi
 Props:
   type?: 'underline' | 'pills' | 'boxed' | 'vertical'    (default: 'underline') — the predefined tab design
   size?: 'sm' | 'lg'
-  justify?: 'center' | 'stretch'
-  overflow?: 'nowrap' | 'scrollable' | 'collapse'
+  justify?: 'center' | 'stretch'   (pa-tabs--justify-center / --justify-stretch)
+  overflow?: 'nowrap' | 'collapse'  (for a scrolling strip use TabsScrollable)
   isBorderTop?: boolean     (border on top instead of bottom, default: false)
+  isWrapLabels?: boolean    (let long labels wrap, default: false)
   class?: string
 
 Basic usage with manual active state:
@@ -200,7 +204,7 @@ Card-style tabs (tabs act as the card header):
 
 TABS VERTICAL LAYOUT
 --------------------
-Flexbox layout for vertical tab arrangement. Uses Tabs with style="vertical".
+Flexbox layout for vertical tab arrangement. Uses Tabs with type="vertical".
 
 Props:
   isBordered?: boolean   (default: false)
@@ -283,7 +287,7 @@ Internal structure:
   - Left arrow button: pa-tabs__scroll-btn pa-tabs__scroll-btn--start
   - Scroll container: pa-tabs__scroll-container
   - Right arrow button: pa-tabs__scroll-btn pa-tabs__scroll-btn--end
-  - Arrow icons: fa-solid fa-chevron-left / fa-chevron-right
+  - Arrow icons: masked pa-icon pa-icon--chevron-left / --chevron-right
 
 
 TABS OVERFLOW
@@ -295,7 +299,7 @@ Props:
   hasActive?: boolean    (highlight toggle when active tab is in overflow, default: false)
   isOpen?: boolean       (bindable, controls dropdown visibility, default: false)
   class?: string
-  toggle?: Snippet       (custom toggle button content, defaults to ellipsis icon)
+  toggle?: Snippet       (custom toggle button content, defaults to masked pa-icon--ellipsis)
   children?: Snippet     (overflow tab items)
 
 Tabs with overflow dropdown:
@@ -357,6 +361,11 @@ Props:
   globalSearch?: (query: string) => Promise<SearchResult[]> | SearchResult[]
   onglobalselect?: (result: SearchResult) => void
   placeholder?: string
+  displayStyle?: 'inline' | 'tokens'   (multi-step: full path in input vs selection badges; default 'inline')
+  size?: 'sm' | 'lg' | 'xl'            (width + results-height preset; omit for default)
+  width?: string                       (override --pa-command-palette-width, e.g. '72rem')
+  offsetTop?: string                   (override --pa-command-palette-offset-top)
+  resultsMaxHeight?: string            (override --pa-command-palette-results-max-height)
   class?: string
   errorSnippet?: Snippet<[string]>
 
@@ -367,7 +376,8 @@ Types (import from '@keenmate/svelte-pure-admin'):
     aliases?: string[];         // e.g., ["/report", "/reports"]
     name: string;
     description: string;
-    icon?: string;
+    icon?: string;              // icon-provider name (rendered via <Icon>) or emoji
+    hotkey?: string;            // leading-key sequence, e.g. "g r" (shown on home screen)
     steps: CommandStep[];       // empty array for instant commands
     onComplete: (selections: StepSelection[]) => void;
     getPreview?: (selections: StepSelection[]) => string;
@@ -386,6 +396,7 @@ Types (import from '@keenmate/svelte-pure-admin'):
     id: string;
     label: string;
     description?: string;
+    code?: string;              // short code for quick lookup
     icon?: string;
     value: any;
   }
@@ -410,8 +421,14 @@ Types (import from '@keenmate/svelte-pure-admin'):
     id: string;
     title: string;
     subtitle?: string;
+    snippet?: string;           // longer excerpt (SearchResults page list)
+    meta?: string[];            // trailing meta chips
+    type?: string;              // type label at row end ("Page", "Product")
+    href?: string;              // destination link (SearchResults rows)
+    group?: string;             // group label (NavbarSearchField / grouped SearchResults)
     icon?: string;
     badge?: string;
+    badgeVariant?: string;      // 'success' | 'warning' | 'danger' | 'info' | 'primary'
     data?: any;
   }
 
@@ -435,6 +452,7 @@ Complete command palette setup:
       name: 'Generate Report',
       description: 'Create a report for a date range',
       icon: '📊',
+      hotkey: 'g r',
       steps: [
         {
           id: 'type',
@@ -548,11 +566,18 @@ Complete command palette setup:
 />
 
 Keyboard shortcuts in the palette:
-  Up/Down arrows  - Navigate results
+  Up/Down arrows  - Navigate results (also on the idle home screen)
+  PgUp/PgDn       - Jump a page (8 items); Home/End - first/last item
   Enter           - Select highlighted item
   Tab             - Complete/select (same as Enter)
-  Escape          - Close palette
+  Escape          - Step back a level (command step -> list, context search -> list); closes at top
+  Backspace       - On empty input, step back a level
   Ctrl+K          - Toggle palette open/close (global)
+  g <letter>      - Run a command by its `hotkey` (e.g. "g r"), only while the palette is
+                    closed and focus is not in a field
+
+Global search (no prefix) also surfaces matching commands and contexts (by name /
+shortcut / alias) ahead of globalSearch results.
 
 Palette modes (internal):
   'idle'            - Just opened, nothing typed
@@ -575,13 +600,12 @@ Internal BEM classes:
   pa-command-palette__item-content   - Result text container
   pa-command-palette__item-title     - Result primary text
   pa-command-palette__item-meta      - Result secondary text
-  pa-command-palette__item-badge     - Result badge (shortcut hint)
+  pa-command-palette__home           - Idle home screen (__home-section / __home-heading)
+  pa-command-palette__tokens         - Selection badges (displayStyle="tokens")
   pa-command-palette__footer         - Keyboard hint bar
   pa-command-palette__key            - Single keyboard hint key
   pa-command-palette__loader         - Loading spinner state
   pa-command-palette__empty          - Empty results message
-  pa-command-palette__error          - Error message display
-  pa-command-palette__preview        - Command preview (shown during wizard steps)
 
 Custom error display:
 
@@ -601,7 +625,6 @@ text, and Ctrl+K keyboard shortcut hint. Clicking opens the command palette.
 
 Props:
   placeholder?: string          (default: 'Search...')
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'   (default: 'lg')
   onclick?: () => void
   class?: string
 
@@ -620,20 +643,19 @@ Usage with CommandPalette:
 
 <CommandPalette bind:isOpen={showPalette} />
 
-NavbarSearch inside a Header:
+NavbarSearch inside the Navbar center zone:
 
-<Header>
-  {#snippet nav()}
+<Navbar>
+  {#snippet center()}
     <NavbarSearch onclick={() => showPalette = true} />
   {/snippet}
-</Header>
+</Navbar>
 
-Internal BEM classes:
-  pa-navbar-search               - Root (role="button", tabindex="0")
-  pa-navbar-search--xs/sm/md/lg/xl  - Size modifiers
-  pa-navbar-search__icon         - Search icon (magnifying glass)
-  pa-navbar-search__placeholder  - Placeholder text
-  pa-navbar-search__shortcut     - Keyboard shortcut hint (Ctrl K)
+Internal BEM classes (app shell, pc- prefix):
+  pc-navbar-search               - Root (role="button", tabindex="0")
+  pc-navbar-search__icon         - Search icon (magnifying glass)
+  pc-navbar-search__placeholder  - Placeholder text
+  pc-navbar-search__shortcut     - Keyboard shortcut hint (Ctrl K)
 
 
 COMPLETE EXAMPLE: TABS WITH CONTENT SWITCHING
@@ -648,11 +670,7 @@ COMPLETE EXAMPLE: TABS WITH CONTENT SWITCHING
   let activeTab = $state('users');
 </script>
 
-<Card>
-  {#snippet header()}
-    <h3>User Management</h3>
-  {/snippet}
-
+<Card titleText="User Management">
   <TabsContainer isBordered={true}>
     <Tabs>
       <TabItem isActive={activeTab === 'users'} onclick={() => activeTab = 'users'}>
@@ -686,8 +704,8 @@ COMPLETE EXAMPLE: TABS WITH CONTENT SWITCHING
 IMPORTANT NOTES
 ---------------
 - Active tab state is managed by YOU. Components do not manage it internally.
-- Always pair TabItem onclick with active={} to control which tab is highlighted.
-- TabPanel active={true} shows the panel, active={false} hides it.
+- Always pair TabItem onclick with isActive={} to control which tab is highlighted.
+- TabPanel isActive={true} shows the panel, isActive={false} hides it.
 - TabsScrollable auto-detects overflow and shows/hides arrow buttons.
 - TabsOverflow closes its dropdown when clicking outside.
 - CommandPalette auto-registers Ctrl+K via the shortcut registry on mount.

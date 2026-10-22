@@ -287,7 +287,7 @@
 			'pc-container-2xl'
 		);
 		if (settings.containerWidth && settings.containerWidth !== 'fluid') {
-			document.body.classList.add(`pa-container-${settings.containerWidth}`);
+			document.body.classList.add(`pc-container-${settings.containerWidth}`);
 		}
 
 		// Sidebar mode (sticky)

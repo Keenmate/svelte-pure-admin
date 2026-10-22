@@ -17,25 +17,28 @@ Simple card with text title:
   <p>This is the body content (children snippet).</p>
 </Card>
 
-Card with all snippet sections:
+Card with body + footer (footer = leading content on the left,
+footerActions = .pa-card__actions on the right; both render together):
 
-<Card titleText="User Details">
-  {#snippet header()}
-    <h3>Custom Header Content</h3>
-  {/snippet}
-
+<Card titleText="User Details" descriptionText="Edit the profile">
   <p>Body content goes here as children.</p>
 
   {#snippet footer()}
-    <Button variant="primary">Save Changes</Button>
+    <Button variant="secondary" isOutline>Reset</Button>
+  {/snippet}
+  {#snippet footerActions()}
     <Button variant="secondary" isOutline>Cancel</Button>
+    <Button variant="primary">Save Changes</Button>
   {/snippet}
 </Card>
 
-Card with tools (actions in header):
+NOTE: a raw `header` snippet replaces the whole header — titleText/title are then
+silently dropped. Prefer titleText/descriptionText/headerActions.
+
+Card with header actions:
 
 <Card titleText="Orders">
-  {#snippet tools()}
+  {#snippet headerActions()}
     <Button size="sm" variant="primary">Add New</Button>
     <Button size="sm" variant="secondary" isOutline>Export</Button>
   {/snippet}
@@ -43,13 +46,16 @@ Card with tools (actions in header):
   <Table isStriped>...</Table>
 </Card>
 
-Card with title icon:
+Card with title icon (by name through the icon providers, or a snippet):
+
+<Card titleText="Analytics" titleIconName="chart-line">
+  <p>Dashboard content</p>
+</Card>
 
 <Card titleText="Analytics">
   {#snippet titleIcon()}
     <svg>...</svg>
   {/snippet}
-
   <p>Dashboard content</p>
 </Card>
 
@@ -88,7 +94,7 @@ Checkbox and Radio binding:
   let selectedPlan = $state('free');
 </script>
 
-<Checkbox bind:isChecked={agreed}>I agree to the terms</Checkbox>
+<Checkbox id="agree" bind:isChecked={agreed} labelText="I agree to the terms" />
 
 <Radio bind:group={selectedPlan} name="plan" value="free" labelText="Free" />
 <Radio bind:group={selectedPlan} name="plan" value="pro" labelText="Pro" />
@@ -104,7 +110,7 @@ Modal isOpen binding:
   <p>Modal content</p>
 </Modal>
 
-Toast show binding:
+Toast isVisible binding:
 
 <script>
   let showToast = $state(false);
@@ -190,7 +196,7 @@ Input events:
 <Input
   bind:value={search}
   oninput={(e) => handleSearch(e.currentTarget.value)}
-  onblur={() => touched = true}
+  onblur={() => isTouched = true}
   onfocus={() => console.log('focused')}
   onkeydown={(e) => { if (e.key === 'Enter') submit(); }}
 />
@@ -282,7 +288,7 @@ TableCard is purpose-built for tables -- no body padding, proper border-radius.
 Basic table card:
 
 <TableCard titleText="Users">
-  <Table isStriped isHover>
+  <Table isStriped>
     <thead>
       <tr><th>Name</th><th>Email</th><th>Role</th></tr>
     </thead>
@@ -309,7 +315,7 @@ Table card with actions and pagination:
     <Button size="sm" variant="secondary" isOutline>Export</Button>
   {/snippet}
 
-  <Table isStriped isHover isCompact>
+  <Table isStriped isCompact>
     <thead>
       <tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th></tr>
     </thead>
@@ -393,13 +399,17 @@ Square stat variant:
 
 Basic form layout:
 
+Mark required controls with isRequired on the CONTROL (core draws the label
+asterisk from the native `required` attribute). FormGroup isRequired is only an
+escape hatch for non-native widgets.
+
 <Form>
-  <FormGroup isRequired>
+  <FormGroup>
     <FormLabel>Full Name</FormLabel>
     <Input bind:value={name} placeholder="Enter your name" isRequired />
   </FormGroup>
 
-  <FormGroup isRequired>
+  <FormGroup>
     <FormLabel>Email</FormLabel>
     <Input bind:value={email} type="email" placeholder="you@example.com" isRequired />
   </FormGroup>
@@ -409,7 +419,9 @@ Basic form layout:
     <Textarea bind:value={bio} placeholder="Tell us about yourself" />
   </FormGroup>
 
-  <Button type="submit" variant="primary">Submit</Button>
+  <FormActions>
+    <Button type="submit" variant="primary">Submit</Button>
+  </FormActions>
 </Form>
 
 Form with validation errors (using errors/isTouched props):
@@ -427,22 +439,24 @@ Form with validation errors (using errors/isTouched props):
 </script>
 
 <Form>
-  <FormGroup validation={touchedFields.email && errors.email.length ? 'error' : undefined} isRequired>
+  <FormGroup validation={touchedFields.email && errors.email.length ? 'error' : undefined}>
     <FormLabel>Email</FormLabel>
     <Input
       bind:value={email}
       type="email"
+      isRequired
       errors={errors.email}
       isTouched={touchedFields.email}
       onblur={() => { touchedFields.email = true; validate(); }}
     />
   </FormGroup>
 
-  <FormGroup validation={touchedFields.password && errors.password.length ? 'error' : undefined} isRequired>
+  <FormGroup validation={touchedFields.password && errors.password.length ? 'error' : undefined}>
     <FormLabel>Password</FormLabel>
     <Input
       bind:value={password}
       type="password"
+      isRequired
       errors={errors.password}
       isTouched={touchedFields.password}
       onblur={() => { touchedFields.password = true; validate(); }}
@@ -493,7 +507,7 @@ Full page overlay:
 
 {#if loading}
   <LoaderOverlay>
-    <Spinner size="lg" />
+    <Loader type="ring" size="lg" />
   </LoaderOverlay>
 {/if}
 
@@ -529,8 +543,11 @@ Loader variants:
 <Loader type="pulse" />
 <Loader type="ring" />
 <Loader type="wave" />
-<Spinner size="sm" />
-<Spinner size="lg" />
+<Loader type="grid" />
+<Loader type="ripple" />
+<Loader type="dual-ring" size="lg" variant="success" />
+<Spinner />
+<Spinner size="xs" variant="primary" />
 
 
 10. TOAST NOTIFICATIONS
@@ -542,7 +559,7 @@ Basic toast setup:
   let toasts = $state([]);
 
   function addToast(variant, title, message) {
-    toasts = [...toasts, { id: Date.now(), variant, title, message, show: true }];
+    toasts = [...toasts, { id: Date.now(), variant, title, message, isVisible: true }];
   }
 
   function removeToast(id) {
@@ -558,7 +575,7 @@ Basic toast setup:
       variant={toast.variant}
       titleText={toast.title}
       messageText={toast.message}
-      bind:isVisible={toast.show}
+      bind:isVisible={toast.isVisible}
       onclose={() => removeToast(toast.id)}
     />
   {/each}
@@ -708,7 +725,7 @@ Dot leaders (invoice/menu style):
 
 Prop card (Stripe-style):
 
-<PropCard titleText="Payment Details">
+<PropCard headerText="Payment Details">
   <PropCardRow labelText="Card" valueText="**** 4242" />
   <PropCardRow labelText="Expiry" valueText="12/2025" />
   <PropCardRow labelText="Amount" valueText="$99.00" isBold />
@@ -748,9 +765,9 @@ Stacked bar with legend:
   <StackedBarSegment variant="danger" value={25} />
 </StackedBar>
 <StackedBarLegend>
-  <StackedBarLegendItem variant="success" labelText="Passed" valueText="45%" />
-  <StackedBarLegendItem variant="warning" labelText="Warning" valueText="30%" />
-  <StackedBarLegendItem variant="danger" labelText="Failed" valueText="25%" />
+  <StackedBarLegendItem variant="success">Passed 45%</StackedBarLegendItem>
+  <StackedBarLegendItem variant="warning">Warning 30%</StackedBarLegendItem>
+  <StackedBarLegendItem variant="danger">Failed 25%</StackedBarLegendItem>
 </StackedBarLegend>
 
 Sparkline:
@@ -768,7 +785,7 @@ Heatmap:
     <HeatmapCell {level} />
   {/each}
 </Heatmap>
-<HeatmapLegend variant="success" lessText="Less" moreText="More" />
+<HeatmapLegend lessText="Less" moreText="More" />
 
 Bar list:
 
@@ -787,7 +804,8 @@ Bar list:
   import {
     Layout, LayoutInner, LayoutContent, Navbar, Sidebar, SidebarItem,
     Main, Footer, Grid, Column, Card, Stat, TableCard, Table,
-    Badge, Button, Progress, ToastContainer, Toast
+    Badge, Button, Progress, ToastContainer, Fields, Field,
+    AppHeader, PageHeader
   } from '@keenmate/svelte-pure-admin';
   import '@keenmate/pure-admin-core/css';
 
@@ -797,9 +815,11 @@ Bar list:
   ]);
 </script>
 
-<Layout size="xl">
-  <Navbar titleText="Dashboard">
-    {#snippet tools()}
+<Layout>
+  <Navbar hasBurger>
+    {#snippet start()}<AppHeader />{/snippet}
+    {#snippet center()}<PageHeader><h2>Dashboard</h2></PageHeader>{/snippet}
+    {#snippet end()}
       <Button size="sm" variant="primary">New</Button>
     {/snippet}
   </Navbar>
@@ -811,8 +831,8 @@ Bar list:
       <SidebarItem href="/settings" labelText="Settings" />
     </Sidebar>
 
-    <Main>
-      <LayoutContent>
+    <LayoutContent>
+      <Main>
         <!-- Stats Row -->
         <Grid gap="md">
           <Column sm="1-2" lg="1-4">
@@ -865,7 +885,7 @@ Bar list:
               <Button size="sm" variant="primary">Add User</Button>
             {/snippet}
 
-            <Table isStriped isHover>
+            <Table isStriped>
               <thead>
                 <tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th></tr>
               </thead>
@@ -882,12 +902,10 @@ Bar list:
             </Table>
           </TableCard>
         </div>
-      </LayoutContent>
+      </Main>
 
-      <Footer>
-        <p>2024 My App. All rights reserved.</p>
-      </Footer>
-    </Main>
+      <Footer />  <!-- copyright from config.app.copyright -->
+    </LayoutContent>
   </LayoutInner>
 </Layout>
 
@@ -913,13 +931,13 @@ Bar list:
   <Column md="2-3">
     <Card titleText="Activity">
       <Timeline variant="simple">
-        <TimelineItem variant="success" time="2 hours ago">
+        <TimelineItem variant="success" timeText="2 hours ago">
           Updated profile settings
         </TimelineItem>
-        <TimelineItem variant="info" time="Yesterday">
+        <TimelineItem variant="info" timeText="Yesterday">
           Logged in from new device
         </TimelineItem>
-        <TimelineItem variant="warning" time="3 days ago">
+        <TimelineItem variant="warning" timeText="3 days ago">
           Changed password
         </TimelineItem>
       </Timeline>
@@ -1049,7 +1067,10 @@ CRITICAL REMINDERS
 - Event handlers: lowercase on* (onclick, onclose, not onClick, onClose)
 - Class building: $derived(() => { ... }) returns a FUNCTION, use class={classes()}
 - BEM classes: pa-[block]__[element]--[modifier]
-- RTL-aware: use start/end not left/right (toast positions, alignment)
+- RTL-aware: use start/end not left/right (toast placements, justify, logical
+  utilities ms-*/me-*/ps-*/pe-*, text-start/text-end)
+- Muted text utility is .text-muted (.text-secondary is the secondary ROLE colour)
+- Grid classes are pc-row / pc-col-* (emitted by Grid/Column)
 
 NEXT STEPS
 ----------

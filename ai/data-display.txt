@@ -35,7 +35,7 @@ Props:
   copyHintText?    string - Hint text for click mode (default: i18n)
   copiedText?      string - Feedback text after copy (default: i18n)
   oncopy?          (value: string) => void - Callback after successful copy
-  valueVariant?    'success' | 'warning' | 'danger' - Value color (for chips mode)
+  valueVariant?    'success' | 'warning' | 'danger' | 'info' - Value color (for chips mode)
   class?           string
 
 Snippets:
@@ -503,9 +503,9 @@ With truncation:
 With custom label styling:
 
 <Banded>
-  <BandedRow labelText="Critical" valueText="Database connection pool exhausted" labelClass="pa-text--danger" />
-  <BandedRow labelText="Warning" valueText="Memory usage above 80%" labelClass="pa-text--warning" />
-  <BandedRow labelText="Info" valueText="Backup completed successfully" labelClass="pa-text--info" />
+  <BandedRow labelText="Critical" valueText="Database connection pool exhausted" labelClass="text-danger" />
+  <BandedRow labelText="Warning" valueText="Memory usage above 80%" labelClass="text-warning" />
+  <BandedRow labelText="Info" valueText="Backup completed successfully" labelClass="text-info" />
 </Banded>
 
 Copyable values:
@@ -743,7 +743,7 @@ CRITICAL REMINDERS
 - AccentGrid is the container, AccentGridItem is the individual item
 - Field "isFull" prop spans the entire row in a grid layout
 - DescTableItem "isFull" prop spans remaining columns in the row
-- Fields "color" prop (1-9) adds themed left border
+- Fields "themeColor" prop (1-9) adds themed left border
 - AccentGridItem "variant" controls the left border color
 - Field "valueVariant" colors the value text (for chips mode)
 - DotLeadersItem "isTotal" makes the row bold with a top border
@@ -751,6 +751,6 @@ CRITICAL REMINDERS
 NEXT STEPS
 ----------
 - General display components (Card, Table, Badge, etc.) -> display.txt
-- Data visualization (Progress, Gauge, Heatmap, etc.) -> data-viz.txt
+- Data visualization (Progress, Gauge, Heatmap, etc.) -> data-visualization.txt
 - Form components (Input, Select, Checkbox, etc.) -> forms.txt
 - Layout components (Layout, Sidebar, Header) -> layout.txt

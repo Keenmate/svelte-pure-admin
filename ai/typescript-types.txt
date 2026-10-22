@@ -42,9 +42,17 @@ Form validation state:
 
   type ValidationState = 'default' | 'success' | 'warning' | 'error';
 
-Data visualization color variants (subset of ColorVariant):
+Data visualization color variants (subset of ColorVariant; 'primary' = base fill, no modifier):
 
-  type DataVizVariant = 'success' | 'warning' | 'danger' | 'info';
+  type DataVizVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
+
+Tooltip placement / mode / variant (shared by <Tooltip> and Card title/description tooltips):
+
+  type TooltipPlacement = 'top' | 'end' | 'bottom' | 'start';   // logical, flips in RTL
+  type TooltipMode = 'overflow' | 'always';  // overflow = only while text is truncated (default)
+  type TooltipVariant = 'primary' | 'success' | 'warning' | 'danger'
+    | 'color-1' | 'color-2' | 'color-3' | 'color-4' | 'color-5'
+    | 'color-6' | 'color-7' | 'color-8' | 'color-9';
 
 Theme colors (numbered 1-9 for color palettes):
 
@@ -60,7 +68,55 @@ Import example:
     VerticalAlignment,
     ValidationState,
     DataVizVariant,
-    ThemeColor
+    ThemeColor,
+    TooltipPlacement,
+    TooltipMode,
+    TooltipVariant
+  } from '@keenmate/svelte-pure-admin';
+
+
+ICON PROVIDER TYPES (icon/)
+----------------------------
+Source: packages/svelte-pure-admin/src/lib/icon/icon-provider.ts, providers.ts, affordances.ts
+
+  interface IconRenderContext {
+    class?: string;
+    size?: string;            // CSS length, e.g. '1.25rem'
+    isInteractive?: boolean;  // standalone hover affordance (.pc-icon-hover)
+    label?: string;
+  }
+
+  // Returns markup for `name`, or '' so the next provider gets a turn
+  type IconProvider = (name: string, ctx: IconRenderContext) => string;
+
+  interface FontAwesomeOptions {
+    style?: string;        // 'fa-solid' (default), 'fa-regular', 'fas', ...
+    fixedWidth?: boolean;  // default true (fa-fw)
+  }
+
+  interface SvgIconsOptions {
+    viewBox?: string;              // default '0 0 24 24'
+    fill?: string;                 // default 'none'
+    stroke?: string;               // default 'currentColor'
+    strokeWidth?: number | string; // default 2
+    hoverMarker?: string;          // default 'pc-icon-hover-highlight'
+  }
+
+  type AffordanceIconName = (typeof AFFORDANCE_ICON_NAMES)[number];  // masked pa-icon--* names
+
+Provider factories / helpers:
+
+  masked(): IconProvider;            // affordance names -> <span class="pa-icon pa-icon--NAME">
+  fontAwesome(options?: FontAwesomeOptions): IconProvider;
+  svgIcons(paths: Record<string, string>, options?: SvgIconsOptions): IconProvider;
+  combine(...providers: IconProvider[]): IconProvider;   // first non-empty result wins
+  setIconProviders, useIconProviders, resolveIcon, AFFORDANCE_ICON_NAMES, isAffordanceIcon
+
+Import example:
+
+  import { masked, fontAwesome, svgIcons, combine } from '@keenmate/svelte-pure-admin';
+  import type {
+    IconProvider, IconRenderContext, FontAwesomeOptions, SvgIconsOptions, AffordanceIconName
   } from '@keenmate/svelte-pure-admin';
 
 
@@ -102,7 +158,8 @@ Source: packages/svelte-pure-admin/src/lib/display/badge-types.ts
   interface CompositeBadgeItem {
     variant?: BadgeVariant;
     labelVariant?: BadgeVariant;
-    buttonVariant?: BadgeVariant;
+    buttonVariant?: CompositeButtonVariant;   // alias of BadgeVariant (not exported)
+    iconVariant?: BadgeVariant;
     icon?: import('svelte').Snippet;
     labelText: string;
     buttonText: string | number;
@@ -166,6 +223,7 @@ Step option (shown in command step dropdown):
     id: string;
     label: string;
     description?: string;
+    code?: string;
     icon?: string;
     value: any;
   }
@@ -200,6 +258,7 @@ A command definition (triggered by /shortcut):
     name: string;
     description: string;
     icon?: string;
+    hotkey?: string;          // leading-key sequence, e.g. 'g d' (or a chord)
     steps: CommandStep[];
     onComplete: (selections: StepSelection[]) => void;
     getPreview?: (selections: StepSelection[]) => string;
@@ -211,9 +270,24 @@ A search result item:
     id: string;
     title: string;
     subtitle?: string;
+    snippet?: string;
+    meta?: string[];
+    type?: string;
+    href?: string;
     icon?: string;
     badge?: string;
+    badgeVariant?: string;
+    group?: string;           // SearchGroup id
     data?: any;
+  }
+
+Result grouping for global search:
+
+  interface SearchGroup {
+    id: string;
+    label?: string;
+    icon?: string;
+    limit?: number;
   }
 
 A search context definition (triggered by :shortcut):
@@ -247,6 +321,7 @@ Import example:
     StepSelection,
     SearchContext,
     SearchResult,
+    SearchGroup,
     PaletteMode
   } from '@keenmate/svelte-pure-admin';
 
@@ -265,9 +340,11 @@ Source: packages/svelte-pure-admin/src/lib/feedback/dialog-service.svelte.ts
     title?: string;
     message?: string;
     variant?: DialogVariant;
+    isBanded?: boolean;           // banded header + footer (pa-modal--banded)
+    icon?: string | false;        // title icon; derived from variant when omitted, false hides
     size?: DialogSize;
     placement?: DialogPlacement;
-    closeOnBackdrop?: boolean;
+    closeOnBackdrop?: boolean;    // backdrop only; Escape still cancels (prompt defaults false)
     class?: string;
     bodyClass?: string;
     footerClass?: string;
@@ -332,6 +409,57 @@ Import example:
   } from '@keenmate/svelte-pure-admin';
 
 
+TOAST SERVICE TYPES (toast-service.svelte.ts)
+-----------------------------------------------
+Source: packages/svelte-pure-admin/src/lib/feedback/toast-service.svelte.ts
+
+  type ToastVariant = 'primary' | 'success' | 'danger' | 'warning' | 'info';
+
+  type ToastPlacement = 'top-end' | 'top-center' | 'top-start'
+                      | 'bottom-end' | 'bottom-center' | 'bottom-start';
+
+  const DEFAULT_TOAST_PLACEMENT: ToastPlacement = 'top-end';
+
+  interface ToastAction {
+    label: string;
+    variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+    isOutline?: boolean;
+    onclick?: (id: string) => void;
+    keepOpen?: boolean;
+  }
+
+  interface ToastOptions {
+    titleText: string;
+    messageText: string;
+    variant?: ToastVariant;
+    themeColor?: ThemeColor;     // overrides variant
+    isFilled?: boolean;
+    duration?: number;           // ms; 0 = persistent
+    hasProgress?: boolean;
+    progressColor?: string;
+    maxWidth?: string;
+    actions?: ToastAction[];
+    iconClass?: string;          // override only; icon is derived from variant
+    class?: string;
+    placement?: ToastPlacement;  // routes to the matching <ToastContainer placement>
+  }
+
+  interface ToastState extends ToastOptions { id: string; }
+
+Toast service methods (return the toast id):
+
+  toastService.show(options: ToastOptions): string;
+  toastService.success | danger | warning | info | primary(input: string | Partial<ToastOptions>): string;
+  toastService.dismiss(id: string): void;
+
+Import example:
+
+  import { toastService, toastStore, DEFAULT_TOAST_PLACEMENT } from '@keenmate/svelte-pure-admin';
+  import type {
+    ToastVariant, ToastPlacement, ToastAction, ToastOptions, ToastState
+  } from '@keenmate/svelte-pure-admin';
+
+
 FORM ERROR TYPES (FormErrorSummary.svelte)
 -------------------------------------------
 Source: packages/svelte-pure-admin/src/lib/forms/FormErrorSummary.svelte
@@ -355,11 +483,80 @@ Source: packages/svelte-pure-admin/src/lib/layout/types.ts
     id: string;       // e.g., 'audi', 'express'
     name: string;     // e.g., 'Audi', 'Express'
     cssPath: string;  // e.g., '/themes/audi.css'
+    colorVariants?: ThemeColorVariantOption[] | ThemeColorVariantsLegacy;  // from theme manifest
+    modes?: ThemeModesLegacy;
+    modeCssClass?: string;     // class pattern for the mode
+    variantCssClass?: string;  // class pattern for the colour variant
   }
+
+  interface ThemeModeOption { id: string; name?: string; default?: boolean; }
+
+  interface ThemeColorVariantOption {
+    id?: string; name?: string; description?: string; file?: string;
+    modes?: ThemeModeOption[];
+  }
+
+  // Legacy manifest shapes
+  interface ThemeColorVariantsLegacy { supported?: ThemeColorVariantOption[]; default?: string; cssClass?: string; }
+  interface ThemeModesLegacy { supported?: string[]; default?: string; cssClass?: string; }
 
 Import example:
 
-  import type { ThemeOption } from '@keenmate/svelte-pure-admin';
+  import type {
+    ThemeOption, ThemeModeOption, ThemeColorVariantOption,
+    ThemeColorVariantsLegacy, ThemeModesLegacy
+  } from '@keenmate/svelte-pure-admin';
+
+
+SPLITTER TYPES (layout/splitter-context.ts)
+--------------------------------------------
+  type SplitterOrientation = 'horizontal' | 'vertical';
+  SplitterResizeDetail, SplitterToggleDetail   // event detail payloads (include `index`)
+
+  import type {
+    SplitterOrientation, SplitterResizeDetail, SplitterToggleDetail
+  } from '@keenmate/svelte-pure-admin';
+
+
+RANGE GROUP TYPES (forms/range-group-types.ts)
+-----------------------------------------------
+  type RangeHandleType = 'rect' | 'bar' | 'arrow' | 'needle';
+
+  interface RangeGroupRow {
+    key: string;
+    labelText: string;
+    rowLabelText?: string;
+    min: number;
+    max: number;
+    step?: number;
+    mode?: 'range' | 'single';
+    bound?: 'gte' | 'lte';
+    value?: number;
+    valueMin?: number;
+    valueMax?: number;
+    prefix?: string;
+    suffix?: string;
+    hasThousandsSeparator?: boolean;
+    ticks?: number;
+    ticksMinor?: number;
+    hasTickLabels?: boolean;
+    shouldSnapToTicks?: boolean;
+    handleType?: RangeHandleType;
+    outputText?: string;
+  }
+
+  interface RangeGroupSingleValue { value: number | null; bound: 'gte' | 'lte'; }
+  interface RangeGroupRangeValue { min: number | null; max: number | null; }
+  type RangeGroupValues = Record<string, RangeGroupSingleValue | RangeGroupRangeValue>;
+
+  // Querystring sync (override via RangeGroup codec / qsAdapter props)
+  RangeGroupCodec, QsAdapter                                                   // types
+  rangeGroupCodec, historyQsAdapter, hashQsAdapter, isRangeValue, seedRows    // values
+
+  import type {
+    RangeGroupRow, RangeHandleType, RangeGroupValues,
+    RangeGroupSingleValue, RangeGroupRangeValue, RangeGroupCodec, QsAdapter
+  } from '@keenmate/svelte-pure-admin';
 
 
 SHORTCUT REGISTRY TYPES (shortcut-registry-types.ts)
@@ -614,13 +811,48 @@ LOADER TYPES (Loader.svelte)
 ------------------------------
 Source: packages/svelte-pure-admin/src/lib/feedback/Loader.svelte
 
-  type LoaderType = 'dots' | 'bars' | 'pulse' | 'ring' | 'wave';
-  type LoaderSize = 'sm' | 'lg';
-  type LoaderVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light';
+  type LoaderType = 'dots' | 'bars' | 'pulse' | 'ring' | 'wave' | 'grid' | 'ripple' | 'dual-ring';
+  type LoaderSize = 'default' | 'lg';
+  type LoaderVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 
 Import example:
 
   import type { LoaderType, LoaderSize, LoaderVariant } from '@keenmate/svelte-pure-admin';
+
+
+NOTIFICATION TYPES (NotificationsPanel.svelte)
+-----------------------------------------------
+  interface NotificationItem {
+    id: string | number;
+    titleText: string;
+    messageText: string;
+    timeText: string;
+    isUnread?: boolean;
+    iconText?: string;
+    iconClass?: string;
+    iconVariant?: 'primary' | 'success' | 'warning' | 'danger' | 'secondary';
+  }
+
+  import type { NotificationItem } from '@keenmate/svelte-pure-admin';
+
+
+KPI TYPES
+----------
+  type KpiStripColumn = 'metric' | 'now' | 'previousValue' | 'deltaPercent' | 'targetBar';
+  type KpiDeltaVariant = 'positive' | 'negative' | 'neutral' | 'up-strong' | 'down-strong';
+  type KpiDetailSentiment = 'pos' | 'neg' | 'warn';
+  type KpiDetailRow = { labelText: string; ... };
+  type KpiAnyDeltaVariant = KpiDeltaVariant | 'very-positive' | 'very-negative' | 'warning';
+  type KpiEditorialGridLayout = '2col' | 'max-2' | 'max-3' | 'max-4' | 'max-5' | 'max-6';
+  type KpiGaugeListGridLayout = '2col' | 'max-2' | 'max-3' | 'max-4' | 'max-5' | 'max-6';
+  type KpiGaugeVariant = 'positive' | 'warning' | 'negative' | 'neutral';
+  type KpiSparklineTrendVariant = 'up-strong' | 'up' | 'flat' | 'down' | 'down-strong';
+  type KpiSparklineDeltaVariant = 'very-positive' | 'positive' | 'neutral' | 'negative' | 'very-negative';
+  type KpiBentoLayout = 'hero-end' | '5-tile';
+  type KpiHeroSplit = '2-3' | '3-4';
+  type KpiHeroVariant = 'positive' | 'negative' | 'neutral' | 'up-strong';
+  type KpiTerminalStatus = 'good' | 'warn' | 'neutral';
+  KpiTerminalContext, KpiTerminalPaneInfo   // KpiTerminal pane context (KPI_TERMINAL_CONTEXT key)
 
 
 COMPONENT-SPECIFIC TYPES (NOT EXPORTED, FOR REFERENCE)
@@ -629,62 +861,65 @@ These types are defined locally within component files.
 They are NOT exported but documented here for reference when using components.
 
 Button:
-  type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+  type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'ghost';
   type ButtonSize = 'xs' | 'sm' | 'lg' | 'xl';
-  type ButtonAlign = 'start' | 'end' | 'center' | 'justify';
+  type ButtonJustify = 'start' | 'end' | 'center' | 'between';   // `justify` prop -> pa-btn--justify-*
+  rippleType: 'center' | 'pulse' | 'double-pulse' | (string & {});  // with isRipple; custom name -> pa-btn--ripple-<name>
 
 Modal:
   type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw';
   type ModalVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
   type ModalPlacement = 'center' | 'top';
 
-Toast:
-  type ToastVariant = 'primary' | 'success' | 'danger' | 'warning' | 'info';
-
-ToastContainer:
-  type ToastPlacement = 'top-end' | 'top-center' | 'top-start'
-                      | 'bottom-end' | 'bottom-center' | 'bottom-start';
+(ToastVariant / ToastPlacement ARE exported -- see TOAST SERVICE TYPES.)
 
 Card:
   type CardVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info'
     | 'color-1' | 'color-2' | 'color-3' | 'color-4' | 'color-5'
     | 'color-6' | 'color-7' | 'color-8' | 'color-9';
+  type HeaderUnderlineColor = 'success' | 'warning' | 'danger' | 'info';
+  titleTooltipPlacement / descriptionTooltipPlacement: TooltipPlacement
+  titleTooltipMode / descriptionTooltipMode: TooltipMode
 
 Stat:
   type StatLayout = 'hero' | 'hero-compact' | 'square';
   type StatVariant = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger';
-  type ChangeDirection = 'positive' | 'negative' | 'neutral';
+  type StatIconVariant = 'primary' | 'success' | 'info' | 'warning' | 'danger';
+  type ChangeDirection = 'very-positive' | 'positive' | 'neutral' | 'negative' | 'very-negative';
 
 Table:
   type TableSize = 'xs' | 'sm' | 'lg' | 'xl';
 
 Input:
   type InputSize = 'xs' | 'sm' | 'lg' | 'xl';
-  type InputState = 'success' | 'warning' | 'error';
+  type InputState = 'success' | 'warning' | 'error';   // the `validation` prop
   type InputType = 'text' | 'email' | 'password' | 'tel' | 'url' | 'search';
 
 FormGroup:
-  type ValidationState = 'success' | 'warning' | 'error';
+  type ValidationState = 'success' | 'warning' | 'error';   // the `validation` prop
 
 Grid:
   type HorizontalAlign = 'center' | 'end' | 'between' | 'around';
-  type VerticalAlign = 'top' | 'middle' | 'bottom';
+  type VerticalAlign = 'top' | 'middle' | 'bottom' | 'stretch';
   type GapSize = '0' | 'xs' | 'sm' | 'md' | 'base' | 'lg' | 'xl' | '2xl';
 
 TableCard:
   type SemanticVariant = 'primary' | 'success' | 'warning' | 'danger';
+  themeColor: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 Progress:
   size: 'xs' | 'sm' | 'lg';
-  variant: DataVizVariant (success | warning | danger | info)
+  variant: DataVizVariant (primary | success | warning | danger | info)
 
 Field:
   copyMode: 'btn' | 'click' | 'hover';
-  valueVariant: 'success' | 'warning' | 'danger';
+  valueVariant: 'success' | 'warning' | 'danger' | 'info';
 
 Fields:
   cols: 2 | 3 | 4;
-  color: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  layout: 'horizontal' | 'table' | 'inline' | 'row' | 'linear' | 'chips';
+  density: 'compact' | 'relaxed';
+  themeColor: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 
 COMPLETE IMPORT MAP
@@ -694,7 +929,13 @@ All exported types organized by category:
 // Core types
 import type {
   ColorVariant, Size, ExtendedSize, HorizontalAlignment,
-  VerticalAlignment, ValidationState, DataVizVariant, ThemeColor
+  VerticalAlignment, ValidationState, DataVizVariant, ThemeColor,
+  TooltipPlacement, TooltipMode, TooltipVariant
+} from '@keenmate/svelte-pure-admin';
+
+// Icon types
+import type {
+  IconProvider, IconRenderContext, FontAwesomeOptions, SvgIconsOptions, AffordanceIconName
 } from '@keenmate/svelte-pure-admin';
 
 // Badge types
@@ -710,7 +951,7 @@ import type {
 // Command palette types
 import type {
   Command, CommandStep, StepOption, StepSelection,
-  SearchContext, SearchResult, PaletteMode
+  SearchContext, SearchResult, SearchGroup, PaletteMode
 } from '@keenmate/svelte-pure-admin';
 
 // Dialog types
@@ -720,11 +961,34 @@ import type {
   PromptDialogOptions, CustomDialogOptions, DialogButton
 } from '@keenmate/svelte-pure-admin';
 
+// Toast types
+import type {
+  ToastVariant, ToastPlacement, ToastAction, ToastOptions, ToastState
+} from '@keenmate/svelte-pure-admin';
+
 // Form types
-import type { FormErrorItem } from '@keenmate/svelte-pure-admin';
+import type {
+  FormErrorItem, RangeGroupRow, RangeHandleType, RangeGroupValues,
+  RangeGroupSingleValue, RangeGroupRangeValue, RangeGroupCodec, QsAdapter
+} from '@keenmate/svelte-pure-admin';
 
 // Layout types
-import type { ThemeOption } from '@keenmate/svelte-pure-admin';
+import type {
+  ThemeOption, ThemeModeOption, ThemeColorVariantOption,
+  ThemeColorVariantsLegacy, ThemeModesLegacy,
+  SplitterOrientation, SplitterResizeDetail, SplitterToggleDetail
+} from '@keenmate/svelte-pure-admin';
+
+// Notification types
+import type { NotificationItem } from '@keenmate/svelte-pure-admin';
+
+// KPI types
+import type {
+  KpiStripColumn, KpiDeltaVariant, KpiDetailSentiment, KpiDetailRow, KpiAnyDeltaVariant,
+  KpiEditorialGridLayout, KpiGaugeListGridLayout, KpiGaugeVariant,
+  KpiSparklineTrendVariant, KpiSparklineDeltaVariant, KpiBentoLayout,
+  KpiHeroSplit, KpiHeroVariant, KpiTerminalContext, KpiTerminalPaneInfo, KpiTerminalStatus
+} from '@keenmate/svelte-pure-admin';
 
 // Shortcut types
 import type {
@@ -762,6 +1026,8 @@ CRITICAL REMINDERS
 - ThemeColor is a number 1-9, not a string
 - HorizontalAlignment uses logical start/end (not left/right) for RTL support
 - ToastPlacement uses logical start/end (top-end, not top-right) for RTL support
+- Placement types are *Placement (TooltipPlacement, ModalPlacement, DialogPlacement, ToastPlacement);
+  there are no *Position types and no TextMode / LoaderColor / RangeHandleShape types
 - DialogButton value is generic <T> -- can be any type
 - Command palette supports both sync and async getOptions/onSearch (Promise | direct)
 - Batch.add<T>() is generic -- specify the expected return type for type safety

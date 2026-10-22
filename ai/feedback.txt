@@ -33,9 +33,11 @@ import {
   Popover,
   PopoverContainer,
   Popconfirm,
+  NotificationBell,
   NotificationsPanel,
   DialogContainer,
-  dialogService
+  dialogService,
+  toastService
 } from '@keenmate/svelte-pure-admin';
 
 
@@ -49,10 +51,14 @@ PROPS:
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
                              -- Alert color variant (default: 'primary')
   size?: 'sm' | 'lg'        -- Alert size
-  themeColor?: 1-9           -- Theme color (applies pa-bg-color-N)
+  themeColor?: 1-9           -- Theme color slot (pa-alert--color-N / pa-alert--outline-color-N)
   isDismissible?: boolean    -- Shows close button (default: false)
-  isOutline?: boolean        -- Outline style (default: false)
-  headingText?: string       -- Alert heading text
+  isOutline?: boolean        -- Outline style (default: false; core has outline for
+                                primary/success/danger/warning/info only — others stay solid)
+  isMultiline?: boolean      -- Stack icon at the top of multi-line content (pa-alert--multiline)
+  headingText?: string       -- Alert heading text (plain)
+  heading?: Snippet          -- Rich heading content (wins over headingText); rendered INSIDE
+                                the component's <h4 class="pa-alert__heading"> — don't add your own <h4>
   headingSize?: 'lg'         -- 'lg' = large heading (pa-alert__heading--lg)
   class?: string             -- Additional CSS classes
   icon?: Snippet             -- Icon snippet (enables complex layout with pa-alert__content wrapper)
@@ -62,7 +68,7 @@ PROPS:
   actions?: Snippet          -- Action buttons rendered in pa-alert__actions
   ondismiss?: () => void     -- Fired when alert is dismissed
 
-IMPORTANT: When the icon snippet is provided, the alert switches to a complex
+IMPORTANT: When the icon snippet (or iconName) is provided, the alert switches to a complex
 layout with pa-alert__icon + pa-alert__content wrapper. Without icon, it uses
 a simple flat layout.
 
@@ -78,6 +84,13 @@ WITH HEADING:
 
 <Alert variant="info" headingText="New Update Available">
   Version 2.1 is now available with performance improvements.
+</Alert>
+
+RICH HEADING (snippet):
+
+<Alert variant="warning">
+  {#snippet heading()}Deprecated: <code>oldApi()</code>{/snippet}
+  Switch to the new API before 3.0.
 </Alert>
 
 OUTLINE STYLE:
@@ -137,7 +150,10 @@ PROPS:
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
                             -- Callout color (default: 'info')
   size?: 'sm' | 'lg'       -- Callout size
-  headingText?: string      -- Callout heading text
+  themeColor?: 1-9          -- Theme color slot
+  headingText?: string      -- Callout heading text (plain)
+  heading?: Snippet         -- Rich heading content (wins over headingText); rendered inside
+                               the component's <h4 class="pa-callout__heading">
   class?: string            -- Additional CSS classes
   icon?: Snippet            -- Icon snippet (enables complex layout)
   iconName?: string         -- Icon name rendered through <Icon> (the icon snippet wins)
@@ -190,13 +206,14 @@ MODAL
 Dialog overlay with backdrop, header, body, and footer.
 
 PROPS:
+  id?: string                   -- Optional id on the modal root
   isOpen?: boolean (bindable)   -- Show/hide modal (default: false)
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fw'
                                 -- Modal size (default: 'md')
   variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
-                                -- Full modal theming
-  headerVariant?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
-                                -- Header-only theming
+                                -- Role colour of the modal (header colour inherits)
+  isBanded?: boolean            -- Header AND footer as filled role-colour bands (pa-modal--banded);
+                                   compose with variant for the colour
   placement?: 'center' | 'top' -- Where the dialog sits (default: 'center')
   isScrollable?: boolean        -- Scrollable body (default: false)
   isStatic?: boolean            -- Prevents ESC/backdrop close (default: false)
@@ -204,13 +221,15 @@ PROPS:
   titleIconName?: string        -- Leading icon name before the title, rendered through <Icon> (affordances like success / warning / danger / info / delete render the masked glyph)
   hasClose?: boolean            -- Show close button (default: true)
   shouldCloseOnEscape?: boolean -- Close on ESC key (default: true)
+  shouldCloseOnBackdrop?: boolean -- Close on backdrop click (default: true; Escape is separate)
   beforeCloseCallback?: () => boolean | void
                                 -- Return false to prevent closing
   onclose?: () => void          -- Fired after modal closes
   class?: string                -- Additional modal CSS classes
   bodyClass?: string            -- Additional body CSS classes
   footerClass?: string          -- Additional footer CSS classes
-  header?: Snippet              -- Custom header content
+  header?: Snippet              -- Rich title content (overrides titleText); rendered INSIDE the
+                                   component's <h3 class="pa-modal__title"> — don't add your own <h3>
   children?: Snippet            -- Modal body content
   footer?: Snippet              -- Modal footer content
 
@@ -286,12 +305,12 @@ THEMED MODAL:
   {/snippet}
 </Modal>
 
-HEADER-ONLY THEME:
+BANDED + TITLE ICON:
 
-<Modal bind:isOpen={showHeaderTheme} titleText="Warning" headerVariant="warning">
-  Only the header bar is themed, body stays neutral.
+<Modal bind:isOpen={showBanded} titleText="Warning" titleIconName="warning" variant="warning" isBanded>
+  Header and footer are filled warning-colour bands, body stays neutral.
   {#snippet footer()}
-    <Button variant="warning" onclick={() => showHeaderTheme = false}>Acknowledge</Button>
+    <Button variant="warning" onclick={() => showBanded = false}>Acknowledge</Button>
   {/snippet}
 </Modal>
 
@@ -306,11 +325,15 @@ SCROLLABLE BODY:
   {/snippet}
 </Modal>
 
+FORCED CHOICE (ESC still closes, backdrop click does not):
+
+<Modal bind:isOpen={showChoice} titleText="Choose a plan" shouldCloseOnBackdrop={false}>...</Modal>
+
 STATIC MODAL (NO CLOSE ON ESC/BACKDROP):
 
 <Modal bind:isOpen={showStatic} titleText="Processing..." isStatic hasClose={false}>
   Please wait while we process your request.
-  <Spinner size="lg" />
+  <Spinner />
 </Modal>
 
 PREVENT CLOSE WITH CALLBACK:
@@ -342,17 +365,13 @@ PREVENT CLOSE WITH CALLBACK:
   {/snippet}
 </Modal>
 
-CUSTOM HEADER:
+CUSTOM (RICH) TITLE:
 
 <Modal bind:isOpen={showCustom} size="lg">
   {#snippet header()}
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <svg>...</svg>
-      <h3>Custom Header Layout</h3>
-      <span class="pa-badge pa-badge--success">New</span>
-    </div>
+    Custom Title <Badge variant="success">New</Badge>
   {/snippet}
-  Body content with custom header above.
+  Body content with a rich title above (the snippet renders inside .pa-modal__title).
   {#snippet footer()}
     <Button variant="primary" onclick={() => showCustom = false}>Done</Button>
   {/snippet}
@@ -377,13 +396,18 @@ Notification toasts with auto-dismiss and optional progress bar.
 TOAST PROPS:
   variant?: 'primary' | 'success' | 'danger' | 'warning' | 'info'
                                  -- Toast color (default: 'primary')
+  themeColor?: 1-9               -- Theme color slot (overrides variant)
+  isFilled?: boolean             -- Full-colour background (default: false)
   titleText: string              -- Toast title (REQUIRED)
   messageText: string            -- Toast message (REQUIRED)
   isVisible?: boolean (bindable) -- Show/hide toast (default: true)
   duration?: number              -- Auto-dismiss in ms, 0 for persistent (default: 5000)
   hasProgress?: boolean          -- Show progress bar (default: false)
+  progressColor?: string         -- Custom progress bar colour
+  maxWidth?: string              -- Custom max-width (e.g. '50rem')
   icon?: Snippet                 -- Custom icon
   iconName?: string              -- Icon name rendered through <Icon> (the icon snippet wins)
+  actions?: Snippet              -- Buttons rendered in pa-toast__actions
   onclose?: () => void           -- Fired when toast closes
   class?: string                 -- Additional CSS classes
 
@@ -391,7 +415,10 @@ TOAST CONTAINER PROPS:
   placement?: 'top-end' | 'top-center' | 'top-start' | 'bottom-end' | 'bottom-center' | 'bottom-start'
                                  -- Screen corner for the stack (default: 'top-end')
   class?: string                 -- Additional CSS classes
-  children?: Snippet             -- Toast children
+  children?: Snippet             -- Toast children (declarative toasts)
+
+ToastContainer also renders toasts queued through toastService whose
+placement matches its own (see TOAST SERVICE below).
 
 IMPORTANT: Positions use logical directions (start/end), NOT physical (left/right).
 This ensures correct positioning in RTL layouts. 'top-end' = top-right in LTR.
@@ -480,6 +507,27 @@ POSITION VARIANTS:
 <ToastContainer placement="bottom-center">...</ToastContainer>
 <ToastContainer placement="bottom-start">...</ToastContainer>
 
+TOAST SERVICE (programmatic — preferred over managing toast arrays):
+
+<!-- once in +layout.svelte, one container per placement you use -->
+<ToastContainer placement="top-end" />
+
+toastService.success('Saved!');                       // also .danger/.warning/.info/.primary
+toastService.danger({ titleText: 'Failed', messageText: 'Could not save' });
+const id = toastService.show({
+  titleText: 'Working', messageText: '...', variant: 'info',
+  duration: 0,                    // persistent
+  hasProgress: true,
+  placement: 'bottom-end',        // routes to the matching container (default 'top-end')
+  actions: [{ label: 'Retry', variant: 'secondary', onclick: (id) => retry(), keepOpen: false }]
+});
+toastService.dismiss(id);  toastService.dismissAll();
+
+ToastOptions: titleText, messageText, variant, themeColor, isFilled, duration,
+hasProgress, progressColor, maxWidth, actions (ToastAction[]), iconClass (override —
+the icon is derived from variant by default), class, placement.
+Exports: toastService, toastStore, DEFAULT_TOAST_PLACEMENT, types ToastPlacement / ToastVariant.
+
 
 =====================================================================
 SPINNER
@@ -488,24 +536,17 @@ SPINNER
 Simple spinning loader indicator.
 
 PROPS:
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-                                 -- Spinner size
+  size?: 'xs'                    -- Only 'xs' exists in core (omit for the default size)
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
                                  -- Spinner color
   class?: string                 -- Additional CSS classes
 
+Renders a <span>, so it is valid inside text (e.g. a Paragraph or Button).
+
 BASIC USAGE:
 
 <Spinner />
-
-SIZE VARIANTS:
-
 <Spinner size="xs" />
-<Spinner size="sm" />
-<Spinner size="md" />
-<Spinner size="lg" />
-<Spinner size="xl" />
-<Spinner size="2xl" />
 
 COLOR VARIANTS:
 
@@ -517,7 +558,7 @@ COLOR VARIANTS:
 INLINE WITH TEXT:
 
 <p>
-  <Spinner size="sm" variant="primary" />
+  <Spinner size="xs" variant="primary" />
   Loading data...
 </p>
 
@@ -526,11 +567,11 @@ INLINE WITH TEXT:
 LOADER
 =====================================================================
 
-Advanced animated loaders: dots, bars, pulse, ring, wave.
+Advanced animated loaders: dots, bars, pulse, ring, wave, grid, ripple, dual-ring.
 For simple spinning indicators, use Spinner instead.
 
 PROPS:
-  type?: 'dots' | 'bars' | 'pulse' | 'ring' | 'wave'
+  type?: 'dots' | 'bars' | 'pulse' | 'ring' | 'wave' | 'grid' | 'ripple' | 'dual-ring'
                               -- Loader animation type (default: 'dots')
   size?: 'default' | 'lg'    -- Loader size
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
@@ -544,6 +585,9 @@ BASIC USAGE:
 <Loader type="pulse" />
 <Loader type="ring" />
 <Loader type="wave" />
+<Loader type="grid" />
+<Loader type="ripple" />
+<Loader type="dual-ring" />
 
 LARGE SIZE:
 
@@ -556,8 +600,9 @@ COLOR VARIANTS:
 <Loader type="pulse" variant="danger" />
 <Loader type="ring" variant="warning" />
 
-NOTE: 'dots' renders 3 spans, 'bars' and 'wave' render 5 spans,
-'pulse' and 'ring' are CSS-only (no child spans).
+NOTE: 'dots' renders 3 spans, 'bars' and 'wave' render 5 spans, 'grid' 9 spans;
+'pulse', 'ring', 'ripple' and 'dual-ring' are CSS-only (no child spans).
+Colour is currentColor (variant sets it on the wrapper); grid/ripple/dual-ring are monochrome.
 
 
 =====================================================================
@@ -574,7 +619,7 @@ PROPS:
 USAGE:
 
 <LoaderCenter>
-  <Spinner size="lg" variant="primary" />
+  <Spinner variant="primary" />
   <p>Loading content...</p>
 </LoaderCenter>
 
@@ -599,7 +644,7 @@ USAGE:
 
 {#if isLoading}
   <LoaderOverlay>
-    <Spinner size="2xl" variant="primary" />
+    <Loader type="ring" size="lg" variant="primary" />
     <p>Processing your request...</p>
   </LoaderOverlay>
 {/if}
@@ -632,6 +677,7 @@ PROPS:
                                                 -- Color variant
   isMultiline?: boolean                         -- 20rem width, left-aligned (default: false)
   isHelp?: boolean                              -- Question mark cursor (default: false)
+  isKeyword?: boolean                           -- Dotted-underline keyword trigger (default: false)
   class?: string                                -- Additional CSS classes
   children?: Snippet                            -- Trigger element content
 
@@ -674,8 +720,8 @@ HELP CURSOR:
   What is this?
 </Tooltip>
 
-NOTE: Tooltip uses physical positions (left/right) NOT logical (start/end)
-because arrow positioning requires physical directions.
+NOTE: placement is logical (start/end, NOT left/right) — the component maps it
+to Floating UI's physical side for the current text direction, so it flips in RTL.
 
 
 =====================================================================
@@ -686,8 +732,8 @@ Click-triggered rich content overlays using Floating UI and portal pattern.
 
 POPOVER PROPS:
   titleText: string                    -- Popover title (REQUIRED)
-  placement?: 'top' | 'right' | 'bottom' | 'left'
-                                       -- Placement (default: 'top')
+  placement?: 'top' | 'end' | 'bottom' | 'start'
+                                       -- Placement, logical (default: 'top')
   size?: 'sm' | 'lg'                  -- Size variant
   textAlign?: 'center' | 'end'        -- Text alignment in body
   triggerText?: string                 -- Default trigger button text (default: '?')
@@ -719,7 +765,7 @@ This renders a small "?" trigger button. Click to show the popover.
 
 CUSTOM TRIGGER:
 
-<Popover titleText="User Details" placement="right">
+<Popover titleText="User Details" placement="end">
   {#snippet trigger()}
     <span class="pa-badge pa-badge--primary">John Doe</span>
   {/snippet}
@@ -822,8 +868,8 @@ COMPACT MODE:
   onconfirm={handleRemove}
 />
 
-NOTE: Popconfirm uses physical positions (left/right) for arrow placement,
-NOT logical (start/end). Clicking outside closes the popconfirm automatically.
+NOTE: placement is logical (start/end, NOT left/right). Clicking outside closes
+the popconfirm automatically.
 
 
 =====================================================================
@@ -846,6 +892,20 @@ IMPORTS:
 
 import { dialogService } from '@keenmate/svelte-pure-admin';
 
+COMMON OPTIONS (every dialog type):
+  title?: string
+  message?: string            -- Plain text (rendered as a Paragraph)
+  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info'  (DialogVariant)
+  isBanded?: boolean          -- Banded header + footer in the variant colour
+  icon?: string | false       -- Title icon; derived from variant when omitted
+                                 (success/warning/danger/info glyph, none for primary);
+                                 pass a pa-icon name (e.g. 'delete') to override, false to hide
+  size?: 'sm' | 'md' | 'lg' | 'xl'   (DialogSize)
+  placement?: 'center' | 'top'       (DialogPlacement)
+  closeOnBackdrop?: boolean   -- Backdrop click dismisses (default true; prompt: false).
+                                 Escape still cancels.
+  class? / bodyClass? / footerClass?: string
+
 
 CONFIRM DIALOG
 --------------
@@ -864,16 +924,17 @@ if (result) {
   await deleteUser(userId);
 }
 
-CONFIRM OPTIONS:
-  title?: string              -- Dialog title
-  message?: string            -- Dialog message
+CONFIRM OPTIONS (+ common):
   confirmText?: string        -- Confirm button text (default: i18n 'OK')
   cancelText?: string         -- Cancel button text (default: i18n 'Cancel')
   confirmVariant?: DialogVariant -- Confirm button color
-  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
-  size?: 'sm' | 'md' | 'lg' | 'xl'
-  placement?: DialogPlacement   -- 'center' | 'top'
-  closeOnBackdrop?: boolean
+
+BANDED / FORCED CHOICE:
+
+const ok = await dialogService.confirm({
+  title: 'Delete project?', message: 'This cannot be undone.',
+  variant: 'danger', isBanded: true, icon: 'delete', closeOnBackdrop: false
+});
 
 
 ALERT DIALOG
@@ -886,13 +947,8 @@ await dialogService.alert({
   variant: 'success'
 });
 
-ALERT OPTIONS:
-  title?: string
-  message?: string
+ALERT OPTIONS (+ common):
   okText?: string             -- OK button text (default: i18n 'OK')
-  variant?: DialogVariant
-  size?: DialogSize
-  placement?: DialogPlacement   -- 'center' | 'top'
 
 
 PROMPT DIALOG
@@ -924,16 +980,14 @@ const email = await dialogService.prompt({
   }
 });
 
-PROMPT OPTIONS:
-  title?: string
-  message?: string
+PROMPT OPTIONS (+ common):
   defaultValue?: string       -- Initial input value
   placeholder?: string        -- Input placeholder
   confirmText?: string
   cancelText?: string
   validator?: (value: string) => true | string
                               -- Return true if valid, error string if invalid
-  closeOnBackdrop?: boolean   -- Always false for prompts
+  closeOnBackdrop?: boolean   -- Defaults to false for prompts
 
 
 CUSTOM DIALOG
@@ -960,46 +1014,67 @@ if (action === 'publish') {
 CUSTOM BUTTON OPTIONS:
   label: string               -- Button text
   value: T                    -- Value returned when clicked
-  variant?: ColorVariant      -- Button color (default: 'secondary')
+  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
+                              -- Button color (default: 'secondary')
   isOutline?: boolean         -- Outline button style
   class?: string              -- Additional button CSS class
   isDisabled?: boolean        -- Disable button
 
-CUSTOM DIALOG OPTIONS:
-  title?: string
-  message?: string
+CUSTOM DIALOG OPTIONS (+ common):
   buttons: DialogButton<T>[]  -- Array of button definitions
   dismissValue?: T            -- Value when closed via ESC/backdrop
-  variant?: DialogVariant
-  size?: DialogSize
 
 
 =====================================================================
-NOTIFICATIONS PANEL
+NOTIFICATION BELL + NOTIFICATIONS PANEL
 =====================================================================
 
-Dropdown panel for displaying notifications (placeholder/demo component).
+NotificationBell = navbar bell button + unread badge + panel anchor (.pa-notifications).
+NotificationsPanel = the dropdown (or full-page list) of notifications.
 
-PROPS:
-  isOpen?: boolean (bindable)  -- Show/hide panel (default: false)
-  class?: string             -- Additional CSS classes
+NOTIFICATION BELL PROPS:
+  isOpen?: boolean (bindable)  -- Panel open state, toggled by the bell (default: false)
+  count?: number | string      -- Unread badge; hidden when unset / 0 / ''
+  ariaLabel?: string           -- Bell button label (default: i18n)
+  class?: string
+  bell?: Snippet               -- Custom bell icon (default: masked pa-icon--bell)
+  children?: Snippet           -- Put <NotificationsPanel bind:isOpen> here
+  onclick?: () => void         -- After toggling isOpen
 
-NOTE: This is currently a demo component with hardcoded notification items.
-It demonstrates the pa-notifications CSS pattern. In production, you would
-customize the content with your own notification data.
+NOTIFICATIONS PANEL PROPS:
+  items?: NotificationItem[]   -- Data (ignored when customItems is given)
+  isPageView?: boolean         -- Bare full-page list (--page), no dropdown wrapper
+  isOpen?: boolean (bindable)  -- Dropdown open state (ignored when isPageView)
+  titleText?: string           -- Header heading
+  markAllReadText?: string     -- "Mark all as read" text
+  footerText?: string          -- Footer link text (dropdown only)
+  footerHref?: string          -- Footer link href (default: '#all-notifications')
+  hasCheckboxes?: boolean      -- Leading checkbox per item (page view bulk actions)
+  class?: string
+  itemActions?: Snippet<[NotificationItem]>  -- Per-item actions
+  customItems?: Snippet        -- Fully custom item rendering
+  header?: Snippet / footer?: Snippet        -- Replace default header / footer
+  onmarkallread?: () => void
+  onitemclick?: (item) => void
+  onitemtoggle?: (item, checked: boolean) => void
+
+NotificationItem: { id, titleText, messageText, timeText, isUnread?,
+  iconText?, iconClass?, iconVariant?: 'primary'|'success'|'warning'|'danger'|'secondary' }
 
 BASIC USAGE:
 
 <script lang="ts">
-  import { NotificationsPanel } from '@keenmate/svelte-pure-admin';
-  let showNotifications = $state(false);
+  import { NotificationBell, NotificationsPanel, type NotificationItem } from '@keenmate/svelte-pure-admin';
+  let isNotificationsOpen = $state(false);
+  let items = $state<NotificationItem[]>([
+    { id: 1, titleText: 'Build passed', messageText: 'main #482', timeText: '2m ago', isUnread: true, iconVariant: 'success' }
+  ]);
 </script>
 
-<button onclick={() => showNotifications = !showNotifications}>
-  Notifications
-</button>
-
-<NotificationsPanel bind:isOpen={showNotifications} />
+<NotificationBell bind:isOpen={isNotificationsOpen} count={items.filter(i => i.isUnread).length}>
+  <NotificationsPanel bind:isOpen={isNotificationsOpen} {items} titleText="Notifications"
+    onmarkallread={() => items = items.map(i => ({ ...i, isUnread: false }))} />
+</NotificationBell>
 
 
 =====================================================================
@@ -1140,10 +1215,9 @@ EXAMPLE 3: FULL PAGE WITH LOADING STATES
     <p>Loading dashboard...</p>
   </LoaderCenter>
 {:else}
-  <Card>
-    {#snippet header()}
-      <h3>Data Table</h3>
-      <Button onclick={refreshTable} isDisabled={isTableLoading}>
+  <Card titleText="Data Table">
+    {#snippet headerActions()}
+      <Button size="sm" onclick={refreshTable} isDisabled={isTableLoading}>
         {#if isTableLoading}
           <Spinner size="xs" /> Refreshing...
         {:else}
@@ -1168,7 +1242,7 @@ EXAMPLE 3: FULL PAGE WITH LOADING STATES
 
 {#if isSaving}
   <LoaderOverlay>
-    <Spinner size="2xl" variant="primary" />
+    <Loader type="ring" size="lg" variant="primary" />
     <p>Saving changes...</p>
   </LoaderOverlay>
 {/if}
@@ -1229,16 +1303,16 @@ EXAMPLE 5: TOOLTIP AND POPOVER ON TABLE ACTIONS
     Tooltip, Popover, PopoverContainer, Popconfirm
   } from '@keenmate/svelte-pure-admin';
 
-  let deleteTargets = $state<Record<string, { show: boolean; trigger: HTMLElement | null }>>({});
+  let deleteTargets = $state<Record<string, { isOpen: boolean; trigger: HTMLElement | null }>>({});
 
   function initDeleteTarget(id: string) {
     if (!deleteTargets[id]) {
-      deleteTargets[id] = { show: false, trigger: null };
+      deleteTargets[id] = { isOpen: false, trigger: null };
     }
   }
 </script>
 
-<table class="pa-table pa-table--hover">
+<table class="pa-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -1255,12 +1329,12 @@ EXAMPLE 5: TOOLTIP AND POPOVER ON TABLE ACTIONS
       <tr>
         <td>{item.name}</td>
         <td>
-          <Tooltip text={item.statusDetails} placement="right">
+          <Tooltip text={item.statusDetails} placement="end">
             <span class="pa-badge pa-badge--{item.statusColor}">{item.status}</span>
           </Tooltip>
         </td>
         <td>
-          <Popover titleText="Item Details" placement="left">
+          <Popover titleText="Item Details" placement="start">
             {#snippet trigger()}
               <button class="pa-btn pa-btn--sm pa-btn--secondary">Details</button>
             {/snippet}

@@ -40,10 +40,12 @@ import {
 
 SHARED TYPES
 ------------
-DataVizVariant = 'success' | 'warning' | 'danger' | 'info'
+DataVizVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 
 Used by: Progress, ProgressRing, Gauge, DataBar, Sparkline, BarList
-These four values map to BEM modifiers: pa-progress--success, pa-gauge--danger, etc.
+'primary' is the base fill (var(--pc-primary-color)) and emits no modifier — same as
+omitting variant. The other four map to BEM modifiers: pa-progress--success,
+pa-gauge--danger, etc.
 
 
 =====================================================================
@@ -199,8 +201,9 @@ PROPS:
   maxText?: string          -- Max label at right endpoint
   variant?: DataVizVariant  -- Color: success, warning, danger, info
   isZones?: boolean         -- Multi-zone gauge with green/yellow/red bands (default: false)
+  size?: string             -- CSS length overriding --pa-gauge-size (default 12rem; height is half)
   class?: string            -- Additional CSS classes
-  children?: Snippet        -- Custom content inside the gauge (replaces valueText/labelText)
+  children?: Snippet        -- Custom content inside the gauge (replaces valueText only)
 
 IMPORTANT: isZones overrides variant. When isZones is true, the gauge shows
 three color zones (green/yellow/red) regardless of the variant prop.
@@ -237,6 +240,10 @@ MULTI-ZONE GAUGE:
 />
 
 The zones gauge renders green/yellow/red bands automatically based on position.
+
+CUSTOM SIZE:
+
+<Gauge value={40} valueText="40%" size="8rem" />
 
 CUSTOM CONTENT:
 
@@ -389,14 +396,19 @@ Mini bar chart for inline data visualization (e.g., in table cells or stat cards
 SPARKLINE PROPS:
   size?: 'sm' | 'lg'       -- Size variant
   variant?: DataVizVariant  -- Color: success, warning, danger, info
+  values?: number[]         -- Bar heights 0-100; renders one bar per entry (preferred)
   class?: string            -- Additional CSS classes
-  children?: Snippet        -- SparklineBar children
+  children?: Snippet        -- SparklineBar children (used when values is not set)
 
 SPARKLINE BAR PROPS:
   value?: number   -- Bar height as percentage 0-100 (default: 0)
   class?: string   -- Additional CSS classes
 
-BASIC USAGE:
+BASIC USAGE (data-driven):
+
+<Sparkline values={[30, 70, 45, 90, 60, 35, 80]} />
+
+HAND-AUTHORED BARS:
 
 <Sparkline>
   <SparklineBar value={30} />
@@ -437,16 +449,12 @@ SIZE VARIANTS:
 DYNAMIC DATA:
 
 <script lang="ts">
-  import { Sparkline, SparklineBar } from '@keenmate/svelte-pure-admin';
+  import { Sparkline } from '@keenmate/svelte-pure-admin';
 
   const weeklyData = [30, 45, 80, 55, 70, 40, 90];
 </script>
 
-<Sparkline variant="success">
-  {#each weeklyData as val}
-    <SparklineBar value={val} />
-  {/each}
-</Sparkline>
+<Sparkline variant="success" values={weeklyData} />
 
 
 =====================================================================
@@ -459,8 +467,9 @@ HEATMAP PROPS:
   variant?: 'success' | 'danger'   -- Color palette (default: green/success)
   isCompact?: boolean               -- Smaller cells, tighter gap (default: false)
   columns?: number                  -- Grid columns (default: 53 for weekly calendar)
+  levels?: number[]                 -- Intensity levels 0-4; renders one cell per entry (preferred)
   class?: string                    -- Additional CSS classes
-  children?: Snippet                -- HeatmapCell children
+  children?: Snippet                -- HeatmapCell children (used when levels is not set)
 
 HEATMAP CELL PROPS:
   level?: 0 | 1 | 2 | 3 | 4   -- Intensity level (default: 0)
@@ -481,7 +490,12 @@ HEATMAP LEGEND PROPS:
 IMPORTANT: Only two variants are supported: 'success' (green) and 'danger' (red).
 The columns prop defaults to 53 (standard year in weeks). Override for custom grids.
 
-BASIC USAGE:
+BASIC USAGE (data-driven):
+
+<Heatmap columns={7} levels={[0, 1, 2, 3, 4, 2, 0]} />
+<HeatmapLegend />
+
+HAND-AUTHORED CELLS:
 
 <Heatmap>
   <HeatmapCell level={0} />
@@ -646,54 +660,37 @@ EXAMPLE 1: SERVER MONITORING DASHBOARD
 <script lang="ts">
   import {
     Card, Grid, Column,
-    Progress, ProgressRing, Gauge, Sparkline, SparklineBar
+    Progress, ProgressRing, Gauge, Sparkline
   } from '@keenmate/svelte-pure-admin';
 
   const cpuHistory = [45, 52, 48, 65, 72, 68, 75, 80, 72, 65, 58, 62];
-  const memoryHistory = [60, 62, 65, 68, 70, 72, 75, 78, 80, 82, 78, 75];
 </script>
 
 <Grid>
   <Column md="1-4">
-    <Card>
-      {#snippet header()}
-        <h4>CPU Usage</h4>
-      {/snippet}
-      <div style="display: flex; justify-content: center;">
+    <Card titleText="CPU Usage">
+      <div class="d-flex justify-content-center">
         <ProgressRing value={72} valueText="72%" labelText="CPU" variant="warning" />
       </div>
-      <Sparkline variant="warning" size="sm">
-        {#each cpuHistory as val}
-          <SparklineBar value={val} />
-        {/each}
-      </Sparkline>
+      <Sparkline variant="warning" size="sm" values={cpuHistory} />
     </Card>
   </Column>
 
   <Column md="1-4">
-    <Card>
-      {#snippet header()}
-        <h4>Memory</h4>
-      {/snippet}
+    <Card titleText="Memory">
       <Progress value={78} labelText="RAM" valueText="78% (12.5 GB)" variant="warning" isRounded />
       <Progress value={45} labelText="Swap" valueText="45% (3.6 GB)" variant="info" isRounded />
     </Card>
   </Column>
 
   <Column md="1-4">
-    <Card>
-      {#snippet header()}
-        <h4>Disk I/O</h4>
-      {/snippet}
+    <Card titleText="Disk I/O">
       <Gauge value={65} valueText="65 MB/s" labelText="Read" minText="0" maxText="200" variant="info" />
     </Card>
   </Column>
 
   <Column md="1-4">
-    <Card>
-      {#snippet header()}
-        <h4>Network Health</h4>
-      {/snippet}
+    <Card titleText="Network Health">
       <Gauge value={92} valueText="92%" labelText="Uptime" minText="0%" maxText="100%" isZones />
     </Card>
   </Column>
@@ -720,10 +717,7 @@ EXAMPLE 2: SALES ANALYTICS DASHBOARD
 
 <Grid>
   <Column md="1-2">
-    <Card>
-      {#snippet header()}
-        <h4>Revenue by Channel</h4>
-      {/snippet}
+    <Card titleText="Revenue by Channel">
       <BarList variant="info">
         {#each channels as ch}
           <BarListItem labelText={ch.name} valueText={ch.value} value={ch.pct} />
@@ -733,10 +727,7 @@ EXAMPLE 2: SALES ANALYTICS DASHBOARD
   </Column>
 
   <Column md="1-2">
-    <Card>
-      {#snippet header()}
-        <h4>Deal Pipeline</h4>
-      {/snippet}
+    <Card titleText="Deal Pipeline">
       <ProgressGroup labelText="Q4 Pipeline" valueText="$120,000">
         <StackedBar isRounded>
           <StackedBarSegment value={40} variant="success" />
@@ -761,7 +752,7 @@ EXAMPLE 3: PROJECT STATUS WITH HEATMAP
 <script lang="ts">
   import {
     Card, Grid, Column,
-    Heatmap, HeatmapCell, HeatmapLegend,
+    Heatmap, HeatmapLegend,
     Progress, ProgressRing
   } from '@keenmate/svelte-pure-admin';
 
@@ -776,11 +767,8 @@ EXAMPLE 3: PROJECT STATUS WITH HEATMAP
 
 <Grid>
   <Column md="1-3">
-    <Card>
-      {#snippet header()}
-        <h4>Sprint Progress</h4>
-      {/snippet}
-      <div style="display: flex; gap: 2rem; justify-content: center;">
+    <Card titleText="Sprint Progress">
+      <div class="d-flex gap-xl justify-content-center">
         <ProgressRing value={85} valueText="85%" labelText="Done" variant="success" />
         <ProgressRing value={12} valueText="12%" labelText="Review" variant="warning" size="sm" />
         <ProgressRing value={3} valueText="3%" labelText="Blocked" variant="danger" size="sm" />
@@ -789,24 +777,14 @@ EXAMPLE 3: PROJECT STATUS WITH HEATMAP
   </Column>
 
   <Column md="1-3">
-    <Card>
-      {#snippet header()}
-        <h4>Team Activity (4 weeks)</h4>
-      {/snippet}
-      <Heatmap variant="success" columns={7}>
-        {#each activityData as level}
-          <HeatmapCell {level} />
-        {/each}
-      </Heatmap>
+    <Card titleText="Team Activity (4 weeks)">
+      <Heatmap variant="success" columns={7} levels={activityData} />
       <HeatmapLegend lessText="Idle" moreText="Active" />
     </Card>
   </Column>
 
   <Column md="1-3">
-    <Card>
-      {#snippet header()}
-        <h4>Test Coverage</h4>
-      {/snippet}
+    <Card titleText="Test Coverage">
       <Progress value={92} labelText="Unit Tests" valueText="92%" variant="success" isRounded />
       <Progress value={78} labelText="Integration" valueText="78%" variant="info" isRounded />
       <Progress value={45} labelText="E2E Tests" valueText="45%" variant="warning" isRounded />
@@ -828,7 +806,7 @@ EXAMPLE 4: COMPARATIVE TABLE WITH DATA BARS
   ];
 </script>
 
-<table class="pa-table pa-table--striped pa-table--hover">
+<table class="pa-table pa-table--striped">
   <thead>
     <tr>
       <th>Product</th>
@@ -891,7 +869,7 @@ DO:
   - Import CSS from @keenmate/pure-admin-core separately
   - Pass value as a number 0-100 (component handles CSS var)
   - Use ProgressGroup when you need labels above StackedBar
-  - Use {#each} to render dynamic SparklineBar/HeatmapCell arrays
+  - Use Sparkline values={[...]} / Heatmap levels={[...]} for dynamic data
   - Combine StackedBar + StackedBarLegend as siblings (not nested)
   - Use variant prop for colors (success, warning, danger, info)
 

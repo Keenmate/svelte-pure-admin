@@ -3,17 +3,18 @@ DOCUMENTATION INDEX
 
 Quick reference for finding documentation on specific topics.
 Library: @keenmate/svelte-pure-admin (Svelte 5 component library)
-CSS framework: @keenmate/pure-admin-core
+CSS framework: @keenmate/pure-admin-core ^3.3.0-rc09 (+ @keenmate/pure-css ^2.0.0-rc04)
+Version: 2.0.0-rc01 (prop renames, no aliases — see naming-conventions.txt)
 
 FILE OVERVIEW
 -------------
-getting-started.txt      - Installation, CSS import, PureAdminProvider, first component
-layout.txt               - Layout, Navbar, Sidebar, Grid, Column, Footer, Section, SlidePanel
-forms.txt                - Form, FormGroup, Input, Select, Checkbox, Radio, validation
-display.txt              - Card, Table, Badge, List, Timeline, Code, Stat, Pager
+getting-started.txt      - Installation, CSS import, PureAdminProvider, icon providers, first component
+layout.txt               - Layout, Navbar (AppHeader/NavMenu/PageHeader, FitSlot/FitStep), Sidebar, Grid, Column, Footer, Section, SectionTitle, SlidePanel, FitContainer, ContainerBreakpoint, Splitter
+forms.txt                - Form, FormGroup, FormActions, Input, Select, Checkbox, Radio, RangeInput, RangeGroup, validation
+display.txt              - Button, ButtonGroup, SplitButton, Icon, Card, Table, Badge, List, Timeline, Code, Stat, Pager, LoadMore
 data-display.txt         - Field, Fields, DescTable, DotLeaders, PropCard, Banded, AccentGrid
 data-visualization.txt   - Progress, Gauge, Heatmap, Sparkline, StackedBar, BarList, DataBar
-feedback.txt             - Alert, Callout, Modal, Toast, Loader, Spinner, Popover, Popconfirm, Dialog
+feedback.txt             - Alert, Callout, Modal, Toast, toastService, Loader, Spinner, Popover, Popconfirm, Dialog, NotificationBell
 navigation.txt           - Tabs, CommandPalette, NavbarSearch
 theming.txt              - CSS import, theme packages, color slots 1-9, dark mode
 i18n.txt                 - svelte-i18n setup, locale switching, translation keys
@@ -28,12 +29,12 @@ A
 -
 AccentGrid -> data-display.txt
 AccentGridItem -> data-display.txt
-Actions (card footer) -> display.txt
+Actions (card footer: footerActions) -> display.txt
 Actions (alert) -> feedback.txt
 addMessages -> i18n.txt
 Alert -> feedback.txt
-justify (Button) -> display.txt, common-patterns.txt
 Animated (progress) -> data-visualization.txt
+AppHeader -> layout.txt
 auto (theme) -> theming.txt
 
 B
@@ -53,10 +54,12 @@ bindable props -> common-patterns.txt, forms.txt
 Block button -> display.txt, common-patterns.txt
 Boolean props (is*/has*/should*) -> naming-conventions.txt
 Bordered (Fields) -> data-display.txt
-brand (Navbar) -> layout.txt
+brand (Navbar: AppHeader in start zone) -> layout.txt
 Burger menu -> layout.txt
 Button -> display.txt, common-patterns.txt
 ButtonGroup -> display.txt
+ButtonGroup isCompact (row actions) -> display.txt
+Breaker -> layout.txt
 
 C
 -
@@ -65,6 +68,7 @@ Callout -> feedback.txt
 Card -> display.txt
 CardTab -> display.txt
 CardTabContent -> display.txt
+center (Navbar zone) -> layout.txt
 changeDirection (Stat) -> display.txt
 Checkbox -> forms.txt
 CheckboxBox -> forms.txt
@@ -83,7 +87,7 @@ cols (DescTable) -> data-display.txt
 cols (Fields) -> data-display.txt
 columns (Heatmap) -> data-visualization.txt
 CommandPalette -> navigation.txt
-Compact (Fields) -> data-display.txt
+density="compact" (Fields) -> data-display.txt
 CompositeBadge -> display.txt
 CompositeBadgeGroup -> display.txt
 CompositeBadgeItem -> typescript-types.txt
@@ -97,6 +101,7 @@ createBatch -> common-patterns.txt
 CSS import -> getting-started.txt, theming.txt
 CSS variables -> theming.txt
 Custom classes -> common-patterns.txt
+ContainerBreakpoint -> layout.txt
 
 D
 -
@@ -106,6 +111,7 @@ DataBar -> data-visualization.txt
 DataVizVariant -> typescript-types.txt, data-visualization.txt
 DateInput -> forms.txt
 defaultConfig -> getting-started.txt, common-patterns.txt
+descriptionTooltip (Card) -> display.txt
 DefinitionList -> display.txt
 $derived -> common-patterns.txt, getting-started.txt
 DescTable -> data-display.txt
@@ -127,6 +133,7 @@ DotLeadersItem -> data-display.txt
 E
 -
 Em -> display.txt
+end (Navbar zone) -> layout.txt
 en (locale) -> i18n.txt
 Event handlers (on*) -> naming-conventions.txt, common-patterns.txt
 express theme -> theming.txt
@@ -140,9 +147,14 @@ FieldGroup -> data-display.txt
 Fields -> data-display.txt
 FileInput -> forms.txt
 FilterCard -> display.txt
+FitSlot -> layout.txt
+FitStep -> layout.txt
+fontAwesome (icon provider) -> getting-started.txt
 Footer -> layout.txt
 footer (Card snippet) -> display.txt, common-patterns.txt
+footerActions (Card snippet) -> display.txt, common-patterns.txt
 Form -> forms.txt
+FormActions -> forms.txt, common-patterns.txt
 FormErrorSummary -> forms.txt
 FormField -> forms.txt
 FormGroup -> forms.txt
@@ -150,6 +162,7 @@ FormHelp -> forms.txt
 FormLabel -> forms.txt
 formatShortcut -> navigation.txt
 Fraction sizes (Column) -> layout.txt
+FitContainer -> layout.txt
 
 G
 -
@@ -165,6 +178,8 @@ H
 hasPadding (Card) -> display.txt
 Heading -> display.txt
 header (Card snippet) -> display.txt, common-patterns.txt
+headerActions (Card snippet) -> display.txt, common-patterns.txt
+headerActionsCollapsed (Card) -> display.txt
 Heatmap -> data-visualization.txt
 HeatmapCell -> data-visualization.txt
 HeatmapLegend -> data-visualization.txt
@@ -177,6 +192,8 @@ i18n -> i18n.txt
 I18nConfig -> getting-started.txt, i18n.txt
 I18nInitOptions -> i18n.txt, typescript-types.txt
 Icon (Button) -> display.txt, common-patterns.txt
+Icon providers (iconProviders) -> getting-started.txt
+iconName (any component) -> getting-started.txt, display.txt, feedback.txt
 iconPlacement (Button) -> display.txt
 initI18n -> i18n.txt
 Input -> forms.txt
@@ -194,19 +211,24 @@ isLoading (Button) -> display.txt
 isLocaleLoaded -> i18n.txt
 isNegative (DataBar) -> data-visualization.txt
 isOutline -> feedback.txt, display.txt
-isRipple (Button) -> display.txt
+isRipple / rippleType (Button) -> display.txt
 isRounded (StackedBar) -> data-visualization.txt
 isStat (Card) -> display.txt
 isTotal (DotLeadersItem) -> data-display.txt
 isZones (Gauge) -> data-visualization.txt
+isPlain (Table) -> display.txt
+Icon (component, providers) -> display.txt, getting-started.txt
 
 J
 -
+justify (Button) -> display.txt, common-patterns.txt
 justify (Grid) -> layout.txt
+justify (Pager, Tabs) -> display.txt, navigation.txt
 
 K
 -
 Keyboard shortcuts -> navigation.txt
+Kpi* types -> typescript-types.txt
 
 L
 -
@@ -245,8 +267,12 @@ NavbarSearch -> navigation.txt
 NavDropdown -> navigation.txt
 NavItem -> navigation.txt
 isNoGutter (Grid) -> layout.txt
+NavMenu -> layout.txt
+NavbarSearchField -> layout.txt
+NavbarSearchInput -> layout.txt
 NotificationsPanel -> feedback.txt
 NumberInput -> forms.txt
+NotificationBell -> feedback.txt
 
 O
 -
@@ -263,12 +289,15 @@ P
 -
 pa-* (BEM classes) -> common-patterns.txt, getting-started.txt
 Pager -> display.txt
+PageHeader -> layout.txt
 PaletteMode -> navigation.txt, typescript-types.txt
+placement (Tooltip, Modal, Toast) -> feedback.txt
 Paragraph -> display.txt
 Percentage sizes (Column) -> layout.txt
 Popconfirm -> feedback.txt
 Popover -> feedback.txt
 PopoverContainer -> feedback.txt
+ProfileButton -> layout.txt
 ProfilePanel -> layout.txt
 ProfilePanelFavoriteItem -> layout.txt
 ProfilePanelFavorites -> layout.txt
@@ -295,18 +324,20 @@ RangeInput -> forms.txt
 isReadonly -> forms.txt
 register (i18n) -> i18n.txt
 registerLibraryTranslations -> i18n.txt
-Relaxed (Fields) -> data-display.txt
+density="relaxed" (Fields) -> data-display.txt
 isRequired -> forms.txt
 Responsive grid -> layout.txt
 RPC (Batch) -> common-patterns.txt
 RTL support -> theming.txt, layout.txt
 Runes (Svelte 5) -> common-patterns.txt, getting-started.txt
+RangeGroup -> forms.txt, typescript-types.txt
 
 S
 -
 isSameHeight (Grid) -> layout.txt
 SearchContext -> navigation.txt, typescript-types.txt
 SearchResult -> navigation.txt, typescript-types.txt
+SearchResults -> layout.txt
 Section -> layout.txt
 Select -> forms.txt
 SettingsPanel -> layout.txt
@@ -314,11 +345,13 @@ ShortcutHelpDialog -> navigation.txt
 shortcutRegistry -> navigation.txt
 Sidebar -> layout.txt, getting-started.txt
 SidebarItem -> layout.txt, getting-started.txt
+SidebarSearch -> layout.txt
 Size -> typescript-types.txt
 SlidePanel -> layout.txt
 SmallText -> forms.txt
 Snippet (Svelte 5) -> common-patterns.txt, getting-started.txt
 Sparkline -> data-visualization.txt
+start (Navbar zone) -> layout.txt
 SparklineBar -> data-visualization.txt
 Spinner -> feedback.txt
 StackedBar -> data-visualization.txt
@@ -333,9 +366,15 @@ Striped (Fields) -> data-display.txt
 Striped (Progress) -> data-visualization.txt
 Striped (Table) -> display.txt
 Strong -> display.txt
-subtitleText (Card) -> display.txt
+subtitleText (Card, deprecated — use descriptionText) -> display.txt
 svelte-i18n -> i18n.txt
 SvelteKit -> getting-started.txt
+SplitButton -> display.txt
+SplitButtonItem -> display.txt
+SectionTitle -> layout.txt
+SidebarSection -> layout.txt
+SidebarDivider -> layout.txt
+Splitter -> layout.txt, typescript-types.txt
 
 T
 -
@@ -362,12 +401,14 @@ TimelineItem -> display.txt
 TimelineItemData -> display.txt, typescript-types.txt
 TimelineItemVariant -> display.txt, typescript-types.txt
 TimelineVariant -> display.txt, typescript-types.txt
+titleIconName (Card, Modal) -> display.txt, feedback.txt
 titleText -> naming-conventions.txt, display.txt
+titleTooltip (Card) -> display.txt
 Toast -> feedback.txt
 ToastContainer -> feedback.txt
 Tooltip -> feedback.txt
-tools (Card snippet) -> display.txt
 Typography -> display.txt
+toastService -> feedback.txt, typescript-types.txt
 
 U
 -
@@ -383,7 +424,7 @@ VerticalAlignment -> typescript-types.txt
 
 W
 -
---wrap (Card header) -> display.txt
+shouldWrapHeader (Card header) -> display.txt
 
 COMMON QUESTIONS
 ================
@@ -461,10 +502,12 @@ GETTING STARTED
 - Installation and setup -> getting-started.txt
 - CSS import -> getting-started.txt, theming.txt
 - Provider setup -> getting-started.txt
+- Icon providers -> getting-started.txt
 - First page -> getting-started.txt
 
 LAYOUT & STRUCTURE
-- Admin layout (sidebar, navbar) -> layout.txt
+- Admin layout (sidebar, three-zone navbar) -> layout.txt
+- Navbar fit (FitSlot / FitStep) -> layout.txt
 - Grid system (rows, columns) -> layout.txt
 - Responsive breakpoints -> layout.txt
 - Sections and dividers -> layout.txt
@@ -477,13 +520,14 @@ FORMS & INPUT
 - Select dropdowns -> forms.txt
 - Checkboxes and radios -> forms.txt
 - Form groups and labels -> forms.txt
+- Form actions row (FormActions) -> forms.txt
 - Validation states -> forms.txt
 - Input groups (prepend/append) -> forms.txt
 - Error summaries -> forms.txt
 
 DISPLAY & DATA
 - Cards (standard, ghost, stat, tabbed) -> display.txt
-- Tables (striped, hover, compact, bordered) -> display.txt
+- Tables (striped, compact, bordered, plain; hover is built in) -> display.txt
 - Badges and labels -> display.txt
 - Lists (basic, ordered, definition, checkbox) -> display.txt
 - Timeline -> display.txt
@@ -525,7 +569,7 @@ FEEDBACK & OVERLAYS
 NAVIGATION
 - Tabs (horizontal, vertical, scrollable, overflow) -> navigation.txt
 - Command palette -> navigation.txt
-- Navbar search -> navigation.txt
+- Navbar search -> navigation.txt, layout.txt
 - Nav items and dropdowns -> navigation.txt
 - Keyboard shortcuts -> navigation.txt
 

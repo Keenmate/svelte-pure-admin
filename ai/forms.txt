@@ -55,7 +55,8 @@ Handles validation state styling and horizontal layout.
 
 Props:
   validation?: 'success' | 'warning' | 'error' Validation state (adds pa-form-group--{validation})
-  isRequired?: boolean       Mark as required (adds pa-form-group--required)
+  isRequired?: boolean       Escape hatch ONLY for non-native widgets (adds pa-form-group--required).
+                             For native controls put isRequired on the control instead.
   isHorizontal?: boolean     Horizontal layout, label left, input right (default: false)
   class?: string             Additional CSS classes
   children?: Snippet         Label + input + help content
@@ -67,9 +68,9 @@ Basic form group:
   <Input bind:value={username} />
 </FormGroup>
 
-Required field:
+Required field (core draws the label asterisk from the control's native `required`):
 
-<FormGroup isRequired={true}>
+<FormGroup>
   <FormLabel>Email</FormLabel>
   <Input type="email" bind:value={email} isRequired />
 </FormGroup>
@@ -168,7 +169,7 @@ FORM HELP
 Help text and validation messages. Renders <span class="pa-form-help">.
 
 Props:
-  variant?: 'error' | 'success' | 'warning' | 'info'    Help text variant
+  variant?: 'error' | 'success' | 'warning'             Help text variant
   themeColor?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9      Theme color (adds pa-form-help--color-N)
   class?: string           Additional CSS classes
   children?: Snippet       Help text content
@@ -357,9 +358,11 @@ Multiline text input. Renders <textarea class="pa-textarea">.
 
 Props:
   value?: string (bindable)           Textarea value (default: '')
-  rows?: number                       Number of rows (default: 4)
+  rows?: number                       Number of rows (emitted only when set)
   size?: 'xs' | 'sm' | 'lg' | 'xl'
   validation?: 'success' | 'warning' | 'error'
+                                      Drives aria-invalid only (core has no textarea
+                                      validation modifier) - show errors via FormGroup/FormHelp
   errors?: string | string[]
   isTouched?: boolean                 (default: true)
   themeColor?: 1-9
@@ -376,7 +379,7 @@ Props:
 
 <Textarea bind:value={notes} rows={8} />
 
-<Textarea bind:value={bio} size="lg" maxlength={500} />
+<Textarea bind:value={bio} size="lg" />
 
 With validation:
 
@@ -389,7 +392,9 @@ Select dropdown. Renders <select class="pa-select">.
 Options are provided as children (Snippet).
 
 Props:
-  value?: string (bindable)           Selected value (default: '')
+  value?: string | number | Array<string | number> (bindable)
+                                      Selected value (array when isMultiple)
+  isMultiple?: boolean                Native <select multiple> (default: false)
   size?: 'xs' | 'sm' | 'lg' | 'xl'
   validation?: 'success' | 'warning' | 'error'
   errors?: string | string[]
@@ -431,6 +436,13 @@ With size:
   <option value="admin">Admin</option>
 </Select>
 
+Multiple selection:
+
+<Select bind:value={tags} isMultiple>
+  <option value="a">Alpha</option>
+  <option value="b">Beta</option>
+</Select>
+
 With validation:
 
 <Select bind:value={category} errors={categoryErrors} isTouched={categoryTouched}>
@@ -448,14 +460,17 @@ Props:
   isChecked?: boolean (bindable)        Checked state (default: false)
   isIndeterminate?: boolean           Indeterminate state (default: false)
   isDisabled?: boolean                Disabled state (default: false)
+  isRequired?: boolean                Native required (default: false)
   isXMark?: boolean                   Show X instead of checkmark (default: false)
   size?: 'xs' | 'sm' | 'lg' | 'xl'   Checkbox size
+  labelPlacement?: 'end' | 'start' | 'top'   Label side (pa-checkbox--label-{placement})
   id: string                          Checkbox ID (REQUIRED)
   name?: string
   value?: string
   labelText?: string                  Label text
   class?: string
-  label?: Snippet                     Custom label content (alternative to labelText)
+  style?: string                      Inline style (e.g. --base-icon-check glyph override)
+  label?: Snippet                     Rich label content (wins over labelText)
   onchange?: handler                  Change event handler
 
 Basic checkbox:
@@ -489,6 +504,10 @@ With custom label snippet:
 Disabled:
 
 <Checkbox id="locked" labelText="Locked option" isDisabled isChecked={true} />
+
+Label placement:
+
+<Checkbox id="cb-start" labelText="Label first" labelPlacement="start" bind:isChecked={v6} />
 
 
 CHECKBOX BOX
@@ -525,12 +544,14 @@ Uses bind:group for radio group binding.
 Props:
   group?: string | number (bindable)   Radio group value
   value: string | number               This radio's value (REQUIRED)
-  isDisabled?: boolean                 (default: false)
+  isDisabled?: boolean                 (default: false; also adds pa-radio--disabled)
+  isRequired?: boolean                 Native required (default: false)
   name: string                         Radio group name (REQUIRED)
   size?: 'xs' | 'sm' | 'lg' | 'xl'
+  labelPlacement?: 'end' | 'start' | 'top'   Label side (pa-radio--label-{placement})
   labelText?: string                   Label text
   class?: string
-  label?: Snippet                      Custom label content
+  label?: Snippet                      Rich label content (wins over labelText)
   onchange?: handler
 
 Basic radio group:
@@ -569,6 +590,8 @@ RADIO GROUP
 Wrapper for grouping radio buttons. Renders <div class="pa-radio-group">.
 
 Props:
+  layout?: 'horizontal' | 'grid' | '2col' | '3col'   Arrangement (pa-radio-group--{layout});
+                                                      default stacked vertically
   class?: string           Additional CSS classes
   children?: Snippet       Radio components
 
@@ -578,12 +601,119 @@ Props:
   <Radio name="priority" value="high" labelText="High" bind:group={priority} />
 </RadioGroup>
 
+<RadioGroup layout="horizontal">...</RadioGroup>
+
+
+CHECKBOX GROUP
+--------------
+Wrapper for grouping checkboxes. Renders <div class="pa-checkbox-group">.
+
+Props:
+  layout?: 'horizontal' | 'grid' | '2col' | '3col'   Arrangement (pa-checkbox-group--{layout})
+  style?: string           Inline style (e.g. group-wide --base-icon-check override)
+  class?: string
+  children?: Snippet       Checkbox components
+
+<CheckboxGroup layout="2col">
+  <Checkbox id="n-email" labelText="Email" bind:isChecked={notifyEmail} />
+  <Checkbox id="n-sms" labelText="SMS" bind:isChecked={notifySms} />
+</CheckboxGroup>
+
+
+COLOR INPUT
+-----------
+Native colour picker. Renders <input type="color" class="pa-input">.
+
+Props:
+  value?: string (bindable)    Hex colour (default: '#000000')
+  size?: 'xs' | 'sm' | 'lg' | 'xl'
+  isDisabled?: boolean         (default: false)
+  hasValue?: boolean           Show the hex value next to the picker (default: false)
+  id?, name?, class?
+  oninput?, onchange?
+
+<ColorInput bind:value={brandColor} hasValue />
+
+
+FILE INPUT
+----------
+Native file picker. Renders <input type="file" class="pa-input">.
+
+Props:
+  files?: FileList | null (bindable)   Selected files (default: null)
+  accept?: string                      e.g. '.pdf,.doc', 'image/*'
+  isMultiple?: boolean                 Allow several files (default: false)
+  capture?: 'user' | 'environment'     Mobile camera/mic capture
+  size?: 'xs' | 'sm' | 'lg' | 'xl'
+  validation?: 'success' | 'warning' | 'error'
+  themeColor?: 1-9
+  isDisabled?: boolean                 (default: false)
+  isRequired?: boolean                 (default: false)
+  id?, name?, class?, onchange?
+
+<FileInput bind:files={attachments} accept="image/*" isMultiple />
+
+
+RANGE INPUT
+-----------
+Single native slider. Renders <input type="range" class="pa-input">.
+
+Props:
+  value?: number (bindable)    (default: 50)
+  min?: number (default: 0), max?: number (default: 100), step?: number | 'any' (default: 1)
+  hasValue?: boolean           Show the current value next to the slider (default: false)
+  size?: 'xs' | 'sm' | 'lg' | 'xl'
+  validation?: 'success' | 'warning' | 'error'
+  themeColor?: 1-9
+  isDisabled?: boolean         (default: false)
+  id?, name?, class?, oninput?, onchange?
+
+<RangeInput bind:value={volume} min={0} max={100} hasValue />
+
+
+RANGE GROUP
+-----------
+Compact multi-range filter: N numeric sliders summarised behind one toggle, expanding
+into a Floating-UI panel (needs window.FloatingUIDOM). Optional URL querystring sync.
+
+Props:
+  rows: RangeGroupRow[]               One entry per dimension (REQUIRED)
+  values?: RangeGroupValues (bindable) Live values keyed by row key (default: {})
+  qsKey?: string                      Two-way sync with this URL param
+  codec?: RangeGroupCodec             Querystring format (default: rangeGroupCodec)
+  qsAdapter?: QsAdapter               URL I/O (default: historyQsAdapter; also hashQsAdapter)
+  mode?: 'immediate' | 'apply'        Commit live, or only on Apply (default: 'immediate')
+  debounce?: number                   ms to coalesce live changes (default: 0)
+  onchange?, onapply?, onreset?       (values: RangeGroupValues) => void
+  ariaLabel?: string                  Panel label (default: 'Numeric filters')
+  panelStyle?: string                 Inline style on the panel (--pa-range-* overrides)
+  resetText?: string                  Reset button label (default: i18n "Reset")
+  applyText?: string                  Apply button label (default: i18n "Apply")
+  hasActions?: boolean                Render the Reset/Apply footer (default: true)
+  class?: string
+
+RangeGroupRow: { key, labelText, rowLabelText?, min, max, step?, mode?: 'range' | 'single',
+  bound?: 'gte' | 'lte', value?, valueMin?, valueMax?, prefix?, suffix?,
+  hasThousandsSeparator?, ticks?, ticksMinor?, hasTickLabels?, shouldSnapToTicks?,
+  handleType?: 'rect' | 'bar' | 'arrow' | 'needle', outputText? }
+
+<RangeGroup
+  rows={[
+    { key: 'price', labelText: 'Price', min: 0, max: 5000, prefix: '$', hasThousandsSeparator: true },
+    { key: 'rating', labelText: 'Rating', min: 1, max: 5, mode: 'single', bound: 'gte' }
+  ]}
+  bind:values={filters}
+  qsKey="filters"
+/>
+
 
 INPUT GROUP
 -----------
 Input group for combining inputs with addons, buttons, or icons.
-Renders <div class="pa-input-group">.
-Place addon elements and inputs as direct children.
+Renders <div class="pa-input-group"> (size adds pa-input-group--{size}).
+Children render in source order: InputGroupPrepend (pa-input-group__prepend, inline-start
+addon), the input, InputGroupAppend (pa-input-group__append, inline-end addon).
+Button addons take class="pa-input-group__button".
 
 Props:
   size?: 'xs' | 'sm' | 'lg' | 'xl'    Size (should match input size)
@@ -591,10 +721,12 @@ Props:
   class?: string                        Additional CSS classes
   children?: Snippet                    Input + addon elements
 
+InputGroupPrepend / InputGroupAppend props: class?: string, children?: Snippet
+
 Input with text addon:
 
 <InputGroup>
-  <span class="pa-input-group__addon">@</span>
+  <InputGroupPrepend>@</InputGroupPrepend>
   <Input bind:value={username} placeholder="Username" />
 </InputGroup>
 
@@ -602,21 +734,21 @@ Input with button:
 
 <InputGroup>
   <Input bind:value={search} placeholder="Search..." />
-  <Button variant="primary">Search</Button>
+  <Button variant="primary" class="pa-input-group__button">Search</Button>
 </InputGroup>
 
 Input with addons on both sides:
 
 <InputGroup>
-  <span class="pa-input-group__addon">$</span>
+  <InputGroupPrepend>$</InputGroupPrepend>
   <Input bind:value={amount} placeholder="0.00" />
-  <span class="pa-input-group__addon">.00</span>
+  <InputGroupAppend>.00</InputGroupAppend>
 </InputGroup>
 
 With size:
 
 <InputGroup size="lg">
-  <span class="pa-input-group__addon">https://</span>
+  <InputGroupPrepend>https://</InputGroupPrepend>
   <Input size="lg" bind:value={domain} placeholder="example.com" />
 </InputGroup>
 
@@ -662,6 +794,36 @@ The id field is used to create anchor links (#id) that scroll to the error field
   <FormLabel>Email</FormLabel>
   <Input id="email-input" type="email" bind:value={email} />
 </FormGroup>
+
+
+FORM ACTIONS
+------------
+Form footer button row. Renders <div class="pa-form-actions"> (core styles it only
+inside a .pa-form, so place it in <Form>). Use it instead of ButtonGroup for form footers.
+
+Props:
+  class?: string
+  children?: Snippet       The action buttons
+
+<Form onsubmit={save}>
+  ...
+  <FormActions>
+    <Button type="submit" variant="primary">Save</Button>
+    <Button type="button" onclick={cancel}>Cancel</Button>
+  </FormActions>
+</Form>
+
+
+SMALL TEXT
+----------
+Help/validation text with an accent. Renders <span class="pa-form-help pa-form-help--{accent}">.
+
+Props:
+  accent?: 'error' | 'success' | 'warning'
+  class?: string
+  children?: Snippet
+
+<SmallText accent="error">Invalid value</SmallText>
 
 
 VALIDATION PATTERN: ERRORS + TOUCHED
@@ -731,8 +893,8 @@ COMPLETE FORM EXAMPLE
   import {
     Form, FormField, FormGroup, FormLabel, FormHelp, FormErrorSummary,
     Input, NumberInput, DateInput, Textarea, Select,
-    Checkbox, Radio, RadioGroup, InputGroup,
-    Button, Grid, Column
+    Checkbox, Radio, RadioGroup, InputGroup, InputGroupPrepend,
+    FormActions, Button, Grid, Column
   } from '@keenmate/svelte-pure-admin';
   import type { FormErrorItem } from '@keenmate/svelte-pure-admin';
 
@@ -941,7 +1103,7 @@ COMPLETE FORM EXAMPLE
   <FormGroup>
     <FormLabel>Website</FormLabel>
     <InputGroup>
-      <span class="pa-input-group__addon">https://</span>
+      <InputGroupPrepend>https://</InputGroupPrepend>
       <Input bind:value={website} placeholder="example.com" />
     </InputGroup>
   </FormGroup>
@@ -962,10 +1124,10 @@ COMPLETE FORM EXAMPLE
 
   <Checkbox id="newsletter" labelText="Subscribe to newsletter" bind:isChecked={newsletter} />
 
-  <div class="mt-4">
+  <FormActions>
     <Button type="submit" variant="primary">Submit</Button>
-    <Button type="reset" variant="secondary" class="ml-2">Reset</Button>
-  </div>
+    <Button type="reset" variant="secondary">Reset</Button>
+  </FormActions>
 </Form>
 
 
@@ -974,9 +1136,9 @@ HORIZONTAL FORM LAYOUT
 Use isHorizontal on FormGroup or FormField for label-left layout.
 
 <Form>
-  <FormGroup isHorizontal isRequired>
+  <FormGroup isHorizontal>
     <FormLabel>Username</FormLabel>
-    <Input bind:value={username} />
+    <Input bind:value={username} isRequired />
   </FormGroup>
 
   <FormGroup isHorizontal>
@@ -1059,9 +1221,13 @@ CRITICAL REMINDERS
 - isTouched defaults to true on Input/NumberInput/DateInput/Textarea/Select
   (so errors show immediately unless you set isTouched={false} initially)
 - Manual validation prop always overrides the value auto-derived from errors
-- FormField children snippet receives context: { errors, touched, validation }
+- FormField children snippet receives context: { errors, isTouched, validation }
+- Mark required fields with isRequired on the CONTROL (FormLabel/FormField have no
+  required prop; core draws the asterisk from the native required attribute)
 - FormErrorSummary uses anchor links (#id) to jump to errored fields
-- InputGroup addons use class="pa-input-group__addon" directly (no component)
+- InputGroup addons: InputGroupPrepend / InputGroupAppend (no pa-input-group__addon class)
+- Form footer buttons go in FormActions
+- Physical spacing utilities (ml-/mr-/pl-/pr-) are gone - use logical ms-/me-/ps-/pe-
 - All form components accept class prop for custom CSS classes
 - Snippets use {#snippet name()} ... {/snippet} syntax, NOT <slot>
 

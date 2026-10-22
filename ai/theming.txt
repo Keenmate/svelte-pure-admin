@@ -2,16 +2,18 @@ THEMING AND CUSTOMIZATION
 =========================
 
 CRITICAL: This is a Svelte 5 component library (@keenmate/svelte-pure-admin).
-Theming works through CSS custom properties (--pc-*) defined by
-@keenmate/pure-admin-core. Themes override these variables. Color slots 1-9
-provide theme-defined accent colors available through utility classes and
-component props.
+Theming works through CSS custom properties defined by @keenmate/pure-admin-core
+(and its foundation, @keenmate/pure-css): foundation tokens are --pc-*
+(colours, radii, layout), component tokens are --pa-* (e.g. --pa-card-bg).
+Themes set --base-* source tokens that the --pc-* / --pa-* tokens read. Colour
+slots 1-9 (--pc-palette-N) provide theme-defined colours available through
+utility classes and the themeColor prop.
 
 CSS IMPORT
 ----------
-Every app MUST import the core CSS. Without it, no components render correctly.
+Every app needs the framework CSS. Without it, no components render correctly.
 
-In your root layout or app entry:
+Unthemed default (neutral look) - in your root layout or app entry:
 
 <script>
   import '@keenmate/pure-admin-core/css';
@@ -21,37 +23,45 @@ Or in a global CSS file:
 
 @import '@keenmate/pure-admin-core/css';
 
-This provides all base styles, BEM classes (pa-*), and default CSS variable values.
+This provides all base styles, BEM classes (pa-*), utilities and default CSS
+variable values.
+
+A THEME CSS FILE IS SELF-CONTAINED: it compiles core in. With a theme, load the
+theme's CSS (it replaces core's CSS; loading core first is harmless but
+redundant). Use themes built against the core version you depend on
+(core 3.3.0-rc09 for 2.0.0-rc01) - an older theme misses newer classes/tokens.
 
 
-THEME PACKAGES
---------------
-Pure Admin ships five theme packages. Each is a separate CSS file that overrides
-the --pc-* custom properties:
+THEMES
+------
+Themes are distributed from pureadmin.io as ZIP packages (css/<id>.css +
+theme.json manifest + fonts). Install them with the pureadmin CLI, which reads
+pureadmin.json and extracts each theme into themesDir:
 
-  @keenmate/pure-admin-theme-audi         - Audi-inspired dark theme
-  @keenmate/pure-admin-theme-dark         - General dark theme
-  @keenmate/pure-admin-theme-corporate    - Professional corporate theme
-  @keenmate/pure-admin-theme-express      - Bold, colorful Express theme
-  @keenmate/pure-admin-theme-minimal      - Clean, minimal theme
+// pureadmin.json
+{
+  "themesDir": "static/themes",
+  "themes": { "audi": {}, "dark": {}, "corporate": {} }
+}
 
-Static theme import (load one theme at build time):
+npx @keenmate/pureadmin themes install
 
-<script>
-  import '@keenmate/pure-admin-core/css';
-  import '@keenmate/pure-admin-theme-audi/css';
-</script>
+Available themes include: audi, ayu, cobalt2, corporate, dark, darkmatter,
+dracula, express, gruvbox, minimal, night-owl, one-dark, tokyo-night.
 
-Or in CSS:
+NOTE: the old npm packages @keenmate/pure-admin-theme-* are core 2.x builds -
+do not use them with svelte-pure-admin 2.x.
 
-@import '@keenmate/pure-admin-core/css';
-@import '@keenmate/pure-admin-theme-audi/css';
+Static theme (single theme, no switching) - link the extracted CSS:
+
+<link rel="stylesheet" href="/themes/audi/css/audi.css">
 
 
 THEME SWITCHING AT RUNTIME
 ---------------------------
 For dynamic theme switching, load themes as CSS files (not JS imports) and swap
-them at runtime via a <link> element.
+them at runtime via a <link> element (SettingsPanel does this for you, using
+the same id 'pa-theme-css').
 
 Manual theme switching approach:
 
@@ -68,13 +78,15 @@ Manual theme switching approach:
   }
 
   // Switch to Audi theme
-  setTheme('/themes/audi.css');
+  setTheme('/themes/audi/css/audi.css');
 
   // Switch to Corporate theme
-  setTheme('/themes/corporate.css');
+  setTheme('/themes/corporate/css/corporate.css');
 </script>
 
-Copy theme CSS files to your static/public folder so they are available as URLs.
+Theme CSS files must be served as static files (e.g. SvelteKit static/) so
+they are available as URLs. Add a render-blocking <link> in app.html for the
+initial theme to avoid a flash of unstyled content.
 
 
 SETTINGS PANEL COMPONENT
@@ -95,8 +107,18 @@ ThemeOption interface:
 interface ThemeOption {
   id: string;       // e.g., 'audi', 'express'
   name: string;     // e.g., 'Audi', 'Express'
-  cssPath: string;  // e.g., '/themes/audi.css'
+  cssPath: string;  // e.g., '/themes/audi/css/audi.css'
+  // Optional - copied from the theme's theme.json manifest. When present, the
+  // panel builds its Mode and Color Variant selectors from them:
+  colorVariants?: ThemeColorVariantOption[] | ThemeColorVariantsLegacy;
+  modes?: ThemeModesLegacy;          // legacy manifest schema
+  modeCssClass?: string;             // default 'pc-mode-{mode}'
+  variantCssClass?: string;          // default 'pa-color-{variant}'
 }
+
+ThemeColorVariantOption = { id?, name?, description?, file?, modes?: ThemeModeOption[] }
+ThemeModeOption         = { id: string ('light' | 'dark'), name?, default?: boolean }
+(all exported as types). Without manifest data the panel offers light / dark / auto.
 
 Complete SettingsPanel setup:
 
@@ -105,12 +127,9 @@ Complete SettingsPanel setup:
   import type { ThemeOption } from '@keenmate/svelte-pure-admin';
 
   const themes: ThemeOption[] = [
-    { id: 'default', name: 'Default', cssPath: '' },
-    { id: 'audi', name: 'Audi', cssPath: '/themes/audi.css' },
-    { id: 'dark', name: 'Dark', cssPath: '/themes/dark.css' },
-    { id: 'corporate', name: 'Corporate', cssPath: '/themes/corporate.css' },
-    { id: 'express', name: 'Express', cssPath: '/themes/express.css' },
-    { id: 'minimal', name: 'Minimal', cssPath: '/themes/minimal.css' }
+    { id: 'audi', name: 'Audi', cssPath: '/themes/audi/css/audi.css' },
+    { id: 'dark', name: 'Dark', cssPath: '/themes/dark/css/dark.css' },
+    { id: 'corporate', name: 'Corporate', cssPath: '/themes/corporate/css/corporate.css' }
   ];
 
   function handleSettingsChange(settings: any) {
@@ -120,17 +139,21 @@ Complete SettingsPanel setup:
 
 <SettingsPanel
   availableThemes={themes}
-  defaultTheme="default"
+  defaultTheme="audi"
   onsettingschange={handleSettingsChange}
 />
 
 SettingsPanel manages these settings with localStorage persistence:
 
   theme            - Selected theme ID (localStorage key: 'theme')
-  themeMode        - 'light' | 'dark' | 'auto' (key: 'theme-mode')
+  themeMode        - a manifest mode id ('light' | 'dark') or 'auto' (key: 'theme-mode')
+  colorVariant     - manifest colour variant id, '' = theme default (key: 'color-variant')
   containerWidth   - 'fluid' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' (key: 'container-width')
-  sidebarBehavior  - 'hide' | 'icon-collapse' (key: 'sidebar-behavior')
-  sidebarCollapsed - boolean (key: 'sidebar-hidden')
+  searchPosition   - '' | 'navbar-inline' | 'navbar-compact' | 'sidebar' |
+                     'navbar-typeahead' | 'sidebar-typeahead' (key: 'search-position';
+                     sets body[data-search-position])
+  commandPaletteSize - '' (608px) | 'sm' | 'lg' | 'xl' (key: 'command-palette-size')
+  sidebarBehavior  - 'hide' | 'icon-collapse' | 'overlay' (key: 'sidebar-behavior')
   sidebarResizable - boolean (key: 'sidebar-resizable')
   sidebarMode      - '' | 'sticky' (key: 'sidebar-mode')
   compactMode      - boolean (key: 'compact-mode')
@@ -140,21 +163,30 @@ SettingsPanel manages these settings with localStorage persistence:
   profileHasAvatar - boolean (key: 'profile-no-avatar', inverted)
   profileIconOnlyTabs - boolean (key: 'profile-icon-only-tabs')
 
+The sidebar's shown/hidden state (body.sidebar-hidden) is NOT a panel setting -
+it belongs to your burger handler.
+
+Mode and variant changes dispatch a 'pa:theme-change' CustomEvent on window
+(detail: { kind: 'mode' | 'variant', mode?, variant? }) and emit 'theme:change'
+on core's bus (window.pureAdmin.events) when core JS is loaded.
+
 
 LIGHT / DARK / AUTO MODE
 -------------------------
-SettingsPanel provides three theme modes:
+SettingsPanel offers the modes the theme's manifest declares (fallback: light
+and dark), plus auto when both exist:
 
-  light  - Forces light mode: body gets class pc-mode-light
-  dark   - Forces dark mode: body gets class pc-mode-dark
-  auto   - Follows OS preference via prefers-color-scheme media query
+  light  - body gets class pc-mode-light
+  dark   - body gets class pc-mode-dark
+  auto   - follows the OS preference (prefers-color-scheme)
 
-How auto mode works internally:
+The class comes from the manifest's modeCssClass pattern (default
+'pc-mode-{mode}'); body[data-theme] is set to the resolved mode too. Colour
+variants add the variantCssClass pattern (default 'pa-color-{variant}') to body.
 
-  1. Checks window.matchMedia('(prefers-color-scheme: dark)').matches
-  2. Applies pc-mode-light or pc-mode-dark accordingly
-  3. Listens for OS theme changes via mediaQuery.addEventListener('change', ...)
-  4. Updates DOM class automatically when OS preference changes
+Auto mode uses core's OS-preference watcher (window.pureAdmin.colorScheme +
+'colorscheme:change' on the core bus) when core JS is loaded, otherwise its own
+matchMedia('(prefers-color-scheme: dark)') listener.
 
 Manual dark mode (without SettingsPanel):
 
@@ -182,7 +214,7 @@ Manual dark mode (without SettingsPanel):
 
 COLOR SLOTS (1-9)
 ------------------
-Pure Admin defines 9 theme-specific accent colors (color slots). Each theme
+Pure Admin defines 9 theme-specific colors (color slots). Each theme
 assigns different colors to these slots. They are used via utility classes and
 the themeColor prop on supported components.
 
@@ -192,32 +224,39 @@ type ThemeColor = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 CSS custom properties for color slots:
 
-  --pc-color-1 through --pc-color-9
+  --pc-palette-1 through --pc-palette-9              (slot colour)
+  --pc-on-palette-1-text-color ... -9-text-color     (readable text on the slot)
 
-Utility classes for color slots:
+Utility classes for color slots (no pa- prefix):
 
-  Background:  pa-bg-color-1   pa-bg-color-2   ... pa-bg-color-9
-  Text:        pa-text-color-1  pa-text-color-2  ... pa-text-color-9
-  Border:      pa-border-color-1 pa-border-color-2 ... pa-border-color-9
+  Background:      bg-color-1      ... bg-color-9
+  Text:            text-color-1    ... text-color-9
+  Border colour:   border-color-1  ... border-color-9
+  Surface (bg + readable text):  surface-color-1 ... surface-color-9
+  Text on slot bg: text-on-color-1 ... text-on-color-9
+
+Role equivalents exist too: bg-<role>, text-<role>, surface-<role>,
+text-on-<role> (role = primary | secondary | success | warning | danger | info).
 
 Using color slots in HTML:
 
-<div class="pa-bg-color-3">Background color slot 3</div>
-<span class="pa-text-color-5">Text in color slot 5</span>
-<div class="pa-border-color-1" style="border: 2px solid;">Border color slot 1</div>
+<div class="surface-color-3">Slot 3 background with readable text</div>
+<span class="text-color-5">Text in color slot 5</span>
+<div class="border-color-1" style="border: 2px solid;">Border color slot 1</div>
 
-Components that accept themeColor prop:
+Components that accept themeColor prop (themeColor={3} adds):
 
-  Input         - themeColor={3} adds class pa-input--color-3
-  Select        - themeColor={3} adds class pa-select--color-3
-  Textarea      - themeColor={3} adds class pa-textarea--color-3
-  NumberInput   - themeColor={3} adds class pa-input--color-3
-  DateInput     - themeColor={3} adds class pa-input--color-3
-  FileInput     - themeColor={3} adds class pa-input--color-3
-  RangeInput    - themeColor={3} adds class pa-input--color-3
-  Badge         - themeColor={3} adds class pa-bg-color-3
-  Alert         - themeColor={3} adds class pa-bg-color-3
-  FormHelp      - themeColor={3} adds class pa-form-help--color-3
+  Button / SplitButton - pa-btn--color-3 (pa-btn--outline-color-3 with isOutline)
+  Badge         - pa-badge--color-3
+  Alert         - pa-alert--color-3 (pa-alert--outline-color-3 with isOutline)
+  Callout       - pa-callout--color-3
+  Toast         - pa-toast--color-3 (pa-toast--filled-color-3 with isFilled)
+  Fields        - pa-fields--color-3
+  TableCard     - pa-table-card--color-3
+  Input / NumberInput / DateInput / FileInput / RangeInput - pa-input--color-3
+  Select        - pa-select--color-3
+  Textarea      - pa-textarea--color-3
+  FormHelp      - pa-form-help--color-3
 
 Example - Badge with theme color:
 
@@ -241,15 +280,11 @@ Example - Alert with theme color:
 
 Example - Using color slots on Card headerClass:
 
-<Card headerClass="pa-bg-color-2">
-  {#snippet header()}
-    <h3>Card with themed header</h3>
-  {/snippet}
+<Card headerClass="surface-color-2" titleText="Card with themed header">
   Card body content.
 </Card>
 
 Each theme defines its own color palette for slots 1-9. For example:
-  - Default theme: standard blue/green/purple/orange palette
   - Audi theme: grays, reds, and Audi brand colors
   - Corporate theme: professional blues and greens
   - Express theme: bold, vivid colors
@@ -258,90 +293,69 @@ Each theme defines its own color palette for slots 1-9. For example:
 
 CSS CUSTOM PROPERTIES
 ---------------------
-Pure Admin uses CSS custom properties (--pc-*) extensively. Themes override
-these to change the entire look. You can also override them yourself.
+Foundation tokens are --pc-*; component tokens are --pa-* (e.g. --pa-card-bg).
+Themes set the --base-* source values the --pc-* tokens read
+(--pc-primary-color: var(--base-primary-color, ...)). Role colours end in
+-color (--pc-primary-color, NOT --pc-primary).
 
 Key CSS custom properties:
 
-  Layout:
-    --pc-border-radius          - Global border radius
-    --pc-border-color           - Default border color
-    --pc-shadow                 - Default box shadow
+  Layout / surfaces:
+    --pc-border-radius (-sm / -lg) - Border radii
+    --pc-border-color              - Default border color
+    --pc-main-bg / --pc-page-bg    - Content / page background
+    --pc-subtle-bg                 - Subtle fill
+    --pc-hover-bg / --pc-active-bg - Interactive states
 
-  Colors:
-    --pc-primary-bg             - Primary background
-    --pc-secondary-bg           - Secondary background
-    --pc-success-bg             - Success background
-    --pc-warning-bg             - Warning background
-    --pc-danger-bg              - Danger background
-    --pc-info-bg                - Info background
-    --pc-accent                 - Accent color
+  Role colours:
+    --pc-primary-color (-hover / -active)
+    --pc-secondary-color
+    --pc-success-color / --pc-warning-color / --pc-danger-color / --pc-info-color
+    --pc-<role>-text-color          - Role-tinted text readable on the page bg
+    --pc-primary-bg-subtle (-hover) - Tinted primary background
 
-  Text:
-    --pc-text-primary           - Primary text color
-    --pc-text-color-2           - Secondary text color
-    --pc-text-muted             - Muted text color
+  Text scale:
+    --pc-text-color-1 ... --pc-text-color-4   (1 = strongest, 4 = faintest)
+    (muted text in markup: the .text-muted utility)
 
-  Components:
-    --pc-card-bg                - Card background
-    --pc-primary-rgb            - Primary color as RGB triplet (for alpha use)
-    --pc-danger-color                 - Danger color (solid)
+  Components (example):
+    --pa-card-bg                   - Card background
 
   Color slots:
-    --pc-color-1 through --pc-color-9
+    --pc-palette-1 ... --pc-palette-9
 
-Override custom properties in your CSS:
+Override custom properties in your CSS (loaded after the theme):
 
 :root {
+  --base-primary-color: #e91e63;   /* source token: --pc-primary-color and web components follow */
+  --base-palette-1: #1976d2;
   --pc-border-radius: 0.5rem;
-  --pc-accent: #e91e63;
-  --pc-color-1: #1976d2;
-  --pc-color-2: #388e3c;
-  --pc-color-3: #f57c00;
 }
 
-Or scope overrides to a specific section:
+Or scope overrides to a specific section (set the --pc-* / --pa-* token itself;
+--pc-* values resolve at :root, so a scoped --base-* change won't reach them):
 
 .my-custom-section {
-  --pc-card-bg: #f5f5f5;
+  --pa-card-bg: #f5f5f5;
   --pc-border-color: #ddd;
 }
 
 
 CONTAINER WIDTHS
 ----------------
-The Layout component accepts a size prop that constrains the content width.
-SettingsPanel also controls this via the containerWidth setting.
+Content width is constrained by a pc-container-* class on <body> (SettingsPanel
+manages it via the containerWidth setting; <Layout> has no size prop):
 
-Layout size prop:
-
-  'sm'   - 768px max-width
-  'md'   - 1024px max-width
-  'lg'   - 1280px max-width
-  'xl'   - 1600px max-width
-  '2xl'  - 1920px max-width
-  (none) - Fluid, full width
-
-<script lang="ts">
-  import { Layout, Header, Content } from '@keenmate/svelte-pure-admin';
-</script>
-
-<Layout size="lg">
-  <Header />
-  <Content>Constrained to 1280px max width.</Content>
-</Layout>
-
-Container width classes applied to body by SettingsPanel:
-
-  pa-container-sm   - 768px
-  pa-container-md   - 1024px
-  pa-container-lg   - 1280px
-  pa-container-xl   - 1600px
-  pa-container-2xl  - 1920px
+  pc-container-sm   - 768px
+  pc-container-md   - 1024px
+  pc-container-lg   - 1280px
+  pc-container-xl   - 1600px
+  pc-container-2xl  - 1920px
+  (none)            - Fluid, full width
 
 Manual container width (without SettingsPanel):
 
-document.body.classList.add('pa-container-lg');
+document.body.classList.add('pc-container-lg');
 
 
 FONT OPTIONS
@@ -384,21 +398,23 @@ SettingsPanel controls several sidebar behaviors:
 
 Sidebar behavior (how sidebar collapses):
   'hide'            - Hides sidebar completely when collapsed
-  'icon-collapse'   - Shows icon-only mini sidebar when collapsed
+  'icon-collapse'   - Shows icon-only rail when collapsed
+                      (class pc-layout__sidebar--icon-collapse; <Sidebar isIconCollapse>)
+  'overlay'         - Floating drawer on desktop (body.sidebar-overlay; the burger
+                      toggles body.sidebar-visible, like the mobile drawer)
 
-  Class applied: pa-layout__sidebar--icon-collapse
-
-Sidebar collapsed state:
-  When sidebarCollapsed=true, body gets class: sidebar-hidden
+Sidebar collapsed state (owned by your burger handler, not the panel):
+  body gets class: sidebar-hidden
 
 Sidebar resizable:
-  When sidebarResizable=true, sidebar gets class: pa-layout__sidebar--resizable
+  When sidebarResizable=true, the sidebar gets pc-layout__sidebar--resizable and
+  core's sidebar-resize JS adds the .pc-sidebar-resize drag handle
 
 Sidebar mode (scroll behavior):
   ''        - Sidebar scrolls with content (default)
   'sticky'  - Sidebar stays fixed on scroll
 
-  Class applied: pa-layout--sticky (on body)
+  Class applied: pc-layout--sticky (on body)
 
 Manual sidebar control (without SettingsPanel):
 
@@ -406,13 +422,10 @@ Manual sidebar control (without SettingsPanel):
 document.body.classList.add('sidebar-hidden');
 
 // Icon-only collapse
-document.querySelector('.pa-layout__sidebar')?.classList.add('pa-layout__sidebar--icon-collapse');
-
-// Make sidebar resizable
-document.querySelector('.pa-layout__sidebar')?.classList.add('pa-layout__sidebar--resizable');
+document.querySelector('.pc-layout__sidebar')?.classList.add('pc-layout__sidebar--icon-collapse');
 
 // Sticky sidebar
-document.body.classList.add('pa-layout--sticky');
+document.body.classList.add('pc-layout--sticky');
 
 
 RTL MODE
@@ -426,8 +439,9 @@ When rtlMode=false:
   document.documentElement.setAttribute('dir', 'ltr');
 
 All Pure Admin components use logical properties (start/end instead of left/right)
-for full RTL support since v1.5.0. Exceptions: Tooltip and Popconfirm keep physical
-left/right for arrow positioning.
+for full RTL support. Tooltip / Popconfirm placement is 'top' | 'bottom' | 'start'
+| 'end' (mirrored under RTL). Utilities are logical-only: ms-*/me-*, ps-*/pe-*,
+text-start/text-end, border-start/end, rounded-start/end (no ml-/mr-/pl-/pr-).
 
 
 COMPACT MODE
@@ -442,96 +456,92 @@ document.body.classList.add('compact-mode');
 
 SEMANTIC COLOR VARIABLES
 ------------------------
-Beyond color slots, themes define semantic colors for feedback/status:
+Beyond color slots, themes define role colours for feedback/status:
 
-  --pc-success-bg    - Success green background
-  --pc-warning-bg    - Warning yellow/orange background
-  --pc-danger-bg     - Danger red background
-  --pc-info-bg       - Info blue background
-  --pc-accent        - Theme accent color
-  --pc-primary-bg    - Primary background
-  --pc-secondary-bg  - Secondary background
+  --pc-primary-color    - Primary / brand colour
+  --pc-secondary-color  - Secondary colour
+  --pc-success-color    - Success green
+  --pc-warning-color    - Warning yellow/orange
+  --pc-danger-color     - Danger red
+  --pc-info-color       - Info blue
 
-These are used by Alert, Badge, Button, Toast, and other feedback components
-via their variant prop ('success', 'warning', 'danger', 'info', 'primary').
+These are used by Alert, Badge, Button, Toast, and other components via their
+variant prop ('primary', 'secondary', 'success', 'warning', 'danger', 'info').
+In your own markup use the role utilities (text-<role>, bg-<role>,
+surface-<role>, text-on-<role>). NOTE: .text-secondary is the secondary ROLE
+colour - for muted / de-emphasised text use .text-muted.
 
 
 COMPLETE THEMING SETUP EXAMPLE
 -------------------------------
 
 <script lang="ts">
-  import '@keenmate/pure-admin-core/css';
   import {
-    Layout,
-    Header,
-    Sidebar,
-    SidebarItem,
-    Content,
+    Layout, LayoutInner, LayoutContent,
+    Navbar, AppHeader,
+    Sidebar, SidebarItem,
+    Main,
     SettingsPanel,
-    Badge,
-    Alert,
-    Input,
-    Card
+    Badge, Alert, Input, Card
   } from '@keenmate/svelte-pure-admin';
   import type { ThemeOption } from '@keenmate/svelte-pure-admin';
 
   const themes: ThemeOption[] = [
-    { id: 'default', name: 'Default', cssPath: '' },
-    { id: 'audi', name: 'Audi', cssPath: '/themes/audi.css' },
-    { id: 'dark', name: 'Dark', cssPath: '/themes/dark.css' },
-    { id: 'corporate', name: 'Corporate', cssPath: '/themes/corporate.css' },
-    { id: 'express', name: 'Express', cssPath: '/themes/express.css' },
-    { id: 'minimal', name: 'Minimal', cssPath: '/themes/minimal.css' }
+    { id: 'audi', name: 'Audi', cssPath: '/themes/audi/css/audi.css' },
+    { id: 'dark', name: 'Dark', cssPath: '/themes/dark/css/dark.css' },
+    { id: 'corporate', name: 'Corporate', cssPath: '/themes/corporate/css/corporate.css' }
   ];
 </script>
 
-<Layout size="xl">
-  <Header>
-    {#snippet brand()}
-      <span>My App</span>
+<Layout>
+  <Navbar>
+    {#snippet start()}
+      <AppHeader><h1>My App</h1></AppHeader>
     {/snippet}
-  </Header>
+  </Navbar>
 
-  <Sidebar>
-    <SidebarItem label="Dashboard" href="/" icon="fa-solid fa-home" />
-    <SidebarItem label="Settings" href="/settings" icon="fa-solid fa-cog" />
-  </Sidebar>
+  <LayoutInner>
+    <Sidebar>
+      <SidebarItem labelText="Dashboard" href="/" iconName="fa-solid fa-home" />
+      <SidebarItem labelText="Settings" href="/settings" iconName="fa-solid fa-cog" />
+    </Sidebar>
 
-  <Content>
-    <!-- Color slot badges -->
-    <Badge themeColor={1}>Slot 1</Badge>
-    <Badge themeColor={2}>Slot 2</Badge>
-    <Badge themeColor={3}>Slot 3</Badge>
+    <LayoutContent>
+      <Main>
+        <!-- Color slot badges -->
+        <Badge themeColor={1}>Slot 1</Badge>
+        <Badge themeColor={2}>Slot 2</Badge>
+        <Badge themeColor={3}>Slot 3</Badge>
 
-    <!-- Themed input -->
-    <Input themeColor={5} placeholder="Color slot 5 input" />
+        <!-- Themed input -->
+        <Input themeColor={5} placeholder="Color slot 5 input" />
 
-    <!-- Themed alert -->
-    <Alert themeColor={4}>This uses color slot 4.</Alert>
+        <!-- Themed alert -->
+        <Alert themeColor={4}>This uses color slot 4.</Alert>
 
-    <!-- Card with themed header -->
-    <Card headerClass="pa-bg-color-1">
-      {#snippet header()}
-        <h3>Themed Card</h3>
-      {/snippet}
-      Content here.
-    </Card>
-  </Content>
+        <!-- Card with themed header -->
+        <Card headerClass="surface-color-1" titleText="Themed Card">
+          Content here.
+        </Card>
+      </Main>
+    </LayoutContent>
+  </LayoutInner>
 </Layout>
 
 <!-- Settings panel (floating gear icon) -->
-<SettingsPanel availableThemes={themes} defaultTheme="default" />
+<SettingsPanel availableThemes={themes} defaultTheme="audi" />
 
 
 IMPORTANT NOTES
 ---------------
-- Always import @keenmate/pure-admin-core/css FIRST, before any theme CSS.
-- Theme CSS files override --pc-* variables. Order matters: theme CSS must load after core.
+- Theme CSS is self-contained (includes core). Without a theme, import
+  @keenmate/pure-admin-core/css. If you load both, the theme must come after core.
+- Your own token overrides must load after the theme CSS.
 - Color slots 1-9 change meaning per theme. Do not assume slot 3 = orange everywhere.
 - SettingsPanel persists all settings to localStorage automatically.
 - SettingsPanel applies settings to DOM on mount (loads from localStorage).
 - The 'auto' theme mode uses prefers-color-scheme and listens for OS changes.
 - pc-mode-light / pc-mode-dark classes on body control light/dark mode.
-- Container width classes (pa-container-sm/md/lg/xl/2xl) go on body.
+- Container width classes (pc-container-sm/md/lg/xl/2xl) go on body.
 - Font size classes go on <html>. Font family classes go on <body>.
-- Sidebar classes go on the .pa-layout__sidebar element or on body.
+- Sidebar classes go on the .pc-layout__sidebar element or on body.

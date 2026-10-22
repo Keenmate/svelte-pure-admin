@@ -4,7 +4,7 @@ LAYOUT COMPONENTS
 CRITICAL: This is a Svelte 5 component library (@keenmate/svelte-pure-admin).
 - All components use Svelte 5 runes ($props, $state, $derived)
 - Content sections use Snippets ({#snippet}), NOT slots (<slot>)
-- BEM class names internally (pa-*) - you never write CSS classes manually
+- BEM class names internally (pa-* components, pc-* shell/grid) - you never write CSS classes manually
 - Import from '@keenmate/svelte-pure-admin'
 
 INSTALLATION
@@ -45,7 +45,7 @@ COMPLETE LAYOUT SETUP EXAMPLE
 <script lang="ts">
   import {
     Layout, LayoutInner, LayoutContent,
-    Navbar, Sidebar, SidebarItem,
+    Navbar, AppHeader, NavMenu, NavItem, Sidebar, SidebarItem,
     Main, Footer, Grid, Column, Section
   } from '@keenmate/svelte-pure-admin';
   import { page } from '$app/stores';
@@ -64,14 +64,15 @@ COMPLETE LAYOUT SETUP EXAMPLE
     isBurgerActive={!sidebarCollapsed}
     onburgerclick={toggleSidebar}
   >
-    {#snippet brand()}
-      <img src="/logo.svg" alt="My App" />
-      <h1>My App</h1>
+    {#snippet start()}
+      <AppHeader><h1>My App</h1></AppHeader>
     {/snippet}
 
-    {#snippet navEnd()}
-      <li><a href="/settings">Settings</a></li>
-      <li><a href="/profile">Profile</a></li>
+    {#snippet end()}
+      <NavMenu>
+        <NavItem href="/settings">Settings</NavItem>
+        <NavItem href="/profile">Profile</NavItem>
+      </NavMenu>
     {/snippet}
   </Navbar>
 
@@ -114,14 +115,14 @@ COMPLETE LAYOUT SETUP EXAMPLE
 
 LAYOUT
 ------
-Top-level layout wrapper. Renders <div class="pa-layout">.
+Top-level layout wrapper. Renders <div class="pc-layout">.
 
 Props:
   class?: string          Additional CSS classes
   children?: Snippet      Content (Navbar + LayoutInner)
 
 Width constraints are set via body classes, not on this component:
-  document.body.classList.add('pa-container-md');   // sm, md, lg, xl, 2xl
+  document.body.classList.add('pc-container-md');   // sm, md, lg, xl, 2xl
 
 <Layout>
   ...
@@ -134,7 +135,7 @@ Width constraints are set via body classes, not on this component:
 
 LAYOUT INNER
 -------------
-Wrapper for Sidebar + LayoutContent. Renders <div class="pa-layout__inner">.
+Wrapper for Sidebar + LayoutContent. Renders <div class="pc-layout__inner">.
 
 Props:
   class?: string          Additional CSS classes
@@ -148,7 +149,7 @@ Props:
 
 LAYOUT CONTENT
 --------------
-Wrapper for main content area (excludes sidebar). Renders <div class="pa-layout__content">.
+Wrapper for main content area (excludes sidebar). Renders <div class="pc-layout__content">.
 
 Props:
   class?: string          Additional CSS classes
@@ -162,21 +163,22 @@ Props:
 
 NAVBAR
 ------
-Header/navigation bar. Renders <nav class="pa-navbar"> with a fixed burger anchor
-plus three degradable zones inside .pa-navbar__inner (core rc13/rc14 naming):
-  - pa-navbar__burger (fixed anchor — __inner's first child, OUTSIDE the zones)
-  - pa-navbar__start  (brand `.pa-app-header` + start nav `.pa-navmenu`)
-  - pa-navbar__center (page title `.pa-page-header` + search; flex:1)
-  - pa-navbar__end    (end nav `.pa-navmenu`, notifications, profile)
+Header/navigation bar. Renders <nav class="pc-navbar"> with a fixed burger anchor
+plus three degradable zones inside .pc-navbar__inner (the app shell lives in
+@keenmate/pure-css, hence the pc- prefix):
+  - pc-navbar__burger (fixed anchor — __inner's first child, OUTSIDE the zones)
+  - pc-navbar__start  (brand `.pc-app-header` + start nav `.pc-navmenu`)
+  - pc-navbar__center (page title `.pc-page-header` + search; flex:1)
+  - pc-navbar__end    (end nav `.pc-navmenu`, notifications, profile)
 
 The zones are OPEN containers — Navbar prescribes NO fixed brand / nav / search /
 profile slots or ordering. Compose each zone with the content pieces below and wrap
 anything responsive in a FitSlot. Navbar only renders the shell + inits the header
-engines (navbar-fit on .pa-navbar__inner; navbar-dropdown globally).
+engines (fit on .pc-navbar__inner; navbar-dropdown globally).
 
 Props (shell only):
   class?: string              Additional CSS classes for outer <nav>
-  innerClass?: string         Additional CSS classes for .pa-navbar__inner
+  innerClass?: string         Additional CSS classes for .pc-navbar__inner
   hasBurger?: boolean         Show the burger toggle (default: false)
   onburgerclick?: () => void  Burger click handler
   isBurgerActive?: boolean    Burger in active X state (default: false)
@@ -185,36 +187,37 @@ Props (shell only):
   end?: Snippet               END zone content (inline-end)
 
 Content pieces (place inside the zones):
-  AppHeader    <div class="pa-app-header"> — app identity. children, or config brand
+  AppHeader    <div class="pc-app-header"> — app identity. children, or config brand
                (logo + app.name) as a fallback when no children. `class`.
-  NavMenu      <nav class="pa-navmenu"><ul> — a nav menu; owns responsive collapse.
+  NavMenu      <nav class="pc-navmenu"><ul> — a nav menu; owns responsive collapse.
                Props: collapse ('menu' | 'sidebar'), moreLabelText, collapseTarget,
                collapseLabelText, collapseIconText, class. Children are NavItems.
-  PageHeader   <div class="pa-page-header"> — page-title wrapper. children, class.
+  PageHeader   <div class="pc-page-header"> — page-title wrapper. children, class.
   NavItem      one menu item. href, hasDropdown, isActive, navPriority,
                navCollapse="hide", iconText; `dropdown` snippet -> NavDropdown.
-  NavDropdown  <ul class="pa-navmenu__dropdown"> submenu. isLevel2, class.
-  NavbarSearch search pill that opens the command palette. placeholder, size, onclick.
-  NavbarSearchField inline LIVE search box (.pa-navbar-search--field) with its own
+  NavDropdown  <ul class="pc-navmenu__dropdown"> submenu. isLevel2, class.
+  NavbarSearch search pill that opens the command palette. placeholder, onclick, class.
+  NavbarSearchField inline LIVE search box (.pc-navbar-search--field) with its own
                anchored .pa-search-autocomplete dropdown. ONE globalSearch(query) call
                returns a flat SearchResult[]; each row's `group` field is bucketed
                client-side into sections (single round-trip, no fan-out). Props:
                value (bindable), placeholder, globalSearch, onselect, groups
                (SearchGroup[] label/icon/order/limit), debounce, minChars, emptyText,
                shouldRenderHtml (render <mark> highlight).
-  NavbarSearchInput type-and-go (.pa-navbar-search--input): a GET <form> that navigates
+  NavbarSearchInput type-and-go (.pc-navbar-search--input): a GET <form> that navigates
                to a results page on Enter (no dropdown/palette). Props: action, method,
                name (->query param), value, placeholder.
-  ProfileButton profile button. name, onclick, `icon` snippet.
+  ProfileButton profile button. name, onclick, `icon` snippet or iconName.
 
 Search destination + sidebar search (rc15):
   SearchResults page-level results list (.pa-search-results). Props: results
                (SearchResult[]), variant (compact|detailed|grouped|cards), groups,
                shouldRenderHtml, onselect, emptyText. `grouped` buckets by SearchResult.group.
-  SidebarSearch sidebar search affordance (.pa-sidebar__search); renders its own
-               <li class="pa-sidebar__item">. Trigger mode (onclick -> palette) or
-               type-and-go (set `action` -> .pa-sidebar__search--input GET form).
-               Props: labelText, onclick, action, method, name, value, placeholder, icon.
+  SidebarSearch sidebar search affordance (.pc-sidebar__search); renders its own
+               <li class="pc-sidebar__item">. Trigger mode (onclick -> palette) or
+               type-and-go (set `action` -> .pc-sidebar__search--input GET form).
+               Props: labelText, onclick, action, method, name, value, placeholder,
+               icon (snippet) / iconName.
 
 Minimal navbar (config brand auto-fills AppHeader):
 
@@ -248,20 +251,26 @@ Navbar composing all three zones:
 
 NAVBAR FIT (FitSlot / FitStep)
 ------------------------------
-Priority-driven degradation of the whole header row (core navbar-fit.js). As the bar
+Priority-driven degradation of the whole header row (core fit.js). As the bar
 narrows, slots degrade one at a time, LOWEST priority first, until it fits; they
 restore as space returns. Pure composition — wrap any header slot in a FitSlot.
 
 FitSlot props:
-  strategy?: 'hide' | 'steps' | 'sidebar'   How the slot yields (default 'hide')
+  strategy?: 'hide' | 'steps' | 'relocate' | 'sidebar'
+                                            How the slot yields (default 'hide');
+                                            'sidebar' = relocate + target="sidebar"
   priority?: number                         Degrade order — lower degrades first
   tag?: string                              Element to render (default 'span')
+  target?: string                           relocate sink: 'sidebar' | 'floating-menu' | custom
+  targetSelector?: string                   Destination selector for sinks that need one
+  isManaged?: boolean                       Fire pc:fit-relocate but do NO DOM move (you re-render)
+  onrelocate?: (detail) => void             detail = { action: 'out' | 'in', target, container }
   class?: string                            Applied to the slot element itself
-  sidebarTarget?: string                    <ul> selector to relocate into (sidebar)
+  sidebarTarget?: string                    Deprecated — use targetSelector
 
 FitStep (only inside a strategy="steps" FitSlot): one ranked variant, widest first.
 Auto-numbers itself and hides non-first steps for a correct first paint — no
-data-pa-fit-step / pa-fit-hidden to hand-author.
+data-pc-fit-step / pc-fit-hidden to hand-author.
 
 Composed header brand (wordmark shrinks to a monogram; version drops first):
 
@@ -269,11 +278,11 @@ Composed header brand (wordmark shrinks to a monogram; version drops first):
   {#snippet start()}
     <AppHeader>
       <h1>
-        <FitSlot strategy="steps" priority={30} class="pa-app-header__name">
+        <FitSlot strategy="steps" priority={30} class="pc-app-header__name">
           <FitStep>Svelte Pure Admin</FitStep>
           <FitStep>SPA</FitStep>
         </FitSlot>
-        <FitSlot priority={10} class="pa-app-header__version">v1.0.0</FitSlot>
+        <FitSlot priority={10} class="pc-app-header__version">v1.0.0</FitSlot>
       </h1>
     </AppHeader>
   {/snippet}
@@ -285,19 +294,23 @@ Composed header brand (wordmark shrinks to a monogram; version drops first):
 
 SIDEBAR
 -------
-Side navigation panel. Renders <aside class="pa-layout__sidebar"> with <nav class="pa-sidebar__nav"><ul>.
+Side navigation panel. Renders <aside class="pc-layout__sidebar"> with <nav class="pc-sidebar__nav"><ul>.
 
 Props:
-  mode?: 'sticky' | 'icon-collapse'    Sidebar mode modifier
+  isIconCollapse?: boolean              Collapse to an icon rail (pc-layout__sidebar--icon-collapse)
+  mode?: 'icon-collapse'                Deprecated — use isIconCollapse
   isResizable?: boolean                 Enable drag-to-resize (default: false)
   class?: string                        Additional CSS classes
-  children?: Snippet                    SidebarItem components
+  children?: Snippet                    SidebarItem / SidebarSection / SidebarDivider / SidebarSearch
 
-Resizable sidebar features:
-  - Drag handle appears on the right edge
-  - Width saved to localStorage, restored on load
-  - Min 180px, max 500px
-  - Double-click handle to reset to default (288px)
+Sticky sidebar is the body class pc-layout--sticky, not a Sidebar prop.
+Collapsed-rail submenu flyouts are kept inside the viewport automatically.
+
+Resizable sidebar features (core sidebar-resize.js):
+  - Drag handle created on the inline-end edge
+  - Width saved to localStorage ('sidebar-width'), restored on load
+  - Bounds from CSS (--pc-local-sidebar-min-width / --pc-local-sidebar-max-width)
+  - Double-click handle to reset
 
 Basic sidebar:
 
@@ -314,7 +327,7 @@ Resizable sidebar:
 
 Icon-collapse mode (shows only icons when collapsed):
 
-<Sidebar mode="icon-collapse">
+<Sidebar isIconCollapse={collapsed}>
   <SidebarItem href="/" labelText="Home">
     {#snippet icon()}<i class="fa fa-home"></i>{/snippet}
   </SidebarItem>
@@ -324,10 +337,20 @@ To collapse/show sidebar, toggle body class:
 
 document.body.classList.toggle('sidebar-hidden');
 
+SidebarSection (<li class="pc-sidebar__section">): group heading. Props: labelText, class.
+SidebarDivider (<li class="pc-sidebar__divider">): separator line. Props: class.
+
+<Sidebar>
+  <SidebarSection labelText="Admin" />
+  <SidebarItem href="/users" labelText="Users" />
+  <SidebarDivider />
+  <SidebarItem href="/help" labelText="Help" />
+</Sidebar>
+
 
 SIDEBAR ITEM
 -------------
-Individual sidebar navigation item. Renders <li class="pa-sidebar__item">.
+Individual sidebar navigation item. Renders <li class="pc-sidebar__item">.
 Supports links, buttons, and collapsible submenus with localStorage persistence.
 
 Props:
@@ -390,13 +413,11 @@ Without icon space (for sub-items that do not need alignment):
 
 MAIN
 ----
-Main content area. Renders <main class="pa-layout__main">.
-By default wraps content in <div class="pa-layout__main__inner">.
+Main content area. Renders <main class="pc-layout__main"> with content directly
+inside (core has no inner wrapper).
 
 Props:
-  useInner?: boolean       Use inner wrapper div (default: true)
   class?: string           Additional CSS classes for main
-  innerClass?: string      Additional CSS classes for inner wrapper
   children?: Snippet       Page content
 
 <Main>
@@ -404,22 +425,16 @@ Props:
   <p>Content goes here.</p>
 </Main>
 
-Without inner wrapper:
+With custom class:
 
-<Main useInner={false}>
-  <div class="custom-wrapper">Content</div>
-</Main>
-
-With custom classes:
-
-<Main class="my-main" innerClass="my-inner">
+<Main class="my-main">
   <p>Styled content</p>
 </Main>
 
 
 FOOTER
 ------
-Footer component. Renders <footer class="pa-layout__footer">.
+Footer component. Renders <footer class="pc-layout__footer">.
 Three-section layout: start (copyright), center, end (version/links).
 Auto-config: When no start snippet is provided, uses config.app.copyright from PureAdminProvider.
 
@@ -477,7 +492,7 @@ Uses CSS flexbox with modifier classes for alignment, gutters, and gap.
 Props:
   isNoGutter?: boolean                        Remove spacing between columns (default: false)
   justify?: 'center' | 'end' | 'between' | 'around'    Horizontal alignment
-  align?: 'top' | 'middle' | 'bottom'      Vertical alignment
+  align?: 'top' | 'middle' | 'bottom' | 'stretch'   Vertical alignment
   isSameHeight?: boolean                      Force all columns to equal height (default: false)
   gap?: '0' | 'xs' | 'sm' | 'md' | 'base' | 'lg' | 'xl' | '2xl' | number
                                             Gap between items (semantic name or numeric 1-20)
@@ -554,6 +569,9 @@ Props:
   offsetMd?: OffsetSize       Offset at >=768px
   offsetLg?: OffsetSize       Offset at >=992px
   offsetXl?: OffsetSize       Offset at >=1200px
+  isNoPadding?: boolean       Drop the column gutter (pc-col--no-padding)
+  isGrow?: boolean            flex-grow (pc-col--grow)
+  isShrink?: boolean          Allow shrinking below content (pc-col--shrink)
   class?: string              Additional CSS classes
   style?: string              Inline styles
   children?: Snippet          Column content
@@ -694,6 +712,103 @@ With custom class:
 <Divider class="my-custom-divider" />
 
 
+SECTION TITLE
+-------------
+Standalone underlined section heading (pa-section-title) for a title NOT inside a <Section>.
+
+Props:
+  level?: 1 | 2 | 3 | 4 | 5 | 6   Heading level (default: 3)
+  text?: string                    Title text
+  class?: string
+  children?: Snippet               Rich title (overrides text)
+
+<SectionTitle text="Recent Orders" />
+<Grid>...</Grid>
+
+
+FIT CONTAINER
+-------------
+Arms any horizontal flex row (toolbar, filter bar, card actions) with the fit engine:
+children fold, lowest priority first, when the row runs out of width.
+
+Props:
+  isAuto?: boolean            Fold EVERY direct child (data-pc-fit-auto) (default: true);
+                              false = only children wrapped in FitSlot are managed
+  defaultPriority?: number    Priority inherited by untagged children (lower folds first)
+  tag?: string                Element tag (default 'div')
+  class?: string
+  children?: Snippet
+
+<FitContainer class="d-flex gap-2">
+  <Button>Save</Button>
+  <FitSlot priority={10}><Button>Export</Button></FitSlot>
+  <FitSlot strategy="relocate" target="floating-menu" priority={5}>
+    <Button>Archive</Button>
+  </FitSlot>
+</FitContainer>
+
+
+CONTAINER BREAKPOINT / BREAKER
+------------------------------
+ContainerBreakpoint maps its OWN inline size to a named mode and passes it to the
+children snippet — branches for other modes are never mounted (use for expensive swaps,
+e.g. chart vs KPI). Thresholds are rem by default (10px root → 34 = 340px).
+
+ContainerBreakpoint props:
+  steps: Record<string, number>   Mode name -> minimum inline size (REQUIRED)
+  unit?: 'rem' | 'px'             Threshold unit (default 'rem')
+  hysteresis?: number             Dead-band at each threshold (default from config, 1)
+  initial?: string                Mode before first measure (default: first key)
+  hiddenClass?: string            Class toggled on [data-pc-show] children (default 'd-none')
+  tag?: string                    Wrapper tag (default 'div')
+  class?: string
+  onchange?: (mode, prev) => void Fired on every settled mode change
+  children?: Snippet<[{ mode }]>
+
+Breaker props (show/hide but stay MOUNTED, so form state survives):
+  mode: string        Current mode from children({ mode })
+  show: string        Space-separated modes it appears in, e.g. "comfy wide"
+  tag?: string        (default 'div')
+  class?: string
+
+<ContainerBreakpoint steps={{ compact: 0, comfy: 34, wide: 64 }}>
+  {#snippet children({ mode })}
+    {#if mode === 'wide'}
+      <RevenueChart {data} />
+    {:else}
+      <RevenueKpi {data} />
+    {/if}
+    <Breaker {mode} show="comfy wide"><Field labelText="Phone">555-0100</Field></Breaker>
+  {/snippet}
+</ContainerBreakpoint>
+
+
+SPLITTER
+--------
+Resizable panes (core splitter.js: drag, keyboard, minimize-to-rail, persistence).
+Alternate SplitterPane / SplitterGutter children.
+
+Splitter props:
+  orientation?: 'horizontal' | 'vertical'  horizontal = side-by-side (default 'horizontal')
+  id?: string                 Persist sizes in localStorage (pa-splitter:<id>); also the root id
+  step?: number               Keyboard resize step px (default 10)
+  railSize?: number           Minimized rail width px (default 40)
+  minimizeThreshold?: number  Drag-to-rail snap ratio (default 0.40)
+  isMinimizeMirror?: boolean  Flip the rail title 180deg
+  onresize?: (detail: { index, pane, size }) => void
+  oncollapse? / onexpand?: (detail: { index, pane }) => void
+  class?: string; style?: string   (give vertical splitters a height via style)
+
+SplitterPane props: size? ("240px" | "30%"), min?, max?, isMinimizable?, class?, style?
+SplitterGutter props: ariaLabel?, class?
+
+<Splitter id="editor" style="height: 400px">
+  <SplitterPane size="25%" min="150px" isMinimizable>Sidebar</SplitterPane>
+  <SplitterGutter ariaLabel="Resize sidebar" />
+  <SplitterPane>Editor</SplitterPane>
+</Splitter>
+
+
 SLIDE PANEL
 -----------
 Fixed overlay panel that slides in from the right. Uses pa-detail-panel--overlay CSS.
@@ -725,9 +840,10 @@ Props:
 SETTINGS PANEL
 --------------
 Runtime-configurable settings panel. Provides UI for:
-- Theme selection and mode (light/dark/auto)
+- Theme selection, plus theme mode and colour-variant selectors built from each
+  theme's manifest (ThemeOption.colorVariants / modes)
 - Layout width (fluid, sm, md, lg, xl, 2xl)
-- Sidebar options (behavior, collapsed, resizable, mode)
+- Sidebar options (behavior: hide / icon-collapse / overlay floating drawer, resizable)
 - Display options (compact mode, RTL)
 - Profile panel options (avatar, icon-only tabs)
 - Font size and family
@@ -741,7 +857,12 @@ Props:
                              Available themes (if empty, theme selector is hidden)
   defaultTheme?: string      Default theme ID
 
-ThemeOption: { id: string; name: string; cssPath: string }
+ThemeOption: { id: string; name: string; cssPath: string;
+               colorVariants?; modes?; modeCssClass?; variantCssClass? }
+               (optional fields come from the theme's theme.json manifest)
+
+Mode / variant changes dispatch a `pa:theme-change` CustomEvent on window
+({ kind: 'mode' | 'variant', ... }).
 
 <script lang="ts">
   const themes = [
@@ -770,7 +891,7 @@ File: src/routes/+layout.svelte
   import '@keenmate/pure-admin-core/css';
   import {
     Layout, LayoutInner, LayoutContent,
-    Navbar, Sidebar, SidebarItem,
+    Navbar, AppHeader, NavMenu, NavItem, Sidebar, SidebarItem,
     Main, Footer, SettingsPanel
   } from '@keenmate/svelte-pure-admin';
   import { page } from '$app/stores';
@@ -792,13 +913,14 @@ File: src/routes/+layout.svelte
 
 <Layout>
   <Navbar hasBurger={true} isBurgerActive={!sidebarCollapsed} onburgerclick={toggleSidebar}>
-    {#snippet brand()}
-      <img src="/logo.svg" alt="My App" />
-      <h1>My App</h1>
+    {#snippet start()}
+      <AppHeader><h1>My App</h1></AppHeader>
     {/snippet}
 
-    {#snippet navEnd()}
-      <li><a href="/help">Help</a></li>
+    {#snippet end()}
+      <NavMenu>
+        <NavItem href="/help">Help</NavItem>
+      </NavMenu>
     {/snippet}
   </Navbar>
 
@@ -899,12 +1021,12 @@ CRITICAL REMINDERS
 - Layout hierarchy: Layout > LayoutInner > Sidebar + LayoutContent > Main + Footer
 - Navbar goes BEFORE LayoutInner, as a direct child of Layout
 - Sidebar collapse is controlled via body class: document.body.classList.toggle('sidebar-hidden')
-- Container width is set via body class: document.body.classList.add('pa-container-lg')
+- Container width is set via body class: document.body.classList.add('pc-container-lg')
 - SidebarItem requires labelText prop (it is mandatory)
 - SidebarItem submenu state is persisted to localStorage automatically
 - Sidebar resize width is persisted to localStorage automatically
 - Snippets use {#snippet name()} ... {/snippet} syntax, NOT <slot>
-- navStart and navEnd render inside <ul>, so provide <li> elements
+- Navbar has only start / center / end zones; compose them with AppHeader, NavMenu (NavItem children), PageHeader, NavbarSearch, ProfileButton
 - Footer uses logical directions (start/end) for RTL support
 - Grid isSameHeight is useful for card grids where cards have different content lengths
 - Column with no size prop and no responsive sizes renders as pc-col (auto width)
