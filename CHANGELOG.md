@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-rc06] - 2026-10-22
+
 ### Changed — `<Radio>` disabled emits `.pa-radio--disabled`; pure-css `^2.0.0-rc04`
 
 - **`<Radio isDisabled>` adds `.pa-radio--disabled` to the label** as well as the native
@@ -281,6 +283,12 @@ plain-text values `*Text`, a single actions area is `actions`. No aliases for th
   mirror under `dir="rtl"`, so the old "right" tile rendered on the left in RTL. Same layout,
   new value: `<KpiBento layout="hero-end">`. `KpiBentoLayout` is now `'hero-end' | '5-tile'`.
 
+### Added — `<Loader type>`: `grid`, `ripple`, `dual-ring`
+
+- `LoaderType` gains `'grid' | 'ripple' | 'dual-ring'`, wrapping pure-admin-core 3.3.0-rc08's new
+  `.pa-loader-grid` / `.pa-loader-ripple` / `.pa-loader-dual-ring` (monochrome, `size="lg"`).
+  Loaders demo and fidelity map updated.
+
 ### Fixed — `<Loader color="primary">` was uncoloured
 
 - It wrote `color: var(--pc-accent)`, a token removed in the accent → primary rename, so the
@@ -390,6 +398,8 @@ plain-text values `*Text`, a single actions area is `actions`. No aliases for th
   it) so the hint row matches the other wrappers.
 
 ## [1.9.0-rc05] - 2026-10-09
+
+> Not published to npm — these changes shipped in 1.9.0-rc06.
 
 ### Changed — Pure Admin Core 3.3.0-rc06
 
@@ -597,6 +607,8 @@ plain-text values `*Text`, a single actions area is `actions`. No aliases for th
 - **`app.html` first paint** applies the stored `color-variant` class pre-hydration, and with **no** stored theme mode now applies no mode class at all: a theme's `:root` default is its manifest default, so the old `|| 'light'` fallback flashed on dark-first themes.
 
 ## [1.9.0-rc04] - 2026-08-28
+
+> Not published to npm — these changes shipped in 1.9.0-rc06.
 
 Sync with `@keenmate/pure-admin-core` **v2.9.0-rc16 → v2.9.0-rc17**, wrapping its new Container Breakpoint engine and the fit-engine additions (container-generic init, group opt-in / opt-out). `svelte-check` passes clean against rc17.
 
