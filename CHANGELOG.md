@@ -13,6 +13,20 @@ First 2.0 pre-release. The 1.9.0 line (rc01–rc03 published, rc04–rc06 never 
 as 2.0.0: it renames props across the library with no aliases and requires pure-admin-core 3.x, so a
 `^1.8.0` range must not pick it up. Upgrade guide: `release-notes/2.0.0-rc01.md`.
 
+### Fixed — SettingsPanel container width
+
+- **`SettingsPanel` container width did nothing**: it added `pa-container-*`, a class core doesn't
+  define (it removed the right `pc-container-*` ones). It now applies `pc-container-*`.
+
+### Docs — `ai/` reference brought up to date
+
+- Every `ai/*.txt` file was checked against the components' props: renamed / removed props and
+  classes fixed (e.g. `<Table isHover>` dropped, `pa-text-*` → `text-*`, `isTouched`), and the
+  sections that were missing added (Button incl. `isRipple` / `rippleType`, ButtonGroup
+  `isCompact`, SplitButton, Icon, CheckboxGroup / ColorInput / FileInput / RangeInput /
+  RangeGroup / FormActions, SectionTitle, FitContainer, ContainerBreakpoint, Splitter, the
+  toast service, NotificationBell), and the migration table extended.
+
 ### Changed — pure-admin-core `^3.3.0-rc09`
 
 - **Peer + dev `@keenmate/pure-admin-core` is `^3.3.0-rc09`** (was `^3.3.0-rc08`): the 8px
