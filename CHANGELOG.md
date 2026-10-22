@@ -9,6 +9,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.9.0-rc06] - 2026-10-22
 
+### Changed — pure-admin-core `^3.3.0-rc09`
+
+- **Peer + dev `@keenmate/pure-admin-core` is `^3.3.0-rc09`** (was `^3.3.0-rc08`): the 8px
+  `.pa-btn-group` gap with `--compact`, and the reworked ripple with its variants.
+
+### Fixed — `<Button isRipple>` actually ripples
+
+- `isRipple` only emitted `pa-btn--ripple` + `data-ripple`; nothing added
+  `pa-btn--ripple-active` on click, so the ripple played only on the docs' Buttons page (which
+  had its own inline script). The button now plays it itself (a native click listener, so it
+  still runs when another handler disables the button during the click). `data-ripple` is no
+  longer emitted — pure-admin-core 3.3.0-rc09 dropped it from the contract.
+- **New `rippleType`** (`'center' | 'pulse' | 'double-pulse'`, with `isRipple`) for core's new ripple variants; the
+  default ripple now grows from the click point and fades out in 0.45s (core 3.3.0-rc09). It also
+  takes any other name (`rippleType="wave"` → `pa-btn--ripple-wave`) for a ripple type an app
+  defines in its own CSS; the button times it from the CSS animation.
+
+### Added — `<ButtonGroup isCompact>`
+
+- Emits `pa-btn-group--compact` (3px). pure-admin-core 3.3.0-rc09 widens the default
+  `.pa-btn-group` gap to 8px — the same as card actions and footers — and keeps the tight gap
+  as this modifier for small-button clusters. The docs' table row actions and the detail-panel
+  header icon cluster use it; other demo button rows stay `<ButtonGroup>` and now match core's
+  spacing. The cards page no longer nests a `<ButtonGroup>` inside `headerActions`.
+
+### Fixed — `<Card>` renders `footer` and `footerActions` together
+
+- The footer rendered `footer` **or** `footerActions`, never both, so a footer with leading
+  buttons on the left and actions on the right had to hand-roll its own spacing (the forms demo
+  used two `ButtonGroup`s — 3px gaps). Now `footer` is the leading content and `footerActions` the
+  `.pa-card__actions` slot pinned to the end, like keen's `:footer` + `:footer_actions` and core's
+  footer contract. New core fidelity scenario `card/footer-with-actions`.
+
 ### Changed — `<Radio>` disabled emits `.pa-radio--disabled`; pure-css `^2.0.0-rc04`
 
 - **`<Radio isDisabled>` adds `.pa-radio--disabled` to the label** as well as the native
