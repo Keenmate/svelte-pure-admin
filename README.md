@@ -6,6 +6,8 @@ Svelte 5 component library for Pure Admin CSS framework — 100+ ready-to-use co
 
 ## What's New in 1.9.0
 
+**The largest release of the 1.9 cycle — read the [1.9.0-rc06 release notes](release-notes/1.9.0-rc06.md) before upgrading** (prop-rename tables, no aliases).
+
 Sync with `@keenmate/pure-admin-core` **v2.7.2 → v3.3.0-rc09** — a universal three-zone Navbar with priority-driven fit, a full search suite, the pure-css 2.0 foundation, and one prop vocabulary shared with keen-pure-admin. **Requires `@keenmate/pure-admin-core` ≥ 3.3.0-rc09, `@keenmate/pure-css` ≥ 2.0.0-rc04, and themes rebuilt against core 3.3.0-rc09** — see core's [3.3.0-rc08 release notes](https://github.com/KeenMate/pure-admin/blob/v3.3.0-rc08/packages/core/release-notes/3.3.0-rc08.md).
 
 - **BREAKING — one prop vocabulary, shared with keen.** Every boolean is `is*` / `has*` / `should*` (native ones too: `isDisabled`, `isRequired`, `isChecked`; overlays bind `isOpen`; parts toggle with `hasClose`, `hasBorder={false}`), plain text is `*Text` next to a rich snippet of the bare name (`titleText` / `title`), `iconName` sits next to an `icon` snippet, `variant` is always the role colour, and layout props are named after the CSS they drive (`justify`, `align`, `textAlign`, `labelPlacement`). No aliases — see the CHANGELOG for the per-component list.

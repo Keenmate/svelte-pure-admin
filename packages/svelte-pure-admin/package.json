@@ -20,12 +20,13 @@
     "dist",
     "ai",
     "README.md",
+    "release-notes",
     "!dist/**/*.test.*",
     "!dist/**/*.spec.*"
   ],
   "scripts": {
     "dev": "svelte-package --watch",
-    "build": "svelte-package && node -e \"const fs=require('fs');fs.rmSync('./ai',{recursive:true,force:true});fs.cpSync('../../ai','./ai',{recursive:true});fs.copyFileSync('../../README.md','./README.md')\"",
+    "build": "svelte-package && node -e \"const fs=require('fs');fs.rmSync('./ai',{recursive:true,force:true});fs.cpSync('../../ai','./ai',{recursive:true});fs.copyFileSync('../../README.md','./README.md');fs.rmSync('./release-notes',{recursive:true,force:true});fs.cpSync('../../release-notes','./release-notes',{recursive:true})\"",
     "package": "npm run build && publint",
     "prepublishOnly": "npm run package",
     "check": "svelte-check --tsconfig ./tsconfig.json",

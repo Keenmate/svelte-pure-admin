@@ -13,6 +13,7 @@ build/
 .svelte-kit/
 packages/svelte-pure-admin/ai/
 packages/svelte-pure-admin/README.md
+packages/svelte-pure-admin/release-notes/
 .vercel/
 .netlify/
 
