@@ -4,9 +4,9 @@ Svelte 5 component library for Pure Admin CSS framework — 100+ ready-to-use co
 
 **Ships with AI reference files** — 14 plain-text docs in `ai/` optimized for LLM-assisted development (Claude, ChatGPT, Copilot). Point your AI assistant at `node_modules/@keenmate/svelte-pure-admin/ai/INDEX.txt` for instant component knowledge.
 
-## What's New in 1.9.0
+## What's New in 2.0.0
 
-**The largest release of the 1.9 cycle — read the [1.9.0-rc06 release notes](release-notes/1.9.0-rc06.md) before upgrading** (prop-rename tables, no aliases).
+**A major release — read the [2.0.0-rc01 release notes](release-notes/2.0.0-rc01.md) before upgrading from 1.8** (prop-rename tables, no aliases; the 1.9.0 pre-releases continue as 2.0).
 
 Sync with `@keenmate/pure-admin-core` **v2.7.2 → v3.3.0-rc09** — a universal three-zone Navbar with priority-driven fit, a full search suite, the pure-css 2.0 foundation, and one prop vocabulary shared with keen-pure-admin. **Requires `@keenmate/pure-admin-core` ≥ 3.3.0-rc09, `@keenmate/pure-css` ≥ 2.0.0-rc04, and themes rebuilt against core 3.3.0-rc09** — see core's [3.3.0-rc08 release notes](https://github.com/KeenMate/pure-admin/blob/v3.3.0-rc08/packages/core/release-notes/3.3.0-rc08.md).
 

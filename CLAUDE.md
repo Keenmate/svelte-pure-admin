@@ -162,4 +162,4 @@ Version-by-version breaking-change history lives in `CHANGELOG.md` (this repo) a
 
 ---
 
-**Library:** 1.9.0-rc05 · **Pure Admin Core:** 3.3.0-rc07 (peer `^3.3.0-rc07`; `pc-grid` deferred) · **pure-css:** `^2.0.0-rc02` · **Svelte:** 5.x · **SvelteKit:** 2.x
+**Library:** 2.0.0-rc01 · **Pure Admin Core:** 3.3.0-rc09 (peer `^3.3.0-rc09`; `pc-grid` deferred) · **pure-css:** `^2.0.0-rc04` · **Svelte:** 5.x · **SvelteKit:** 2.x

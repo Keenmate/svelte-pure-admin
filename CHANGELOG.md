@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.9.0-rc06] - 2026-10-22
+## [2.0.0-rc01] - 2026-10-22
+
+First 2.0 pre-release. The 1.9.0 line (rc01–rc03 published, rc04–rc06 never published) continues
+as 2.0.0: it renames props across the library with no aliases and requires pure-admin-core 3.x, so a
+`^1.8.0` range must not pick it up. Upgrade guide: `release-notes/2.0.0-rc01.md`.
 
 ### Changed — pure-admin-core `^3.3.0-rc09`
 
@@ -432,7 +436,7 @@ plain-text values `*Text`, a single actions area is `actions`. No aliases for th
 
 ## [1.9.0-rc05] - 2026-10-09
 
-> Not published to npm — these changes shipped in 1.9.0-rc06.
+> Not published to npm — these changes shipped in 2.0.0-rc01.
 
 ### Changed — Pure Admin Core 3.3.0-rc06
 
@@ -641,7 +645,7 @@ plain-text values `*Text`, a single actions area is `actions`. No aliases for th
 
 ## [1.9.0-rc04] - 2026-08-28
 
-> Not published to npm — these changes shipped in 1.9.0-rc06.
+> Not published to npm — these changes shipped in 2.0.0-rc01.
 
 Sync with `@keenmate/pure-admin-core` **v2.9.0-rc16 → v2.9.0-rc17**, wrapping its new Container Breakpoint engine and the fit-engine additions (container-generic init, group opt-in / opt-out). `svelte-check` passes clean against rc17.
 
@@ -659,6 +663,8 @@ Sync with `@keenmate/pure-admin-core` **v2.9.0-rc16 → v2.9.0-rc17**, wrapping 
 - **New "Responsive Fit" page** (`/container-breakpoint`) — mount-on-demand chart↔KPI with a live mount/destroy log, a multi-level grid → tabs → icon-tabs card, and a `FitContainer` toolbar.
 
 ## [1.9.0-rc03] - 2026-08-26
+
+> Published as a 1.9.0 pre-release; the line continues as 2.0.0 (see 2.0.0-rc01).
 
 **BREAKING — foundation namespace migrated `pa-` → `pc-`.** Tracking pure-css rc04 /
 pure-admin-core, the foundation's grid + mode classes (`pa-row`/`pa-col*`/`pa-mode-*`
@@ -793,6 +799,8 @@ Sync with `@keenmate/pure-admin-core` **v2.9.0-rc08 → v2.9.0-rc16** (core rc09
 
 ## [1.9.0-rc02] - 2026-08-05
 
+> Published as a 1.9.0 pre-release; the line continues as 2.0.0 (see 2.0.0-rc01).
+
 Dependency-only refresh — sync `@keenmate/pure-admin-core` **v2.9.0-rc06 → v2.9.0-rc08** (core rc07 + rc08). **No library component or API changes.** The upstream changes are CSS-level and build-level; consumers still import `@keenmate/pure-admin-core/css` and nothing in the library's emitted markup changed. `svelte-check` passes clean against rc08.
 
 ### Changed — dependency
@@ -806,6 +814,8 @@ Dependency-only refresh — sync `@keenmate/pure-admin-core` **v2.9.0-rc06 → v
 - **Clean-install / CI packaging** — the lockfile pinned `@keenmate/pure-admin-core` to a local `file:` symlink of the sibling checkout, so a fresh install off the author's machine (Docker / CI) couldn't resolve the core `js/*` wrappers and `vite build` failed. Core now resolves to the published registry tarball; local core development uses `npm link` / a gitignored override instead. (First release to carry the fix; landed post-rc01.)
 
 ## [1.9.0-rc01] - 2026-07-27
+
+> Published as a 1.9.0 pre-release; the line continues as 2.0.0 (see 2.0.0-rc01).
 
 Sync with `@keenmate/pure-admin-core` **v2.7.2 → v2.9.0-rc06** — canonical card header, profile role chip migration, and thin Svelte wrappers over the interactive behaviours core now ships as JS (`@keenmate/pure-admin-core/js/*`): **Splitter**, **RangeGroup**, card actions-overflow, and Stat fit-mode. The overflow toolbar (`.pa-overflow`) is core-JS-driven raw markup rather than a wrapped library component; `SplitButton` gains a `data-pa-keep-open` opt-out; and buttons adopt core rc06's unified (centered-by-default) content model.
 
