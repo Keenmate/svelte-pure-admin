@@ -36,12 +36,12 @@
     "svelte-i18n": "^4.0.0"
   },
   "peerDependencies": {
-    "@keenmate/pure-admin-core": "^3.3.0-rc07",
+    "@keenmate/pure-admin-core": "^3.3.0-rc08",
     "@keenmate/pure-css": "^2.0.0-rc04",
     "svelte": "^5.0.0"
   },
   "devDependencies": {
-    "@keenmate/pure-admin-core": "^3.3.0-rc07",
+    "@keenmate/pure-admin-core": "^3.3.0-rc08",
     "@keenmate/pure-css": "^2.0.0-rc04",
     "@sveltejs/package": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^6.2.4",
